@@ -1,9 +1,7 @@
-#summary A discussion of strategies to divide the DOD specification into basic and advanced functionality.
+#summary A discussion of strategies to divide the DOD specification into basic and advanced functionality (draft).
 #labels Draft
 
 <wiki:toc max_depth="2" />
-
-= Division of Basic and Advanced Functionality (Draft) =
 
 This document examines the need for a separation of basic and advanced functionality in the DAISY Online Delivery specification.  It discusses some strategies for defining basic and advanced functionality in the specification.
 
