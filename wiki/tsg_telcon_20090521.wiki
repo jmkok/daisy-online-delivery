@@ -1,5 +1,7 @@
 #summary TSG telcon 20090521
 
+<wiki:toc max_depth="4" />
+
 Present: Geoff, George, Dave, Dominic, Leon, Simon, Hiro, Kenny, Jelle, Nick, Markus (scribe), James
 
 Telcon recording audio file name is 20090521
@@ -12,7 +14,7 @@ Collection ends at 29th, after which the final analysis and inclusion decision p
 == Action Item Summary ==
 === New Action Items ===
   * @markus put all classic TSG req docs on SVN
-=== Previous Action Items ===
+=== Previous Unfinished Action Items ===
   * @kenny enter atomic issues reported so far to google code tracker
   * @markus, @kenny draft one or several hypotheses on spec documents reorganization
 
@@ -69,11 +71,11 @@ _Markus_: if we do the layer/level solution to the spec, it should be a sub vs s
 
 _Geoff_: Hiro, are you saying that you worry about player memory and such? _Hiro_: yes. So far no such issues, but if consider future varieties of hardware players, we may.
 
-_Markus_: Hiro, do you see a generic issue with SOAP? Hiro: no.
+_Markus_: Hiro, do you see a generic issue with SOAP? _Hiro_: no.
 
 _Nick_: audio transfer happens at part of announcements, but you can specify that you dont want audio. Also happens in book resources. 
 
-_Markus_: is this a SOAP vs RESTful debate? Kenny: Yes: Jelle: I am only suggesting to use http(s) for data transfer.
+_Markus_: is this a SOAP vs RESTful debate? _Kenny_: Yes: _Jelle_: I am only suggesting to use http(s) for data transfer.
 
 _Jelle_: thinks integrating audio in soap for messages is a good thing, care most about efficiency of book data.
 
