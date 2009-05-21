@@ -50,7 +50,7 @@ _Nick_: what are the differences really?
 
 _Markus_: suggest we look at this for version 2.
 
-=== Complexity and Overhead ===
+=== SOAP Overhead ===
 Issue also knows as ''getResource vs http/https'',
 
 with a less emphasized subtopic ''embedding audio in soap''
