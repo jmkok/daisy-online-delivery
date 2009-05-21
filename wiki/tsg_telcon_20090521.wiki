@@ -71,7 +71,7 @@ _Jelle_: as a client builder, we probably have to implement all levels.
 
 _Markus_: if we do the layer/level solution to the spec, it should be a sub vs superset solution, not presenting alternative ways to do the same thing.
 
-_Geoff_: Hiro, are you saying that you worry about player memory and such? _Hiro_: yes. So far no such issues, but if consider future varieties of hardware players, we may.
+_Geoff_: Hiro, are you saying that you worry about player memory, power requirements and such? _Hiro_: yes. So far no such issues, but if consider future varieties of hardware players, we may.
 
 _Markus_: Hiro, do you see a generic issue with SOAP? _Hiro_: no.
 
