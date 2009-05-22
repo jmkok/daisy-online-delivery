@@ -6,7 +6,7 @@ Present: Geoff, George, Dave, Dominic, Leon, Simon, Hiro, Kenny, Jelle, Nick, Ma
 
 Telcon recording audio file name is 20090521
 
-This is the kickoff call for requirements revisit. The bucket is open until the 29th. We expect the list to be user for issues not covered during the cons.
+This is the kickoff call for requirements revisit. The bucket is open until the 29th. We expect the list to be used for issues not covered during the cons.
 
 _Markus_: again, this is not a complete new round. First collect without detailed discussion of the individual issues
 then present as table at wiki, sort, list pros and cons.
@@ -34,7 +34,7 @@ _Nick_: might have been descoped into version 2.
 
 _Kenny_: its user story 59. 
 
-_James_: key exchange object in PTDB2, we have XSD et al, so this should be straight quite forward
+_James_: key exchange object in PTDB2, we have XSD et al, so this should be quite straight forward
 
 _James_: encryption information exchange needs to be separate from book data transfer
 
