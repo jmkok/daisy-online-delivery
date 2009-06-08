@@ -21,7 +21,7 @@ Bucket is closed. Are all proposed changes to requirements document logged at is
 Are there any yet unpublished (non-requirements-related) issues?
 
 === Single issue discussion: getResource vs http data transfer ===
-Latest addition to discussion be Geoff to list on June 3: 
+Latest addition to discussion by Geoff to list on June 3: 
 
   Okay, I've sat down with the specs and I think I've sorted this out in my mind a bit better.  The canonical way of sending binary data in XML is base64-encoded.  
   If the XML is then encoded in UTF-8 (or a single-byte encoding like latin-1), then this adds 33% to the size of the data.  (UTF-16 and double-byte encodings add 166%, etc.)
