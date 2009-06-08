@@ -1,0 +1,55 @@
+#summary TSG telcon 20090609
+
+<wiki:toc max_depth="4" />
+
+Present: 
+
+== Action Item Summary ==
+=== New Action Items ===
+=== Previous Unfinished Action Items ===
+  * @markus put all classic TSG req docs on SVN
+  * @kenny enter atomic issues reported so far to google code tracker
+  * @markus, @kenny draft one or several hypotheses on spec documents reorganization
+
+== Agenda/Minutes ==
+
+===Status update===
+==== Requirements revisit ====
+Bucket is closed. Are all proposed changes to requirements document logged at issue tracker?
+
+==== Issue Tracker ====
+Are there any yet unpublished (non-requirements-related) issues?
+
+=== Single issue discussion: getResource vs http data transfer ===
+Latest addition to discussion be Geoff to list on June 3: 
+
+  Okay, I've sat down with the specs and I think I've sorted this out in my mind a bit better.  The canonical way of sending binary data in XML is base64-encoded.  
+  If the XML is then encoded in UTF-8 (or a single-byte encoding like latin-1), then this adds 33% to the size of the data.  (UTF-16 and double-byte encodings add 166%, etc.)
+
+  What MTOM does is allow you to extract base64 data from an XML stream, decode it into binary data, then send the XML and the binary portions as a multipart MIME message.  
+  The XML message now has references to the parts of the MIME message. The XML document can then be reconstituted on the receiving end by reencoding the referenced attachments as base64. 
+
+  This mitigates the transport overhead almost completely.
+  
+  The risk with this is that there only seem to be MTOM implementations for .NET and Java, which reduces the field for servers and clients.  
+  I'm not sure how much power a reading system would need to run WCF or Metro.  I'm not sure how those implementations work.  
+  I think an important question is whether, on the receiving end, the binary attachments are reencoded as base64 and you have to decode them yourself, or whether you can access them by reference from the MOTM-encoded data.  
+  This has profound implications for low-power devices. The alternative is writing your own MTOM implementation for your platform, which I suspect is nontrivial.
+
+=== Next steps ===
+Proposal:
+ * 1. publish revised/updated requirements document (Wiki format) based on issue tracker entries.
+ * 2. specification rebuild, with the following characteristics:
+  ** Based on a new document structure (Markus has action item to propose a revised structure)
+  ** Take required vs Optional levels of API into account (we could start with building prototypes of required API in an inwards-out fashion)
+  ** Address logged issues one-by-one as they occur during rebuild process
+  ** Carefully log all actual API changes so that existing implementations can be adapted swiftly
+  ** Constant rechecks with requirements document
+
+=== F2F ===
+Once specification structure is settled and the rebuilding process has begun, we could hold a WG F2F to expedite the process of issue fixing and spec authoring.
+ * Who could join?
+ * Appropriate dates?
+
+=== Next concall ===
+ 
