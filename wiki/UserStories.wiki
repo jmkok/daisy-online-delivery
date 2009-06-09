@@ -1,0 +1,267 @@
+#summary A list of user stories mostly gathered and evaluated at the kickoff meeting in Toronto, 2007-JUN-4 to 2007-JUN-6.
+#labels Draft
+
+The user stories came out of a brainstorming session on 2007-JUN-5.  The story numbers start at 2, since they were entered into a spreadsheet with a header row and referred to by row number.
+
+The user stories have been edited for spelling and grammar, and clarified where necessary.
+
+<wiki:toc max_depth="1" />
+
+= In-Scope Stories =
+
+== In-Scope Story 2 ==
+As the service provider I need to know whether or not that player "X" is authorised to receive book "Y". _(Author: Ed Chandler.)_
+
+== In-Scope Story 3 ==
+As a user I want to use different devices to play the same content. _(Author: Markus Gylling.)_
+
+== In-Scope Story 4 ==
+As a user I want to be able to play part of the book before it has completed downloading. _(Author: Nick Williamson.)_
+
+== In-Scope Story 5 ==
+As a user I want to be able to review content before I select it. _(Author: George Kerscher.)_
+
+== In-Scope Story 6 ==
+As a user I want to be able to keep my bookmarks for as long as I might use for another time. _(Author: George Kerscher.)_
+
+== In-Scope Story 7 ==
+As a reading system I want to tell the server that the download failed. _(Author: James Pritchett.)_
+
+== In-Scope Story 8 ==
+As a content provider I want to know when a user has finished with the book (return book). _(Author: James Pritchett.)_
+
+== In-Scope Story 9 ==
+As a content provider I want to set a maximum number of entries in a bookshelf. _(Author: Markus Gylling.)_
+
+== In-Scope Story 10 ==
+As a content provider I want to confirm with the user that they want the book. _(Author: George Kerscher.)_
+
+== In-Scope Story 11 ==
+As a content provider I want to push out system messages to the user. _(Author: Nick Williamson and George Kerscher.)_
+
+== In-Scope Story 12 ==
+As a content provider I want to be able to determine whether a player is capable of playing the book. _(Author: James Pritchett.)_
+
+== In-Scope Story 13 ==
+As a content provider I have a pick list ready, I need to know if the player is online and ready to receive books. _(Author: Geoff Gilmour-Taylor.)_
+
+== In-Scope Story 14 ==
+As a user I want to move quickly through narrative books and choose the book from there. _(Author: Neil Bernstein.)_
+
+== In-Scope Story 15 ==
+As a user I want to access content from different libraries/organisations. _(Author: Nick Williamson.)_
+
+== In-Scope Story 16 ==
+As a distributor I want to diagnose the current status of the player (live/downloading/needs upgrading/resetting remotely/disabled). _(Author: Peter Osborne.)_
+
+== In-Scope Story 17 ==
+As a content provider I want a central authentication server with satellite servers to distribute content locally. _(Author: Markus Gylling.)_
+
+== In-Scope Story 18 ==
+As a user I want to interrupt and interact with a download. _(Author: Sean Brooks.)_
+
+== In-Scope Story 19 ==
+As a user I want to give feedback of the quality of my material. _(Author: Ron Stewart.)_
+
+== In-Scope Story 20 ==
+As a user I don't want any personal identifiable information transmitted. _(Author: James Pritchett.)_
+
+== In-Scope Story 21 ==
+As a content provider I want to provide an expiration date for content. _(Author: Clive Lansink.)_
+
+== In-Scope Story 22 ==
+As a content provider I need to know how much space is on the player as I want to push content to it. _(Author: Sean Brooks and Gerry Chevalier.)_
+
+== In-Scope Story 23 ==
+As a system developers I want the delivery system to use existing standards and toolkits. _(Author: James Pritchett.)_
+
+== In-Scope Story 24 ==
+As a user I want meaningful errors messages. _(Author: James Pritchett.)_
+
+== In-Scope Story 25 ==
+As a service provider I want to deliver a user friendly, transparent and unobtrusive service. _(Author: Peter Osborne and Ed Chandler.)_
+
+== In-Scope Story 26 ==
+As a user I want to know the level of support services which goes on. _(Author: Ron Stewart.)_
+
+== In-Scope Story 27 ==
+As a potential user I need to find out what content providers are available to me. _(Author: Kathy Kahl.)_
+
+== In-Scope Story 28 ==
+As a user I want to be able to subscribe to services. _(Author: Leon Gulikers.)_
+
+== In-Scope Story 29 ==
+As a non-computer user I want to be able to select a book. _(Author: George Kerscher.)_
+
+== In-Scope Story 30 ==
+As a user I want the information as soon as it is ready. _(Author: Dave Andrews.)_
+
+== In-Scope Story 31 ==
+As a user I want to accept or reject items on the list. _(Author: George Kerscher.)_
+
+== In-Scope Story 32 ==
+As a user I want to know if my player has enough space to store the content. _(Author: Ed Chandler.)_
+
+== In-Scope Story 33 ==
+As a student I want to bookmark my content according to the syllabus. _(Author: Ron Stewart.)_
+
+== In-Scope Story 34 ==
+As a service provider I want to make sure my students are downloading their content. _(Author: Ron Stewart.)_
+
+== In-Scope Story 35 ==
+As a service provider I want to recommend books to users who have read similar books. _(Author: Neil Bernstein.)_
+
+== In-Scope Story 36 ==
+As an educator I want to preset bookmarks in my text and deliver it to my students. _(Author: Peter Osborne.)_
+
+== In-Scope Story 37 ==
+As a content provider I want to customise the UI to restrict or open up the functionality as required. _(Author: George Kerscher and Nick Williamson.)_
+
+== In-Scope Story 38 ==
+As a user I don't want the content provider to sniff my bookshelf off the network. _(Author: George Kerscher.)_
+
+== In-Scope Story 39 ==
+As a user I want to know if any of my requests failed and why. _(Author: Geoff Gilmour-Taylor.)_
+
+== In-Scope Story 40 ==
+As a user I want to know what the progress is on the download of the books and how long it will take to complete. _(Author: Geoff Gilmour-Taylor.)_
+
+== In-Scope Story 41 ==
+As a user I want to be able to resume my download if it was interrupted. _(Author: Gerry Chevalier.)_
+
+== In-Scope Story 42 ==
+As a content provider I want to suspend content _en masse_. _(Author: Peter Osborne and James Pritchett.)_
+
+== In-Scope Story 43 ==
+As a user I need to be able to suppress system messages. _(Author: Ed Chandler.)_
+
+== In-Scope Story 44 ==
+As a content provider I need some messages to be compulsory. _(Author: Nick Williamson.)_
+
+== In-Scope Story 45 ==
+As a content provider I must be able to stop a player from functioning for a user who has a bad account. _(Author: Ed Chandler.)_
+
+== In-Scope Story 46 ==
+As a content provider I need to able to change the status of the player (e.g. bought or loaned machine). _(Author: Peter Osborne.)_
+
+== In-Scope Story 47 ==
+As a user I want to be able to re-download my content if I need. _(Author: James Pritchett.)_
+
+== In-Scope Story 48 ==
+As a service provider I want to control the number of copies of a book that are in circulation. _(Author: Lynn Leith.)_
+
+== In-Scope Story 49 ==
+As a user I want to read concurrent material and return to the same place after reading different content. _(Author: Karel Raven.)_
+
+== In-Scope Story 50 ==
+As a user I want to set a preference for when there isn't enough space to download the next book. _(Author: Nick Williamson.)_
+
+== In-Scope Story 51 ==
+As a content provider I want to be able to get paid for the service I am providing. _(Author: George Kerscher.)_
+
+== In-Scope Story 52 ==
+As a systems administrator I want to be able to collect the error codes so I can generate a knowledge base. _(Author: Ron Stewart.)_
+
+== In-Scope Story 53 ==
+As a developer I want error codes to explain what went wrong and where. _(Author: Ed Chandler.)_
+
+== In-Scope Story 54 ==
+As a user I want to be able to check the firmware version and upgrade as required. _(Author: George Kerscher.)_
+
+== In-Scope Story 55 ==
+As a content provider I want to automatically push upgrades to players. _(Author: Clive Lansink.)_
+
+== In-Scope Story 56 ==
+As a system I need to know that player "X" is authorised to play book "Y". _(Author: George Kerscher.)_
+
+== In-Scope Story 57 ==
+As a content provider I want users to be able to download books but not read them until I lift the embargo including players which do not have an inbuilt real time clock. _(Author: Geoff Gilmour-Taylor.)_
+
+== In-Scope Story 58 ==
+As a content provider I want the content to have authorisation and rights embedded in the file. _(Author: Ron Stewart.)_
+
+== In-Scope Story 59 ==
+As a content provider I want to be able to deliver authorisation keys to players. _(Author: George Kerscher and Peter Osborne.)_
+
+== In-Scope Story 60 ==
+As a user I want to be able to identify and switch my primary content/service provider. _(Author: George Kerscher.)_
+
+== In-Scope Story 61 ==
+As a service provider I would like to know the colour contrast, the voice speed, volume that the online playpack should display to a particular user. _(Author: N/A.)_
+
+== In-Scope Story 62 ==
+As a content provider I want to provide content to my users. _(Author: N/A.)_
+
+= Out-of-Scope Stories =
+
+== Out-of-Scope Story 2 ==
+As a user I want to be able to prioritise my list. _(Author: George Kerscher.)_
+
+== Out-of-Scope Story 3 ==
+As a user I want to be able to save my content to another location and save it forever. _(Author: George Kerscher.)_
+
+== Out-of-Scope Story 4 ==
+As a content provider I want to stop users from taking content and saving it forever. _(Author: Nick Williamson.)_
+
+== Out-of-Scope Story 5 ==
+As a user I want to download the best version of the book for my needs and my player. _(Author: Kathy Kahl.)_
+
+== Out-of-Scope Story 6 ==
+As a content provider I want to be able to make any content which is not restricted by copyright available to anybody registered with a sister organisation anywhere in the world. _(Author: Lynn Leith.)_
+
+== Out-of-Scope Story 7 ==
+As a content provider I want to prioritise content to my members over others from different parts of the world. _(Author: George Kerscher.)_
+
+== Out-of-Scope Story 8 ==
+As a member I want to share my books with my friends (e.g. peer to peer sharing and including bookmarks). _(Author: Matthias Karlsson.)_
+
+== Out-of-Scope Story 9 ==
+As the content provider I want to delegate the task of user administration to local libraries/administrators. _(Author: Markus Gylling.)_
+
+== Out-of-Scope Story 10 ==
+As an administrator I want to be able to add and remove users. _(Author: Ed Chandler.)_
+
+== Out-of-Scope Story 11 ==
+As a user I want to keep parts of books available to me. _(Author: George Kerscher.)_
+
+== Out-of-Scope Story 12 ==
+As a user I want to be able to upload DAISY content and catalogue it. _(Author: Matthias Karlsson.)_
+
+== Out-of-Scope Story 13 ==
+As a user I want to be able to search using a variety of criteria and have those books put in a picklist. _(Author: Dave Andrews.)_
+
+== Out-of-Scope Story 14 ==
+As a DAISY board member I want stats on books downloaded. _(Author: Kathy Kahl.)_
+
+== Out-of-Scope Story 15 ==
+As a content provider I want stats on books being read. _(Author: Peter Osborne.)_
+
+== Out-of-Scope Story 16 ==
+As a content provider I want to know how much of the book was read. _(Author: Clive Lansink.)_
+
+== Out-of-Scope Story 17 ==
+As a user I don't want to inform the content provider how much of the book I read. _(Author: Clive Lansink.)_
+
+== Out-of-Scope Story 18 ==
+As a user I need to be able to choose when system messages are played. _(Author: Ed Chandler.)_
+
+== Out-of-Scope Story 19 ==
+As a user I want to keep a history of all the books I have read. _(Author: George Kerscher.)_
+
+== Out-of-Scope Story 20 ==
+As a content provider I want to be able to provide subscription services (such as magazines) where new issues are pushed to users. _(Author: Neil Bernstein.)_
+
+== Out-of-Scope Story 21 ==
+As a service provider I want to know which person is next in line to receive a book. _(Author: Ed Chandler.)_
+
+== Out-of-Scope Story 22 ==
+As a user I need to know how much space each book is taking. _(Author: Nick Williamson.)_
+
+== Out-of-Scope Story 23 ==
+As a user I need to know the status of the player and connection. _(Author: Gerry Chevalier.)_
+
+== Out-of-Scope Story 24 ==
+As a developer I want the royalties of (embedded) voices properly accounted for. _(Author: Ron Stewart.)_
+
+== Out-of-Scope Story 25 ==
+As a content provider I want to integrate the delivery system with current infrastructure. _(Author: Ron Stewart.)_
