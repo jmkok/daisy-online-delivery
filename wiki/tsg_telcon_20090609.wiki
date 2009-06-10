@@ -7,7 +7,7 @@ Present:
 == Action Item Summary ==
 === New Action Items ===
 
-Goeff and Kenny to reorganise the requirements.
+Geoff and Kenny to reorganise the requirements.
 
 Nick to go through the wiki and add comments based on the historical discussions of the group.
 
@@ -40,7 +40,7 @@ Kenny asked whether those clarifying the requirements need to speak to the origa
 
 Markus observed that we should be equally clear about out-of-scope as well as in-scope requirements.
 
-Nick asked whether we had requirements – we have user stories and a mapping to functions. Goeff clarified that his comments were referring to the requirements not the user stories.
+Nick asked whether we had requirements – we have user stories and a mapping to functions. Geoff clarified that his comments were referring to the requirements not the user stories.
 
 Markus questioned whether we should republish the user stories. It was suggested that we produce two interlinked documents – one for the requirements and one for the user stories.
 
@@ -48,22 +48,22 @@ Markus asked if all the issues were covered by the requirements and suggested th
 
 Markus noted that we have previously agreed that library-to-library exchange is out-of-scope for version 1.
 
-Kenny asked whether we are clarifying the isues in the tracker or are we allowing for additional requirements. Geoff suggested that we re-organise them first and then deal with any issues.
+Kenny asked whether we are clarifying the issues in the tracker or are we allowing for additional requirements. Geoff suggested that we re-organise them first and then deal with any issues.
 
 Markus noted that the only extra requirement is about PDTB2 keys which was an original requirement that may have been de-scoped but is now back in scope.
 
-Kenny noted that in an ealrier call it had been suggested that a request for additional comments should be sent to the wider daisy list. Domonic was concerned tha only a few daisy members would support the standard. George commented tha at the board meeting many organisations expressed interrest in using the standard over the next couple of years. George did not think that it would be possible to market the spec to those who are not currently in the group and that there will be a marketing piece when we have a standard for test use.
+Kenny noted that in an earlier call it had been suggested that a request for additional comments should be sent to the wider daisy list. Dominic was concerned that only a few daisy members would support the standard. George commented that at the board meeting many organisations expressed interest in using the standard over the next couple of years. George did not think that it would be possible to market the spec to those who are not currently in the group and that there will be a marketing piece when we have a standard for test use.
 
 Markus noted that it is hard to progress a project if one is constantly rechecking scope with different groups of potential users.
 
-Goeff and Kenny offered to reorganise the requirements. Nick offerred to go through the wiki and add comments based on the historical discussions of the group.
+Geoff and Kenny offered to reorganise the requirements. Nick offered to go through the wiki and add comments based on the historical discussions of the group.
 
 George asked how much linkage between requirements an user stories was required. It was agreed that the requirements should back link to user stories.
 
 ==== Issue Tracker ====
 Are there any yet unpublished (non-requirements-related) issues?
 
-Markus asked for any non-requirements related issues that have not been posted to the issues tracker. Kenny asked if the issue about the getResource function had been logged. Goeff suggested closing issue 42 as the specifi issue that Geoff had is no longer an issue. 
+Markus asked for any non-requirements related issues that have not been posted to the issues tracker. Kenny asked if the issue about the getResource function had been logged. Geoff suggested closing issue 42 as the specific issue that Geoff had is no longer an issue. 
 
 === Single issue discussion: getResource vs http data transfer ===
 Latest addition to discussion by Geoff to list on June 3: 
@@ -81,11 +81,11 @@ Latest addition to discussion by Geoff to list on June 3:
   I think an important question is whether, on the receiving end, the binary attachments are reencoded as base64 and you have to decode them yourself, or whether you can access them by reference from the MOTM-encoded data.  
   This has profound implications for low-power devices. The alternative is writing your own MTOM implementation for your platform, which I suspect is nontrivial.
 
-Kenny offerred to add the https vs getResource issue to the tracker.
+Kenny offered to add the https vs getResource issue to the tracker.
 
-Geoff offerred to go through James e-mail and add any additional issues to the tracker.
+Geoff offered to go through James e-mail and add any additional issues to the tracker.
 
-Goeff noted that there is an Apache C library that supports MTOM.
+Geoff noted that there is an Apache C library that supports MTOM.
 
 Jelle noted that WSO has gSoap has MTOM support. WSO has support in php and some others.
 
@@ -97,13 +97,13 @@ Simon felt that as long as there are tools for MTOM there is no problem.
 
 Hiro agreed with Simon.
 
-Jelle asked if http was sitll an option alongside getResource.
+Jelle asked if http was still an option alongside getResource.
 
 Markus preferred a single method.
 
 Jelle did not wish to drop http.
 
-Nick asked what was the reason for preferring a single method rather that an choice of two and if there is no 33 percent additonal bandwidth use what other issue was there.
+Nick asked what was the reason for preferring a single method rather that an choice of two and if there is no 33 percent additional bandwidth use what other issue was there.
 
 Jelle outlined what supporting both methods would mean – that players would implement both methods and the service provider can choose.
 
@@ -113,17 +113,17 @@ Geoff observed that there may be future cases involving requesting content from 
 
 Kenny noted that there are ways of performing the content abstraction via http / https.
 
-Nick suggested that we drop the getResource functiion.
+Nick suggested that we drop the getResource function.
 
 Jelle suggested that the reading system manufacturers have the final say and that the service can handle the logging functions which lead to the creation of getResource.
 
-Nick noted that authenticaion of users was also simpler via getResource.
+Nick noted that authentication of users was also simpler via getResource.
 
 Kenny suggested that the protocol need not concern itself with the abstraction that getResource provides.
 
-Jelle expressed concern that handelling of range headers etc through scripts on servers was easy to get wrong.
+Jelle expressed concern that handling of range headers etc through scripts on servers was easy to get wrong.
 
-Goeff suggested that the test suite include http requests containing range headers.
+Geoff suggested that the test suite include http requests containing range headers.
 
 Kenny mentioned that dropping MTOM means more to the spec than the getResource function eg the Message fragment also includes MTOM for embedded audio.
 
@@ -143,13 +143,13 @@ Markus suggested that specification rebuild in the first next step. This would c
 
 Markus offered to provide a sample rebuild of the specification.
 
-George asked if thsi would remove the need for a seperate primer.
+George asked if this would remove the need for a separate primer.
 
-Markus replied that the new structure would probalby mix normative and informative sections.
+Markus replied that the new structure would probably mix normative and informative sections.
 
-Markus suggested that the ontology document could be generated from the spec rather than authored seperately.
+Markus suggested that the ontology document could be generated from the spec rather than authored separately.
 
-George expressed preferenc for a single document.
+George expressed preference for a single document.
 
 Markus noted that we need to maintain a change log for API changes.
 
@@ -158,11 +158,11 @@ Once specification structure is settled and the rebuilding process has begun, we
  * Who could join?
  * Appropriate dates?
 
-George noted that the board wants the spec delivered as soon as possible and is willing to accept a “draft standard for test use” by mid september ready for the meeting in late september.
+George noted that the board wants the spec delivered as soon as possible and is willing to accept a “draft standard for test use” by mid September ready for the meeting in late September.
 
-Markus suggested a four day long face-to-face in July / August. CNIB offerred to host such a meeting in Toronto.
+Markus suggested a four day long face-to-face in July / August. CNIB offered to host such a meeting in Toronto.
 
-Geoff offerred to provide some alternative dates for a meeting.
+Geoff offered to provide some alternative dates for a meeting.
 
 === Next concall ===
 
