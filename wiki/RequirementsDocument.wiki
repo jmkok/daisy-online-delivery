@@ -100,7 +100,7 @@ Protocol must allow to transmit a variety of system messages. _(Original require
 Protocol must report players status. _(Original requirement 16 (1). User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Diagnose_player_status Diagnose player status])_
 
 === Report firmware version ===
-Protocol has to report firmware version of the player. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Diagnose_player_status Diagnose player status])_
+Protocol has to report firmware version of the player. _(Original requirement 16 (2). User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Diagnose_player_status Diagnose player status])_
 
 === Report download activity ===
 Protocol has to report download activity. _(Original requirement 16 (3). User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Diagnose_player_status Diagnose player status])_
