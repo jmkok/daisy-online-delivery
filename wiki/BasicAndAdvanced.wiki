@@ -1,5 +1,5 @@
 #summary A discussion of strategies to divide the DOD specification into basic and advanced functionality (draft).
-#labels Draft
+#labels Draft,Phase-Design
 
 <wiki:toc max_depth="2" />
 
