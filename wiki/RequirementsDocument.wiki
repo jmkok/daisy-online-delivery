@@ -3,6 +3,8 @@
 
 <wiki:toc max_depth="2" />
 
+----
+
 = In-scope =
 
 == Content Management ==
@@ -55,6 +57,8 @@ Initial transaction between when a player is first turned on and the server. _(O
 === Download and streaming ===
 The protocol must support both downloading and streaming. _(Original requirement 62. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Provide_content Provide content])_
 
+----
+
 == User Control ==
 
 === Same book, different player ===
@@ -81,6 +85,8 @@ The protocol must support identification and transference of the primary service
 === User preferences ===
 The user preferences are stored on the server so that remote access from different terminals can automatically be adjusted. _(Original requirement 61. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Player_settings Player settings])_
 
+----
+
 == Preview ==
 
 === Prioritize order of files ===
@@ -88,6 +94,8 @@ Protocol needs to prioritise order of files for each content so it can be played
 
 === Interact with content ===
 The protocol supports interaction with the content. _(Original requirement 5. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Review_content_before_selection Review content before selection])_
+
+----
 
 == Information Management ==
 
@@ -118,6 +126,8 @@ The protocol must ensure protection of a users privacy. _(Original requirement 2
 === Localized, plain language error messages ===
 Error messages must be easily modified to provide meaningful information in plain language of the user. _(Original requirement 24. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Meaningful_error_messages Meaningful error messages])_
 
+----
+
 == Organization Control ==
 
 === Without user interaction ===
@@ -129,10 +139,14 @@ The protocol must be able to expose, to the player, the transactions. _(Original
 === New service registration ===
 The protocol has to support the registration with a new service provider. _(Original requirement 28. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Subscribe_to_services Subscribe to services])_
 
+----
+
 == Development ==
 
 === Not Invented Here ===
 Work group to review and use existing standards and tool wherever possible. _(Original requirement 23. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Existing_standards_and_toolkits Existing standards and toolkits])_
+
+----
 
 = Duplicates =
 
@@ -191,10 +205,14 @@ Protocol has to support secure transmission such as encryption (PDTB) + sending 
 === PDTB2 and partial transmission (again again) ===
 Protocol has to support secure transmission such as encryption (PDTB) + sending parts of the book then sending an update. _(Original requirement 59. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Key_delivery Key delivery])_
 
+----
+
 == Preview ==
 
 === Partial transmission ===
 The protocol must support, understand and communicate around partial, incremental and revised download. _(Original requirement 30. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Information_as_soon_as_it_is_ready Information as soon as it is ready])_
+
+----
 
 == Information Management ==
 
@@ -228,6 +246,8 @@ Meaningful messages. _(Original requirement 54. User Story: [http://code.google.
 === Different classes of messages (again again) ===
 Protocol will support different classes of messages. _(Original requirement 55. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Push_player_upgrades Push player upgrades])_
 
+----
+
 == Organization Control ==
 
 === User preferences (again) ===
@@ -238,5 +258,7 @@ System messages + unique id of device. _(Original requirement 45. User Story: [h
 
 === System messages ===
 System messages. _(Original requirement 51. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Get_paid Get paid])_
+
+----
 
 <wiki:toc />
