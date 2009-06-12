@@ -7,6 +7,8 @@ The user stories have been edited for spelling and grammar, and clarified where 
 
 User stories are considered to be in scope if some part of them implies an in-scope requirement of the protocol.
 
+----
+
 = In-Scope Stories =
 
 == Authorization of content (server) ==
@@ -192,6 +194,8 @@ As a service provider I would like to know the colour contrast, the voice speed,
 == Provide content ==
 As a content provider I want to provide content to my users. _(Author: N/A. Originally In-Scope Story 62.)_
 
+----
+
 = Out-of-Scope Stories =
 
 == Prioritize list ==
@@ -265,5 +269,7 @@ As a developer I want the royalties of (embedded) voices properly accounted for.
 
 == Integration with existing systems ==
 As a content provider I want to integrate the delivery system with current infrastructure. _(Author: Ron Stewart. Originally Out-of-Scope Story 25.)_
+
+----
 
 <wiki:toc />
