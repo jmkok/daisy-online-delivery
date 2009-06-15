@@ -16,7 +16,7 @@ Protocol to support efficient use of bandwidth. _(Original requirement 2 (1). Us
 Protocol to support efficient key authorisation checking. _(Original requirement 2 (2). User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Authorization_of_content_(server) Authorization of content (server)])_
 
 === Errors must be communicated to server ===
-Transmission/download errors must be tracked and communicated to the server. _(Original requirement 7. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Tell_server_download_failed Tell server download failed])_
+Transmission/download errors must be tracked and communicated to the server. Protocol must deliver error codes to the system. _(Original requirements 7 and 52. User Stories: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Tell_server_download_failed Tell server download failed] and [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Error_code_knowledge_base Error code knowledge base])_
 
 === Return book ===
 System is notified that the book has been returned (deleted from the players). _(Original requirement 8. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Return_book Return book])_
@@ -80,10 +80,10 @@ The protocol must support stop/resume of the download. _(Original requirement 18
 Requires some player functionality as well. _(Original requirement 19. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Give_feedback Give feedback])_
 
 === Identify and transfer service provider ===
-The protocol must support identification and transference of the primary service provider.. _(Original requirement 60. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Switch_primary_content_provider Switch primary content provider])_
+The protocol must support identification and transference of the primary service provider. _(Original requirement 60. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Switch_primary_content_provider Switch primary content provider])_
 
 === User preferences ===
-The user preferences are stored on the server so that remote access from different terminals can automatically be adjusted. _(Original requirement 61. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Player_settings Player settings])_
+Protocol must allow the transmission of user preference as a separate entity to the book. The user preferences are stored on the server so that remote access from different terminals can automatically be adjusted. _(Original requirements 37 and 61. User Stories: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Customize_client_UI_from_server Customize client UI from server] and [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Player_settings Player settings])_
 
 ----
 
@@ -100,7 +100,7 @@ The protocol supports interaction with the content. _(Original requirement 5. Us
 == Information Management ==
 
 === Transmit bookmarks ===
-Protocol must allow the transmission of bookmarks as a separate entity to the book. _(Original requirement 6. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Keep_bookmarks Keep bookmarks])_
+Protocol must allow the transmission of bookmarks as a separate entity to the book. Protocol should recognise bookmarks as non book content and a player can transmit bookmarks back to the server and vice versa. Protocol must allow the transmission of bookmarks as a separate entity to the book (within DAISY ISO 2005 standard there is no attribute that identifies a bookmark as private/shared). _(Original requirements 6, 33 and 36. User Stories: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Keep_bookmarks Keep bookmarks], [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Bookmark_content Bookmark content] and [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Preset_bookmarks Preset bookmarks])_
 
 === Variety of system messages ===
 Protocol must allow to transmit a variety of system messages. _(Original requirement 11. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Push_system_messages Push system messages])_
@@ -155,10 +155,7 @@ These requirements were marked "satisfied by requirement", indicating that they 
 == Content Management ==
 
 === Select a book ===
-Transmitting a list of options and a response or selection and then system delivers the content. _(Original requirement 29. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Select_a_book Select a book])_
-
-=== Select a book (again) ===
-Transmitting a list of options and a response or selection and then system delivers the content. _(Original requirement 31. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Accept_or_reject_items Accept or reject items])_
+Transmitting a list of options and a response or selection and then system delivers the content. _(Original requirements 29 and 31. User Stories: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Select_a_book Select a book] and [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Accept_or_reject_items Accept or reject items])_
 
 === Be aware of size ===
 Protocol needs to be aware of the size of the item in question. _(Original requirement 32. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Enough_space_to_store_content_(client) Enough space to store content (client)])_
@@ -169,9 +166,6 @@ Protocol must report the download status. _(Original requirement 34. User Story:
 === Send lists ===
 Protocol supports the sending of lists. _(Original requirement 35. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Recommend_similar_books Recommend similar books])_
 
-=== Meaningful messages ===
-Meaningful messages. _(Original requirement 39. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Request_failure_notification Request failure notification])_
-
 === Need file size ===
 Need to have size of file. _(Original requirement 40. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Download_progress Download progress])_
 
@@ -181,7 +175,7 @@ Protocol must be resumable. _(Original requirement 41. User Story: [http://code.
 === Support outage messages ===
 Protocol must support messages prior to service outage. _(Original requirement 42. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Suspend_content Suspend content])_
 
-=== Send lists (again) ===
+=== Send list of options ===
 Transmitting a list of options and a response or selection and then system delivers the content. _(Original requirement 47. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Re-download Re-download])_
 
 === Time out and return and authorization of content ===
@@ -194,16 +188,10 @@ The streaming is a full DAISY experience + the download could be controlled by t
 Management of lists and versions/revs. _(Original requirement 50. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Set_a_preference_for_when_there_isn't_enough_space Set a preference for when there isn't enough space])_
 
 === PDTB2 and partial transmission ===
-Protocol has to support secure transmission such as encryption (PDTB) + sending parts of the book then sending an update. _(Original requirement 56. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Authorization_of_content_(system) Authorization of content (system)])_
+Protocol has to support secure transmission such as encryption (PDTB) + sending parts of the book then sending an update. _(Original requirements 56, 58 and 59. User Stories: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Authorization_of_content_(system) Authorization of content (system)], [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Embedded_authorization_and_rights Embedded authorization and rights] and [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Key_delivery Key delivery])_
 
 === Download of book without access rights ===
 Download of book without access rights until the release date of the book even for players without a real time clock. _(Original requirement 57. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Time_service Time service])_
-
-=== PDTB2 and partial transmission (again) ===
-Protocol has to support secure transmission such as encryption (PDTB) + sending parts of the book then sending an update. _(Original requirement 58. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Embedded_authorization_and_rights Embedded authorization and rights])_
-
-=== PDTB2 and partial transmission (again again) ===
-Protocol has to support secure transmission such as encryption (PDTB) + sending parts of the book then sending an update. _(Original requirement 59. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Key_delivery Key delivery])_
 
 ----
 
@@ -216,45 +204,21 @@ The protocol must support, understand and communicate around partial, incrementa
 
 == Information Management ==
 
-=== Transmit bookmarks (again) ===
-Protocol should recognise bookmarks as non book content and a player can transmit bookmarks back to the server and vice versa. _(Original requirement 33. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Bookmark_content Bookmark content])_
-
-=== Transmit bookmarks (again again) ===
-Protocol must allow the transmission of bookmarks as a separate entity to the book (within DAISY ISO 2005 standard there is no attribute that identifies a bookmark as private/shared. _(Original requirement 36. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Preset_bookmarks Preset bookmarks])_
-
 === Secure transmission ===
 Transmission must be secure. _(Original requirement 38. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#No_sniffing No sniffing])_
 
+=== Meaningful messages ===
+Meaningful messages. _(Original requirements 39, 53 and 54. User Stories: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Request_failure_notification Request failure notification], [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Error_codes Error codes] and [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Check_firmware_version Check firmware version])_
+
 === Different classes of messages ===
-Protocol will support different classes of messages. _(Original requirement 43. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Suppress_system_messages Suppress system messages])_
-
-=== Different classes of messages (again) ===
-Protocol will support different classes of messages. _(Original requirement 44. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Compulsory_messages Compulsory messages])_
-
-=== System messages and unique device ID ===
-System messages + unique id of device. _(Original requirement 46. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Change_player_status Change player status])_
-
-=== Errors must be communicated to server (again) ===
-Protocol must deliver error codes to the system. _(Original requirement 52. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Error_code_knowledge_base Error code knowledge base])_
-
-=== Meaningful messages (again) ===
-Meaningful messages. _(Original requirement 53. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Error_codes Error codes])_
-
-=== Meaningful messages (again again) ===
-Meaningful messages. _(Original requirement 54. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Check_firmware_version Check firmware version])_
-
-=== Different classes of messages (again again) ===
-Protocol will support different classes of messages. _(Original requirement 55. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Push_player_upgrades Push player upgrades])_
+Protocol will support different classes of messages. _(Original requirements 43, 44 and 55. User Stories: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Suppress_system_messages Suppress system messages], [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Compulsory_messages Compulsory messages] and [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Push_player_upgrades Push player upgrades])_
 
 ----
 
 == Organization Control ==
 
-=== User preferences (again) ===
-Protocol must allow the transmission of user preference as a separate entity to the book. _(Original requirement 37. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Customize_client_UI_from_server Customize client UI from server])_
-
-=== System messages and unique device ID (again)===
-System messages + unique id of device. _(Original requirement 45. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Stop_player_from_functioning Stop player from functioning])_
+=== System messages and unique device ID ===
+System messages + unique id of device. _(Original requirements 45 and 46. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Stop_player_from_functioning Stop player from functioning] and [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Change_player_status Change player status])_
 
 === System messages ===
 System messages. _(Original requirement 51. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Get_paid Get paid])_
