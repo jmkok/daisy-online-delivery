@@ -82,8 +82,8 @@ Requires some player functionality as well. _(Original requirement 19. User Stor
 === Identify and transfer service provider ===
 The protocol must support identification and transference of the primary service provider. _(Original requirement 60. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Switch_primary_content_provider Switch primary content provider])_
 
-=== User preferences ===
-Protocol must allow the transmission of user preference as a separate entity to the book. The user preferences are stored on the server so that remote access from different terminals can automatically be adjusted. _(Original requirements 37 and 61. User Stories: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Customize_client_UI_from_server Customize client UI from server] and [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Player_settings Player settings])_
+=== User preferences stored on server ===
+The user preferences are stored on the server so that remote access from different terminals can automatically be adjusted. _(Original requirement 61. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Player_settings Player settings])_
 
 ----
 
@@ -216,6 +216,9 @@ Protocol will support different classes of messages. _(Original requirements 43,
 ----
 
 == Organization Control ==
+
+=== User preferences separate ===
+Protocol must allow the transmission of user preference as a separate entity to the book. _(Original requirement 37. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Customize_client_UI_from_server Customize client UI from server])_
 
 === System messages and unique device ID ===
 System messages + unique id of device. _(Original requirements 45 and 46. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Stop_player_from_functioning Stop player from functioning] and [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Change_player_status Change player status])_
