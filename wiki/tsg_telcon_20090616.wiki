@@ -4,6 +4,21 @@
 
 Present: George, Kenny, Geoff, Simon, Dominic, Matt, Hiro, Markus (scribe)
 
+== Action Item Summary ==
+=== New Action Items ===
+  * markus contact Jelle and Peter/Steve for F2F confirmation
+=== Previous Unfinished Action Items ===
+  * Geoff and Kenny to reorganise the requirements. ONGOING
+  * Nick to go through the wiki and add comments based on the historical discussions of the group.
+  * Kenny to add the https vs getResource issue to the tracker.
+  * Geoff to go through James e-mail and add any additional issues to the tracker. DONE
+  * Markus to provide a sample rebuild of the specification.
+  * Geoff to provide some alternative dates for a face-to-face meeting. DONE
+  * @markus put all classic TSG req docs on SVN
+  * @kenny enter atomic issues reported so far to google code tracker DONE
+  * @markus, @kenny draft one or several hypotheses on spec documents reorganization
+
+
 == F2F July 20th - July 23d ==
 Confirmed: Nick, Simon, Hiro, Kenny, Markus
 
