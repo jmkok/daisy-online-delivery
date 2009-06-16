@@ -27,6 +27,12 @@ Kenny: in IIS you can register extensions, perhaps thats the way to do it there.
 
 Kenny: I could modify my script to return the headers that Jelle requested. A very simple setup using an ASP.NET script. Do we need more time?
 
+Kenny: if we drop MTOM, this will impact approx 8 types. 
+
+Geoff: yes, all these types would need to be changed. 
+
+Kenny: URIs will need to be supplied instead of embedding binary content.
+
 == Geoff's Requirements document and user stories document ==
 
 == Markus' spec documentation restructure work ==
