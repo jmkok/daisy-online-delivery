@@ -25,7 +25,8 @@ Confirmed: Nick, Simon, Hiro, Kenny, Markus
 Outstanding: Jelle, Peter/Steve; @markus contact them
 
 == New Telcon Time: 13:00 UTC ==
-One hour earlier than current time
+Suggestion: one hour earlier than current time.
+
 All in favor.
 
 == MTOM ==
