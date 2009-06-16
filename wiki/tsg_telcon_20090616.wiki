@@ -33,6 +33,17 @@ Geoff: yes, all these types would need to be changed.
 
 Kenny: URIs will need to be supplied instead of embedding binary content.
 
+''The Group intends to close this issue on the 23d, after input from Jelle and Nick''
+
 == Geoff's Requirements document and user stories document ==
+Geoff: now on Wiki. The user stories are a near verbatim transcription. The requirements are divided in in-scope, and satisfied/duplicated. Organized by categories.
+
+... so now is the time to start clarifying and expanding the requirements. 
+
+Kenny: will work with Geoff to take this further. 
+
+Geoff: we need to start dealing with req issues, and clarifying the reqs where we all know what it means but the wording is vague. 
+
+''Target: by 23d have it in a state to present it to the group'' 
 
 == Markus' spec documentation restructure work ==
