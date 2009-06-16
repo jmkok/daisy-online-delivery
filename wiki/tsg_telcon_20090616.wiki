@@ -1,7 +1,8 @@
 Present: George, Kenny, Geoff, Simon, Dominic, Matt, Hiro, Markus (scribe)
 
 == F2F July 20th - July 23d ==
-Nick, Simon, Hiro, Kenny, Markus
+Confirmed: Nick, Simon, Hiro, Kenny, Markus
+
 Outstanding: Jelle, Peter/Steve for final word; @markus contact them
 
 == New Telcon Time: 13:00 UTC ==
@@ -10,4 +11,22 @@ All in favor.
 
 == MTOM ==
 
+Kenny posted scripts for non-MTOM testing. Hiro as successfully downloaded using this.
+
+Kenny: the complete query string is in the content metadata fragment.
+
+Kenny: is it possible for a reading system to resume a download?
+
+Hiro: I think we need to modify implementation to do this, but it should work.
+
+Jelle seems to be having trouble getting byte offsets. 
+
+Geoff: the headers are sent to the webserver as a request. Inspect the request object for the range header. 
+
+Kenny: in IIS you can register extensions, perhaps thats the way to do it there. 
+
+Kenny: I could modify my script to return the headers that Jelle requested. A very simple setup using an ASP.NET script. Do we need more time?
+
 == Geoff's Requirements document and user stories document ==
+
+== Markus' spec documentation restructure work ==
