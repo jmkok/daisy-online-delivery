@@ -1,9 +1,13 @@
+#summary TSG telcon 20090616
+
+<wiki:toc max_depth="4" />
+
 Present: George, Kenny, Geoff, Simon, Dominic, Matt, Hiro, Markus (scribe)
 
 == F2F July 20th - July 23d ==
 Confirmed: Nick, Simon, Hiro, Kenny, Markus
 
-Outstanding: Jelle, Peter/Steve for final word; @markus contact them
+Outstanding: Jelle, Peter/Steve; @markus contact them
 
 == New Telcon Time: 13:00 UTC ==
 One hour earlier than current time
@@ -47,3 +51,4 @@ Geoff: we need to start dealing with req issues, and clarifying the reqs where w
 ''Target: by 23d have it in a state to present it to the group'' 
 
 == Markus' spec documentation restructure work ==
+Markus: will try to have something by next weeks call.
