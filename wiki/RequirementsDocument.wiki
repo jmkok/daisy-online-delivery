@@ -1,5 +1,5 @@
 #summary The requirements for the DAISY Online Protocol
-#labels Phase-Requirements,Draft
+#labels Phase-Requirements
 
 <wiki:toc max_depth="2" />
 
