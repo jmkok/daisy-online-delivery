@@ -1,5 +1,5 @@
 #summary A list of user stories mostly gathered and evaluated at the 2007 kickoff meeting in Toronto.
-#labels Draft,Phase-Requirements
+#labels Phase-Requirements
 
 The user stories came out of a brainstorming session on 2007-JUN-5.  The story numbers start at 2, since they were entered into a spreadsheet with a header row and referred to by row number.
 
