@@ -43,7 +43,7 @@ Jelle seems to be having trouble getting byte offsets.
 
 Geoff: the headers are sent to the webserver as a request. Inspect the request object for the range header. 
 
-Kenny: in IIS you can register extensions, perhaps thats the way to do it there. 
+Kenny: in IIS you can register extensions, perhaps that's the way to do it there. 
 
 Kenny: I could modify my script to return the headers that Jelle requested. A very simple setup using an ASP.NET script. Do we need more time?
 
@@ -64,7 +64,7 @@ Kenny: will work with Geoff to take this further.
 
 Geoff: we need to start dealing with req issues, and clarifying the reqs where we all know what it means but the wording is vague. 
 
-_Target: by 23d have it in a state to present it to the group_
+_Target: by 23d have it in a state to present it to the working group_
 
 == Markus' spec documentation restructure work ==
 Markus: will try to have something by next weeks call.
