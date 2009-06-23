@@ -11,8 +11,8 @@ Present:
   * Nick to go through the wiki and add comments based on the historical discussions of the group.
   * Kenny to add the https vs getResource issue to the tracker.
   * Markus to provide a sample rebuild of the specification.
-  * @markus put all classic TSG req docs on SVN
-  * @markus, @kenny draft one or several hypotheses on spec documents reorganization
+  * Markus put all classic TSG req docs on SVN
+  * Markus, Kenny draft one or several hypotheses on spec documents reorganization
 
 ==Agenda/Minutes==
 === [http://code.google.com/p/daisy-online-delivery/issues/detail?id=11 issue 11] ===
