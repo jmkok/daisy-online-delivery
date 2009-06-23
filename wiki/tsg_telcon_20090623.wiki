@@ -18,9 +18,9 @@ Present: Markus, Geoff, Kenny, Simon, Dominic, Jelle
 === [http://code.google.com/p/daisy-online-delivery/issues/detail?id=20 issue 20] ===
 Geoff: were identified as not compatible with client-server model. 
 
-Kenny: agree with Geoffs suggestions for the first two. However, we have setContentStatus, which might be a droppable function.
+Kenny: agree with Geoff's suggestions for the first two. However, we have setContentStatus, which might be a droppable function.
 
-Simon: the reason was that the player can report available storage size, and server can prepare a content list for automatic download that doesnt exceed available storage.
+Simon: the reason was that the player can report available storage size, and server can prepare a content list for automatic download that doesn't exceed available storage.
 
 Dominic: the use case is to support profile subscriptions.
 
@@ -40,11 +40,11 @@ _@Kenny drop storage-specific info from readingSystemAttributes_
 
 Geoff: 37 and 45 not an issue anymore; they are recognized as dupes.
 
-_@Geoff: drop 13, 16, 22, ignore 37 45, and rewrite 7 and 16[4] as suggested in the issue._ 
+_@Geoff: drop 13, 16, 22, ignore 37 45, and rewrite 7 and 16 (4) as suggested in the issue._ 
 
 
 === [http://code.google.com/p/daisy-online-delivery/issues/detail?id=11 issue 11] ===
-All in favor if changing the req as suggested in 11 
+All in favor of changing the req as suggested in 11 
 
 Geoff: its a service model where users does not select books themselves; the server makes content available to the user, without the user having to explicitly select it through the protocol.
 
