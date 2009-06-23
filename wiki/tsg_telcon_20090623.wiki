@@ -14,12 +14,12 @@ Present:
   * @markus put all classic TSG req docs on SVN
   * @markus, @kenny draft one or several hypotheses on spec documents reorganization
 
-
-== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=11 issue 11] ==
+==Agenda/Minutes==
+=== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=11 issue 11] ===
  
-== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=17 issue 17] ==
+=== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=17 issue 17] ===
  
-== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=20 issue 20] ==
+=== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=20 issue 20] ===
  
-== [http://code.google.com/p/daisy-online-delivery/wiki/TorontoF2F2009 Face to face] ==
+=== [http://code.google.com/p/daisy-online-delivery/wiki/TorontoF2F2009 Face to face] ===
  
