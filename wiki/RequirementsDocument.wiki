@@ -15,9 +15,6 @@ Protocol to support efficient use of bandwidth. _(Original requirement 2 (1). Us
 === Key authorization ===
 Protocol to support efficient key authorisation checking. _(Original requirement 2 (2). User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Authorization_of_content_(server) Authorization of content (server)])_
 
-=== Errors must be communicated to server ===
-Transmission/download errors must be tracked and communicated to the server. Protocol must deliver error codes to the system. _(Original requirements 7 and 52. User Stories: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Tell_server_download_failed Tell server download failed] and [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Error_code_knowledge_base Error code knowledge base])_
-
 === Return book ===
 System is notified that the book has been returned (deleted from the players). _(Original requirement 8. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Return_book Return book])_
 
@@ -26,9 +23,6 @@ Players must notify how may books the user has on them. _(Original requirement 9
 
 === Transmit capabilities ===
 The protocol must be able to support the transmission of the class and capabilities (storage) of the player. _(Original requirement 12. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Determine_player_capabilities Determine player capabilities])_
-
-=== Ping servers ===
-The players must periodically ping the servers and report its status. _(Original requirement 13. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Know_if_player_is_online Know if player is online])_
 
 === Universal protocol ===
 The protocol must be the same between organisations. _(Original requirement 15 (1). User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Access_content_from_different_organizations Access content from different organizations])_
@@ -47,9 +41,6 @@ Trace routing must be supported. _(Original requirement 17 (3). User Story: [htt
 
 === Time interrogation ===
 Protocol must allow the interrogation of time by the player. _(Original requirement 21. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Expiration_date_for_content Expiration date for content])_
-
-=== Transmit storage space ===
-The protocol must support the transmission of the storage available on the player from the player to the server. _(Original requirement 22. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Enough_space_to_store_content_(server) Enough space to store content (server)])_
 
 === Initial transaction ===
 Initial transaction between when a player is first turned on and the server. _(Original requirement 27. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Content_provider_discovery Content provider discovery])_
@@ -105,9 +96,6 @@ Protocol must allow the transmission of bookmarks as a separate entity to the bo
 === Variety of system messages ===
 Protocol must allow to transmit a variety of system messages. _(Original requirement 11. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Push_system_messages Push system messages])_
 
-=== Report player's status ===
-Protocol must report players status. _(Original requirement 16 (1). User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Diagnose_player_status Diagnose player status])_
-
 === Report firmware version ===
 Protocol has to report firmware version of the player. _(Original requirement 16 (2). User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Diagnose_player_status Diagnose player status])_
 
@@ -115,7 +103,7 @@ Protocol has to report firmware version of the player. _(Original requirement 16
 Protocol has to report download activity. _(Original requirement 16 (3). User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Diagnose_player_status Diagnose player status])_
 
 === Report player errors ===
-Protocol must report player system errors. _(Original requirement 16 (4). User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Diagnose_player_status Diagnose player status])_
+The protocol should support transmission of error messages from the reading system to the service. _(New requirement 7. User Stories: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Diagnose_player_status Diagnose player status], [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Tell_server_download_failed Tell server download failed] and [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Error_code_knowledge_base Error code knowledge base])_
 
 === Report which server is in control ===
 Protocol must report which server is in control. _(Original requirement 16 (5). User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Diagnose_player_status Diagnose player status])_
@@ -225,6 +213,25 @@ System messages + unique id of device. _(Original requirements 45 and 46. User S
 
 === System messages ===
 System messages. _(Original requirement 51. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Get_paid Get paid])_
+
+----
+
+= Out-of-scope =
+
+== Content Management ==
+
+=== Ping servers ===
+The players must periodically ping the servers and report its status. _(Original requirement 13. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Know_if_player_is_online Know if player is online])_
+
+=== Transmit storage space ===
+The protocol must support the transmission of the storage available on the player from the player to the server. _(Original requirement 22. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Enough_space_to_store_content_(server) Enough space to store content (server)])_
+
+----
+
+== Information Management ==
+
+=== Report player's status ===
+Protocol must report players status. _(Original requirement 16 (1). User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Diagnose_player_status Diagnose player status])_
 
 ----
 
