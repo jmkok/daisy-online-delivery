@@ -16,7 +16,7 @@ Protocol to support efficient use of bandwidth. _(Original requirement 2 (1). Us
 Protocol to support efficient key authorisation checking. _(Original requirement 2 (2). User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Authorization_of_content_(server) Authorization of content (server)])_
 
 === Return book ===
-System is notified that the book has been returned (deleted from the players). _(Original requirement 8. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Return_book Return book])_
+The Reading System must be able to notify the Service that content has been deleted (e.g. for a limited lending programme where a user may only have a certain number of books "out" at one time). _(Original requirement 8 (modified). User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Return_book Return book])_
 
 === Transmit capabilities ===
 The protocol must be able to support the transmission of the class and capabilities (storage) of the player. _(Original requirement 12. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Determine_player_capabilities Determine player capabilities])_
