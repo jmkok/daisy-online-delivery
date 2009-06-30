@@ -17,13 +17,13 @@ Regrets:
 
 ==Agenda/Minutes==
 
-=== Issue 1: requirement 5 (Interact with content) requires clarification. (http://code.google.com/p/daisy-online-delivery/issues/detail?id=1)===
+=== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=1 Issue 1] requirement 5 (Interact with content) requires clarification. ===
 
-===Issue 2: Requirement 8 (return book) might need to be out of scope. (http://code.google.com/p/daisy-online-delivery/issues/detail?id=2)=== 
+=== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=2] Issue 2] Requirement 8 (return book) might need to be out of scope. === 
 
-===Issue 3: requirement 9 (report number of books) should be out of scope. (http://code.google.com/p/daisy-online-delivery/issues/detail?id=3)===
+=== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=3 Issue 3] requirement 9 (report number of books) should be out of scope. ===
 
-===issue 4: Requirement 10 (transmit confirmation message) should be out of scope. (http://code.google.com/p/daisy-online-delivery/issues/detail?id=4)===  
+=== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=4 Issue 4] Requirement 10 (transmit confirmation message) should be out of scope. ===  
 
 ===MTOM and the getResource function (Is the group ready to make a decision?)===  
 
