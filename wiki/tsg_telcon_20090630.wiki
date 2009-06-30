@@ -1,0 +1,32 @@
+#summary TSG telcon 20090630
+
+<wiki:toc max_depth="4" />
+
+Present: 
+
+Regrets:
+
+== Action Item Summary ==
+=== New Action Items ===
+=== Previous Unfinished Action Items ===
+  * Geoff and Kenny to reorganize the requirements. ONGOING
+  * Nick to go through the wiki and add comments based on the historical discussions of the group.
+  * Kenny to add the https vs getResource issue to the tracker. DONE (88)
+  * Markus put all classic TSG req docs on SVN
+  * Markus, Kenny draft one or several hypotheses on spec documents reorganization ONGOING
+
+==Agenda/Minutes==
+
+=== Issue 1: requirement 5 (Interact with content) requires clarification. (http://code.google.com/p/daisy-online-delivery/issues/detail?id=1)===
+
+===Issue 2: Requirement 8 (return book) might need to be out of scope. (http://code.google.com/p/daisy-online-delivery/issues/detail?id=2)=== 
+
+===Issue 3: requirement 9 (report number of books) should be out of scope. (http://code.google.com/p/daisy-online-delivery/issues/detail?id=3)===
+
+===issue 4: Requirement 10 (transmit confirmation message) should be out of scope. (http://code.google.com/p/daisy-online-delivery/issues/detail?id=4)===  
+
+===MTOM and the getResource function (Is the group ready to make a decision?)===  
+
+ref: Geoff, Jelle and Kenny's emails to the list. last week we put forward a hypothesis to drop MTOM and the getResource function; are we  ready to make a decision?
+
+===General===
