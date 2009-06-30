@@ -18,9 +18,6 @@ Protocol to support efficient key authorisation checking. _(Original requirement
 === Return book ===
 System is notified that the book has been returned (deleted from the players). _(Original requirement 8. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Return_book Return book])_
 
-=== Report number of books ===
-Players must notify how may books the user has on them. _(Original requirement 9. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Maximum_entries_in_a_bookshelf Maximum entries in a bookshelf])_
-
 === Transmit capabilities ===
 The protocol must be able to support the transmission of the class and capabilities (storage) of the player. _(Original requirement 12. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Determine_player_capabilities Determine player capabilities])_
 
@@ -216,6 +213,9 @@ System messages. _(Original requirement 51. User Story: [http://code.google.com/
 = Out-of-scope =
 
 == Content Management ==
+
+=== Report number of books ===
+Players must notify how may books the user has on them. _(Original requirement 9. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Maximum_entries_in_a_bookshelf Maximum entries in a bookshelf])_
 
 === Ping servers ===
 The players must periodically ping the servers and report its status. _(Original requirement 13. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Know_if_player_is_online Know if player is online])_
