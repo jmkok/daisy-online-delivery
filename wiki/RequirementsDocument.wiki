@@ -55,8 +55,8 @@ A single user may download the same book but to a different player. _(Original r
 === Bookmark stored on server ===
 The reading history (bookmark) of each book is stored on the server as well as the client. _(Original requirement 3 (2). User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Different_devices,_same_content Different devices, same content])_
 
-=== Transmit confirmation message ===
-The protocol must transmit a confirmation message from the player. _(Original requirement 10. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Confirm_user_wants_book Confirm user wants book])_
+=== Issue content ===
+The Reading System must be able to request content.  The Service must be able to approve or deny the request. _(Original requirement 10. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Confirm_user_wants_book Confirm user wants book])_
 
 === Audio and text annotation ===
 Transmission of lists supports audio and text annotation. _(Original requirement 14. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Choose_book_from_narrative Choose book from narrative])_
