@@ -194,6 +194,10 @@ As a service provider I would like to know the colour contrast, the voice speed,
 == Provide content ==
 As a content provider I want to provide content to my users. _(Author: N/A. Originally In-Scope Story 62.)_
 
+== Basic service ==
+
+As a content provider, I want to provide a service where the user does not need to interact with the service to receive content.  Perhaps I want to provide content on a profile system, where content is selected based on the user's general preferences, not by specific titles.  Perhaps there is an existing selection system (such as a web page interface, or a reader services department), and I only want to implement the content transfer portion with this protocol. _(Author: Geoffrey Gilmour-Taylor. New story.)_
+
 ----
 
 = Out-of-Scope Stories =
