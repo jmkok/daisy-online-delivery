@@ -30,7 +30,7 @@ As a user I want to be able to keep my bookmarks for as long as I might use the 
 As a reading system I want to tell the server that the download failed. _(Author: James Pritchett. Originally In-Scope Story 7.)_
 
 == Return book ==
-As a content provider I want to know when a user has finished with the book (return book). _(Author: James Pritchett. Originally In-Scope Story 8.)_
+As a content provider I want to know when a user has finished with the book (return book). _(Author: James Pritchett. Originally In-Scope Story 8.)_ Note that while this functionality is library-specific, it is necessary to most library circulation models.
 
 == Maximum entries in a bookshelf ==
 As a content provider I want to set a maximum number of entries in a bookshelf. _(Author: Markus Gylling. Originally In-Scope Story 9.)_
