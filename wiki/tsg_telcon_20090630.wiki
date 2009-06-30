@@ -9,7 +9,10 @@ Regrets: Hiro
 == Action Item Summary ==
 === New Action Items ===
   * Kenny add (or append to) issue to tracker re dropping storage-specific info from readingSystemAttributes
-
+  * kenny check with Hiro whether he still needs announcement/getUserChoices range requests, 
+  * kenny collect all impacts of dropping MTOM and post to list
+  * ALL review 5-15 except 11, use of the comments function on the issue tracker.
+  * (and issue tracker items for Geoff, sprinkled below)
 === Previous Unfinished Action Items ===
   * Geoff: drop 13, 16, 22, ignore 37 45, and rewrite 7 and 16 (4) as suggested in the issue. DONE
   * Geoff Add new user story for #25, based on profile subscription use case. 
@@ -99,5 +102,5 @@ Nick: associated metadata functions might not be needed anymore either.
 
 @kenny collect all impacts of dropping MTOM and post to list
 
-
-=== General ===
+=== Spec rebuild ===
+Markus: committ to SVN of a skeleton made today, will compose small sample
