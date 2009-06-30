@@ -1,9 +1,7 @@
-#summary A list of user stories mostly gathered and evaluated at the 2007 kickoff meeting in Toronto.
+#summary A list of user stories from which requirements are generated.
 #labels Phase-Requirements
 
-The user stories came out of a brainstorming session on 2007-JUN-5.  The story numbers start at 2, since they were entered into a spreadsheet with a header row and referred to by row number.
-
-The user stories have been edited for spelling and grammar, and clarified where necessary.
+The user stories largely came out of a brainstorming session on 2007-JUN-5.  The old story numbers start at 2, since they were entered into a spreadsheet with a header row and referred to by row number.  New stories have been added, with no numbers at present, and some stories that were in-scope are now out-of-scope and have not been renumbered.
 
 User stories are considered to be in scope if some part of them implies an in-scope requirement of the protocol.
 
@@ -32,9 +30,6 @@ As a reading system I want to tell the server that the download failed. _(Author
 == Return book ==
 As a content provider I want to know when a user has finished with the book (return book). _(Author: James Pritchett. Originally In-Scope Story 8.)_ Note that while this functionality is library-specific, it is necessary to most library circulation models.
 
-== Maximum entries in a bookshelf ==
-As a content provider I want to set a maximum number of entries in a bookshelf. _(Author: Markus Gylling. Originally In-Scope Story 9.)_
-
 == Confirm user wants book ==
 As a content provider I want to confirm with the user that they want the book. Content provider interacts with user to say that a pre-requisite book exists. _(Author: George Kerscher. Originally In-Scope Story 10.)_
 
@@ -43,9 +38,6 @@ As a content provider I want to push out system messages to the user. _(Author: 
 
 == Determine player capabilities ==
 As a content provider I want to be able to determine whether a player is capable of playing the book. _(Author: James Pritchett. Originally In-Scope Story 12.)_
-
-== Know if player is online ==
-As a content provider I have a pick list ready, I need to know if the player is online and ready to receive books. _(Author: Geoff Gilmour-Taylor. Originally In-Scope Story 13.)_
 
 == Choose book from narrative ==
 As a user I want to move quickly through narrative books and choose the book from there. _(Author: Neil Bernstein. Originally In-Scope Story 14.)_
@@ -71,17 +63,11 @@ As a user I don't want any personal identifiable information transmitted. _(Auth
 == Expiration date for content ==
 As a content provider I want to provide an expiration date for content. _(Author: Clive Lansink. Originally In-Scope Story 21.)_
 
-== Enough space to store content (server) ==
-As a content provider I need to know how much space is on the player as I want to push content to it. _(Author: Sean Brooks and Gerry Chevalier. Originally In-Scope Story 22.)_
-
 == Existing standards and toolkits ==
 As a system developer I want the delivery system to use existing standards and toolkits. _(Author: James Pritchett. Originally In-Scope Story 23.)_
 
 == Meaningful error messages ==
 As a user I want meaningful error messages. _(Author: James Pritchett. Originally In-Scope Story 24.)_
-
-== Unobtrusive service ==
-As a service provider I want to deliver a user friendly, transparent and unobtrusive service. _(Author: Peter Osborne and Ed Chandler. Originally In-Scope Story 25.)_
 
 == Level of support services ==
 As a user I want to know the level of support services which goes on. _(Author: Ron Stewart. Originally In-Scope Story 26.)_
@@ -277,6 +263,18 @@ As a developer I want the royalties of (embedded) voices properly accounted for.
 
 == Integration with existing systems ==
 As a content provider I want to integrate the delivery system with current infrastructure. _(Author: Ron Stewart. Originally Out-of-Scope Story 25.)_
+
+== Maximum entries in a bookshelf ==
+As a content provider I want to set a maximum number of entries in a bookshelf. _(Author: Markus Gylling. Originally In-Scope Story 9.)_
+
+== Know if player is online ==
+As a content provider I have a pick list ready, I need to know if the player is online and ready to receive books. _(Author: Geoff Gilmour-Taylor. Originally In-Scope Story 13.)_
+
+== Enough space to store content (server) ==
+As a content provider I need to know how much space is on the player as I want to push content to it. _(Author: Sean Brooks and Gerry Chevalier. Originally In-Scope Story 22.)_
+
+== Unobtrusive service ==
+As a service provider I want to deliver a user friendly, transparent and unobtrusive service. _(Author: Peter Osborne and Ed Chandler. Originally In-Scope Story 25.)_
 
 ----
 
