@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="../util/docbook/rng/docbookxi.rng" type="xml"?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" 
+      xmlns:xi="http://www.w3.org/2001/XInclude" xml:base=".">
+      
+    <title>DAISY Online Delivery Specification</title>
+    <subtitle>DAISY Online Delivery Specification</subtitle>
+    <info>
+        <releaseinfo>Public working draft</releaseinfo>
+        <pubdate>29 May 2009</pubdate>
+        <editor>
+            <personname>Kenny Johar</personname>
+            <affiliation>
+                <orgname>Vision Australia</orgname>
+            </affiliation>
+            <email>kenny.johar@visionaustralia.org</email>
+        </editor>
+        <editor>
+            <personname>Markus Gylling</personname>
+            <affiliation>
+                <orgname>DAISY Consortium</orgname>
+            </affiliation>
+            <email>mgylling@daisy.org</email>
+        </editor>
+		
+        <abstract>
+            <title>Abstract</title>
+            <para>Abtract.</para>
+        </abstract>
+    </info>
+    <preface xml:id="introduction" conformance="informative">
+        <title>Introduction</title>
+        <para>Introduction</para>
+        <programlisting>
+          <xi:include href="./do-wsdl-10.wsdl" parse="text" />
+        </programlisting>
+    </preface>
+        
+
+</book>
