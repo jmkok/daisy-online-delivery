@@ -6,6 +6,10 @@ Present: Markus, Geoff, Kenny, Simon, Dominic, Jelle
 
 == Action Item Summary ==
 === New Action Items ===
+  * Kenny drop storage-specific info from readingSystemAttributes
+  * Geoff: drop 13, 16, 22, ignore 37 45, and rewrite 7 and 16 (4) as suggested in the issue.
+  * Geoff Add new user story for #25, based on profile subscription use case.
+
 === Previous Unfinished Action Items ===
   * Geoff and Kenny to reorganize the requirements. ONGOING
   * Nick to go through the wiki and add comments based on the historical discussions of the group.
