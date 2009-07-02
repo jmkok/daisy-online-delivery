@@ -73,6 +73,15 @@ The protocol must support identification and transference of the primary service
 === User preferences stored on server ===
 The user preferences are stored on the server so that remote access from different terminals can automatically be adjusted. _(Original requirement 61. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Player_settings Player settings])_
 
+=== Dynamic menus ===
+_Proposed:_ The Service must be able to provide an interactive session and a means of selecting content. _(New requirement. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Advanced_service_(server) Advanced service (server)])_
+
+=== Noninteractive session ===
+_Proposed:_ The Service must be able to provide a noninteractive session where preselected content is transferred automatically to the Reading System. User Story: User Stories: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Basic_service_(server) Basic service (server)])_
+
+=== Service negotiation ===
+_Proposed:_ The Reading System must be able to negotiate the level of service with the Service. A Reading System will request a level of service; the Service will either accept or reject the request. If the request is accepted, the session will continue at that level. _(New requirement. User Stories: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Basic_service_(server) Basic service (server)], [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Basic_service_(user) Basic service (user)], [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Advanced_service_(server) Advanced service (server)] and [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Advanced_service_(user) Advanced service (user)])_
+
 ----
 
 == Preview ==
