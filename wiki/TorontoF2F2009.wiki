@@ -28,3 +28,8 @@ http://www.cptdv.com/index.html
 A bit further out, maybe a 15 dollar cab ride.
 
 For those looking for restaurants in the area, the Best Western has much more variety close by.
+
+== Useful links ==
+
+ * [http://text.www.weatheroffice.gc.ca/forecast/city_e.html?on-143&unit=m Weather forecast (text only)]
+ * [http://www.weatheroffice.gc.ca/city/pages/on-143_metric_e.html Weather forecast]
