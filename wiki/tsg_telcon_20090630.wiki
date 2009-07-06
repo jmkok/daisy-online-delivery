@@ -27,7 +27,7 @@ Regrets: Hiro
 
 Geoff: think I was referring to the implementation of the requirement; it may not actually be an issue with the requirement. 
 
-Kenny: Now that we dont use MTOM anymore, this would be a pointer to the sample instead.
+Kenny: Now that we don't use MTOM anymore, this would be a pointer to the sample instead.
 
 _Conclusion: close the issue_ @Geoff
 
@@ -63,7 +63,7 @@ Nick: I thought; at some point you need to decide that you actually want the boo
 
 Geoff: but if you're going to be doing that through the protocol, does it need separate functionality from dynamic menus?
 
-Kenny: we have the issueContent function, indicating that the content sb downloaded.
+Kenny: we have the issueContent function, indicating that the content should be downloaded.
 
 _Conclusion: rewrite to reference issueContent_ @Geoff
 
@@ -78,15 +78,15 @@ Kenny: yes, no binary content in the SOAP packages.
 
 Geoff: some of the details of the implications need to worked out. I am ready to abandon those things.
 
-Kenny: dont see problem in dropping MTOM from a service provider POV. But userInput side of things; when recieving audio from user, would have to be transmitted via SOAP.
+Kenny: don't see problem in dropping MTOM from a service provider POV. But userInput side of things; when receiving audio from user, would have to be transmitted via SOAP.
 
 Markus: whats the user story for user audio feedback?
 
-Geoff: idea was for users to provide feedback on content (something wrong, user ratings, etc). Ron Stewarts user story. 
+Geoff: Idea was for users to provide feedback on content (something wrong, user ratings, etc). Ron Stewart's user story. 
 
 George: could content issues be flagged some other way?
 
-Geoff: CNIB plans to use phone or email for this.
+Geoff: CNIB uses phone or email for this already.
 
 Geoff: propose drop allowing the user to transmit binary stuff to the service.
 
@@ -103,4 +103,4 @@ Nick: associated metadata functions might not be needed anymore either.
 @kenny collect all impacts of dropping MTOM and post to list
 
 === Spec rebuild ===
-Markus: committ to SVN of a skeleton made today, will compose small sample
+Markus: commit to SVN of a skeleton made today, will compose small sample
