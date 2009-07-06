@@ -86,6 +86,9 @@ _Proposed:_ The Service must be able to provide a noninteractive session where p
 === Service negotiation ===
 _Proposed:_ The Reading System must be able to negotiate the level of service with the Service. A Reading System will request a level of service; the Service will either accept or reject the request. If the request is accepted, the session will continue at that level. _(New requirement. User Stories: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Basic_service_(server) Basic service (server)], [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Basic_service_(user) Basic service (user)], [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Advanced_service_(server) Advanced service (server)] and [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Advanced_service_(user) Advanced service (user)])_
 
+=== Levels without negotiation ===
+_Proposed:_ The Reading System must be able to use the service at any desired level without a negotiation phase. _(New requirement. User Stories: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Basic_service_(server) Basic service (server)], [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Basic_service_(user) Basic service (user)], [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Advanced_service_(server) Advanced service (server)] and [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Advanced_service_(user) Advanced service (user)])_
+
 ----
 
 == Preview ==
