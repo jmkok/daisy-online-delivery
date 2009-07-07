@@ -50,7 +50,9 @@ Markus: posting supported content via ReadingSystemAttributes is also in support
 
 Geoff: if we can take ReadingSystemAttributes out entirely, thats a good thing for the simplicity for the API. But - this may also make the API more complicated; in this case filtering results. 
 
-Nick: also make model, serial number and firmware revision. And an element called config. Except for model/number/firmware, the others could be seen as session attributes and/or user preferences. 
+Nick: also make model, serial number and firmware revision. 
+
+Geoff: And an element called config. Except for model/number/firmware, the others could be seen as session attributes and/or user preferences. 
 
 From non-techie user POVs, the might not have skills to figure out firmware version etc. So user agent stuff should probably remain postable.
 
@@ -106,4 +108,3 @@ Markus: concerns have been raised to allow commercial or free service providers 
 * How to use our time best at the F2F
 * Agenda, deliverables
 * 5 requirements issues left (16,17,18,19,90) @Geoff to send issues 1 by 1 to emailing list
-
