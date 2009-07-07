@@ -70,4 +70,4 @@ http://code.google.com/p/daisy-online-delivery/issues/detail?id=5
 
 http://code.google.com/p/daisy-online-delivery/issues/detail?id=12
 
-http://code.google.com/p/daisy-online-delivery/issues/detail?id=13
+http://code.google.com/p/daisy-online-delivery/issues/detail?id=13 (Markus notes: this may be related to content provider discovery)
