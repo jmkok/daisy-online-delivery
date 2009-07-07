@@ -30,17 +30,8 @@ Player must store contact information for each service/organisation. _(Original 
 === Content at different location ===
 The protocol must support content being at different location to the user information. _(Original requirement 17 (1). User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Centralized_authentication Centralized authentication])_
 
-=== Suggest mirrors ===
-Protocol must support the server suggesting mirror sites to download the content from. _(Original requirement 17 (2). User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Centralized_authentication Centralized authentication])_
-
-=== Trace routing ===
-Trace routing must be supported. _(Original requirement 17 (3). User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Centralized_authentication Centralized authentication])_
-
 === Time interrogation ===
 Protocol must allow the interrogation of time by the player. _(Original requirement 21. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Expiration_date_for_content Expiration date for content])_
-
-=== Initial transaction ===
-Initial transaction between when a player is first turned on and the server. _(Original requirement 27. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Content_provider_discovery Content provider discovery])_
 
 === Download and streaming ===
 The protocol must support both downloading and streaming. _(Original requirement 62. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Provide_content Provide content])_
@@ -67,9 +58,6 @@ Transmission of lists supports audio and text annotation. _(Original requirement
 
 === Stop and resume download ===
 The protocol must support stop/resume of the download. _(Original requirement 18. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Interact_with_a_download Interact with a download])_
-
-=== Requires some player functionality ===
-Requires some player functionality as well. _(Original requirement 19. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Give_feedback Give feedback])_
 
 === Identify and transfer service provider ===
 The protocol must support identification and transference of the primary service provider. _(Original requirement 60. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Switch_primary_content_provider Switch primary content provider])_
@@ -106,9 +94,6 @@ The protocol supports interaction with the content. _(Original requirement 5. Us
 === Transmit bookmarks ===
 Protocol must allow the transmission of bookmarks as a separate entity to the book. Protocol should recognise bookmarks as non book content and a player can transmit bookmarks back to the server and vice versa. Protocol must allow the transmission of bookmarks as a separate entity to the book (within DAISY ISO 2005 standard there is no attribute that identifies a bookmark as private/shared). _(Original requirements 6, 33 and 36. User Stories: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Keep_bookmarks Keep bookmarks], [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Bookmark_content Bookmark content] and [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Preset_bookmarks Preset bookmarks])_
 
-=== Variety of system messages ===
-Protocol must allow to transmit a variety of system messages. _(Original requirement 11. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Push_system_messages Push system messages])_
-
 === Report firmware version ===
 Protocol has to report firmware version of the player. _(Original requirement 16 (2). User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Diagnose_player_status Diagnose player status])_
 
@@ -126,23 +111,6 @@ The protocol must ensure protection of a users privacy. _(Original requirement 2
 
 === Localized, plain language error messages ===
 Error messages must be easily modified to provide meaningful information in plain language of the user. _(Original requirement 24. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Meaningful_error_messages Meaningful error messages])_
-
-----
-
-== Organization Control ==
-
-=== Expose transactions ===
-The protocol must be able to expose, to the player, the transactions. _(Original requirement 26. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Level_of_support_services Level of support services])_
-
-=== New service registration ===
-The protocol has to support the registration with a new service provider. _(Original requirement 28. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Subscribe_to_services Subscribe to services])_
-
-----
-
-== Development ==
-
-=== Not Invented Here ===
-Work group to review and use existing standards and tool wherever possible. _(Original requirement 23. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Existing_standards_and_toolkits Existing standards and toolkits])_
 
 ----
 
@@ -224,6 +192,9 @@ System messages + unique id of device. _(Original requirements 45 and 46. User S
 === System messages ===
 System messages. _(Original requirement 51. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Get_paid Get paid])_
 
+=== Expose transactions ===
+The protocol must be able to expose, to the player, the transactions. _(Original requirement 26. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Level_of_support_services Level of support services])_
+
 ----
 
 = Out-of-scope =
@@ -239,6 +210,22 @@ The players must periodically ping the servers and report its status. _(Original
 === Transmit storage space ===
 The protocol must support the transmission of the storage available on the player from the player to the server. _(Original requirement 22. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Enough_space_to_store_content_(server) Enough space to store content (server)])_
 
+=== Suggest mirrors ===
+Protocol must support the server suggesting mirror sites to download the content from. _(Original requirement 17 (2). User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Centralized_authentication Centralized authentication])_
+
+=== Trace routing ===
+Trace routing must be supported. _(Original requirement 17 (3). User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Centralized_authentication Centralized authentication])_
+
+=== Initial transaction ===
+Initial transaction between when a player is first turned on and the server. _(Original requirement 27. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Content_provider_discovery Content provider discovery])_ This was the requirement for server discoverability.
+
+----
+
+== User Control ==
+
+=== Requires some player functionality ===
+Requires some player functionality as well. _(Original requirement 19. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Give_feedback Give feedback])_
+
 ----
 
 == Information Management ==
@@ -246,12 +233,25 @@ The protocol must support the transmission of the storage available on the playe
 === Report player's status ===
 Protocol must report players status. _(Original requirement 16 (1). User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Diagnose_player_status Diagnose player status])_
 
+=== Variety of system messages ===
+Protocol must allow to transmit a variety of system messages. _(Original requirement 11. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Push_system_messages Push system messages])_
+
 ----
 
 == Organization Control ==
 
 === Without user interaction ===
 The protocol supports the background communication without user interaction as much as possible. _(Original requirement 25. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Unobtrusive_service Unobtrusive service])_
+
+=== New service registration ===
+The protocol has to support the registration with a new service provider. _(Original requirement 28. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Subscribe_to_services Subscribe to services])_
+
+----
+
+== Development ==
+
+=== Not Invented Here ===
+Work group to review and use existing standards and tool wherever possible. _(Original requirement 23. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Existing_standards_and_toolkits Existing standards and toolkits])_
 
 ----
 
