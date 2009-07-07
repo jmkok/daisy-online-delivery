@@ -105,6 +105,6 @@ Markus: concerns have been raised to allow commercial or free service providers 
 @markus check with george/board on whether this req remains for this version, or if we can postpone. Proposed resolution: it is a player specific feature to allow the user to provide the URLs of new/additional service providers.
 
 == Next concall ==
-* How to use our time best at the F2F
-* Agenda, deliverables
-* 5 requirements issues left (16,17,18,19,90) @Geoff to send issues 1 by 1 to emailing list
+ * How to use our time best at the F2F
+ * Agenda, deliverables
+ * 5 requirements issues left (16,17,18,19,90) @Geoff to send issues 1 by 1 to emailing list
