@@ -38,7 +38,7 @@ The protocol must support both downloading and streaming. _(Original requirement
 
 === Key delivery ===
 
-The Reading System must be able to request keys for use with PDTB2 by their key identifier and by the identifiers of a set of key pairs, one of which is to be used for encrypting the requested key. The Service must be able to provide a Key Exchange Object to a valid key request, or to reply that the Reading System is not authorized to receive that key. _(New requirement. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Key_delivery Key delivery])_
+_Proposed:_ The Reading System must be able to request keys for use with PDTB2 by their key identifier and by the identifiers of a set of key pairs, one of which is to be used for encrypting the requested key. The Service must be able to provide a Key Exchange Object to a valid key request, or to reply that the Reading System is not authorized to receive that key. _(New requirement. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Key_delivery Key delivery])_
 
 ----
 
