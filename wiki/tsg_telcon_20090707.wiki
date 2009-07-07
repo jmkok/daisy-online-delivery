@@ -45,29 +45,14 @@ The priority today is issue 6. See section below for Geoff's suggestion on handl
 === [http://code.google.com/p/daisy-online-delivery/issues/detail?id=15 Issue 15] ===
 
 === Geoffs suggested actions on 5-15 excl 6 ===
-Issues 7, 8, 9, 10 and 14 have no comments in them and are actionable, so the changes will be adopted.
+Issues [http://code.google.com/p/daisy-online-delivery/issues/detail?id=7
+ 7], [http://code.google.com/p/daisy-online-delivery/issues/detail?id=8 8], [http://code.google.com/p/daisy-online-delivery/issues/detail?id=9 9], [http://code.google.com/p/daisy-online-delivery/issues/detail?id=10 10] and [http://code.google.com/p/daisy-online-delivery/issues/detail?id=14 14] have no comments in them and are actionable, so the changes will be adopted.
 
-http://code.google.com/p/daisy-online-delivery/issues/detail?id=7
-
-http://code.google.com/p/daisy-online-delivery/issues/detail?id=8
-
-http://code.google.com/p/daisy-online-delivery/issues/detail?id=9
-
-http://code.google.com/p/daisy-online-delivery/issues/detail?id=10
-
-http://code.google.com/p/daisy-online-delivery/issues/detail?id=14
+[http://code.google.com/p/daisy-online-delivery/issues/detail?id=15
+ Issue 15] states that a requirement that was already marked as a duplicate "may be uneccessary".  This issue will be marked Invalid.
 
 
-Issue 15 states that a requirement that was already marked as a duplicate "may be uneccessary".  This issue will be marked Invalid.
-
-
-http://code.google.com/p/daisy-online-delivery/issues/detail?id=15
-
-
-Issues 5, 12 and 13 are requests for clarification.  Since no one has been able to clarify them, the requirements will be removed.
-
-http://code.google.com/p/daisy-online-delivery/issues/detail?id=5
-
-http://code.google.com/p/daisy-online-delivery/issues/detail?id=12
-
-http://code.google.com/p/daisy-online-delivery/issues/detail?id=13 (Markus notes: this may be related to content provider discovery)
+Issues [http://code.google.com/p/daisy-online-delivery/issues/detail?id=5
+ 5], [http://code.google.com/p/daisy-online-delivery/issues/detail?id=12
+ 12] and [http://code.google.com/p/daisy-online-delivery/issues/detail?id=13
+ 13] are requests for clarification.  Since no one has been able to clarify them, the requirements will be removed.(Markus notes: issue 13 may be related to content provider discovery)
