@@ -1,0 +1,43 @@
+#summary TSG telcon 20090707
+
+<wiki:toc max_depth="4" />
+
+Present: 
+
+Regrets: 
+
+== Action Item Summary ==
+=== New Action Items ===
+=== Previous Unfinished Action Items ===
+  * Kenny add (or append to) issue to tracker re dropping storage-specific info from readingSystemAttributes
+  * kenny check with Hiro whether he still needs announcement/getUserChoices range requests, 
+  * kenny collect all impacts of dropping MTOM and post to list
+  * ALL review 5-15 except 11, use of the comments function on the issue tracker.
+  * (and issue tracker items for Geoff, sprinkled below)
+  * Geoff Add new user story for #25, based on profile subscription use case. 
+  * Geoff and Kenny to reorganize the requirements. ONGOING
+  * Nick to go through the wiki and add comments based on the historical discussions of the group. ONGOING
+  * Markus put all classic TSG req docs on SVN ONGOING
+  * Markus, Kenny draft one or several hypotheses on spec documents reorganization ONGOING
+
+==Agenda/Minutes==
+
+=== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=6 Issue 6] ===
+
+=== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=5 Issue 5] ===
+
+=== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=7 Issue 7] ===
+
+=== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=8 Issue 8] ===
+
+=== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=9 Issue 9] ===
+
+=== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=10 Issue 10] ===
+
+=== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=12 Issue 12] ===
+
+=== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=13 Issue 13] ===
+
+=== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=14 Issue 14] ===
+
+=== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=15 Issue 15] ===
