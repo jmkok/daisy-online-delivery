@@ -46,3 +46,6 @@ For those looking for restaurants in the area, the Best Western has much more va
 
  * [http://text.www.weatheroffice.gc.ca/forecast/city_e.html?on-143&unit=m Weather forecast (text only)]
  * [http://www.weatheroffice.gc.ca/city/pages/on-143_metric_e.html Weather forecast]
+ * [http://www.infotaxi.org/city-1042.htm List of taxi services]
+ * [http://maps.google.ca/maps?f=d&source=s_d&saddr=808+Mount+Pleasant+Rd,+Toronto,+ON+M4P+2L2+(Best+Western+Roehampton+Hotel+%26+Suites)&daddr=Mount+Pleasant+Rd+to:Roehampton+Ave+to:Bayview+Ave+to:1929+Bayview+Ave,+Toronto,+ON&geocode=FVDzmgId45hE-yHY563k-lGcCQ%3BFbT0mgIdbphE-w%3BFTL-mgIdisxE-w%3BFYAQmwIdSMlE-w%3B&hl=en&gl=ca&mra=ls&via=1,2,3&dirflg=w&sll=43.712526,-79.38283&sspn=0.014517,0.027595&ie=UTF8&ll=43.713115,-79.38386&spn=0.014517,0.027595&z=15 Walking directions from Best Western Roehampton to CNIB]
+ * [http://ttc.ca Public transit information]
