@@ -11,15 +11,39 @@
       <p:pipe step="store" port="result"/>
     </p:output>
 
-    <p:xinclude />
+    <p:xinclude name="xinclude"/>
  
+    <p:xslt name="expandDocBookWSDL">
+        <p:input port="source">
+            <p:pipe step="xinclude" port="result"/>
+        </p:input>
+        
+        <p:input port="stylesheet">
+            <p:document href="./util/docbook/xslt/DaisyOnline_wsdl2docbook.xsl"/>
+        </p:input>
+ 	</p:xslt>
+ 	
+    <p:xslt name="expandDocBookXSD">
+        <p:input port="source">
+            <p:pipe step="expandDocBookWSDL" port="result"/>
+        </p:input>
+        
+        <p:input port="stylesheet">
+            <p:document href="./util/docbook/xslt/DaisyOnline_xsd2docbook.xsl"/>
+        </p:input>
+    </p:xslt>
+ 	
 	<p:validate-with-relax-ng assert-valid="true" name="validate">
+	    <p:input port="source">
+	        <p:pipe step="expandDocBookXSD" port="result"/>
+	    </p:input>
+	    
 	    <p:input port="schema">
             <p:document href="./util/docbook/rng/docbookxi.rng"/>
         </p:input>
     </p:validate-with-relax-ng>
     
-    <p:xslt name="style">
+    <p:xslt name="toXHTML">
         <p:input port="source">
             <p:pipe step="validate" port="result"/>
         </p:input>

@@ -1,11 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
-	xmlns:tns="http://www.example.org/dop/" 
-	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-	name="dop" targetNamespace="http://www.example.org/dop/">
-  <wsdl:types>
+<definitions name="DAISYOnlineService" xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.daisy.org/ns/doml#" xmlns:db="http://docbook.org/ns/docbook"
+	targetNamespace="http://www.daisy.org/ns/doml#">
 
-  </wsdl:types>
-  
-</wsdl:definitions>
+	<documentation>
+		Notes on docbook documentation usage:
+		para[role="desc"] is a short core definition of the item being described. Plain text can also
+		be used, assuming that no other documentation than the core definition is provided.
+	</documentation>
+
+	<types>
+		<xsd:schema targetNamespace="http://www.daisy.org/ns/doml#">
+			<xsd:import namespace="http://www.daisy.org/ns/doml#"
+				schemaLocation="do-types-10.xsd" />
+		</xsd:schema>
+	</types>
+
+	<message name="LogOnRequest">
+		<part name="userName" element="xsd:string">
+			<documentation><db:para role="desc">The user ID</db:para></documentation>
+		</part>
+		<part name="password" element="xsd:string">
+			<documentation><db:para role="desc">The user password</db:para></documentation>
+		</part>
+	</message>
+	<message name="LogOnResponse">
+		<part name="result" element="xsd:boolean">
+			<documentation><db:para role="desc">Signifies whether the log-on was successful</db:para></documentation>
+		</part>
+	</message>
+	<message name="LogOffRequest"/>
+	<message name="LogOffResponse"/>
+	
+	<portType name="daisy-online-core">
+		<operation name="logOn">
+		    <documentation><db:para role="desc">Logs the Reading System on to the Service.</db:para></documentation>
+			<input message="tns:LogOnRequest" />
+			<output message="tns:LogOnResponse" />
+			<fault name="LogOnInternalServerError" message="tns:InternalServerErrorFault" />
+		</operation>
+		<operation name="logOff">
+			<documentation>Logs the Reading System off the Service.</documentation>
+			<input message="tns:LogOffRequest" />
+			<output message="tns:LogOffResponse" />
+			<fault name="LogOffInternalServerError" message="tns:InternalServerErrorFault" />
+			<fault name="LogOffNotAuthorised" message="tns:NotAuthorisedFault" />
+		</operation>		
+	</portType>
+
+    <!-- Faults  -->
+	<message name="InternalServerErrorFault">
+		<documentation><db:para role="desc">An internal server error occurred on the Service and the execution was halted</db:para></documentation>
+	</message>
+	<message name="NotAuthorisedFault">
+		<documentation><db:para role="desc">The Reading System is not authorised to call this function</db:para></documentation>
+	</message>
+
+
+</definitions>
