@@ -23,7 +23,7 @@
 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
     <xsl:import href="xhtml-1_1/docbook.xsl "/>
-
+	<xsl:output method="xml" omit-xml-declaration="no" indent="yes"/>
 <!-- ============================================================================= -->
     <!-- Fill in the docbook placeholder user.head.content template to add an http-equiv meta
         element -->
