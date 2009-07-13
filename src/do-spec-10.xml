@@ -242,6 +242,11 @@
             <para>...</para>
         </section>
 
+       <section xml:id="operations_user_preferences">
+            <title>User Preferences</title>
+            <para>...</para>
+        </section>
+
         <section xml:id="operations_service_announcements">
             <title>Service Announcements and/or Queries</title>
             <para>...</para>
