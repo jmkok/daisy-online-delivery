@@ -25,7 +25,7 @@ Confirmed:
  * All functions, types and faults stable and documented (expressed as a final WSDL and a final XSD)
 
 === New Specification Document ===
- [A skeleton will be provided at meeting onset]
+(A skeleton will be provided at meeting onset)
 
  * Specification structure complete. Reflecting the core/extended division. Including methods for providing examples and other explanative prose.
  * Final editing workitems distributed among WG participants (tracker issues labeled "Documentation" will be resolved as the relevant part(s) of the new spec are authored, during and after the F2F)
