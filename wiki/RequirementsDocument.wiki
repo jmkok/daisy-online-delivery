@@ -38,7 +38,7 @@ The protocol must support both downloading and streaming. _(Original requirement
 
 === Key delivery ===
 
-_Proposed:_ The Reading System must be able to request keys for use with PDTB2 by their key identifier and by the identifiers of a set of key pairs, one of which is to be used for encrypting the requested key. The Service must be able to provide a Key Exchange Object to a valid key request, or to reply that the Reading System is not authorized to receive that key. _(New requirement. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Key_delivery Key delivery])_
+The Reading System must be able to request keys for use with PDTB2 by their key identifier and by the identifiers of a set of key pairs, one of which is to be used for encrypting the requested key. The Service must be able to provide a Key Exchange Object to a valid key request, or to reply that the Reading System is not authorized to receive that key. _(New requirement. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Key_delivery Key delivery])_
 
 ----
 
@@ -59,23 +59,11 @@ Transmission of lists supports audio and text annotation. _(Original requirement
 === Stop and resume download ===
 The protocol must support stop/resume of the download. _(Original requirement 18. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Interact_with_a_download Interact with a download])_
 
-=== Identify and transfer service provider ===
-The protocol must support identification and transference of the primary service provider. _(Original requirement 60. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Switch_primary_content_provider Switch primary content provider])_
-
-=== User preferences stored on server ===
-The user preferences are stored on the server so that remote access from different terminals can automatically be adjusted. _(Original requirement 61. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Player_settings Player settings])_
-
 === Dynamic menus ===
-_Proposed:_ The Service must be able to provide an interactive session and a means of selecting content. _(New requirement. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Advanced_service_(server) Advanced service (server)])_
+_Proposed:_ The Service must be able to provide an interactive session and a means of selecting content. _(New requirement. User Stories: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Advanced_service_(server) Advanced service (server)] and [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Advanced_service_(user) Advanced service (user)])_
 
 === Noninteractive session ===
-_Proposed:_ The Service must be able to provide a noninteractive session where preselected content is transferred automatically to the Reading System. User Story: User Stories: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Basic_service_(server) Basic service (server)])_
-
-=== Service negotiation ===
-_Proposed:_ The Reading System must be able to negotiate the level of service with the Service. A Reading System will request a level of service; the Service will either accept or reject the request. If the request is accepted, the session will continue at that level. _(New requirement. User Stories: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Basic_service_(server) Basic service (server)], [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Basic_service_(user) Basic service (user)], [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Advanced_service_(server) Advanced service (server)] and [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Advanced_service_(user) Advanced service (user)])_
-
-=== Levels without negotiation ===
-_Proposed:_ The Reading System must be able to use the service at any desired level without a negotiation phase. _(New requirement. User Stories: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Basic_service_(server) Basic service (server)], [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Basic_service_(user) Basic service (user)], [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Advanced_service_(server) Advanced service (server)] and [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Advanced_service_(user) Advanced service (user)])_
+_Proposed:_ The Service must be able to provide a noninteractive session where preselected content is transferred automatically to the Reading System. User Stories: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Basic_service_(server) Basic service (server)] and [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Basic_service_(user) Basic service (user)])_
 
 ----
 
@@ -225,6 +213,12 @@ Initial transaction between when a player is first turned on and the server. _(O
 
 === Requires some player functionality ===
 Requires some player functionality as well. _(Original requirement 19. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Give_feedback Give feedback])_
+
+=== Identify and transfer service provider ===
+The protocol must support identification and transference of the primary service provider. _(Original requirement 60. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Switch_primary_content_provider Switch primary content provider])_ This was moved out of scope because it is a reading system function.
+
+=== User preferences stored on server ===
+The user preferences are stored on the server so that remote access from different terminals can automatically be adjusted. _(Original requirement 61. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Player_settings Player settings])_ The subgroup saw little benefit to this function, but is keeping the issue open for a later version.
 
 ----
 
