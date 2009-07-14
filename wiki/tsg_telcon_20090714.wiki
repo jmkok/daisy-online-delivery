@@ -19,6 +19,8 @@ Regrets: kenny
 
 === F2F Agenda and Deliverables === 
 
+See [TorontoF2F2009]
+
 === This weeks issues ===
 
  ==== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=16 Issue 16] ====
