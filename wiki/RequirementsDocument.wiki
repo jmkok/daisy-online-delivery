@@ -180,9 +180,6 @@ System messages + unique id of device. _(Original requirements 45 and 46. User S
 === System messages ===
 System messages. _(Original requirement 51. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Get_paid Get paid])_
 
-=== Expose transactions ===
-The protocol must be able to expose, to the player, the transactions. _(Original requirement 26. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Level_of_support_services Level of support services])_
-
 ----
 
 = Out-of-scope =
@@ -239,6 +236,9 @@ The protocol supports the background communication without user interaction as m
 
 === New service registration ===
 The protocol has to support the registration with a new service provider. _(Original requirement 28. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Subscribe_to_services Subscribe to services])_
+
+=== Expose transactions ===
+The protocol must be able to expose, to the player, the transactions. _(Original requirement 26. User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Level_of_support_services Level of support services])_
 
 ----
 
