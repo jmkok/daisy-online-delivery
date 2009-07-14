@@ -89,7 +89,7 @@ Protocol has to report firmware version of the player. _(Original requirement 16
 Protocol has to report download activity. _(Original requirement 16 (3). User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Diagnose_player_status Diagnose player status])_
 
 === Report player errors ===
-The protocol should support transmission of error messages from the reading system to the service. _(New requirement 7. User Stories: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Diagnose_player_status Diagnose player status], [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Tell_server_download_failed Tell server download failed] and [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Error_code_knowledge_base Error code knowledge base])_
+The protocol should support transmission of error messages from the reading system to the service. _(Original requirement 7 (modified). User Stories: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Diagnose_player_status Diagnose player status], [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Tell_server_download_failed Tell server download failed] and [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Error_code_knowledge_base Error code knowledge base])_
 
 === Report which server is in control ===
 Protocol must report which server is in control. _(Original requirement 16 (5). User Story: [http://code.google.com/p/daisy-online-delivery/wiki/UserStories#Diagnose_player_status Diagnose player status])_
