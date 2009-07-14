@@ -67,6 +67,12 @@ Geoff: think there needs to be a service negotiation step. The server requests w
 
 Nick: theres only 20 functions: why not just have one interface and use NotSupportedFault from the Service side, and at the reader side the function will just not be called. 
 
+Geoff: there has to be a clear way of providing only the basic service. 
+
+*Resolution: Remove Negotiation and Levels without Negotiation, but leave in dynamic menus and noninteractive session proposals.
+
 === Requirements Reformulation: finalization ===
  * Communications to wider group
  * Change Log
+
+@Geoff: let group know when Wiki doc is done.
