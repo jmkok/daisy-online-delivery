@@ -1,0 +1,33 @@
+
+
+Present: 
+
+Regrets: kenny 
+
+== Action Item Summary ==
+=== New Action Items ===
+  * Markus check with george/board on whether service provider discovery req remains for this version
+  * Geoff send remaining req issues one by one to list for discussion prior to next weeks telcon (done)
+=== Previous Unfinished Action Items ===
+  * Kenny add (or append to) issue to tracker re dropping storage-specific info from readingSystemAttributes
+  * kenny check with Hiro whether he still needs announcement/getUserChoices range requests, 
+  * kenny collect all impacts of dropping MTOM and post to list
+  * Geoff and Kenny to reorganize the requirements. ONGOING
+  * Nick to go through the wiki and add comments based on the historical discussions of the group. ONGOING
+  * Markus put all classic TSG req docs on SVN ONGOING
+  * Markus, Kenny draft one or several hypotheses on spec documents reorganization ONGOING
+
+==Agenda/Minutes==
+
+=== F2F Agenda and Deliverables === 
+
+ === [http://code.google.com/p/daisy-online-delivery/issues/detail?id=16 Issue 16] ===
+
+ === [http://code.google.com/p/daisy-online-delivery/issues/detail?id=17 Issue 17] ===
+
+ === [http://code.google.com/p/daisy-online-delivery/issues/detail?id=18 Issue 18] ===
+
+ === [http://code.google.com/p/daisy-online-delivery/issues/detail?id=19 Issue 19] ===
+
+ === [http://code.google.com/p/daisy-online-delivery/issues/detail?id=90 Issue 90] ===
+
