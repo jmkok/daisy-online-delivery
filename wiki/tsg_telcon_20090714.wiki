@@ -32,3 +32,7 @@ See [TorontoF2F2009]
  ==== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=19 Issue 19] ====
 
  ==== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=90 Issue 90] ====
+
+=== Requirements Reformulation: finalization ===
+ * Communications to wider group
+ * Change Log
