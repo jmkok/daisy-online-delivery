@@ -41,9 +41,13 @@ Confirmed:
 
 9:15-10:00 Plenary: specification document, overview and introduction
 
-10:00-12:00 Overarching issues (plenary) (items TBD)
+10:00-12:00 Overarching issues (plenary) 
 
-12:00 -13:00 Subgroup creation, division of issues 
+ * Definitions and terms
+ * core vs extended API
+ * PDTB
+
+12:00-13:00 Subgroup creation, division of issues 
 
 13:00-14:00 Lunch
 
