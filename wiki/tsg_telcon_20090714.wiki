@@ -1,5 +1,3 @@
-
-
 Present: 
 
 Regrets: kenny 
@@ -21,13 +19,14 @@ Regrets: kenny
 
 === F2F Agenda and Deliverables === 
 
- === [http://code.google.com/p/daisy-online-delivery/issues/detail?id=16 Issue 16] ===
+=== This weeks issues ===
 
- === [http://code.google.com/p/daisy-online-delivery/issues/detail?id=17 Issue 17] ===
+ ==== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=16 Issue 16] ====
 
- === [http://code.google.com/p/daisy-online-delivery/issues/detail?id=18 Issue 18] ===
+ ==== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=17 Issue 17] ====
 
- === [http://code.google.com/p/daisy-online-delivery/issues/detail?id=19 Issue 19] ===
+ ==== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=18 Issue 18] ====
 
- === [http://code.google.com/p/daisy-online-delivery/issues/detail?id=90 Issue 90] ===
+ ==== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=19 Issue 19] ====
 
+ ==== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=90 Issue 90] ====
