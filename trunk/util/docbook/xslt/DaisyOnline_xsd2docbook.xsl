@@ -22,6 +22,7 @@
 			<xsl:for-each select="$xsd/schema/element">
 				<db:section>
 					<xsl:attribute name="xml:id" select="concat('tp_',@name)"/>
+					<xsl:attribute name="xreflabel" select="@name"/>
 					<db:title>The <xsl:value-of select="@name"/> Type</db:title>
 					<db:para>...</db:para>	
 				</db:section>			
