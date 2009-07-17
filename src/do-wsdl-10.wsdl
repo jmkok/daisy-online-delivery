@@ -4,58 +4,265 @@
 	xmlns:tns="http://www.daisy.org/ns/doml#" xmlns:db="http://docbook.org/ns/docbook"
 	targetNamespace="http://www.daisy.org/ns/doml#">
 
-	<documentation>
-		Notes on docbook documentation usage:
-		para[role="desc"] is a short core definition of the item being described. Plain text can also
-		be used, assuming that no other documentation than the core definition is provided.
-	</documentation>
+	<documentation> Notes on docbook documentation usage: para[role="desc"] is a short core
+		definition of the item being described. Plain text can also be used, assuming that no other
+		documentation than the core definition is provided within the documentation element. </documentation>
 
 	<types>
 		<xsd:schema targetNamespace="http://www.daisy.org/ns/doml#">
-			<xsd:import namespace="http://www.daisy.org/ns/doml#"
-				schemaLocation="do-types-10.xsd" />
+			<xsd:import namespace="http://www.daisy.org/ns/doml#" schemaLocation="do-types-10.xsd"/>
 		</xsd:schema>
 	</types>
 
-	<message name="LogOnRequest">
+	<!-- ***************************** -->
+	<!-- ********  logon/off  ******** -->
+	<!-- ***************************** -->
+
+	<message name="logOnRequest">
 		<part name="userName" element="xsd:string">
-			<documentation><db:para role="desc">The user ID</db:para></documentation>
+			<documentation>
+				<db:para role="desc">The user ID</db:para>
+			</documentation>
 		</part>
 		<part name="password" element="xsd:string">
-			<documentation><db:para role="desc">The user password</db:para></documentation>
+			<documentation>
+				<db:para role="desc">The user password</db:para>
+			</documentation>
 		</part>
 	</message>
-	<message name="LogOnResponse">
+	<message name="logOnResponse">
 		<part name="result" element="xsd:boolean">
-			<documentation><db:para role="desc">Signifies whether the log-on was successful</db:para></documentation>
+			<documentation>
+				<db:para role="desc">Signifies whether the log-on was successful</db:para>
+			</documentation>
 		</part>
 	</message>
-	<message name="LogOffRequest"/>
-	<message name="LogOffResponse"/>
-	
-	<portType name="daisy-online-core">
+	<message name="logOffRequest"/>
+	<message name="logOffResponse"/>
+
+	<!-- ***************************** -->
+	<!-- ********  bookmarks  ******** -->
+	<!-- ***************************** -->
+
+	<message name="setBookmarksRequest">
+		<part name="bookmarks" element="tns:bookmarkSet">
+			<documentation>
+				<db:para role="desc">The bookmarks to store</db:para>
+			</documentation>
+		</part>
+	</message>
+	<message name="setBookmarksResponse">
+		<part name="result" element="xsd:boolean">
+			<documentation>
+				<db:para role="desc">Signifies whether the bookmarks for the Publication were saved
+					successfully on the Service.</db:para>
+			</documentation>
+		</part>
+	</message>
+	<message name="getBookmarksRequest">
+		<part name="publicationID" element="xsd:string">
+			<documentation>The unique identifier of the Publication for which bookmarks are being
+				retrieved</documentation>
+		</part>
+	</message>
+	<message name="getBookmarksResponse">
+		<part name="result" element="tns:bookmarkSet">
+			<documentation>The bookmarks for the Publication.</documentation>
+		</part>
+	</message>
+
+	<!-- ******************************** -->
+	<!-- ********  issue/return  ******** -->
+	<!-- ******************************** -->
+
+	<message name="issueContentRequest">
+		<part name="publicationID" element="xsd:string">
+			<documentation>
+				<db:para role="desc">The unique identifier of the publication that this issuance
+					request is for.</db:para>
+			</documentation>
+		</part>
+	</message>
+	<message name="issueContentResponse">
+		<part name="result" element="xsd:boolean">
+			<documentation>
+				<db:para role="desc">Signifies whether the content was issued
+					successfully.</db:para>
+			</documentation>
+		</part>
+	</message>
+	<message name="returnContentRequest">
+		<part name="publicationID" element="xsd:string">
+			<documentation>
+				<db:para role="desc">The unique identifier of the publication that this return
+					request is for.</db:para>
+			</documentation>
+		</part>
+	</message>
+	<message name="returnContentResponse">
+		<part name="result" element="xsd:boolean">
+			<documentation>Signifies whether the content was returned successfully.</documentation>
+		</part>
+	</message>
+
+	<!-- ********************************************* -->
+	<!-- ********  Reading System Attributes  ******** -->
+	<!-- ********************************************* -->
+
+	<message name="setReadingSystemAttributesRequest">
+		<part name="attributes" element="tns:readingSystemAttributes">
+			<documentation>
+				<db:para role="desc">The Reading System attributes to post.</db:para>
+			</documentation>
+		</part>
+	</message>
+	<message name="setReadingSystemAttributesResponse">
+		<part name="result" element="xsd:boolean">
+			<documentation>Signifies whether the ReadingSystemAttributes were recieved successfully
+				on the Service.</documentation>
+		</part>
+	</message>
+
+	<!-- ********************************************* -->
+	<!-- *****************  dateTime  **************** -->
+	<!-- ********************************************* -->
+
+	<message name="getDateTimeRequest"/>
+	<message name="getDateTimeResponse">
+		<part name="result" element="xsd:dateTime">
+			<documentation>
+				<db:para role="desc">The current date and time at the location of the
+					server.</db:para>
+				<db:para role="req">A timezone identifier and a granularity to one second are both
+					required.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+
+	<!-- *********************************** -->
+	<!-- ********  basic interface  ******** -->
+	<!-- *********************************** -->
+
+	<portType name="daisy-online-basic">
+
 		<operation name="logOn">
-		    <documentation><db:para role="desc">Logs the Reading System on to the Service.</db:para></documentation>
-			<input message="tns:LogOnRequest" />
-			<output message="tns:LogOnResponse" />
-			<fault name="LogOnInternalServerError" message="tns:InternalServerErrorFault" />
+			<documentation>
+				<db:para role="desc">Logs the Reading System on to the Service.</db:para>
+			</documentation>
+			<input message="tns:logOnRequest"/>
+			<output message="tns:logOnResponse"/>
+			<fault name="logOnInternalServerError" message="tns:InternalServerErrorFault"/>
 		</operation>
 		<operation name="logOff">
 			<documentation>Logs the Reading System off the Service.</documentation>
-			<input message="tns:LogOffRequest" />
-			<output message="tns:LogOffResponse" />
-			<fault name="LogOffInternalServerError" message="tns:InternalServerErrorFault" />
-			<fault name="LogOffNotAuthorised" message="tns:NotAuthorisedFault" />
-		</operation>		
+			<input message="tns:logOffRequest"/>
+			<output message="tns:logOffResponse"/>
+			<fault name="logOffInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="logOffNotAuthorised" message="tns:NotAuthorisedFault"/>
+		</operation>
+
+		<operation name="issueContent">
+			<documentation>
+				<db:para role="desc">Requests the issuance of the specified content</db:para>
+			</documentation>
+			<input message="tns:issueContentRequest"/>
+			<output message="tns:returnContentResponse"/>
+			<fault name="issueContentInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="issueContentNotAuthorised" message="tns:NotAuthorisedFault"/>
+			<fault name="issueContentInvalidParameter" message="tns:InvalidParameterFault"/>
+		</operation>
+		<operation name="returnContent">
+			<documentation>
+				<db:para role="desc">Requests the return of the specified content</db:para>
+				<db:para>
+					<db:remark role="todo">Define how to handle this in purchase or other no-return
+						situations. Does making optional fix it all?</db:remark>
+				</db:para>
+			</documentation>
+			<input message="tns:returnContentRequest"/>
+			<output message="tns:returnContentResponse"/>
+			<fault name="returnContentInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="returnContentNotAuthorised" message="tns:NotAuthorisedFault"/>
+			<fault name="returnContentInvalidParameter" message="tns:InvalidParameterFault"/>
+		</operation>
+
+		<operation name="setReadingSystemAttributes">
+			<documentation>
+				<db:para role="desc">Posts the attributes (characteristics) of the Reading System to
+					the Service.</db:para>
+			</documentation>
+			<input message="tns:setReadingSystemAttributesRequest"/>
+			<output message="tns:setReadingSystemAttributesResponse"/>
+			<fault name="setReadingSystemAttributesInternalServerError"
+				message="tns:InternalServerErrorFault"/>
+			<fault name="setReadingSystemAttributesNotAuthorised" message="tns:NotAuthorisedFault"/>
+		</operation>
+
 	</portType>
 
-    <!-- Faults  -->
+	<!-- ************************************** -->
+	<!-- ********  advanced interface  ******** -->
+	<!-- ************************************** -->
+
+	<portType name="daisy-online-advanced">
+		<operation name="setBookmarks">
+			<documentation>
+				<db:para role="desc">Request the storage of bookmarks for a Publication to the
+					Service.</db:para>
+				<db:para>Note that the publication identifier is embedded in the <db:xref
+						linkend="tp_bookmarkSet"/> type.</db:para>
+				<db:para>Note that this operation only supports the storage of bookmarks for one
+					publication at a time.</db:para>
+			</documentation>
+			<input message="tns:setBookmarksRequest"/>
+			<output message="tns:setBookmarksResponse"/>
+			<fault name="setBookmarksInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="setBookmarksNotAuthorised" message="tns:NotAuthorisedFault"/>
+		</operation>
+		<operation name="getBookmarks">
+			<documentation>
+				<db:para role="desc">Retrieves bookmarks for a Publication from the
+					Service.</db:para>
+			</documentation>
+			<input message="tns:getBookmarksRequest"/>
+			<output message="tns:getBookmarksResponse"/>
+			<fault name="getBookmarksInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="getBookmarksNotAuthorised" message="tns:NotAuthorisedFault"/>
+			<fault name="getBookmarksInvalidParameter" message="tns:InvalidParameterFault"/>
+		</operation>
+		<operation name="getDateTime">
+			<documentation>
+				<db:para role="desc">Retrieves the current date and time from the Service.</db:para>
+			</documentation>
+			<input message="tns:getDateTimeRequest"/>
+			<output message="tns:getDateTimeResponse"/>
+			<fault name="getDateTimeInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="getDateTimeNotAuthorised" message="tns:NotAuthorisedFault"/>
+		</operation>
+	</portType>
+
+	<!-- ************************************** -->
+	<!-- ********        faults        ******** -->
+	<!-- ************************************** -->
+
 	<message name="InternalServerErrorFault">
-		<documentation><db:para role="desc">An internal server error occurred on the Service and the execution was halted</db:para></documentation>
+		<documentation>
+			<db:para role="desc">An internal server error occurred on the Service and the execution
+				of the operation was halted.</db:para>
+		</documentation>
 	</message>
 	<message name="NotAuthorisedFault">
-		<documentation><db:para role="desc">The Reading System is not authorised to call this function</db:para></documentation>
+		<documentation>
+			<db:para role="desc">The Reading System is not authorised to invoke this
+				operation.</db:para>
+		</documentation>
 	</message>
-
+	<message name="InvalidParameterFault">
+		<documentation>
+			<db:para role="desc">An invalid parameter was passed with the operation
+				request.</db:para>
+		</documentation>
+	</message>
 
 </definitions>
