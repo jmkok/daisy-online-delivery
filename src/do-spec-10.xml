@@ -68,6 +68,13 @@
             <remark role="todo">Write introduction - target application domains, functionality
                 scope</remark>
         </para>
+        <section>
+            <title>Usage scenarios</title>
+            <para>
+                <remark role="todo">Describe use scenarios including autosubscribe to daily newspaper, 
+                    commercial service (advanced features), etc</remark>
+            </para>
+        </section>
     </preface>
 
     <chapter xml:id="keywords" conformance="normative">
@@ -107,6 +114,14 @@
                 </listitem>
             </varlistentry>
             <varlistentry>
+                <term>Session</term>
+                <listitem>
+                    <para>
+                        <remark role="todo">define</remark>
+                    </para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
                 <term>API/Interface/Type/Element/Operation/Function and that entire cluster of
                     terms</term>
                 <listitem>
@@ -122,10 +137,9 @@
                         <remark role="todo">define</remark>
                     </para>
                 </listitem>
-            </varlistentry>
-            
+            </varlistentry>            
             <varlistentry>
-                <term>Content Donwload</term>
+                <term>Content Download</term>
                 <listitem>
                     <para>
                         <remark role="todo">define</remark>
@@ -148,7 +162,6 @@
                     </para>
                 </listitem>
             </varlistentry>
-
         </variablelist>
     </chapter>
 
@@ -168,7 +181,8 @@
             <para>
                 <remark role="todo">Name all underlying protocols, standards, and define adherence
                     to them as required for compliance once and for all. SOAP/HTTPS/WS-I; WSDL and
-                    http://www.w3.org/TR/wsdl#_request-response, etc</remark>
+                    http://www.w3.org/TR/wsdl#_request-response, etc. Note that https is what is used
+                    for transmission security.</remark>
             </para>
         </section>
         <section xml:id="fundamentals_dynamic_menus" conformance="informative">
@@ -236,8 +250,8 @@
             <title>Issuing (and optional return) of content</title>
             <para>...</para>
             <section xml:id="operations_content_issuing_pdtb">
-                <title>Content protection</title>
-                <para>...</para>
+                <title>Rights management</title>
+                <para>...</para>             
             </section>
         </section>
 
@@ -247,13 +261,8 @@
         </section>
 
         <section xml:id="operations_content_selection">
-            <title>Rights management</title>
-            <para>...</para>
-        </section>
-
-       <section xml:id="operations_user_preferences">
-            <title>User Preferences</title>
-            <para>...</para>
+            <title>Content Selection</title>
+            <para><remark role="todo">contentlists, search</remark></para>
         </section>
 
         <section xml:id="operations_service_announcements">
@@ -268,6 +277,11 @@
         
         <section xml:id="operations_diagnostics">
             <title>Diagnostics and Error Handling</title>
+            <para>...</para>
+        </section>
+        
+        <section xml:id="operations_complete_session_examples">
+            <title>Complete session examples</title>
             <para>...</para>
         </section>
         
