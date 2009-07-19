@@ -43,115 +43,6 @@
   </xs:restriction>
  </xs:simpleType>
 
- <xs:element name="settings">
- <xs:complexType>
-   <xs:sequence>
-    <xs:element name="Skippability" minOccurs="0" maxOccurs="1">
-     <xs:complexType>
-      <xs:sequence>
-       <xs:element name="bookStruct" minOccurs="0" maxOccurs="unbounded">
-        <xs:complexType>
-         <xs:simpleContent>
-          <xs:extension base="xs:string">
-           <xs:attribute name="type" use="required">
-            <xs:simpleType>
-            <xs:restriction base="xs:string">
-            <xs:enumeration value="PAGE_NUMBER"/>
-            <xs:enumeration value="NOTE"/>
-            <xs:enumeration value="NOTE_REFERENCE"/>
-            <xs:enumeration value="ANNOTATION"/>
-            <xs:enumeration value="LINE_NUMBER"/>
-            <xs:enumeration value="OPTIONAL_SIDEBAR"/>
-            <xs:enumeration value="OPTIONAL_PRODUCER_NOTE"/>
-            </xs:restriction>
-            </xs:simpleType>
-           </xs:attribute>
-           <xs:attribute name="skippable" type="xs:boolean" use="required"/>
-          </xs:extension>
-         </xs:simpleContent>
-        </xs:complexType>
-       </xs:element>
-      </xs:sequence>
-     </xs:complexType>
-    </xs:element>
-    
-    <xs:element name="uiVolume" minOccurs="0" maxOccurs="1">
-     <xs:simpleType>
-      <xs:restriction base="xs:int">
-       <xs:minInclusive value="0"/>
-       <xs:maxInclusive value="100"/>
-      </xs:restriction>
-     </xs:simpleType>
-    </xs:element>
-
-    <xs:element name="contentVolume" minOccurs="0" maxOccurs="1">
-     <xs:simpleType>
-      <xs:restriction base="xs:int">
-       <xs:minInclusive value="0"/>
-       <xs:maxInclusive value="100"/>
-      </xs:restriction>
-     </xs:simpleType>
-    </xs:element>
-    
-    <xs:element name="uiTone" minOccurs="0" maxOccurs="1">
-     <xs:simpleType>
-      <xs:restriction base="xs:int">
-       <xs:minInclusive value="0"/>
-       <xs:maxInclusive value="100"/>
-      </xs:restriction>
-     </xs:simpleType>
-    </xs:element>
-    
-    <xs:element name="contentTone" minOccurs="0" maxOccurs="1">
-     <xs:simpleType>
-      <xs:restriction base="xs:int">
-       <xs:minInclusive value="0"/>
-       <xs:maxInclusive value="100"/>
-      </xs:restriction>
-     </xs:simpleType>
-    </xs:element>
-    
-    <xs:element name="uiSpeed" minOccurs="0" maxOccurs="1">
-     <xs:simpleType>
-      <xs:restriction base="xs:int">
-       <xs:minInclusive value="0"/>
-       <xs:maxInclusive value="100"/>
-      </xs:restriction>
-     </xs:simpleType>
-    </xs:element>
-    
-    <xs:element name="contentSpeed" minOccurs="0" maxOccurs="1">
-     <xs:simpleType>
-      <xs:restriction base="xs:int">
-       <xs:minInclusive value="0"/>
-       <xs:maxInclusive value="100"/>
-      </xs:restriction>
-     </xs:simpleType>
-    </xs:element>
-    
-    <xs:element name="uiPreferedLanguage" minOccurs="0" maxOccurs="1">
-     <xs:simpleType>
-      <xs:restriction base="xs:string">
-       <xs:pattern value="([a-zA-Z]{1,8}(-[a-zA-Z0-9]{1,8}))*"/>
-      </xs:restriction>
-     </xs:simpleType>
-    </xs:element>
-    
-    <xs:element name="contentPreferedLanguage" minOccurs="0" maxOccurs="1">
-     <xs:simpleType>
-      <xs:restriction base="xs:string">
-       <xs:pattern value="([a-zA-Z]{1,8}(-[a-zA-Z0-9]{1,8}))*"/>
-      </xs:restriction>
-     </xs:simpleType>
-    </xs:element>
-    
-    <!-- allow any element except those from target namespace  http://www.xml.com/pub/a/2002/07/03/schema_design.html-->
-    <xs:choice minOccurs="1" maxOccurs="unbounded">
-     <xs:any namespace="##other" processContents="strict"/>
-    </xs:choice>
-   </xs:sequence>
-  </xs:complexType>
- </xs:element>
  
  <xs:element name="readingSystemAttributes">
   <xs:complexType>
@@ -929,4 +820,130 @@
   </xs:complexType>
  </xs:element>
 
+ <xs:element name="nextOperation" nillable="true">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="operation" minOccurs="1" maxOccurs="1"/>
+    <xs:element name="param" minOccurs="0" maxOccurs="unbounded">
+     <xs:complexType>
+      <xs:attribute name="name" use="required" />
+      <xs:attribute name="value" use="required" />
+     </xs:complexType>
+    </xs:element>  
+    </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+
+<!-- 
+
+<xs:element name="settings">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Skippability" minOccurs="0" maxOccurs="1">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="bookStruct" minOccurs="0" maxOccurs="unbounded">
+<xs:complexType>
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="type" use="required">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="PAGE_NUMBER"/>
+<xs:enumeration value="NOTE"/>
+<xs:enumeration value="NOTE_REFERENCE"/>
+<xs:enumeration value="ANNOTATION"/>
+<xs:enumeration value="LINE_NUMBER"/>
+<xs:enumeration value="OPTIONAL_SIDEBAR"/>
+<xs:enumeration value="OPTIONAL_PRODUCER_NOTE"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="skippable" type="xs:boolean" use="required"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+
+<xs:element name="uiVolume" minOccurs="0" maxOccurs="1">
+<xs:simpleType>
+<xs:restriction base="xs:int">
+<xs:minInclusive value="0"/>
+<xs:maxInclusive value="100"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+
+<xs:element name="contentVolume" minOccurs="0" maxOccurs="1">
+<xs:simpleType>
+<xs:restriction base="xs:int">
+<xs:minInclusive value="0"/>
+<xs:maxInclusive value="100"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+
+<xs:element name="uiTone" minOccurs="0" maxOccurs="1">
+<xs:simpleType>
+<xs:restriction base="xs:int">
+<xs:minInclusive value="0"/>
+<xs:maxInclusive value="100"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+
+<xs:element name="contentTone" minOccurs="0" maxOccurs="1">
+<xs:simpleType>
+<xs:restriction base="xs:int">
+<xs:minInclusive value="0"/>
+<xs:maxInclusive value="100"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+
+<xs:element name="uiSpeed" minOccurs="0" maxOccurs="1">
+<xs:simpleType>
+<xs:restriction base="xs:int">
+<xs:minInclusive value="0"/>
+<xs:maxInclusive value="100"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+
+<xs:element name="contentSpeed" minOccurs="0" maxOccurs="1">
+<xs:simpleType>
+<xs:restriction base="xs:int">
+<xs:minInclusive value="0"/>
+<xs:maxInclusive value="100"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+
+<xs:element name="uiPreferedLanguage" minOccurs="0" maxOccurs="1">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:pattern value="([a-zA-Z]{1,8}(-[a-zA-Z0-9]{1,8}))*"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+
+<xs:element name="contentPreferedLanguage" minOccurs="0" maxOccurs="1">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:pattern value="([a-zA-Z]{1,8}(-[a-zA-Z0-9]{1,8}))*"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+
+ <xs:choice minOccurs="1" maxOccurs="unbounded">
+  <xs:any namespace="##other" processContents="strict"/>
+ </xs:choice>
+ </xs:sequence>
+ </xs:complexType>
+ </xs:element>
+ 
+-->
 </xs:schema>
