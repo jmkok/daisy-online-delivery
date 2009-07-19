@@ -260,7 +260,7 @@
 	</message>
 	
 	<message name="getContentMetadataResponse">
-		<part name="result" element="tns:metadata" />
+		<part name="result" element="tns:contentMetadata" />
 	</message>
 	
 	
