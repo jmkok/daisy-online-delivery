@@ -139,6 +139,24 @@
 		</part>
 	</message>
 
+	<!-- ********************************************* -->
+	<!-- *************  user responses  ************** -->
+	<!-- ********************************************* -->
+	<message name="setUserResponsesRequest">
+		<part name="responses" element="tns:userResponses">
+			<documentation>
+				<db:para role="desc">The response to a previous question.</db:para>
+			</documentation>
+		</part>
+	</message>
+	<message name="setUserResponsesResponse">
+		<part name="result" element="tns:nextOperation">
+			<documentation>
+				<db:para role="desc">The operation (possibly including parameters) that the reading
+					system should call next. May be null.</db:para>
+			</documentation>
+		</part>
+	</message>
 
 	<!-- *********************************** -->
 	<!-- ********  basic interface  ******** -->
@@ -172,6 +190,7 @@
 			<fault name="issueContentNotAuthorised" message="tns:NotAuthorisedFault"/>
 			<fault name="issueContentInvalidParameter" message="tns:InvalidParameterFault"/>
 		</operation>
+
 		<operation name="returnContent">
 			<documentation>
 				<db:para role="desc">Requests the return of the specified content</db:para>
@@ -240,6 +259,27 @@
 			<fault name="getDateTimeInternalServerError" message="tns:InternalServerErrorFault"/>
 			<fault name="getDateTimeNotAuthorised" message="tns:NotAuthorisedFault"/>
 		</operation>
+		<operation name="setUserResponses">
+			<documentation>
+				<db:para role="desc">Posts user response(s) to a previous question to the
+					Service.</db:para>
+			</documentation>
+			<input message="tns:setUserResponsesRequest"/>
+			<output message="tns:setUserResponsesResponse"/>
+			<fault name="setUserResponsesInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="setUserResponsesNotAuthorised" message="tns:NotAuthorisedFault"/>
+		</operation>
+
+		<!--  getUserInput(String questionID), getUserChoices, getUserAnnouncement (getPrompt can be dropped?), getGroupedQuestions, getContentList -->
+
+		<!-- getQuestion(String questionID) As Question, 
+			getMultipleChoiceQuestion(String questionID or "home") As MultipleChouiceQuestion, 
+			getMessage(String messageID) As Message, 
+			getGroupedQuestions(String groupID) GroupedQuestions, -->
+
+		<!--
+			reqd: getContentList(String listID or "default")
+		-->
 	</portType>
 
 	<!-- ************************************** -->
@@ -262,6 +302,12 @@
 		<documentation>
 			<db:para role="desc">An invalid parameter was passed with the operation
 				request.</db:para>
+		</documentation>
+	</message>
+	<message name="InvalidOperationFault">
+		<documentation>
+			<db:para role="desc">The current context does not permit a call to
+				this operation.</db:para>
 		</documentation>
 	</message>
 
