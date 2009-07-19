@@ -200,6 +200,7 @@ Please note, the <xref linkend="httpcookies">HTTP Cookies in WS-I Basic Profile 
 secure http (https) through the use of SSL 3.0 and TLS 1.0
 </para>
 </listitem>
+</itemizedlist>
             </para>
         </section>
         <section xml:id="fundamentals_dynamic_menus" conformance="informative">
