@@ -194,7 +194,7 @@
                             thus are fundamental to the protocol. </para>
                     </listitem>
                     <listitem>
-                        <para>Secure http (https) through the use of SSL 3.0 and TLS 1.0</para>
+                        <para>Secure http (https) through the use of <xref linkend="bib_ssl3.0" /> and <xref linkend="bib_tls1.0" /> </para>
                     </listitem>
                 </itemizedlist>
             </para>
@@ -398,6 +398,20 @@
             <abbrev>WS-IBasicprofile1.1</abbrev>
             <title>
                 <link xlink:href="http://www.ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html">WS-I basic Profile 1.1</link>
+            </title>
+        </biblioentry>
+        
+        <biblioentry xml:id="bib_tls1.0">
+            <abbrev>TLS1.0</abbrev>
+            <title>
+                <link xlink:href="http://www.ietf.org/rfc/rfc2246">TLS 1.0</link>
+            </title>
+        </biblioentry>
+        
+        <biblioentry xml:id="bib_ssl3.0">
+            <abbrev>SSL3.0</abbrev>
+            <title>
+                <link xlink:href="http://tools.ietf.org/html/draft-ietf-tls-ssl-version3">SSL 3.0</link>
             </title>
         </biblioentry>
         
