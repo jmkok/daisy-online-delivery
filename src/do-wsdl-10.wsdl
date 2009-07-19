@@ -140,6 +140,93 @@
 	</message>
 
 	<!-- ********************************************* -->
+	<!-- *************  content list  ************** -->
+	<!-- ********************************************* -->
+	<message name="getContentListRequest">
+		<part name="responses" element="xsd:string">
+			<documentation>
+				<db:para role="desc">The identity of the list to retrieve. The value
+						<db:varname>default</db:varname> is reserved to refer to a default
+					(precomposed) content list; Services must therefore not assign <db:varname>default</db:varname> as 
+					the identity value of a dynamically composed content list.</db:para>
+			</documentation>
+		</part>
+	</message>
+	<message name="getContentListResponse">
+		<part name="result" element="tns:contentList" /> 
+	</message>
+
+
+	<!-- ************************************** -->
+	<!-- ********  announcements  ******** -->
+	<!-- ************************************** -->
+	
+	<message name="getServiceAnnouncementsRequest" />
+	<message name="getServiceAnnouncementsResponse">
+		<part name="result" element="tns:announcements" />
+	</message>
+	<message name="markAnnouncementsAsReadRequest">
+		<part name="rangeBegin" element="xsd:integer">
+			<documentation><db:para>The first announcement to mark as read, expressed as the value of the announcement's 
+				<db:varname>sequenceID</db:varname> attribute value</db:para></documentation>
+		</part>
+		<part name="rangeEnd" element="xsd:integer">
+			<documentation><db:para>The last announcement to mark as read, expressed as the value of the announcement's 
+				<db:varname>sequenceID</db:varname> attribute value</db:para></documentation>
+		</part>		
+	</message>
+	<message name="markAnnouncementsAsReadResponse">
+		<part name="result" element="xsd:boolean">
+			<documentation>Signifies whether the specified announcements were successfully marked as read on the Service</documentation>
+		</part>
+	</message>
+	
+	<!-- ************************************** -->
+	<!-- ********      questions       ******** -->
+	<!-- ************************************** -->
+	
+	<message name="getQuestionRequest">
+		<part name="questionID" element="xsd:string">
+			<documentation>
+				<db:para role="desc">TODO</db:para>
+			</documentation>
+		</part>	
+	</message>
+	<message name="getQuestionResponse">
+		<part name="response" element="tns:question"/>
+	</message>
+	<message name="getMultipleChoiceQuestionRequest">
+		<part name="questionID" element="xsd:string">
+			<documentation>
+				<db:para role="desc">TODO</db:para>
+			</documentation>
+		</part>		
+	</message>
+	<message name="getMultipleChoiceQuestionResponse">
+		<part name="response" element="tns:multipleChoiceQuestion"/>
+	</message>
+	<message name="getGroupedQuestionsRequest">
+		<part name="groupID" element="xsd:string">
+			<documentation>
+				<db:para role="desc">TODO</db:para>
+			</documentation>
+		</part>	
+	</message>
+	<message name="getGroupedQuestionsResponse">
+		<part name="response" element="tns:groupedQuestions"/>
+	</message>
+	<message name="getMessageRequest">
+		<part name="messageID" element="xsd:string">
+			<documentation>
+				<db:para role="desc">TODO</db:para>
+			</documentation>
+		</part>
+	</message>
+	<message name="getMessageResponse">
+		<part name="response" element="tns:message"/>
+	</message>
+
+	<!-- ********************************************* -->
 	<!-- *************  user responses  ************** -->
 	<!-- ********************************************* -->
 	<message name="setUserResponsesRequest">
@@ -157,7 +244,26 @@
 			</documentation>
 		</part>
 	</message>
-
+	
+	<!-- ********************************************* -->
+	<!-- *************  metadata  ************** -->
+	<!-- ********************************************* -->
+	
+	<message name="getContentMetadataRequest">
+		<part name="publicationID" element="xsd:string">
+			<documentation>
+				<db:para role="desc">The identifier of the publication for which the metadata is being requested, 
+					as expressed by the <db:varname>id</db:varname> attribute of the relevant <db:varname>contentItem</db:varname> in 
+					the <db:xref linkend="tp_contentList"/> type.</db:para>
+			</documentation>
+		</part>
+	</message>
+	
+	<message name="getContentMetadataResponse">
+		<part name="result" element="tns:metadata" />
+	</message>
+	
+	
 	<!-- *********************************** -->
 	<!-- ********  basic interface  ******** -->
 	<!-- *********************************** -->
@@ -218,6 +324,48 @@
 			<fault name="setReadingSystemAttributesNotAuthorised" message="tns:NotAuthorisedFault"/>
 		</operation>
 
+		<operation name="getContentList">
+			<documentation>
+				<db:para role="desc">Retrieves a list of available content.</db:para>
+			</documentation>
+			<input message="tns:getContentListRequest"/>
+			<output message="tns:getContentListResponse"/>
+			<fault name="getContentListInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="getContentListNotAuthorised" message="tns:NotAuthorisedFault"/>
+		</operation>
+		
+		<operation name="getContentMetadata">
+			<documentation>
+				<db:para role="desc">Retrieves <db:xref linkend="tp_contentMetadata"/> for the specified content.</db:para>
+			</documentation>
+			<input message="tns:getContentMetadataRequest" />
+			<output message="tns:getContentMetadataResponse" />
+			<fault name="getContentMetadataInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="getContentMetadataNotAuthorised" message="tns:NotAuthorisedFault"/>
+		</operation>
+		
+		<operation name="getServiceAnnouncements">
+			<documentation>
+				<db:para role="desc">Retrieves the announcements awaiting the User's attention from the Service.</db:para>
+			</documentation>
+			<input message="tns:getServiceAnnouncementsRequest"/>
+			<output message="tns:getServiceAnnouncementsResponse"/>
+			<fault name="getServiceAnnouncementsInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="getServiceAnnouncementsNotAuthorised" message="tns:NotAuthorisedFault"/>
+		</operation>
+		
+		<operation name="markAnnouncementsAsRead">
+			<documentation>
+				<db:para role="desc">Marks the specified announcements as read.</db:para>
+				<db:para role="prereq">This operation is only valid if a previous call to 
+					<db:xref linkend="op_getServiceAnnouncements"/> has been made during the session.</db:para>
+			</documentation>
+			<input message="tns:markAnnouncementsAsReadRequest"/>
+			<output message="tns:markAnnouncementsAsReadResponse"/>
+			<fault name="markAnnouncementsAsReadInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="markAnnouncementsAsReadNotAuthorised" message="tns:NotAuthorisedFault"/>
+		</operation>
+		
 	</portType>
 
 	<!-- ************************************** -->
@@ -261,27 +409,56 @@
 		</operation>
 		<operation name="setUserResponses">
 			<documentation>
-				<db:para role="desc">Posts user response(s) to a previous question to the
-					Service.</db:para>
+				<db:para role="desc">Posts user response(s) to a previous question to the Service.</db:para>
 			</documentation>
 			<input message="tns:setUserResponsesRequest"/>
 			<output message="tns:setUserResponsesResponse"/>
 			<fault name="setUserResponsesInternalServerError" message="tns:InternalServerErrorFault"/>
 			<fault name="setUserResponsesNotAuthorised" message="tns:NotAuthorisedFault"/>
 		</operation>
-
-		<!--  getUserInput(String questionID), getUserChoices, getUserAnnouncement (getPrompt can be dropped?), getGroupedQuestions, getContentList -->
-
-		<!-- getQuestion(String questionID) As Question, 
-			getMultipleChoiceQuestion(String questionID or "home") As MultipleChouiceQuestion, 
-			getMessage(String messageID) As Message, 
-			getGroupedQuestions(String groupID) GroupedQuestions, -->
-
-		<!--
-			reqd: getContentList(String listID or "default")
-		-->
+		<operation name="getQuestion">
+			<!-- was: getUserInput -->
+			<documentation>
+				<db:para role="desc">TODO</db:para>
+			</documentation>
+			<input message="tns:getQuestionRequest"/>
+			<output message="tns:getQuestionResponse"/>
+			<fault name="getQuestionInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="getQuestionNotAuthorised" message="tns:NotAuthorisedFault"/>		
+		</operation>
+		<operation name="getMultipleChoiceQuestion">
+			<!-- was: getUserChoices -->
+			<documentation>
+				<db:para role="desc">TODO</db:para>
+			</documentation>
+			<input message="tns:getMultipleChoiceQuestionRequest"/>
+			<output message="tns:getMultipleChoiceQuestionResponse"/>
+			<fault name="getMultipleChoiceQuestionInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="getMultipleChoiceQuestionNotAuthorised" message="tns:NotAuthorisedFault"/>		
+		</operation>
+		<operation name="getGroupedQuestions">
+			<documentation>
+				<db:para role="desc">TODO</db:para>
+			</documentation>
+			<input message="tns:getGroupedQuestionsRequest"/>
+			<output message="tns:getGroupedQuestionsResponse"/>
+			<fault name="getGroupedChoiceQuestionsInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="getGroupedChoiceQuestionsNotAuthorised" message="tns:NotAuthorisedFault"/>		
+		</operation>
+		<operation name="getMessage">
+			<!-- was: getUserAnnouncement -->
+			<documentation>
+				<db:para role="desc">TODO</db:para>
+			</documentation>
+			<input message="tns:getMessageRequest"/>
+			<output message="tns:getMessageResponse"/>
+			<fault name="getMessageInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="getMessageNotAuthorised" message="tns:NotAuthorisedFault"/>		
+		</operation>
+				
 	</portType>
 
+	
 	<!-- ************************************** -->
 	<!-- ********        faults        ******** -->
 	<!-- ************************************** -->
@@ -306,8 +483,8 @@
 	</message>
 	<message name="InvalidOperationFault">
 		<documentation>
-			<db:para role="desc">The current context does not permit a call to
-				this operation.</db:para>
+			<db:para role="desc">The current context does not permit a call to this operation. (May
+				make NotAuthorisedFault redundant)</db:para>
 		</documentation>
 	</message>
 

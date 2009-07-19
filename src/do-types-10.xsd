@@ -218,20 +218,7 @@
    </xs:sequence>
   </xs:complexType>
  </xs:element>
- 
- <xs:element name="announcementsMetadata">
-  <xs:complexType>
-   <xs:sequence>
-    <xs:element name="announcementMetadata" minOccurs="0" maxOccurs="unbounded">
-     <xs:complexType>
-      <xs:attribute name="sequenceNumber" type="xs:int" use="required"/>
-      <xs:attribute name="size" type="xs:int" use="required"/>
-     </xs:complexType>
-    </xs:element>
-   </xs:sequence>
-  </xs:complexType>
- </xs:element>
- 
+  
  <xs:element name="message">
   <xs:complexType>
    <xs:sequence>
@@ -419,6 +406,7 @@
    <xs:attribute name="useWebService" type="xs:boolean" use="required"/>
   </xs:complexType>
  </xs:element>
+ 
  <xs:element name="contentList">
   <xs:complexType>
    <xs:sequence>
@@ -434,18 +422,7 @@
    </xs:sequence>
   </xs:complexType>
  </xs:element>
- <xs:element name="contentListMetadata">
-  <xs:complexType>
-   <xs:sequence>
-    <xs:element name="contentItemMetadata" minOccurs="0" maxOccurs="unbounded">
-     <xs:complexType>
-      <xs:attribute name="sequenceNumber" type="xs:int" use="required"/>
-      <xs:attribute name="size" type="xs:int" use="required"/>
-     </xs:complexType>
-    </xs:element>
-   </xs:sequence>
-  </xs:complexType>
- </xs:element>
+ 
  <xs:element name="bookmarkSet">
   <xs:complexType>
    <xs:sequence>
@@ -635,7 +612,7 @@
   </xs:complexType>
  </xs:element>
  
- <xs:element name="userInput">
+ <xs:element name="question">
   <xs:complexType>
    <xs:sequence>
     <!--<xs:element ref="inputTypes" minOccurs="0" maxOccurs="1" />-->
@@ -671,7 +648,7 @@
     <xs:element ref="message" minOccurs="1" maxOccurs="unbounded"/>
     <xs:element name="callbackFunction" minOccurs="1">
      <xs:simpleType>
-      <xs:restriction base="xs:string">
+      <xs:restriction base="xs:string"> <!-- TODO fix this enum -->
        <xs:enumeration value="getUserChoices"/>
        <xs:enumeration value="getUserAnnouncement"/>
        <xs:enumeration value="getUserInput"/>
@@ -686,7 +663,7 @@
   </xs:complexType>
  </xs:element>
  
- <xs:element name="userChoices">
+ <xs:element name="multipleChoiceQuestion">
   <xs:complexType>
    <xs:sequence>
     <xs:element ref="message" minOccurs="1" maxOccurs="1"/>
@@ -697,7 +674,7 @@
         <xs:complexType>
          <xs:sequence>
           <xs:element name="callbackFunction" minOccurs="1">
-           <xs:simpleType>
+           <xs:simpleType> <!-- TODO fix this enum -->
             <xs:restriction base="xs:string">
             <xs:enumeration value="getUserChoices"/>
             <xs:enumeration value="getUserAnnouncement"/>
@@ -735,19 +712,6 @@
   </xs:complexType>
  </xs:element>
  
- <xs:element name="userChoicesMetadata">
-  <xs:complexType>
-   <xs:sequence>
-    <xs:element name="userChoiceMetadata" minOccurs="1" maxOccurs="unbounded">
-     <xs:complexType>
-      <xs:attribute name="sequenceNumber" type="xs:int" use="required"/>
-      <xs:attribute name="size" type="xs:int" use="required"/>
-     </xs:complexType>
-    </xs:element>
-   </xs:sequence>
-  </xs:complexType>
- </xs:element>
-
  <xs:element name="groupedQuestions">
   <xs:complexType>
    <xs:sequence>
@@ -755,8 +719,8 @@
      <xs:complexType>
       <xs:sequence>
        <xs:choice>
-        <xs:element ref="userChoices" minOccurs="1" maxOccurs="1"> </xs:element>
-        <xs:element ref="userInput" minOccurs="1" maxOccurs="1"> </xs:element>
+        <xs:element ref="multipleChoiceQuestion" minOccurs="1" maxOccurs="1"> </xs:element>
+        <xs:element ref="question" minOccurs="1" maxOccurs="1"> </xs:element>
         <xs:element ref="announcements" minOccurs="1" maxOccurs="1"
         > </xs:element>
        </xs:choice>
@@ -777,19 +741,6 @@
      </xs:restriction>
     </xs:simpleType>
    </xs:attribute>
-  </xs:complexType>
- </xs:element>
- 
- <xs:element name="groupedQuestionsMetadata">
-  <xs:complexType>
-   <xs:sequence>
-    <xs:element name="questionMetadata" minOccurs="1" maxOccurs="unbounded">
-     <xs:complexType>
-      <xs:attribute name="sequenceNumber" type="xs:int" use="required"/>
-      <xs:attribute name="size" type="xs:int" use="required"/>
-     </xs:complexType>
-    </xs:element>
-   </xs:sequence>
   </xs:complexType>
  </xs:element>
  
@@ -946,4 +897,63 @@
  </xs:element>
  
 -->
+
+ <!--
+  <xs:element name="userChoicesMetadata">
+  <xs:complexType>
+  <xs:sequence>
+  <xs:element name="userChoiceMetadata" minOccurs="1" maxOccurs="unbounded">
+  <xs:complexType>
+  <xs:attribute name="sequenceNumber" type="xs:int" use="required"/>
+  <xs:attribute name="size" type="xs:int" use="required"/>
+  </xs:complexType>
+  </xs:element>
+  </xs:sequence>
+  </xs:complexType>
+  </xs:element>
+ -->
+ 
+ <!--
+  <xs:element name="groupedQuestionsMetadata">
+  <xs:complexType>
+  <xs:sequence>
+  <xs:element name="questionMetadata" minOccurs="1" maxOccurs="unbounded">
+  <xs:complexType>
+  <xs:attribute name="sequenceNumber" type="xs:int" use="required"/>
+  <xs:attribute name="size" type="xs:int" use="required"/>
+  </xs:complexType>
+  </xs:element>
+  </xs:sequence>
+  </xs:complexType>
+  </xs:element>
+ -->
+ <!--
+  <xs:element name="announcementsMetadata">
+  <xs:complexType>
+  <xs:sequence>
+  <xs:element name="announcementMetadata" minOccurs="0" maxOccurs="unbounded">
+  <xs:complexType>
+  <xs:attribute name="sequenceNumber" type="xs:int" use="required"/>
+  <xs:attribute name="size" type="xs:int" use="required"/>
+  </xs:complexType>
+  </xs:element>
+  </xs:sequence>
+  </xs:complexType>
+  </xs:element>
+ -->
+ <!--
+  <xs:element name="contentListMetadata">
+  <xs:complexType>
+  <xs:sequence>
+  <xs:element name="contentItemMetadata" minOccurs="0" maxOccurs="unbounded">
+  <xs:complexType>
+  <xs:attribute name="sequenceNumber" type="xs:int" use="required"/>
+  <xs:attribute name="size" type="xs:int" use="required"/>
+  </xs:complexType>
+  </xs:element>
+  </xs:sequence>
+  </xs:complexType>
+  </xs:element>
+ -->
+ 
 </xs:schema>
