@@ -179,10 +179,27 @@
         <section xml:id="fundamentals_protocols" conformance="normative">
             <title>Underlying protocols</title>
             <para>
-                <remark role="todo">Name all underlying protocols, standards, and define adherence
-                    to them as required for compliance once and for all. SOAP/HTTPS/WS-I; WSDL and
-                    http://www.w3.org/TR/wsdl#_request-response, etc. Note that https is what is used
-                    for transmission security.</remark>
+
+A compliant entity must support the following underlying protocols:
+<itemizedlist>
+<listitem>
+<para>
+<xref linkend="http1.1">http 1.1</xref>
+</para>
+</listitem>
+<listitem>
+<para>
+<xref linkend="ws-ibasicprofile1.1">WS-I basic Profile 1.1</xref>
+</para>
+<para>
+Please note, the <xref linkend="httpcookies">HTTP Cookies in WS-I Basic Profile 1.1</xref> states "R1121 An INSTANCE SHOULD NOT require consumer support for Cookies in order to function correctly." the Daisy Online protocol is a sessionbased protocol, and http cookies thus are fundamental to the protocol.  
+  </para>
+</listitem>
+<listitem>
+<para>
+secure http (https) through the use of SSL 3.0 and TLS 1.0
+</para>
+</listitem>
             </para>
         </section>
         <section xml:id="fundamentals_dynamic_menus" conformance="informative">
@@ -362,6 +379,28 @@
             </author>
             <date>November 2008</date>
         </biblioentry>
+
+        <biblioentry xml:id="bib_http1.1">
+            <abbrev>HTTP1.1</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/Protocols/rfc2616/rfc2616.html">HTTP 1.1</link>
+            </title>
+        </biblioentry>
+
+        <biblioentry xml:id="bib_httpcookies">
+            <abbrev>HTTPCookies</abbrev>
+            <title>
+                <link xlink:href="http://www.ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html#HTTP_Cookies">HTTP  cookies in Ws-I basic Profile 1.1</link>
+            </title>
+        </biblioentry>
+
+        <biblioentry xml:id="bib_ws-ibasicprofile1.1">
+            <abbrev>WS-IBasicprofile1.1</abbrev>
+            <title>
+                <link xlink:href="http://www.ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html">Ws-I basic Profile 1.1</link>
+            </title>
+        </biblioentry>
+
         -->
     </bibliography>
 
