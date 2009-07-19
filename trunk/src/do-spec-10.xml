@@ -71,8 +71,8 @@
         <section>
             <title>Usage scenarios</title>
             <para>
-                <remark role="todo">Describe use scenarios including autosubscribe to daily newspaper, 
-                    commercial service (advanced features), etc</remark>
+                <remark role="todo">Describe use scenarios including autosubscribe to daily
+                    newspaper, commercial service (advanced features), etc</remark>
             </para>
         </section>
     </preface>
@@ -137,7 +137,7 @@
                         <remark role="todo">define</remark>
                     </para>
                 </listitem>
-            </varlistentry>            
+            </varlistentry>
             <varlistentry>
                 <term>Content Download</term>
                 <listitem>
@@ -178,29 +178,25 @@
         <title>Protocol Fundamentals</title>
         <section xml:id="fundamentals_protocols" conformance="normative">
             <title>Underlying protocols</title>
-            <para>
-
-A compliant entity must support the following underlying protocols:
-<itemizedlist>
-<listitem>
-<para>
-<xref linkend="http1.1">http 1.1</xref>
-</para>
-</listitem>
-<listitem>
-<para>
-<xref linkend="ws-ibasicprofile1.1">WS-I basic Profile 1.1</xref>
-</para>
-<para>
-Please note, the <xref linkend="httpcookies">HTTP Cookies in WS-I Basic Profile 1.1</xref> states "R1121 An INSTANCE SHOULD NOT require consumer support for Cookies in order to function correctly." the Daisy Online protocol is a sessionbased protocol, and http cookies thus are fundamental to the protocol.  
-  </para>
-</listitem>
-<listitem>
-<para>
-secure http (https) through the use of SSL 3.0 and TLS 1.0
-</para>
-</listitem>
-</itemizedlist>
+            <para> A compliant entity must support the following underlying protocols: <itemizedlist>
+                    <listitem>
+                        <para>
+                            <xref linkend="bib_http11" />
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            <xref linkend="bib_wsibasicprofile11" />
+                        </para>
+                        <para>Note: <xref linkend="bib_httpcookies" /> states "R1121 An INSTANCE SHOULD NOT
+                            require consumer support for Cookies in order to function correctly."
+                            The Daisy Online protocol is a session based protocol, and http cookies
+                            thus are fundamental to the protocol. </para>
+                    </listitem>
+                    <listitem>
+                        <para>Secure http (https) through the use of SSL 3.0 and TLS 1.0</para>
+                    </listitem>
+                </itemizedlist>
             </para>
         </section>
         <section xml:id="fundamentals_dynamic_menus" conformance="informative">
@@ -262,13 +258,13 @@ secure http (https) through the use of SSL 3.0 and TLS 1.0
             <para>[Definition: valid session state]</para>
             <para>...</para>
         </section>
-        
+
         <section xml:id="operations_content_issuing">
             <title>Issuing (and optional return) of content</title>
             <para>...</para>
             <section xml:id="operations_content_issuing_pdtb">
                 <title>Rights management</title>
-                <para>...</para>             
+                <para>...</para>
             </section>
         </section>
 
@@ -279,43 +275,45 @@ secure http (https) through the use of SSL 3.0 and TLS 1.0
 
         <section xml:id="operations_content_selection">
             <title>Content Selection</title>
-            <para><remark role="todo">contentlists, search</remark></para>
+            <para>
+                <remark role="todo">contentlists, search</remark>
+            </para>
         </section>
 
         <section xml:id="operations_service_announcements">
             <title>Service Announcements and/or Queries</title>
             <para>...</para>
         </section>
-        
+
         <section xml:id="operations_bookmarks">
             <title>Bookmarks and Last Reading Position</title>
             <para>...</para>
-          </section>
-        
+        </section>
+
         <section xml:id="operations_diagnostics">
             <title>Diagnostics and Error Handling</title>
             <para>...</para>
         </section>
-        
+
         <section xml:id="operations_complete_session_examples">
             <title>Complete session examples</title>
             <para>...</para>
         </section>
-        
+
     </chapter>
 
     <chapter xml:id="stateReference" conformance="normative">
         <title>Session State Definitions</title>
-         <variablelist>
-             <varlistentry>
-                 <term>STATE_READY</term>
-                 <listitem>
-                     <para>Active after: logon, followed by setReadingSystemAttributes.</para>
-                     <para>Active until: end of session</para>                     
-                     <para>Operations allowed when this state is active: x,y,z</para>
-                 </listitem>
-             </varlistentry>
-             <!--
+        <variablelist>
+            <varlistentry>
+                <term>STATE_READY</term>
+                <listitem>
+                    <para>Active after: logon, followed by setReadingSystemAttributes.</para>
+                    <para>Active until: end of session</para>
+                    <para>Operations allowed when this state is active: x,y,z</para>
+                </listitem>
+            </varlistentry>
+            <!--
              <varlistentry>
                  <term>STATE_ANNOUNCEMENTS_RETRIEVED</term>
                  <listitem>
@@ -335,9 +333,9 @@ secure http (https) through the use of SSL 3.0 and TLS 1.0
                  </listitem>
              </varlistentry>
              -->
-         </variablelist>
+        </variablelist>
     </chapter>
-    
+
     <chapter xml:id="apiReference" conformance="normative">
         <title>API Definition</title>
         <para>Dont edit this chapter here in the docbook source - autogenerated from WSDL</para>
@@ -361,7 +359,8 @@ secure http (https) through the use of SSL 3.0 and TLS 1.0
         <biblioentry xml:id="bib_xsdDatatypes">
             <abbrev>XMLSCHEMA2</abbrev>
             <title>
-                <link xlink:href="http://www.w3.org/TR/xmlschema-2/">XML Schema Part 2: Datatypes Second Edition</link>
+                <link xlink:href="http://www.w3.org/TR/xmlschema-2/">XML Schema Part 2: Datatypes
+                    Second Edition</link>
             </title>
             <author>
                 <personname>P. V. Biron, et al</personname>
@@ -380,8 +379,8 @@ secure http (https) through the use of SSL 3.0 and TLS 1.0
             </author>
             <date>November 2008</date>
         </biblioentry>
-
-        <biblioentry xml:id="bib_http1.1">
+        -->
+        <biblioentry xml:id="bib_http11">
             <abbrev>HTTP1.1</abbrev>
             <title>
                 <link xlink:href="http://www.w3.org/Protocols/rfc2616/rfc2616.html">HTTP 1.1</link>
@@ -391,18 +390,17 @@ secure http (https) through the use of SSL 3.0 and TLS 1.0
         <biblioentry xml:id="bib_httpcookies">
             <abbrev>HTTPCookies</abbrev>
             <title>
-                <link xlink:href="http://www.ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html#HTTP_Cookies">HTTP  cookies in Ws-I basic Profile 1.1</link>
+                <link xlink:href="http://www.ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html#HTTP_Cookies">HTTP cookies in Ws-I basic Profile 1.1</link>
             </title>
         </biblioentry>
 
-        <biblioentry xml:id="bib_ws-ibasicprofile1.1">
+        <biblioentry xml:id="bib_wsibasicprofile11">
             <abbrev>WS-IBasicprofile1.1</abbrev>
             <title>
-                <link xlink:href="http://www.ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html">Ws-I basic Profile 1.1</link>
+                <link xlink:href="http://www.ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html">WS-I basic Profile 1.1</link>
             </title>
         </biblioentry>
-
-        -->
+        
     </bibliography>
 
     <acknowledgements>
