@@ -8,7 +8,7 @@
 
 *Agreed*: Namespace uri not to contain doml – eg ns/daisyonline#
 
-*Agreed*: interface, function, parameter and fault mapped to wsdl equivalants in the terminology section.
+*Agreed*: interface, function, parameter and fault mapped to wsdl equivalents in the terminology section.
 
 *Agreed*: use Content except for reference to the Daisy spec PublicationID.
 
@@ -18,7 +18,7 @@
 
 Third party content provider: needs definition.
 
-*Ongoing*: rename IssueContent and ReturnContent functions.
+*Ongoing*: rename issueContent and returnContent functions.
 
 *Ongoing*: define Dynamic menu generations
 
@@ -50,25 +50,25 @@ This operation is optional.
 
 Replace the following functions:
 
- # getUserChoices
- # getUserInput
- # getGroupedQuestions
- # getUserAnnouncement
- # postUserResponses
+ # `getUserChoices`
+ # `getUserInput`
+ # `getGroupedQuestions`
+ # `getUserAnnouncement`
+ # `postUserResponses`
 
 with
 
- # getMultipleChoiceQuestion(id)
- # getQuestion(id)
- # getGroupedQuestions(gid)
- # getMessage(mid)
- # setUserResponses(UserResponses)
+ # `getMultipleChoiceQuestion(id)`
+ # `getQuestion(id)`
+ # `getGroupedQuestions(gid)`
+ # `getMessage(mid)`
+ # `setUserResponses(UserResponses)`
 
-All the "get" functions would take an ID only.  All user responses would be sent with the setUserResponses function, which would return the "nextOperation", i.e. the next operation to call in sequence.
+All the "`get`" functions would take an ID only.  All user responses would be sent with the `setUserResponses` function, which would return the `nextOperation`, i.e. the next operation to call in sequence.
 
 Alternatively, the function definitions would remain the same; only the names would change.
 
-These functions could be unified into a single postUserResponses function if it is possible to have a complex return type that encapsulates multiple choice, text entry, grouped questions, and user announcements.
+These functions could be unified into a single `postUserResponses` function if it is possible to have a complex return type that encapsulates multiple choice, text entry, grouped questions, and user announcements.
 
 == Issue 34 ==
 
@@ -90,7 +90,7 @@ The content list was intended to be an endpoint; the Reading System would have t
 
 *Agreed*: The web service session should be separate from the content transfer session.
 
-*Agreed*: The start of a session is a successful logOn.  The end of a session is either a logOut or a timeout.  WS sessions can span multiple HTTP sessions.
+*Agreed*: The start of a session is a successful `logOn`.  The end of a session is either a `logOut` or a timeout.  WS sessions can span multiple HTTP sessions.
 
 == Issue 40 ==
 
@@ -99,3 +99,21 @@ The content list was intended to be an endpoint; the Reading System would have t
 == Issue 42 ==
 
 *Agreed*: Mark invalid
+
+== Issue 44 ==
+
+*Agreed*: Drop sequence numbers from `userChoices`, `groupedQuestions`, announcements and `contentList`s.
+
+*Agreed*: `markAnnouncementsAsRead` should take a list of announcement IDs, not a range.
+
+*Action - Markus*: Should IDs be simple Strings or XML Names?
+
+*Agreed*: `contentList`s should grow `rangeBegin`, `rangeEnd` and `totalItems` attributes, to allow for downloading parts of the content list.
+
+== Tomorrow ==
+
+*Action - Markus*:
+ * Keep WSDL and XSD up to date all the time.
+ * Prioritize issues so ones with heavier impact are dealt with earlier.
+
+= Tuesday =
