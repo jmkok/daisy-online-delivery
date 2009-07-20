@@ -1,3 +1,75 @@
 #summary Minutes Toronto F2F 2009
 
+<wiki:toc />
+
 = Monday July 20 =
+
+== Terms ==
+
+*Agreed*: Namespace uri not to contain doml – eg ns/daisyonline#
+
+*Agreed*: interface, function, parameter and fault mapped to wsdl equivalants in the terminology section.
+
+*Agreed*: use Content except for reference to the Daisy spec PublicationID.
+
+*Agreed*: Download / Stream - streaming implies not storing the content on disc.
+
+*Action: Markus* – spec requires support of range headers on http / https requests. A compliant service provider must support range header. Third parties should support range headers. Reading systems must support responses that do not support range headers.
+
+Third party content provider: needs definition.
+
+*Ongoing*: rename IssueContent and ReturnContent functions.
+
+*Ongoing*: define Dynamic menu generations
+
+Basic vs Advanced (Core vs Optional)
+
+*Proposed*:
+
+ # wdsl with one port type (interface) where all operations that are optional allow the OperationNotSupported? fault.
+ # In the spec we have required operations and we possible have groups of optional operations.
+ # We introduce a new operation by which the reading system can discover which optional operations the service implements – this allows non-implemented operations to be removed from the reading systems ui.
+
+== PDTB2 ==
+
+*Agreed*: we introduct a new operation
+
+getKeyExchangeObject(String supportedPublicKeyNames, String RequestedKeyName? )
+
+which returns a Key Exchange Object xml fragment.
+
+This operation is optional.
+
+*Action*: to decide if the contentMetaData fragment needs to define the use or not of PDTB2.
+
+*Action*: to define an xml type for an array of string (sequence).
+
+== Dynamic menus ==
+
+*Proposed*:
+
+Replace the following functions:
+
+ # getUserChoices
+ # getUserInput
+ # getGroupedQuestions
+ # getUserAnnouncement
+ # postUserResponses
+
+with
+
+ # getMultipleChoiceQuestion(id)
+ # getQuestion(id)
+ # getGroupedQuestions(gid)
+ # getMessage(mid)
+ # setUserResponses(UserResponses)
+
+All the "get" functions would take an ID only.  All user responses would be sent with the setUserResponses function, which would return the "nextOperation", i.e. the next operation to call in sequence.
+
+Alternatively, the function definitions would remain the same; only the names would change.
+
+These functions could be unified into a single postUserResponses function if it is possible to have a complex return type that encapsulates multiple choice, text entry, grouped questions, and user announcements.
+
+== Tracker issues ==
+
+=== Issue 34 ===
