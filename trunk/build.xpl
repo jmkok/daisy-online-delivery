@@ -33,6 +33,8 @@
         </p:input>
     </p:xslt>
  	
+ 	<p:store href="./build/do-spec-10.xml" name="storeDocBook" />
+ 	
 	<p:validate-with-relax-ng assert-valid="true" name="validate">
 	    <p:input port="source">
 	        <p:pipe step="expandDocBookXSD" port="result"/>
@@ -61,7 +63,7 @@
   		</p:input>
                  
     </p:xslt>
-    
+       	
     <p:store href="./build/do-spec-10.html" name="store"/>
 
 </p:declare-step>
