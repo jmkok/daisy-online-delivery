@@ -112,7 +112,7 @@
 	<message name="setReadingSystemAttributesRequest">
 		<part name="attributes" element="tns:readingSystemAttributes">
 			<documentation>
-				<db:para role="desc">The Reading System attributes to post.</db:para>
+				<db:para role="desc">The Reading System Attributes to post.</db:para>
 			</documentation>
 		</part>
 	</message>
@@ -277,6 +277,7 @@
 			<input message="tns:logOnRequest"/>
 			<output message="tns:logOnResponse"/>
 			<fault name="logOnInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="logOnInvalidOperation" message="tns:InvalidOperationFault"/>
 		</operation>
 		<operation name="logOff">
 			<documentation>Logs the Reading System off the Service.</documentation>
@@ -295,6 +296,7 @@
 			<fault name="issueContentInternalServerError" message="tns:InternalServerErrorFault"/>
 			<fault name="issueContentNotAuthorised" message="tns:NotAuthorisedFault"/>
 			<fault name="issueContentInvalidParameter" message="tns:InvalidParameterFault"/>
+			<fault name="issueContentInvalidOperation" message="tns:InvalidOperationFault"/>			
 		</operation>
 
 		<operation name="returnContent">
@@ -310,18 +312,23 @@
 			<fault name="returnContentInternalServerError" message="tns:InternalServerErrorFault"/>
 			<fault name="returnContentNotAuthorised" message="tns:NotAuthorisedFault"/>
 			<fault name="returnContentInvalidParameter" message="tns:InvalidParameterFault"/>
+			<fault name="returnContentInvalidOperation" message="tns:InvalidOperationFault"/>		
 		</operation>
 
 		<operation name="setReadingSystemAttributes">
 			<documentation>
 				<db:para role="desc">Posts the attributes (characteristics) of the Reading System to
-					the Service.</db:para>
+				the Service.</db:para>
+				<db:para>This operation must be invoked after a successful <db:xref linkend="op_logOn" /> in order to
+					establish the [session ready state] [TODO link up]. This operation may be invoked additional times during
+					a session to record dynamic changes in the Reading System characteristics.
+				</db:para>
 			</documentation>
 			<input message="tns:setReadingSystemAttributesRequest"/>
 			<output message="tns:setReadingSystemAttributesResponse"/>
-			<fault name="setReadingSystemAttributesInternalServerError"
-				message="tns:InternalServerErrorFault"/>
+			<fault name="setReadingSystemAttributesInternalServerError" message="tns:InternalServerErrorFault"/>
 			<fault name="setReadingSystemAttributesNotAuthorised" message="tns:NotAuthorisedFault"/>
+			<fault name="setReadingSystemAttributesInvalidOperation" message="tns:InvalidOperationFault"/>		
 		</operation>
 
 		<operation name="getContentList">
@@ -332,16 +339,21 @@
 			<output message="tns:getContentListResponse"/>
 			<fault name="getContentListInternalServerError" message="tns:InternalServerErrorFault"/>
 			<fault name="getContentListNotAuthorised" message="tns:NotAuthorisedFault"/>
+			<fault name="getContentListInvalidOperation" message="tns:InvalidOperationFault"/>				
 		</operation>
 		
 		<operation name="getContentMetadata">
 			<documentation>
 				<db:para role="desc">Retrieves <db:xref linkend="tp_contentMetadata"/> for the specified content.</db:para>
+				<db:para role="prereq">This operation is only valid if a previous call to 
+					<db:xref linkend="op_issueContent"/> with a result of <db:varname>true</db:varname> has been made for the given publication.</db:para>
+				
 			</documentation>
 			<input message="tns:getContentMetadataRequest" />
 			<output message="tns:getContentMetadataResponse" />
 			<fault name="getContentMetadataInternalServerError" message="tns:InternalServerErrorFault"/>
 			<fault name="getContentMetadataNotAuthorised" message="tns:NotAuthorisedFault"/>
+			<fault name="getContentMetadataInvalidOperation" message="tns:InvalidOperationFault"/>		
 		</operation>
 		
 		<operation name="getServiceAnnouncements">
@@ -352,6 +364,7 @@
 			<output message="tns:getServiceAnnouncementsResponse"/>
 			<fault name="getServiceAnnouncementsInternalServerError" message="tns:InternalServerErrorFault"/>
 			<fault name="getServiceAnnouncementsNotAuthorised" message="tns:NotAuthorisedFault"/>
+			<fault name="getServiceAnnouncementsInvalidOperation" message="tns:InvalidOperationFault"/>			
 		</operation>
 		
 		<operation name="markAnnouncementsAsRead">
@@ -364,6 +377,7 @@
 			<output message="tns:markAnnouncementsAsReadResponse"/>
 			<fault name="markAnnouncementsAsReadInternalServerError" message="tns:InternalServerErrorFault"/>
 			<fault name="markAnnouncementsAsReadNotAuthorised" message="tns:NotAuthorisedFault"/>
+			<fault name="markAnnouncementsAsReadInvalidOperation" message="tns:InvalidOperationFault"/>
 		</operation>
 		
 	</portType>
@@ -377,15 +391,16 @@
 			<documentation>
 				<db:para role="desc">Request the storage of bookmarks for a Publication to the
 					Service.</db:para>
-				<db:para>Note that the publication identifier is embedded in the <db:xref
+				<db:para role="note">Note that the publication identifier is embedded in the <db:xref
 						linkend="tp_bookmarkSet"/> type.</db:para>
-				<db:para>Note that this operation only supports the storage of bookmarks for one
+				<db:para role="note">Note that this operation only supports the storage of bookmarks for one
 					publication at a time.</db:para>
 			</documentation>
 			<input message="tns:setBookmarksRequest"/>
 			<output message="tns:setBookmarksResponse"/>
 			<fault name="setBookmarksInternalServerError" message="tns:InternalServerErrorFault"/>
 			<fault name="setBookmarksNotAuthorised" message="tns:NotAuthorisedFault"/>
+			<fault name="setBookmarksInvalidOperation" message="tns:InvalidOperationFault"/>		
 		</operation>
 		<operation name="getBookmarks">
 			<documentation>
@@ -397,6 +412,7 @@
 			<fault name="getBookmarksInternalServerError" message="tns:InternalServerErrorFault"/>
 			<fault name="getBookmarksNotAuthorised" message="tns:NotAuthorisedFault"/>
 			<fault name="getBookmarksInvalidParameter" message="tns:InvalidParameterFault"/>
+			<fault name="getBookmarksInvalidOperation" message="tns:InvalidOperationFault"/>						
 		</operation>
 		<operation name="getDateTime">
 			<documentation>
@@ -406,6 +422,7 @@
 			<output message="tns:getDateTimeResponse"/>
 			<fault name="getDateTimeInternalServerError" message="tns:InternalServerErrorFault"/>
 			<fault name="getDateTimeNotAuthorised" message="tns:NotAuthorisedFault"/>
+			<fault name="getDateTimeInvalidOperation" message="tns:InvalidOperationFault"/>			
 		</operation>
 		<operation name="setUserResponses">
 			<documentation>
@@ -415,6 +432,7 @@
 			<output message="tns:setUserResponsesResponse"/>
 			<fault name="setUserResponsesInternalServerError" message="tns:InternalServerErrorFault"/>
 			<fault name="setUserResponsesNotAuthorised" message="tns:NotAuthorisedFault"/>
+			<fault name="setUserResponsesInvalidOperation" message="tns:InvalidOperationFault"/>			
 		</operation>
 		<operation name="getQuestion">
 			<!-- was: getUserInput -->
@@ -425,6 +443,7 @@
 			<output message="tns:getQuestionResponse"/>
 			<fault name="getQuestionInternalServerError" message="tns:InternalServerErrorFault"/>
 			<fault name="getQuestionNotAuthorised" message="tns:NotAuthorisedFault"/>		
+			<fault name="getQuestionInvalidOperation" message="tns:InvalidOperationFault"/>		
 		</operation>
 		<operation name="getMultipleChoiceQuestion">
 			<!-- was: getUserChoices -->
@@ -434,7 +453,8 @@
 			<input message="tns:getMultipleChoiceQuestionRequest"/>
 			<output message="tns:getMultipleChoiceQuestionResponse"/>
 			<fault name="getMultipleChoiceQuestionInternalServerError" message="tns:InternalServerErrorFault"/>
-			<fault name="getMultipleChoiceQuestionNotAuthorised" message="tns:NotAuthorisedFault"/>		
+			<fault name="getMultipleChoiceQuestionNotAuthorised" message="tns:NotAuthorisedFault"/>	
+			<fault name="getMultipleChoiceQuestionInvalidOperation" message="tns:InvalidOperationFault"/>
 		</operation>
 		<operation name="getGroupedQuestions">
 			<documentation>
@@ -442,8 +462,9 @@
 			</documentation>
 			<input message="tns:getGroupedQuestionsRequest"/>
 			<output message="tns:getGroupedQuestionsResponse"/>
-			<fault name="getGroupedChoiceQuestionsInternalServerError" message="tns:InternalServerErrorFault"/>
-			<fault name="getGroupedChoiceQuestionsNotAuthorised" message="tns:NotAuthorisedFault"/>		
+			<fault name="getGroupedQuestionsInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="getGroupedQuestionsNotAuthorised" message="tns:NotAuthorisedFault"/>	
+			<fault name="getGroupedQuestionsInvalidOperation" message="tns:InvalidOperationFault"/>
 		</operation>
 		<operation name="getMessage">
 			<!-- was: getUserAnnouncement -->
@@ -453,7 +474,8 @@
 			<input message="tns:getMessageRequest"/>
 			<output message="tns:getMessageResponse"/>
 			<fault name="getMessageInternalServerError" message="tns:InternalServerErrorFault"/>
-			<fault name="getMessageNotAuthorised" message="tns:NotAuthorisedFault"/>		
+			<fault name="getMessageNotAuthorised" message="tns:NotAuthorisedFault"/>
+			<fault name="getMessageInvalidOperation" message="tns:InvalidOperationFault"/>
 		</operation>
 				
 	</portType>
