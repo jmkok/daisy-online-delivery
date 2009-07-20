@@ -116,4 +116,4 @@ The content list was intended to be an endpoint; the Reading System would have t
  * Keep WSDL and XSD up to date all the time.
  * Prioritize issues so ones with heavier impact are dealt with earlier.
 
-= Tuesday =
+= Tuesday July 21=
