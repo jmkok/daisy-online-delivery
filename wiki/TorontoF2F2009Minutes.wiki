@@ -70,6 +70,32 @@ Alternatively, the function definitions would remain the same; only the names wo
 
 These functions could be unified into a single postUserResponses function if it is possible to have a complex return type that encapsulates multiple choice, text entry, grouped questions, and user announcements.
 
-== Tracker issues ==
+== Issue 34 ==
 
-=== Issue 34 ===
+Might be relevant for DAISY 2.02.
+
+*Action - Markus*: Look up the portable bookmark spec.
+
+== Issue 38 ==
+
+*Agreed*: menu and content list IDs should not be expected to be held for longer than one session.  IDs may be held for less a period of time, depending on the server.
+
+Will Reading Systems be caching dynamic menus and content lists?
+
+The content list was intended to be an endpoint; the Reading System would have to start from the "home" menu once it reaches a content list.
+
+*Parked*
+
+== Define a session ==
+
+*Agreed*: The web service session should be separate from the content transfer session.
+
+*Agreed*: The start of a session is a successful logOn.  The end of a session is either a logOut or a timeout.  WS sessions can span multiple HTTP sessions.
+
+== Issue 40 ==
+
+*Agreed*: Drop the VB examples; keep the Java/C# examples in an appendix.
+
+== Issue 42 ==
+
+*Agreed*: Mark invalid
