@@ -254,7 +254,7 @@
 			<documentation>
 				<db:para role="desc">The identifier of the publication for which the metadata is being requested, 
 					as expressed by the <db:varname>id</db:varname> attribute of the relevant <db:varname>contentItem</db:varname> in 
-					the <db:xref linkend="tp_contentList"/> type.</db:para>
+					the <db:xref linkend="tp_contentList" /> type.</db:para>
 			</documentation>
 		</part>
 	</message>
@@ -264,12 +264,12 @@
 	</message>
 	
 	
-	<!-- *********************************** -->
-	<!-- ********  basic interface  ******** -->
-	<!-- *********************************** -->
+	<portType name="daisy-online">
 
-	<portType name="daisy-online-basic">
-
+	<!-- **************************************************** -->
+	<!-- *******  operations required for compliance ******** -->
+	<!-- **************************************************** -->
+		
 		<operation name="logOn">
 			<documentation>
 				<db:para role="desc">Logs the Reading System on to the Service.</db:para>
@@ -356,6 +356,10 @@
 			<fault name="getContentMetadataInvalidOperation" message="tns:InvalidOperationFault"/>		
 		</operation>
 		
+		<!-- ************************************** -->
+		<!-- *******  optional operations  ******** -->
+		<!-- ************************************** -->
+		
 		<operation name="getServiceAnnouncements">
 			<documentation>
 				<db:para role="desc">Retrieves the announcements awaiting the User's attention from the Service.</db:para>
@@ -364,7 +368,8 @@
 			<output message="tns:getServiceAnnouncementsResponse"/>
 			<fault name="getServiceAnnouncementsInternalServerError" message="tns:InternalServerErrorFault"/>
 			<fault name="getServiceAnnouncementsNotAuthorised" message="tns:NotAuthorisedFault"/>
-			<fault name="getServiceAnnouncementsInvalidOperation" message="tns:InvalidOperationFault"/>			
+			<fault name="getServiceAnnouncementsInvalidOperation" message="tns:InvalidOperationFault"/>
+			<fault name="getServiceAnnouncementsOperationNotSupported" message="tns:OperationNotSupportedFault"/>
 		</operation>
 		
 		<operation name="markAnnouncementsAsRead">
@@ -378,21 +383,15 @@
 			<fault name="markAnnouncementsAsReadInternalServerError" message="tns:InternalServerErrorFault"/>
 			<fault name="markAnnouncementsAsReadNotAuthorised" message="tns:NotAuthorisedFault"/>
 			<fault name="markAnnouncementsAsReadInvalidOperation" message="tns:InvalidOperationFault"/>
+			<fault name="markAnnouncementsAsReadOperationNotSupported" message="tns:OperationNotSupportedFault"/>
 		</operation>
 		
-	</portType>
-
-	<!-- ************************************** -->
-	<!-- ********  advanced interface  ******** -->
-	<!-- ************************************** -->
-
-	<portType name="daisy-online-advanced">
 		<operation name="setBookmarks">
 			<documentation>
 				<db:para role="desc">Request the storage of bookmarks for a Publication to the
 					Service.</db:para>
 				<db:para role="note">Note that the publication identifier is embedded in the <db:xref
-						linkend="tp_bookmarkSet"/> type.</db:para>
+					linkend="tp_bookmarkSet"/> type.</db:para>
 				<db:para role="note">Note that this operation only supports the storage of bookmarks for one
 					publication at a time.</db:para>
 			</documentation>
@@ -401,6 +400,7 @@
 			<fault name="setBookmarksInternalServerError" message="tns:InternalServerErrorFault"/>
 			<fault name="setBookmarksNotAuthorised" message="tns:NotAuthorisedFault"/>
 			<fault name="setBookmarksInvalidOperation" message="tns:InvalidOperationFault"/>		
+			<fault name="setBookmarksOperationNotSupported" message="tns:OperationNotSupportedFault"/>	
 		</operation>
 		<operation name="getBookmarks">
 			<documentation>
@@ -412,7 +412,8 @@
 			<fault name="getBookmarksInternalServerError" message="tns:InternalServerErrorFault"/>
 			<fault name="getBookmarksNotAuthorised" message="tns:NotAuthorisedFault"/>
 			<fault name="getBookmarksInvalidParameter" message="tns:InvalidParameterFault"/>
-			<fault name="getBookmarksInvalidOperation" message="tns:InvalidOperationFault"/>						
+			<fault name="getBookmarksInvalidOperation" message="tns:InvalidOperationFault"/>
+			<fault name="getBookmarksOperationNotSupported" message="tns:OperationNotSupportedFault"/>
 		</operation>
 		<operation name="getDateTime">
 			<documentation>
@@ -422,7 +423,8 @@
 			<output message="tns:getDateTimeResponse"/>
 			<fault name="getDateTimeInternalServerError" message="tns:InternalServerErrorFault"/>
 			<fault name="getDateTimeNotAuthorised" message="tns:NotAuthorisedFault"/>
-			<fault name="getDateTimeInvalidOperation" message="tns:InvalidOperationFault"/>			
+			<fault name="getDateTimeInvalidOperation" message="tns:InvalidOperationFault"/>
+			<fault name="getDateTimeOperationNotSupported" message="tns:OperationNotSupportedFault"/>
 		</operation>
 		<operation name="setUserResponses">
 			<documentation>
@@ -432,7 +434,8 @@
 			<output message="tns:setUserResponsesResponse"/>
 			<fault name="setUserResponsesInternalServerError" message="tns:InternalServerErrorFault"/>
 			<fault name="setUserResponsesNotAuthorised" message="tns:NotAuthorisedFault"/>
-			<fault name="setUserResponsesInvalidOperation" message="tns:InvalidOperationFault"/>			
+			<fault name="setUserResponsesInvalidOperation" message="tns:InvalidOperationFault"/>
+			<fault name="setUserResponsesOperationNotSupported" message="tns:OperationNotSupportedFault"/>		
 		</operation>
 		<operation name="getQuestion">
 			<!-- was: getUserInput -->
@@ -443,7 +446,8 @@
 			<output message="tns:getQuestionResponse"/>
 			<fault name="getQuestionInternalServerError" message="tns:InternalServerErrorFault"/>
 			<fault name="getQuestionNotAuthorised" message="tns:NotAuthorisedFault"/>		
-			<fault name="getQuestionInvalidOperation" message="tns:InvalidOperationFault"/>		
+			<fault name="getQuestionInvalidOperation" message="tns:InvalidOperationFault"/>	
+			<fault name="getQuestionOperationNotSupported" message="tns:OperationNotSupportedFault"/>
 		</operation>
 		<operation name="getMultipleChoiceQuestion">
 			<!-- was: getUserChoices -->
@@ -455,6 +459,7 @@
 			<fault name="getMultipleChoiceQuestionInternalServerError" message="tns:InternalServerErrorFault"/>
 			<fault name="getMultipleChoiceQuestionNotAuthorised" message="tns:NotAuthorisedFault"/>	
 			<fault name="getMultipleChoiceQuestionInvalidOperation" message="tns:InvalidOperationFault"/>
+			<fault name="getMultipleChoiceQuestionOperationNotSupported" message="tns:OperationNotSupportedFault"/>		
 		</operation>
 		<operation name="getGroupedQuestions">
 			<documentation>
@@ -465,6 +470,7 @@
 			<fault name="getGroupedQuestionsInternalServerError" message="tns:InternalServerErrorFault"/>
 			<fault name="getGroupedQuestionsNotAuthorised" message="tns:NotAuthorisedFault"/>	
 			<fault name="getGroupedQuestionsInvalidOperation" message="tns:InvalidOperationFault"/>
+			<fault name="getGroupedQuestionsOperationNotSupported" message="tns:OperationNotSupportedFault"/>
 		</operation>
 		<operation name="getMessage">
 			<!-- was: getUserAnnouncement -->
@@ -476,10 +482,9 @@
 			<fault name="getMessageInternalServerError" message="tns:InternalServerErrorFault"/>
 			<fault name="getMessageNotAuthorised" message="tns:NotAuthorisedFault"/>
 			<fault name="getMessageInvalidOperation" message="tns:InvalidOperationFault"/>
+			<fault name="getMessageOperationNotSupported" message="tns:OperationNotSupportedFault"/>
 		</operation>
-				
 	</portType>
-
 	
 	<!-- ************************************** -->
 	<!-- ********        faults        ******** -->
@@ -509,5 +514,9 @@
 				make NotAuthorisedFault redundant)</db:para>
 		</documentation>
 	</message>
-
+	<message name="OperationNotSupportedFault">
+		<documentation>
+			<db:para role="desc">This operation is not supported by the Service.</db:para>
+		</documentation>
+	</message>
 </definitions>
