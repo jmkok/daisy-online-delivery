@@ -2,48 +2,17 @@
 <xs:schema id="DOML" xmlns="http://www.daisy.org/ns/doml#"
  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"
  targetNamespace="http://www.daisy.org/ns/doml#" elementFormDefault="qualified"
- xmlns:db="http://docbook.org/ns/docbook"
- attributeFormDefault="unqualified">
+ xmlns:db="http://docbook.org/ns/docbook" attributeFormDefault="unqualified">
 
  <xs:annotation>
-  <xs:documentation xml:lang="en"> This document is the Last Call Working Draft by the DAISY
-   Online Delivery Specification Working Group of the DAISY Consortium. Date: 6 May 2009
-   Editors: Puja Dhanetwal, Ben Maslen and Kenny Johar (Vision Australia)
-  </xs:documentation>
+  <xs:documentation xml:lang="en"> This document is the Last Call Working Draft by the DAISY Online
+   Delivery Specification Working Group of the DAISY Consortium. Date: 6 May 2009 Editors: Puja
+   Dhanetwal, Ben Maslen and Kenny Johar (Vision Australia) </xs:documentation>
  </xs:annotation>
 
  <xs:import namespace="http://www.w3.org/XML/1998/namespace"
   schemaLocation="http://www.w3.org/2001/xml.xsd"/>
 
- <xs:simpleType name="sortByType">
-  <xs:restriction base="xs:string">
-   <xs:enumeration value="title"/>
-   <xs:enumeration value="size"/>
-   <xs:enumeration value="author"/>
-   <xs:enumeration value="genre"/>
-   <xs:enumeration value="publisher"/>
-   <xs:enumeration value="narrator"/>
-   <xs:enumeration value="language"/>
-   <xs:enumeration value="issueDate "/>
-  </xs:restriction>
- </xs:simpleType>
- <xs:simpleType name="StatusTypes">
-  <xs:restriction base="xs:string">
-   <xs:enumeration value="downloading"/>
-   <xs:enumeration value="downloaded"/>
-   <xs:enumeration value="pending"/>
-   <xs:enumeration value="streaming"/>
-  </xs:restriction>
- </xs:simpleType>
- <xs:simpleType name="StorageTypes">
-  <xs:restriction base="xs:string">
-   <xs:enumeration value="internal"/>
-   <xs:enumeration value="removable"/>
-   <xs:enumeration value="network"/>
-  </xs:restriction>
- </xs:simpleType>
-
- 
  <xs:element name="readingSystemAttributes">
   <xs:complexType>
    <xs:sequence>
@@ -57,35 +26,19 @@
     <xs:element name="config" minOccurs="1" maxOccurs="1">
      <xs:complexType>
       <xs:sequence>
-       <xs:element name="supportsEmbeddedAudio" type="xs:boolean" minOccurs="1"
-        maxOccurs="1"/>
-       <xs:element name="supportsMultipleSelections" type="xs:boolean"
-        minOccurs="1" maxOccurs="1"/>
-       <xs:element name="supportsGroupedQuestions" type="xs:boolean"
-        minOccurs="1" maxOccurs="1"/>
-       <xs:element name="protocolVersion" type="xs:string" minOccurs="1"
-        maxOccurs="1"/>
-       <xs:element name="availableMemory" type="xs:int" minOccurs="1"
-        maxOccurs="1"/>
-       <xs:element name="preferredLanguage" minOccurs="1" maxOccurs="1">
-        <xs:simpleType>
-         <xs:restriction base="xs:string">
-          <xs:pattern value="([a-zA-Z]{1,8}(-[a-zA-Z0-9]{1,8}))*"/>
-         </xs:restriction>
-        </xs:simpleType>
-       </xs:element>
-       <xs:element name="bandwidth" type="xs:int" minOccurs="1" maxOccurs="1"/>
-
+       <xs:element name="supportsMultipleSelections" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+       <xs:element name="supportsGroupedQuestions" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+       <xs:element name="preferredLanguage" minOccurs="1" maxOccurs="1" type="xs:language"/>
+       <xs:element name="bandwidth" type="xs:int" minOccurs="0" maxOccurs="1"/>
        <xs:element name="supportedContentStandards" minOccurs="1" maxOccurs="1">
         <xs:complexType>
          <xs:sequence>
-          <xs:element name="supportedContentStandard" nillable="true"
-           minOccurs="1" maxOccurs="unbounded">
+          <xs:element name="supportedContentStandard" nillable="true" minOccurs="1"
+           maxOccurs="unbounded">
+           <!-- TODO enumerate -->
            <xs:complexType>
-            <xs:simpleContent
-            msdata:ColumnName="supportedContentStandard_Text"
-            msdata:Ordinal="0">
-            <xs:extension base="xs:string"> </xs:extension>
+            <xs:simpleContent>
+             <xs:extension base="xs:string"> </xs:extension>
             </xs:simpleContent>
            </xs:complexType>
           </xs:element>
@@ -96,11 +49,9 @@
        <xs:element name="mimeTypes" minOccurs="1" maxOccurs="1">
         <xs:complexType>
          <xs:sequence>
-          <xs:element name="mimeType" minOccurs="1"
-           maxOccurs="unbounded">
+          <xs:element name="mimeType" minOccurs="1" maxOccurs="unbounded">
            <xs:complexType>
-            <xs:attribute name="type" type="xs:string"
-            use="required"/>
+            <xs:attribute name="type" type="xs:string" use="required"/>
             <xs:attribute name="brailleCode" type="xs:string"/>
             <xs:attribute ref="xml:lang" use="optional"/>
            </xs:complexType>
@@ -108,65 +59,54 @@
          </xs:sequence>
         </xs:complexType>
        </xs:element>
-       
-       <!--<xs:element ref="inputTypes" minOccurs="1" maxOccurs="1" />-->
+
        <xs:element name="inputTypes" minOccurs="1" maxOccurs="1">
         <xs:complexType>
          <xs:sequence>
           <xs:element name="input" minOccurs="1" maxOccurs="unbounded">
            <xs:complexType>
             <xs:attribute name="type" use="required">
-            <xs:simpleType>
-            <xs:restriction base="xs:string">
-            <xs:enumeration value="audio"/>
-            <xs:enumeration value="text"/>
-            <xs:enumeration value="braille"/>
-            <xs:enumeration value="video"/>
-            <xs:enumeration value="image"/>
-            </xs:restriction>
-            </xs:simpleType>
+             <xs:simpleType>
+              <xs:restriction base="xs:string">
+               <xs:enumeration value="audio"/>
+               <xs:enumeration value="text"/>
+               <xs:enumeration value="braille"/>
+               <xs:enumeration value="video"/>
+               <xs:enumeration value="image"/>
+              </xs:restriction>
+             </xs:simpleType>
             </xs:attribute>
             <xs:attribute name="braillecode" type="xs:string"/>
-            <xs:attribute ref="xml:lang" use="optional">
-            <!--<xs:simpleType>
-                      <xs:restriction base="xs:string">
-                        <xs:pattern value="([a-zA-Z]{1,8}(-[a-zA-Z0-9]{1,8}))*" />
-                      </xs:restriction>
-                    </xs:simpleType>-->
-            </xs:attribute>
+            <xs:attribute ref="xml:lang" use="optional"> </xs:attribute>
            </xs:complexType>
           </xs:element>
          </xs:sequence>
         </xs:complexType>
        </xs:element>
-       
+
+       <!-- TODO are the modes required? in https, downloading and streaming are analogous -->
        <xs:element name="Modes" minOccurs="1" maxOccurs="1">
         <xs:complexType>
          <xs:sequence>
-          <xs:element name="Mode" nillable="true" minOccurs="1"
-           maxOccurs="unbounded">
+          <xs:element name="Mode" nillable="true" minOccurs="1" maxOccurs="unbounded">
            <xs:complexType>
-            <xs:simpleContent
-            msdata:ColumnName="supportedMode_Text"
-            msdata:Ordinal="0">
-            <xs:extension base="xs:string"> </xs:extension>
+            <xs:simpleContent>
+             <xs:extension base="xs:string"> </xs:extension>
             </xs:simpleContent>
            </xs:complexType>
           </xs:element>
          </xs:sequence>
         </xs:complexType>
        </xs:element>
-       
+
+       <!-- TODO should this be removed? May be an extension point -->
        <xs:element name="supportedProtocols" minOccurs="1" maxOccurs="1">
         <xs:complexType>
          <xs:sequence>
-          <xs:element name="supportedProtocol" nillable="true"
-           minOccurs="1" maxOccurs="unbounded">
+          <xs:element name="supportedProtocol" nillable="true" minOccurs="1" maxOccurs="unbounded">
            <xs:complexType>
-            <xs:simpleContent
-            msdata:ColumnName="supportedProtocol_Text"
-            msdata:Ordinal="0">
-            <xs:extension base="xs:string"> </xs:extension>
+            <xs:simpleContent>
+             <xs:extension base="xs:string"> </xs:extension>
             </xs:simpleContent>
            </xs:complexType>
           </xs:element>
@@ -179,7 +119,8 @@
    </xs:sequence>
   </xs:complexType>
  </xs:element>
- 
+
+ <!--
  <xs:element name="mimeTypes">
   <xs:complexType>
    <xs:sequence>
@@ -193,7 +134,8 @@
    </xs:sequence>
   </xs:complexType>
  </xs:element>
- 
+ -->
+
  <xs:element name="announcements">
   <xs:complexType>
    <xs:sequence>
@@ -218,115 +160,63 @@
    </xs:sequence>
   </xs:complexType>
  </xs:element>
-  
+
  <xs:element name="message">
   <xs:complexType>
    <xs:sequence>
-    <xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="1"
-     msdata:Ordinal="0"/>
+    <xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="1"/>
     <xs:element name="audio" minOccurs="0" maxOccurs="1">
      <xs:complexType>
-      <xs:sequence>
-       <xs:element name="data" minOccurs="1" maxOccurs="1">
-        <xs:complexType>
-         <xs:simpleContent>
-          <xs:extension base="xs:base64Binary">
-           <xs:attribute name="codec" type="xs:string"
-            use="required"/>
-          </xs:extension>
-         </xs:simpleContent>
-        </xs:complexType>
-       </xs:element>
-      </xs:sequence>
-
-      <!--http://tools.ietf.org/html/rfc4281 : ="a.bb.ccc.d, e.fff"
- to find the allowed values in codec-->
-      <xs:attribute name="size" type="xs:int" use="required"/>
-      <xs:attribute name="src" type="xs:string" use="optional"/>
-      <xs:attribute name="useWebService" type="xs:boolean" use="required"/>
-      <xs:attribute name="rangeBegin" type="xs:string" use="optional"/>
-      <xs:attribute name="rangeEnd" type="xs:string" use="optional"/>
+      <xs:attribute name="href" type="xs:anyURI" use="required">
+       <xs:annotation>
+        <xs:documentation>
+         <db:para role="desc">Specifies the URI of the audio resource containing the
+          message.</db:para>
+        </xs:documentation>
+       </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="rangeBegin" type="xs:integer" use="optional">
+       <xs:annotation>
+        <xs:documentation>
+         <db:para role="desc">Specifies the message start point in bytes counting from the start of
+          the resource specified in the href attribute. If the rangeBegin attribute is not present,
+          this implies a rangeBegin of 0.</db:para>
+        </xs:documentation>
+       </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="rangeEnd" type="xs:integer" use="optional">
+       <xs:annotation>
+        <xs:documentation>
+         <db:para role="desc">Specifies the message end point in bytes counting from the start of
+          the resource specified in the href attribute. Id the rangeEnd attribute is not present,
+          this implies a rangeEnd value set to the last byte of the resource specificed in the href
+          attribute.</db:para>
+        </xs:documentation>
+       </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="size" type="xs:int" use="required">
+       <xs:annotation>
+        <xs:documentation>
+         <db:para role="desc">Specifies the size (in bytes) of the message audio data.</db:para>
+        </xs:documentation>
+       </xs:annotation>
+      </xs:attribute>
      </xs:complexType>
     </xs:element>
    </xs:sequence>
-   <xs:attribute ref="xml:lang" default="en-US">
-    <!--<xs:simpleType>
-                <xs:restriction base="xs:string">
-                  <xs:pattern value="([a-zA-Z]{1,8}(-[a-zA-Z0-9]{1,8}))*" />
-                </xs:restriction>
-              </xs:simpleType>-->
+   <xs:attribute ref="xml:lang">
+    <xs:annotation>
+     <xs:documentation>
+      <db:para role="desc">Specifices the language of the message.</db:para>
+     </xs:documentation>
+    </xs:annotation>
    </xs:attribute>
   </xs:complexType>
  </xs:element>
 
- <xs:element name="searchCriteria">
-  <xs:complexType>
-   <xs:sequence>
-    <xs:element name="title" type="xs:string" minOccurs="0" maxOccurs="1"/>
-    <xs:element name="size" type="xs:int" minOccurs="0" maxOccurs="1"/>
-    <xs:element name="author" type="xs:string" minOccurs="0" maxOccurs="1"/>
-    <xs:element name="genre" type="xs:string" minOccurs="0" maxOccurs="1"/>
-    <xs:element name="publisher" type="xs:string" minOccurs="0" maxOccurs="1"/>
-    <xs:element name="narrator" type="xs:string" minOccurs="0" maxOccurs="1"/>
-    <xs:element name="language" type="xs:string" minOccurs="0" maxOccurs="1"/>
-    <xs:element name="issueDate" type="xs:string" minOccurs="0" maxOccurs="1"/>
-    <xs:element name="sortBy" nillable="true" minOccurs="0" maxOccurs="1">
-     <xs:complexType>
-      <xs:simpleContent>
-       <xs:extension base="sortByType">
-        <xs:attribute name="type" use="required">
-         <xs:simpleType>
-          <xs:restriction base="xs:string">
-           <xs:enumeration value="ascending"> </xs:enumeration>
-           <xs:enumeration value="decending"/>
-          </xs:restriction>
-         </xs:simpleType>
-        </xs:attribute>
-       </xs:extension>
-      </xs:simpleContent>
-     </xs:complexType>
-    </xs:element>
-   </xs:sequence>
-  </xs:complexType>
- </xs:element>
- 
- <xs:element name="contentStatus">
-  <xs:complexType>
-   <xs:sequence>
-    <xs:element name="publication" minOccurs="1" maxOccurs="unbounded">
-     <xs:complexType>
-      <xs:sequence>
-       <xs:element name="status" minOccurs="1" maxOccurs="1">
-        <xs:complexType>
-         <xs:simpleContent>
-          <xs:extension base="StatusTypes"> </xs:extension>
-         </xs:simpleContent>
-        </xs:complexType>
-       </xs:element>
-       <xs:element name="downloadedBytes" type="xs:int" minOccurs="0" maxOccurs="1"/>
-       <xs:element name="storageType" minOccurs="1" maxOccurs="1">
-        <xs:complexType>
-         <xs:simpleContent>
-          <xs:extension base="StorageTypes"> </xs:extension>
-         </xs:simpleContent>
-        </xs:complexType>
-       </xs:element>
-      </xs:sequence>
-      <xs:attribute name="id" type="xs:string" use="required"/>
-     </xs:complexType>
-    </xs:element>
-   </xs:sequence>
-  </xs:complexType>
- </xs:element>
- 
  <xs:element name="contentMetadata">
   <xs:complexType>
    <xs:sequence>
-    <!--ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ Not clear about the value in contentStandard element 
-              -The value contained in this element is the specific standard that the content 
-              being described by the contentMetadata fragment adheres to e.g. Daisy/NISO 2002. 
-              The value contained in this element must be a value specified by the Reading System 
-              as a supported content standard through the supportedContentStandard.supportedContentStandards.config.readingSystemAttributes element. -->
     <xs:element name="sample" minOccurs="0" maxOccurs="1">
      <xs:complexType>
       <xs:sequence>
@@ -334,55 +224,85 @@
       </xs:sequence>
      </xs:complexType>
     </xs:element>
-    <xs:element name="contentStandard" type="xs:string" minOccurs="1" msdata:Ordinal="1"
-     maxOccurs="1"/>
+
+    <xs:element name="contentStandard" type="xs:string" minOccurs="1" maxOccurs="1"/>
+
     <xs:element name="provider" minOccurs="0" maxOccurs="1">
      <xs:complexType>
+      <!-- TODO define how the id is made up: what is the reading systems use of it? -->
       <xs:attribute name="id" type="xs:string" use="required"/>
      </xs:complexType>
     </xs:element>
+
     <xs:element name="service" minOccurs="0" maxOccurs="1">
      <xs:complexType>
+      <!-- TODO define how the id is made up; what is the reading systems use of it? -->
       <xs:attribute name="id" type="xs:string" use="required"/>
      </xs:complexType>
     </xs:element>
+
     <xs:element name="metadata" minOccurs="0" maxOccurs="1">
      <xs:complexType>
       <xs:sequence>
+       <!-- TODO should we use dublin core -->
+       <!-- what about audio versions of metadata, serviceid and providerid -->
+       <!-- note: no markup allowed in text nodes -->
        <xs:element name="title" type="xs:string" minOccurs="1" maxOccurs="1"/>
        <xs:element name="size" type="xs:int" minOccurs="1" maxOccurs="1"/>
        <xs:element name="author" type="xs:string" minOccurs="0" maxOccurs="1"/>
        <xs:element name="genre" type="xs:string" minOccurs="0" maxOccurs="1"/>
-       <xs:element name="publisher" type="xs:string" minOccurs="0"
-        maxOccurs="1"/>
+       <xs:element name="publisher" type="xs:string" minOccurs="0" maxOccurs="1"/>
        <xs:element name="narrator" type="xs:string" minOccurs="0" maxOccurs="1"/>
        <xs:element name="language" type="xs:string" minOccurs="0" maxOccurs="1"/>
-       <!-- Not present in final DOML doc <xs:element name="issueDate" type="xs:string" minOccurs="0" maxOccurs="1"/>-->
-       <xs:element name="description" type="xs:string" minOccurs="0"
-        maxOccurs="1"/>
-       <xs:choice minOccurs="1" maxOccurs="unbounded">
-        <xs:any namespace="##other" processContents="strict"/>
+       <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+       <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:any namespace="##other" processContents="lax"/>
        </xs:choice>
       </xs:sequence>
      </xs:complexType>
     </xs:element>
+
     <xs:element name="resources" minOccurs="1" maxOccurs="1">
+     <xs:annotation>
+      <xs:documentation>
+       <db:para>A list of all the files that constitute the publication.</db:para>
+      </xs:documentation>
+     </xs:annotation>
      <xs:complexType>
       <xs:sequence>
-       <xs:element name="resource" minOccurs="0" maxOccurs="unbounded">
+       <xs:element name="resource" minOccurs="1" maxOccurs="unbounded">
         <xs:complexType>
-         <xs:attribute name="uri" type="xs:string" use="required"/>
-         <xs:attribute name="mimeType" type="xs:string" use="required"/>
-         <xs:attribute name="size" type="xs:int" use="required"/>
-         <xs:attribute name="localFileName" type="xs:string"
-          use="required"/>
+         <xs:attribute name="href" type="xs:anyURI" use="required"/>
+         <xs:attribute name="mimeType" type="xs:string" use="required">
+          <xs:annotation>
+           <xs:documentation>
+            <db:para>The MIME type of the resource.</db:para>
+           </xs:documentation>
+          </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="size" type="xs:int" use="required">
+          <xs:annotation>
+           <xs:documentation>
+            <db:para>The size of the resource in bytes.</db:para>
+           </xs:documentation>
+          </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="localFileName" type="xs:string" use="required">
+          <xs:annotation>
+           <xs:documentation>
+            <db:para>The local file name of the resource.</db:para>
+           </xs:documentation>
+          </xs:annotation>
+         </xs:attribute>
         </xs:complexType>
        </xs:element>
       </xs:sequence>
      </xs:complexType>
     </xs:element>
    </xs:sequence>
+
    <xs:attribute name="id" type="xs:string" use="required"/>
+
    <xs:attribute name="type" use="optional">
     <xs:simpleType>
      <xs:restriction base="xs:string">
@@ -403,10 +323,10 @@
      </xs:restriction>
     </xs:simpleType>
    </xs:attribute>
-   <xs:attribute name="useWebService" type="xs:boolean" use="required"/>
+
   </xs:complexType>
  </xs:element>
- 
+
  <xs:element name="contentList">
   <xs:complexType>
    <xs:sequence>
@@ -422,7 +342,7 @@
    </xs:sequence>
   </xs:complexType>
  </xs:element>
- 
+
  <xs:element name="bookmarkSet">
   <xs:complexType>
    <xs:sequence>
@@ -509,12 +429,9 @@
            <!--<xs:element ref="audio" minOccurs="0" maxOccurs="unbounded" />-->
            <xs:element name="audio">
             <xs:complexType>
-            <xs:attribute name="src" form="unqualified"
-            type="xs:string"/>
-            <xs:attribute name="clipBegin" form="unqualified"
-            type="xs:string"/>
-            <xs:attribute name="clipEnd" form="unqualified"
-            type="xs:string"/>
+             <xs:attribute name="src" form="unqualified" type="xs:string"/>
+             <xs:attribute name="clipBegin" form="unqualified" type="xs:string"/>
+             <xs:attribute name="clipEnd" form="unqualified" type="xs:string"/>
             </xs:complexType>
            </xs:element>
           </xs:sequence>
@@ -543,13 +460,13 @@
            </xs:element>
            <xs:choice>
             <xs:sequence>
-            <xs:element name="timeOffset">
-            <xs:complexType mixed="true"/>
-            </xs:element>
-            <!--<xs:element ref="charOffset" minOccurs="0" />-->
-            <xs:element name="charOffset" minOccurs="1">
-            <xs:complexType mixed="true"/>
-            </xs:element>
+             <xs:element name="timeOffset">
+              <xs:complexType mixed="true"/>
+             </xs:element>
+             <!--<xs:element ref="charOffset" minOccurs="0" />-->
+             <xs:element name="charOffset" minOccurs="1">
+              <xs:complexType mixed="true"/>
+             </xs:element>
             </xs:sequence>
             <!--<xs:element ref="charOffset" />-->
 
@@ -571,13 +488,13 @@
            </xs:element>
            <xs:choice>
             <xs:sequence>
-            <xs:element name="timeOffset">
-            <xs:complexType mixed="true"/>
-            </xs:element>
-            <!--<xs:element ref="charOffset" minOccurs="0" />-->
-            <xs:element name="charOffset" minOccurs="1">
-            <xs:complexType mixed="true"/>
-            </xs:element>
+             <xs:element name="timeOffset">
+              <xs:complexType mixed="true"/>
+             </xs:element>
+             <!--<xs:element ref="charOffset" minOccurs="0" />-->
+             <xs:element name="charOffset" minOccurs="1">
+              <xs:complexType mixed="true"/>
+             </xs:element>
             </xs:sequence>
 
            </xs:choice>
@@ -592,12 +509,9 @@
            <!--<xs:element ref="audio" minOccurs="0" maxOccurs="unbounded" />-->
            <xs:element name="audio">
             <xs:complexType>
-            <xs:attribute name="src" form="unqualified"
-            type="xs:string"/>
-            <xs:attribute name="clipBegin" form="unqualified"
-            type="xs:string"/>
-            <xs:attribute name="clipEnd" form="unqualified"
-            type="xs:string"/>
+             <xs:attribute name="src" form="unqualified" type="xs:string"/>
+             <xs:attribute name="clipBegin" form="unqualified" type="xs:string"/>
+             <xs:attribute name="clipEnd" form="unqualified" type="xs:string"/>
             </xs:complexType>
            </xs:element>
           </xs:sequence>
@@ -611,7 +525,7 @@
    </xs:sequence>
   </xs:complexType>
  </xs:element>
- 
+
  <xs:element name="question">
   <xs:complexType>
    <xs:sequence>
@@ -633,13 +547,7 @@
           </xs:simpleType>
          </xs:attribute>
          <xs:attribute name="braillecode" type="xs:string"/>
-         <xs:attribute ref="xml:lang" use="optional">
-          <!--<xs:simpleType>
-                      <xs:restriction base="xs:string">
-                        <xs:pattern value="([a-zA-Z]{1,8}(-[a-zA-Z0-9]{1,8}))*" />
-                      </xs:restriction>
-                    </xs:simpleType>-->
-         </xs:attribute>
+         <xs:attribute ref="xml:lang" use="optional" />
         </xs:complexType>
        </xs:element>
       </xs:sequence>
@@ -648,7 +556,8 @@
     <xs:element ref="message" minOccurs="1" maxOccurs="unbounded"/>
     <xs:element name="callbackFunction" minOccurs="1">
      <xs:simpleType>
-      <xs:restriction base="xs:string"> <!-- TODO fix this enum -->
+      <xs:restriction base="xs:string">
+       <!-- TODO fix this enum -->
        <xs:enumeration value="getUserChoices"/>
        <xs:enumeration value="getUserAnnouncement"/>
        <xs:enumeration value="getUserInput"/>
@@ -662,7 +571,7 @@
    <xs:attribute name="id" type="xs:string" use="required"/>
   </xs:complexType>
  </xs:element>
- 
+
  <xs:element name="multipleChoiceQuestion">
   <xs:complexType>
    <xs:sequence>
@@ -674,14 +583,15 @@
         <xs:complexType>
          <xs:sequence>
           <xs:element name="callbackFunction" minOccurs="1">
-           <xs:simpleType> <!-- TODO fix this enum -->
+           <xs:simpleType>
+            <!-- TODO fix this enum -->
             <xs:restriction base="xs:string">
-            <xs:enumeration value="getUserChoices"/>
-            <xs:enumeration value="getUserAnnouncement"/>
-            <xs:enumeration value="getUserInput"/>
-            <xs:enumeration value="getGroupedQuestions"/>
-            <xs:enumeration value="getContentList"/>
-            <xs:enumeration value="postUserResponses"/>
+             <xs:enumeration value="getUserChoices"/>
+             <xs:enumeration value="getUserAnnouncement"/>
+             <xs:enumeration value="getUserInput"/>
+             <xs:enumeration value="getGroupedQuestions"/>
+             <xs:enumeration value="getContentList"/>
+             <xs:enumeration value="postUserResponses"/>
             </xs:restriction>
            </xs:simpleType>
           </xs:element>
@@ -711,7 +621,7 @@
    </xs:attribute>
   </xs:complexType>
  </xs:element>
- 
+
  <xs:element name="groupedQuestions">
   <xs:complexType>
    <xs:sequence>
@@ -721,8 +631,7 @@
        <xs:choice>
         <xs:element ref="multipleChoiceQuestion" minOccurs="1" maxOccurs="1"> </xs:element>
         <xs:element ref="question" minOccurs="1" maxOccurs="1"> </xs:element>
-        <xs:element ref="announcements" minOccurs="1" maxOccurs="1"
-        > </xs:element>
+        <xs:element ref="announcements" minOccurs="1" maxOccurs="1"> </xs:element>
        </xs:choice>
       </xs:sequence>
       <xs:attribute name="sequenceNumber" type="xs:int" use="required"/>
@@ -743,7 +652,7 @@
    </xs:attribute>
   </xs:complexType>
  </xs:element>
- 
+
  <xs:element name="userResponses">
   <xs:complexType>
    <xs:sequence>
@@ -777,15 +686,45 @@
     <xs:element name="operation" minOccurs="1" maxOccurs="1"/>
     <xs:element name="param" minOccurs="0" maxOccurs="unbounded">
      <xs:complexType>
-      <xs:attribute name="name" use="required" />
-      <xs:attribute name="value" use="required" />
+      <xs:attribute name="name" use="required"/>
+      <xs:attribute name="value" use="required"/>
      </xs:complexType>
-    </xs:element>  
-    </xs:sequence>
+    </xs:element>
+   </xs:sequence>
   </xs:complexType>
  </xs:element>
 
-<!-- 
+ <!--
+  <xs:simpleType name="sortByType">
+  <xs:restriction base="xs:string">
+  <xs:enumeration value="title"/>
+  <xs:enumeration value="size"/>
+  <xs:enumeration value="author"/>
+  <xs:enumeration value="genre"/>
+  <xs:enumeration value="publisher"/>
+  <xs:enumeration value="narrator"/>
+  <xs:enumeration value="language"/>
+  <xs:enumeration value="issueDate "/>
+  </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="StatusTypes">
+  <xs:restriction base="xs:string">
+  <xs:enumeration value="downloading"/>
+  <xs:enumeration value="downloaded"/>
+  <xs:enumeration value="pending"/>
+  <xs:enumeration value="streaming"/>
+  </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="StorageTypes">
+  <xs:restriction base="xs:string">
+  <xs:enumeration value="internal"/>
+  <xs:enumeration value="removable"/>
+  <xs:enumeration value="network"/>
+  </xs:restriction>
+  </xs:simpleType>
+ -->
+
+ <!-- 
 
 <xs:element name="settings">
 <xs:complexType>
@@ -912,7 +851,7 @@
   </xs:complexType>
   </xs:element>
  -->
- 
+
  <!--
   <xs:element name="groupedQuestionsMetadata">
   <xs:complexType>
@@ -949,6 +888,71 @@
   <xs:complexType>
   <xs:attribute name="sequenceNumber" type="xs:int" use="required"/>
   <xs:attribute name="size" type="xs:int" use="required"/>
+  </xs:complexType>
+  </xs:element>
+  </xs:sequence>
+  </xs:complexType>
+  </xs:element>
+ -->
+ 
+ 
+ 
+ <!--
+  <xs:element name="searchCriteria">
+  <xs:complexType>
+  <xs:sequence>
+  <xs:element name="title" type="xs:string" minOccurs="0" maxOccurs="1"/>
+  <xs:element name="size" type="xs:int" minOccurs="0" maxOccurs="1"/>
+  <xs:element name="author" type="xs:string" minOccurs="0" maxOccurs="1"/>
+  <xs:element name="genre" type="xs:string" minOccurs="0" maxOccurs="1"/>
+  <xs:element name="publisher" type="xs:string" minOccurs="0" maxOccurs="1"/>
+  <xs:element name="narrator" type="xs:string" minOccurs="0" maxOccurs="1"/>
+  <xs:element name="language" type="xs:string" minOccurs="0" maxOccurs="1"/>
+  <xs:element name="issueDate" type="xs:string" minOccurs="0" maxOccurs="1"/>
+  <xs:element name="sortBy" nillable="true" minOccurs="0" maxOccurs="1">
+  <xs:complexType>
+  <xs:simpleContent>
+  <xs:extension base="sortByType">
+  <xs:attribute name="type" use="required">
+  <xs:simpleType>
+  <xs:restriction base="xs:string">
+  <xs:enumeration value="ascending"> </xs:enumeration>
+  <xs:enumeration value="decending"/>
+  </xs:restriction>
+  </xs:simpleType>
+  </xs:attribute>
+  </xs:extension>
+  </xs:simpleContent>
+  </xs:complexType>
+  </xs:element>
+  </xs:sequence>
+  </xs:complexType>
+  </xs:element>
+ -->
+ <!--
+  <xs:element name="contentStatus">
+  <xs:complexType>
+  <xs:sequence>
+  <xs:element name="publication" minOccurs="1" maxOccurs="unbounded">
+  <xs:complexType>
+  <xs:sequence>
+  <xs:element name="status" minOccurs="1" maxOccurs="1">
+  <xs:complexType>
+  <xs:simpleContent>
+  <xs:extension base="StatusTypes"> </xs:extension>
+  </xs:simpleContent>
+  </xs:complexType>
+  </xs:element>
+  <xs:element name="downloadedBytes" type="xs:int" minOccurs="0" maxOccurs="1"/>
+  <xs:element name="storageType" minOccurs="1" maxOccurs="1">
+  <xs:complexType>
+  <xs:simpleContent>
+  <xs:extension base="StorageTypes"> </xs:extension>
+  </xs:simpleContent>
+  </xs:complexType>
+  </xs:element>
+  </xs:sequence>
+  <xs:attribute name="id" type="xs:string" use="required"/>
   </xs:complexType>
   </xs:element>
   </xs:sequence>
