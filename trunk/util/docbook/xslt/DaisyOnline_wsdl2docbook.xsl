@@ -20,17 +20,21 @@
 		<db:chapter xml:id="apiReference" conformance="normative">
 			<db:title>API Reference</db:title>
 			<db:section xml:id="apiReferenceBasic">
-				<db:title>Basic Interface</db:title>
+				<db:title>Required Operations</db:title>
 				<xsl:call-template name="wsdlOperationsAsDocbook">
-					<xsl:with-param name="portTypeName">daisy-online-basic</xsl:with-param>
+					<xsl:with-param name="operations" 
+						select="$wsdl/definitions/portType/operation[count(descendant::fault[@message='tns:OperationNotSupportedFault'])=0]"/>
 				</xsl:call-template>
 			</db:section>
+			
 			<db:section xml:id="apiReferenceAdvanced">
-				<db:title>Advanced Interface</db:title>
+				<db:title>Optional Operations</db:title>
 				<xsl:call-template name="wsdlOperationsAsDocbook">
-					<xsl:with-param name="portTypeName">daisy-online-advanced</xsl:with-param>
+					<xsl:with-param name="operations" 
+					select="$wsdl/definitions/portType/operation[descendant::fault[@message='tns:OperationNotSupportedFault']]"/> 
 				</xsl:call-template>
 			</db:section>
+			
 			<db:section xml:id="apiReferenceFaults">
 				<db:title>Faults</db:title>
 				<xsl:for-each select="$wsdl/definitions/message[contains(@name, 'Fault')]">
@@ -41,14 +45,6 @@
 						<xsl:call-template name="getWSDLDocumentation">
 							<xsl:with-param name="node" as="element()" select="current()"/>
 						</xsl:call-template>
-						<!--
-						<xsl:call-template name="getWSDLShortDesc">
-							<xsl:with-param name="node" as="element()" select="current()"/>
-						</xsl:call-template>
-						<xsl:call-template name="getWSDLOtherDesc">
-							<xsl:with-param name="node" as="element()" select="current()"/>
-						</xsl:call-template>
-						-->
 					</db:section>
 				</xsl:for-each>
 			</db:section>
@@ -56,29 +52,20 @@
 	</xsl:template>
 
 	<xsl:template name="wsdlOperationsAsDocbook">
-		<!-- print all operations being children of inparam porttype as docbook -->
-		<xsl:param name="portTypeName" as="xs:string"/>
-
-		<xsl:variable name="operations" as="element()*"
-			select="$wsdl/definitions/portType[@name=$portTypeName]/operation"/>
+		<!-- print all inparam operations as docbook -->
+		<xsl:param name="operations" as="element()*"/>
 
 		<xsl:for-each select="$operations">
 			<db:section>
 				<xsl:attribute name="xml:id" select="concat('op_',@name)"/>
+				<xsl:attribute name="xreflabel" select="@name"/>
+
 				<db:title>The <xsl:value-of select="@name"/> Operation</db:title>
 				
 				<xsl:call-template name="getWSDLDocumentation">
 					<xsl:with-param name="node" as="element()" select="current()"/>
 				</xsl:call-template>
-				
-				<!-- the operation shortdesc
-				<xsl:call-template name="getWSDLShortDesc">
-					<xsl:with-param name="node" as="element()" select="current()"/>
-				</xsl:call-template>
-				<xsl:call-template name="getWSDLOtherDesc">
-					<xsl:with-param name="node" as="element()" select="current()"/>
-				</xsl:call-template> -->
-				
+								
 				<!-- get the request and response message elements, truncate 'tns:' -->
 				<xsl:variable name="requestMessage"
 					select="$wsdl/definitions/message[@name=substring(current()/input/@message,5)]"
@@ -107,14 +94,6 @@
 													<xsl:call-template name="getWSDLDocumentation">
 														<xsl:with-param name="node" as="element()" select="current()"/>
 													</xsl:call-template>
-													<!--
-													<xsl:call-template name="getWSDLShortDesc">
-														<xsl:with-param name="node" as="element()" select="current()"/>
-													</xsl:call-template>
-													<xsl:call-template name="getWSDLOtherDesc">
-														<xsl:with-param name="node" as="element()" select="current()"/>
-													</xsl:call-template>
-													-->
 												</db:listitem>
 											</db:varlistentry>
 										</xsl:for-each>
