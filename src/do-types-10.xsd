@@ -188,7 +188,7 @@
        <xs:annotation>
         <xs:documentation>
          <db:para role="desc">Specifies the message end point in bytes counting from the start of
-          the resource specified in the href attribute. Id the rangeEnd attribute is not present,
+          the resource specified in the href attribute. If the rangeEnd attribute is not present,
           this implies a rangeEnd value set to the last byte of the resource specificed in the href
           attribute.</db:para>
         </xs:documentation>

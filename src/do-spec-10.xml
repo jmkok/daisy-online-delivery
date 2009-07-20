@@ -82,7 +82,7 @@
         <title>Keywords</title>
         <para>The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
             "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described
-            in <xref linkend="bib_RFC2119"/>.</para>
+            in <xref linkend="bib_RFC2119" />.</para>
     </chapter>
 
     <chapter xml:id="terminology" conformance="informative">
@@ -156,6 +156,15 @@
                 </listitem>
             </varlistentry>
             <varlistentry>
+                <term>Third Party Content provider</term>
+                <listitem>
+                    <para>
+                        <remark role="todo">define</remark>
+                    </para>
+                </listitem>
+            </varlistentry>
+            <!--
+            <varlistentry>
                 <term>Dynamic Menu Generation</term>
                 <listitem>
                     <para>
@@ -163,6 +172,7 @@
                     </para>
                 </listitem>
             </varlistentry>
+            -->
         </variablelist>
     </chapter>
 
