@@ -129,7 +129,10 @@ Proposed Resolution:
  *preferredLanguage rename to preferredUILanguage, keep required
 
 === Issue 62 ====
+Proposed Resolution: supported protocol version information is redundant; handled at the WSDL level.
+
 === Issue 63 ====
+
 === Issue 64 ====
 === Issue 65 ====
 === Issue 66 ====
