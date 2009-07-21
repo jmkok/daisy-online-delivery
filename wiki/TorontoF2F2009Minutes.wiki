@@ -144,8 +144,14 @@ Proposed Resolution: rename to supportedInputTypes, change enum to TEXT_NUMERIC,
 (Note: discussion about dropping notion of braille entirely in protocol)
 
 === Issue 66 ====
+Already resolved. availableMemory is removed.
+
 === Issue 67 ====
+Already resolved. In mondays notes.
+
 === Issue 68 ====
+Resolved in XSD.
+
 === Issue 69 ====
 Proposed Resolution: make bandwith optional, see clarifying doc in xsd. 
 
