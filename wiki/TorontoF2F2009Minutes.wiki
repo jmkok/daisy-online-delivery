@@ -118,7 +118,21 @@ The content list was intended to be an endpoint; the Reading System would have t
 
 = Tuesday July 21=
 
-== Group Session 1 ==
+== Group Session 1 Group 1==
+=== Issue 45 ====
+=== Issue 46 ====
+=== Issue 47 ====
+=== Issue 48 ====
+=== Issue 50 ====
+=== Issue 51 ====
+=== Issue 53 ====
+=== Issue 57 ====
+=== Issue 59 ====
+=== Issue 78 ====
+
+
+
+== Group Session 1 Group 2==
 === Issue 61 ====
 Proposed Resolution:
  * keep manufacturer and model required
