@@ -26,7 +26,7 @@ Basic vs Advanced (Core vs Optional)
 
 *Proposed*:
 
- # wdsl with one port type (interface) where all operations that are optional allow the OperationNotSupported? fault.
+ # wdsl with one port type (interface) where all operations that are optional allow the OperationNotSupported fault.
  # In the spec we have required operations and we possible have groups of optional operations.
  # We introduce a new operation by which the reading system can discover which optional operations the service implements – this allows non-implemented operations to be removed from the reading systems ui.
 
@@ -34,7 +34,7 @@ Basic vs Advanced (Core vs Optional)
 
 *Agreed*: we introduct a new operation
 
-getKeyExchangeObject(String supportedPublicKeyNames, String RequestedKeyName? )
+getKeyExchangeObject(String supportedPublicKeyNames, String RequestedKeyName )
 
 which returns a Key Exchange Object xml fragment.
 
