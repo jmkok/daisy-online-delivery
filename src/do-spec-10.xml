@@ -107,6 +107,15 @@
                 </listitem>
             </varlistentry>
             <varlistentry>
+                <term>Service Delegate</term>
+                <listitem>
+                    <para>
+                        <remark role="todo">define, the thirdy party URL host stuff</remark>
+                    </para>
+                </listitem>
+            </varlistentry>
+            
+            <varlistentry>
                 <term>User</term>
                 <listitem>
                     <para>
@@ -123,8 +132,7 @@
                 </listitem>
             </varlistentry>
             <varlistentry>
-                <term>API/Interface/Type/Element/Operation/Function and that entire cluster of
-                    terms</term>
+                <term>Interface</term>
                 <listitem>
                     <para>
                         <remark role="todo">define</remark>
@@ -132,7 +140,31 @@
                 </listitem>
             </varlistentry>
             <varlistentry>
-                <term>Content vs Publication</term>
+                <term>Operation</term>
+                <listitem>
+                    <para>
+                        <remark role="todo">define</remark>
+                    </para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Parameter</term>
+                <listitem>
+                    <para>
+                        <remark role="todo">define</remark>
+                    </para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Fault</term>
+                <listitem>
+                    <para>
+                        <remark role="todo">define</remark>
+                    </para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Content</term>
                 <listitem>
                     <para>
                         <remark role="todo">define</remark>
@@ -155,24 +187,6 @@
                     </para>
                 </listitem>
             </varlistentry>
-            <varlistentry>
-                <term>Third Party Content provider</term>
-                <listitem>
-                    <para>
-                        <remark role="todo">define</remark>
-                    </para>
-                </listitem>
-            </varlistentry>
-            <!--
-            <varlistentry>
-                <term>Dynamic Menu Generation</term>
-                <listitem>
-                    <para>
-                        <remark role="todo">define</remark>
-                    </para>
-                </listitem>
-            </varlistentry>
-            -->
         </variablelist>
     </chapter>
 
