@@ -120,15 +120,60 @@ The content list was intended to be an endpoint; the Reading System would have t
 
 == Group Session 1 Group 1==
 === Issue 45 ====
+getDelayPeriod should be removed from the spec.
+action: remove this function. 
+
 === Issue 46 ====
+why is setmessageMimetypes separate from setReadingsystemAttributes
+action: remove this function. 
+
+larger issue:
+a. Should the spec say anything about a compliant service provider supporting reading systems without a tts.
+
+b. should the service provider be required to always send the textual representation of a message. (this is not the case right now in the spec) 
+
+c. should the setreadingsystemattributes be allowed to be called multiple times in a session to change server characteristics 
+(matt)
+  
 === Issue 47 ====
+sequence of setMessageMimetypes is not clear.
+action: irrelevant. closed.
+ 
 === Issue 48 ====
+setKeyPress should be removed.
+action: drop the function.
+
 === Issue 50 ====
+setError should be removed.
+action: out of scope for v1.0. should be looked at in v2.0 or some custom extension to daisy online.
+  
 === Issue 51 ====
+should logOff function be removed?
+action: keep the logoff function.   
+
 === Issue 53 ====
+getcontentStatus function should be removed 
+action: drop getcontentstatus and setcontentstatus as the same affect can be achieved by logging on the server.   
+
 === Issue 57 ====
+deletion of content.
+action: keep the returnContent function but state that a compliant reading system should delete content when the returnContent is called. there is no way to enforce this but  this is no different from lending a physical cd.
+ 
 === Issue 59 ====
+remove braillecode attribute from the spec
+action: drop it from inputTypes. 
+
+larger issue:; the resourcces' uris should not be required
+a. is braillecode required for mimetypes.
+
+b. how do we deal with mimeTyps? what does the spec say about support of mimeTypes when sent to the service.    
+
+c. should we say in the spec that the announcements should always be text and audio, and dynamic menus always require a reading system with tts.   
+(message type needs to be looked at.) 
+
 === Issue 78 ====
+contentMetadata
+action: not applicable. (uri should be required as mtom has been dropped)   
 
 
 
