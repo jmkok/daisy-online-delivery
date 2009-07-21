@@ -132,6 +132,9 @@ Proposed Resolution:
 Proposed Resolution: supported protocol version information is redundant; handled at the WSDL level.
 
 === Issue 63 ====
+Proposed resolution: no enumeration. Add prose that makes clear this follows the dc:format convention. 
+
+Add informative URIs to daisy2.02 spec and zed specs and epub spec where those particular strings are defined.
 
 === Issue 64 ====
 === Issue 65 ====
