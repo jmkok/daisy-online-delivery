@@ -216,3 +216,10 @@ Proposed Resolution: make bandwith optional, see clarifying doc in xsd.
 
 === Issue 70 ====
 Proposed Resolution: rename message to label
+
+== Group Session 2: Group 1+2 (issues 79 and forward) ==
+=== Issue 79 ===
+=== Issue 80 ===
+=== Issue 81 ===
+=== Issue 82 ===
+=== Issue 83 ===
