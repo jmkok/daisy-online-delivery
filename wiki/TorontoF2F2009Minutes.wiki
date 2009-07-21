@@ -137,7 +137,12 @@ Proposed resolution: no enumeration. Add prose that makes clear this follows the
 Add informative URIs to daisy2.02 spec and zed specs and epub spec where those particular strings are defined.
 
 === Issue 64 ====
+Proposed Resolution: rename to supportedMimeTypes, clarify that this related to MIME types of both service messages/announcements AND content.
+
 === Issue 65 ====
+Proposed Resolution: change enum to TEXT_NUMERIC, TEXT_ALPHANUMERIC
+(Note: discussion about dropping notion of braille entirely in protocol)
+
 === Issue 66 ====
 === Issue 67 ====
 === Issue 68 ====
