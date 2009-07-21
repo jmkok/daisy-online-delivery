@@ -118,16 +118,6 @@
 									<xsl:call-template name="getWSDLDocumentation">
 										<xsl:with-param name="node" as="element()" select="$responseMessage/part"/>
 									</xsl:call-template>				
-									<!--
-									<xsl:call-template name="getWSDLShortDesc">
-										<xsl:with-param name="node" as="element()"
-											select="$responseMessage/part"/>
-									</xsl:call-template>
-									<xsl:call-template name="getWSDLOtherDesc">
-										<xsl:with-param name="node" as="element()" 
-											select="$responseMessage/part"/>
-									</xsl:call-template>
-									-->
 								</xsl:when>
 								<xsl:otherwise>
 									<db:para>This operation has no response.</db:para>

@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="DOML" xmlns="http://www.daisy.org/ns/doml#"
- xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"
- targetNamespace="http://www.daisy.org/ns/doml#" elementFormDefault="qualified"
- xmlns:db="http://docbook.org/ns/docbook" attributeFormDefault="unqualified">
+<xs:schema id="DOML" xmlns="http://www.daisy.org/ns/daisy-online/#"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ targetNamespace="http://www.daisy.org/ns/daisy-online/#" elementFormDefault="qualified"
+ xmlns:db="http://docbook.org/ns/docbook" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+ xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" attributeFormDefault="unqualified">
 
  <xs:annotation>
   <xs:documentation xml:lang="en"> This document is the Last Call Working Draft by the DAISY Online
@@ -12,6 +13,12 @@
 
  <xs:import namespace="http://www.w3.org/XML/1998/namespace"
   schemaLocation="http://www.w3.org/2001/xml.xsd"/>
+
+ <xs:import namespace="http://schemas.xmlsoap.org/soap/encoding/"
+  schemaLocation="http://schemas.xmlsoap.org/soap/encoding/"/>
+
+ <xs:import namespace="http://schemas.xmlsoap.org/wsdl/"
+  schemaLocation="http://schemas.xmlsoap.org/wsdl/"/>
 
  <xs:element name="readingSystemAttributes">
   <xs:complexType>
@@ -120,22 +127,6 @@
   </xs:complexType>
  </xs:element>
 
- <!--
- <xs:element name="mimeTypes">
-  <xs:complexType>
-   <xs:sequence>
-    <xs:element name="mimeType" minOccurs="1" maxOccurs="unbounded">
-     <xs:complexType>
-      <xs:attribute name="type" type="xs:string" use="required"/>
-      <xs:attribute name="brailleCode" type="xs:string"/>
-      <xs:attribute ref="xml:lang" use="optional"/>
-     </xs:complexType>
-    </xs:element>
-   </xs:sequence>
-  </xs:complexType>
- </xs:element>
- -->
-
  <xs:element name="announcements">
   <xs:complexType>
    <xs:sequence>
@@ -144,8 +135,7 @@
       <xs:sequence>
        <xs:element ref="message" minOccurs="0" maxOccurs="unbounded"/>
       </xs:sequence>
-      <xs:attribute name="id" type="xs:string" use="required"/>
-      <xs:attribute name="sequenceNumber" type="xs:int" use="required"/>
+      <xs:attribute name="id" type="xs:ID" use="required"/>
       <xs:attribute name="type" type="xs:string" use="optional"/>
       <xs:attribute name="priority" use="optional" default="3">
        <xs:simpleType>
@@ -333,10 +323,44 @@
     <xs:element name="contentItem" minOccurs="0" maxOccurs="unbounded">
      <xs:complexType>
       <xs:sequence>
-       <xs:element ref="message" minOccurs="1" maxOccurs="1"/>
+       <xs:element ref="message" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+         <xs:documentation>
+          <db:para>The title, or other descriptive text, of this contentItem</db:para>
+         </xs:documentation>
+        </xs:annotation>
+       </xs:element>
       </xs:sequence>
-      <xs:attribute name="id" type="xs:string" use="required"/>
-      <xs:attribute name="sequenceNumber" type="xs:int" use="required"/>
+      <xs:attribute name="id" type="xs:ID" use="required">
+       <xs:annotation>
+        <xs:documentation>
+         <db:para>The ID of this contentItem, unique within the contentList.</db:para>
+        </xs:documentation>
+       </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="totalItems" type="xs:integer" use="required">
+       <xs:annotation>
+        <xs:documentation>
+         <db:para>The total number of content items exposed by the Service. This instance of
+           <db:varname>contentList</db:varname> may only contain a subset of the total number of
+          items.</db:para>
+        </xs:documentation>
+       </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="firstItem" type="xs:integer" use="required">
+       <xs:annotation>
+        <xs:documentation>
+         <db:para>The first content item provided in this instance of contentList.</db:para>
+        </xs:documentation>
+       </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="lastItem" type="xs:integer" use="required">
+       <xs:annotation>
+        <xs:documentation>
+         <db:para>The last content item provided in this instance of contentList.</db:para>
+        </xs:documentation>
+       </xs:annotation>
+      </xs:attribute>
      </xs:complexType>
     </xs:element>
    </xs:sequence>
@@ -547,7 +571,7 @@
           </xs:simpleType>
          </xs:attribute>
          <xs:attribute name="braillecode" type="xs:string"/>
-         <xs:attribute ref="xml:lang" use="optional" />
+         <xs:attribute ref="xml:lang" use="optional"/>
         </xs:complexType>
        </xs:element>
       </xs:sequence>
@@ -598,7 +622,6 @@
           <xs:element ref="message" minOccurs="1" maxOccurs="1"/>
          </xs:sequence>
          <xs:attribute name="id" type="xs:string"/>
-         <xs:attribute name="sequenceNumber" type="xs:int"/>
         </xs:complexType>
        </xs:element>
       </xs:sequence>
@@ -634,7 +657,6 @@
         <xs:element ref="announcements" minOccurs="1" maxOccurs="1"> </xs:element>
        </xs:choice>
       </xs:sequence>
-      <xs:attribute name="sequenceNumber" type="xs:int" use="required"/>
      </xs:complexType>
     </xs:element>
    </xs:sequence>
@@ -691,6 +713,54 @@
      </xs:complexType>
     </xs:element>
    </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="optionalOperations">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="operation" minOccurs="0" maxOccurs="unbounded">
+     <xs:complexType>
+      <xs:attribute name="type" use="required">
+       <xs:simpleType>
+        <xs:restriction base="xs:string">
+         <xs:enumeration value="SET_BOOKMARKS"/>
+         <xs:enumeration value="GET_BOOKMARKS"/>
+         <xs:enumeration value="DYNAMIC_MENUS"/>
+         <xs:enumeration value="SERVICE_ANNOUNCEMENTS"/>
+         <xs:enumeration value="PDTB2_KEY_PROVISION"/>
+        </xs:restriction>
+       </xs:simpleType>
+      </xs:attribute>
+     </xs:complexType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="arrayOfString">
+  <xs:complexType>
+   <xs:complexContent>
+    <xs:restriction base="SOAP-ENC:Array">
+     <xs:sequence>
+      <xs:element name="item" type="xs:string" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     </xs:sequence>
+     <xs:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="xs:string[]"/>
+    </xs:restriction>
+   </xs:complexContent>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="arrayOfID">
+  <xs:complexType>
+   <xs:complexContent>
+    <xs:restriction base="SOAP-ENC:Array">
+     <xs:sequence>
+      <xs:element name="item" type="xs:ID" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+     </xs:sequence>
+     <xs:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="xs:ID[]"/>
+    </xs:restriction>
+   </xs:complexContent>
   </xs:complexType>
  </xs:element>
 
@@ -894,9 +964,9 @@
   </xs:complexType>
   </xs:element>
  -->
- 
- 
- 
+
+
+
  <!--
   <xs:element name="searchCriteria">
   <xs:complexType>
@@ -959,5 +1029,20 @@
   </xs:complexType>
   </xs:element>
  -->
- 
+ <!--
+ <xs:element name="mimeTypes">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="mimeType" minOccurs="1" maxOccurs="unbounded">
+     <xs:complexType>
+      <xs:attribute name="type" type="xs:string" use="required"/>
+      <xs:attribute name="brailleCode" type="xs:string"/>
+      <xs:attribute ref="xml:lang" use="optional"/>
+     </xs:complexType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+ -->
+
 </xs:schema>

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions name="DAISYOnlineService" xmlns="http://schemas.xmlsoap.org/wsdl/"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-	xmlns:tns="http://www.daisy.org/ns/doml#" xmlns:db="http://docbook.org/ns/docbook"
-	targetNamespace="http://www.daisy.org/ns/doml#">
-
+	xmlns:tns="http://www.daisy.org/ns/daisy-online/#" xmlns:db="http://docbook.org/ns/docbook"
+	targetNamespace="http://www.daisy.org/ns/daisy-online/#">
+	
 	<documentation> Notes on docbook documentation usage: para[role="desc"] is a short core
 		definition of the item being described. Plain text can also be used, assuming that no other
 		documentation than the core definition is provided within the documentation element. </documentation>
 
 	<types>
-		<xsd:schema targetNamespace="http://www.daisy.org/ns/doml#">
-			<xsd:import namespace="http://www.daisy.org/ns/doml#" schemaLocation="do-types-10.xsd"/>
+		<xsd:schema targetNamespace="http://www.daisy.org/ns/daisy-online/#">
+			<xsd:import namespace="http://www.daisy.org/ns/daisy-online/#" schemaLocation="do-types-10.xsd"/>
 		</xsd:schema>
 	</types>
 
@@ -33,7 +33,7 @@
 	<message name="logOnResponse">
 		<part name="result" element="xsd:boolean">
 			<documentation>
-				<db:para role="desc">Signifies whether the log-on was successful</db:para>
+				<db:para role="desc">Specifies whether the log-on was successful</db:para>
 			</documentation>
 		</part>
 	</message>
@@ -54,7 +54,7 @@
 	<message name="setBookmarksResponse">
 		<part name="result" element="xsd:boolean">
 			<documentation>
-				<db:para role="desc">Signifies whether the bookmarks for the Publication were saved
+				<db:para role="desc">Specifies whether the bookmarks for the Publication were saved
 					successfully on the Service.</db:para>
 			</documentation>
 		</part>
@@ -86,7 +86,7 @@
 	<message name="issueContentResponse">
 		<part name="result" element="xsd:boolean">
 			<documentation>
-				<db:para role="desc">Signifies whether the content was issued
+				<db:para role="desc">Specifies whether the content was issued
 					successfully.</db:para>
 			</documentation>
 		</part>
@@ -101,7 +101,7 @@
 	</message>
 	<message name="returnContentResponse">
 		<part name="result" element="xsd:boolean">
-			<documentation>Signifies whether the content was returned successfully.</documentation>
+			<documentation>Specifies whether the content was returned successfully.</documentation>
 		</part>
 	</message>
 
@@ -118,7 +118,7 @@
 	</message>
 	<message name="setReadingSystemAttributesResponse">
 		<part name="result" element="xsd:boolean">
-			<documentation>Signifies whether the ReadingSystemAttributes were recieved successfully
+			<documentation>Specifies whether the ReadingSystemAttributes were recieved successfully
 				on the Service.</documentation>
 		</part>
 	</message>
@@ -151,6 +151,16 @@
 					the identity value of a dynamically composed content list.</db:para>
 			</documentation>
 		</part>
+		<part name="firstItem" element="xsd:integer">
+			<documentation>
+				<db:para role="desc">The first item to retrieve.</db:para>
+			</documentation>
+		</part>
+		<part name="lastItem" element="xsd:integer">
+			<documentation>
+				<db:para role="desc">The last item to retrieve.</db:para>
+			</documentation>
+		</part>
 	</message>
 	<message name="getContentListResponse">
 		<part name="result" element="tns:contentList" /> 
@@ -166,18 +176,13 @@
 		<part name="result" element="tns:announcements" />
 	</message>
 	<message name="markAnnouncementsAsReadRequest">
-		<part name="rangeBegin" element="xsd:integer">
-			<documentation><db:para>The first announcement to mark as read, expressed as the value of the announcement's 
-				<db:varname>sequenceID</db:varname> attribute value</db:para></documentation>
+		<part name="read" element="tns:arrayOfID">
+			<documentation><db:para role="desc">The announcements to mark as read, expressed as references to the announcement's ID values.</db:para></documentation>
 		</part>
-		<part name="rangeEnd" element="xsd:integer">
-			<documentation><db:para>The last announcement to mark as read, expressed as the value of the announcement's 
-				<db:varname>sequenceID</db:varname> attribute value</db:para></documentation>
-		</part>		
 	</message>
 	<message name="markAnnouncementsAsReadResponse">
 		<part name="result" element="xsd:boolean">
-			<documentation>Signifies whether the specified announcements were successfully marked as read on the Service</documentation>
+			<documentation>Specifies whether the specified announcements were successfully marked as read on the Service</documentation>
 		</part>
 	</message>
 	
@@ -246,13 +251,13 @@
 	</message>
 	
 	<!-- ********************************************* -->
-	<!-- *************  metadata  ************** -->
+	<!-- ****************  metadata  ***************** -->
 	<!-- ********************************************* -->
 	
 	<message name="getContentMetadataRequest">
-		<part name="publicationID" element="xsd:string">
+		<part name="contentItemID" element="xsd:ID">
 			<documentation>
-				<db:para role="desc">The identifier of the publication for which the metadata is being requested, 
+				<db:para role="desc">The identifier of the content for which metadata is being requested, 
 					as expressed by the <db:varname>id</db:varname> attribute of the relevant <db:varname>contentItem</db:varname> in 
 					the <db:xref linkend="tp_contentList" /> type.</db:para>
 			</documentation>
@@ -263,6 +268,47 @@
 		<part name="result" element="tns:contentMetadata" />
 	</message>
 	
+	<!-- ********************************************* -->
+	<!-- ******************  PDTB2 ******************* -->
+	<!-- ********************************************* -->
+	
+	<message name="getKeyExchangeObjectRequest">
+		<part name="supportedPublicKeyNames" element="tns:arrayOfString">
+			<documentation>
+				<db:para role="desc">DOC TODO</db:para>
+			</documentation>
+		</part>
+		<part name="requestedKeyName" element="xsd:string">
+			<documentation>
+				<db:para role="desc">DOC TODO</db:para>
+			</documentation>
+		</part>
+	</message>
+	<message name="getKeyExchangeObjectResponse">
+		<part name="result" element="xsd:string">
+			<documentation>
+				<db:para role="desc">DOC TODO</db:para>
+				<db:para role="desc">TODO should return a Key Exchange Object xml fragment</db:para>
+			</documentation>
+		</part>	
+	</message>
+	
+	<!-- ********************************************* -->
+	<!-- *******  Optional Operations Query ********** -->
+	<!-- ********************************************* -->
+	
+	<message name="getOptionalOperationsRequest">
+		<documentation>
+				<db:para role="desc">DOC TODO</db:para>
+		</documentation>
+	</message>
+	<message name="getOptionalOperationsResponse">
+		<part name="result" element="tns:optionalOperations">
+			<documentation>
+				<db:para role="desc">DOC TODO</db:para>
+			</documentation>
+		</part>	
+	</message>
 	
 	<portType name="daisy-online">
 
@@ -334,12 +380,18 @@
 		<operation name="getContentList">
 			<documentation>
 				<db:para role="desc">Retrieves a list of available content.</db:para>
+				<db:para>The <db:varname>firstItem</db:varname> and 
+					<db:varname>lastItem</db:varname> parameters are used to request subsets of the 
+					content list made available by the Service. The first item in the list has the 
+					index <db:varname>1</db:varname>.</db:para>
+				<db:para role="req">TODO note that out-of-range lastItem and firstItem values do not constitute Fault matter.</db:para>
 			</documentation>
 			<input message="tns:getContentListRequest"/>
 			<output message="tns:getContentListResponse"/>
 			<fault name="getContentListInternalServerError" message="tns:InternalServerErrorFault"/>
 			<fault name="getContentListNotAuthorised" message="tns:NotAuthorisedFault"/>
-			<fault name="getContentListInvalidOperation" message="tns:InvalidOperationFault"/>				
+			<fault name="getContentListInvalidOperation" message="tns:InvalidOperationFault"/>
+			<fault name="getContentListInvalidParameter" message="tns:InvalidParameterFault"/>
 		</operation>
 		
 		<operation name="getContentMetadata">
@@ -355,6 +407,18 @@
 			<fault name="getContentMetadataNotAuthorised" message="tns:NotAuthorisedFault"/>
 			<fault name="getContentMetadataInvalidOperation" message="tns:InvalidOperationFault"/>		
 		</operation>
+		
+		<operation name="getOptionalOperations">
+			<documentation>
+				<db:para role="desc">Queries the Service on which optional operations it supports.</db:para>
+			</documentation>
+			<input message="tns:getOptionalOperationsRequest"/>
+			<output message="tns:getOptionalOperationsResponse"/>
+			<fault name="getOptionalOperationsInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="getOptionalOperationsNotAuthorised" message="tns:NotAuthorisedFault"/>
+			<fault name="getOptionalOperationsInvalidOperation" message="tns:InvalidOperationFault"/>			
+		</operation>
+		
 		
 		<!-- ************************************** -->
 		<!-- *******  optional operations  ******** -->
@@ -484,6 +548,20 @@
 			<fault name="getMessageInvalidOperation" message="tns:InvalidOperationFault"/>
 			<fault name="getMessageOperationNotSupported" message="tns:OperationNotSupportedFault"/>
 		</operation>
+
+		<operation name="getKeyExchangeObject">
+			<documentation>
+				<db:para role="desc">DOC TODO</db:para>
+			</documentation>
+			<input message="tns:getKeyExchangeObjectRequest"/>
+			<output message="tns:getKeyExchangeObjectResponse"/>
+			<fault name="getKeyExchangeObjectInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="getKeyExchangeObjectNotAuthorised" message="tns:NotAuthorisedFault"/>
+			<fault name="getKeyExchangeObjectInvalidOperation" message="tns:InvalidOperationFault"/>
+			<fault name="getKeyExchangeObjectOperationNotSupported" message="tns:OperationNotSupportedFault"/>
+		</operation>
+		
+	
 	</portType>
 	
 	<!-- ************************************** -->
@@ -499,7 +577,7 @@
 	<message name="NotAuthorisedFault">
 		<documentation>
 			<db:para role="desc">The Reading System is not authorised to invoke this
-				operation.</db:para>
+				operation. TODO this may be redundant - use InvalidOperationFault</db:para>
 		</documentation>
 	</message>
 	<message name="InvalidParameterFault">
@@ -510,7 +588,7 @@
 	</message>
 	<message name="InvalidOperationFault">
 		<documentation>
-			<db:para role="desc">The current context does not permit a call to this operation. (May
+			<db:para role="desc">The current context does not permit a call to this operation. (TODO May
 				make NotAuthorisedFault redundant)</db:para>
 		</documentation>
 	</message>
