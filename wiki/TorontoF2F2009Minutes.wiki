@@ -170,3 +170,4 @@ Resolved in XSD.
 Proposed Resolution: make bandwith optional, see clarifying doc in xsd. 
 
 === Issue 70 ====
+Proposed Resolution: rename message to label
