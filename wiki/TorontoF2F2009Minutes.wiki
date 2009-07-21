@@ -102,13 +102,13 @@ The content list was intended to be an endpoint; the Reading System would have t
 
 == Issue 44 ==
 
-*Agreed*: Drop sequence numbers from `userChoices`, `groupedQuestions`, announcements and `contentList`s.
+*Agreed*: Drop sequence numbers from `userChoices`, `groupedQuestions`, `announcements` and `contentList`.
 
 *Agreed*: `markAnnouncementsAsRead` should take a list of announcement IDs, not a range.
 
 *Action - Markus*: Should IDs be simple Strings or XML Names?
 
-*Agreed*: `contentList`s should grow `rangeBegin`, `rangeEnd` and `totalItems` attributes, to allow for downloading parts of the content list.
+*Agreed*: `contentList` should grow `rangeBegin`, `rangeEnd` and `totalItems` attributes, to allow for downloading parts of the content list.
 
 == Tomorrow ==
 
