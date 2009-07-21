@@ -117,3 +117,25 @@ The content list was intended to be an endpoint; the Reading System would have t
  * Prioritize issues so ones with heavier impact are dealt with earlier.
 
 = Tuesday July 21=
+
+== Group Session 1 ==
+=== Issue 61 ====
+Proposed Resolution:
+ * keep manufacturer and model required
+ * make serialNumber optional
+ * rename firmwareVersion to version and remains required
+ * make supportedProtocols optional, and make clear that only additional protocols than the ones mandate by the spec
+ * change name of supportedProtocols to additionalTransferProtocols
+ *preferredLanguage rename to preferredUILanguage, keep required
+
+=== Issue 62 ====
+=== Issue 63 ====
+=== Issue 64 ====
+=== Issue 65 ====
+=== Issue 66 ====
+=== Issue 67 ====
+=== Issue 68 ====
+=== Issue 69 ====
+Proposed Resolution: make bandwith optional, see clarifying doc in xsd. 
+
+=== Issue 70 ====
