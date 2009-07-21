@@ -140,7 +140,7 @@ Add informative URIs to daisy2.02 spec and zed specs and epub spec where those p
 Proposed Resolution: rename to supportedMimeTypes, clarify that this related to MIME types of both service messages/announcements AND content.
 
 === Issue 65 ====
-Proposed Resolution: change enum to TEXT_NUMERIC, TEXT_ALPHANUMERIC
+Proposed Resolution: rename to supportedInputTypes, change enum to TEXT_NUMERIC, TEXT_ALPHANUMERIC (for now). Revisit audio posting on thursday if we have time.
 (Note: discussion about dropping notion of braille entirely in protocol)
 
 === Issue 66 ====
