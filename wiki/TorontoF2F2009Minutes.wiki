@@ -224,9 +224,9 @@ Proposed Resolution: rename message to label
 === Issue 82 ===
 === Issue 83 ===
 
-== Wednesday 22 JULY ==
+= Wednesday 22 JULY =
 
-=== AM SESSION ==
+== AM SESSION ==
 
 Action: markus to update the issue tracker, there are a lot of issues that can now be closed.
 
