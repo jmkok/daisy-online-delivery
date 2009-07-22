@@ -23,43 +23,85 @@
  <xs:element name="readingSystemAttributes">
   <xs:complexType>
    <xs:sequence>
-    <xs:choice minOccurs="1" maxOccurs="unbounded">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
      <xs:any namespace="##other" processContents="skip"/>
     </xs:choice>
+
     <xs:element name="manufacturer" type="xs:string" minOccurs="1" maxOccurs="1"/>
     <xs:element name="model" type="xs:string" minOccurs="1" maxOccurs="1"/>
-    <xs:element name="serialNumber" type="xs:string" minOccurs="1" maxOccurs="1"/>
-    <xs:element name="firmwareVersion" type="xs:string" minOccurs="1" maxOccurs="1"/>
+    <xs:element name="serialNumber" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    <xs:element name="version" type="xs:string" minOccurs="1" maxOccurs="1"/>
+
     <xs:element name="config" minOccurs="1" maxOccurs="1">
      <xs:complexType>
       <xs:sequence>
        <xs:element name="supportsMultipleSelections" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
        <xs:element name="supportsGroupedQuestions" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
-       <xs:element name="preferredLanguage" minOccurs="1" maxOccurs="1" type="xs:language"/>
-       <xs:element name="bandwidth" type="xs:int" minOccurs="0" maxOccurs="1"/>
+       <xs:element name="preferredUILanguage" minOccurs="1" maxOccurs="1" type="xs:language">
+        <xs:annotation>
+         <xs:documentation>
+          <db:para>An expression of the user's preferred language of communication with the
+           Service.</db:para>
+         </xs:documentation>
+        </xs:annotation>
+       </xs:element>
+       <xs:element name="bandwidth" type="xs:int" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+         <xs:documentation>
+          <db:para>An estimate of the bandwidth that the Reading System allocates for the session,
+           expressed in kilobits per second.</db:para>
+         </xs:documentation>
+        </xs:annotation>
+       </xs:element>
+
        <xs:element name="supportedContentStandards" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+         <xs:documentation>
+          <db:para>TODO add prose that makes clear this follows the dc:format convention. Add
+           informative URIs to daisy2.02 spec and zed specs and epub spec where those particular
+           strings are defined.</db:para>
+         </xs:documentation>
+        </xs:annotation>
         <xs:complexType>
          <xs:sequence>
-          <xs:element name="supportedContentStandard" nillable="true" minOccurs="1"
-           maxOccurs="unbounded">
-           <!-- TODO enumerate -->
-           <xs:complexType>
-            <xs:simpleContent>
-             <xs:extension base="xs:string"> </xs:extension>
-            </xs:simpleContent>
-           </xs:complexType>
-          </xs:element>
+          <xs:element name="supportedContentStandard" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
          </xs:sequence>
         </xs:complexType>
        </xs:element>
 
-       <xs:element name="mimeTypes" minOccurs="1" maxOccurs="1">
+       <xs:element name="supportedContentProtectionStandards" minOccurs="1" maxOccurs="1">
+        <xs:annotation>	
+         <xs:documentation>
+          <db:para>DOC TODO</db:para>
+         </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+         <xs:sequence>
+          <xs:element name="supportedContentProtectionStandard" minOccurs="0" maxOccurs="unbounded">
+           <xs:simpleType>
+            <xs:restriction base="xs:string">
+             <xs:enumeration value="PDTB2"/>
+            </xs:restriction>
+           </xs:simpleType>
+          </xs:element>
+         </xs:sequence>
+        </xs:complexType>
+       </xs:element>
+	
+       <xs:element name="supportedMimeTypes" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+         <xs:documentation>
+          <db:para>TODO clarify that this related to content types of both service
+             announcements AND content.</db:para>
+          <db:para>A Service may use this information to adapt content types offered
+           to the Reading System as labels and content.</db:para>
+         </xs:documentation>
+        </xs:annotation>
         <xs:complexType>
          <xs:sequence>
           <xs:element name="mimeType" minOccurs="1" maxOccurs="unbounded">
            <xs:complexType>
             <xs:attribute name="type" type="xs:string" use="required"/>
-            <xs:attribute name="brailleCode" type="xs:string"/>
             <xs:attribute ref="xml:lang" use="optional"/>
            </xs:complexType>
           </xs:element>
@@ -67,50 +109,44 @@
         </xs:complexType>
        </xs:element>
 
-       <xs:element name="inputTypes" minOccurs="1" maxOccurs="1">
+       <xs:element name="supportedInputTypes" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+         <xs:documentation>
+          <db:para>Enumerates the means of input that the Reading System supports.</db:para>
+          <db:para>If the reading system does not support any means of input, the inputTypes element
+           is empty.</db:para>
+         </xs:documentation>
+        </xs:annotation>
         <xs:complexType>
          <xs:sequence>
-          <xs:element name="input" minOccurs="1" maxOccurs="unbounded">
+          <xs:element name="input" minOccurs="0" maxOccurs="unbounded">
            <xs:complexType>
             <xs:attribute name="type" use="required">
              <xs:simpleType>
               <xs:restriction base="xs:string">
-               <xs:enumeration value="audio"/>
-               <xs:enumeration value="text"/>
-               <xs:enumeration value="braille"/>
-               <xs:enumeration value="video"/>
-               <xs:enumeration value="image"/>
+               <xs:enumeration value="TEXT_NUMERIC"/>
+               <xs:enumeration value="TEXT_ALPHANUMERIC"/>
               </xs:restriction>
              </xs:simpleType>
             </xs:attribute>
-            <xs:attribute name="braillecode" type="xs:string"/>
-            <xs:attribute ref="xml:lang" use="optional"> </xs:attribute>
+            <xs:attribute ref="xml:lang" use="optional"/>
            </xs:complexType>
           </xs:element>
          </xs:sequence>
         </xs:complexType>
        </xs:element>
-
-       <!-- TODO are the modes required? in https, downloading and streaming are analogous -->
-       <xs:element name="Modes" minOccurs="1" maxOccurs="1">
+       
+       <xs:element name="additionalTransferProtocols" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+         <xs:documentation>
+          <db:para>The additionalTransferProtocols element contains information about additional
+           content transfer protocols that are supported by the reading system, beyond the protocols
+           that are mandated by the specification.</db:para>
+         </xs:documentation>
+        </xs:annotation>
         <xs:complexType>
          <xs:sequence>
-          <xs:element name="Mode" nillable="true" minOccurs="1" maxOccurs="unbounded">
-           <xs:complexType>
-            <xs:simpleContent>
-             <xs:extension base="xs:string"> </xs:extension>
-            </xs:simpleContent>
-           </xs:complexType>
-          </xs:element>
-         </xs:sequence>
-        </xs:complexType>
-       </xs:element>
-
-       <!-- TODO should this be removed? May be an extension point -->
-       <xs:element name="supportedProtocols" minOccurs="1" maxOccurs="1">
-        <xs:complexType>
-         <xs:sequence>
-          <xs:element name="supportedProtocol" nillable="true" minOccurs="1" maxOccurs="unbounded">
+          <xs:element name="protocol" minOccurs="1" maxOccurs="unbounded">
            <xs:complexType>
             <xs:simpleContent>
              <xs:extension base="xs:string"> </xs:extension>
@@ -123,6 +159,22 @@
       </xs:sequence>
      </xs:complexType>
     </xs:element>
+    
+    <xs:element name="requiresAudioLabels" minOccurs="0" maxOccurs="1">
+     <xs:annotation>
+      <xs:documentation>
+       <db:para role="desc">Specifies whether the Reading System requires audio labels 
+       (for service announcements and dynamic menu labels). This may occur when a Reading 
+       System does not have a built-in TTS.</db:para>
+       <db:para>If a Service does not support audio labels, it must throw an OperationNotSupported
+       Fault on subsequent calls to operations that include label types.</db:para>
+      </xs:documentation>
+     </xs:annotation>
+      <xs:complexType>
+        <xs:attribute name="value" type="xs:boolean" use="required"/>
+      </xs:complexType> 
+     </xs:element>
+    
    </xs:sequence>
   </xs:complexType>
  </xs:element>
@@ -133,7 +185,7 @@
     <xs:element name="announcement" minOccurs="0" maxOccurs="unbounded">
      <xs:complexType>
       <xs:sequence>
-       <xs:element ref="message" minOccurs="0" maxOccurs="unbounded"/>
+       <xs:element ref="label" minOccurs="0" maxOccurs="unbounded"/>
       </xs:sequence>
       <xs:attribute name="id" type="xs:ID" use="required"/>
       <xs:attribute name="type" type="xs:string" use="optional"/>
@@ -151,24 +203,24 @@
   </xs:complexType>
  </xs:element>
 
- <xs:element name="message">
+ <xs:element name="label">
   <xs:complexType>
    <xs:sequence>
-    <xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    <xs:element name="text" type="xs:string" minOccurs="1" maxOccurs="1"/>
     <xs:element name="audio" minOccurs="0" maxOccurs="1">
      <xs:complexType>
       <xs:attribute name="href" type="xs:anyURI" use="required">
        <xs:annotation>
         <xs:documentation>
          <db:para role="desc">Specifies the URI of the audio resource containing the
-          message.</db:para>
+          label.</db:para>
         </xs:documentation>
        </xs:annotation>
       </xs:attribute>
       <xs:attribute name="rangeBegin" type="xs:integer" use="optional">
        <xs:annotation>
         <xs:documentation>
-         <db:para role="desc">Specifies the message start point in bytes counting from the start of
+         <db:para role="desc">Specifies the audio label start point in bytes counting from the start of
           the resource specified in the href attribute. If the rangeBegin attribute is not present,
           this implies a rangeBegin of 0.</db:para>
         </xs:documentation>
@@ -177,7 +229,7 @@
       <xs:attribute name="rangeEnd" type="xs:integer" use="optional">
        <xs:annotation>
         <xs:documentation>
-         <db:para role="desc">Specifies the message end point in bytes counting from the start of
+         <db:para role="desc">Specifies the audio label end point in bytes counting from the start of
           the resource specified in the href attribute. If the rangeEnd attribute is not present,
           this implies a rangeEnd value set to the last byte of the resource specificed in the href
           attribute.</db:para>
@@ -187,7 +239,7 @@
       <xs:attribute name="size" type="xs:int" use="required">
        <xs:annotation>
         <xs:documentation>
-         <db:para role="desc">Specifies the size (in bytes) of the message audio data.</db:para>
+         <db:para role="desc">Specifies the size (in bytes) of the label audio data.</db:para>
         </xs:documentation>
        </xs:annotation>
       </xs:attribute>
@@ -197,7 +249,7 @@
    <xs:attribute ref="xml:lang">
     <xs:annotation>
      <xs:documentation>
-      <db:para role="desc">Specifices the language of the message.</db:para>
+      <db:para role="desc">Specifices the language of the label.</db:para>
      </xs:documentation>
     </xs:annotation>
    </xs:attribute>
@@ -210,7 +262,7 @@
     <xs:element name="sample" minOccurs="0" maxOccurs="1">
      <xs:complexType>
       <xs:sequence>
-       <xs:element ref="message" minOccurs="1" maxOccurs="unbounded"/>
+       <xs:element ref="label" minOccurs="1" maxOccurs="unbounded"/>
       </xs:sequence>
      </xs:complexType>
     </xs:element>
@@ -245,6 +297,7 @@
        <xs:element name="narrator" type="xs:string" minOccurs="0" maxOccurs="1"/>
        <xs:element name="language" type="xs:string" minOccurs="0" maxOccurs="1"/>
        <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+       <!-- TODO 0-1 elements in pdtb namespace with specVersion -->
        <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:any namespace="##other" processContents="lax"/>
        </xs:choice>
@@ -264,6 +317,8 @@
         <xs:complexType>
          <xs:attribute name="href" type="xs:anyURI" use="required"/>
          <xs:attribute name="mimeType" type="xs:string" use="required">
+          <!-- TODO add note that PDTB2 mimetypes should be used --> 
+          <!-- TODO what about 2.02 Mime types? Those are not specified anywhere -->
           <xs:annotation>
            <xs:documentation>
             <db:para>The MIME type of the resource.</db:para>
@@ -293,27 +348,25 @@
 
    <xs:attribute name="id" type="xs:string" use="required"/>
 
-   <xs:attribute name="type" use="optional">
+   <xs:attribute name="category" use="optional">
     <xs:simpleType>
      <xs:restriction base="xs:string">
       <xs:enumeration value="book"/>
       <xs:enumeration value="magazine"/>
       <xs:enumeration value="newspaper"/>
       <xs:enumeration value="other"/>
+      <!-- TODO make this an enum of the extensible type -->
      </xs:restriction>
     </xs:simpleType>
    </xs:attribute>
 
-   <xs:attribute name="accessMode" use="required">
-    <xs:simpleType>
-     <xs:restriction base="xs:string">
-      <xs:enumeration value="stream"/>
-      <xs:enumeration value="download"/>
-      <xs:enumeration value="unrestricted"/>
-     </xs:restriction>
-    </xs:simpleType>
+   <xs:attribute name="borrowed" type="xs:boolean" use="required">
+   <!-- TODO may make optional and specify value if so -->
+    <xs:annotation><xs:documentation>
+       <db:para>Specifies whether the Service requires this content to be returned.</db:para>
+    </xs:documentation></xs:annotation>
    </xs:attribute>
-
+   
   </xs:complexType>
  </xs:element>
 
@@ -323,10 +376,10 @@
     <xs:element name="contentItem" minOccurs="0" maxOccurs="unbounded">
      <xs:complexType>
       <xs:sequence>
-       <xs:element ref="message" minOccurs="1" maxOccurs="1">
+       <xs:element ref="label" minOccurs="1" maxOccurs="1">
         <xs:annotation>
          <xs:documentation>
-          <db:para>The title, or other descriptive text, of this contentItem</db:para>
+          <db:para>The title, or other descriptive text, of this contentItem.</db:para>
          </xs:documentation>
         </xs:annotation>
        </xs:element>
@@ -341,8 +394,8 @@
       <xs:attribute name="totalItems" type="xs:integer" use="required">
        <xs:annotation>
         <xs:documentation>
-         <db:para>The total number of content items exposed by the Service. This instance of
-           <db:varname>contentList</db:varname> may only contain a subset of the total number of
+         <db:para>The total number of content items exposed by the Service at this stage of the session. 
+          This instance of <db:varname>contentList</db:varname> may only contain a subset of the total number of
           items.</db:para>
         </xs:documentation>
        </xs:annotation>
@@ -561,23 +614,22 @@
         <xs:complexType>
          <xs:attribute name="type" use="required">
           <xs:simpleType>
+            <!-- TODO what do we do with this enum? -->
            <xs:restriction base="xs:string">
             <xs:enumeration value="audio"/>
             <xs:enumeration value="text"/>
-            <xs:enumeration value="braille"/>
             <xs:enumeration value="video"/>
             <xs:enumeration value="image"/>
            </xs:restriction>
           </xs:simpleType>
          </xs:attribute>
-         <xs:attribute name="braillecode" type="xs:string"/>
          <xs:attribute ref="xml:lang" use="optional"/>
         </xs:complexType>
        </xs:element>
       </xs:sequence>
      </xs:complexType>
     </xs:element>
-    <xs:element ref="message" minOccurs="1" maxOccurs="unbounded"/>
+    <xs:element ref="label" minOccurs="1" maxOccurs="unbounded"/>
     <xs:element name="callbackFunction" minOccurs="1">
      <xs:simpleType>
       <xs:restriction base="xs:string">
@@ -599,7 +651,7 @@
  <xs:element name="multipleChoiceQuestion">
   <xs:complexType>
    <xs:sequence>
-    <xs:element ref="message" minOccurs="1" maxOccurs="1"/>
+    <xs:element ref="label" minOccurs="1" maxOccurs="1"/>
     <xs:element name="choices" minOccurs="1" maxOccurs="1">
      <xs:complexType>
       <xs:sequence>
@@ -619,7 +671,7 @@
             </xs:restriction>
            </xs:simpleType>
           </xs:element>
-          <xs:element ref="message" minOccurs="1" maxOccurs="1"/>
+          <xs:element ref="label" minOccurs="1" maxOccurs="1"/>
          </xs:sequence>
          <xs:attribute name="id" type="xs:string"/>
         </xs:complexType>
@@ -1044,5 +1096,18 @@
   </xs:complexType>
  </xs:element>
  -->
-
+ <!-- TODO are the modes required? in https, downloading and streaming are analogous 
+  <xs:element name="Modes" minOccurs="1" maxOccurs="1">
+  <xs:complexType>
+  <xs:sequence>
+  <xs:element name="Mode" nillable="true" minOccurs="1" maxOccurs="unbounded">
+  <xs:complexType>
+  <xs:simpleContent>
+  <xs:extension base="xs:string"> </xs:extension>
+  </xs:simpleContent>
+  </xs:complexType>
+  </xs:element>
+  </xs:sequence>
+  </xs:complexType>
+  </xs:element> -->
 </xs:schema>
