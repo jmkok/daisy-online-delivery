@@ -626,7 +626,9 @@
 	<message name="InvalidParameterFault">
 		<documentation>
 			<db:para role="desc">An invalid parameter was passed with the operation
-				request.</db:para>
+			request.</db:para>
+			<part name="invalidParamName" element="xs:string"><db:para role="desc">The name of the invalid parameter</db:para></part>
+			<part name="invalidParamValue" element="xs:string"><db:para role="desc">The value of the invalid parameter, serialized as a string</db:para></part>
 		</documentation>
 	</message>
 	<message name="InvalidOperationFault">
