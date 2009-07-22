@@ -200,7 +200,18 @@
 	<!-- ************************************** -->
 	<!-- ********      questions       ******** -->
 	<!-- ************************************** -->
-
+	<message name="getQuestionsRequest">
+		<part name="responses" element="tns:userResponses">
+			<documentation>
+				<db:para role="desc">TODO DOC</db:para>
+			</documentation>
+		</part>
+	</message>
+	<message name="getQuestionsResponse">
+		<part name="result" element="tns:groupedQuestions"/>
+	</message>
+	
+<!--
 	<message name="getQuestionRequest">
 		<part name="questionID" element="xsd:string">
 			<documentation>
@@ -243,10 +254,13 @@
 	<message name="getMessageResponse">
 		<part name="response" element="tns:label"/>
 	</message>
-
+-->
+	
 	<!-- ********************************************* -->
 	<!-- *************  user responses  ************** -->
 	<!-- ********************************************* -->
+	
+	<!--
 	<message name="setUserResponsesRequest">
 		<part name="responses" element="tns:userResponses">
 			<documentation>
@@ -262,7 +276,7 @@
 			</documentation>
 		</part>
 	</message>
-
+-->
 	<!-- ********************************************* -->
 	<!-- ****************  metadata  ***************** -->
 	<!-- ********************************************* -->
@@ -277,7 +291,6 @@
 			</documentation>
 		</part>
 	</message>
-
 	<message name="getContentMetadataResponse">
 		<part name="result" element="tns:contentMetadata"/>
 	</message>
@@ -524,6 +537,7 @@
 			<fault name="getDateTimeOperationNotSupported" message="tns:OperationNotSupportedFault"
 			/>
 		</operation>
+		<!--
 		<operation name="setUserResponses">
 			<documentation>
 				<db:para role="desc">Posts user response(s) to a previous question to the
@@ -536,9 +550,10 @@
 			<fault name="setUserResponsesInvalidOperation" message="tns:InvalidOperationFault"/>
 			<fault name="setUserResponsesOperationNotSupported"
 				message="tns:OperationNotSupportedFault"/>
-		</operation>
+		</operation> -->
+		<!--
 		<operation name="getQuestion">
-			<!-- was: getUserInput -->
+			
 			<documentation>
 				<db:para role="desc">TODO</db:para>
 			</documentation>
@@ -551,7 +566,7 @@
 			/>
 		</operation>
 		<operation name="getMultipleChoiceQuestion">
-			<!-- was: getUserChoices -->
+			
 			<documentation>
 				<db:para role="desc">TODO</db:para>
 			</documentation>
@@ -579,7 +594,6 @@
 				message="tns:OperationNotSupportedFault"/>
 		</operation>
 		<operation name="getMessage">
-			<!-- was: getUserAnnouncement -->
 			<documentation>
 				<db:para role="desc">TODO</db:para>
 			</documentation>
@@ -590,7 +604,18 @@
 			<fault name="getMessageInvalidOperation" message="tns:InvalidOperationFault"/>
 			<fault name="getMessageOperationNotSupported" message="tns:OperationNotSupportedFault"/>
 		</operation>
-
+		-->
+		<operation name="getQuestions">
+			<documentation>
+				<db:para role="desc">TODO</db:para>
+			</documentation>
+			<input message="tns:getQuestionsRequest"/>
+			<output message="tns:getQuestionsResponse"/>
+			<fault name="getQuestionsInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="getQuestionsNotAuthorised" message="tns:NotAuthorisedFault"/>
+			<fault name="getQuestionsInvalidOperation" message="tns:InvalidOperationFault"/>
+			<fault name="getQuestionsOperationNotSupported" message="tns:OperationNotSupportedFault"/>
+		</operation>
 		<operation name="getKeyExchangeObject">
 			<documentation>
 				<db:para role="desc">DOC TODO</db:para>
