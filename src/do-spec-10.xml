@@ -234,6 +234,9 @@
             <para>
                 <remark role="todo">Describe DMG in general terms, give an abstract example</remark>
             </para>
+            <para>
+                <remark role="todo">Need to define which of the DMG operations are endpoints.</remark>
+            </para>
         </section>
     </chapter>
 
@@ -469,7 +472,7 @@
         <programlisting><xi:include href="do-wsdl-10.wsdl" parse="text"/></programlisting>
     </appendix>
 
-    <appendix xml:id="appendixXSD" conformance="informative" xreflabel="XSD">
+    <appendix xml:id="appendixXSD" conformance="normative" xreflabel="XSD">
         <title>DAISY Online Protocol - WXS Type Definition</title>
         <programlisting><xi:include href="do-types-10.xsd" parse="text"/></programlisting>
     </appendix>
