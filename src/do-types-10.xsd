@@ -186,7 +186,7 @@
     <xs:element name="announcement" minOccurs="0" maxOccurs="unbounded">
      <xs:complexType>
       <xs:sequence>
-       <xs:element ref="label" minOccurs="0" maxOccurs="unbounded"/>
+       <xs:element ref="label" minOccurs="1" maxOccurs="1"/>
       </xs:sequence>
       <xs:attribute name="id" type="xs:ID" use="required"/>
       <xs:attribute name="type" type="xs:string" use="optional"/>
@@ -637,8 +637,8 @@
   </xs:complexType>
  </xs:element>
 
- <xs:element name="groupedQuestions">
-  <!-- either exactly one contentList as direct descendant of GQ, or any combination, and cardinality 
+ <xs:element name="questions">
+  <!-- either exactly one contentList as direct descendant of GQ, or a label, or any combination, and cardinality 
    of multipleChoice and textInputQuestion -->
   <xs:complexType>
    <xs:choice>
@@ -654,7 +654,9 @@
       </xs:complexType>
      </xs:element>
     </xs:sequence>
+    <!-- TODO add doc that these below returns are "endpoints" -->
     <xs:element ref="contentList" minOccurs="1" maxOccurs="1"/>
+    <xs:element ref="label" minOccurs="1" maxOccurs="1"/>
    </xs:choice>
   </xs:complexType>
  </xs:element>
