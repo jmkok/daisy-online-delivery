@@ -398,6 +398,66 @@ Agreed not to have server side back and agreed not to have a back button linked 
 
   
 
- 
+== Posting Audio ==
 
- 
+=== Requirement ====
+Facilitate interaction with clients through uploading of feedback in an audio format.
+
+=== Issues ====
+ * Potentially very expensive on server.
+ * Recording audio generates wav, so players may also need to be encoders.
+ * Need to compress audio would require codecs; potential cost for player developers.
+ * Limiting the size and length of uploads.
+ * Is the audio transmitted by soap / through the web service.
+
+=== Benefits ====
+ * Easy for clients to report issues/problems.
+ * Easy for clients to send requests/ask for information.
+
+
+=== Discussion Points ====
+ * Ability to upload audio must be optional because of requirements on players.
+ * Files should be posted so that a script can process and avoid soap overhead.
+ * Files should go through soap to keep within the protocol and not have separate post functions outside the protocol.
+ * Audio cannot be sent as part of question response; only for feedback.
+ * Can only be done through the dynamic menus.
+
+=== Possible Solutions ====
+
+==== POST =====
+ * readingServiceAttributes - set @inputType=audio
+ * question will require two additional attributes: requiresAudio and the postURI/postAudioURI
+ * getQuestion(UserResponse(id)) with type=audio value=ignored
+ * use basic authentication if required
+
+==== SOAP =====
+ * readingServiceAttributes - set @inputType=audio
+ * current implementation method:
+  * userResponse - @type=audio, @data=contain the audio
+  * userResponse - @type=text, @value=text value
+ * @data should be changed to an element because we don’t want huge audio data in it;
+ * either the value attribute or data element must be present, but not both;
+ * drop @type;
+ * data as an element cannot be used for both because it requires base64 encoded data.
+
+
+===== MTOM ======
+ * Is it needed to reduce any overhead on SOAP, or more costly than it’s worth?
+ * Cannot be negotiated per transaction, so either MTOM or text method must be specified. 
+ * Resolved that MTOM is not necessary; text (Base64) will be used (see action item below).
+
+===== Encoding ======
+ * Player may need to support a huge variety of formats to accommodate servers.
+ * Should we specify WAV as a default format, using low bitrate to keep size down?
+ * Should an open source codec be specified for compression? What is development cost and what support?
+ * Preferable to specify a small set: WAV, MP3, MP4 AAC.
+ * Add note to the specification indicating what “good behaviour” is regarding file and soap message size.
+
+=== Resolution ====
+Embedding within SOAP is preferred because of the complexity of a separate post action and to keep the functionality within the current framework.
+
+=== Action item ====
+Markus to note the discussion that occurred around MTOM and that it is being excluded because of potential problems with support, but that it has the ability to reduce some overhead and speed requests up and could be reviewed later.
+
+=== Question ====
+getServerCharacteristics - is there a need for a function to return information about the what audio/codecs the service is capable of handling
