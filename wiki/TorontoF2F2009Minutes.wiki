@@ -223,3 +223,102 @@ Proposed Resolution: rename message to label
 === Issue 81 ===
 === Issue 82 ===
 === Issue 83 ===
+
+== Wednesday 22 JULY ==
+
+=== AM SESSION ==
+
+Action: markus to update the issue tracker, there are a lot of issues that can now be closed.
+
+Action: markus to add outstanding issues from previous day discussions to the tracker.
+
+
+Markus summarised previously agreed changes already implemented in the documentation.
+
+Kenny: we created an id for the get content list for borrowed.  Content metadata and get content list should both have this. Markus confirmed this has been included (line 154).
+
+XSD line 773, new code to be examined by the group.
+
+Arrays 821 in XSD, is this a sensible way to handle the issue?  All to examine.
+
+Still to do: XSD documentation; 
+protocol operations where the meat of the spec will be in terms of human oriented  prose; 
+terminology defined at the head of the spec; 
+associated the xslt as all it currently does is renders a heading per type;  
+finalisation of the spec; who does what; what do we mean with test and reference implementation.
+
+Focus of today:
+Rest of API;
+Clean up the issue tracker.
+
+
+Dynamic menus
+
+
+
+Kenny illustrates what the change will actually mean. 5 functions from the dynamic menus.  When you call function one and the user has responded, you can go direct to function 2 or as a parameter in to any of the other functions.  Post user responses, the sole purpose is to take you outside this set of functions.  Get service announcement does not take a response - there is no range etc.  
+
+If you called function 1 (multiple choice) and one of the options was get service announcements, you could not get it directly.  You have to call function 5 first.
+
+The approach seems over complicated.  Simplification has a cost, that being one extra function call. Initiate dynamic menus get multiple choice, gives you  set of options, update profile (example) posted straight to the post user responses function which would then call the next function.  We put in one extra function call to the post user responses function - everything else takes a parameter and returns a question. 
+
+Why do we have 4 functions to get things.  Could be simplified if we put everything in to the post user responses function.  This would send a set of user responses and would return the next question in the sequence. To initiate this, you could send a default or empty user responses fragment, or use one of the pre-defined ID. There is an issue where post user responses function might return something outside the dynamic menus (get content list).
+
+The reason for having post user responses came up because of search, content list and announcements.  Search has been removed. Get content list seems to be the remaining issue. All the call back functions have to have the same signature as currently defined. 
+
+Concern that changing this may limit the extensibility of the dynamic menu.
+
+Is there a collision of menus and forms in this discussion? Putting responses back in to a menu seems challenging.  User choices and user input frame how interaction is currently managed, hesitant about equating these things to forms as this may over-complicate user interaction. There are user choice (multiple choice drop down) user input (text box) content list (special significance). 
+
+To summarise, there are three approaches:  originally conceived in the spec as it stands, proposal (in these notes), amalgamating all functions in to one.
+
+The single function creates a tooling difficulty, it would be more complicated and error prone than it needs to be. There is a tension between those who wish to improve the architecture and those who wish to enable programming efficiency. 
+
+There is general agreement that one function is elegant but there is concern about how to develop subsequent tools.
+
+In the revised proposal giving us a user responses function, all the other functions only take an ID. The entry point will always be multiple choice.
+
+Proposal: get questions; set responses.  Get questions takes an ID and, at the moment, returns a grouped question. Set responses signature returns a next operation type. Why isn't the next operation type a call back, agreed it is.  It makes everything a two step function, so not efficient. We do need to create an efficient protocol. Benefit seems to be clarity, also a generalisation. Concern that this is less elegant that a single function with single step. The two-call proposal probably has the benefit of easier extensibility, but that this is not desirable.
+
+Grouped question currently does not have anything about content list in it, this would need to be modified in the light of this proposal. The ids in get content list are different in that they relate to get content metadata, this is reason enough to retain the separation. 
+
+Entry pints to the menu.  At the top (user defined), or at search. The protocol should not define how the default entry point works, this may be a reading system characteristic.  Agreed that the definition of "home" should be considered as a separate issue, but it is a service design issue.
+
+Why is announcement part of group question.  Agreed it should be deleted. 
+
+Do you need a call back attribute? Agreed it should be dropped.
+
+Content list needs to be included in group questions.  If you have a content list as a direct descendent of group questions  you cannot have anything else. You can have 10 multiple choice questions and 3 text, but not a content list in this example.  Whatever is rendered should be in the order of the xml, no sequence ids.
+
+Question type renamed to  question and multiple choice question.
+
+Remove reference to call backs in multiple choice question. 
+
+API updated to reflect the decision to simplify number of functions, all agreed a more elegant solution.
+
+Agreed that group questions should be renamed to questions.
+
+Agreed that label should be included in the outer choices.
+
+Note: there is a considerable amount of documentation to be completed associated with this function.
+
+
+Should we have back?  What conditions would you call this operation? Disagreement on whether it is a player function or server. If it is a player function we need to require the server to retain ids.
+
+There are a couple of places where we have an end point. In dynamic menus, there is no clear way of getting back, back could be a request for the previous id. 
+Suggestion that we have a id called back, when developing a dynamic menu you need to consider what the most logical back would be.  If we don't provide this implementations may find a way of simulating it.
+
+Proposal 1:  allow the special case of id back (default search back), suggest that people don't make assumptions about ids being valid.  
+Proposal 2: Each question or multiple choice question should come with a flag/attribute  to indicate whether this is a legal point to go back to, there could then be a default.  The reading system could store the ids.
+
+Which of the above proposals is most efficient?
+
+Question of where the complexity should be, reading system or server.        
+
+Agreed not to have server side back and agreed not to have a back button linked to a back function on the server.  As a server you could have a back action associated with everything. Casching ids and user responses is possible.
+
+  
+
+ 
+
+ 
