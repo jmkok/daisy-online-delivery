@@ -208,7 +208,7 @@
 		</part>
 	</message>
 	<message name="getQuestionsResponse">
-		<part name="result" element="tns:groupedQuestions"/>
+		<part name="result" element="tns:questions"/>
 	</message>
 	
 <!--
