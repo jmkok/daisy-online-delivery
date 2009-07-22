@@ -93,7 +93,7 @@
         <xs:annotation>
          <xs:documentation>
           <db:para>TODO clarify that this related to content types of both service announcements AND
-           content.</db:para>
+           content. TODO be clear relates to MIME types that the reading system renders to the user.</db:para>
           <db:para>A Service may use this information to adapt content types offered to the Reading
            System as labels and content.</db:para>
          </xs:documentation>
@@ -127,6 +127,7 @@
               <xs:restriction base="xs:string">
                <xs:enumeration value="TEXT_NUMERIC"/>
                <xs:enumeration value="TEXT_ALPHANUMERIC"/>
+               <xs:enumeration value="AUDIO"/>               
               </xs:restriction>
              </xs:simpleType>
             </xs:attribute>
@@ -608,24 +609,25 @@
  <xs:element name="question">
   <xs:complexType>
    <xs:sequence>
-    <!--<xs:element ref="inputTypes" minOccurs="0" maxOccurs="1" />-->
     <xs:element name="inputTypes" minOccurs="0" maxOccurs="1">
+     <xs:annotation><xs:documentation>
+       <db:para>Specifies which input types the service is prepared 
+        to accept as a response to this question.
+       </db:para>
+     </xs:documentation></xs:annotation>
      <xs:complexType>
       <xs:sequence>
        <xs:element name="input" minOccurs="1" maxOccurs="unbounded">
         <xs:complexType>
          <xs:attribute name="type" use="required">
-          <xs:simpleType>
-           <!-- TODO what do we do with this enum? -->
+          <xs:simpleType>           
            <xs:restriction base="xs:string">
-            <xs:enumeration value="audio"/>
-            <xs:enumeration value="text"/>
-            <xs:enumeration value="video"/>
-            <xs:enumeration value="image"/>
+            <xs:enumeration value="AUDIO"/>
+            <xs:enumeration value="TEXT_NUMERIC"/>
+            <xs:enumeration value="TEXT_ALPHANUMERIC"/>
            </xs:restriction>
           </xs:simpleType>
          </xs:attribute>
-         <xs:attribute ref="xml:lang" use="optional"/>
         </xs:complexType>
        </xs:element>
       </xs:sequence>
@@ -689,6 +691,12 @@
   <xs:complexType>
    <xs:sequence>
     <xs:element name="userResponse" minOccurs="1" maxOccurs="unbounded">
+     <xs:annotation>
+      <xs:documentation>
+       <db:para>A singular response to a question. Either the value attribute
+       (for text-based responses) or the data attribute (for audio-based responses) must be present.</db:para>
+      </xs:documentation>
+     </xs:annotation>
      <xs:complexType>
       <xs:attribute name="id" type="xs:ID" use="required">
        <xs:annotation>
@@ -697,19 +705,15 @@
         </xs:documentation>
        </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="type" use="required">
-       <xs:simpleType>
-        <xs:restriction base="xs:string">
-         <xs:enumeration value="choice"/>
-         <xs:enumeration value="text"/>
-         <xs:enumeration value="audio"/>
-        </xs:restriction>
-       </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="value" type="xs:string" use="required"/>
+      <xs:attribute name="value" type="xs:string" use="optional"/>
       <xs:attribute name="data" use="optional">
+       <xs:annotation>
+        <xs:documentation>
+         <db:para>TODO specify that WAV is required, other codecs supported by the service declared by getServiceCharacteristics. TODO add note that MTOM is not allowed.</db:para>
+        </xs:documentation>
+       </xs:annotation>
        <xs:simpleType>
-        <xs:restriction base="xs:base64Binary"> </xs:restriction>
+        <xs:restriction base="xs:base64Binary" /> 
        </xs:simpleType>
       </xs:attribute>
      </xs:complexType>
@@ -740,7 +744,8 @@
      <xs:annotation>
       <xs:documentation>
        <db:para role="desc">A symbolic name for an optional operation or logical group of optional
-        operations.</db:para>
+        operations. TODO change to serverCharacteristics, generalize, add support for supportsSearch, 
+        supportsServerSideBack, additionalUploadAudioCodecs</db:para>
       </xs:documentation>
      </xs:annotation>
      <xs:complexType>
