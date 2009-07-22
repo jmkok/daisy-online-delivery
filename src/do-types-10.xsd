@@ -64,13 +64,14 @@
         </xs:annotation>
         <xs:complexType>
          <xs:sequence>
-          <xs:element name="supportedContentStandard" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+          <xs:element name="supportedContentStandard" type="xs:string" minOccurs="1"
+           maxOccurs="unbounded"/>
          </xs:sequence>
         </xs:complexType>
        </xs:element>
 
        <xs:element name="supportedContentProtectionStandards" minOccurs="1" maxOccurs="1">
-        <xs:annotation>	
+        <xs:annotation>
          <xs:documentation>
           <db:para>DOC TODO</db:para>
          </xs:documentation>
@@ -87,14 +88,14 @@
          </xs:sequence>
         </xs:complexType>
        </xs:element>
-	
+
        <xs:element name="supportedMimeTypes" minOccurs="1" maxOccurs="1">
         <xs:annotation>
          <xs:documentation>
-          <db:para>TODO clarify that this related to content types of both service
-             announcements AND content.</db:para>
-          <db:para>A Service may use this information to adapt content types offered
-           to the Reading System as labels and content.</db:para>
+          <db:para>TODO clarify that this related to content types of both service announcements AND
+           content.</db:para>
+          <db:para>A Service may use this information to adapt content types offered to the Reading
+           System as labels and content.</db:para>
          </xs:documentation>
         </xs:annotation>
         <xs:complexType>
@@ -135,7 +136,7 @@
          </xs:sequence>
         </xs:complexType>
        </xs:element>
-       
+
        <xs:element name="additionalTransferProtocols" minOccurs="0" maxOccurs="1">
         <xs:annotation>
          <xs:documentation>
@@ -159,22 +160,22 @@
       </xs:sequence>
      </xs:complexType>
     </xs:element>
-    
+
     <xs:element name="requiresAudioLabels" minOccurs="0" maxOccurs="1">
      <xs:annotation>
       <xs:documentation>
-       <db:para role="desc">Specifies whether the Reading System requires audio labels 
-       (for service announcements and dynamic menu labels). This may occur when a Reading 
-       System does not have a built-in TTS.</db:para>
+       <db:para role="desc">Specifies whether the Reading System requires audio labels (for service
+        announcements and dynamic menu labels). This may occur when a Reading System does not have a
+        built-in TTS.</db:para>
        <db:para>If a Service does not support audio labels, it must throw an OperationNotSupported
-       Fault on subsequent calls to operations that include label types.</db:para>
+        Fault on subsequent calls to operations that include label types.</db:para>
       </xs:documentation>
      </xs:annotation>
-      <xs:complexType>
-        <xs:attribute name="value" type="xs:boolean" use="required"/>
-      </xs:complexType> 
-     </xs:element>
-    
+     <xs:complexType>
+      <xs:attribute name="value" type="xs:boolean" use="required"/>
+     </xs:complexType>
+    </xs:element>
+
    </xs:sequence>
   </xs:complexType>
  </xs:element>
@@ -220,17 +221,17 @@
       <xs:attribute name="rangeBegin" type="xs:integer" use="optional">
        <xs:annotation>
         <xs:documentation>
-         <db:para role="desc">Specifies the audio label start point in bytes counting from the start of
-          the resource specified in the href attribute. If the rangeBegin attribute is not present,
-          this implies a rangeBegin of 0.</db:para>
+         <db:para role="desc">Specifies the audio label start point in bytes counting from the start
+          of the resource specified in the href attribute. If the rangeBegin attribute is not
+          present, this implies a rangeBegin of 0.</db:para>
         </xs:documentation>
        </xs:annotation>
       </xs:attribute>
       <xs:attribute name="rangeEnd" type="xs:integer" use="optional">
        <xs:annotation>
         <xs:documentation>
-         <db:para role="desc">Specifies the audio label end point in bytes counting from the start of
-          the resource specified in the href attribute. If the rangeEnd attribute is not present,
+         <db:para role="desc">Specifies the audio label end point in bytes counting from the start
+          of the resource specified in the href attribute. If the rangeEnd attribute is not present,
           this implies a rangeEnd value set to the last byte of the resource specificed in the href
           attribute.</db:para>
         </xs:documentation>
@@ -317,7 +318,7 @@
         <xs:complexType>
          <xs:attribute name="href" type="xs:anyURI" use="required"/>
          <xs:attribute name="mimeType" type="xs:string" use="required">
-          <!-- TODO add note that PDTB2 mimetypes should be used --> 
+          <!-- TODO add note that PDTB2 mimetypes should be used -->
           <!-- TODO what about 2.02 Mime types? Those are not specified anywhere -->
           <xs:annotation>
            <xs:documentation>
@@ -351,22 +352,23 @@
    <xs:attribute name="category" use="optional">
     <xs:simpleType>
      <xs:restriction base="xs:string">
-      <xs:enumeration value="book"/>
-      <xs:enumeration value="magazine"/>
-      <xs:enumeration value="newspaper"/>
-      <xs:enumeration value="other"/>
-      <!-- TODO make this an enum of the extensible type -->
+      <xs:enumeration value="BOOK"/>
+      <xs:enumeration value="MAGAZINE"/>
+      <xs:enumeration value="NEWSPAPER"/>
+      <xs:enumeration value="OTHER"/>
      </xs:restriction>
     </xs:simpleType>
    </xs:attribute>
-
-   <xs:attribute name="borrowed" type="xs:boolean" use="required">
-   <!-- TODO may make optional and specify value if so -->
-    <xs:annotation><xs:documentation>
-       <db:para>Specifies whether the Service requires this content to be returned.</db:para>
-    </xs:documentation></xs:annotation>
-   </xs:attribute>
    
+   <xs:attribute name="borrowed" type="xs:boolean" use="required">
+    <!-- TODO may make optional and specify value if so -->
+    <xs:annotation>
+     <xs:documentation>
+      <db:para>Specifies whether the Service requires this content to be returned.</db:para>
+     </xs:documentation>
+    </xs:annotation>
+   </xs:attribute>
+
   </xs:complexType>
  </xs:element>
 
@@ -394,9 +396,9 @@
       <xs:attribute name="totalItems" type="xs:integer" use="required">
        <xs:annotation>
         <xs:documentation>
-         <db:para>The total number of content items exposed by the Service at this stage of the session. 
-          This instance of <db:varname>contentList</db:varname> may only contain a subset of the total number of
-          items.</db:para>
+         <db:para>The total number of content items exposed by the Service at this stage of the
+          session. This instance of <db:varname>contentList</db:varname> may only contain a subset
+          of the total number of items.</db:para>
         </xs:documentation>
        </xs:annotation>
       </xs:attribute>
@@ -614,7 +616,7 @@
         <xs:complexType>
          <xs:attribute name="type" use="required">
           <xs:simpleType>
-            <!-- TODO what do we do with this enum? -->
+           <!-- TODO what do we do with this enum? -->
            <xs:restriction base="xs:string">
             <xs:enumeration value="audio"/>
             <xs:enumeration value="text"/>
@@ -772,8 +774,24 @@
   <xs:complexType>
    <xs:sequence>
     <xs:element name="operation" minOccurs="0" maxOccurs="unbounded">
+     <xs:annotation>
+      <xs:documentation>
+       <db:para role="desc">A symbolic name for an optional operation or logical group of optional
+        operations.</db:para>
+      </xs:documentation>
+     </xs:annotation>
      <xs:complexType>
       <xs:attribute name="type" use="required">
+       <xs:annotation>
+        <xs:documentation>
+         <db:para>This specification defines the values as per the list below.</db:para>
+         <db:para>By setting the type attribute to the value EXTENSION, other values may be
+          introduced in the extension attribute to refer to other, application-specific, optional
+          operations.</db:para>
+         <db:para>TODO write below the list that defines which operations map to the enum values; xslt may
+          not do enums.</db:para>
+        </xs:documentation>
+       </xs:annotation>
        <xs:simpleType>
         <xs:restriction base="xs:string">
          <xs:enumeration value="SET_BOOKMARKS"/>
@@ -781,8 +799,18 @@
          <xs:enumeration value="DYNAMIC_MENUS"/>
          <xs:enumeration value="SERVICE_ANNOUNCEMENTS"/>
          <xs:enumeration value="PDTB2_KEY_PROVISION"/>
+         <xs:enumeration value="EXTENSION"/>
         </xs:restriction>
        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="extension" use="optional" type="xs:string">
+       <xs:annotation>
+        <xs:documentation>
+         <db:para>The value of an extension. This attribute is only relevant when the
+           <db:varname>type</db:varname> attribute value is
+          <db:varname>EXTENSION</db:varname>.</db:para>
+        </xs:documentation>
+       </xs:annotation>
       </xs:attribute>
      </xs:complexType>
     </xs:element>
@@ -1110,4 +1138,11 @@
   </xs:sequence>
   </xs:complexType>
   </xs:element> -->
+ <!--
+ <xs:element name="question2" abstract="true"/>
+ <xs:element name="textInputQuestion2" substitutionGroup="question2"/>
+ <xs:element name="multipleChoiceQuestion2" substitutionGroup="question2"/>
+ <xs:element name="groupedQuestion2" substitutionGroup="question2"/>
+ -->
+ 
 </xs:schema>
