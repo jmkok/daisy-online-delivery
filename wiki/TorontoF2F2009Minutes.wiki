@@ -219,10 +219,89 @@ Proposed Resolution: rename message to label
 
 == Group Session 2: Group 1+2 (issues 79 and forward) ==
 === Issue 79 ===
-=== Issue 80 ===
-=== Issue 81 ===
+The type is a hint to the content. 
+Just leave it for the time being as it is optional.
+Rename type to category as it type is too confusing.
+It is an extensible enumeration. Like book, magazine or ....
+
+=== Issue 80 + 81 ===
+Define strings somewhere - the strings are actually IDs
+They are used internally only
+Should we set the fault text to the fault name ?
+The text is never shown to the user, so it does not matter how the text looks.
+
 === Issue 82 ===
+Is implemented as "Operation not implemented"
+
 === Issue 83 ===
+Later discussion
+
+=== Issue 84 ===
+Removed
+
+===Issue 87===
+Not dealling with now
+
+===Issue 88===
+Not relevant anynmore: getResource is removed
+
+===Issue 91===
+Element: "SupportedContentProtectionStandards" is added
+Element is required but may be empty. 
+Currently only value can be "PDTB2" (or empty)
+
+===Issue 92===
+Removed as the server uses http/https which is usable for both streaming and downloading
+Should we implement a "Do not store" flag in the content ? No way...
+A reading device should be able to download the content again (if lost) or it might not be returnable.
+Note that PDTB2 can be used without encryption, but expritation dates are defined.
+
+===Issue & Return content===
+The player would like to know if it is permantetly owned or borrowed.
+Add a "mustBeReturned" attribute to the content meta data
+Add a "borrowed" attribute to the getContentList.
+This way a reading system could know of lost content and/or revoked content.
+Service announcements can be used to inform the user of overdue content.
+Discuss further...
+
+===Search===
+Drop everything regarding search.
+Use getMultipleChoiceQuestion instead
+"default" should be used for getMultipleChoice to define the top layer
+And serach should be used "search" should be used to define the search menu.
+A possible refinement to search so the availability can be detected by the reading system
+
+------ messy below -----
+
+===MIME types===
+
+What are mime types and how are they used ?
+SupportedFormats does resolve some capabilities
+dc:format can use mime-types
+It can be used that the UI may be rendered using the correct "content"
+Are there any default mime-types defined ?
+Pure download devices might download anything they are presented.
+Mime types as mentioned in the reader system might/will be used to filter the search / responses
+The service could sent a OpNotSupported if the mime-types mismatch.
+
+===TTS===
+
+Menus need to know if the reading device can render the audio.
+The dynamic menu might contain very/too many items which should be rendered into audio 
+Announcements can be very dynamic and might require TTS (eg. books 1,6,34,122 are overdue)
+The service could filter if you cannot TTS the text
+The service is required to have text and is strongly advised to have audio for the labels.
+A reading system might not be comptibel with a service (both do not have a TTS engines) "buy another player"
+When a service detects this incompatibility it might mention this in the menu.
+A service will not be filtered, it should be filtered by the reading system.
+Note: don't use the term TTS, but name it "rendering text"
+A download device will not men tion it will require audo
+We cannot require from every content provider to have all items spoken (or via tts).
+A service provider SHOULD provide text and audio 
+A service provider can send the reading system a different menu structure if an audio mismatch might occur.
+
+Geoff has a decription for the label items.
+
 
 = Wednesday 22 JULY =
 
@@ -252,7 +331,7 @@ Rest of API;
 Clean up the issue tracker.
 
 
-Dynamic menus
+===Dynamic menus===
 
 
 
