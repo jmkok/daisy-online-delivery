@@ -203,7 +203,9 @@
 	<message name="getQuestionsRequest">
 		<part name="responses" element="tns:userResponses">
 			<documentation>
-				<db:para role="desc">TODO DOC</db:para>
+				<db:para role="desc">TODO desc</db:para>
+				<db:para>The value <db:varname>default</db:varname> is reserved... TODO</db:para>
+				<db:para>The value <db:varname>search</db:varname> is reserved... TODO</db:para>
 			</documentation>
 		</part>
 	</message>
