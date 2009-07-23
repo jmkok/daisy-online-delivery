@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:db="http://docbook.org/ns/docbook" version="2.0"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
 	xpath-default-namespace="http://www.w3.org/2001/XMLSchema"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="db">
 	<!--
@@ -30,7 +31,9 @@
 						<!-- hack until descriptions are written -->
 						<xsl:choose>
 							<xsl:when test="child::xs:annotation">
-								<xsl:apply-templates select="child::xs:annotation/xs:documentation/*"/>
+								<db:para>
+									<xsl:apply-templates select="child::xs:annotation/xs:documentation/*"/>
+								</db:para>
 							</xsl:when>
 							<xsl:otherwise>
 								<db:para>...</db:para>
@@ -121,20 +124,23 @@
 							</xsl:call-template>
 						</xsl:when>
 						<xsl:when test="self::xs:simpleType">
-							<xsl:text>(</xsl:text>
+							<db:itemizedlist>
 								<xsl:for-each select="child::xs:restriction/*">
 									<xsl:choose>
 										<xsl:when test="self::xs:enumeration">
-											<xsl:text>"</xsl:text>
-												<xsl:value-of select="@value"/>
-											<xsl:text>"</xsl:text>
-											<xsl:if test="following-sibling::xs:enumeration">
-												<xsl:text> | </xsl:text>
-											</xsl:if>
+											<db:listitem>
+												<db:para>
+													<xsl:value-of select="@value"/>
+													<xsl:if test="child::xs:annotation">
+														<xsl:text> &#8212; </xsl:text>
+														<xsl:apply-templates select="child::xs:annotation/xs:documentation/*"/>
+													</xsl:if>
+												</db:para>
+											</db:listitem>
 										</xsl:when>
 									</xsl:choose>
 								</xsl:for-each>
-							<xsl:text>)</xsl:text>
+							</db:itemizedlist>
 						</xsl:when>
 						<xsl:otherwise>###<xsl:value-of select="local-name()"/>###</xsl:otherwise>
 					</xsl:choose>
@@ -150,16 +156,6 @@
 		<db:para>
 			<db:bridgehead>
 				<xsl:value-of select="$thisElem/@name"/>
-				
-				<xsl:text> (</xsl:text>
-					<xsl:choose>
-						<xsl:when test="$thisElem/@minOccurs='1' and $thisElem/@maxOccurs='1'">required</xsl:when>
-						<xsl:when test="$thisElem/@minOccurs='0' and $thisElem/@maxOccurs='1'">optional</xsl:when>
-						<xsl:when test="$thisElem/@minOccurs='1' and $thisElem/@maxOccurs='unbounded'">one or more</xsl:when>
-						<xsl:when test="$thisElem/@minOccurs='0' and $thisElem/@maxOccurs='unbounded'">zero or more</xsl:when>
-						<xsl:otherwise><xsl:value-of select="$thisElem/@minOccurs"/> to <xsl:value-of select="$thisElem/@maxOccurs"/></xsl:otherwise>
-					</xsl:choose>
-				<xsl:text>)</xsl:text>
 			</db:bridgehead>
 			
 			<xsl:if test="$thisElem/xs:annotation">
@@ -169,21 +165,33 @@
 			<db:itemizedlist>
 				<db:listitem>
 					<db:para>
+						<xsl:text>cardinality: </xsl:text>
+						<xsl:choose>
+							<xsl:when test="$thisElem/@minOccurs='1' and $thisElem/@maxOccurs='1'">required</xsl:when>
+							<xsl:when test="$thisElem/@minOccurs='0' and $thisElem/@maxOccurs='1'">optional</xsl:when>
+							<xsl:when test="$thisElem/@minOccurs='1' and $thisElem/@maxOccurs='unbounded'">one or more</xsl:when>
+							<xsl:when test="$thisElem/@minOccurs='0' and $thisElem/@maxOccurs='unbounded'">zero or more</xsl:when>
+							<xsl:otherwise><xsl:value-of select="$thisElem/@minOccurs"/> to <xsl:value-of select="$thisElem/@maxOccurs"/></xsl:otherwise>
+						</xsl:choose>
+					</db:para>
+				</db:listitem>
+				<db:listitem>
+					<db:para>
 						<xsl:choose>
 							<xsl:when test="$thisElem/@type">
-								<xsl:text>type=</xsl:text><xsl:value-of select="$thisElem/@type"/>
+								<xsl:text>type: </xsl:text><xsl:value-of select="$thisElem/@type"/>
 							</xsl:when>
 							<xsl:otherwise>
 								<xsl:choose>
 									<xsl:when test="$thisElem/xs:complexType">
-										<xsl:text>content model=</xsl:text>
+										<xsl:text>content model: </xsl:text>
 									</xsl:when>
 									<xsl:when test="$thisElem/xs:simpleType">
-										<xsl:text>allowed values=</xsl:text>
+										<xsl:text>allowed values: </xsl:text>
 									</xsl:when>
 									<xsl:when test="not($thisElem/xs:*[not(self::xs:annotation)][not(self::xs:attribute)])"/>
 									<xsl:otherwise>
-										<xsl:text>##unknown##=</xsl:text>
+										<xsl:text>##unknown##: </xsl:text>
 									</xsl:otherwise>
 								</xsl:choose>
 								<xsl:call-template name="generateCM">
@@ -207,8 +215,18 @@
 											<xsl:text> (</xsl:text>
 											<xsl:value-of select="@use"/>
 											<xsl:text>)</xsl:text>
-											<xsl:if test="count(@*) &gt; 2">
+											<xsl:if test="count(@*) &gt; 2 or child::xs:simpleType">
 												<db:itemizedlist>
+													<xsl:if test="child::xs:simpleType">
+														<db:listitem>
+															<db:para>
+																<xsl:text>allowed values:</xsl:text>
+																<xsl:call-template name="generateCM">
+																	<xsl:with-param name="thisType" select="child::xs:simpleType"/>
+																</xsl:call-template>
+															</db:para>
+														</db:listitem>
+													</xsl:if>
 													<xsl:for-each select="@*">
 														<xsl:choose>
 															<xsl:when test="local-name() = 'name' or local-name() = 'use'"/>
@@ -244,11 +262,23 @@
 		<xsl:apply-templates/>
 	</xsl:template>
 	
+	<xsl:template match="*:remark|*:xref">
+		<xsl:element name="{local-name()}" inherit-namespaces="yes">
+			<xsl:apply-templates select="@*|node()"/>
+		</xsl:element>
+	</xsl:template>
+	
 	<xsl:template match="*">
 		<xsl:copy>
 			<xsl:copy-of select="@*"/>
 			<xsl:apply-templates/>
 		</xsl:copy>
+	</xsl:template>
+	
+	<xsl:template match="@xlink:href">
+		<xsl:attribute name="xlink:href">
+			<xsl:value-of select="."/>
+		</xsl:attribute>
 	</xsl:template>
 
 </xsl:stylesheet>
