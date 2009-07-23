@@ -326,13 +326,13 @@
 	<!-- *******  Optional Operations Query ********** -->
 	<!-- ********************************************* -->
 
-	<message name="getOptionalOperationsRequest">
+	<message name="getServiceAttributesRequest">
 		<documentation>
 			<db:para role="desc">DOC TODO</db:para>
 		</documentation>
 	</message>
-	<message name="getOptionalOperationsResponse">
-		<part name="result" element="tns:optionalOperations">
+	<message name="getServiceAttributesResponse">
+		<part name="result" element="tns:serviceAttributes">
 			<documentation>
 				<db:para role="desc">DOC TODO</db:para>
 			</documentation>
@@ -443,18 +443,16 @@
 			<fault name="getContentMetadataInvalidOperation" message="tns:InvalidOperationFault"/>
 		</operation>
 
-		<operation name="getOptionalOperations">
+		<operation name="getServiceAttributes">
 			<documentation>
 				<db:para role="desc">Queries the Service on which optional operations it
 					supports.</db:para>
 			</documentation>
-			<input message="tns:getOptionalOperationsRequest"/>
-			<output message="tns:getOptionalOperationsResponse"/>
-			<fault name="getOptionalOperationsInternalServerError"
-				message="tns:InternalServerErrorFault"/>
-			<fault name="getOptionalOperationsNotAuthorised" message="tns:NotAuthorisedFault"/>
-			<fault name="getOptionalOperationsInvalidOperation" message="tns:InvalidOperationFault"
-			/>
+			<input message="tns:getServiceAttributesRequest"/>
+			<output message="tns:getServiceAttributesResponse"/>
+			<fault name="getServiceAttributesInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="getServiceAttributesNotAuthorised" message="tns:NotAuthorisedFault"/>
+			<fault name="getServiceAttributesInvalidOperation" message="tns:InvalidOperationFault"/>
 		</operation>
 
 
