@@ -74,7 +74,7 @@
            a multiple choice type question.</db:para>
           <db:para role="req">If this element is set to false, the Service must not present the
            allowMultipleSelections attribute with a value of true on the <db:xref
-            linked="tp_multipleChoiceQuestion"/> element to the Reading System.</db:para>
+            linkend="tp_multipleChoiceQuestion"/> element to the Reading System.</db:para>
          </xs:documentation>
         </xs:annotation>
        </xs:element>
