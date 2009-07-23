@@ -93,7 +93,8 @@
         <xs:annotation>
          <xs:documentation>
           <db:para>TODO clarify that this related to content types of both service announcements AND
-           content. TODO be clear relates to MIME types that the reading system renders to the user.</db:para>
+           content. TODO be clear relates to MIME types that the reading system renders to the
+           user.</db:para>
           <db:para>A Service may use this information to adapt content types offered to the Reading
            System as labels and content.</db:para>
          </xs:documentation>
@@ -127,7 +128,7 @@
               <xs:restriction base="xs:string">
                <xs:enumeration value="TEXT_NUMERIC"/>
                <xs:enumeration value="TEXT_ALPHANUMERIC"/>
-               <xs:enumeration value="AUDIO"/>               
+               <xs:enumeration value="AUDIO"/>
               </xs:restriction>
              </xs:simpleType>
             </xs:attribute>
@@ -610,17 +611,18 @@
   <xs:complexType>
    <xs:sequence>
     <xs:element name="inputTypes" minOccurs="0" maxOccurs="1">
-     <xs:annotation><xs:documentation>
-       <db:para>Specifies which input types the service is prepared 
-        to accept as a response to this question.
-       </db:para>
-     </xs:documentation></xs:annotation>
+     <xs:annotation>
+      <xs:documentation>
+       <db:para>Specifies which input types the service is prepared to accept as a response to this
+        question. </db:para>
+      </xs:documentation>
+     </xs:annotation>
      <xs:complexType>
       <xs:sequence>
        <xs:element name="input" minOccurs="1" maxOccurs="unbounded">
         <xs:complexType>
          <xs:attribute name="type" use="required">
-          <xs:simpleType>           
+          <xs:simpleType>
            <xs:restriction base="xs:string">
             <xs:enumeration value="AUDIO"/>
             <xs:enumeration value="TEXT_NUMERIC"/>
@@ -649,8 +651,8 @@
       <xs:complexType>
        <xs:sequence>
         <xs:choice>
-         <xs:element ref="multipleChoiceQuestion" minOccurs="1" maxOccurs="1" /> 
-         <xs:element ref="question" minOccurs="1" maxOccurs="1" />
+         <xs:element ref="multipleChoiceQuestion" minOccurs="1" maxOccurs="1"/>
+         <xs:element ref="question" minOccurs="1" maxOccurs="1"/>
         </xs:choice>
        </xs:sequence>
       </xs:complexType>
@@ -672,12 +674,12 @@
       <xs:sequence>
        <xs:element name="choice" minOccurs="1" maxOccurs="unbounded">
         <xs:complexType>
-          <xs:sequence>
+         <xs:sequence>
           <xs:element ref="label" minOccurs="1" maxOccurs="1"/>
-          </xs:sequence>
-          <xs:attribute name="id" type="xs:ID"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID"/>
         </xs:complexType>
-       </xs:element>     
+       </xs:element>
       </xs:sequence>
      </xs:complexType>
     </xs:element>
@@ -693,8 +695,8 @@
     <xs:element name="userResponse" minOccurs="1" maxOccurs="unbounded">
      <xs:annotation>
       <xs:documentation>
-       <db:para>A singular response to a question. Either the value attribute
-       (for text-based responses) or the data attribute (for audio-based responses) must be present.</db:para>
+       <db:para>A singular response to a question. Either the value attribute (for text-based
+        responses) or the data attribute (for audio-based responses) must be present.</db:para>
       </xs:documentation>
      </xs:annotation>
      <xs:complexType>
@@ -709,11 +711,12 @@
       <xs:attribute name="data" use="optional">
        <xs:annotation>
         <xs:documentation>
-         <db:para>TODO specify that WAV is required, other codecs supported by the service declared by getServiceCharacteristics. TODO add note that MTOM is not allowed.</db:para>
+         <db:para>TODO specify that WAV is required, other codecs supported by the service declared
+          by getServiceAttributes. TODO add note that MTOM is not allowed.</db:para>
         </xs:documentation>
        </xs:annotation>
        <xs:simpleType>
-        <xs:restriction base="xs:base64Binary" /> 
+        <xs:restriction base="xs:base64Binary"/>
        </xs:simpleType>
       </xs:attribute>
      </xs:complexType>
@@ -722,64 +725,74 @@
   </xs:complexType>
  </xs:element>
 
- <!--
- <xs:element name="nextOperation" nillable="true">
+ <xs:element name="serviceAttributes">
   <xs:complexType>
    <xs:sequence>
-    <xs:element name="operation" minOccurs="1" maxOccurs="1"/>
-    <xs:element name="param" minOccurs="0" maxOccurs="unbounded">
-     <xs:complexType>
-      <xs:attribute name="name" use="required"/>
-      <xs:attribute name="value" use="required"/>
-     </xs:complexType>
-    </xs:element>
-   </xs:sequence>
-  </xs:complexType>
- </xs:element>
--->
- <xs:element name="optionalOperations">
-  <xs:complexType>
-   <xs:sequence>
-    <xs:element name="operation" minOccurs="0" maxOccurs="unbounded">
+    <xs:element name="supportsServerSideBack" type="xs:boolean" minOccurs="1" maxOccurs="0">
      <xs:annotation>
       <xs:documentation>
-       <db:para role="desc">A symbolic name for an optional operation or logical group of optional
-        operations. TODO change to serverCharacteristics, generalize, add support for supportsSearch, 
-        supportsServerSideBack, additionalUploadAudioCodecs</db:para>
+       <db:para role="desc">DOC TODO</db:para>
+      </xs:documentation>
+     </xs:annotation>
+    </xs:element>
+    <xs:element name="supportsSearch" type="xs:boolean" minOccurs="1" maxOccurs="0">
+     <xs:annotation>
+      <xs:documentation>
+       <db:para role="desc">DOC TODO</db:para>
+      </xs:documentation>
+     </xs:annotation>
+    </xs:element>
+    <xs:element name="supportedUplinkAudioCodecs" minOccurs="1" maxOccurs="1">
+     <xs:annotation>
+      <xs:documentation>
+       <db:para role="desc">DOC TODO</db:para>
       </xs:documentation>
      </xs:annotation>
      <xs:complexType>
-      <xs:attribute name="type" use="required">
-       <xs:annotation>
-        <xs:documentation>
-         <db:para>This specification defines the values as per the list below.</db:para>
-         <db:para>By setting the type attribute to the value EXTENSION, other values may be
-          introduced in the extension attribute to refer to other, application-specific, optional
-          operations.</db:para>
-         <db:para>TODO write below the list that defines which operations map to the enum values;
-          xslt may not do enums.</db:para>
-        </xs:documentation>
-       </xs:annotation>
-       <xs:simpleType>
-        <xs:restriction base="xs:string">
-         <xs:enumeration value="SET_BOOKMARKS"/>
-         <xs:enumeration value="GET_BOOKMARKS"/>
-         <xs:enumeration value="DYNAMIC_MENUS"/>
-         <xs:enumeration value="SERVICE_ANNOUNCEMENTS"/>
-         <xs:enumeration value="PDTB2_KEY_PROVISION"/>
-         <xs:enumeration value="EXTENSION"/>
-        </xs:restriction>
-       </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="extension" use="optional" type="xs:string">
-       <xs:annotation>
-        <xs:documentation>
-         <db:para>The value of an extension. This attribute is only relevant when the
-           <db:varname>type</db:varname> attribute value is
-          <db:varname>EXTENSION</db:varname>.</db:para>
-        </xs:documentation>
-       </xs:annotation>
-      </xs:attribute>
+      <xs:sequence>
+       <xs:element name="codec" minOccurs="0" type="xs:string" maxOccurs="unbounded">
+        <xs:annotation>
+         <xs:documentation>
+          <db:para role="desc">DOC TODO</db:para>
+         </xs:documentation>
+        </xs:annotation>
+       </xs:element>
+      </xs:sequence>
+     </xs:complexType>
+    </xs:element>
+    <xs:element name="supportedOptionalOperations" minOccurs="1" maxOccurs="1">
+     <xs:annotation>
+      <xs:documentation>
+       <db:para role="desc">Specifies which (if any) of the operations that are optional per the
+        specification are supported by the Service.</db:para>
+      </xs:documentation>
+     </xs:annotation>
+     <xs:complexType>
+      <xs:sequence>
+       <xs:element name="operation" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+         <xs:documentation>
+          <db:para role="desc">A symbolic name for an optional operation or logical group of
+           optional operations. </db:para>
+          <db:para>This specification defines the values as per the list below.</db:para>
+          <db:para>By setting the type attribute to the value EXTENSION, other values may be
+           introduced in the extension attribute to refer to other, application-specific, optional
+           operations.</db:para>
+          <db:para>TODO write below the list that defines which operations map to the enum values;
+           xslt may not do enums.</db:para>
+         </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+         <xs:restriction base="xs:string">
+          <xs:enumeration value="SET_BOOKMARKS"/>
+          <xs:enumeration value="GET_BOOKMARKS"/>
+          <xs:enumeration value="DYNAMIC_MENUS"/>
+          <xs:enumeration value="SERVICE_ANNOUNCEMENTS"/>
+          <xs:enumeration value="PDTB2_KEY_PROVISION"/>
+         </xs:restriction>
+        </xs:simpleType>
+       </xs:element>
+      </xs:sequence>
      </xs:complexType>
     </xs:element>
    </xs:sequence>
