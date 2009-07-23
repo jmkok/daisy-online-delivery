@@ -515,7 +515,7 @@
  <xs:element name="contentList">
   <xs:annotation>
    <xs:documentation>
-    <db:para>A list of content items, presented by the Servicee to the Reading System.</db:para>
+    <db:para>A list of content items, presented by the Service to the Reading System.</db:para>
    </xs:documentation>
   </xs:annotation>
   <xs:complexType>
@@ -726,11 +726,10 @@
  </xs:element>
 
  <xs:element name="inputQuestion">
-  <!-- TODO this may need a better name, but should be disambiguated from questions/question -->
   <xs:annotation>
    <xs:documentation>
-    <db:para role="desc">A singular question, asked by the Service to the User, requiring a textual
-     or auditorial response.</db:para>
+    <db:para role="desc">A singular question, asked by the Service directed to the User, requiring a
+     textual or auditorial response.</db:para>
     <db:para role="desc">Depending on the Reading System proporties (as specified by the Reading
      System in <db:xref linkend="tp_readingSystemAttributes"/>, the question is asked in textual
      and/or audiotorial modalities.</db:para>
@@ -774,8 +773,8 @@
    <xs:documentation>
     <db:para role="desc">A sequence of questions, asked by the Service to the User.</db:para>
     <db:para>TODO contentList and label are endpoints, how to best describe that?</db:para>
-    <db:para role="req">The questions element must contain either exactly one contentList or 
-     exactly one label or any number of multipleChoiceQuestion and inputQuestion in any order.</db:para>
+    <db:para role="req">The questions element must contain either exactly one contentList or exactly
+     one label or any number of multipleChoiceQuestion and inputQuestion in any order.</db:para>
    </xs:documentation>
   </xs:annotation>
   <xs:complexType>
@@ -835,6 +834,11 @@
  </xs:element>
 
  <xs:element name="userResponses">
+  <xs:annotation>
+   <xs:documentation>
+    <db:para>Encapsulates a set of User responses to Service provided <db:xref linkend="tp_questions"/>.</db:para>
+   </xs:documentation>
+  </xs:annotation>
   <xs:complexType>
    <xs:sequence>
     <xs:element name="userResponse" minOccurs="1" maxOccurs="unbounded">
@@ -845,7 +849,7 @@
       </xs:documentation>
      </xs:annotation>
      <xs:complexType>
-      <xs:attribute name="id" type="xs:ID" use="required">
+      <xs:attribute name="questionID" type="xs:ID" use="required">
        <xs:annotation>
         <xs:documentation>
          <db:para>The ID of the question being answered</db:para>
@@ -871,26 +875,38 @@
  </xs:element>
 
  <xs:element name="serviceAttributes">
+  <xs:annotation>
+   <xs:documentation>
+    <db:para role="desc">Specifies Service properties.</db:para>
+   </xs:documentation>
+  </xs:annotation>
   <xs:complexType>
    <xs:sequence>
     <xs:element name="supportsServerSideBack" type="xs:boolean" minOccurs="1" maxOccurs="1">
      <xs:annotation>
       <xs:documentation>
-       <db:para role="desc">DOC TODO</db:para>
+       <db:para role="desc">Specifies whether this Service supports serverside back commands, eg
+        whether <db:xref linkend="op_getQuestions"/> with the reserved parameter
+         <db:varname>back</db:varname> is supported</db:para>
       </xs:documentation>
      </xs:annotation>
     </xs:element>
     <xs:element name="supportsSearch" type="xs:boolean" minOccurs="1" maxOccurs="1">
      <xs:annotation>
       <xs:documentation>
-       <db:para role="desc">DOC TODO</db:para>
+       <db:para role="desc">Specifies whether the Service supports searching of its content
+        collection.</db:para>
+       <db:para role="desc">Note that a search feature requires support for dynamic menus [TODO
+        proper link to DM spot]</db:para>
       </xs:documentation>
      </xs:annotation>
     </xs:element>
     <xs:element name="supportedUplinkAudioCodecs" minOccurs="1" maxOccurs="1">
      <xs:annotation>
       <xs:documentation>
-       <db:para role="desc">DOC TODO</db:para>
+       <db:para role="desc">Specifies which (if any) of audio codecs is supported 
+        in <db:xref linkend="tp_userResponses"/> in addition to the codec required to be supported by this
+        specification.</db:para>
       </xs:documentation>
      </xs:annotation>
      <xs:complexType>
@@ -898,7 +914,8 @@
        <xs:element name="codec" minOccurs="0" type="xs:string" maxOccurs="unbounded">
         <xs:annotation>
          <xs:documentation>
-          <db:para role="desc">DOC TODO</db:para>
+          <db:para role="desc">A singular codec reference, specified using a canonical identifier
+           string as dictated by the refererenced codec specification.</db:para>
          </xs:documentation>
         </xs:annotation>
        </xs:element>
@@ -908,7 +925,7 @@
     <xs:element name="supportedOptionalOperations" minOccurs="1" maxOccurs="1">
      <xs:annotation>
       <xs:documentation>
-       <db:para role="desc">Specifies which (if any) of the operations that are optional per the
+       <db:para role="desc">Specifies which (if any) of the operations that are optional per this
         specification are supported by the Service.</db:para>
       </xs:documentation>
      </xs:annotation>
@@ -919,21 +936,50 @@
          <xs:documentation>
           <db:para role="desc">A symbolic name for an optional operation or logical group of
            optional operations. </db:para>
-          <db:para>This specification defines the values as per the list below.</db:para>
-          <db:para>By setting the type attribute to the value EXTENSION, other values may be
-           introduced in the extension attribute to refer to other, application-specific, optional
-           operations.</db:para>
-          <db:para>TODO write below the list that defines which operations map to the enum values;
-           xslt may not do enums.</db:para>
          </xs:documentation>
         </xs:annotation>
         <xs:simpleType>
          <xs:restriction base="xs:string">
-          <xs:enumeration value="SET_BOOKMARKS"/>
-          <xs:enumeration value="GET_BOOKMARKS"/>
-          <xs:enumeration value="DYNAMIC_MENUS"/>
-          <xs:enumeration value="SERVICE_ANNOUNCEMENTS"/>
-          <xs:enumeration value="PDTB2_KEY_PROVISION"/>
+          <xs:enumeration value="SET_BOOKMARKS">
+           <xs:annotation>
+            <xs:documentation>
+             <db:para role="desc">Specifies that this Service supports the <db:xref
+               linkend="op_setBookmarks"/> operation.</db:para>
+            </xs:documentation>
+           </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="GET_BOOKMARKS">
+           <xs:annotation>
+            <xs:documentation>
+             <db:para role="desc">Specifies that this Service supports the <db:xref
+               linkend="op_getBookmarks"/> operation.</db:para>
+            </xs:documentation>
+           </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="DYNAMIC_MENUS">
+           <xs:annotation>
+            <xs:documentation>
+             <db:para role="desc">Specifies that this Service supports the <db:xref
+               linkend="op_getQuestions"/> operation.</db:para>
+            </xs:documentation>
+           </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="SERVICE_ANNOUNCEMENTS">
+           <xs:annotation>
+            <xs:documentation>
+             <db:para role="desc">Specifies that this Service supports the <db:xref
+               linkend="op_getServiceAnnouncements"/> operation.</db:para>
+            </xs:documentation>
+           </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="PDTB2_KEY_PROVISION">
+           <xs:annotation>
+            <xs:documentation>
+             <db:para role="desc">Specifies that this Service supports the <db:xref
+               linkend="op_getKeyExchangeObject"/> operation.</db:para>
+            </xs:documentation>
+           </xs:annotation>
+          </xs:enumeration>
          </xs:restriction>
         </xs:simpleType>
        </xs:element>
