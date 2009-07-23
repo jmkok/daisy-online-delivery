@@ -124,21 +124,6 @@
 		</part>
 	</message>
 
-	<!-- ********************************************* -->
-	<!-- *****************  dateTime  **************** -->
-	<!-- ********************************************* -->
-
-	<message name="getDateTimeRequest"/>
-	<message name="getDateTimeResponse">
-		<part name="result" element="xsd:dateTime">
-			<documentation>
-				<db:para role="desc">The current date and time at the location of the
-					server.</db:para>
-				<db:para role="req">A timezone identifier and a granularity to one second are both
-					required.</db:para>
-			</documentation>
-		</part>
-	</message>
 
 	<!-- ********************************************* -->
 	<!-- *************  content list  ************** -->
@@ -213,72 +198,7 @@
 		<part name="result" element="tns:questions"/>
 	</message>
 	
-<!--
-	<message name="getQuestionRequest">
-		<part name="questionID" element="xsd:string">
-			<documentation>
-				<db:para role="desc">TODO</db:para>
-			</documentation>
-		</part>
-	</message>
-	<message name="getQuestionResponse">
-		<part name="response" element="tns:question"/>
-	</message>
-	<message name="getMultipleChoiceQuestionRequest">
-		<part name="questionID" element="xsd:string">
-			<documentation>
-				<db:para role="desc">TODO desc</db:para>
-				<db:para>The value <db:varname>default</db:varname> is reserved... TODO</db:para>
-				<db:para>The value <db:varname>search</db:varname> is reserved... TODO</db:para>
-			</documentation>
-		</part>
-	</message>
-	<message name="getMultipleChoiceQuestionResponse">
-		<part name="response" element="tns:multipleChoiceQuestion"/>
-	</message>
-	<message name="getGroupedQuestionsRequest">
-		<part name="groupID" element="xsd:string">
-			<documentation>
-				<db:para role="desc">TODO</db:para>
-			</documentation>
-		</part>
-	</message>
-	<message name="getGroupedQuestionsResponse">
-		<part name="response" element="tns:groupedQuestions"/>
-	</message>
-	<message name="getMessageRequest">
-		<part name="messageID" element="xsd:string">
-			<documentation>
-				<db:para role="desc">TODO</db:para>
-			</documentation>
-		</part>
-	</message>
-	<message name="getMessageResponse">
-		<part name="response" element="tns:label"/>
-	</message>
--->
 	
-	<!-- ********************************************* -->
-	<!-- *************  user responses  ************** -->
-	<!-- ********************************************* -->
-	
-	<!--
-	<message name="setUserResponsesRequest">
-		<part name="responses" element="tns:userResponses">
-			<documentation>
-				<db:para role="desc">The response to a previous question.</db:para>
-			</documentation>
-		</part>
-	</message>
-	<message name="setUserResponsesResponse">
-		<part name="result" element="tns:nextOperation">
-			<documentation>
-				<db:para role="desc">The operation (possibly including parameters) that the reading
-					system should call next. May be null.</db:para>
-			</documentation>
-		</part>
-	</message>
--->
 	<!-- ********************************************* -->
 	<!-- ****************  metadata  ***************** -->
 	<!-- ********************************************* -->
@@ -525,86 +445,6 @@
 			<fault name="getBookmarksOperationNotSupported" message="tns:OperationNotSupportedFault"
 			/>
 		</operation>
-		<operation name="getDateTime">
-			<documentation>
-				<db:para role="desc">Retrieves the current date and time from the Service.</db:para>
-			</documentation>
-			<input message="tns:getDateTimeRequest"/>
-			<output message="tns:getDateTimeResponse"/>
-			<fault name="getDateTimeInternalServerError" message="tns:InternalServerErrorFault"/>
-			<fault name="getDateTimeNotAuthorised" message="tns:NotAuthorisedFault"/>
-			<fault name="getDateTimeInvalidOperation" message="tns:InvalidOperationFault"/>
-			<fault name="getDateTimeOperationNotSupported" message="tns:OperationNotSupportedFault"
-			/>
-		</operation>
-		<!--
-		<operation name="setUserResponses">
-			<documentation>
-				<db:para role="desc">Posts user response(s) to a previous question to the
-					Service.</db:para>
-			</documentation>
-			<input message="tns:setUserResponsesRequest"/>
-			<output message="tns:setUserResponsesResponse"/>
-			<fault name="setUserResponsesInternalServerError" message="tns:InternalServerErrorFault"/>
-			<fault name="setUserResponsesNotAuthorised" message="tns:NotAuthorisedFault"/>
-			<fault name="setUserResponsesInvalidOperation" message="tns:InvalidOperationFault"/>
-			<fault name="setUserResponsesOperationNotSupported"
-				message="tns:OperationNotSupportedFault"/>
-		</operation> -->
-		<!--
-		<operation name="getQuestion">
-			
-			<documentation>
-				<db:para role="desc">TODO</db:para>
-			</documentation>
-			<input message="tns:getQuestionRequest"/>
-			<output message="tns:getQuestionResponse"/>
-			<fault name="getQuestionInternalServerError" message="tns:InternalServerErrorFault"/>
-			<fault name="getQuestionNotAuthorised" message="tns:NotAuthorisedFault"/>
-			<fault name="getQuestionInvalidOperation" message="tns:InvalidOperationFault"/>
-			<fault name="getQuestionOperationNotSupported" message="tns:OperationNotSupportedFault"
-			/>
-		</operation>
-		<operation name="getMultipleChoiceQuestion">
-			
-			<documentation>
-				<db:para role="desc">TODO</db:para>
-			</documentation>
-			<input message="tns:getMultipleChoiceQuestionRequest"/>
-			<output message="tns:getMultipleChoiceQuestionResponse"/>
-			<fault name="getMultipleChoiceQuestionInternalServerError"
-				message="tns:InternalServerErrorFault"/>
-			<fault name="getMultipleChoiceQuestionNotAuthorised" message="tns:NotAuthorisedFault"/>
-			<fault name="getMultipleChoiceQuestionInvalidOperation"
-				message="tns:InvalidOperationFault"/>
-			<fault name="getMultipleChoiceQuestionOperationNotSupported"
-				message="tns:OperationNotSupportedFault"/>
-		</operation>
-		<operation name="getGroupedQuestions">
-			<documentation>
-				<db:para role="desc">TODO</db:para>
-			</documentation>
-			<input message="tns:getGroupedQuestionsRequest"/>
-			<output message="tns:getGroupedQuestionsResponse"/>
-			<fault name="getGroupedQuestionsInternalServerError"
-				message="tns:InternalServerErrorFault"/>
-			<fault name="getGroupedQuestionsNotAuthorised" message="tns:NotAuthorisedFault"/>
-			<fault name="getGroupedQuestionsInvalidOperation" message="tns:InvalidOperationFault"/>
-			<fault name="getGroupedQuestionsOperationNotSupported"
-				message="tns:OperationNotSupportedFault"/>
-		</operation>
-		<operation name="getMessage">
-			<documentation>
-				<db:para role="desc">TODO</db:para>
-			</documentation>
-			<input message="tns:getMessageRequest"/>
-			<output message="tns:getMessageResponse"/>
-			<fault name="getMessageInternalServerError" message="tns:InternalServerErrorFault"/>
-			<fault name="getMessageNotAuthorised" message="tns:NotAuthorisedFault"/>
-			<fault name="getMessageInvalidOperation" message="tns:InvalidOperationFault"/>
-			<fault name="getMessageOperationNotSupported" message="tns:OperationNotSupportedFault"/>
-		</operation>
-		-->
 		<operation name="getQuestions">
 			<documentation>
 				<db:para role="desc">TODO</db:para>
