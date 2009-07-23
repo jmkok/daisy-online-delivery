@@ -158,6 +158,19 @@
 			<xsl:value-of select="$thisElem/@name"/>
 		</db:bridgehead>
 		
+		<xsl:if test="$thisElem/xs:annotation">
+			<xsl:choose>
+				<xsl:when test="$thisElem/xs:annotation/xs:documentation/daisy:remark">
+					<xsl:apply-templates select="$thisElem/xs:annotation/xs:documentation/*"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<db:para>
+						<xsl:apply-templates select="$thisElem/xs:annotation/xs:documentation/*"/>
+					</db:para>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:if>
+		
 		<db:itemizedlist>
 			<db:listitem>
 				<db:para>
@@ -270,8 +283,8 @@
 		</xsl:attribute>
 	</xsl:template>
 	
-	<xsl:template match="daisy:remark">
-		<xsl:element name="remark" namespace="http://docbook.org/ns/docbook">
+	<xsl:template match="daisy:*" priority="1">
+		<xsl:element name="db:{local-name()}">
 			<xsl:apply-templates/>
 		</xsl:element>
 	</xsl:template>
