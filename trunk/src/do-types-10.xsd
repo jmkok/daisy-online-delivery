@@ -21,22 +21,65 @@
   schemaLocation="http://schemas.xmlsoap.org/wsdl/"/>
 
  <xs:element name="readingSystemAttributes">
+  <xs:annotation>
+   <xs:documentation>
+    <db:para role="desc">Specifies Reading System properties.</db:para>
+   </xs:documentation>
+  </xs:annotation>
   <xs:complexType>
    <xs:sequence>
     <xs:choice minOccurs="0" maxOccurs="unbounded">
      <xs:any namespace="##other" processContents="skip"/>
     </xs:choice>
 
-    <xs:element name="manufacturer" type="xs:string" minOccurs="1" maxOccurs="1"/>
-    <xs:element name="model" type="xs:string" minOccurs="1" maxOccurs="1"/>
-    <xs:element name="serialNumber" type="xs:string" minOccurs="0" maxOccurs="1"/>
-    <xs:element name="version" type="xs:string" minOccurs="1" maxOccurs="1"/>
+    <xs:element name="manufacturer" type="xs:string" minOccurs="1" maxOccurs="1">
+     <xs:annotation>
+      <xs:documentation>
+       <db:para>Specifies the manufacturer of the Reading System.</db:para>
+      </xs:documentation>
+     </xs:annotation>
+    </xs:element>
+    <xs:element name="model" type="xs:string" minOccurs="1" maxOccurs="1">
+     <xs:annotation>
+      <xs:documentation>
+       <db:para>Specifies a model designation for the Reading System.</db:para>
+      </xs:documentation>
+     </xs:annotation>
+    </xs:element>
+
+    <xs:element name="serialNumber" type="xs:string" minOccurs="0" maxOccurs="1">
+     <xs:annotation>
+      <xs:documentation>
+       <db:para>The serial number of the Reading System, if such is available. <remark role="todo"
+         >TODO is this required for PDTB2? (Hiro)</remark></db:para>
+      </xs:documentation>
+     </xs:annotation>
+    </xs:element>
+
+    <xs:element name="version" type="xs:string" minOccurs="1" maxOccurs="1">
+     <xs:annotation>
+      <xs:documentation>
+       <db:para>Specifies a version designator of the Reading System.</db:para>
+      </xs:documentation>
+     </xs:annotation>
+    </xs:element>
 
     <xs:element name="config" minOccurs="1" maxOccurs="1">
      <xs:complexType>
       <xs:sequence>
-       <xs:element name="supportsMultipleSelections" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
-       <xs:element name="supportsGroupedQuestions" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+       <xs:element name="supportsMultipleSelections" type="xs:boolean" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+         <xs:documentation>
+          <db:para role="desc">Specifies whether the Reading System supports multiple selections for
+           a multiple choice type question.</db:para>
+          <db:para role="req">If this element is set to false, the Service must not present the
+           allowMultipleSelections attribute with a value of true on the <db:xref
+            linked="tp_multipleChoiceQuestion"/> element to the Reading System.</db:para>
+         </xs:documentation>
+        </xs:annotation>
+       </xs:element>
+       <!-- TODO this is redundant now, question is always grouped now 
+       <xs:element name="supportsGroupedQuestions" type="xs:boolean" minOccurs="1" maxOccurs="1"/> -->
        <xs:element name="preferredUILanguage" minOccurs="1" maxOccurs="1" type="xs:language">
         <xs:annotation>
          <xs:documentation>
@@ -57,9 +100,10 @@
        <xs:element name="supportedContentStandards" minOccurs="1" maxOccurs="1">
         <xs:annotation>
          <xs:documentation>
-          <db:para>TODO add prose that makes clear this follows the dc:format convention. Add
-           informative URIs to daisy2.02 spec and zed specs and epub spec where those particular
-           strings are defined.</db:para>
+          <db:para role="desc">Specifies which kinds of content the Reading System
+           supports.</db:para>
+          <db:para>The content of this element follows the convention of the Dublin Core Format
+           property. TODO Link TODO Examples 2.02 , Zed, Epub</db:para>
          </xs:documentation>
         </xs:annotation>
         <xs:complexType>
@@ -73,7 +117,8 @@
        <xs:element name="supportedContentProtectionStandards" minOccurs="1" maxOccurs="1">
         <xs:annotation>
          <xs:documentation>
-          <db:para>DOC TODO</db:para>
+          <db:para>Specifies which kinds of Content Protection (Digital Rights Management) standards
+           the Reading System supports.</db:para>
          </xs:documentation>
         </xs:annotation>
         <xs:complexType>
@@ -92,9 +137,10 @@
        <xs:element name="supportedMimeTypes" minOccurs="1" maxOccurs="1">
         <xs:annotation>
          <xs:documentation>
-          <db:para>TODO clarify that this related to content types of both service announcements AND
-           content. TODO be clear relates to MIME types that the reading system renders to the
-           user.</db:para>
+          <db:para>Specifies which content (MIME; TODO Link) types the Reading System supports
+           rendering of.</db:para>
+          <db:para>The content type specification applies to transferred content as well as Service
+           messages (<db:xref linkend="tp_label"/>).</db:para>
           <db:para>A Service may use this information to adapt content types offered to the Reading
            System as labels and content.</db:para>
          </xs:documentation>
@@ -114,7 +160,8 @@
        <xs:element name="supportedInputTypes" minOccurs="1" maxOccurs="1">
         <xs:annotation>
          <xs:documentation>
-          <db:para>Enumerates the means of input that the Reading System supports.</db:para>
+          <db:para>Enumerates the means of User input that the Reading System supports, including
+           transfer of that input to the Service.</db:para>
           <db:para>If the reading system does not support any means of input, the inputTypes element
            is empty.</db:para>
          </xs:documentation>
@@ -126,9 +173,28 @@
             <xs:attribute name="type" use="required">
              <xs:simpleType>
               <xs:restriction base="xs:string">
-               <xs:enumeration value="TEXT_NUMERIC"/>
-               <xs:enumeration value="TEXT_ALPHANUMERIC"/>
-               <xs:enumeration value="AUDIO"/>
+               <xs:enumeration value="TEXT_NUMERIC">
+                <xs:annotation>
+                 <xs:documentation>
+                  <db:para>The Reading System supports User input using a numeric keypad.</db:para>
+                 </xs:documentation>
+                </xs:annotation>
+               </xs:enumeration>
+               <xs:enumeration value="TEXT_ALPHANUMERIC">
+                <xs:annotation>
+                 <xs:documentation>
+                  <db:para>The Reading System supports User input using an alphanumeric
+                   keyboard.</db:para>
+                 </xs:documentation>
+                </xs:annotation>
+               </xs:enumeration>
+               <xs:enumeration value="AUDIO">
+                <xs:annotation>
+                 <xs:documentation>
+                  <db:para>The Reading System supports User input using audio recording.</db:para>
+                 </xs:documentation>
+                </xs:annotation>
+               </xs:enumeration>
               </xs:restriction>
              </xs:simpleType>
             </xs:attribute>
@@ -142,19 +208,19 @@
        <xs:element name="additionalTransferProtocols" minOccurs="0" maxOccurs="1">
         <xs:annotation>
          <xs:documentation>
-          <db:para>The additionalTransferProtocols element contains information about additional
-           content transfer protocols that are supported by the reading system, beyond the protocols
-           that are mandated by the specification.</db:para>
+          <db:para>Specifies additional content transfer protocols that are supported by the reading
+           system, beyond the protocols that are mandated by this specification.</db:para>
          </xs:documentation>
         </xs:annotation>
         <xs:complexType>
          <xs:sequence>
-          <xs:element name="protocol" minOccurs="1" maxOccurs="unbounded">
-           <xs:complexType>
-            <xs:simpleContent>
-             <xs:extension base="xs:string"> </xs:extension>
-            </xs:simpleContent>
-           </xs:complexType>
+          <xs:element name="protocol" minOccurs="1" maxOccurs="unbounded" type="xs:string">
+           <xs:annotation>
+            <xs:documentation>
+             <db:para>A singular content transfer protocol, specified using a canonical identifier
+              string as dictated by the refererenced protocol.</db:para>
+            </xs:documentation>
+           </xs:annotation>
           </xs:element>
          </xs:sequence>
         </xs:complexType>
@@ -163,19 +229,19 @@
      </xs:complexType>
     </xs:element>
 
-    <xs:element name="requiresAudioLabels" minOccurs="0" maxOccurs="1">
+    <xs:element name="requiresAudioLabels" minOccurs="0" maxOccurs="1" type="xs:boolean">
      <xs:annotation>
       <xs:documentation>
-       <db:para role="desc">Specifies whether the Reading System requires audio labels (for service
-        announcements and dynamic menu labels). This may occur when a Reading System does not have a
-        built-in TTS.</db:para>
-       <db:para>If a Service does not support audio labels, it must throw an OperationNotSupported
-        Fault on subsequent calls to operations that include label types.</db:para>
+       <db:para role="desc">Specifies whether the Reading System requires audio labels for messages
+         (<db:xref linkend="tp_label"/>) issued by the Service.
+        <!-- This may occur when a Reading System does not have a
+        built-in TTS. -->
+       </db:para>
+       <db:para role="req">If a Service does not support audio labels, it must throw an
+        OperationNotSupported Fault on subsequent calls to operations that include <db:xref
+         linkend="tp_label"/> types.</db:para>
       </xs:documentation>
      </xs:annotation>
-     <xs:complexType>
-      <xs:attribute name="value" type="xs:boolean" use="required"/>
-     </xs:complexType>
     </xs:element>
 
    </xs:sequence>
@@ -183,9 +249,19 @@
  </xs:element>
 
  <xs:element name="announcements">
+  <xs:annotation>
+   <xs:documentation>
+    <db:para>A set of Service announcements.</db:para>
+   </xs:documentation>
+  </xs:annotation>
   <xs:complexType>
    <xs:sequence>
     <xs:element name="announcement" minOccurs="0" maxOccurs="unbounded">
+     <xs:annotation>
+      <xs:documentation>
+       <db:para>A Service announcement.</db:para>
+      </xs:documentation>
+     </xs:annotation>
      <xs:complexType>
       <xs:sequence>
        <xs:element ref="label" minOccurs="1" maxOccurs="1"/>
@@ -207,9 +283,20 @@
  </xs:element>
 
  <xs:element name="label">
+  <xs:annotation>
+   <xs:documentation>
+    <db:para>An multi-purpose label, containing text and optionally audio.</db:para>
+   </xs:documentation>
+  </xs:annotation>
   <xs:complexType>
    <xs:sequence>
-    <xs:element name="text" type="xs:string" minOccurs="1" maxOccurs="1"/>
+    <xs:element name="text" type="xs:string" minOccurs="1" maxOccurs="1">
+     <xs:annotation>
+      <xs:documentation>
+       <db:para>The text component of the label.</db:para>
+      </xs:documentation>
+     </xs:annotation>
+    </xs:element>
     <xs:element name="audio" minOccurs="0" maxOccurs="1">
      <xs:complexType>
       <xs:attribute name="href" type="xs:anyURI" use="required">
@@ -260,9 +347,20 @@
  </xs:element>
 
  <xs:element name="contentMetadata">
+  <xs:annotation>
+   <xs:documentation>
+    <db:para role="desc">Specifices metadata about a singular piece of content.</db:para>
+   </xs:documentation>
+  </xs:annotation>
+
   <xs:complexType>
    <xs:sequence>
     <xs:element name="sample" minOccurs="0" maxOccurs="1">
+     <xs:annotation>
+      <xs:documentation>
+       <db:para>A sample of the content being described, for user Consumption.</db:para>
+      </xs:documentation>
+     </xs:annotation>
      <xs:complexType>
       <xs:sequence>
        <xs:element ref="label" minOccurs="1" maxOccurs="unbounded"/>
@@ -270,23 +368,62 @@
      </xs:complexType>
     </xs:element>
 
-    <xs:element name="contentStandard" type="xs:string" minOccurs="1" maxOccurs="1"/>
+    <xs:element name="contentStandard" type="xs:string" minOccurs="1" maxOccurs="1">
+     <xs:annotation>
+      <xs:documentation>
+       <db:para>Specifies the type of content. This element follows the same convention as the
+         <db:varname>supportedContentStandards</db:varname> element of the <db:xref
+         linkend="tp_readingSystemAttributes"/> type.</db:para>
+      </xs:documentation>
+     </xs:annotation>
+    </xs:element>
 
     <xs:element name="provider" minOccurs="0" maxOccurs="1">
+     <xs:annotation>
+      <xs:documentation>
+       <db:para>Specifies the identity of the Service provider.</db:para>
+      </xs:documentation>
+     </xs:annotation>
      <xs:complexType>
-      <!-- TODO define how the id is made up: what is the reading systems use of it? -->
-      <xs:attribute name="id" type="xs:string" use="required"/>
+      <xs:sequence>
+       <xs:element ref="label" minOccurs="0" maxOccurs="1"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:string" use="required">
+       <xs:annotation>
+        <xs:documentation>
+         <db:para>A static unique identifier of the Service provider.</db:para>
+        </xs:documentation>
+       </xs:annotation>
+      </xs:attribute>
      </xs:complexType>
     </xs:element>
 
     <xs:element name="service" minOccurs="0" maxOccurs="1">
+     <xs:annotation>
+      <xs:documentation>
+       <db:para>Specifies the identity of the Service.</db:para>
+      </xs:documentation>
+     </xs:annotation>
      <xs:complexType>
-      <!-- TODO define how the id is made up; what is the reading systems use of it? -->
-      <xs:attribute name="id" type="xs:string" use="required"/>
+      <xs:sequence>
+       <xs:element ref="label" minOccurs="0" maxOccurs="1"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:string" use="required">
+       <xs:annotation>
+        <xs:documentation>
+         <db:para>A static unique identifier of the Service.</db:para>
+        </xs:documentation>
+       </xs:annotation>
+      </xs:attribute>
      </xs:complexType>
     </xs:element>
 
     <xs:element name="metadata" minOccurs="0" maxOccurs="1">
+     <xs:annotation>
+      <xs:documentation>
+       <db:para role="desc">Specifies bibliographic metadata about the content.</db:para>
+      </xs:documentation>
+     </xs:annotation>
      <xs:complexType>
       <xs:sequence>
        <!-- TODO should we use dublin core -->
@@ -349,7 +486,7 @@
     </xs:element>
    </xs:sequence>
 
-   <xs:attribute name="id" type="xs:string" use="required"/>
+   <xs:attribute name="id" type="xs:ID" use="required"/>
 
    <xs:attribute name="category" use="optional">
     <xs:simpleType>
@@ -358,6 +495,7 @@
       <xs:enumeration value="MAGAZINE"/>
       <xs:enumeration value="NEWSPAPER"/>
       <xs:enumeration value="OTHER"/>
+      <!-- TODO make extensible -->
      </xs:restriction>
     </xs:simpleType>
    </xs:attribute>
@@ -375,9 +513,19 @@
  </xs:element>
 
  <xs:element name="contentList">
+  <xs:annotation>
+   <xs:documentation>
+    <db:para>A list of content items, presented by the Servicee to the Reading System.</db:para>
+   </xs:documentation>
+  </xs:annotation>
   <xs:complexType>
    <xs:sequence>
     <xs:element name="contentItem" minOccurs="0" maxOccurs="unbounded">
+     <xs:annotation>
+      <xs:documentation>
+       <db:para>A singular content item.</db:para>
+      </xs:documentation>
+     </xs:annotation>
      <xs:complexType>
       <xs:sequence>
        <xs:element ref="label" minOccurs="1" maxOccurs="1">
@@ -427,15 +575,12 @@
  <xs:element name="bookmarkSet">
   <xs:complexType>
    <xs:sequence>
-    <!--<xs:element ref="title" />-->
     <xs:element name="title">
      <xs:complexType>
       <xs:sequence>
-       <!--<xs:element ref="text" />-->
        <xs:element name="text">
         <xs:complexType mixed="true"/>
        </xs:element>
-       <!--<xs:element ref="audio" minOccurs="0" />-->
        <xs:element name="audio">
         <xs:complexType>
          <xs:attribute name="src" form="unqualified" type="xs:string"/>
@@ -446,19 +591,15 @@
       </xs:sequence>
      </xs:complexType>
     </xs:element>
-    <!--<xs:element ref="uid" />-->
     <xs:element name="uid">
      <xs:complexType mixed="true"/>
     </xs:element>
-    <!--<xs:element ref="lastmark" minOccurs="0" />-->
     <xs:element name="lastmark">
      <xs:complexType>
       <xs:sequence>
        <xs:element name="ncxRef">
         <xs:complexType mixed="true"/>
        </xs:element>
-       <!--<xs:element ref="ncxRef" />-->
-       <!--<xs:element ref="URI" />-->
        <xs:element name="URI">
         <xs:complexType mixed="true"/>
        </xs:element>
@@ -467,47 +608,38 @@
          <xs:element name="timeOffset">
           <xs:complexType mixed="true"/>
          </xs:element>
-         <!--<xs:element ref="charOffset" minOccurs="0" />-->
          <xs:element name="charOffset" minOccurs="1">
           <xs:complexType mixed="true"/>
          </xs:element>
         </xs:sequence>
-        <!--<xs:element ref="charOffset" />-->
        </xs:choice>
       </xs:sequence>
      </xs:complexType>
     </xs:element>
     <xs:choice>
-     <!--<xs:element ref="bookmark" />-->
      <xs:element name="bookmark">
       <xs:complexType>
        <xs:sequence>
         <xs:element name="ncxRef">
          <xs:complexType mixed="true"/>
         </xs:element>
-        <!--<xs:element ref="ncxRef" />-->
         <xs:element name="URI">
          <xs:complexType mixed="true"/>
         </xs:element>
-        <!--<xs:element ref="URI" />-->
         <xs:choice>
          <xs:sequence>
           <xs:element name="timeOffset">
            <xs:complexType mixed="true"/>
           </xs:element>
-          <!--<xs:element ref="charOffset" minOccurs="0" />-->
           <xs:element name="charOffset">
            <xs:complexType mixed="true"/>
           </xs:element>
          </xs:sequence>
-         <!--<xs:element ref="charOffset" />-->
         </xs:choice>
-        <!--<xs:element ref="note" minOccurs="0" />-->
         <xs:element name="note">
          <xs:complexType>
           <xs:sequence>
            <xs:element name="text" type="xs:string" minOccurs="0"/>
-           <!--<xs:element ref="audio" minOccurs="0" maxOccurs="unbounded" />-->
            <xs:element name="audio">
             <xs:complexType>
              <xs:attribute name="src" form="unqualified" type="xs:string"/>
@@ -523,19 +655,15 @@
        <xs:attribute name="label" type="xs:string" use="optional"/>
       </xs:complexType>
      </xs:element>
-     <!--<xs:element ref="hilite" />-->
      <xs:element name="hilite">
       <xs:complexType>
        <xs:sequence>
-        <!--<xs:element ref="hiliteStart" />-->
         <xs:element name="hiliteStart">
          <xs:complexType>
           <xs:sequence>
            <xs:element name="ncxRef">
             <xs:complexType mixed="true"/>
            </xs:element>
-           <!--<xs:element ref="ncxRef" />-->
-           <!--<xs:element ref="URI" />-->
            <xs:element name="URI">
             <xs:complexType mixed="true"/>
            </xs:element>
@@ -544,26 +672,20 @@
              <xs:element name="timeOffset">
               <xs:complexType mixed="true"/>
              </xs:element>
-             <!--<xs:element ref="charOffset" minOccurs="0" />-->
              <xs:element name="charOffset" minOccurs="1">
               <xs:complexType mixed="true"/>
              </xs:element>
             </xs:sequence>
-            <!--<xs:element ref="charOffset" />-->
-
            </xs:choice>
           </xs:sequence>
          </xs:complexType>
         </xs:element>
-        <!--<xs:element ref="hiliteEnd" />-->
         <xs:element name="hiliteEnd">
          <xs:complexType>
           <xs:sequence>
            <xs:element name="ncxRef">
             <xs:complexType mixed="true"/>
            </xs:element>
-           <!--<xs:element ref="ncxRef" />-->
-           <!--<xs:element ref="URI" />-->
            <xs:element name="URI">
             <xs:complexType mixed="true"/>
            </xs:element>
@@ -572,22 +694,18 @@
              <xs:element name="timeOffset">
               <xs:complexType mixed="true"/>
              </xs:element>
-             <!--<xs:element ref="charOffset" minOccurs="0" />-->
              <xs:element name="charOffset" minOccurs="1">
               <xs:complexType mixed="true"/>
              </xs:element>
             </xs:sequence>
-
            </xs:choice>
           </xs:sequence>
          </xs:complexType>
         </xs:element>
-        <!--<xs:element ref="note" minOccurs="0" />-->
         <xs:element name="note">
          <xs:complexType>
           <xs:sequence>
            <xs:element name="text" type="xs:string" minOccurs="0"/>
-           <!--<xs:element ref="audio" minOccurs="0" maxOccurs="unbounded" />-->
            <xs:element name="audio">
             <xs:complexType>
              <xs:attribute name="src" form="unqualified" type="xs:string"/>
@@ -607,7 +725,17 @@
   </xs:complexType>
  </xs:element>
 
- <xs:element name="question">
+ <xs:element name="inputQuestion">
+  <!-- TODO this may need a better name, but should be disambiguated from questions/question -->
+  <xs:annotation>
+   <xs:documentation>
+    <db:para role="desc">A singular question, asked by the Service to the User, requiring a textual
+     or auditorial response.</db:para>
+    <db:para role="desc">Depending on the Reading System proporties (as specified by the Reading
+     System in <db:xref linkend="tp_readingSystemAttributes"/>, the question is asked in textual
+     and/or audiotorial modalities.</db:para>
+   </xs:documentation>
+  </xs:annotation>
   <xs:complexType>
    <xs:sequence>
     <xs:element name="inputTypes" minOccurs="0" maxOccurs="1">
@@ -642,9 +770,26 @@
  </xs:element>
 
  <xs:element name="questions">
-  <!-- either exactly one contentList as direct descendant of GQ, or a label, or any combination, and cardinality 
-   of multipleChoice and textInputQuestion -->
+  <xs:annotation>
+   <xs:documentation>
+    <db:para role="desc">A sequence of questions, asked by the Service to the User.</db:para>
+    <db:para>TODO contentList and label are endpoints, how to best describe that?</db:para>
+    <db:para role="req">The questions element must contain either exactly one contentList or 
+     exactly one label or any number of multipleChoiceQuestion and inputQuestion in any order.</db:para>
+   </xs:documentation>
+  </xs:annotation>
   <xs:complexType>
+   <xs:choice>
+    <xs:sequence>
+     <xs:choice>
+      <xs:element ref="multipleChoiceQuestion" minOccurs="0" maxOccurs="1"/>
+      <xs:element ref="inputQuestion" minOccurs="0" maxOccurs="1"/>
+     </xs:choice>
+    </xs:sequence>
+    <xs:element ref="contentList" minOccurs="0" maxOccurs="1"/>
+    <xs:element ref="label" minOccurs="0" maxOccurs="1"/>
+   </xs:choice>
+   <!--
    <xs:choice>
     <xs:sequence>
      <xs:element name="question" minOccurs="1" maxOccurs="unbounded">
@@ -652,16 +797,16 @@
        <xs:sequence>
         <xs:choice>
          <xs:element ref="multipleChoiceQuestion" minOccurs="1" maxOccurs="1"/>
-         <xs:element ref="question" minOccurs="1" maxOccurs="1"/>
+         <xs:element ref="inputQuestion" minOccurs="1" maxOccurs="1"/>
         </xs:choice>
        </xs:sequence>
       </xs:complexType>
      </xs:element>
     </xs:sequence>
-    <!-- TODO add doc that these below returns are "endpoints" -->
     <xs:element ref="contentList" minOccurs="1" maxOccurs="1"/>
     <xs:element ref="label" minOccurs="1" maxOccurs="1"/>
    </xs:choice>
+   -->
   </xs:complexType>
  </xs:element>
 
