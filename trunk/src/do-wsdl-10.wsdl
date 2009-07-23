@@ -191,6 +191,7 @@
 				<db:para role="desc">TODO desc</db:para>
 				<db:para>The value <db:varname>default</db:varname> is reserved... TODO</db:para>
 				<db:para>The value <db:varname>search</db:varname> is reserved... TODO</db:para>
+				<db:para>The value <db:varname>back</db:varname> is reserved... TODO and make reference to serverAttributes</db:para>
 			</documentation>
 		</part>
 	</message>
@@ -334,7 +335,9 @@
 				<db:para>The <db:varname>firstItem</db:varname> and
 						<db:varname>lastItem</db:varname> parameters are used to request subsets of
 					the content list made available by the Service. The first item in the list has
-					the index <db:varname>1</db:varname>.</db:para>
+					the index <db:varname>0</db:varname>. The value <db:varname>-1</db:varname> of 
+					the lastItem parameter indicates a request to retrieve all items from <db:varname>startIndex</db:varname> to
+				the end of the list.</db:para>
 				<db:para role="req">TODO note that out-of-range lastItem and firstItem values do not
 					constitute Fault matter.</db:para>
 			</documentation>
