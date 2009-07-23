@@ -728,14 +728,14 @@
  <xs:element name="serviceAttributes">
   <xs:complexType>
    <xs:sequence>
-    <xs:element name="supportsServerSideBack" type="xs:boolean" minOccurs="1" maxOccurs="0">
+    <xs:element name="supportsServerSideBack" type="xs:boolean" minOccurs="1" maxOccurs="1">
      <xs:annotation>
       <xs:documentation>
        <db:para role="desc">DOC TODO</db:para>
       </xs:documentation>
      </xs:annotation>
     </xs:element>
-    <xs:element name="supportsSearch" type="xs:boolean" minOccurs="1" maxOccurs="0">
+    <xs:element name="supportsSearch" type="xs:boolean" minOccurs="1" maxOccurs="1">
      <xs:annotation>
       <xs:documentation>
        <db:para role="desc">DOC TODO</db:para>
