@@ -462,6 +462,31 @@ Markus to note the discussion that occurred around MTOM and that it is being exc
 === Question ====
 getServerCharacteristics - is there a need for a function to return information about the what audio/codecs the service is capable of handling
 
+= Thursday July 23 =
+
+*Agreed*: drop getDateTime from API
+
+== Scenarios ==
+
+=== Sessions and content management ===
+Geoff, Jelle Martijn, Hiro
+
+ * Session start
+ * Unattended/automatic/noninteractive content transfer
+ * Content transfer
+ * Issue and Return
+
+=== Interactive menus ===
+Nick, Kenny, Simon
+
+ * Search
+ * Interactive content selection
+ * Update profile
+ * Survey (Send audio/text)
+ * Purchase
+
+-------
+
 == Post-meeting action items ==
  * Matt: overall edit/review/proofing (starting a couple of weeks from now)
  * Geoff: terminology section
