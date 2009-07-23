@@ -32,9 +32,7 @@
 						<!-- hack until descriptions are written -->
 						<xsl:choose>
 							<xsl:when test="child::xs:annotation">
-								<db:para>
-									<xsl:apply-templates select="child::xs:annotation/xs:documentation/*"/>
-								</db:para>
+								<xsl:copy-of select="child::xs:annotation/xs:documentation/*"/>
 							</xsl:when>
 							<xsl:otherwise>
 								<db:para>...</db:para>
@@ -176,10 +174,10 @@
 				<db:para>
 					<xsl:text>cardinality: </xsl:text>
 					<xsl:choose>
-						<xsl:when test="$thisElem/@minOccurs='1' and $thisElem/@maxOccurs='1'">required</xsl:when>
-						<xsl:when test="$thisElem/@minOccurs='0' and $thisElem/@maxOccurs='1'">optional</xsl:when>
-						<xsl:when test="$thisElem/@minOccurs='1' and $thisElem/@maxOccurs='unbounded'">one or more</xsl:when>
-						<xsl:when test="$thisElem/@minOccurs='0' and $thisElem/@maxOccurs='unbounded'">zero or more</xsl:when>
+						<xsl:when test="$thisElem/@minOccurs='1' and $thisElem/@maxOccurs='1'">1</xsl:when>
+						<xsl:when test="$thisElem/@minOccurs='0' and $thisElem/@maxOccurs='1'">0 or 1</xsl:when>
+						<xsl:when test="$thisElem/@minOccurs='1' and $thisElem/@maxOccurs='unbounded'">1 or more</xsl:when>
+						<xsl:when test="$thisElem/@minOccurs='0' and $thisElem/@maxOccurs='unbounded'">0 or more</xsl:when>
 						<xsl:otherwise><xsl:value-of select="$thisElem/@minOccurs"/> to <xsl:value-of select="$thisElem/@maxOccurs"/></xsl:otherwise>
 					</xsl:choose>
 				</db:para>
