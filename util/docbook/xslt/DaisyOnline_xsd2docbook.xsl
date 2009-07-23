@@ -45,6 +45,9 @@
 								<xsl:with-param name="thisType" select="."/>
 							</xsl:call-template>
 						</db:para>
+						<xsl:if test=".//xs:any[count(ancestor::xs:element)=1]">
+							<db:para>This element is extensible.</db:para>
+						</xsl:if>
 					</db:section>
 					<db:section>
 						<xsl:attribute name="xml:id" select="concat('tp_',@name,'_elements')"/>
@@ -66,9 +69,9 @@
 			
 			<xsl:otherwise>
 				
-				<xsl:for-each select="$thisType/child::*">
+				<xsl:for-each select="$thisType/child::*[not(xs:any)]">
 					<xsl:choose>
-						<xsl:when test="self::xs:complexType or self::xs:sequence or self::xs:choice">
+						<xsl:when test="self::xs:sequence or self::xs:choice">
 							<xsl:text> (</xsl:text>
 							<xsl:call-template name="generateCM">
 								<xsl:with-param name="thisType" select="."/>
@@ -110,7 +113,29 @@
 							</xsl:if>
 						</xsl:when>
 						<xsl:when test="self::xs:annotation"/>
+						<xsl:when test="self::xs:any"/>
 						<xsl:when test="self::xs:attribute"/>
+						<xsl:when test="self::xs:complexType">
+							<xsl:call-template name="generateCM">
+								<xsl:with-param name="thisType" select="."/>
+							</xsl:call-template>
+						</xsl:when>
+						<xsl:when test="self::xs:simpleType">
+							<xsl:text>(</xsl:text>
+								<xsl:for-each select="child::xs:restriction/*">
+									<xsl:choose>
+										<xsl:when test="self::xs:enumeration">
+											<xsl:text>"</xsl:text>
+												<xsl:value-of select="@value"/>
+											<xsl:text>"</xsl:text>
+											<xsl:if test="following-sibling::xs:enumeration">
+												<xsl:text> | </xsl:text>
+											</xsl:if>
+										</xsl:when>
+									</xsl:choose>
+								</xsl:for-each>
+							<xsl:text>)</xsl:text>
+						</xsl:when>
 						<xsl:otherwise>###<xsl:value-of select="local-name()"/>###</xsl:otherwise>
 					</xsl:choose>
 				</xsl:for-each>
@@ -142,7 +167,17 @@
 								<xsl:text>type=</xsl:text><xsl:value-of select="@type"/>
 							</xsl:when>
 							<xsl:otherwise>
-								<xsl:text>content model=</xsl:text>
+								<xsl:choose>
+									<xsl:when test="child::xs:complexType">
+										<xsl:text>content model=</xsl:text>
+									</xsl:when>
+									<xsl:when test="child::xs:simpleType">
+										<xsl:text>allowed values=</xsl:text>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:text>##unknown##=</xsl:text>
+									</xsl:otherwise>
+								</xsl:choose>
 								<xsl:call-template name="generateCM">
 									<xsl:with-param name="thisType" select="."/>
 								</xsl:call-template>
