@@ -461,3 +461,12 @@ Markus to note the discussion that occurred around MTOM and that it is being exc
 
 === Question ====
 getServerCharacteristics - is there a need for a function to return information about the what audio/codecs the service is capable of handling
+
+== Post-meeting action items ==
+ * Matt: overall edit/review/proofing (starting a couple of weeks from now)
+ * Geoff: terminology section
+ * Markus/Kenny: sequence snippets: initial spec inclusion
+ * ALL: Further src authoring, new snippets (eg Installments)
+ * Matt: Further work on the XSD XSLT
+ * Markus/Kenny: XSD and WSDL inline doc 
+ * Peter/Markus/Kenny: Board Recommendations paper.
