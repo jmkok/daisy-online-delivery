@@ -16,6 +16,10 @@
 	<xsl:output method="xml" omit-xml-declaration="no" indent="yes"/>
 
 	<xsl:variable name="xsd" select="document('../../../src/do-types-10.xsd')"/>
+	
+	<!-- list of types - prevents processing of general-use elements in xsd -->
+	
+	<xsl:variable name="typeList">readingSystemAttributes|announcements|contentMetadata|contentList|bookmarkSet|questions|multipleChoiceQuestions|inputQuestion|userResponses|serviceAttributes</xsl:variable>
 
 	<xsl:template match="db:chapter[@xml:id='typeReference']">
 		<xsl:element name="db:chapter">
@@ -25,50 +29,93 @@
 			<!-- get the top-level elements in the xsd (aka types) -->
 			<xsl:for-each select="$xsd/schema/element">
 				<xsl:variable name="idref" select="concat('tp_', @name, '_element_')"></xsl:variable>
-				<xsl:element name="db:section">
-					<xsl:attribute name="xml:id" select="concat('tp_',@name)"/>
-					<xsl:attribute name="xreflabel" select="@name"/>
-					<xsl:element name="db:title">The <xsl:value-of select="@name"/> Type</xsl:element>
-					<xsl:element name="db:section">
-						<xsl:attribute name="xml:id" select="concat('tp_',@name,'_desc')"/>
-						<xsl:element name="db:title">Description</xsl:element>
-						<!-- hack until descriptions are written -->
-						<xsl:choose>
-							<xsl:when test="child::xs:annotation">
-								<xsl:copy-of select="child::xs:annotation/xs:documentation/*"/>
-							</xsl:when>
-							<xsl:otherwise>
-								<xsl:element name="db:para">...</xsl:element>
-							</xsl:otherwise>
-						</xsl:choose>
-					</xsl:element>
-					<xsl:element name="db:section">
-						<xsl:attribute name="xml:id" select="concat('tp_',@name,'cm')"/>
-						<xsl:element name="db:title">Content Model</xsl:element>
-						<xsl:element name="db:para">
-							<xsl:call-template name="generateCM">
-								<xsl:with-param name="thisType" select="."/>
-								<xsl:with-param name="idref" select="$idref"/>
-							</xsl:call-template>
-						</xsl:element>
-						<xsl:if test=".//xs:any[count(ancestor::xs:element)=1]">
-							<xsl:element name="db:para">This element is extensible.</xsl:element>
-						</xsl:if>
-					</xsl:element>
-					<xsl:element name="db:section">
-						<xsl:attribute name="xml:id" select="concat('tp_', @name, '_elementReference')"/>
-						<xsl:element name="db:title">Element Reference</xsl:element>
-						<xsl:call-template name="generateElements">
-							<xsl:with-param name="elist" select=".//xs:element"/>
-							<xsl:with-param name="idref">
-								<xsl:value-of select="$idref"/>
-							</xsl:with-param>
-						</xsl:call-template>
-					</xsl:element>
-				</xsl:element>
+				<xsl:if test="contains($typeList, @name)">
+					<xsl:call-template name="buildSection">
+						<xsl:with-param name="idref" select="$idref"/>
+						<xsl:with-param name="isType">true</xsl:with-param>
+					</xsl:call-template>
+				</xsl:if>
 			</xsl:for-each>
+			<xsl:element name="db:section">
+				<xsl:attribute name="xml:id">tp_general_elementReference</xsl:attribute>
+				<xsl:element name="db:title">Common Elements and Constructs</xsl:element>
+				<xsl:for-each select="$xsd/schema/element">
+					<xsl:variable name="idref" select="concat('tp_', @name)"></xsl:variable>
+					<xsl:if test="not(contains($typeList, @name))">
+						<xsl:call-template name="buildSection">
+							<xsl:with-param name="idref" select="$idref"/>
+							<xsl:with-param name="isType">false</xsl:with-param>
+						</xsl:call-template>
+					</xsl:if>
+				</xsl:for-each>
+			</xsl:element>
 		</xsl:element>
 	</xsl:template>
+	
+	
+	
+	
+	<xsl:template name="buildSection">
+		<xsl:param name="idref" as="xs:string"/>
+		<xsl:param name="isType" as="xs:boolean"/>
+		
+		<xsl:element name="db:section">
+			<xsl:attribute name="xml:id" select="concat('tp_',@name)"/>
+			<xsl:attribute name="xreflabel" select="@name"/>
+			
+			<xsl:element name="db:title">
+				<xsl:choose>
+					<xsl:when test="$isType">
+						<xsl:text>The </xsl:text>
+						<xsl:value-of select="@name"/>
+						<xsl:text> Type</xsl:text>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:value-of select="@name"/>
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:element>
+			
+			<xsl:element name="db:section">
+				<xsl:attribute name="xml:id" select="concat('tp_',@name,'_desc')"/>
+				<xsl:element name="db:title">Description</xsl:element>
+				<!-- hack until descriptions are written -->
+				<xsl:choose>
+					<xsl:when test="child::xs:annotation">
+						<xsl:copy-of select="child::xs:annotation/xs:documentation/*"/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:element name="db:para">...</xsl:element>
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:element>
+			<xsl:element name="db:section">
+				<xsl:attribute name="xml:id" select="concat('tp_',@name,'cm')"/>
+				<xsl:element name="db:title">Content Model</xsl:element>
+				<xsl:element name="db:para">
+					<xsl:call-template name="generateCM">
+						<xsl:with-param name="thisType" select="."/>
+						<xsl:with-param name="idref" select="$idref"/>
+					</xsl:call-template>
+				</xsl:element>
+				<xsl:if test=".//xs:any[count(ancestor::xs:element)=1]">
+					<xsl:element name="db:para">This element is extensible.</xsl:element>
+				</xsl:if>
+			</xsl:element>
+			<xsl:element name="db:section">
+				<xsl:attribute name="xml:id" select="concat('tp_', @name, '_elementReference')"/>
+				<xsl:element name="db:title">Element Reference</xsl:element>
+				<xsl:call-template name="generateElements">
+					<xsl:with-param name="elist" select=".//xs:element"/>
+					<xsl:with-param name="idref">
+						<xsl:value-of select="$idref"/>
+					</xsl:with-param>
+				</xsl:call-template>
+			</xsl:element>
+		</xsl:element>
+	</xsl:template>
+	
+	
 	
 	<xsl:template name="generateCM">
 		<xsl:param name="thisType"/>
@@ -340,15 +387,15 @@
 										<xsl:text>name</xsl:text>
 									</xsl:element>
 									<xsl:element name="db:th">
-										<xsl:attribute name="style">width: 50%;</xsl:attribute>
+										<xsl:attribute name="style">width: 45%;</xsl:attribute>
 										<xsl:text>use</xsl:text>
 									</xsl:element>
 									<xsl:element name="db:th">
-										<xsl:attribute name="style">width: 15%;</xsl:attribute>
-										<xsl:text>value</xsl:text>
+										<xsl:attribute name="style">width: 25%;</xsl:attribute>
+										<xsl:text>type</xsl:text>
 									</xsl:element>
 									<xsl:element name="db:th">
-										<xsl:attribute name="style">width: 15%;</xsl:attribute>
+										<xsl:attribute name="style">width: 10%;</xsl:attribute>
 										<xsl:text>default</xsl:text>
 									</xsl:element>
 								</xsl:element>
