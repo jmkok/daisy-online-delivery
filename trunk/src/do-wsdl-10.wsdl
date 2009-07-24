@@ -55,15 +55,19 @@
 	<message name="setBookmarksResponse">
 		<part name="result" element="xsd:boolean">
 			<documentation>
-				<db:para role="desc">Specifies whether the bookmarks for the Publication were saved
+				<db:para role="desc">Specifies whether the bookmarks for the content were saved
 					successfully on the Service.</db:para>
 			</documentation>
 		</part>
 	</message>
 	<message name="getBookmarksRequest">
 		<part name="publicationID" element="xsd:string">
-			<documentation>The unique identifier of the Publication for which bookmarks are being
-				retrieved</documentation>
+			<documentation>
+				<db:para role="desc">The identifier of the content for which bookmarks are being
+				retrieved</db:para>
+				<db:para role="note">TODO establish that contentMetadata dc.identifier is the protocols locus
+				to establish what this identifier is.</db:para>
+			</documentation>
 		</part>
 	</message>
 	<message name="getBookmarksResponse">
@@ -77,10 +81,12 @@
 	<!-- ******************************** -->
 
 	<message name="issueContentRequest">
-		<part name="publicationID" element="xsd:string">
+		<part name="contentID" element="xsd:string">
 			<documentation>
-				<db:para role="desc">The unique identifier of the publication that this issuance
-					request is for.</db:para>
+				<db:para role="desc">The identifier of the content that this issuance
+				request is for.</db:para>
+				<db:para role="note">TODO establish that contentMetadata dc.identifier is the protocols locus
+					to establish what this identifier is.</db:para>
 			</documentation>
 		</part>
 	</message>
@@ -95,8 +101,10 @@
 	<message name="returnContentRequest">
 		<part name="publicationID" element="xsd:string">
 			<documentation>
-				<db:para role="desc">The unique identifier of the publication that this return
-					request is for.</db:para>
+				<db:para role="desc">The unique identifier of the content that this return
+				  request is for.</db:para>
+				<db:para role="note">TODO establish that contentMetadata dc.identifier is the protocols locus
+					to establish what this identifier is.</db:para>
 			</documentation>
 		</part>
 	</message>
@@ -132,7 +140,7 @@
 		<part name="id" element="xsd:string">
 			<documentation>
 				<db:para role="desc">The identity of the list to retrieve. TODO seems like we should only
-				allow the default, borrowed/issued, and expired value.</db:para>
+				allow the default, borrowed/issued, and expired value. No use for arbitrary values.</db:para>
 				<db:para>The value <db:varname>default</db:varname> is reserved to refer to a
 					default (precomposed) content list; Services must therefore not assign
 						<db:varname>default</db:varname> as the identity value of a dynamically
@@ -157,7 +165,11 @@
 		</part>
 	</message>
 	<message name="getContentListResponse">
-		<part name="result" element="tns:contentList"/>
+		<part name="result" element="tns:contentList">
+			<documentation>
+				<db:para>The reqested content list, or a segment thereof.</db:para>
+			</documentation>
+		</part>
 	</message>
 
 
@@ -349,7 +361,7 @@
 		<operation name="getContentMetadata">
 			<documentation>
 				<db:para role="desc">Retrieves <db:xref linkend="tp_contentMetadata"/> for the
-					specified content.</db:para>
+				specified content.</db:para>
 				<db:para role="prereq">This operation is only valid if a previous call to <db:xref
 						linkend="op_issueContent"/> with a result of <db:varname>true</db:varname>
 					has been made for the given publication.</db:para>
@@ -363,7 +375,7 @@
 
 		<operation name="getServiceAttributes">
 			<documentation>
-				<db:para role="desc">Queries the Service on which optional operations it
+				<db:para role="desc">Retrieves Service properties, including information on which optional operations it
 					supports.</db:para>
 			</documentation>
 			<input message="tns:getServiceAttributesRequest"/>
