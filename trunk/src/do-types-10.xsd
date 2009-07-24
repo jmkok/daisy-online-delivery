@@ -243,7 +243,6 @@
       </xs:documentation>
      </xs:annotation>
     </xs:element>
-
    </xs:sequence>
   </xs:complexType>
  </xs:element>
@@ -520,6 +519,11 @@
   </xs:annotation>
   <xs:complexType>
    <xs:sequence>
+    <xs:element ref="label" minOccurs="0" maxOccurs="unbounded">
+     <xs:annotation><xs:documentation>
+      <db:para role="desc">A label for this content list.</db:para>
+     </xs:documentation></xs:annotation>
+    </xs:element>
     <xs:element name="contentItem" minOccurs="0" maxOccurs="unbounded">
      <xs:annotation>
       <xs:documentation>
@@ -788,24 +792,6 @@
     <xs:element ref="contentList" minOccurs="0" maxOccurs="1"/>
     <xs:element ref="label" minOccurs="0" maxOccurs="1"/>
    </xs:choice>
-   <!--
-   <xs:choice>
-    <xs:sequence>
-     <xs:element name="question" minOccurs="1" maxOccurs="unbounded">
-      <xs:complexType>
-       <xs:sequence>
-        <xs:choice>
-         <xs:element ref="multipleChoiceQuestion" minOccurs="1" maxOccurs="1"/>
-         <xs:element ref="inputQuestion" minOccurs="1" maxOccurs="1"/>
-        </xs:choice>
-       </xs:sequence>
-      </xs:complexType>
-     </xs:element>
-    </xs:sequence>
-    <xs:element ref="contentList" minOccurs="1" maxOccurs="1"/>
-    <xs:element ref="label" minOccurs="1" maxOccurs="1"/>
-   </xs:choice>
-   -->
   </xs:complexType>
  </xs:element>
 
@@ -836,7 +822,8 @@
  <xs:element name="userResponses">
   <xs:annotation>
    <xs:documentation>
-    <db:para>Encapsulates a set of User responses to Service provided <db:xref linkend="tp_questions"/>.</db:para>
+    <db:para>Encapsulates a set of User responses to Service provided <db:xref
+      linkend="tp_questions"/>.</db:para>
    </xs:documentation>
   </xs:annotation>
   <xs:complexType>
@@ -844,11 +831,25 @@
     <xs:element name="userResponse" minOccurs="1" maxOccurs="unbounded">
      <xs:annotation>
       <xs:documentation>
-       <db:para>A singular response to a question. Either the value attribute (for text-based
-        responses) or the data attribute (for audio-based responses) must be present.</db:para>
+       <db:para>A singular response to a question. Either the value attribute (for inputQuestion
+        or multipleChoiceQuestion responses) or the data element (for audio-based responses) 
+        must be present.</db:para>
       </xs:documentation>
      </xs:annotation>
-     <xs:complexType>
+     <xs:complexType>   
+      <xs:sequence>
+       <xs:element name="data" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+         <xs:documentation>
+          <db:para>TODO specify that WAV is required, other codecs supported by the service declared
+           by getServiceAttributes. TODO add note that MTOM is not allowed.</db:para>
+         </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+         <xs:restriction base="xs:base64Binary"/>
+        </xs:simpleType>
+       </xs:element>
+      </xs:sequence>
       <xs:attribute name="questionID" type="xs:ID" use="required">
        <xs:annotation>
         <xs:documentation>
@@ -856,19 +857,13 @@
         </xs:documentation>
        </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="value" type="xs:string" use="optional"/>
-      <xs:attribute name="data" use="optional">
-       <xs:annotation>
-        <xs:documentation>
-         <db:para>TODO specify that WAV is required, other codecs supported by the service declared
-          by getServiceAttributes. TODO add note that MTOM is not allowed.</db:para>
-        </xs:documentation>
-       </xs:annotation>
-       <xs:simpleType>
-        <xs:restriction base="xs:base64Binary"/>
-       </xs:simpleType>
+      <xs:attribute name="value" type="xs:string" use="optional">
+       <xs:annotation><xs:documentation>
+        <db:para>In the case of an inputQuestion, this attribute contains the textual response. In the
+         case of a multipleChoiceQuestion, it contains the ID of the choice.</db:para>
+       </xs:documentation></xs:annotation>
       </xs:attribute>
-     </xs:complexType>
+     </xs:complexType>  
     </xs:element>
    </xs:sequence>
   </xs:complexType>
@@ -885,9 +880,9 @@
     <xs:element name="supportsServerSideBack" type="xs:boolean" minOccurs="1" maxOccurs="1">
      <xs:annotation>
       <xs:documentation>
-       <db:para role="desc">Specifies whether this Service supports serverside back commands, eg
+       <db:para role="desc">Specifies whether this Service supports serverside back commands, e.g.
         whether <db:xref linkend="op_getQuestions"/> with the reserved parameter
-         <db:varname>back</db:varname> is supported</db:para>
+         <db:varname>back</db:varname> is supported.</db:para>
       </xs:documentation>
      </xs:annotation>
     </xs:element>
@@ -904,8 +899,8 @@
     <xs:element name="supportedUplinkAudioCodecs" minOccurs="1" maxOccurs="1">
      <xs:annotation>
       <xs:documentation>
-       <db:para role="desc">Specifies which (if any) of audio codecs is supported 
-        in <db:xref linkend="tp_userResponses"/> in addition to the codec required to be supported by this
+       <db:para role="desc">Specifies which (if any) audio codecs is supported in <db:xref
+         linkend="tp_userResponses"/> in addition to the codec required to be supported by this
         specification.</db:para>
       </xs:documentation>
      </xs:annotation>

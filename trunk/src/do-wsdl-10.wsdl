@@ -126,12 +126,13 @@
 
 
 	<!-- ********************************************* -->
-	<!-- *************  content list  ************** -->
+	<!-- *************  content list  **************** -->
 	<!-- ********************************************* -->
 	<message name="getContentListRequest">
-		<part name="responses" element="xsd:string">
+		<part name="id" element="xsd:string">
 			<documentation>
-				<db:para role="desc">The identity of the list to retrieve.</db:para>
+				<db:para role="desc">The identity of the list to retrieve. TODO seems like we should only
+				allow the default, borrowed/issued, and expired value.</db:para>
 				<db:para>The value <db:varname>default</db:varname> is reserved to refer to a
 					default (precomposed) content list; Services must therefore not assign
 						<db:varname>default</db:varname> as the identity value of a dynamically
@@ -140,7 +141,8 @@
 					of the content that is currently borrowed to the User by the Service; Services
 					must therefore not assign <db:varname>borrowed</db:varname> as the identity value
 					of a dynamically composed content list.</db:para>
-				<db:para>TODO explain that this can be used to allow the service to manage the borrowed content list on the users behalf. (Hiro)</db:para>
+				<db:para>TODO explain that this can be used to allow the service to manage the 
+					borrowed content list on the users behalf. (Hiro)</db:para>
 			</documentation>
 		</part>
 		<part name="firstItem" element="xsd:integer">
@@ -510,4 +512,5 @@
 			<db:para role="desc">This operation is not supported by the Service.</db:para>
 		</documentation>
 	</message>
+	
 </definitions>
