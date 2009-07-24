@@ -183,8 +183,10 @@
                <xs:enumeration value="TEXT_ALPHANUMERIC">
                 <xs:annotation>
                  <xs:documentation>
-                  <db:para>The Reading System supports User input using an alphanumeric
-                   keyboard.</db:para>
+                  <db:para role="desc">The Reading System supports User input using an alphanumeric
+                  keyboard.</db:para>
+                  <db:para role="note">Note: this value is a superset of 
+                   <db:varname>TEXT_NUMERIC</db:varname>.</db:para>
                  </xs:documentation>
                 </xs:annotation>
                </xs:enumeration>
@@ -755,9 +757,30 @@
          <xs:attribute name="type" use="required">
           <xs:simpleType>
            <xs:restriction base="xs:string">
-            <xs:enumeration value="AUDIO"/>
-            <xs:enumeration value="TEXT_NUMERIC"/>
-            <xs:enumeration value="TEXT_ALPHANUMERIC"/>
+            <xs:enumeration value="TEXT_NUMERIC">
+             <xs:annotation>
+              <xs:documentation>
+               <db:para>The Reading System supports User input using a numeric keypad.</db:para>
+              </xs:documentation>
+             </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="TEXT_ALPHANUMERIC">
+             <xs:annotation>
+              <xs:documentation>
+               <db:para role="desc">The Reading System supports User input using an alphanumeric
+                keyboard.</db:para>
+               <db:para role="note">Note: this value is a superset of 
+                <db:varname>TEXT_NUMERIC</db:varname>.</db:para>
+              </xs:documentation>
+             </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="AUDIO">
+             <xs:annotation>
+              <xs:documentation>
+               <db:para>The Reading System supports User input using audio recording.</db:para>
+              </xs:documentation>
+             </xs:annotation>
+            </xs:enumeration>
            </xs:restriction>
           </xs:simpleType>
          </xs:attribute>
@@ -815,7 +838,12 @@
     </xs:element>
    </xs:sequence>
    <xs:attribute name="id" type="xs:ID"/>
-   <xs:attribute name="allowMultipleSelections" type="xs:boolean" use="optional"/>
+   <xs:attribute name="allowMultipleSelections" type="xs:boolean" use="optional" default="false">
+    <xs:annotation><xs:documentation>
+     <db:para role="desc">Specifies whether multiple selections are allowed in the User 
+      response to this question. The default value is <db:varname>false</db:varname>.</db:para>
+    </xs:documentation></xs:annotation>
+   </xs:attribute>
   </xs:complexType>
  </xs:element>
 
@@ -834,6 +862,9 @@
        <db:para>A singular response to a question. Either the value attribute (for inputQuestion
         or multipleChoiceQuestion responses) or the data element (for audio-based responses) 
         must be present.</db:para>
+       <db:para role="note">Note: If a userResponses type is a response to a <db:xref linkend="tp_multipleChoiceQuestion" />
+        where multiple selections are allowed, then multiple userResponse elements must be used to represent each selection 
+        (where each userResponse refers to the same question via the <db:varname>questionID</db:varname> attribute).</db:para>
       </xs:documentation>
      </xs:annotation>
      <xs:complexType>   
