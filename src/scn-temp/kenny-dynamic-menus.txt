@@ -1,0 +1,303 @@
+Usage Scenario: How to use the dynamic menus feature to retrieve the Main Menu from a Service.
+
+The Reading System retrieves the Main Menu of the Service by invoking the getQuestions operation with the reserved id "default" 
+
+<userResponses>
+<userResponse id="default"/>
+</userResponses>
+ 
+getQuestions(userResponses)
+
+The operation returns the following questions type:
+ 
+<questions>
+<multipleChoiceQuestion id="100">
+<label xml:lang="en">
+<text>What would you like to do?</text>
+</label>
+
+<choices>
+<choice id="101">
+<label>
+<text>Search the Library</text>
+</label>
+</choice>
+
+<choice id="102">
+<label>
+<text>Update your profile</text>
+</label>
+</choice>
+
+<choice id="103">
+<label>
+<text>Take a Survey</text>
+</label>
+</choice>
+
+<choice id="104">
+<label>
+<text>Buy a book</text>
+</label>
+</choice>
+
+<choice id="105">
+<label>
+<text>Download or Stream content</text>
+</label>
+</choice>
+</choices>
+</multipleChoiceQuestion>
+</questions>
+
+The Reading system renders this type to the user in the following way:
+
+What Would you like to do?
+* Search the Library
+* Update your profile
+* Take a Survey.
+* Buy a book
+* Download or Stream content
+
+Usage Scenario: How to use the Dynamic Menu feature to enable a user to perform Search.  
+
+As Search is envisaged to be a very important part of the Online Distribution of content, and thus the Reading Systems may have specific user interface components to invoke search, a special id is available and can be passed into the getQuestions operation to retrieve the menu specific to search.
+
+<userResponses>
+<userResponse id="search"/>
+</userResponses>
+
+(Using the aforementioned Main Menu example, if the user selected "Search the Library," the following userResponses type could also be used to retrieve the Search menu.)     
+
+<userResponses>
+<userResponse id="100" value="101"/>
+</userResponses>
+
+(The reserved Search id thus is a shortcut provided for those Reading systems that have explicit user interface components to invoke the Search feature.)
+
+getQuestions ( userResponses)
+
+The operation returns the following questions type:
+ 
+<questions>
+<multipleChoiceQuestion id="200">
+
+<label xml:lang="en">
+<text>What would you like to Search by?</text>  
+</label>
+
+<choices>
+<choice id="201">
+<label>
+<text>Title</text>
+</label>
+</choice>
+
+<choice id="202">
+<label>
+<text>Author</text>
+</label>
+</choice>
+
+<choice id="203">
+<label>
+<text>Genre</text>
+</label>
+</choice>
+
+</choices>
+</multipleChoiceQuestion>
+</questions>
+
+what would you like to search by?
+* title
+* author
+* Genre
+
+Assuming that the user Selected "Author," the reading system would retrieve the next menu by passing in the following parameter to the getQuestions operation:    
+
+<userResponses>
+<userResponse id="200" value="201"/>
+</userResponses>
+
+getQuestions(userResponses)
+
+This operation would return the following type:
+  
+<questions>
+<inputQuestion id="300">
+
+<inputTypes>
+<input type="text_numeric"/>
+<input type="text_alphanumeric"/>
+</inputTypes>
+
+<label xml:lang="en">
+<text>Please enter the name of the Author.</text>
+</label>
+
+</inputQuestion>
+</questions>
+
+ The Reading System would render this type to the user as follows:
+
+Please enter the name of the author. 
+
+Assuming the user entered the name "J.K. Rawling," the Reading System would invoke the getQuestions operation with the following parameter:
+
+<userResponses>
+<userResponse id="300" value="J.K. Rawling"/>
+</userResponses>
+
+this operation would return the following questions type:
+
+ 
+<questions>
+<contentList>
+
+<label xml:lang="en">
+<text>Your Search for "J.K. Rawling" returned the following results.</text>
+</label>
+
+<contentItem id="hp_cos">
+<label>
+<text>Harry Potter and the Chamber of Secrets
+</label>
+</contentItem>
+
+<contentItem id="hp_dh">
+<label>
+<text>Harry Potter and the Deathly Hallows
+</label>
+</contentItem>
+
+<contentItem id="hp_gof">
+<label>
+<text>Harry Potter and the Goblet of Fire
+</label>
+</contentItem>
+
+</contentList>
+</questions> 
+
+The Reading System could then render this type as follows:
+
+Your Search for "J.K. Rawling" returned the following results:  
+* harry potter and chamber of secrets
+* harry potter and deathly hallows
+* harry potter and goblet of fire
+
+When a Service returns a contentList within a questions type,, the Reading system is logically at the end of the Service's dynamic menu.  
+
+The Reading System may then retrieve information about the specific contentItems in the contentList type by invoking the contentMetadata operation, passing in the id of the particular content item.   At this stage, the Reading system may ask the user whether he/she wishes to Download or Stream content.
+
+3. Update profile
+
+The Update profile function can be entered by calling getQuestionss with a single userResponse which has id, from the he Main Menu example, = 100 and Value = 101.
+
+This operation returns a question element containing a GroupedQuestion.
+
+getQuestions ( 100 102)
+[grouped] 
+[q input-type=text-alphanumeric] 301 
+please enter your name
+[q input-type=text-alphanumeric] 302 
+please enter your address
+[mcq ms=false] 303 
+please enter your sex
+m = male
+f = female
+
+The reading sysem renders all of the grouped question sub element lables to the user and accepts input for each sub-element from the user.
+
+The reading system calls getQuestionss with a multiple userResponse having ids and values matching the group questions sub-elements.
+
+getQuestions ( 301 'kenny', 302 'australia', 303 'm' )
+[label] your profile has been updated
+
+This operation returns a question element containing a Label.
+
+The reading system renders the label to the user.
+
+The reading system has now exited the service menus.
+
+
+
+4. Survey
+
+The Survey function can be entered by calling getQuestionss with a single userResponse which has id, from the he Main Menu example, = 100 and Value = 103.
+
+This operation returns a question element containing a GroupedQuestion.
+
+getQ 100 103
+[grouped] 
+[q input types text-numeric] 401
+how many years have you been using the survice?
+[q input types text-alphanumeric | audio ] 402
+what do you think of the service?
+
+The reading sysem renders all of the grouped question sub element lables to the user and accepts input for each sub-element from the user.
+
+The reading system calls getQuestionss with a multiple userResponse having ids and values matching the group questions sub-elements.
+
+[do we need a special note about the reading system getting audio input from the user]
+
+getQuestions ( 401 value = '3', 402 data = [base64 binary data] )
+[mcq ms=false] 500
+thank you for you feedback. what would you like to do next?
+501 take another survey
+default go to home menu
+
+This operation returns a question element containing a multiple-choice question which does not support multiple-selections.
+
+The reading system renders the multiple-choice question label and the individual choice labels to the user and accepts a choice from the user.
+
+The reading system calls getQuestions with the appropriate single userResponse element.
+
+
+
+5. Purchase content
+
+The Purchase Content function can be entered by calling getQuestionss with a single userResponse which has id, from the he Main Menu example, = 100 and Value = 104.
+
+This operation returns a question element containing a multiple-choice question which does support multiple-selections.
+
+getQuestions ( 100 104 )
+[mcq ms=true] 600
+which books would you like?
+601 Harry Po tter and the chamber of secrets
+602 Harry Potter and the deathly hallows
+603 Harry Potter and the goblet of fire
+604 Harry Potter and the half-blood Prince
+605 Harry Potter and the Order of the Phoenix
+
+
+
+The reading system renders the multiple-choice question label and the individual choice labels to the user and accepts choices from the user.
+
+The reading system calls getQuestionss with a multiple userResponse having userResponse sub-elements each with id = 600 and a value matching one of the user's choices.
+
+This operation returns a question element containing a multiple-choice question which does not support multiple-selections.
+
+getQuestions ( 600 601, 600 602, 600 605 )
+[mcq ms=false] 700
+you have selected ... what you you like to do?
+701 buy now
+600 change your selection
+
+The reading system renders the multiple-choice question label and the individual choice labels to the user and accepts choices from the user.
+
+The reading system calls getQuestionss with a single userResponse having id = 700 and value = 701.
+
+getQuestions ( 700 701 )
+[label] thank you
+
+This operation returns a question element containing a Label.
+
+The reading system renders the label to the user.
+
+The reading system has now exited the service menus.
+
+
+
+6. Add content to default content list
