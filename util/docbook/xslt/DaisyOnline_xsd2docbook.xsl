@@ -281,12 +281,15 @@
 	
 	<xsl:template name="addModifier">
 		<xsl:choose>
-			<xsl:when test="not(@minOccurs) and not(@maxOccurs)"/>
-			<xsl:when test="@minOccurs='0' and @maxOccurs='1'">?</xsl:when>
+			<xsl:when test="(not(@minOccurs) and not(@maxOccurs))
+						or (@minOccurs='1' and @maxOccurs='1')
+						or (not(@minOccurs) and @maxOccurs='1')
+						or (@minOccurs='1' and not(@maxOccurs))
+						"/>
+			<xsl:when test="@minOccurs='0' and (not(@maxOccurs) or @maxOccurs='1')">?</xsl:when>
 			<xsl:when test="@minOccurs='0' and @maxOccurs='unbounded'">*</xsl:when>
-			<xsl:when test="@minOccurs='1' and @maxOccurs='1'"/>
-			<xsl:when test="@minOccurs='1' and @maxOccurs='unbounded'">+</xsl:when>
-			<xsl:when test="@minOccurs or @maxOccurs">
+			<xsl:when test="(not(@minOccurs) or @minOccurs='1') and @maxOccurs='unbounded'">+</xsl:when>
+			<xsl:otherwise>
 				<xsl:text>{</xsl:text>
 				<xsl:choose>
 					<xsl:when test="not(@minOccurs)">1</xsl:when>
@@ -297,6 +300,9 @@
 				<xsl:text>, </xsl:text>
 				<xsl:choose>
 					<xsl:when test="not(@maxOccurs)">
+						<xsl:text>1</xsl:text>
+					</xsl:when>
+					<xsl:when test="@maxOccurs = 'unbounded'">
 						<xsl:text>∞</xsl:text>
 					</xsl:when>
 					<xsl:otherwise>
@@ -304,7 +310,7 @@
 					</xsl:otherwise>
 				</xsl:choose>
 				<xsl:text>}</xsl:text>
-			</xsl:when>
+			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
 	
@@ -312,11 +318,14 @@
 	
 	<xsl:template name="addCardinality">
 		<xsl:choose>
-			<xsl:when test="not(@minOccurs) and not(@maxOccurs)">1</xsl:when>
-			<xsl:when test="@minOccurs='0' and @maxOccurs='1'">0 or 1</xsl:when>
+			<xsl:when test="(not(@minOccurs) and not(@maxOccurs))
+				or (@minOccurs='1' and @maxOccurs='1')
+				or (not(@minOccurs) and @maxOccurs='1')
+				or (@minOccurs='1' and not(@maxOccurs))
+				">1</xsl:when>
+			<xsl:when test="@minOccurs='0' and (not(@maxOccurs) or @maxOccurs='1')">0 or 1</xsl:when>
 			<xsl:when test="@minOccurs='0' and @maxOccurs='unbounded'">0 or more</xsl:when>
-			<xsl:when test="@minOccurs='1' and @maxOccurs='1'">1</xsl:when>
-			<xsl:when test="@minOccurs='1' and @maxOccurs='unbounded'">1 or more</xsl:when>
+			<xsl:when test="(not(@minOccurs) or @minOccurs='1') and @maxOccurs='unbounded'">1 or more</xsl:when>
 			<xsl:otherwise>
 				<xsl:choose>
 					<xsl:when test="not(@minOccurs)">1</xsl:when>
@@ -385,10 +394,6 @@
 						
 						<!-- add description -->
 						<xsl:if test="xs:annotation">
-							<xsl:element name="db:bridgehead">
-								<xsl:attribute name="xml:id" select="concat($idref, @name, '_description')"/>
-								<xsl:text>Description</xsl:text>
-							</xsl:element>
 							<xsl:apply-templates select="xs:annotation/xs:documentation/*"/>
 						</xsl:if>
 						
