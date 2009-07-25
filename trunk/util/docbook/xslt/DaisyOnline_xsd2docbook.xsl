@@ -19,7 +19,7 @@
 	
 	<!-- list of types - prevents processing of general-use elements in xsd -->
 	
-	<xsl:variable name="typeList">readingSystemAttributes|announcements|contentMetadata|contentList|bookmarkSet|questions|multipleChoiceQuestions|inputQuestion|userResponses|serviceAttributes</xsl:variable>
+	<xsl:variable name="typeList">readingSystemAttributes|announcements|contentMetadata|bookmarkSet|questions|userResponses|serviceAttributes</xsl:variable>
 
 	<xsl:template match="db:chapter[@xml:id='typeReference']">
 		<xsl:element name="db:chapter">
@@ -82,7 +82,7 @@
 				<!-- hack until descriptions are written -->
 				<xsl:choose>
 					<xsl:when test="child::xs:annotation">
-						<xsl:copy-of select="child::xs:annotation/xs:documentation/*"/>
+						<xsl:copy-of select="child::xs:annotation/xs:documentation/db:*"/>
 					</xsl:when>
 					<xsl:otherwise>
 						<xsl:element name="db:para">...</xsl:element>
@@ -102,16 +102,18 @@
 					<xsl:element name="db:para">This element is extensible.</xsl:element>
 				</xsl:if>
 			</xsl:element>
-			<xsl:element name="db:section">
-				<xsl:attribute name="xml:id" select="concat('tp_', @name, '_elementReference')"/>
-				<xsl:element name="db:title">Element Reference</xsl:element>
-				<xsl:call-template name="generateElements">
-					<xsl:with-param name="elist" select=".//xs:element"/>
-					<xsl:with-param name="idref">
-						<xsl:value-of select="$idref"/>
-					</xsl:with-param>
-				</xsl:call-template>
-			</xsl:element>
+			<xsl:if test=".//xs:element[not(@ref)]">
+				<xsl:element name="db:section">
+					<xsl:attribute name="xml:id" select="concat('tp_', @name, '_elementReference')"/>
+					<xsl:element name="db:title">Element Reference</xsl:element>
+					<xsl:call-template name="generateElements">
+						<xsl:with-param name="elist" select=".//xs:element[not(@ref)]"/>
+						<xsl:with-param name="idref">
+							<xsl:value-of select="$idref"/>
+						</xsl:with-param>
+					</xsl:call-template>
+				</xsl:element>
+			</xsl:if>
 		</xsl:element>
 	</xsl:template>
 	
@@ -191,7 +193,7 @@
 												Enumeration:
 											</xsl:when>
 											<xsl:when test="child::xs:restriction/xs:minInclusive|child::xs:restriction/xs:maxInclusive">
-												Integer Value:
+												Integer Set:
 											</xsl:when>
 											<xsl:otherwise>
 												##unknown##: (<xsl:value-of select="child::xs:restriction/@base"/>)
