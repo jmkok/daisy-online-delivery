@@ -218,26 +218,26 @@
 	<xsl:template name="processCMSimpleType">
 		<xsl:param name="idref" as="xs:string"/>
 		
-		<xsl:element name="db:para">
-			<xsl:choose>
-				<xsl:when test="child::xs:restriction/*">
-					<xsl:choose>
-						<xsl:when test="child::xs:restriction/xs:enumeration">
-							Enumeration:
-						</xsl:when>
-						<xsl:when test="child::xs:restriction/xs:minInclusive|child::xs:restriction/xs:maxInclusive">
-							Integer Set:
-						</xsl:when>
-						<xsl:otherwise>
-							##unknown##: (<xsl:value-of select="child::xs:restriction/@base"/>)
-						</xsl:otherwise>
-					</xsl:choose>
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:value-of select="child::xs:restriction/@base"/>
-				</xsl:otherwise>
-			</xsl:choose>
-		</xsl:element>
+		<xsl:choose>
+			<xsl:when test="child::xs:restriction/*">
+				<xsl:choose>
+					<xsl:when test="child::xs:restriction/xs:enumeration">
+						<xsl:text>Enumeration:</xsl:text>
+					</xsl:when>
+					<xsl:when test="child::xs:restriction/xs:minInclusive|child::xs:restriction/xs:maxInclusive">
+						<xsl:text>Integer Set:</xsl:text>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text>##unknown##: (</xsl:text>
+						<xsl:value-of select="child::xs:restriction/@base"/>
+						<xsl:text>)</xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:value-of select="child::xs:restriction/@base"/>
+			</xsl:otherwise>
+		</xsl:choose>
 		<xsl:if test="child::xs:restriction/*">
 			<xsl:call-template name="processRestriction"/>
 		</xsl:if>
@@ -331,25 +331,40 @@
 				<xsl:when test="@name and preceding::xs:element[@name=$name][ancestor::xs:element[not(ancestor::xs:element)]/@name=$parent]"/>
 				<xsl:otherwise>
 					
-					<xsl:element name="db:bridgehead">
+					<xsl:element name="db:section">
 						<xsl:attribute name="xml:id" select="concat($idref, @name)"/>
-						<xsl:value-of select="@name"/>
-					</xsl:element>
-					
-					<!-- add description -->
-					<xsl:if test="xs:annotation">
-						<xsl:apply-templates select="xs:annotation/xs:documentation/*"/>
-					</xsl:if>
-					
-					<xsl:call-template name="addElementInfo">
-						<xsl:with-param name="idref" select="$idref"/>
-					</xsl:call-template>
-					
-					<xsl:if test="xs:complexType/xs:attribute">
-						<xsl:call-template name="addAttributeInfo">
+						<xsl:element name="db:title">
+							<xsl:value-of select="@name"/>
+						</xsl:element>
+						
+						<!-- add description -->
+						<xsl:if test="xs:annotation">
+							<xsl:element name="db:bridgehead">
+								<xsl:attribute name="xml:id" select="concat($idref, @name, '_description')"/>
+								<xsl:text>Description</xsl:text>
+							</xsl:element>
+							<xsl:apply-templates select="xs:annotation/xs:documentation/*"/>
+						</xsl:if>
+						
+						<xsl:element name="db:bridgehead">
+							<xsl:attribute name="xml:id" select="concat($idref, @name, '_properties')"/>
+							<xsl:text>Properties</xsl:text>
+						</xsl:element>
+						<xsl:call-template name="addElementInfo">
 							<xsl:with-param name="idref" select="$idref"/>
 						</xsl:call-template>
-					</xsl:if>
+						
+						<xsl:if test="xs:complexType/xs:attribute">
+							<xsl:element name="db:bridgehead">
+								<xsl:attribute name="xml:id" select="concat($idref, @name, '_attributes')"/>
+								<xsl:text>Attributes</xsl:text>
+								
+							</xsl:element>
+							<xsl:call-template name="addAttributeInfo">
+								<xsl:with-param name="idref" select="$idref"/>
+							</xsl:call-template>
+						</xsl:if>
+					</xsl:element>
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:for-each>
@@ -360,89 +375,57 @@
 	<xsl:template name="addElementInfo">
 		<xsl:param name="idref" as="xs:string"/>
 		
-		<xsl:element name="db:table">
-			<xsl:attribute name="width">75%</xsl:attribute>
-			<xsl:attribute name="cellpadding">2</xsl:attribute>
-			<xsl:attribute name="cellspacing">0</xsl:attribute>
-			<xsl:attribute name="frame">box</xsl:attribute>
-			<xsl:attribute name="border">1</xsl:attribute>
-			<xsl:attribute name="style">margin: .25empx; padding: 0px; border: 1px solid black;</xsl:attribute>
-			<xsl:element name="db:caption">
-				<xsl:value-of select="@name"/>
-				<xsl:text> Properties</xsl:text>
-			</xsl:element>
-			<xsl:element name="db:thead">
-				<xsl:element name="db:tr">
-					<xsl:element name="db:th">
-						<xsl:attribute name="style">width: 30%;</xsl:attribute>
-						<xsl:text>characteristic</xsl:text>
-					</xsl:element>
-					<xsl:element name="db:th">
-						<xsl:attribute name="style">width: 70%;</xsl:attribute>
-						<xsl:text>description</xsl:text>
-					</xsl:element>
-				</xsl:element>
-			</xsl:element>
-			<xsl:element name="db:tbody">
-				<xsl:element name="db:tr">
-					<xsl:element name="db:td">cardinality</xsl:element>
-					<xsl:element name="db:td">
-						<xsl:element name="db:para">
-							<xsl:text>minOccurs: </xsl:text>
-							<xsl:choose>
-								<xsl:when test="@minOccurs">
-									<xsl:value-of select="@minOccurs"/>
-								</xsl:when>
-								<xsl:otherwise>1</xsl:otherwise>
-							</xsl:choose>
-							<xsl:text>, maxOccurs: </xsl:text>
-							<xsl:choose>
-								<xsl:when test="@maxOccurs">
-									<xsl:value-of select="@maxOccurs"/>
-								</xsl:when>
-								<xsl:otherwise>1</xsl:otherwise>
-							</xsl:choose>
-						</xsl:element>
-					</xsl:element>
-				</xsl:element>
-				<xsl:element name="db:tr">
-					<xsl:choose>
-						<xsl:when test="@type">
-							<xsl:element name="db:td">
-								<xsl:text>type</xsl:text>
-							</xsl:element>
-							<xsl:element name="db:td">
-								<xsl:value-of select="@type"/>
-							</xsl:element>
-						</xsl:when>
-						<xsl:otherwise>
-							<xsl:element name="db:td">
-								<xsl:element name="db:para">
-									<xsl:choose>
-										<xsl:when test="xs:complexType">
-											<xsl:text>content model: </xsl:text>
-										</xsl:when>
-										<xsl:when test="xs:simpleType">
-											<xsl:text>allowed values: </xsl:text>
-										</xsl:when>
-										<xsl:when test="not(xs:*[not(self::xs:annotation)][not(self::xs:attribute)])"/>
-										<xsl:otherwise>
-											<xsl:text>##unknown##: </xsl:text>
-										</xsl:otherwise>
-									</xsl:choose>
-								</xsl:element>
-							</xsl:element>
-							<xsl:element name="db:td">
-								<xsl:call-template name="generateCM">
-									<xsl:with-param name="thisType" select="."/>
-									<xsl:with-param name="idref" select="$idref"/>
-								</xsl:call-template>
-							</xsl:element>
-						</xsl:otherwise>
-					</xsl:choose>
-				</xsl:element>
-			</xsl:element>
+		<xsl:element name="db:para">
+			<xsl:element name="db:emphasis">Cardinality: </xsl:element>
+			
+			<xsl:text>minOccurs: </xsl:text>
+			<xsl:choose>
+				<xsl:when test="@minOccurs">
+					<xsl:value-of select="@minOccurs"/>
+				</xsl:when>
+				<xsl:otherwise>1</xsl:otherwise>
+			</xsl:choose>
+			<xsl:text>, maxOccurs: </xsl:text>
+			<xsl:choose>
+				<xsl:when test="@maxOccurs">
+					<xsl:value-of select="@maxOccurs"/>
+				</xsl:when>
+				<xsl:otherwise>1</xsl:otherwise>
+			</xsl:choose>
 		</xsl:element>
+		
+		<xsl:choose>
+			<xsl:when test="@type">
+				<xsl:element name="db:para">
+					<xsl:element name="db:emphasis">
+						<xsl:text>Data type: </xsl:text>
+					</xsl:element>
+					<xsl:value-of select="@type"/>
+				</xsl:element>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:element name="db:para">
+					<xsl:element name="db:emphasis">
+						<xsl:choose>
+							<xsl:when test="xs:complexType">
+								<xsl:text>Content model: </xsl:text>
+							</xsl:when>
+							<xsl:when test="xs:simpleType">
+								<xsl:text>Allowed values: </xsl:text>
+							</xsl:when>
+							<xsl:when test="not(xs:*[not(self::xs:annotation)][not(self::xs:attribute)])"/>
+							<xsl:otherwise>
+								<xsl:text>##unknown##: </xsl:text>
+							</xsl:otherwise>
+						</xsl:choose>
+					</xsl:element>
+					<xsl:call-template name="generateCM">
+						<xsl:with-param name="thisType" select="."/>
+						<xsl:with-param name="idref" select="$idref"/>
+					</xsl:call-template>
+				</xsl:element>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 	
 	
@@ -466,15 +449,15 @@
 			<xsl:element name="db:thead">
 				<xsl:element name="db:tr">
 					<xsl:element name="db:th">
-						<xsl:attribute name="style">width: 20%;</xsl:attribute>
+						<xsl:attribute name="style">width: 25%;</xsl:attribute>
 						<xsl:text>name</xsl:text>
 					</xsl:element>
 					<xsl:element name="db:th">
-						<xsl:attribute name="style">width: 45%;</xsl:attribute>
-						<xsl:text>use</xsl:text>
+						<xsl:attribute name="style">width: 20%;</xsl:attribute>
+						<xsl:text>presence</xsl:text>
 					</xsl:element>
 					<xsl:element name="db:th">
-						<xsl:attribute name="style">width: 25%;</xsl:attribute>
+						<xsl:attribute name="style">width: 45%;</xsl:attribute>
 						<xsl:text>type</xsl:text>
 					</xsl:element>
 					<xsl:element name="db:th">
@@ -500,29 +483,33 @@
 							</xsl:choose>
 						</xsl:element>
 						<xsl:element name="db:td">
-							<xsl:choose>
-								<xsl:when test="child::xs:simpleType">
-									<xsl:call-template name="generateCM">
-										<xsl:with-param name="thisType" select="."/>
-										<xsl:with-param name="idref" select="$idref"/>
-									</xsl:call-template>
-								</xsl:when>
-								<xsl:when test="@type">
-									<xsl:value-of select="@type"/>
-								</xsl:when>
-								<xsl:otherwise>
-									<xsl:text>&#160;</xsl:text>
-								</xsl:otherwise>
-							</xsl:choose>
+							<xsl:element name="db:para">
+								<xsl:choose>
+									<xsl:when test="child::xs:simpleType">
+										<xsl:call-template name="generateCM">
+											<xsl:with-param name="thisType" select="."/>
+											<xsl:with-param name="idref" select="$idref"/>
+										</xsl:call-template>
+									</xsl:when>
+									<xsl:when test="@type">
+										<xsl:value-of select="@type"/>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:text>&#160;</xsl:text>
+									</xsl:otherwise>
+								</xsl:choose>
+							</xsl:element>
 							
 							<!-- display any problems -->
 							<xsl:for-each select="@*">
 								<xsl:choose>
 									<xsl:when test="contains('name|use|default|type|ref', local-name())"/>
 									<xsl:otherwise>
-										<xsl:value-of select="local-name()"/>
-										<xsl:text> = </xsl:text>
-										<xsl:value-of select="."/>
+										<xsl:element name="db:para">
+											<xsl:value-of select="local-name()"/>
+											<xsl:text> = </xsl:text>
+											<xsl:value-of select="."/>
+										</xsl:element>
 									</xsl:otherwise>
 								</xsl:choose>
 							</xsl:for-each>
