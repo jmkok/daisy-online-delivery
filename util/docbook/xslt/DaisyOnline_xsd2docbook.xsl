@@ -506,6 +506,19 @@
 				</xsl:element>
 			</xsl:otherwise>
 		</xsl:choose>
+		
+		<xsl:for-each select="@*">
+			<xsl:if test="not(contains('type|xml:id|name|ref|minOccurs|maxOccurs', name()))">
+				<xsl:element name="db:para">
+					<xsl:element name="db:emphasis">
+						<xsl:value-of select="upper-case(substring(name(), 1, 1))"/>
+						<xsl:value-of select="substring(name(), 2)"/>
+					</xsl:element>
+					<xsl:text>: </xsl:text>
+					<xsl:value-of select="."/>
+				</xsl:element>
+			</xsl:if>
+		</xsl:for-each>
 	</xsl:template>
 	
 	
