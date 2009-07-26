@@ -174,8 +174,8 @@
 								<xsl:with-param name="idref" select="$idref"/>
 							</xsl:call-template>
 						</xsl:when>
-						<xsl:when test="self::xs:simpleType">
-							<xsl:call-template name="processCMSimpleType">
+						<xsl:when test="self::xs:simpleType or self::xs:complexContent">
+							<xsl:call-template name="processComplexSimple">
 								<xsl:with-param name="idref" select="$idref"/>
 							</xsl:call-template>
 						</xsl:when>
@@ -240,22 +240,29 @@
 	
 	
 	
-	<xsl:template name="processCMSimpleType">
+	<xsl:template name="processComplexSimple">
 		<xsl:param name="idref" as="xs:string"/>
 		
 		<xsl:choose>
-			<xsl:when test="child::xs:restriction/*">
+			<xsl:when test="child::xs:restriction/*[not(self::xs:element)]">
 				<xsl:choose>
-					<xsl:when test="child::xs:restriction/xs:enumeration">
-						<xsl:text>Enumeration:</xsl:text>
-					</xsl:when>
-					<xsl:when test="child::xs:restriction/xs:minInclusive|child::xs:restriction/xs:maxInclusive">
-						<xsl:text>Integer Set:</xsl:text>
+					<xsl:when test="ancestor::xs:attribute">
+						<xsl:choose>
+							<xsl:when test="child::xs:restriction/xs:enumeration">
+								<xsl:text>Enumeration:</xsl:text>
+							</xsl:when>
+							<xsl:when test="child::xs:restriction/xs:minInclusive|child::xs:restriction/xs:maxInclusive">
+								<xsl:text>Integer Set:</xsl:text>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:text>##unknown##: (</xsl:text>
+								<xsl:value-of select="child::xs:restriction/@base"/>
+								<xsl:text>)</xsl:text>
+							</xsl:otherwise>
+						</xsl:choose>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:text>##unknown##: (</xsl:text>
-						<xsl:value-of select="child::xs:restriction/@base"/>
-						<xsl:text>)</xsl:text>
+						
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:when>
@@ -264,13 +271,23 @@
 			</xsl:otherwise>
 		</xsl:choose>
 		<xsl:if test="child::xs:restriction/*">
-			<xsl:call-template name="processRestriction"/>
+			<xsl:choose>
+				<xsl:when test="ancestor::xs:attribute">
+					<xsl:call-template name="processAttributeRestriction"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:call-template name="generateCM">
+						<xsl:with-param name="idref" select="$idref"/>
+						<xsl:with-param name="thisType" select="child::xs:restriction"/>
+					</xsl:call-template>
+				</xsl:otherwise>
+			</xsl:choose>
 		</xsl:if>
 	</xsl:template>
 	
 	
 	
-	<xsl:template name="processRestriction">
+	<xsl:template name="processAttributeRestriction">
 		<xsl:element name="db:itemizedlist">
 			<xsl:for-each select="child::xs:restriction/*">
 				<xsl:element name="db:listitem">
