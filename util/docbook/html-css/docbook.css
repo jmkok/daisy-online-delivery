@@ -380,3 +380,42 @@ div.vocabulary *[property="rdfs:comment"] {margin-bottom: 1%;}
 /* more spacing around each vocab item*/
 div.vocabulary dl {margin-bottom: 2%;}
 
+/* xsd styles */
+
+
+
+table.attrTable {
+	width: 85%;
+	border: 1px solid black;
+	margin: .25em;
+	padding: 0px;
+	border-spacing: 0px;
+}
+
+caption.hiddenCaption {
+	font-size: 0em;
+}
+
+table.attrTable th {
+	background: #efefef;
+}
+
+table.attrTable th, td {
+	padding: 2px;
+}
+
+th.attrHeaderName {
+	width: 25%;
+}
+
+th.attrHeaderUse {
+	width: 20%;
+}
+
+th.attrHeaderType {
+	width: 45%;
+}
+
+th.attrHeaderDefault {
+	width: 10%;
+}
