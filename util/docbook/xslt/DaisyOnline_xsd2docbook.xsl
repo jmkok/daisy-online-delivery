@@ -115,7 +115,9 @@
 						</xsl:call-template>
 					</xsl:element>
 					<xsl:if test=".//xs:any[count(ancestor::xs:element)=1]">
-						<xsl:element name="db:para">This element is extensible.</xsl:element>
+						<xsl:element name="db:para">
+							<xsl:text>This element is extensible.</xsl:text>
+						</xsl:element>
 					</xsl:if>
 				</xsl:element>
 			</xsl:element>
@@ -204,8 +206,9 @@
 			<xsl:with-param name="thisType" select="."/>
 			<xsl:with-param name="idref" select="$idref"/>
 		</xsl:call-template>
-		<xsl:text>) </xsl:text>
-		
+		<xsl:text>)</xsl:text>
+		<xsl:call-template name="addModifier"/>
+		<xsl:text> </xsl:text>
 		<xsl:call-template name="addJoiner"/>
 	</xsl:template>
 	
@@ -301,15 +304,22 @@
 			<xsl:when test="(not(@minOccurs) and not(@maxOccurs))
 						or (@minOccurs='1' and @maxOccurs='1')
 						or (not(@minOccurs) and @maxOccurs='1')
-						or (@minOccurs='1' and not(@maxOccurs))
-						"/>
-			<xsl:when test="@minOccurs='0' and (not(@maxOccurs) or @maxOccurs='1')">?</xsl:when>
-			<xsl:when test="@minOccurs='0' and @maxOccurs='unbounded'">*</xsl:when>
-			<xsl:when test="(not(@minOccurs) or @minOccurs='1') and @maxOccurs='unbounded'">+</xsl:when>
+						or (@minOccurs='1' and not(@maxOccurs))"/>
+			<xsl:when test="@minOccurs='0' and (not(@maxOccurs) or @maxOccurs='1')">
+				<xsl:text>?</xsl:text>
+			</xsl:when>
+			<xsl:when test="@minOccurs='0' and @maxOccurs='unbounded'">
+				<xsl:text>*</xsl:text>
+			</xsl:when>
+			<xsl:when test="(not(@minOccurs) or @minOccurs='1') and @maxOccurs='unbounded'">
+				<xsl:text>+</xsl:text>
+			</xsl:when>
 			<xsl:otherwise>
 				<xsl:text>{</xsl:text>
 				<xsl:choose>
-					<xsl:when test="not(@minOccurs)">1</xsl:when>
+					<xsl:when test="not(@minOccurs)">
+						<xsl:text>1</xsl:text>
+					</xsl:when>
 					<xsl:otherwise>
 						<xsl:value-of select="@minOccurs"/>
 					</xsl:otherwise>
@@ -338,14 +348,23 @@
 			<xsl:when test="(not(@minOccurs) and not(@maxOccurs))
 				or (@minOccurs='1' and @maxOccurs='1')
 				or (not(@minOccurs) and @maxOccurs='1')
-				or (@minOccurs='1' and not(@maxOccurs))
-				">1</xsl:when>
-			<xsl:when test="@minOccurs='0' and (not(@maxOccurs) or @maxOccurs='1')">0 or 1</xsl:when>
-			<xsl:when test="@minOccurs='0' and @maxOccurs='unbounded'">0 or more</xsl:when>
-			<xsl:when test="(not(@minOccurs) or @minOccurs='1') and @maxOccurs='unbounded'">1 or more</xsl:when>
+				or (@minOccurs='1' and not(@maxOccurs))">
+				<xsl:text>1</xsl:text>
+			</xsl:when>
+			<xsl:when test="@minOccurs='0' and (not(@maxOccurs) or @maxOccurs='1')">
+				<xsl:text>0 or 1</xsl:text>
+			</xsl:when>
+			<xsl:when test="@minOccurs='0' and @maxOccurs='unbounded'">
+				<xsl:text>0 or more</xsl:text>
+			</xsl:when>
+			<xsl:when test="(not(@minOccurs) or @minOccurs='1') and @maxOccurs='unbounded'">
+				<xsl:text>1 or more</xsl:text>
+			</xsl:when>
 			<xsl:otherwise>
 				<xsl:choose>
-					<xsl:when test="not(@minOccurs)">1</xsl:when>
+					<xsl:when test="not(@minOccurs)">
+						<xsl:text>1</xsl:text>
+					</xsl:when>
 					<xsl:otherwise>
 						<xsl:value-of select="@minOccurs"/>
 					</xsl:otherwise>
@@ -374,9 +393,16 @@
 			or following-sibling::xs:sequence[.//xs:element]
 			or following-sibling::xs:choice[.//xs:element]">
 			<xsl:choose>
-				<xsl:when test="parent::xs:choice"> | </xsl:when>
-				<xsl:when test="parent::xs:sequence">, </xsl:when>
-				<xsl:otherwise> #unknown# </xsl:otherwise>
+				<xsl:when test="parent::xs:choice">
+					<xsl:text> | </xsl:text>
+				</xsl:when>
+				<xsl:when test="parent::xs:sequence">
+					<xsl:text>, </xsl:text>
+				</xsl:when>
+				<xsl:otherwise>
+					<!-- just in case -->
+					<xsl:text> #unknown# </xsl:text>
+				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:if>
 	</xsl:template>
@@ -455,7 +481,9 @@
 		<xsl:param name="idref" as="xs:string"/>
 		
 		<xsl:element name="db:para">
-			<xsl:element name="db:emphasis">Cardinality: </xsl:element>
+			<xsl:element name="db:emphasis">
+				<xsl:text>Cardinality: </xsl:text>
+			</xsl:element>
 			<xsl:call-template name="addCardinality"/>
 		</xsl:element>
 		
@@ -566,7 +594,9 @@
 								<xsl:when test="@use">
 									<xsl:value-of select="@use"/>
 								</xsl:when>
-								<xsl:otherwise>optional</xsl:otherwise>
+								<xsl:otherwise>
+									<xsl:text>optional</xsl:text>
+								</xsl:otherwise>
 							</xsl:choose>
 						</xsl:element>
 						<xsl:element name="db:td">
@@ -579,7 +609,8 @@
 										</xsl:call-template>
 									</xsl:when>
 									<xsl:when test="@type">
-										Data type: <xsl:value-of select="@type"/>
+										<xsl:text>Data type: </xsl:text>
+										<xsl:value-of select="@type"/>
 									</xsl:when>
 									<xsl:otherwise>
 										<xsl:text>&#160;</xsl:text>
