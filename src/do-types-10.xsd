@@ -805,15 +805,13 @@
    </xs:documentation>
   </xs:annotation>
   <xs:complexType>
-   <xs:choice>
-    <xs:sequence>
-     <xs:choice>
-      <xs:element ref="multipleChoiceQuestion" minOccurs="0" maxOccurs="1"/>
-      <xs:element ref="inputQuestion" minOccurs="0" maxOccurs="1"/>
+   <xs:choice minOccurs="0" maxOccurs="1">
+     <xs:choice minOccurs="1" maxOccurs="unbounded">
+      <xs:element ref="multipleChoiceQuestion"/>
+      <xs:element ref="inputQuestion"/>
      </xs:choice>
-    </xs:sequence>
-    <xs:element ref="contentList" minOccurs="0" maxOccurs="1"/>
-    <xs:element ref="label" minOccurs="0" maxOccurs="1"/>
+    <xs:element ref="contentList"/>
+    <xs:element ref="label"/>
    </xs:choice>
   </xs:complexType>
  </xs:element>
