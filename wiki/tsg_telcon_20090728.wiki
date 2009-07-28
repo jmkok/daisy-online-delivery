@@ -1,0 +1,23 @@
+Present: 
+
+Regrets: markus 
+
+== Action Item Summary ==
+=== New Action Items ===
+
+=== Previous Unfinished Action Items ===
+  * Markus check with george/board on whether service provider discovery req remains for this version
+
+==Agenda/Minutes==
+
+=== This weeks issues ===
+
+==== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=94 Issue 94] ====
+
+==== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=95 Issue 95] ====
+
+==== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=98 Issue 98] ====
+
+==== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=102 Issue 102] ====
+
+==== [http://code.google.com/p/daisy-online-delivery/issues/detail?id=106 Issue 106] ====
