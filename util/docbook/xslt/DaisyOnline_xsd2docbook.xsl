@@ -151,8 +151,13 @@
 		<xsl:param name="idref" as="xs:string"/>
 		
 		<xsl:choose>
-			<xsl:when test="not($thisType/child::*[not(self::xs:attribute)])">
-				<xsl:value-of select="@type"/>
+			<xsl:when test="not($thisType/child::*[not(self::xs:attribute)]) and not(self::xs:group)">
+				<xsl:choose>
+					<xsl:when test="self::xs:complexType and @mixed='true'">text only</xsl:when>
+					<xsl:otherwise>
+						<xsl:value-of select="@type"/>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:when>
 			
 			<xsl:otherwise>
@@ -244,6 +249,13 @@
 		<xsl:param name="idref" as="xs:string"/>
 		
 		<xsl:choose>
+			<xsl:when test="child::xs:group">
+				<xsl:variable name="grpRef" select="child::xs:group/@ref"/>
+				<xsl:call-template name="generateCM">
+					<xsl:with-param name="idref" select="$idref"/>
+					<xsl:with-param name="thisType" select="ancestor::xs:schema/xs:group[@name=$grpRef]"/>
+				</xsl:call-template>
+			</xsl:when>
 			<xsl:when test="child::xs:restriction/*[not(self::xs:element)]">
 				<xsl:choose>
 					<xsl:when test="ancestor::xs:attribute">
@@ -531,6 +543,13 @@
 					</xsl:element>
 					
 					<xsl:choose>
+						<xsl:when test="xs:complexType[child::xs:group]">
+							<xsl:variable name="grpRef" select="xs:complexType/child::xs:group/@ref"/>
+							<xsl:call-template name="generateCM">
+								<xsl:with-param name="thisType" select="ancestor::xs:schema//xs:group[@name=$grpRef]"/>
+								<xsl:with-param name="idref" select="$idref"/>
+							</xsl:call-template>
+						</xsl:when>
 						<xsl:when test="xs:complexType[not(.//xs:element)]">
 							<xsl:choose>
 								<xsl:when test="not(xs:complexType[@mixed='true'])">
