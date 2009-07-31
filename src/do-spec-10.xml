@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?oxygen RNGSchema="../util/docbook/rng/docbookxi.rng" type="xml"?>
-<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
-    xmlns:xi="http://www.w3.org/2001/XInclude" xml:base=".">
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" xml:base=".">
 
     <!-- overarching layout 
         
@@ -82,7 +81,7 @@
         <title>Keywords</title>
         <para>The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
             "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described
-            in <xref linkend="bib_RFC2119" />.</para>
+            in <xref linkend="bib_RFC2119"></xref>.</para>
     </chapter>
 
     <chapter xml:id="terminology" conformance="informative">
@@ -92,7 +91,8 @@
                 <term>Reading System</term>
                 <listitem>
                     <para>
-                        <remark role="todo">define, relate to
+                        The client of the Service plus the content rendering system.  These may be incorporated into a single hardware device or software application, or may be separate hardware and/or software systems.
+                        <remark role="todo">relate to
                             http://www.ws-i.org/Profiles/BasicProfile-1.1.html#conformance_targets</remark>
                     </para>
                 </listitem>
@@ -110,7 +110,8 @@
                 <term>Service Delegate</term>
                 <listitem>
                     <para>
-                        <remark role="todo">define, the thirdy party URL host stuff</remark>
+                        A file hosting service that is not under the control of the owners of the Service.  (Note: Functionally, there is little difference between files that are hosted locally to the Service and those hosted remotely; however, there are recommendations for service providers that cannot be imposed upon third parties.)
+                        <remark role="todo">clean up</remark>
                     </para>
                 </listitem>
             </varlistentry>
@@ -127,15 +128,8 @@
                 <term>Session</term>
                 <listitem>
                     <para>
-                        <remark role="todo">define</remark>
-                    </para>
-                </listitem>
-            </varlistentry>
-            <varlistentry>
-                <term>Interface</term>
-                <listitem>
-                    <para>
-                        <remark role="todo">define</remark>
+                        A session begins after a successful logOn operation.  It ends after a successful logOff operation, OR it may be timed out by the Service.
+                        <remark role="todo">define further</remark>
                     </para>
                 </listitem>
             </varlistentry>
@@ -143,7 +137,15 @@
                 <term>Operation</term>
                 <listitem>
                     <para>
-                        <remark role="todo">define</remark>
+                        A <xref linkend="wsdl1.1"></xref> operation.  An abstract description of an action supported by the service.
+                    </para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Interface</term>
+                <listitem>
+                    <para>
+                        A <xref linkend="wsdl1.1"></xref> port type.  An abstract set of operations supported by one or more endpoints. <remark role="todo">explain "endpoints"</remark>
                     </para>
                 </listitem>
             </varlistentry>
@@ -151,7 +153,7 @@
                 <term>Parameter</term>
                 <listitem>
                     <para>
-                        <remark role="todo">define</remark>
+                        <remark role="todo">Do we need to define this?</remark>
                     </para>
                 </listitem>
             </varlistentry>
@@ -167,7 +169,8 @@
                 <term>Content</term>
                 <listitem>
                     <para>
-                        <remark role="todo">define</remark>
+                        Content data made available by the Service.
+                        <remark role="todo">expand</remark>
                     </para>
                 </listitem>
             </varlistentry>
@@ -175,7 +178,7 @@
                 <term>Content Download</term>
                 <listitem>
                     <para>
-                        <remark role="todo">define</remark>
+                        Transfer of Content from the Service to the Reading System, which the Reading System stores indefinitely.
                     </para>
                 </listitem>
             </varlistentry>
@@ -183,11 +186,12 @@
                 <term>Content Streaming</term>
                 <listitem>
                     <para>
-                        <remark role="todo">define</remark>
+                        Transfer of Content from the Service to the Reading System, which the Reading System renders immediately and stores only temporarily.  (Note: Download and streaming are reading system behaviours, not aspects of the protocol itself.)
                     </para>
                 </listitem>
             </varlistentry>
         </variablelist>
+        <para></para>
     </chapter>
 
     <chapter xml:id="conformance" conformance="normative">
@@ -206,28 +210,27 @@
             <para> A compliant entity must support the following underlying protocols: <itemizedlist>
                     <listitem>
                         <para>
-                            <xref linkend="bib_http11" />
+                            <xref linkend="bib_http11"></xref>
                         </para>
                     </listitem>
                     <listitem>
                         <para>
-                            <xref linkend="bib_wsibasicprofile11" />
+                            <xref linkend="bib_wsibasicprofile11"></xref>
                         </para>
-                        <para>Note: <xref linkend="bib_httpcookies" /> states "R1121 An INSTANCE SHOULD NOT
+                        <para>Note: <xref linkend="bib_httpcookies"></xref> states "R1121 An INSTANCE SHOULD NOT
                             require consumer support for Cookies in order to function correctly."
                             The Daisy Online protocol is a session based protocol, and http cookies
                             thus are fundamental to the protocol. </para>
                     </listitem>
                     <listitem>
-                        <para>Secure http (https) through the use of <xref linkend="bib_ssl3.0" /> and <xref linkend="bib_tls1.0" /> </para>
+                        <para>Secure http (https) through the use of <xref linkend="bib_ssl3.0"></xref> and <xref linkend="bib_tls1.0"></xref> </para>
                     </listitem>
                 </itemizedlist>
             </para>
         </section>
         <section xml:id="fundamentals_dynamic_menus" conformance="informative">
             <title>Dynamic Menu Generation</title>
-            <para>Many of the operations supported by this protocol (as described further in <xref
-                    linkend="operations"/>) make use of a <emphasis>dynamic menu
+            <para>Many of the operations supported by this protocol (as described further in <xref linkend="operations"></xref>) make use of a <emphasis>dynamic menu
                     generation</emphasis> feature to allow users to interact and exchange
                 information with the Service. The concept of dynamic menu generation is described
                 below.</para>
@@ -377,15 +380,15 @@
     <bibliography conformance="normative">
         <title>References</title>
         <biblioentry xml:id="bib_RFC2119">
-            <abbrev>RFC2119</abbrev>
+            <abbrev>RFC 2119</abbrev>
             <title>
                 <link xlink:href="http://www.ietf.org/rfc/rfc2119.txt">Key words for use in RFCs to
-                    Indicate Requirement Levels (RFC2119)</link>
+                    Indicate Requirement Levels (RFC 2119)</link>
             </title>
             <date>March 1997</date>
         </biblioentry>
         <biblioentry xml:id="bib_xsdDatatypes">
-            <abbrev>XMLSCHEMA2</abbrev>
+            <abbrev>XML Schema 2</abbrev>
             <title>
                 <link xlink:href="http://www.w3.org/TR/xmlschema-2/">XML Schema Part 2: Datatypes
                     Second Edition</link>
@@ -409,37 +412,44 @@
         </biblioentry>
         -->
         <biblioentry xml:id="bib_http11">
-            <abbrev>HTTP1.1</abbrev>
+            <abbrev>HTTP 1.1</abbrev>
             <title>
-                <link xlink:href="http://www.w3.org/Protocols/rfc2616/rfc2616.html">HTTP 1.1</link>
+                <link xlink:href="http://www.w3.org/Protocols/rfc2616/rfc2616.html">HyperText Transfer Protocol (HTTP) 1.1</link>
             </title>
         </biblioentry>
 
         <biblioentry xml:id="bib_httpcookies">
-            <abbrev>HTTPCookies</abbrev>
+            <abbrev>HTTP Cookies</abbrev>
             <title>
-                <link xlink:href="http://www.ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html#HTTP_Cookies">HTTP cookies in Ws-I basic Profile 1.1</link>
+                <link xlink:href="http://www.ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html#HTTP_Cookies">HTTP cookies in WS-I Basic Profile 1.1</link>
             </title>
         </biblioentry>
 
         <biblioentry xml:id="bib_wsibasicprofile11">
-            <abbrev>WS-IBasicprofile1.1</abbrev>
+            <abbrev>WS-I Basic Profile 1.1</abbrev>
             <title>
-                <link xlink:href="http://www.ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html">WS-I basic Profile 1.1</link>
+                <link xlink:href="http://www.ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html">WS-I Basic Profile 1.1</link>
             </title>
         </biblioentry>
         
         <biblioentry xml:id="bib_tls1.0">
-            <abbrev>TLS1.0</abbrev>
+            <abbrev>TLS 1.0</abbrev>
             <title>
                 <link xlink:href="http://www.ietf.org/rfc/rfc2246">TLS 1.0</link>
             </title>
         </biblioentry>
         
         <biblioentry xml:id="bib_ssl3.0">
-            <abbrev>SSL3.0</abbrev>
+            <abbrev>SSL 3.0</abbrev>
             <title>
                 <link xlink:href="http://tools.ietf.org/html/draft-ietf-tls-ssl-version3">SSL 3.0</link>
+            </title>
+        </biblioentry>
+        
+        <biblioentry xml:id="wsdl1.1">
+            <abbrev>WSDL 1.1</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/2001/NOTE-wsdl-20010315">Web Services Definition Language (WSDL) 1.1</link>
             </title>
         </biblioentry>
         
@@ -469,12 +479,12 @@
 
     <appendix xml:id="appendixWSDL" conformance="informative" xreflabel="WSDL">
         <title>DAISY Online Protocol - WSDL Definition</title>
-        <programlisting><xi:include href="do-wsdl-10.wsdl" parse="text"/></programlisting>
+        <programlisting><xi:include href="do-wsdl-10.wsdl" parse="text"></xi:include></programlisting>
     </appendix>
 
     <appendix xml:id="appendixXSD" conformance="normative" xreflabel="XSD">
         <title>DAISY Online Protocol - WXS Type Definition</title>
-        <programlisting><xi:include href="do-types-10.xsd" parse="text"/></programlisting>
+        <programlisting><xi:include href="do-types-10.xsd" parse="text"></xi:include></programlisting>
     </appendix>
 
 </book>
