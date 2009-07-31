@@ -498,7 +498,14 @@
 						<xsl:variable name="groupName" select="ancestor::xs:group/@name"/>
 						<xsl:for-each select="ancestor::xs:schema//xs:element[not(descendant::xs:element)][descendant::xs:group[@ref=$groupName]]">
 							<xsl:sort select="@name"/>
-							<xsl:value-of select="@name"/>
+							<xsl:element name="db:link">
+								<xsl:attribute name="linkend">
+									<xsl:call-template name="addLinkEnd">
+										<xsl:with-param name="name" select="@name"/>
+									</xsl:call-template>
+								</xsl:attribute>
+								<xsl:value-of select="@name"/>
+							</xsl:element>
 							<xsl:if test="not(position() = last())">
 								<xsl:text>, </xsl:text>
 							</xsl:if>
@@ -509,7 +516,14 @@
 							ancestor::xs:schema//xs:element[descendant::xs:element[1][@ref=$name]]
 							|ancestor::xs:schema//xs:element[not(descendant::xs:element)][descendant::xs:group[@ref=ancestor::xs:schema/xs:group[descendant::xs:element[@ref=$name]]/@name]]">
 							<xsl:sort select="@name"/>
-							<xsl:value-of select="@name"/>
+							<xsl:element name="db:link">
+								<xsl:attribute name="linkend">
+									<xsl:call-template name="addLinkEnd">
+										<xsl:with-param name="name" select="@name"/>
+									</xsl:call-template>
+								</xsl:attribute>
+								<xsl:value-of select="@name"/>
+							</xsl:element>
 							<xsl:if test="not(position() = last())">
 								<xsl:text>, </xsl:text>
 							</xsl:if>
@@ -519,7 +533,14 @@
 				
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:value-of select="ancestor::xs:element[1]/@name"/>
+				<xsl:element name="db:link">
+					<xsl:attribute name="linkend">
+						<xsl:call-template name="addLinkEnd">
+							<xsl:with-param name="name" select="ancestor::xs:element[1]/@name"/>
+						</xsl:call-template>
+					</xsl:attribute>
+					<xsl:value-of select="ancestor::xs:element[1]/@name"/>
+				</xsl:element>
 			</xsl:otherwise>
 		</xsl:choose>
 	
