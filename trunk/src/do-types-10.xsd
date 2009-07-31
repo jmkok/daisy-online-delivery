@@ -45,7 +45,7 @@
 					<xs:annotation>
 						<xs:documentation>
 							<db:para>The serial number of the Reading System, if such is available.
-									<remark role="todo">TODO is this required for PDTB2? (Hiro)</remark></db:para>
+									<db:remark role="todo">TODO is this required for PDTB2? (Hiro)</db:remark></db:para>
 						</xs:documentation>
 					</xs:annotation>
 				</xs:element>
@@ -597,17 +597,25 @@
 	<xs:element name="URI">
 		<xs:complexType mixed="true"/>
 	</xs:element>
+	
+	<xs:element name="text">
+		<xs:complexType mixed="true"/>
+	</xs:element>
+	
+	<xs:element name="audio">
+		<xs:complexType>
+			<xs:attribute name="src" form="unqualified" type="xs:string"/>
+			<xs:attribute name="clipBegin" form="unqualified" type="xs:string"/>
+			<xs:attribute name="clipEnd" form="unqualified" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	
+	
 	<xs:element name="note">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="text" type="xs:string" minOccurs="0"/>
-				<xs:element name="audio">
-					<xs:complexType>
-						<xs:attribute name="src" form="unqualified" type="xs:string"/>
-						<xs:attribute name="clipBegin" form="unqualified" type="xs:string"/>
-						<xs:attribute name="clipEnd" form="unqualified" type="xs:string"/>
-					</xs:complexType>
-				</xs:element>
+				<xs:element ref="text" minOccurs="0"/>
+				<xs:element ref="audio"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -649,16 +657,8 @@
 				<xs:element name="title">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="text">
-								<xs:complexType mixed="true"/>
-							</xs:element>
-							<xs:element name="audio" minOccurs="0">
-								<xs:complexType>
-									<xs:attribute name="src" form="unqualified" type="xs:string"/>
-									<xs:attribute name="clipBegin" form="unqualified" type="xs:string"/>
-									<xs:attribute name="clipEnd" form="unqualified" type="xs:string"/>
-								</xs:complexType>
-							</xs:element>
+							<xs:element ref="text"/>
+							<xs:element ref="audio" minOccurs="0"/>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
