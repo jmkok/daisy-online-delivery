@@ -16,6 +16,7 @@
 	<xsl:output method="xml" omit-xml-declaration="no" indent="yes"/>
 
 	<xsl:variable name="xsd" select="document('../../../src/do-types-10.xsd')"/>
+	<xsl:variable name="bsxsd" select="document('../../../src/bookmark-2005-1.xsd')"/>
 	
 	<!-- list of types - prevents processing of general-use elements in xsd -->
 	
@@ -27,7 +28,8 @@
 			<xsl:attribute name="conformance">normative</xsl:attribute>
 			<xsl:element name="db:title">Type Reference</xsl:element>
 			<!-- get the top-level elements in the xsd (aka types) -->
-			<xsl:for-each select="$xsd/schema/element">
+			<xsl:for-each select="$xsd/xs:schema/xs:element|$bsxsd/xs:schema/xs:element">
+				<xsl:sort select="@name" case-order="lower-first"/>
 				<xsl:if test="contains($typeList, concat('|',@name,'|'))">
 					<xsl:element name="db:section">
 						<xsl:attribute name="xml:id" select="concat('tp_',@name)"/>
@@ -182,7 +184,16 @@
 	<xsl:template name="addLinkEnd">
 		<xsl:param name="name"/>
 		
-		<xsl:value-of select="concat('tp_',$name)"/>
+		<xsl:choose>
+			<xsl:when test="ancestor::xs:schema[@id='bookmark-2005-1'] and not($name='bookmarkSet')">
+				<xsl:value-of select="concat('tp_bookmark_',$name)"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:value-of select="concat('tp_',$name)"/>
+			</xsl:otherwise>
+		</xsl:choose>
+		
+		
 		<xsl:if test="not(@ref) and count(ancestor::xs:schema//xs:element[@name=$name]) &gt; 1">
 			<xsl:variable name="ecnt" select="count(preceding::xs:element[@name=$name])"/>
 			<xsl:choose>
@@ -347,16 +358,26 @@
 	
 	<xsl:template name="generateElement">
 		
-		<xsl:for-each select="$xsd//element[not(@ref)]">
+		<xsl:for-each select="$xsd//element[not(@ref)]|$bsxsd//element[not(@ref)]">
 			<xsl:sort select="@name" case-order="lower-first"/>
 			<xsl:if test="not(contains($typeList, concat('|',@name,'|')))">
 				<xsl:variable name="name" select="@name"/>
 				<xsl:element name="db:bridgehead">
 					<xsl:attribute name="xml:id">
-						<xsl:value-of select="concat('tp_',@name)"/>
-						<xsl:if test="preceding::xs:element[@name=$name]">
-							<xsl:value-of select="count(preceding::xs:element[@name=$name])"/>
-						</xsl:if>
+						<xsl:choose>
+							<xsl:when test="ancestor::xs:schema[@id='bookmark-2005-1']">
+								<xsl:value-of select="concat('tp_bookmark_',@name)"/>
+								<xsl:if test="preceding::xs:element[@name=$name]">
+									<xsl:value-of select="count(preceding::xs:element[@name=$name])"/>
+								</xsl:if>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:value-of select="concat('tp_',@name)"/>
+								<xsl:if test="preceding::xs:element[@name=$name]">
+									<xsl:value-of select="count(preceding::xs:element[@name=$name])"/>
+								</xsl:if>
+							</xsl:otherwise>
+						</xsl:choose>
 					</xsl:attribute>
 					<xsl:attribute name="xreflabel" select="$name"/>
 					<xsl:value-of select="$name"/>

@@ -13,7 +13,9 @@
 
 	<xs:import namespace="http://schemas.xmlsoap.org/wsdl/"
 		schemaLocation="http://schemas.xmlsoap.org/wsdl/"/>
-
+	
+	<xs:include schemaLocation="bookmark-2005-1.xsd"/>
+	
 	<xs:element name="readingSystemAttributes">
 		<xs:annotation>
 			<xs:documentation>
@@ -583,124 +585,10 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-
-	<!-- declare common bookmark elements -->
-	<xs:element name="timeOffset">
-		<xs:complexType mixed="true"/>
-	</xs:element>
-	<xs:element name="charOffset">
-		<xs:complexType mixed="true"/>
-	</xs:element>
-	<xs:element name="ncxRef">
-		<xs:complexType mixed="true"/>
-	</xs:element>
-	<xs:element name="URI">
-		<xs:complexType mixed="true"/>
-	</xs:element>
-	
-	<xs:element name="text">
-		<xs:complexType mixed="true"/>
-	</xs:element>
-	
-	<xs:element name="audio">
-		<xs:complexType>
-			<xs:attribute name="src" form="unqualified" type="xs:string"/>
-			<xs:attribute name="clipBegin" form="unqualified" type="xs:string"/>
-			<xs:attribute name="clipEnd" form="unqualified" type="xs:string"/>
-		</xs:complexType>
-	</xs:element>
-	
-	
-	<xs:element name="note">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="text" minOccurs="0"/>
-				<xs:element ref="audio"/>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-	
-	<xs:group name="bookmarkContent">
-		<xs:sequence>
-			<xs:element ref="ncxRef"/>
-			<xs:element ref="URI"/>
-			<xs:choice>
-				<xs:sequence>
-					<xs:element ref="timeOffset"/>
-					<xs:element ref="charOffset" minOccurs="0"/>
-				</xs:sequence>
-				<xs:element ref="charOffset"/>
-			</xs:choice>
-			<xs:element ref="note" minOccurs="0"/>
-		</xs:sequence>
-	</xs:group>
-	
-	<xs:group name="hiliteContent">
-		<xs:sequence>
-			<xs:element ref="ncxRef"/>
-			<xs:element ref="URI"/>
-			<xs:choice>
-				<xs:sequence>
-					<xs:element ref="timeOffset"/>
-					<xs:element ref="charOffset" minOccurs="0"/>
-				</xs:sequence>
-				<xs:element ref="charOffset"/>
-			</xs:choice>
-		</xs:sequence>
-	</xs:group>
 	
 	
 	
-	<xs:element name="bookmarkSet">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="title">
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element ref="text"/>
-							<xs:element ref="audio" minOccurs="0"/>
-						</xs:sequence>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="uid">
-					<xs:complexType mixed="true"/>
-				</xs:element>
-				<xs:element name="lastmark" minOccurs="0">
-					<xs:complexType>
-						<xs:group ref="bookmarkContent"/>
-					</xs:complexType>
-				</xs:element>
-				<xs:choice minOccurs="0" maxOccurs="unbounded">
-					<xs:element name="bookmark">
-						<xs:complexType>
-							<xs:group ref="bookmarkContent"/>
-							<xs:attribute name="label" type="xs:string" use="optional"/>
-						</xs:complexType>
-					</xs:element>
-					<xs:element name="hilite">
-						<xs:complexType>
-							<xs:sequence>
-								<xs:element name="hiliteStart">
-									<xs:complexType>
-										<xs:group ref="hiliteContent"/>
-									</xs:complexType>
-								</xs:element>
-								<xs:element name="hiliteEnd">
-									<xs:complexType>
-										<xs:group ref="hiliteContent"/>
-									</xs:complexType>
-								</xs:element>
-								<xs:element ref="note" minOccurs="0"/>
-							</xs:sequence>
-							<xs:attribute name="label" type="xs:string" use="optional"/>
-						</xs:complexType>
-					</xs:element>
-				</xs:choice>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-
-
+	
 	<xs:element name="inputQuestion">
 		<xs:annotation>
 			<xs:documentation>
