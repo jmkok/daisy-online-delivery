@@ -311,7 +311,7 @@
 				</xs:element>
 				<xs:element name="audio" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
-						<xs:attribute name="href" type="xs:anyURI" use="required">
+						<xs:attribute name="uri" type="xs:anyURI" use="required">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">Specifies the URI of the audio resource containing the label.</db:para>
@@ -323,7 +323,7 @@
 								<xs:documentation>
 									<db:para role="desc">Specifies the audio label start point in
 										bytes counting from the start of the resource specified in
-										the href attribute. If the rangeBegin attribute is not
+										the <db:varname>uri</db:varname> attribute. If the rangeBegin attribute is not
 										present, this implies a rangeBegin of 0.</db:para>
 								</xs:documentation>
 							</xs:annotation>
@@ -333,9 +333,9 @@
 								<xs:documentation>
 									<db:para role="desc">Specifies the audio label end point in
 										bytes counting from the start of the resource specified in
-										the href attribute. If the rangeEnd attribute is not
+										the <db:varname>uri</db:varname> attribute. If the rangeEnd attribute is not
 										present, this implies a rangeEnd value set to the last byte
-										of the resource specificed in the href attribute.</db:para>
+										of the resource.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
@@ -468,7 +468,13 @@
 						<xs:sequence>
 							<xs:element name="resource" minOccurs="1" maxOccurs="unbounded">
 								<xs:complexType>
-									<xs:attribute name="href" type="xs:anyURI" use="required"/>
+									<xs:attribute name="uri" type="xs:anyURI" use="required">
+										<xs:annotation>
+											<xs:documentation>
+												<db:para>The URI of the resource.</db:para>
+											</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
 									<xs:attribute name="mimeType" type="xs:string" use="required">
 										<!-- TODO add note that PDTB2 mimetypes should be used -->
 										<!-- TODO stay silent on 2.02 Mime types? Those are not specified anywhere -->
