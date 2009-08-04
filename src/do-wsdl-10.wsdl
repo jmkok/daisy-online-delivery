@@ -364,7 +364,7 @@
 				specified content.</db:para>
 				<db:para role="prereq">This operation is only valid if a previous call to <db:xref
 						linkend="op_issueContent"/> with a result of <db:varname>true</db:varname>
-					has been made for the given publication.</db:para>
+					has been made for the given content.</db:para>
 			</documentation>
 			<input message="tns:getContentMetadataRequest"/>
 			<output message="tns:getContentMetadataResponse"/>
@@ -418,12 +418,12 @@
 
 		<operation name="setBookmarks">
 			<documentation>
-				<db:para role="desc">Request the storage of bookmarks for a Publication to the
+				<db:para role="desc">Request the storage of bookmarks for a content item to the
 					Service.</db:para>
 				<db:para role="note">Note that the publication identifier is embedded in the
 						<db:xref linkend="tp_bookmarkSet"/> type.</db:para>
 				<db:para role="note">Note that this operation only supports the storage of bookmarks
-					for one publication at a time.</db:para>
+					for one content item at a time.</db:para>
 			</documentation>
 			<input message="tns:setBookmarksRequest"/>
 			<output message="tns:setBookmarksResponse"/>
@@ -434,7 +434,7 @@
 		</operation>
 		<operation name="getBookmarks">
 			<documentation>
-				<db:para role="desc">Retrieves bookmarks for a Publication from the
+				<db:para role="desc">Retrieves bookmarks for a content item from the
 					Service.</db:para>
 			</documentation>
 			<input message="tns:getBookmarksRequest"/>
@@ -483,9 +483,9 @@
 		<documentation>
 			<db:para role="desc">An invalid parameter was passed with the operation
 			request.</db:para>
-			<part name="invalidParamName" element="xs:string"><db:para role="desc">The name of the invalid parameter</db:para></part>
-			<part name="invalidParamValue" element="xs:string"><db:para role="desc">The value of the invalid parameter, serialized as a string</db:para></part>
 		</documentation>
+		<part name="invalidParamName" element="xsd:string"><db:para role="desc">The name of the invalid parameter</db:para></part>
+		<part name="invalidParamValue" element="xsd:string"><db:para role="desc">The value of the invalid parameter, serialized as a string</db:para></part>
 	</message>
 	<message name="InvalidOperationFault">
 		<documentation>
