@@ -1,10 +1,18 @@
-Present: 
+Present: George, Kenny, Markus, Jelle, Geoff, Simon, Nick
 
-Regrets: 
+Regrets: Matt
 
 == Action Item Summary ==
 
 === New Action Items ===
+ * Kenny create sample WSDL using WDL style, send to group for testing. 
+ * Markus get rid of RPC arrays in XSD. 
+ * Geoff check whether PDTB2 allows rights expression without requiring encryption.
+ * Nick propose closing issue 97 to list with associated argumentation
+ * Markus add label inside metadata, change to dublin core.
+ * Markus add contentID param to setBookmarks
+ * Markus get rid of href in favor if "uri".
+
 
 === Previous Unfinished Action Items ===
 
@@ -35,13 +43,33 @@ Regrets:
 === This weeks issues ===
 
 ==== Issue 93 ====  
+Suggesting that we procrastinate until all other issues are resolved.
+
+==== Issue 97 ====  
+Geoff: Doesnt seem that serialNumber plays an actual part in the key exchange.
+Nick: Only requirement is that there is an instance key of some kind.
+@Nick propose closing issue 97 to list with associated argumentation
+
+==== Issue 100 ====
+Decision to use DC terms where applicable.
 
 ==== Issue 101 ====
+Decision to use labels inside metadata. Markus to implement.
+
+==== Issue 105 ====  
+Geoff check whether PDTB2 allows rights expression without requiring encryption.
 
 ==== Issue 107 ====  
+Decision to add a second parameter to setBookmarks which is String:contentID
 
 ==== Issue 108 ====
+Decision to get rid href name in favor of "uri". 
 
-==== Issue 109 ====    
-  
- 
+==== Issue 109 ====      
+Kenny: The different styles apply to the soap body element. Microsoft only supports "wrapped document literal". Kenny commented that without the document literal you dont have the operation name. 
+
+Markus: do we have to mandate one of these styles or can we leave it open? Kenny: we would need multiple WSDLs, and would likely run into interop problems. Kenny suggests that we mandate the use of one style.
+
+Note: WDL is part of WS-I basic. 
+
+Kenny: if we go for WDL, the messages in the WSDL will need to change. 
