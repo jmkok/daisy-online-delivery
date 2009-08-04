@@ -87,7 +87,7 @@
     <chapter xml:id="terminology" conformance="informative">
         <title>Terminology</title>
         <variablelist>
-            <varlistentry>
+            <varlistentry xml:id="term_readingSystem">
                 <term>Reading System</term>
                 <listitem>
                     <para>
@@ -97,7 +97,7 @@
                     </para>
                 </listitem>
             </varlistentry>
-            <varlistentry>
+            <varlistentry xml:id="term_service">
                 <term>Service</term>
                 <listitem>
                     <para>
@@ -106,7 +106,7 @@
                     </para>
                 </listitem>
             </varlistentry>
-            <varlistentry>
+            <varlistentry xml:id="term_serviceDelegate">
                 <term>Service Delegate</term>
                 <listitem>
                     <para>
@@ -116,7 +116,7 @@
                 </listitem>
             </varlistentry>
             
-            <varlistentry>
+            <varlistentry xml:id="term_user">
                 <term>User</term>
                 <listitem>
                     <para>
@@ -124,7 +124,7 @@
                     </para>
                 </listitem>
             </varlistentry>
-            <varlistentry>
+            <varlistentry xml:id="term_session">
                 <term>Session</term>
                 <listitem>
                     <para>
@@ -133,7 +133,7 @@
                     </para>
                 </listitem>
             </varlistentry>
-            <varlistentry>
+            <varlistentry xml:id="term_operation">
                 <term>Operation</term>
                 <listitem>
                     <para>
@@ -141,7 +141,7 @@
                     </para>
                 </listitem>
             </varlistentry>
-            <varlistentry>
+            <varlistentry xml:id="term_interface">
                 <term>Interface</term>
                 <listitem>
                     <para>
@@ -149,7 +149,7 @@
                     </para>
                 </listitem>
             </varlistentry>
-            <varlistentry>
+            <varlistentry xml:id="term_parameter">
                 <term>Parameter</term>
                 <listitem>
                     <para>
@@ -157,7 +157,7 @@
                     </para>
                 </listitem>
             </varlistentry>
-            <varlistentry>
+            <varlistentry xml:id="term_fault">
                 <term>Fault</term>
                 <listitem>
                     <para>
@@ -165,7 +165,7 @@
                     </para>
                 </listitem>
             </varlistentry>
-            <varlistentry>
+            <varlistentry xml:id="term_content">
                 <term>Content</term>
                 <listitem>
                     <para>
@@ -174,7 +174,7 @@
                     </para>
                 </listitem>
             </varlistentry>
-            <varlistentry>
+            <varlistentry xml:id="term_contentDownload">
                 <term>Content Download</term>
                 <listitem>
                     <para>
@@ -182,7 +182,7 @@
                     </para>
                 </listitem>
             </varlistentry>
-            <varlistentry>
+            <varlistentry xml:id="term_contentStreaming">
                 <term>Content Streaming</term>
                 <listitem>
                     <para>
