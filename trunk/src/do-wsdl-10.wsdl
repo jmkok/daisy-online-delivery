@@ -46,6 +46,11 @@
 	<!-- ***************************** -->
 
 	<message name="setBookmarksRequest">
+		<part name="contentID" element="xsd:string">
+			<documentation>
+				<db:para role="desc">The content identifier with which the bookmarks are associated</db:para>
+			</documentation>
+		</part>
 		<part name="bookmarks" element="tns:bookmarkSet">
 			<documentation>
 				<db:para role="desc">The bookmarks to store</db:para>
