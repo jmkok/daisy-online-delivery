@@ -387,6 +387,17 @@
             </title>
             <date>March 1997</date>
         </biblioentry>
+        <biblioentry xml:id="bib_mime">
+            <abbrev>MIME</abbrev>
+            <title>
+                <link xlink:href="http://www.rfc-editor.org/rfc/rfc2046.txt">Multipurpose Internet 
+                	Mail Extensions (MIME) Part Two: Media Types, RFC 2046</link>
+            </title>
+            <author>
+                <personname>N.Freed, et al</personname>
+            </author>
+            <date>November 1996</date>
+        </biblioentry>
         <biblioentry xml:id="bib_xsdDatatypes">
             <abbrev>XML Schema 2</abbrev>
             <title>

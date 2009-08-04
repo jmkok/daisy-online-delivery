@@ -134,7 +134,7 @@
 							<xs:element name="supportedMimeTypes" minOccurs="1" maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>
-										<db:para>Specifies which content (MIME; TODO Link) types the Reading System supports rendering of.</db:para>
+										<db:para>Specifies which content types the Reading System supports rendering of.</db:para>
 										<db:para>The content type specification applies to
 											transferred content as well as Service messages
 												(<db:xref linkend="tp_label"/>).</db:para>
@@ -147,7 +147,14 @@
 									<xs:sequence>
 										<xs:element name="mimeType" minOccurs="1" maxOccurs="unbounded">
 											<xs:complexType>
-												<xs:attribute name="type" type="xs:string" use="required"/>
+												<xs:attribute name="type" type="xs:string" use="required">
+													<xs:annotation>
+														<xs:documentation>
+															<db:para>A <db:xref linkend="bib_mime"/> type.</db:para>
+														</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<!--  TODO what does lang do on mimeType? -->
 												<xs:attribute ref="xml:lang" use="optional"/>
 											</xs:complexType>
 										</xs:element>
@@ -467,7 +474,7 @@
 										<!-- TODO stay silent on 2.02 Mime types? Those are not specified anywhere -->
 										<xs:annotation>
 											<xs:documentation>
-												<db:para>The MIME type of the resource.</db:para>
+												<db:para>The <db:xref linkend="bib_mime"/> type of the resource.</db:para>
 											</xs:documentation>
 										</xs:annotation>
 									</xs:attribute>
