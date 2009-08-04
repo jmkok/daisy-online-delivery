@@ -12,11 +12,11 @@ Regrets:
  * Geoff to modify the scenarios.
  * Geoff to post issue 94 to the list.
   * Markus check with george/board on whether service provider discovery req remains for this version
- * Matt: overall edit/review/proofing (starting a couple of weeks from now)
+ * Matt: overall edit/review/proofing  
  * Geoff: terminology section (geoff has started work on the terminology section)
  * Markus/Kenny: sequence snippets: initial spec inclusion (usage scenarios for the dynamic menus are done with the exception of the Back Usage Scenario. these scenarios can be found in the scn-temp folder in the src folder on the svn in a file called kenny-dynamic-menus.txt) 
  * ALL: Further src authoring, new snippets (eg Installments)
- * Matt: Further work on the XSD XSLT
+ * Matt: Further work on the XSD XSLT (matt has almost finished work on the xsd xslt; only the final touches are left)
  * Markus/Kenny: XSD and WSDL inline doc  
  * markus/kenny: Add "expired," "borrowed" and "default" as the three possible parameter values to the getContentList function in the documentation.        
  * Markus/kenny: Define the logOn function in the wsdl to return a boolean. a separate function called getServiceAttributes needs to be kept in the wsdl to return the attributes of a service.   
