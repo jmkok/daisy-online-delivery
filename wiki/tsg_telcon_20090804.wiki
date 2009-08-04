@@ -26,6 +26,12 @@ Regrets:
  * Peter/Markus/Kenny: Board Recommendations paper.
 
 ==Agenda/Minutes==
+
+=== Timelines going forward ===
+|| start final Edit/Proofing (Matt) || August 28? ||
+|| delivered to board || *September 10* ||
+
+
 === This weeks issues ===
 
 ==== Issue 93 ====  
@@ -38,7 +44,4 @@ Regrets:
 
 ==== Issue 109 ====    
   
-=== Timelines going forward ===
-|| start final Edit/Proofing (Matt) || August 28? ||
-|| delivered to board || *September 10* ||
  
