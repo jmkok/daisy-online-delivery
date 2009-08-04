@@ -84,16 +84,16 @@
             in <xref linkend="bib_RFC2119"></xref>.</para>
     </chapter>
 
-    <chapter xml:id="terminology" conformance="informative">
+    <chapter xml:id="terminology" conformance="normative">
         <title>Terminology</title>
         <variablelist>
             <varlistentry xml:id="term_readingSystem">
                 <term>Reading System</term>
                 <listitem>
                     <para>
-                        The client of the Service plus the content rendering system.  These may be incorporated into a single hardware device or software application, or may be separate hardware and/or software systems.
-                        <remark role="todo">relate to
-                            http://www.ws-i.org/Profiles/BasicProfile-1.1.html#conformance_targets</remark>
+                        A combination of hardware and/or software that accesses the service and renders content to
+						the user.  A reading system may be implemented entirely on one device, or it may be split
+						among several computers.  Corresponds to a consumer in the <xref linkend="bib_wsibasicprofile11_conf" />.
                     </para>
                 </listitem>
             </varlistentry>
@@ -101,8 +101,8 @@
                 <term>Service</term>
                 <listitem>
                     <para>
-                        <remark role="todo">define, relate to
-                            http://www.ws-i.org/Profiles/BasicProfile-1.1.html#conformance_targets</remark>
+						Corresponds to an instance in the <xref linkend="bib_wsibasicprofile11_conf" />.
+                        <remark role="todo">define</remark>
                     </para>
                 </listitem>
             </varlistentry>
@@ -110,8 +110,7 @@
                 <term>Service Delegate</term>
                 <listitem>
                     <para>
-                        A file hosting service that is not under the control of the owners of the Service.  (Note: Functionally, there is little difference between files that are hosted locally to the Service and those hosted remotely; however, there are recommendations for service providers that cannot be imposed upon third parties.)
-                        <remark role="todo">clean up</remark>
+                        A file hosting server that is not under the control of the service provider.
                     </para>
                 </listitem>
             </varlistentry>
@@ -120,15 +119,27 @@
                 <term>User</term>
                 <listitem>
                     <para>
-                        <remark role="todo">define</remark>
+						A person who interacts with, or accesses content from, a service using a reading system.
                     </para>
                 </listitem>
             </varlistentry>
+			
+            <varlistentry xml:id="term_serviceProdiver">
+                <term>Service Provider</term>
+                <listitem>
+                    <para>
+						The person(s) or organization(s) who own a service.
+                    </para>
+                </listitem>
+            </varlistentry>
+			
             <varlistentry xml:id="term_session">
                 <term>Session</term>
                 <listitem>
                     <para>
-                        A session begins after a successful logOn operation.  It ends after a successful logOff operation, OR it may be timed out by the Service.
+                        A session begins after a successful <link linkend="op_logOn">logOn</link> operation.  It
+						ends after a successful <link linkend="op_logOn">logOff</link> operation, OR it may be timed
+						out by the service.
                         <remark role="todo">define further</remark>
                     </para>
                 </listitem>
@@ -137,7 +148,8 @@
                 <term>Operation</term>
                 <listitem>
                     <para>
-                        A <xref linkend="wsdl1.1"></xref> operation.  An abstract description of an action supported by the service.
+                        A <xref linkend="bib_wsdl1.1"></xref> operation.  An abstract description of an action
+						supported by the service.
                     </para>
                 </listitem>
             </varlistentry>
@@ -145,23 +157,29 @@
                 <term>Interface</term>
                 <listitem>
                     <para>
-                        A <xref linkend="wsdl1.1"></xref> port type.  An abstract set of operations supported by one or more endpoints. <remark role="todo">explain "endpoints"</remark>
+                        A <xref linkend="bib_wsdl1.1"></xref> port type.  An abstract set of operations supported by one
+						or more endpoints. <remark role="todo">explain "endpoints"</remark>
                     </para>
                 </listitem>
             </varlistentry>
-            <varlistentry xml:id="term_parameter">
+            <!--
+			<varlistentry xml:id="term_parameter">
                 <term>Parameter</term>
                 <listitem>
                     <para>
-                        <remark role="todo">Do we need to define this?</remark>
+                        <remark>This is not defined in any of the referred specs.
+						I don't think it would be of any help to define it here. -Geoff</remark>
                     </para>
                 </listitem>
             </varlistentry>
+			-->
             <varlistentry xml:id="term_fault">
                 <term>Fault</term>
                 <listitem>
                     <para>
-                        <remark role="todo">define</remark>
+						A <xref linkend="bib_soap1.1" /> Fault.  It is used to carry error and/or status information
+						within a SOAP message.  <xref linkend="apiReferenceFaults" /> defines the faults used for
+						this protocol.
                     </para>
                 </listitem>
             </varlistentry>
@@ -178,7 +196,8 @@
                 <term>Content Download</term>
                 <listitem>
                     <para>
-                        Transfer of Content from the Service to the Reading System, which the Reading System stores indefinitely.
+                        Transfer of content from the service to the reading system, which the reading system stores
+						indefinitely.
                     </para>
                 </listitem>
             </varlistentry>
@@ -186,12 +205,15 @@
                 <term>Content Streaming</term>
                 <listitem>
                     <para>
-                        Transfer of Content from the Service to the Reading System, which the Reading System renders immediately and stores only temporarily.  (Note: Download and streaming are reading system behaviours, not aspects of the protocol itself.)
-                    </para>
+                        Transfer of content from the service to the reading system, which the reading system renders
+						immediately and stores only temporarily.</para>
                 </listitem>
             </varlistentry>
         </variablelist>
-        <para></para>
+		<note>
+			<para>Content download and streaming are reading system behaviours, not aspects of the protocol
+			proper.</para>
+		</note>
     </chapter>
 
     <chapter xml:id="conformance" conformance="normative">
@@ -436,6 +458,27 @@
             </title>
         </biblioentry>
 
+        <biblioentry xml:id="bib_soap1.1">
+            <abbrev>SOAP 1.1</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/2000/NOTE-SOAP-20000508/">Simple Object Access Protocol (SOAP) 1.1</link>
+            </title>
+        </biblioentry>
+        
+        <biblioentry xml:id="bib_ssl3.0">
+            <abbrev>SSL 3.0</abbrev>
+            <title>
+                <link xlink:href="http://tools.ietf.org/html/draft-ietf-tls-ssl-version3">Secure Sockets Layer (SSL) 3.0</link>
+            </title>
+        </biblioentry>
+        
+        <biblioentry xml:id="bib_tls1.0">
+            <abbrev>TLS 1.0</abbrev>
+            <title>
+                <link xlink:href="http://www.ietf.org/rfc/rfc2246">Transport Layer Security (TLS) 1.0</link>
+            </title>
+        </biblioentry>
+        
         <biblioentry xml:id="bib_wsibasicprofile11">
             <abbrev>WS-I Basic Profile 1.1</abbrev>
             <title>
@@ -443,21 +486,14 @@
             </title>
         </biblioentry>
         
-        <biblioentry xml:id="bib_tls1.0">
-            <abbrev>TLS 1.0</abbrev>
+        <biblioentry xml:id="bib_wsibasicprofile11_conf">
+            <abbrev>WS-I Basic Profile 1.1 Conformance Targets</abbrev>
             <title>
-                <link xlink:href="http://www.ietf.org/rfc/rfc2246">TLS 1.0</link>
+                <link xlink:href="http://www.ws-i.org/Profiles/BasicProfile-1.1.html#conformance_targets">WS-I Basic Profile 1.1 Conformance Targets</link>
             </title>
         </biblioentry>
         
-        <biblioentry xml:id="bib_ssl3.0">
-            <abbrev>SSL 3.0</abbrev>
-            <title>
-                <link xlink:href="http://tools.ietf.org/html/draft-ietf-tls-ssl-version3">SSL 3.0</link>
-            </title>
-        </biblioentry>
-        
-        <biblioentry xml:id="wsdl1.1">
+        <biblioentry xml:id="bib_wsdl1.1">
             <abbrev>WSDL 1.1</abbrev>
             <title>
                 <link xlink:href="http://www.w3.org/TR/2001/NOTE-wsdl-20010315">Web Services Definition Language (WSDL) 1.1</link>
