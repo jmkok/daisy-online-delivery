@@ -245,7 +245,7 @@
 							<db:para role="req">If a Service does not support audio labels, it must
 								throw an OperationNotSupported Fault on subsequent calls to
 								operations that include <db:xref linkend="tp_label"/>
-								types.</db:para>
+								types. TODO this isnt really compatible with the use of label in eg metadata.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 				</xs:element>
@@ -364,7 +364,7 @@
 				<xs:element name="sample" minOccurs="0" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>
-							<db:para>A sample of the content being described, for user Consumption.</db:para>
+							<db:para>A sample of the content being described, for User consumption.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
@@ -454,7 +454,7 @@
 				<xs:element name="resources" minOccurs="1" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>
-							<db:para>A list of all the files that constitute the publication.</db:para>
+							<db:para>A list of all the files that constitute the <db:xref linkend="term_content"/>.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
