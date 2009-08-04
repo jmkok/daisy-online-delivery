@@ -73,3 +73,6 @@ Markus: do we have to mandate one of these styles or can we leave it open? Kenny
 Note: WDL is part of WS-I basic. 
 
 Kenny: if we go for WDL, the messages in the WSDL will need to change. 
+
+=== Service Provider Discovery ===
+Group concludes that SPD should be published as a separate document.
