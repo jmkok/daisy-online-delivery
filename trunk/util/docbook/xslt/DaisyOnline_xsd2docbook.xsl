@@ -165,14 +165,9 @@
 		
 		<xsl:variable name="name" select="@name|@ref"/>
 		
-		<xsl:element name="db:link">
-			<xsl:attribute name="linkend">
-				<xsl:call-template name="addLinkEnd">
-					<xsl:with-param name="name" select="$name"/>
-				</xsl:call-template>
-			</xsl:attribute>
-			<xsl:value-of select="$name"/>
-		</xsl:element>
+		<xsl:call-template name="addLink">
+			<xsl:with-param name="name" select="$name"/>
+		</xsl:call-template>
 		
 		<xsl:call-template name="addModifier"/>
 		
@@ -181,30 +176,57 @@
 	
 	
 	
-	<xsl:template name="addLinkEnd">
+	<xsl:template name="addLink">
 		<xsl:param name="name"/>
 		
-		<xsl:choose>
-			<xsl:when test="ancestor::xs:schema[@id='bookmark-2005-1'] and not($name='bookmarkSet')">
-				<xsl:value-of select="concat('tp_bookmark_',$name)"/>
-			</xsl:when>
-			<xsl:otherwise>
-				<xsl:value-of select="concat('tp_',$name)"/>
-			</xsl:otherwise>
-		</xsl:choose>
-		
-		
-		<xsl:if test="not(@ref) and count(ancestor::xs:schema//xs:element[@name=$name]) &gt; 1">
-			<xsl:variable name="ecnt" select="count(preceding::xs:element[@name=$name])"/>
+		<xsl:element name="db:link">
 			<xsl:choose>
-				<xsl:when test="$ecnt = 0">
-					<xsl:text>1</xsl:text>
+				<xsl:when test="contains($name, ':')">
+					<xsl:variable name="prefix" select="substring-before($name, ':')"/>
+					<xsl:variable name="localname" select="substring-after($name, ':')"/>
+					
+					<xsl:attribute name="xlink:href">
+						<xsl:choose>
+							<xsl:when test="$prefix='dc'">
+								<xsl:text>http://dublincore.org/documents/dces/#</xsl:text>
+								<xsl:value-of select="$localname"/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:text>### UNKNOWN NAMESPACE PREFIX : </xsl:text>
+								<xsl:value-of select="$prefix"/>
+							</xsl:otherwise>
+						</xsl:choose>
+					</xsl:attribute>
+					
 				</xsl:when>
 				<xsl:otherwise>
-					<xsl:value-of select="$ecnt"/>
+					<xsl:attribute name="linkend">
+						<xsl:choose>
+							<xsl:when test="ancestor::xs:schema[@id='bookmark-2005-1'] and not($name='bookmarkSet')">
+								<xsl:value-of select="concat('tp_bookmark_',$name)"/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:value-of select="concat('tp_',$name)"/>
+							</xsl:otherwise>
+						</xsl:choose>
+						<xsl:if test="not(@ref) and count(ancestor::xs:schema//xs:element[@name=$name]) &gt; 1">
+							<xsl:variable name="ecnt" select="count(preceding::xs:element[@name=$name])"/>
+							<xsl:choose>
+								<xsl:when test="$ecnt = 0">
+									<xsl:text>1</xsl:text>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of select="$ecnt"/>
+								</xsl:otherwise>
+							</xsl:choose>
+						</xsl:if>
+					</xsl:attribute>
 				</xsl:otherwise>
 			</xsl:choose>
-		</xsl:if>
+			
+			<xsl:value-of select="$name"/>
+		</xsl:element>
+		
 	</xsl:template>
 	
 	
@@ -519,14 +541,9 @@
 						<xsl:variable name="groupName" select="ancestor::xs:group/@name"/>
 						<xsl:for-each select="ancestor::xs:schema//xs:element[not(descendant::xs:element)][descendant::xs:group[@ref=$groupName]]">
 							<xsl:sort select="@name"/>
-							<xsl:element name="db:link">
-								<xsl:attribute name="linkend">
-									<xsl:call-template name="addLinkEnd">
-										<xsl:with-param name="name" select="@name"/>
-									</xsl:call-template>
-								</xsl:attribute>
-								<xsl:value-of select="@name"/>
-							</xsl:element>
+							<xsl:call-template name="addLink">
+								<xsl:with-param name="name" select="@name"/>
+							</xsl:call-template>
 							<xsl:if test="not(position() = last())">
 								<xsl:text>, </xsl:text>
 							</xsl:if>
@@ -537,14 +554,9 @@
 							ancestor::xs:schema//xs:element[descendant::xs:element[1][@ref=$name]]
 							|ancestor::xs:schema//xs:element[not(descendant::xs:element)][descendant::xs:group[@ref=ancestor::xs:schema/xs:group[descendant::xs:element[@ref=$name]]/@name]]">
 							<xsl:sort select="@name"/>
-							<xsl:element name="db:link">
-								<xsl:attribute name="linkend">
-									<xsl:call-template name="addLinkEnd">
-										<xsl:with-param name="name" select="@name"/>
-									</xsl:call-template>
-								</xsl:attribute>
-								<xsl:value-of select="@name"/>
-							</xsl:element>
+							<xsl:call-template name="addLink">
+								<xsl:with-param name="name" select="@name"/>
+							</xsl:call-template>
 							<xsl:if test="not(position() = last())">
 								<xsl:text>, </xsl:text>
 							</xsl:if>
@@ -554,14 +566,9 @@
 				
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:element name="db:link">
-					<xsl:attribute name="linkend">
-						<xsl:call-template name="addLinkEnd">
-							<xsl:with-param name="name" select="ancestor::xs:element[1]/@name"/>
-						</xsl:call-template>
-					</xsl:attribute>
-					<xsl:value-of select="ancestor::xs:element[1]/@name"/>
-				</xsl:element>
+				<xsl:call-template name="addLink">
+					<xsl:with-param name="name" select="ancestor::xs:element[1]/@name"/>
+				</xsl:call-template>
 			</xsl:otherwise>
 		</xsl:choose>
 	
@@ -570,6 +577,12 @@
 	
 	
 	<xsl:template name="addAttributeInfo">
+		
+		<!-- UNCOMMENT FOR XREF DOC ERRORS
+		<xsl:if test="child::xs:annotation">
+			<xsl:apply-templates select="child::xs:annotation//db:*"/>
+		</xsl:if>
+		-->
 		
 		<xsl:element name="db:table">
 			<xsl:attribute name="class">attrTable</xsl:attribute>
