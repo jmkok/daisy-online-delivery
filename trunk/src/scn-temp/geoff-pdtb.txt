@@ -1,0 +1,95 @@
+﻿In the contentMetadata resource list, if there are files with mimeTypes that begin with "application/x-pdtb", that means that this book requires PDTB2 for access.  The user can choose to access these even if the reading system does not support PDTB2, but may not be able to decrypt all the content.
+
+If some content has an Authorization Object, the Reading System can inspect it for the name of the keypair that secures the key to decrypt the content.
+
+The Reading System may call getKeyExchangeObject(supportedPublicKeyNames, requestedKeyName) with a list of keypairs it would like the KXO to be encrypted with and the name of the requested keypair.  The service is free to choose any of the keys in the supportedPublicKeyNames to encrypt the KXO.  If the service does not have any of those public keys or if the user is not authorized to access the content, then the service could instead reply with an InvalidOperationFault.  The Service is responsible for keeping a list of authorized keypair names.
+
+Example
+
+A user wants to read an encrypted PDTB from the Zenith Library.  The AO is itself encrypted with a key named "DAISY.gy-lzen.afc26219-auth":
+
+<BookAuthorization xmlns="http://www.daisy.org/DRM/2005/BookAuthorization"
+                   xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+                   xmlns:xe="http://www.w3.org/2001/04/xmlenc#"
+                   xmlns:odrlx="http://odrl.net/1.1/ODRL-EX"
+                   xmlns:odrld="http://odrl.net/1.1/ODRL-DD"
+                   xmlns:dba="http://www.daisy.org/DRM/2005/BookAuthorization">
+	<Issuer uid="DAISY.gy-lzen">Zenith Library of Guyana</Issuer>
+	<Book uid="DAISY.gy-lzen.afc26219" />
+	<odrlx:rights>
+	    <odrlx:agreement>
+	        <odrlx:asset>
+	            <odrlx:context>
+	                <odrld:uid>DAISY.gy-lzen.afc26219</odrld:uid>
+	            </odrlx:context>
+	        </odrlx:asset>
+	        <odrlx:permission>
+	            <odrld:play/>
+	            <odrld:display/>
+	            <odrld:print/>
+	        </odrlx:permission>
+	    </odrlx:agreement>
+	</odrlx:rights>
+	<Keys>
+		<ds:KeyInfo>
+			<ds:KeyName>DAISY.gy-lzen.afc26219-auth</ds:KeyName>
+			<dba:KeyRequestURI media-type="application/soap+xml">http://www.lzen.gy.example/daisy-online</dba:KeyRequestURI>
+		</ds:KeyInfo>
+		<ContentKey media="audio">
+			<xe:EncryptedKey>
+				<xe:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes128-cbc" />
+				<xe:CipherData>
+					<xe:CipherValue>0000</xe:CipherValue>
+				</xe:CipherData>
+				<xe:CarriedKeyName>DAISY.gy-lzen.afc26219-audio</xe:CarriedKeyName>
+			</xe:EncryptedKey>
+		</ContentKey>
+		<EncryptedRights>
+			<xe:EncryptedKey>
+				<xe:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes128-cbc" />
+				<xe:CipherData>
+					<xe:CipherValue>0000</xe:CipherValue>
+				</xe:CipherData>
+			</xe:EncryptedKey>
+			<xe:EncryptedData Type="http://www.w3.org/2001/04/xmlenc#Element">
+				<xe:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes128-cbc" />
+				<xe:CipherData>
+					<xe:CipherValue>0000</xe:CipherValue>
+				</xe:CipherData>
+			</xe:EncryptedData>
+		</EncryptedRights>
+	</Keys>
+</BookAuthorization>
+
+The user has keys for the Reading System (an Acme Reader Express) as well as user keys supplied by Haute-Bibliothèque and Apex Talking Books, Inc.  The reading system calls the getKeyExchangeObject operation with first parameter (supportedPublicKeyNames) as
+
+<itemList>
+  <!-- The vendor, model and instance keys of the reading system. -->
+  <item>DAISY.lv-acme</item>
+  <item>DAISY.lv-acme.ReaderExpress</item>
+  <item>DAISY.lv-acme.0034218</item>
+  <!-- User keys granted by Haute-Bibliothèque and Apex. -->
+  <item>DAISY.ca-qqhb.006442</item>
+  <item>DAISY.au-atbi.userKey-4C452DB4</item>
+</itemList>
+
+and the second parameter (requestedKeyName) as "DAISY.gy-lzen.afc26219-auth".
+
+The service determines that the user is authorized to receive this key.  The service providers have determined that the Acme Reader Express is a trusted reading system model, so the service returns a KXO encrypted with the model key, "DAISY.lv-acme.ReaderExpress":
+
+<KeyExchange xmlns="http://www.daisy.org/DRM/2005/KeyExchange"
+          xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+          xmlns:xe="http://www.w3.org/2001/04/xmlenc#">
+	<Issuer uid="DAISY.gy-lzen">Zenith Library of Guyana</Issuer>
+	<Keys>
+		<ds:KeyInfo>
+			<ds:KeyName>DAISY.lv-acme.ReaderExpress</ds:KeyName>
+		</ds:KeyInfo>
+		<xe:EncryptedKey>
+			<xe:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#rsa-1_5" />
+			<xe:CipherData>
+				<xe:CipherValue>0000</xe:CipherValue>
+			</xe:CipherData>
+			<xe:CarriedKeyName>DAISY.gy-lzen.afc26219-auth</xe:CarriedKeyName>
+		</xe:EncryptedKey>
+</KeyExchange>

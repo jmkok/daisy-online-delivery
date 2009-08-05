@@ -80,10 +80,4 @@ Do we want to add mtime to resources in the metadata?
 
 == PDTB2 ==
 
-In the contentMetadata resource list, if there are files with mimeTypes that begin with application/x-pdtb, that means that this book requires PDTB2 for access.  The Readnig System can choose to download or not download these even if it does not support PDTB2, but may not be able to access all the content.
-
-If some content has an Authorization object, the REading System can inspect it for the name of the keypair to [get this verbiage from the PTBD2 spec] decrypt the symeettric key to decrpyt the content.
-
-The Reading System may call getKeyExchangeObject with the name of the requested keypair and a list of keypairs it would like the KXO to be encrypted wth.  The server may choose any of those keypairs to encrypt the KXO or deny the ReadingSystem the KXO.  The Service is responsible for keeping a list of authorized keypair names.
-
-For instance, the HappyPlayer from HappyTech sends the Service a request for a key named "dtb2625-text", with 
+(moved)

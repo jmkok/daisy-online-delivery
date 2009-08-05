@@ -413,7 +413,7 @@
             <abbrev>RFC 2119</abbrev>
             <title>
                 <link xlink:href="http://www.ietf.org/rfc/rfc2119.txt">Key words for use in RFCs to
-                    Indicate Requirement Levels (RFC 2119)</link>
+                    Indicate Requirement Levels, RFC 2119</link>
             </title>
             <date>March 1997</date>
         </biblioentry>
@@ -455,7 +455,7 @@
         <biblioentry xml:id="bib_http11">
             <abbrev>HTTP 1.1</abbrev>
             <title>
-                <link xlink:href="http://www.w3.org/Protocols/rfc2616/rfc2616.html">HyperText Transfer Protocol (HTTP) 1.1</link>
+                <link xlink:href="http://www.w3.org/Protocols/rfc2616/rfc2616.html">HyperText Transfer Protocol 1.1</link>
             </title>
         </biblioentry>
 
@@ -469,21 +469,28 @@
         <biblioentry xml:id="bib_soap1.1">
             <abbrev>SOAP 1.1</abbrev>
             <title>
-                <link xlink:href="http://www.w3.org/TR/2000/NOTE-SOAP-20000508/">Simple Object Access Protocol (SOAP) 1.1</link>
+                <link xlink:href="http://www.w3.org/TR/2000/NOTE-SOAP-20000508/">Simple Object Access Protocol 1.1</link>
+            </title>
+        </biblioentry>
+        
+        <biblioentry xml:id="bib_pdtb2">
+            <abbrev>PDTB2</abbrev>
+            <title>
+                <link xlink:href="http://www.daisy.org/projects/pdtb/daisy-pdtb-spec.html">DAISY Protected Digital Talking Book 2</link>
             </title>
         </biblioentry>
         
         <biblioentry xml:id="bib_ssl3.0">
             <abbrev>SSL 3.0</abbrev>
             <title>
-                <link xlink:href="http://tools.ietf.org/html/draft-ietf-tls-ssl-version3">Secure Sockets Layer (SSL) 3.0</link>
+                <link xlink:href="http://tools.ietf.org/html/draft-ietf-tls-ssl-version3">Secure Sockets Layer 3.0</link>
             </title>
         </biblioentry>
         
         <biblioentry xml:id="bib_tls1.0">
             <abbrev>TLS 1.0</abbrev>
             <title>
-                <link xlink:href="http://www.ietf.org/rfc/rfc2246">Transport Layer Security (TLS) 1.0</link>
+                <link xlink:href="http://www.ietf.org/rfc/rfc2246">Transport Layer Security 1.0</link>
             </title>
         </biblioentry>
         
@@ -504,7 +511,7 @@
         <biblioentry xml:id="bib_wsdl1.1">
             <abbrev>WSDL 1.1</abbrev>
             <title>
-                <link xlink:href="http://www.w3.org/TR/2001/NOTE-wsdl-20010315">Web Services Definition Language (WSDL) 1.1</link>
+                <link xlink:href="http://www.w3.org/TR/2001/NOTE-wsdl-20010315">Web Services Definition Language 1.1</link>
             </title>
         </biblioentry>
         
