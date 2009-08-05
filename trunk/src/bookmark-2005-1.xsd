@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <xs:schema id="bookmark-2005-1"
-        xmlns:xs="http://www.w3.org/2001/XMLSchema"
-        xmlns:db="http://docbook.org/ns/docbook">
+	xmlns="http://www.daisy.org/z3986/2005/bookmark/"
+	targetNamespace="http://www.daisy.org/z3986/2005/bookmark/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:db="http://docbook.org/ns/docbook">
         
         <xs:annotation>
                 <xs:documentation>
