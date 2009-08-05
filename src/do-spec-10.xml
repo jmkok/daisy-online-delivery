@@ -401,6 +401,14 @@
 
     <bibliography conformance="normative">
         <title>References</title>
+        <biblioentry xml:id="bib_dublinCore">
+            <abbrev>Dublin Core</abbrev>
+            <title>
+                <link xlink:href="http://dublincore.org/documents/2008/01/14/dces/">Dublin Core Metadata Element 
+                    Set, Version 1.1</link>
+            </title>
+            <date>January 2008</date>   
+         </biblioentry>
         <biblioentry xml:id="bib_RFC2119">
             <abbrev>RFC 2119</abbrev>
             <title>

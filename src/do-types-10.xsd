@@ -2,7 +2,8 @@
 <xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified"
 	targetNamespace="http://www.daisy.org/ns/daisy-online/#"
 	xmlns="http://www.daisy.org/ns/daisy-online/#" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:db="http://docbook.org/ns/docbook" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+	xmlns:db="http://docbook.org/ns/docbook" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 	<xs:import namespace="http://www.w3.org/XML/1998/namespace"
 		schemaLocation="http://www.w3.org/2001/xml.xsd"/>
@@ -10,6 +11,9 @@
 	<xs:import namespace="http://schemas.xmlsoap.org/wsdl/"
 		schemaLocation="http://schemas.xmlsoap.org/wsdl/"/>
 
+	<xs:import namespace="http://purl.org/dc/elements/1.1/" 
+		schemaLocation="http://dublincore.org/schemas/xmls/qdc/dc.xsd"/>
+	
 	<xs:include schemaLocation="bookmark-2005-1.xsd"/>
 
 	<xs:element name="readingSystemAttributes">
@@ -313,7 +317,7 @@
 	<xs:element name="label">
 		<xs:annotation>
 			<xs:documentation>
-				<db:para>An multi-purpose label, containing text and optionally audio.</db:para>
+				<db:para>A multi-purpose label, containing text and optionally audio.</db:para>
 			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -408,7 +412,7 @@
 							<db:para>Specifies the type of content. This element follows the same
 								convention as the <db:varname>supportedContentStandards</db:varname>
 								element of the <db:xref linkend="tp_readingSystemAttributes"/>
-								type.</db:para>
+								type. TODO this could be done in metadata/dc:format instead</db:para>
 						</xs:documentation>
 					</xs:annotation>
 				</xs:element>
@@ -457,25 +461,103 @@
 				<xs:element name="metadata" minOccurs="0" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>
-							<db:para role="desc">Specifies bibliographic metadata about the
-								content.</db:para>
+							<db:para role="desc">Specifies bibliographic and other metadata about the
+							content.</db:para>
+							<db:para>Elements in the Dublin Core namespace are normatively defined by <db:xref linkend="bib_dublinCore"/>.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
 						<xs:sequence>
-							<!-- TODO should we use dublin core -->
-							<!-- what about audio versions of metadata, serviceid and providerid -->
-							<!-- note: no markup allowed in text nodes -->
-							<xs:element name="title" type="xs:string" minOccurs="1" maxOccurs="1"/>
-							<xs:element name="size" type="xs:int" minOccurs="1" maxOccurs="1"/>
-							<xs:element name="author" type="xs:string" minOccurs="0" maxOccurs="1"/>
-							<xs:element name="genre" type="xs:string" minOccurs="0" maxOccurs="1"/>
-							<xs:element name="publisher" type="xs:string" minOccurs="0"
-								maxOccurs="1"/>
-							<xs:element name="narrator" type="xs:string" minOccurs="0" maxOccurs="1"/>
-							<xs:element name="language" type="xs:string" minOccurs="0" maxOccurs="1"/>
-							<xs:element name="description" type="xs:string" minOccurs="0"
-								maxOccurs="1"/>
+							<!-- TODO use label for metadata, serviceid and providerid -->
+							<xs:element ref="dc:title">
+								<xs:annotation><xs:documentation>
+									<db:para role="desc">The Dublin Core <db:token>title</db:token> property, as defined in <db:xref linkend="bib_dublinCore"/></db:para>
+								</xs:documentation></xs:annotation>								
+							</xs:element>
+							<xs:element ref="dc:identifier">
+								<xs:annotation><xs:documentation>
+									<db:para role="desc">The Dublin Core <db:token>identifier</db:token> property, as defined in <db:xref linkend="bib_dublinCore"/></db:para>
+								</xs:documentation></xs:annotation>								
+							</xs:element>							
+							<xs:element ref="dc:publisher" minOccurs="0" maxOccurs="1">
+								<xs:annotation><xs:documentation>
+									<db:para role="desc">The Dublin Core <db:token>publisher</db:token> property, as defined in <db:xref linkend="bib_dublinCore"/></db:para>
+								</xs:documentation></xs:annotation>								
+							</xs:element>
+							<xs:element ref="dc:format" minOccurs="0" maxOccurs="1">
+								<xs:annotation><xs:documentation>
+									<db:para role="desc">The Dublin Core <db:token>format</db:token> property, as defined in <db:xref linkend="bib_dublinCore"/></db:para>
+								</xs:documentation></xs:annotation>								
+							</xs:element>
+							<xs:element ref="dc:date" minOccurs="0" maxOccurs="1">
+								<xs:annotation><xs:documentation>
+									<db:para role="desc">The Dublin Core <db:token>date</db:token> property, as defined in <db:xref linkend="bib_dublinCore"/></db:para>
+								</xs:documentation></xs:annotation>								
+							</xs:element>
+							<xs:element ref="dc:source" minOccurs="0" maxOccurs="1">
+								<xs:annotation><xs:documentation>
+									<db:para role="desc">The Dublin Core <db:token>source</db:token> property, as defined in <db:xref linkend="bib_dublinCore"/></db:para>
+								</xs:documentation></xs:annotation>								
+							</xs:element>
+							<xs:element ref="dc:type" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation><xs:documentation>
+									<db:para role="desc">The Dublin Core <db:token>type</db:token> property, as defined in <db:xref linkend="bib_dublinCore"/></db:para>
+								</xs:documentation></xs:annotation>								
+							</xs:element>
+							<xs:element ref="dc:subject" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation><xs:documentation>
+									<db:para role="desc">The Dublin Core <db:token>subject</db:token> property, as defined in <db:xref linkend="bib_dublinCore"/></db:para>
+								</xs:documentation></xs:annotation>								
+							</xs:element>
+							<xs:element ref="dc:rights" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation><xs:documentation>
+									<db:para role="desc">The Dublin Core <db:token>rights</db:token> property, as defined in <db:xref linkend="bib_dublinCore"/></db:para>
+								</xs:documentation></xs:annotation>								
+							</xs:element>
+							<xs:element ref="dc:relation" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation><xs:documentation>
+									<db:para role="desc">The Dublin Core <db:token>relation</db:token> property, as defined in <db:xref linkend="bib_dublinCore"/></db:para>
+								</xs:documentation></xs:annotation>								
+							</xs:element>
+							<xs:element ref="dc:language" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation><xs:documentation>
+									<db:para role="desc">The Dublin Core <db:token>language</db:token> property, as defined in <db:xref linkend="bib_dublinCore"/></db:para>
+								</xs:documentation></xs:annotation>
+							</xs:element>
+							<xs:element ref="dc:description" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation><xs:documentation>
+									<db:para role="desc">The Dublin Core <db:token>description</db:token> property, as defined in <db:xref linkend="bib_dublinCore"/></db:para>
+								</xs:documentation></xs:annotation>
+							</xs:element>
+							<xs:element ref="dc:creator" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation><xs:documentation>
+									<db:para role="desc">The Dublin Core <db:token>creator</db:token> property, as defined in <db:xref linkend="bib_dublinCore"/></db:para>
+								</xs:documentation></xs:annotation>
+							</xs:element>
+							<xs:element ref="dc:coverage" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation><xs:documentation>
+									<db:para role="desc">The Dublin Core <db:token>coverage</db:token> property, as defined in <db:xref linkend="bib_dublinCore"/></db:para>
+								</xs:documentation></xs:annotation>
+							</xs:element>
+							<xs:element ref="dc:contributor" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation><xs:documentation>
+									<db:para role="desc">The Dublin Core <db:token>contributor</db:token> property, as defined in <db:xref linkend="bib_dublinCore"/></db:para>
+								</xs:documentation></xs:annotation>
+								
+							</xs:element>
+							
+							<xs:element name="narrator" type="xs:string" minOccurs="0" maxOccurs="1">
+								<xs:annotation><xs:documentation>
+									<db:para role="desc">In the case of audio-based content narrated by a human, the person name of the narrator.</db:para> 
+										<db:para>Service providers may use the string "TTS" in this field to signal that provided audio content has been rendered using text-to-speech processors.</db:para>
+								</xs:documentation></xs:annotation>
+							</xs:element>
+							<xs:element name="size" type="xs:int" minOccurs="1" maxOccurs="1">
+								<xs:annotation><xs:documentation>
+									<db:para role="desc">The size of the content being described, expressed in bytes.</db:para>
+								</xs:documentation></xs:annotation>
+							</xs:element>
+							
 							<!-- TODO 0-1 elements in pdtb namespace with specVersion -->
 							<xs:choice minOccurs="0" maxOccurs="unbounded">
 								<xs:any namespace="##other" processContents="lax"/>
@@ -964,5 +1046,17 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-
+<!--
+  <xs:element name="metaLabel">
+	<xs:complexType>
+		<xs:complexContent mixed="true">
+			<xs:extension base="dc:SimpleLiteral">
+				<xs:sequence>
+					<xs:element ref="label" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+  </xs:element>
+-->	
 </xs:schema>
