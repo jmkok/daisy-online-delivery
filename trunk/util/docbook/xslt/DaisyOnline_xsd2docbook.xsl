@@ -27,6 +27,7 @@
 			<xsl:attribute name="xml:id">typeReference</xsl:attribute>
 			<xsl:attribute name="conformance">normative</xsl:attribute>
 			<xsl:element name="db:title">Type Reference</xsl:element>
+			
 			<!-- get the top-level elements in the xsd (aka types) -->
 			<xsl:for-each select="$xsd/xs:schema/xs:element|$bsxsd/xs:schema/xs:element">
 				<xsl:sort select="@name" case-order="lower-first"/>
@@ -50,24 +51,27 @@
 							</xsl:otherwise>
 						</xsl:choose>
 						
-						<xsl:call-template name="buildSection">
+						<xsl:call-template name="addContentModel">
 							<xsl:with-param name="isType">true</xsl:with-param>
 						</xsl:call-template>
 					</xsl:element>
 				</xsl:if>
 			</xsl:for-each>
+			
+			<!-- generate documentation for all of the elements referenced in the schema -->
 			<xsl:element name="db:section">
 				<xsl:attribute name="xml:id">tp_general_elementReference</xsl:attribute>
 				<xsl:element name="db:title">Element Reference</xsl:element>
-				<xsl:call-template name="generateElement"/>
+				<xsl:call-template name="generateElementDocumentation"/>
 			</xsl:element>
 		</xsl:element>
 	</xsl:template>
 	
 	
 	
+	<!-- adds the content model section for the primary types -->
 	
-	<xsl:template name="buildSection">
+	<xsl:template name="addContentModel">
 		<xsl:param name="isType" as="xs:boolean"/>
 		
 		<xsl:element name="db:variablelist">
@@ -102,23 +106,27 @@
 		<xsl:param name="thisType"/>
 		
 		<xsl:choose>
+			<!-- check if element is empty (no child elements and not a group) -->
 			<xsl:when test="not($thisType/child::*[not(self::xs:attribute)]) and not(self::xs:group)">
 				<xsl:choose>
+					<!-- text only when an empty complexType and allows mixed content -->
 					<xsl:when test="self::xs:complexType and @mixed='true'">text only</xsl:when>
 					<xsl:otherwise>
+						<!-- use the type for the allowed value --> 
 						<xsl:value-of select="@type"/>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:when>
 			
 			<xsl:otherwise>
+				<!-- process each child accordingly -->
 				<xsl:for-each select="$thisType/child::*[not(xs:any)]">
 					<xsl:choose>
 						<xsl:when test="self::xs:sequence or self::xs:choice">
 							<xsl:call-template name="processCMGroup"/>
 						</xsl:when>
 						<xsl:when test="self::xs:element">
-							<xsl:call-template name="processCMElement"/>
+							<xsl:call-template name="addCMElement"/>
 						</xsl:when>
 						<xsl:when test="self::xs:complexType">
 							<xsl:call-template name="generateCM">
@@ -147,21 +155,24 @@
 			CONTENT MODEL PROCESSING OPERATIONS
 	-->
 	
+	<!-- wrap groups in parentheses -->
 	<xsl:template name="processCMGroup">
 		
 		<xsl:text> (</xsl:text>
-		<xsl:call-template name="generateCM">
-			<xsl:with-param name="thisType" select="."/>
-		</xsl:call-template>
+			<xsl:call-template name="generateCM">
+				<xsl:with-param name="thisType" select="."/>
+			</xsl:call-template>
 		<xsl:text>)</xsl:text>
+		
 		<xsl:call-template name="addModifier"/>
 		<xsl:text> </xsl:text>
 		<xsl:call-template name="addJoiner"/>
+	
 	</xsl:template>
 	
 	
-	
-	<xsl:template name="processCMElement">
+	<!-- add an element to the content model -->
+	<xsl:template name="addCMElement">
 		
 		<xsl:variable name="name" select="@name|@ref"/>
 		
@@ -176,6 +187,7 @@
 	
 	
 	
+	<!-- adds an internal link or an href for elements from other namespaces --> 
 	<xsl:template name="addLink">
 		<xsl:param name="name"/>
 		
@@ -231,15 +243,18 @@
 	
 	
 	
+	<!-- contents of complexcontent and simplecontent are handled the same way -->
 	<xsl:template name="processComplexSimple">
 		
 		<xsl:choose>
+			<!-- if referencing a group grab the contents of the group and process -->
 			<xsl:when test="child::xs:group">
 				<xsl:variable name="grpRef" select="child::xs:group/@ref"/>
 				<xsl:call-template name="generateCM">
 					<xsl:with-param name="thisType" select="ancestor::xs:schema/xs:group[@name=$grpRef]"/>
 				</xsl:call-template>
 			</xsl:when>
+			<!-- add a header depending on the type of restriction -->
 			<xsl:when test="child::xs:restriction/*[not(self::xs:element)]">
 				<xsl:choose>
 					<xsl:when test="ancestor::xs:attribute">
@@ -263,16 +278,19 @@
 				</xsl:choose>
 			</xsl:when>
 			<xsl:otherwise>
+				<!-- otherwise use the base value -->
 				<xsl:value-of select="child::xs:restriction/@base"/>
 			</xsl:otherwise>
 		</xsl:choose>
+		
 		<xsl:if test="child::xs:restriction/*">
+			<!-- process the restriction -->
 			<xsl:call-template name="processRestriction"/>
 		</xsl:if>
 	</xsl:template>
 	
 	
-	
+	<!-- runs through children of the restriction and builds the documentation -->
 	<xsl:template name="processRestriction">
 		<xsl:element name="db:itemizedlist">
 			<xsl:for-each select="child::xs:restriction/*">
@@ -302,6 +320,7 @@
 	
 	
 	
+	<!-- adds the dtd equivalent modifier for an element or group (*,+,?) -->
 	<xsl:template name="addModifier">
 		<xsl:choose>
 			<xsl:when test="(not(@minOccurs) and not(@maxOccurs))
@@ -346,6 +365,7 @@
 	
 	
 	
+	<!-- determine if part of a group and add the appropriate joining character -->
 	<xsl:template name="addJoiner">
 		<xsl:if test="following-sibling::xs:element 
 			or following-sibling::xs:complexType[.//xs:element]
@@ -373,19 +393,46 @@
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	<!-- 
 			PROCESS ELEMENTS
 	-->
 	
 	
-	<xsl:template name="generateElement">
+	<!-- entry function to generate the documentation section for an element -->
+	<xsl:template name="generateElementDocumentation">
 		
+		<!-- iterate over all elements in both xsds that are not references -->
 		<xsl:for-each select="$xsd//element[not(@ref)]|$bsxsd//element[not(@ref)]">
 			<xsl:sort select="@name" case-order="lower-first"/>
+			
+			<!-- check that the element hasn't already been processed as a type -->
 			<xsl:if test="not(contains($typeList, concat('|',@name,'|')))">
 				<xsl:variable name="name" select="@name"/>
+				
 				<xsl:element name="db:bridgehead">
 					<xsl:attribute name="xml:id">
+						<!-- ids to bookmark schema elements include '_bookmark' to differentiate from type schema -->
 						<xsl:choose>
 							<xsl:when test="ancestor::xs:schema[@id='bookmark-2005-1']">
 								<xsl:value-of select="concat('tp_bookmark_',@name)"/>
@@ -405,11 +452,13 @@
 					<xsl:value-of select="$name"/>
 				</xsl:element>
 				
+				<!-- include any documentation from the schema after the heading -->
 				<xsl:if test="xs:annotation">
 					<xsl:apply-templates select="xs:annotation/xs:documentation/*"/>
 				</xsl:if>
 				
-				<xsl:call-template name="generateContent"/>
+				<!-- begin processing the content for the element -->
+				<xsl:call-template name="writeElementInformation"/>
 			
 			</xsl:if>
 		</xsl:for-each>
@@ -418,15 +467,20 @@
 	
 	
 	
-	<xsl:template name="generateContent">
+	<xsl:template name="writeElementInformation">
+		
+		<!-- each section of information is marked by a new term in the variablelist -->
 		<xsl:element name="db:variablelist">
 			
 			<xsl:variable name="parent" select="ancestor::xs:element[not(ancestor::xs:element)]/@name"/>
 			<xsl:variable name="name" select="@name"/>
 			
 			<xsl:choose>
-				<xsl:when test="@name and preceding::xs:element[@name=$name][ancestor::xs:element[not(ancestor::xs:element)]/@name=$parent]"/>
+				<xsl:when test="@name and preceding::xs:element[@name=$name][ancestor::xs:element[not(ancestor::xs:element)]/@name=$parent]">
+					<!-- skip the element if it's a repeat within the same parent -->
+				</xsl:when>
 				<xsl:otherwise>
+					<!-- add info about the properties of the element -->
 					<xsl:element name="db:varlistentry">
 						<xsl:element name="db:term">
 							<xsl:text>Properties</xsl:text>
@@ -436,6 +490,7 @@
 						</xsl:element>
 					</xsl:element>
 					
+					<!-- add table with attribute info, if any -->
 					<xsl:if test="xs:complexType/xs:attribute">
 						<xsl:element name="db:varlistentry">
 							<xsl:element name="db:term">
@@ -452,7 +507,7 @@
 	</xsl:template>
 	
 	
-	
+	<!-- adds documentation about the type of value or content model allowed by the element -->
 	<xsl:template name="addElementInfo">
 		
 		<xsl:choose>
@@ -531,6 +586,7 @@
 	
 	
 	
+	<!-- grabs the names of all elements that have this element as a child and makes a linkable list to them -->
 	<xsl:template name="addParents">
 		<xsl:variable name="name" select="@name"/>
 		
@@ -576,6 +632,7 @@
 	
 	
 	
+	<!-- iterate over the attributes and generate a table of information -->
 	<xsl:template name="addAttributeInfo">
 		
 		<!-- UNCOMMENT FOR XREF DOC ERRORS
@@ -604,10 +661,6 @@
 					<xsl:element name="db:th">
 						<xsl:attribute name="class">attrType</xsl:attribute>
 						<xsl:text>properties</xsl:text>
-					</xsl:element>
-					<xsl:element name="db:th">
-						<xsl:attribute name="class">attrDefault</xsl:attribute>
-						<xsl:text>default</xsl:text>
 					</xsl:element>
 				</xsl:element>
 			</xsl:element>
@@ -661,6 +714,13 @@
 								</xsl:element>
 							</xsl:if>
 							
+							<xsl:if test="@default">
+								<xsl:element name="db:para">
+									<xsl:text>Default Value: </xsl:text>
+									<xsl:value-of select="@default"/>
+								</xsl:element>
+							</xsl:if>
+							
 							<!-- display any problems -->
 							<xsl:for-each select="@*">
 								<xsl:choose>
@@ -674,14 +734,6 @@
 									</xsl:otherwise>
 								</xsl:choose>
 							</xsl:for-each>
-						</xsl:element>
-						<xsl:element name="db:td">
-							<xsl:choose>
-								<xsl:when test="@default">
-									<xsl:value-of select="@default"/>
-								</xsl:when>
-								<xsl:otherwise>&#160;</xsl:otherwise>
-							</xsl:choose>
 						</xsl:element>
 					</xsl:element>
 				</xsl:for-each>
@@ -702,12 +754,14 @@
 		</xsl:copy>
 	</xsl:template>
 	
+	<!-- stop from getting stripped -->
 	<xsl:template match="@xlink:href">
 		<xsl:attribute name="xlink:href">
 			<xsl:value-of select="."/>
 		</xsl:attribute>
 	</xsl:template>
 	
+	<!-- clean up for any elements in the root namespace that should be in db:* -->
 	<xsl:template match="daisy:*" priority="1">
 		<xsl:element name="db:{local-name()}">
 			<xsl:apply-templates/>
