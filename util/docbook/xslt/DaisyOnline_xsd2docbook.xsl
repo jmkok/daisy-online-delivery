@@ -4,7 +4,8 @@
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	xmlns:daisy="http://www.daisy.org/ns/daisy-online/#"
 	xpath-default-namespace="http://www.w3.org/2001/XMLSchema"
-	xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="db">
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="db"
+	xmlns:xi="http://www.w3.org/2001/XInclude">
 	<!--
 		Transform a docbook instance to a docbook instance, inserting data
 		from a XSD doc in a predefined slot.
@@ -17,6 +18,7 @@
 
 	<xsl:variable name="xsd" select="document('../../../src/do-types-10.xsd')"/>
 	<xsl:variable name="bsxsd" select="document('../../../src/bookmark-2005-1.xsd')"/>
+	<xsl:variable name="samplesIndex" select="document('../../../src/samples-index.xml')"/>
 	
 	<!-- list of types - prevents processing of general-use elements in xsd -->
 	
@@ -54,6 +56,29 @@
 						<xsl:call-template name="addContentModel">
 							<xsl:with-param name="isType">true</xsl:with-param>
 						</xsl:call-template>
+						
+						<!-- check if there are samples (0-n per type), if so, include -->
+						<xsl:variable name="type" select="@name" />
+						<xsl:choose>
+							<xsl:when test="count($samplesIndex/daisy:samples/daisy:type[@name=$type]/daisy:sample) > 0">
+								<xsl:for-each select="$samplesIndex/daisy:samples/daisy:type[@name=$type]/daisy:sample">
+									<db:section> <db:title><xsl:value-of select="$type"/> example</db:title>
+									<xsl:if test="./daisy:annotation/db:*">
+										<xsl:copy-of select="./daisy:annotation/db:*" />
+									</xsl:if>
+									<db:programlisting>
+									<xsl:element name="xi:include">
+										<xsl:attribute name="href" select="resolve-uri(@src,base-uri())" />
+										<xsl:attribute name="parse">text</xsl:attribute>
+									</xsl:element>
+									</db:programlisting>
+									</db:section>
+								</xsl:for-each>
+							</xsl:when>	
+							<xsl:otherwise>
+								<xsl:message>Warning: no type sample(s) found for <xsl:value-of select="$type" /></xsl:message>
+							</xsl:otherwise>
+						</xsl:choose>
 					</xsl:element>
 				</xsl:if>
 			</xsl:for-each>
