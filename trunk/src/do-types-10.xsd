@@ -2,20 +2,16 @@
 <xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified"
 	targetNamespace="http://www.daisy.org/ns/daisy-online/#"
 	xmlns="http://www.daisy.org/ns/daisy-online/#" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:db="http://docbook.org/ns/docbook" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-	xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/">
+	xmlns:db="http://docbook.org/ns/docbook" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
 
 	<xs:import namespace="http://www.w3.org/XML/1998/namespace"
 		schemaLocation="http://www.w3.org/2001/xml.xsd"/>
 
-	<xs:import namespace="http://schemas.xmlsoap.org/soap/encoding/"
-		schemaLocation="http://schemas.xmlsoap.org/soap/encoding/"/>
-
 	<xs:import namespace="http://schemas.xmlsoap.org/wsdl/"
 		schemaLocation="http://schemas.xmlsoap.org/wsdl/"/>
-	
+
 	<xs:include schemaLocation="bookmark-2005-1.xsd"/>
-	
+
 	<xs:element name="readingSystemAttributes">
 		<xs:annotation>
 			<xs:documentation>
@@ -47,7 +43,8 @@
 					<xs:annotation>
 						<xs:documentation>
 							<db:para>The serial number of the Reading System, if such is available.
-									<db:remark role="todo">TODO is this required for PDTB2? (Hiro)</db:remark></db:para>
+									<db:remark role="todo">TODO is this required for PDTB2?
+									(Hiro)</db:remark></db:para>
 						</xs:documentation>
 					</xs:annotation>
 				</xs:element>
@@ -63,7 +60,8 @@
 				<xs:element name="config" minOccurs="1" maxOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="supportsMultipleSelections" type="xs:boolean" minOccurs="1" maxOccurs="1">
+							<xs:element name="supportsMultipleSelections" type="xs:boolean"
+								minOccurs="1" maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>
 										<db:para role="desc">Specifies whether the Reading System
@@ -71,17 +69,20 @@
 											question.</db:para>
 										<db:para role="req">If this element is set to false, the
 											Service must not present the allowMultipleSelections
-											attribute with a value of true on the <db:xref linkend="tp_multipleChoiceQuestion"/> element to the
+											attribute with a value of true on the <db:xref
+												linkend="tp_multipleChoiceQuestion"/> element to the
 											Reading System.</db:para>
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
 							<!-- TODO this is redundant now, question is always grouped now 
        <xs:element name="supportsGroupedQuestions" type="xs:boolean" minOccurs="1" maxOccurs="1"/> -->
-							<xs:element name="preferredUILanguage" minOccurs="1" maxOccurs="1" type="xs:language">
+							<xs:element name="preferredUILanguage" minOccurs="1" maxOccurs="1"
+								type="xs:language">
 								<xs:annotation>
 									<xs:documentation>
-										<db:para>An expression of the user's preferred language of communication with the Service.</db:para>
+										<db:para>An expression of the user's preferred language of
+											communication with the Service.</db:para>
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
@@ -98,7 +99,8 @@
 							<xs:element name="supportedContentStandards" minOccurs="1" maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>
-										<db:para role="desc">Specifies which kinds of content the Reading System supports.</db:para>
+										<db:para role="desc">Specifies which kinds of content the
+											Reading System supports.</db:para>
 										<db:para>The content of this element follows the convention
 											of the Dublin Core Format property. TODO Link TODO
 											Examples 2.02 , Zed, Epub</db:para>
@@ -106,21 +108,25 @@
 								</xs:annotation>
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element name="supportedContentStandard" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+										<xs:element name="supportedContentStandard" type="xs:string"
+											minOccurs="1" maxOccurs="unbounded"/>
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
 
-							<xs:element name="supportedContentProtectionStandards" minOccurs="1" maxOccurs="1">
+							<xs:element name="supportedContentProtectionStandards" minOccurs="1"
+								maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>
 										<db:para>Specifies which kinds of Content Protection
-											(Digital Rights Management) standards the Reading System supports.</db:para>
+											(Digital Rights Management) standards the Reading System
+											supports.</db:para>
 									</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element name="supportedContentProtectionStandard" minOccurs="0" maxOccurs="unbounded">
+										<xs:element name="supportedContentProtectionStandard"
+											minOccurs="0" maxOccurs="unbounded">
 											<xs:simpleType>
 												<xs:restriction base="xs:string">
 												<xs:enumeration value="PDTB2"/>
@@ -134,7 +140,8 @@
 							<xs:element name="supportedMimeTypes" minOccurs="1" maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>
-										<db:para>Specifies which content types the Reading System supports rendering of.</db:para>
+										<db:para>Specifies which content types the Reading System
+											supports rendering of.</db:para>
 										<db:para>The content type specification applies to
 											transferred content as well as Service messages
 												(<db:xref linkend="tp_label"/>).</db:para>
@@ -145,14 +152,17 @@
 								</xs:annotation>
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element name="mimeType" minOccurs="1" maxOccurs="unbounded">
+										<xs:element name="mimeType" minOccurs="1"
+											maxOccurs="unbounded">
 											<xs:complexType>
-												<xs:attribute name="type" type="xs:string" use="required">
-													<xs:annotation>
-														<xs:documentation>
-															<db:para>A <db:xref linkend="bib_mime"/> type.</db:para>
-														</xs:documentation>
-													</xs:annotation>
+												<xs:attribute name="type" type="xs:string"
+												use="required">
+												<xs:annotation>
+												<xs:documentation>
+												<db:para>A <db:xref linkend="bib_mime"/>
+												type.</db:para>
+												</xs:documentation>
+												</xs:annotation>
 												</xs:attribute>
 												<!--  TODO what does lang do on mimeType? -->
 												<xs:attribute ref="xml:lang" use="optional"/>
@@ -191,8 +201,10 @@
 												<xs:annotation>
 												<xs:documentation>
 												<db:para role="desc">The Reading System supports
-												User input using an alphanumeric keyboard.</db:para>
-												<db:para role="note">Note: this value is a superset of
+												User input using an alphanumeric
+												keyboard.</db:para>
+												<db:para role="note">Note: this value is a
+												superset of
 												<db:varname>TEXT_NUMERIC</db:varname>.</db:para>
 												</xs:documentation>
 												</xs:annotation>
@@ -200,7 +212,8 @@
 												<xs:enumeration value="AUDIO">
 												<xs:annotation>
 												<xs:documentation>
-												<db:para>The Reading System supports User input using audio recording.</db:para>
+												<db:para>The Reading System supports User input
+												using audio recording.</db:para>
 												</xs:documentation>
 												</xs:annotation>
 												</xs:enumeration>
@@ -214,7 +227,8 @@
 								</xs:complexType>
 							</xs:element>
 
-							<xs:element name="additionalTransferProtocols" minOccurs="0" maxOccurs="1">
+							<xs:element name="additionalTransferProtocols" minOccurs="0"
+								maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>
 										<db:para>Specifies additional content transfer protocols
@@ -225,7 +239,8 @@
 								</xs:annotation>
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element name="protocol" minOccurs="1" maxOccurs="unbounded" type="xs:string">
+										<xs:element name="protocol" minOccurs="1"
+											maxOccurs="unbounded" type="xs:string">
 											<xs:annotation>
 												<xs:documentation>
 												<db:para>A singular content transfer protocol,
@@ -251,8 +266,9 @@
 							</db:para>
 							<db:para role="req">If a Service does not support audio labels, it must
 								throw an OperationNotSupported Fault on subsequent calls to
-								operations that include <db:xref linkend="tp_label"/>
-								types. TODO this isnt really compatible with the use of label in eg metadata.</db:para>
+								operations that include <db:xref linkend="tp_label"/> types. TODO
+								this isnt really compatible with the use of label in eg
+								metadata.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 				</xs:element>
@@ -314,7 +330,8 @@
 						<xs:attribute name="uri" type="xs:anyURI" use="required">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Specifies the URI of the audio resource containing the label.</db:para>
+									<db:para role="desc">Specifies the URI of the audio resource
+										containing the label.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
@@ -323,8 +340,9 @@
 								<xs:documentation>
 									<db:para role="desc">Specifies the audio label start point in
 										bytes counting from the start of the resource specified in
-										the <db:varname>uri</db:varname> attribute. If the rangeBegin attribute is not
-										present, this implies a rangeBegin of 0.</db:para>
+										the <db:varname>uri</db:varname> attribute. If the
+										rangeBegin attribute is not present, this implies a
+										rangeBegin of 0.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
@@ -333,16 +351,17 @@
 								<xs:documentation>
 									<db:para role="desc">Specifies the audio label end point in
 										bytes counting from the start of the resource specified in
-										the <db:varname>uri</db:varname> attribute. If the rangeEnd attribute is not
-										present, this implies a rangeEnd value set to the last byte
-										of the resource.</db:para>
+										the <db:varname>uri</db:varname> attribute. If the rangeEnd
+										attribute is not present, this implies a rangeEnd value set
+										to the last byte of the resource.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
 						<xs:attribute name="size" type="xs:int" use="required">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Specifies the size (in bytes) of the label audio data.</db:para>
+									<db:para role="desc">Specifies the size (in bytes) of the label
+										audio data.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
@@ -362,7 +381,8 @@
 	<xs:element name="contentMetadata">
 		<xs:annotation>
 			<xs:documentation>
-				<db:para role="desc">Specifices metadata about a singular piece of content.</db:para>
+				<db:para role="desc">Specifices metadata about a singular piece of
+					content.</db:para>
 			</xs:documentation>
 		</xs:annotation>
 
@@ -371,7 +391,8 @@
 				<xs:element name="sample" minOccurs="0" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>
-							<db:para>A sample of the content being described, for User consumption.</db:para>
+							<db:para>A sample of the content being described, for User
+								consumption.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
@@ -386,7 +407,8 @@
 						<xs:documentation>
 							<db:para>Specifies the type of content. This element follows the same
 								convention as the <db:varname>supportedContentStandards</db:varname>
-								element of the <db:xref linkend="tp_readingSystemAttributes"/> type.</db:para>
+								element of the <db:xref linkend="tp_readingSystemAttributes"/>
+								type.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 				</xs:element>
@@ -404,7 +426,8 @@
 						<xs:attribute name="id" type="xs:string" use="required">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para>A static unique identifier of the Service provider.</db:para>
+									<db:para>A static unique identifier of the Service
+										provider.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
@@ -434,7 +457,8 @@
 				<xs:element name="metadata" minOccurs="0" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>
-							<db:para role="desc">Specifies bibliographic metadata about the content.</db:para>
+							<db:para role="desc">Specifies bibliographic metadata about the
+								content.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
@@ -446,10 +470,12 @@
 							<xs:element name="size" type="xs:int" minOccurs="1" maxOccurs="1"/>
 							<xs:element name="author" type="xs:string" minOccurs="0" maxOccurs="1"/>
 							<xs:element name="genre" type="xs:string" minOccurs="0" maxOccurs="1"/>
-							<xs:element name="publisher" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="publisher" type="xs:string" minOccurs="0"
+								maxOccurs="1"/>
 							<xs:element name="narrator" type="xs:string" minOccurs="0" maxOccurs="1"/>
 							<xs:element name="language" type="xs:string" minOccurs="0" maxOccurs="1"/>
-							<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="description" type="xs:string" minOccurs="0"
+								maxOccurs="1"/>
 							<!-- TODO 0-1 elements in pdtb namespace with specVersion -->
 							<xs:choice minOccurs="0" maxOccurs="unbounded">
 								<xs:any namespace="##other" processContents="lax"/>
@@ -461,7 +487,8 @@
 				<xs:element name="resources" minOccurs="1" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>
-							<db:para>A list of all the files that constitute the <db:xref linkend="term_content"/>.</db:para>
+							<db:para>A list of all the files that constitute the <db:xref
+									linkend="term_content"/>.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
@@ -480,21 +507,25 @@
 										<!-- TODO stay silent on 2.02 Mime types? Those are not specified anywhere -->
 										<xs:annotation>
 											<xs:documentation>
-												<db:para>The <db:xref linkend="bib_mime"/> type of the resource.</db:para>
+												<db:para>The <db:xref linkend="bib_mime"/> type of
+												the resource.</db:para>
 											</xs:documentation>
 										</xs:annotation>
 									</xs:attribute>
 									<xs:attribute name="size" type="xs:int" use="required">
 										<xs:annotation>
 											<xs:documentation>
-												<db:para>The size of the resource in bytes.</db:para>
+												<db:para>The size of the resource in
+												bytes.</db:para>
 											</xs:documentation>
 										</xs:annotation>
 									</xs:attribute>
-									<xs:attribute name="localFileName" type="xs:string" use="required">
+									<xs:attribute name="localFileName" type="xs:string"
+										use="required">
 										<xs:annotation>
 											<xs:documentation>
-												<db:para>The local file name of the resource.</db:para>
+												<db:para>The local file name of the
+												resource.</db:para>
 											</xs:documentation>
 										</xs:annotation>
 									</xs:attribute>
@@ -523,7 +554,8 @@
 				<!-- TODO may make optional and specify value if so -->
 				<xs:annotation>
 					<xs:documentation>
-						<db:para>Specifies whether the Service requires this content to be returned.</db:para>
+						<db:para>Specifies whether the Service requires this content to be
+							returned.</db:para>
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -534,7 +566,8 @@
 	<xs:element name="contentList">
 		<xs:annotation>
 			<xs:documentation>
-				<db:para>A list of content items, presented by the Service to the Reading System.</db:para>
+				<db:para>A list of content items, presented by the Service to the Reading
+					System.</db:para>
 			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -557,7 +590,8 @@
 							<xs:element ref="label" minOccurs="1" maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>
-										<db:para>The title, or other descriptive text, of this contentItem.</db:para>
+										<db:para>The title, or other descriptive text, of this
+											contentItem.</db:para>
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
@@ -565,7 +599,8 @@
 						<xs:attribute name="id" type="xs:ID" use="required">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para>The ID of this contentItem, unique within the contentList.</db:para>
+									<db:para>The ID of this contentItem, unique within the
+										contentList.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
@@ -582,14 +617,16 @@
 						<xs:attribute name="firstItem" type="xs:integer" use="required">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para>The first content item provided in this instance of contentList.</db:para>
+									<db:para>The first content item provided in this instance of
+										contentList.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
 						<xs:attribute name="lastItem" type="xs:integer" use="required">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para>The last content item provided in this instance of contentList.</db:para>
+									<db:para>The last content item provided in this instance of
+										contentList.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
@@ -598,10 +635,7 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	
-	
-	
-	
+
 	<xs:element name="inputQuestion">
 		<xs:annotation>
 			<xs:documentation>
@@ -631,15 +665,19 @@
 												<xs:enumeration value="TEXT_NUMERIC">
 												<xs:annotation>
 												<xs:documentation>
-												<db:para>The Reading System supports User input using a numeric keypad.</db:para>
+												<db:para>The Reading System supports User input
+												using a numeric keypad.</db:para>
 												</xs:documentation>
 												</xs:annotation>
 												</xs:enumeration>
 												<xs:enumeration value="TEXT_ALPHANUMERIC">
 												<xs:annotation>
 												<xs:documentation>
-												<db:para role="desc">The Reading System supports User input using an alphanumeric keyboard.</db:para>
-												<db:para role="note">Note: this value is a superset of
+												<db:para role="desc">The Reading System supports
+												User input using an alphanumeric
+												keyboard.</db:para>
+												<db:para role="note">Note: this value is a
+												superset of
 												<db:varname>TEXT_NUMERIC</db:varname>.</db:para>
 												</xs:documentation>
 												</xs:annotation>
@@ -647,7 +685,8 @@
 												<xs:enumeration value="AUDIO">
 												<xs:annotation>
 												<xs:documentation>
-												<db:para>The Reading System supports User input using audio recording.</db:para>
+												<db:para>The Reading System supports User input
+												using audio recording.</db:para>
 												</xs:documentation>
 												</xs:annotation>
 												</xs:enumeration>
@@ -668,8 +707,10 @@
 	<xs:element name="questions">
 		<xs:annotation>
 			<xs:documentation>
-				<db:para role="desc">A sequence of questions, asked by the Service to the User.</db:para>
-				<db:para>TODO contentList and label are endpoints, how to best describe that?</db:para>
+				<db:para role="desc">A sequence of questions, asked by the Service to the
+					User.</db:para>
+				<db:para>TODO contentList and label are endpoints, how to best describe
+					that?</db:para>
 				<db:para role="req">The questions element must contain either exactly one
 					contentList or exactly one label or any number of multipleChoiceQuestion and
 					inputQuestion in any order.</db:para>
@@ -707,7 +748,8 @@
 				</xs:element>
 			</xs:sequence>
 			<xs:attribute name="id" type="xs:ID"/>
-			<xs:attribute name="allowMultipleSelections" type="xs:boolean" use="optional" default="false">
+			<xs:attribute name="allowMultipleSelections" type="xs:boolean" use="optional"
+				default="false">
 				<xs:annotation>
 					<xs:documentation>
 						<db:para role="desc">Specifies whether multiple selections are allowed in
@@ -722,7 +764,8 @@
 	<xs:element name="userResponses">
 		<xs:annotation>
 			<xs:documentation>
-				<db:para>Encapsulates a set of User responses to Service provided <db:xref linkend="tp_questions"/>.</db:para>
+				<db:para>Encapsulates a set of User responses to Service provided <db:xref
+						linkend="tp_questions"/>.</db:para>
 			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -788,7 +831,8 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="supportsServerSideBack" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:element name="supportsServerSideBack" type="xs:boolean" minOccurs="1"
+					maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>
 							<db:para role="desc">Specifies whether this Service supports serverside
@@ -818,7 +862,8 @@
 					</xs:annotation>
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="codec" minOccurs="0" type="xs:string" maxOccurs="unbounded">
+							<xs:element name="codec" minOccurs="0" type="xs:string"
+								maxOccurs="unbounded">
 								<xs:annotation>
 									<xs:documentation>
 										<db:para role="desc">A singular codec reference, specified
@@ -834,7 +879,8 @@
 					<xs:annotation>
 						<xs:documentation>
 							<db:para role="desc">Specifies which (if any) of the operations that are
-								optional per this specification are supported by the Service.</db:para>
+								optional per this specification are supported by the
+								Service.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
@@ -853,7 +899,8 @@
 											<xs:annotation>
 												<xs:documentation>
 												<db:para role="desc">Specifies that this Service
-												supports the <db:xref linkend="op_setBookmarks"/> operation.</db:para>
+												supports the <db:xref linkend="op_setBookmarks"/>
+												operation.</db:para>
 												</xs:documentation>
 											</xs:annotation>
 										</xs:enumeration>
@@ -861,7 +908,8 @@
 											<xs:annotation>
 												<xs:documentation>
 												<db:para role="desc">Specifies that this Service
-												supports the <db:xref linkend="op_getBookmarks"/> operation.</db:para>
+												supports the <db:xref linkend="op_getBookmarks"/>
+												operation.</db:para>
 												</xs:documentation>
 											</xs:annotation>
 										</xs:enumeration>
@@ -869,7 +917,8 @@
 											<xs:annotation>
 												<xs:documentation>
 												<db:para role="desc">Specifies that this Service
-												supports the <db:xref linkend="op_getQuestions"/> operation.</db:para>
+												supports the <db:xref linkend="op_getQuestions"/>
+												operation.</db:para>
 												</xs:documentation>
 											</xs:annotation>
 										</xs:enumeration>
@@ -877,14 +926,19 @@
 											<xs:annotation>
 												<xs:documentation>
 												<db:para role="desc">Specifies that this Service
-												supports the <db:xref linkend="op_getServiceAnnouncements"/> operation.</db:para>
+												supports the <db:xref
+												linkend="op_getServiceAnnouncements"/>
+												operation.</db:para>
 												</xs:documentation>
 											</xs:annotation>
 										</xs:enumeration>
 										<xs:enumeration value="PDTB2_KEY_PROVISION">
 											<xs:annotation>
 												<xs:documentation>
-												<db:para role="desc">Specifies that this Service supports the <db:xref linkend="op_getKeyExchangeObject"/> operation.</db:para>
+												<db:para role="desc">Specifies that this Service
+												supports the <db:xref
+												linkend="op_getKeyExchangeObject"/>
+												operation.</db:para>
 												</xs:documentation>
 											</xs:annotation>
 										</xs:enumeration>
@@ -898,29 +952,16 @@
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="arrayOfString">
+	<xs:element name="itemList">
+		<xs:annotation>
+			<xs:documentation>
+				<db:para>A generic list of string items, functionally equal to a string array.</db:para>
+			</xs:documentation>
+		</xs:annotation>
 		<xs:complexType>
-			<xs:complexContent>
-				<xs:restriction base="SOAP-ENC:Array">
-					<xs:sequence>
-						<xs:element name="item" type="xs:string" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
-					</xs:sequence>
-					<xs:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="xs:string[]"/>
-				</xs:restriction>
-			</xs:complexContent>
-		</xs:complexType>
-	</xs:element>
-
-	<xs:element name="arrayOfID">
-		<xs:complexType>
-			<xs:complexContent>
-				<xs:restriction base="SOAP-ENC:Array">
-					<xs:sequence>
-						<xs:element name="item" type="xs:ID" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
-					</xs:sequence>
-					<xs:attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="xs:ID[]"/>
-				</xs:restriction>
-			</xs:complexContent>
+			<xs:sequence>
+				<xs:element name="item" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 

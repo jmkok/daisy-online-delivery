@@ -48,7 +48,8 @@
 	<message name="setBookmarksRequest">
 		<part name="contentID" element="xsd:string">
 			<documentation>
-				<db:para role="desc">The content identifier with which the bookmarks are associated</db:para>
+				<db:para role="desc">The content identifier with which the bookmarks are
+					associated</db:para>
 			</documentation>
 		</part>
 		<part name="bookmarks" element="tns:bookmarkSet">
@@ -69,9 +70,9 @@
 		<part name="publicationID" element="xsd:string">
 			<documentation>
 				<db:para role="desc">The identifier of the content for which bookmarks are being
-				retrieved</db:para>
-				<db:para role="note">TODO establish that contentMetadata dc.identifier is the protocols locus
-				to establish what this identifier is.</db:para>
+					retrieved</db:para>
+				<db:para role="note">TODO establish that contentMetadata dc.identifier is the
+					protocols locus to establish what this identifier is.</db:para>
 			</documentation>
 		</part>
 	</message>
@@ -88,10 +89,10 @@
 	<message name="issueContentRequest">
 		<part name="contentID" element="xsd:string">
 			<documentation>
-				<db:para role="desc">The identifier of the content that this issuance
-				request is for.</db:para>
-				<db:para role="note">TODO establish that contentMetadata dc.identifier is the protocols locus
-					to establish what this identifier is.</db:para>
+				<db:para role="desc">The identifier of the content that this issuance request is
+					for.</db:para>
+				<db:para role="note">TODO establish that contentMetadata dc.identifier is the
+					protocols locus to establish what this identifier is.</db:para>
 			</documentation>
 		</part>
 	</message>
@@ -106,10 +107,10 @@
 	<message name="returnContentRequest">
 		<part name="publicationID" element="xsd:string">
 			<documentation>
-				<db:para role="desc">The unique identifier of the content that this return
-				  request is for.</db:para>
-				<db:para role="note">TODO establish that contentMetadata dc.identifier is the protocols locus
-					to establish what this identifier is.</db:para>
+				<db:para role="desc">The unique identifier of the content that this return request
+					is for.</db:para>
+				<db:para role="note">TODO establish that contentMetadata dc.identifier is the
+					protocols locus to establish what this identifier is.</db:para>
 			</documentation>
 		</part>
 	</message>
@@ -144,17 +145,18 @@
 	<message name="getContentListRequest">
 		<part name="id" element="xsd:string">
 			<documentation>
-				<db:para role="desc">The identity of the list to retrieve. TODO seems like we should only
-				allow the default, borrowed/issued, and expired value. No use for arbitrary values.</db:para>
+				<db:para role="desc">The identity of the list to retrieve. TODO seems like we should
+					only allow the default, borrowed/issued, and expired value. No use for arbitrary
+					values.</db:para>
 				<db:para>The value <db:varname>default</db:varname> is reserved to refer to a
 					default (precomposed) content list; Services must therefore not assign
 						<db:varname>default</db:varname> as the identity value of a dynamically
 					composed content list.</db:para>
-				<db:para>The value <db:varname>borrowed</db:varname> is reserved to refer to a listing
-					of the content that is currently borrowed to the User by the Service; Services
-					must therefore not assign <db:varname>borrowed</db:varname> as the identity value
-					of a dynamically composed content list.</db:para>
-				<db:para>TODO explain that this can be used to allow the service to manage the 
+				<db:para>The value <db:varname>borrowed</db:varname> is reserved to refer to a
+					listing of the content that is currently borrowed to the User by the Service;
+					Services must therefore not assign <db:varname>borrowed</db:varname> as the
+					identity value of a dynamically composed content list.</db:para>
+				<db:para>TODO explain that this can be used to allow the service to manage the
 					borrowed content list on the users behalf. (Hiro)</db:para>
 			</documentation>
 		</part>
@@ -172,7 +174,7 @@
 	<message name="getContentListResponse">
 		<part name="result" element="tns:contentList">
 			<documentation>
-				<db:para>The reqested content list, or a segment thereof.</db:para>
+				<db:para>The requested content list, or a segment thereof.</db:para>
 			</documentation>
 		</part>
 	</message>
@@ -187,7 +189,7 @@
 		<part name="result" element="tns:announcements"/>
 	</message>
 	<message name="markAnnouncementsAsReadRequest">
-		<part name="read" element="tns:arrayOfID">
+		<part name="read" element="tns:itemList">
 			<documentation>
 				<db:para role="desc">The announcements to mark as read, expressed as references to
 					the announcement's ID values.</db:para>
@@ -210,15 +212,16 @@
 				<db:para role="desc">TODO desc</db:para>
 				<db:para>The value <db:varname>default</db:varname> is reserved... TODO</db:para>
 				<db:para>The value <db:varname>search</db:varname> is reserved... TODO</db:para>
-				<db:para>The value <db:varname>back</db:varname> is reserved... TODO and make reference to serverAttributes</db:para>
+				<db:para>The value <db:varname>back</db:varname> is reserved... TODO and make
+					reference to serverAttributes</db:para>
 			</documentation>
 		</part>
 	</message>
 	<message name="getQuestionsResponse">
 		<part name="result" element="tns:questions"/>
 	</message>
-	
-	
+
+
 	<!-- ********************************************* -->
 	<!-- ****************  metadata  ***************** -->
 	<!-- ********************************************* -->
@@ -242,7 +245,7 @@
 	<!-- ********************************************* -->
 
 	<message name="getKeyExchangeObjectRequest">
-		<part name="supportedPublicKeyNames" element="tns:arrayOfString">
+		<part name="supportedPublicKeyNames" element="tns:itemList">
 			<documentation>
 				<db:para role="desc">DOC TODO</db:para>
 			</documentation>
@@ -330,8 +333,8 @@
 
 		<operation name="setReadingSystemAttributes">
 			<documentation>
-				<db:para role="desc">Posts properties of the Reading System to
-					the Service.</db:para>
+				<db:para role="desc">Posts properties of the Reading System to the
+					Service.</db:para>
 				<db:para>This operation must be invoked after a successful <db:xref
 						linkend="op_logOn"/> in order to establish the [session ready state] [TODO
 					link up]. This operation may be invoked additional times during a session to
@@ -350,9 +353,9 @@
 				<db:para>The <db:varname>firstItem</db:varname> and
 						<db:varname>lastItem</db:varname> parameters are used to request subsets of
 					the content list made available by the Service. The first item in the list has
-					the index <db:varname>0</db:varname>. The value <db:varname>-1</db:varname> of 
-					the lastItem parameter indicates a request to retrieve all items from <db:varname>startIndex</db:varname> to
-				the end of the list.</db:para>
+					the index <db:varname>0</db:varname>. The value <db:varname>-1</db:varname> of
+					the lastItem parameter indicates a request to retrieve all items from
+						<db:varname>startIndex</db:varname> to the end of the list.</db:para>
 				<db:para role="req">TODO note that out-of-range lastItem and firstItem values do not
 					constitute Fault matter.</db:para>
 			</documentation>
@@ -366,7 +369,7 @@
 		<operation name="getContentMetadata">
 			<documentation>
 				<db:para role="desc">Retrieves <db:xref linkend="tp_contentMetadata"/> for the
-				specified content.</db:para>
+					specified content.</db:para>
 				<db:para role="prereq">This operation is only valid if a previous call to <db:xref
 						linkend="op_issueContent"/> with a result of <db:varname>true</db:varname>
 					has been made for the given content.</db:para>
@@ -380,8 +383,8 @@
 
 		<operation name="getServiceAttributes">
 			<documentation>
-				<db:para role="desc">Retrieves Service properties, including information on which optional operations it
-					supports.</db:para>
+				<db:para role="desc">Retrieves Service properties, including information on which
+					optional operations it supports.</db:para>
 			</documentation>
 			<input message="tns:getServiceAttributesRequest"/>
 			<output message="tns:getServiceAttributesResponse"/>
@@ -435,7 +438,8 @@
 			<fault name="setBookmarksInternalServerError" message="tns:InternalServerErrorFault"/>
 			<fault name="setBookmarksInvalidOperation" message="tns:InvalidOperationFault"/>
 			<fault name="setBookmarksInvalidParameter" message="tns:InvalidParameterFault"/>
-			<fault name="setBookmarksOperationNotSupported" message="tns:OperationNotSupportedFault"/>
+			<fault name="setBookmarksOperationNotSupported" message="tns:OperationNotSupportedFault"
+			/>
 		</operation>
 		<operation name="getBookmarks">
 			<documentation>
@@ -458,7 +462,8 @@
 			<output message="tns:getQuestionsResponse"/>
 			<fault name="getQuestionsInternalServerError" message="tns:InternalServerErrorFault"/>
 			<fault name="getQuestionsInvalidOperation" message="tns:InvalidOperationFault"/>
-			<fault name="getQuestionsOperationNotSupported" message="tns:OperationNotSupportedFault"/>
+			<fault name="getQuestionsOperationNotSupported" message="tns:OperationNotSupportedFault"
+			/>
 		</operation>
 		<operation name="getKeyExchangeObject">
 			<documentation>
@@ -487,14 +492,24 @@
 	<message name="InvalidParameterFault">
 		<documentation>
 			<db:para role="desc">An invalid parameter was passed with the operation
-			request.</db:para>
+				request.</db:para>
 		</documentation>
-		<part name="invalidParamName" element="xsd:string"><db:para role="desc">The name of the invalid parameter</db:para></part>
-		<part name="invalidParamValue" element="xsd:string"><db:para role="desc">The value of the invalid parameter, serialized as a string</db:para></part>
+		<part name="invalidParamName" element="xsd:string">
+			<documentation>
+				<db:para role="desc">The name of the invalid parameter</db:para>
+			</documentation>
+		</part>
+		<part name="invalidParamValue" element="xsd:string">
+			<documentation>
+				<db:para role="desc">The value of the invalid parameter, serialized as a
+					string</db:para>
+			</documentation>
+		</part>
 	</message>
 	<message name="InvalidOperationFault">
 		<documentation>
-			<db:para role="desc">The current context does not permit a call to this operation.</db:para>
+			<db:para role="desc">The current context does not permit a call to this
+				operation.</db:para>
 		</documentation>
 	</message>
 	<message name="OperationNotSupportedFault">
@@ -502,5 +517,5 @@
 			<db:para role="desc">This operation is not supported by the Service.</db:para>
 		</documentation>
 	</message>
-	
+
 </definitions>
