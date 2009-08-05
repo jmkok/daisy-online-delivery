@@ -2,7 +2,8 @@
 <definitions name="DAISYOnlineService" xmlns="http://schemas.xmlsoap.org/wsdl/"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
 	xmlns:tns="http://www.daisy.org/ns/daisy-online/#" xmlns:db="http://docbook.org/ns/docbook"
-	targetNamespace="http://www.daisy.org/ns/daisy-online/#">
+	targetNamespace="http://www.daisy.org/ns/daisy-online/#"
+	xmlns:zed="http://www.daisy.org/z3986/2005/bookmark/">
 
 	<documentation> Notes on docbook documentation usage: para[role="desc"] is a short core
 		definition of the item being described. Plain text can also be used, assuming that no other
@@ -10,8 +11,7 @@
 
 	<types>
 		<xsd:schema targetNamespace="http://www.daisy.org/ns/daisy-online/#">
-			<xsd:import namespace="http://www.daisy.org/ns/daisy-online/#"
-				schemaLocation="do-types-10.xsd"/>
+			<xsd:include schemaLocation="do-types-10.xsd"/>
 		</xsd:schema>
 	</types>
 
@@ -52,7 +52,7 @@
 					associated</db:para>
 			</documentation>
 		</part>
-		<part name="bookmarks" element="tns:bookmarkSet">
+		<part name="bookmarks" element="zed:bookmarkSet">
 			<documentation>
 				<db:para role="desc">The bookmarks to store</db:para>
 			</documentation>
@@ -77,7 +77,7 @@
 		</part>
 	</message>
 	<message name="getBookmarksResponse">
-		<part name="result" element="tns:bookmarkSet">
+		<part name="result" element="zed:bookmarkSet">
 			<documentation>The bookmarks for the Publication.</documentation>
 		</part>
 	</message>
