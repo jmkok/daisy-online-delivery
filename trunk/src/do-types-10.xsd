@@ -14,7 +14,8 @@
 	<xs:import namespace="http://purl.org/dc/elements/1.1/" 
 		schemaLocation="http://dublincore.org/schemas/xmls/qdc/dc.xsd"/>
 	
-	<xs:include schemaLocation="bookmark-2005-1.xsd"/>
+	<xs:import namespace="http://www.daisy.org/z3986/2005/bookmark/" 
+		schemaLocation="bookmark-2005-1.xsd"/>
 
 	<xs:element name="readingSystemAttributes">
 		<xs:annotation>
