@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<contentMetadata id="Volunteering" borrowed="true" category="OTHER">
+  <sample>
+    <label xml:lang="en">
+      <text>Volunteering</text>
+      <audio href="http://innovation.rnib.org.uk/daisyonline/data/Volunteering/Volunteering_0001.mp3" size="130821"/>
+    </label>
+  </sample>  
+  <contentStandard>Daisy Z3986</contentStandard>
+  <provider id="uk.org.rnib"/>
+  <service id="Daisy Online Test Service"/>
+  <metadata>
+    <title>Volunteering</title>
+    <size>8119213</size>
+    <author>RNIB</author>
+  </metadata>
+  <resources>
+    <resource href="http://innovation.rnib.org.uk/daisyonline/data\Volunteering\master.smil" localFileName="master.smil" mimeType="application/smil" size="1996"/>
+    <resource href="http://innovation.rnib.org.uk/daisyonline/data/Volunteering/ncc.html" localFileName="ncc.html" mimeType="text/html" size="5715"/>
+    <resource href="http://innovation.rnib.org.uk/daisyonline/data/Volunteering/Volunteering.html" localFileName="Volunteering.html" mimeType="text/html" size="18586"/>
+    <resource href="http://innovation.rnib.org.uk/daisyonline/data/Volunteering/Volunteering_0001.mp3" localFileName="Volunteering_0001.mp3" mimeType="audio/mpeg" size="130821"/>
+    <resource href="http://innovation.rnib.org.uk/daisyonline/data/Volunteering/Volunteering_0001.smil" localFileName="Volunteering_0001.smil" mimeType="application/smil" size="1215"/>
+  </resources>
+</contentMetadata>
