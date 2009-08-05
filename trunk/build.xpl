@@ -11,13 +11,14 @@
       <p:pipe step="store" port="result"/>
     </p:output>
 
-    <p:xinclude name="xinclude"/>
+    <!--  include for the appendices -->
+    <p:xinclude name="xinclude-1"/>
  
-    <p:xslt name="expandDocBookWSDL">
+    <p:xslt name="expandDocBookWSDL"> 
         <p:input port="source">
-            <p:pipe step="xinclude" port="result"/>
+            <p:pipe step="xinclude-1" port="result"/>
         </p:input>
-        
+       
         <p:input port="stylesheet">
             <p:document href="./util/docbook/xslt/DaisyOnline_wsdl2docbook.xsl"/>
         </p:input>
@@ -32,12 +33,16 @@
             <p:document href="./util/docbook/xslt/DaisyOnline_xsd2docbook.xsl"/>
         </p:input>
     </p:xslt>
+    
+ 	<!-- include for the type samples -->
+ 	<p:xinclude name="xinclude-2"/>
  	
+ 	<!-- store docbook only for debugging purposes -->
  	<p:store href="./build/do-spec-10.xml" name="storeDocBook" />
  	
 	<p:validate-with-relax-ng assert-valid="true" name="validate">
 	    <p:input port="source">
-	        <p:pipe step="expandDocBookXSD" port="result"/>
+	        <p:pipe step="xinclude-2" port="result"/>
 	    </p:input>
 	    
 	    <p:input port="schema">

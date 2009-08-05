@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<samples xmlns="http://www.daisy.org/ns/daisy-online/#" xmlns:db="http://docbook.org/ns/docbook">
+  
+  <type name="announcements">
+    <sample src="./samples/announcements.xml">
+      <annotation>
+        <db:para>This example shows blah blah</db:para>
+      </annotation>
+    </sample>
+  </type>
+  
+  <type name="questions">
+    <sample src="./samples/questions_contentList.xml">
+      <annotation>
+        <db:para>This example shows blah blah</db:para>
+      </annotation>
+    </sample>
+    <sample src="./samples/questions_multipleChoice.xml">
+      <annotation>
+        <db:para>This example shows blah blah</db:para>
+      </annotation>
+    </sample>    
+  </type>
+
+  <type name="contentMetadata">
+    <sample src="./samples/contentMetadata.xml">
+      <annotation>
+        <db:para>This example shows blah blah</db:para>
+      </annotation>
+    </sample>
+  </type>
+
+  <type name="readingSystemAttributes">
+    <sample src="./samples/readingSystemAttributes.xml">
+      <annotation>
+        <db:para>This example shows blah blah</db:para>
+      </annotation>
+    </sample>
+  </type>
+  
+  <type name="serviceAttributes">
+    <sample src="./samples/serviceAttributes.xml">
+      <annotation>
+        <db:para>This example shows blah blah</db:para>
+      </annotation>
+    </sample>
+  </type>
+
+</samples>
