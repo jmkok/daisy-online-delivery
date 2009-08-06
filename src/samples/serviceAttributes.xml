@@ -1,9 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <serviceAttributes>
   <supportsServerSideBack>false</supportsServerSideBack>
   <supportsSearch>true</supportsSearch>
   <supportedUplinkAudioCodecs>
-    <codec>auio/mp3</codec>
+    <codec>audio/mpeg</codec>
   </supportedUplinkAudioCodecs>
   <supportedOptionalOperations>
     <operation>DYNAMIC_MENUS</operation>

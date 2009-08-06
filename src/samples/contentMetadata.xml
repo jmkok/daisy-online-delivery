@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <contentMetadata id="Volunteering" borrowed="true" category="OTHER">
   <sample>
     <label xml:lang="en">
@@ -15,7 +15,7 @@
     <author>RNIB</author>
   </metadata>
   <resources>
-    <resource href="http://innovation.rnib.org.uk/daisyonline/data\Volunteering\master.smil" localFileName="master.smil" mimeType="application/smil" size="1996"/>
+    <resource href="http://innovation.rnib.org.uk/daisyonline/data/Volunteering/master.smil" localFileName="master.smil" mimeType="application/smil" size="1996"/>
     <resource href="http://innovation.rnib.org.uk/daisyonline/data/Volunteering/ncc.html" localFileName="ncc.html" mimeType="text/html" size="5715"/>
     <resource href="http://innovation.rnib.org.uk/daisyonline/data/Volunteering/Volunteering.html" localFileName="Volunteering.html" mimeType="text/html" size="18586"/>
     <resource href="http://innovation.rnib.org.uk/daisyonline/data/Volunteering/Volunteering_0001.mp3" localFileName="Volunteering_0001.mp3" mimeType="audio/mpeg" size="130821"/>

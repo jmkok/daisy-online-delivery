@@ -16,7 +16,7 @@
 			</choice>
 			<choice id="c3">
 				<label>
-					<text>Take a Survey</text>
+					<text>Take a survey</text>
 				</label>
 			</choice>
 			<choice id="c4">
@@ -26,7 +26,7 @@
 			</choice>
 			<choice id="c5">
 				<label>
-					<text>Download or Stream content</text>
+					<text>Download or stream content</text>
 				</label>
 			</choice>
 		</choices>
