@@ -1,0 +1,811 @@
+1. Usage Scenario: How to use the dynamic menu feature to retrieve the Main Menu from a Service.
+
+The Reading System retrieves the Main Menu of the Service by invoking the getQuestions operation with the reserved id "default" by passing in the following parameter: 
+
+<userResponses>
+<userResponse id="default"/>
+</userResponses>
+
+getQuestions(userResponses)
+
+The operation returns the following questions type:
+ 
+<questions>
+<multipleChoiceQuestion id="q1">
+
+<label xml:lang="en">
+<text>What would you like to do?</text>
+</label>
+
+<choices>
+<choice id="c1">
+<label>
+<text>Search the Library</text>
+</label>
+</choice>
+
+<choice id="c2">
+<label>
+<text>Update your profile</text>
+</label>
+</choice>
+
+<choice id="c3">
+<label>
+<text>Take a Survey</text>
+</label>
+</choice>
+
+<choice id="c4">
+<label>
+<text>Buy a book</text>
+</label>
+</choice>
+
+<choice id="c5">
+<label>
+<text>Download or Stream content</text>
+</label>
+</choice>
+</choices>
+</multipleChoiceQuestion>
+</questions>
+
+<tip> Each userResponse element contains the user's response to a particular question. There are three reserved ids that have a special meaning:
+1. default - returns the question that comprises the Main Menu.
+2. search - Returns the question that comprises the search menu.
+3. back - Returns the previous question.     
+
+A question can be a multiple choice question (<multipleChoiceQuestion>), or a question that can receive a numeric text, alfanumeric text or audio response from the user (<inputQuestion>). If the userResponse element is being used to encapsulate the user's response to a multiple choice question, the id attribute of the userResponse element contains the  same value as the id attribute of the corresponding multipleChoiceQuestion element, and the value attribute of the userResponse element contains the same value as the id attribute of the choice element that the user selected. If the userResponse element is being used to encapsulate the user's response to a question that receives numeric text, alfanumeric text or an audio response, the id attribute of the userResponse element contains the same value as the id attribute of the corresponding inputQuestion element, and the value attribute of the userResponse element contains:
+1. The numeric or alfanumeric text that the user entered if the question receives a numeric or alfanumeric response.
+2. An empty string or omitted altogether if the question receives an audio response.    
+
+If the question receives an audio response, the audio response is base 64 encoded and encapsulated in the data child element of the userResponse element. </tip>
+
+<tip> The values assigned to the id attributes of the inputQuestion, multipleChoiceQuestion and choice elements in all the examples listed in this section are arbitrary. These ids are defined in the Daisy Online xsd as the xsd id type, and thus can take any unique value.</tip>
+
+The Reading system renders this type to the user in the following way:
+
+What Would you like to do?
+* Search the Library
+* Update your profile
+* Take a Survey.
+* Buy a book
+* Download or Stream content
+
+2. Usage Scenario: How to use the Dynamic Menu feature to enable a user to perform Search.  
+
+As Search is envisaged to be a very important part of the Online Distribution of content, and thus the Reading Systems may have specific user interface components to invoke search, a special id is available and can be passed into the getQuestions operation to retrieve the menu specific to search.
+
+<userResponses>
+<userResponse id="search"/>
+</userResponses>
+
+<tip>
+
+Using the aforementioned Main Menu example, if the user selects "Search the Library," the following userResponses type could also be used to retrieve the Search menu:     
+
+<userResponses>
+<userResponse id="q1" value="c1"/>
+</userResponses>
+
+The reserved Search id thus, is a shortcut provided for those Reading systems that have explicit user interface components for invoking the Search feature.
+
+</tip>
+
+getQuestions ( userResponses)
+
+The operation returns the following questions type:
+ 
+<questions>
+<multipleChoiceQuestion id="q2">
+
+<label xml:lang="en">
+<text>What would you like to Search by?</text>  
+</label>
+
+<choices>
+<choice id="c1">
+<label>
+<text>Title</text>
+</label>
+</choice>
+
+<choice id="c2">
+<label>
+<text>Author</text>
+</label>
+</choice>
+
+<choice id="c3">
+<label>
+<text>Genre</text>
+</label>
+</choice>
+
+</choices>
+</multipleChoiceQuestion>
+</questions>
+
+The Reading System renders this type to the user as follows:
+ 
+what would you like to search by?
+* title
+* author
+* Genre
+
+Assuming that the user selects "Author," the reading system retrieves the next menu by passing in the following parameter to the getQuestions operation:    
+
+<userResponses>
+<userResponse id="q2" value="c1"/>
+</userResponses>
+
+getQuestions(userResponses)
+
+This operation returns the following type:
+  
+<questions>
+<inputQuestion id="q2-2">
+
+<inputTypes>
+<input type="text_numeric"/>
+<input type="text_alphanumeric"/>
+</inputTypes>
+
+<label xml:lang="en">
+<text>Please enter the name of the Author.</text>
+</label>
+
+</inputQuestion>
+</questions>
+
+ The Reading System renders this type to the user as follows:
+
+Please enter the name of the author. 
+
+Assuming the user entered the name "J.K. Rawling," the Reading System invokes the getQuestions operation with the following parameter:
+
+<userResponses>
+<userResponse id="q2-2" value="J.K. Rawling"/>
+</userResponses>
+
+this operation returns the following questions type:
+
+<questions>
+<contentList>
+
+<label xml:lang="en">
+<text>Your Search for "J.K. Rawling" returned the following results.</text>
+</label>
+
+<contentItem id="hp_cos">
+<label>
+<text>Harry Potter and the Chamber of Secrets
+</label>
+</contentItem>
+
+<contentItem id="hp_dh">
+<label>
+<text>Harry Potter and the Deathly Hallows
+</label>
+</contentItem>
+
+<contentItem id="hp_gof">
+<label>
+<text>Harry Potter and the Goblet of Fire
+</label>
+</contentItem>
+
+</contentList>
+</questions> 
+
+The Reading System renders this type as follows:
+
+Your Search for "J.K. Rawling" returned the following results:  
+* harry potter and chamber of secrets
+* harry potter and deathly hallows
+* harry potter and goblet of fire
+
+When a Service returns a contentList within a questions type,, the Reading system is logically at the end of the Service's dynamic menu.  
+
+The Reading System may then retrieve information about the specific contentItems in the contentList type by invoking the getContentMetadata operation, passing in the id of the particular content item.   At this stage, the Reading system may ask the user whether he/she wishes to Download or Stream content.
+
+3. Usage Scenario: How to use the Dynamic menu feature to enable a user to update his/her profile. 
+
+Using the aforementioned Main Menu example, if the user selects "update your profile," the Reading System invokes the getQuestions operation with the following parameter:  
+
+<userResponses>
+<userResponse id="q1" value="c3"/>
+</userResponses>
+
+getQuestions(userResponses)
+
+this operation returns the following type:
+
+<questions>
+<inputQuestion id="q3-1">
+
+<inputTypes>
+<input type="text_numeric"/>
+<input type="text_alphanumeric"/>
+</inputTypes>
+
+<label xml:lang="en">
+<text>Your Name</text> 
+</label>
+
+</inputQuestion>
+
+<inputQuestion id="3-2">
+
+<inputTypes>
+<input type="text_numeric"/>
+<input type="text_alphanumeric"/>
+</inputTypes>
+
+<label xml:lang="en">
+<text>Your Address</text>
+</label>
+
+</inputQuestion>
+
+<multipleChoiceQuestion id="3-3">
+
+<label xml:lang="en">
+<text>Your Gender</text>
+</label>
+
+<choices>
+<choice id="c1">
+<label>
+<text>Male</text>
+</label>
+</choice>
+
+<choice id="c2">
+<label>
+<text>Female</text>
+</label>
+</choice>
+
+</choices>
+</multipleChoiceQuestion>
+</questions>
+
+The Reading system renders this type as follows:
+
+Your name:
+
+Your Address: 
+
+Your Gender
+*Male
+* female
+
+After the user responds to the questions, the Reading System invokes the getQuestions operation passing in the following parameter:
+
+<userResponses>
+<userResponse id="q3-1" value="firstname lastname"/>
+<userResponse id="q3-2" value="street number, suburb, city, state postal code, country"/>
+<userResponse id="q3-3" value="c2"/>
+</userResponses>
+ 
+This operation returns the following type: 
+
+<questions>
+
+<label xml:lang="en">
+<text>Your profile has been updated successfully! </text>
+</label>
+
+</questions>
+
+The Reading system renders this type to the user as follows:
+
+Your profile has been updated successfully!
+
+As in the case of the Service returning a contentList element within a questions type, if the Service returns a label child element in the questions type, the Reading System is logically at the end of the    Service's dynamic menu. 
+
+<tip> If the Service intends to take the user back to a previous menu after a message such as "your profile has been updated successfully," the Service returns a multipleChoiceQuestion element within the questions type as follows:
+
+<questions>
+<multipleChoiceQuestion id="q3-4">
+
+<label xml:lang="en">
+<text>Your profile has been updated successfully! What would you like to do next?</text>
+</label>
+
+<choices>
+<choice id="c1">
+<label>
+<text>Reenter your profile information</text>
+</label>
+</choice>
+
+<choice id="c2">
+<label>
+<text>Go back to the previous menu</text>
+</label>
+</choice>
+
+</choices>
+</multipleChoiceQuestion>  
+</questions>
+
+</tip>
+
+4. Usage Scenario: How to use the dynamic menu feature to enable a user to take a survey, where the user can respond to one of the questions with an audio answer.     
+
+Using the aforementioned Main Menu example, if the user selects "Take a Survey", the Reading System invokes the getQuestions operation passing in the following parameter:     
+
+<userResponses>
+<userResponse id="q1" value="c3" />
+</userResponses>
+
+getQuestions(userResponses)
+
+This operation returns the following type:
+
+<questions>
+<inputQuestion id="q4-1">
+
+<inputTypes>
+<input type="text_numeric"/>
+<input type="text_alphanumeric"/>
+</inputTypes>
+
+<label xml:lang="en">
+<text>What is your favourite feature in the Service?</text>
+</label>
+
+</inputQuestion>
+
+<multipleChoiceQuestion id="q4-2">
+
+<label xml:lang="en">
+<text>On a scale of one to four, where four is very satisfied and 1 is not satisfied, how would you rate the Service?</text>
+</label>
+
+<choices>
+<choice id="c1">
+<label>
+<text>1</text>
+</label>
+</choice>
+
+<choice id="c2">
+<label>
+<text>2</text>
+</label>
+</choice>
+
+<choice id="c3">
+<label>
+<text>3</text>
+</label>
+</choice>
+
+<choice id="c4">
+<label>
+<text>4</text>
+</label>
+</choice>
+
+</choices>
+</multipleChoiceQuestion>
+
+<inputQuestion id="q4-3">
+
+<inputTypes>
+<input type="audio" />
+</inputTypes>
+
+<label xml:lang="en">
+<text>Please provide feedback on the Service.</text>
+</label>
+
+</inputQuestion>
+</questions>
+
+The Reading system renders this type as follows:
+
+What is your favourite feature in the Service?:
+
+On a scale of one to four, where four is very satisfied and 1 is not satisfied, how would you rate the Service?
+* 1
+* 2
+* 3
+* 4
+
+Please provide feedback on the Service.:
+
+After the user responds to the questions, the Reading System invokes the getQuestions operation passing in the following parameter:
+
+<userResponses>
+<userResponse id="q4-1" value="favourite feature"/>
+<userResponse id="q4-2" value="c3"/>
+<userResponse id="q4-3">
+<data>zkgfhklj3~#$jkl*!</data> 
+</userResponse>
+</userResponses>
+
+getQuestions(userResponses)
+
+This operation returns the following type:
+
+<questions>
+<multipleChoiceQuestion id="q4-4">
+
+<label xml:lang="en">
+<text>thank you for taking the Survey. What would you like to do next?</text>
+</label>
+
+<choices>
+<choice id="c1">
+<label>
+<text>Take another survey</text>
+</label>
+</choice>
+
+<choice id="c2">
+<label>
+<text>Go back to the previous menu</text>
+</label>
+</choice>
+
+<choice id="default">
+<label>
+<text>Go back to the Main Menu</text>
+</label>
+</choice>
+
+</choices>
+</multipleChoiceQuestion>  
+</questions>
+
+The Reading System renders this type as follows:
+
+Thank you for taking the Survey! What would you like to do next?
+* Take another Survey.
+* Go back to the previous menu. 
+* Go back to the Main Menu
+
+5. usage Scenario: How to use the Dynamic menu feature to enable a user to Buy a book.
+
+Using the aforementioned Main Menu example, if the user selects "Buy a Book," the Reading System invokes the getQuestions operation passing in the following parameter:
+
+<userResponses>
+<userResponse id="q1" value="c4"/>
+</userResponses>
+  
+getQuestions(userResponses)
+
+This operation returns the following type:
+
+<questions>
+<multipleChoiceQuestion id="q5" allowMultipleSelections="true">
+
+<label xml:lang="en">
+<text>Which of the following book(s) would you like to buy?</text>
+</label>
+
+<choices>
+<choice id="c1">
+<label>
+<text>Harry Potter and the chamber of secrets</text>
+</label>
+</choice>
+
+<choice id="c2">
+<label>
+<text>Harry Potter and the deathly hallows</text>
+</label>
+</choice>
+
+<choice id="c3">
+<label>
+<text>Harry Potter and the goblet of fire</text>
+</label>
+</choice>
+
+<choice id="c4">
+<label>
+<text>Harry Potter and the half-blood Prince</text>
+</label>
+</choice>
+
+<choice id="c5">
+<label>
+<text>Harry Potter and the Order of the Phoenix</text>
+</label>
+</choice>
+</choices>
+</multipleChoiceQuestion>
+</questions>
+
+<tip>
+
+The allowMultipleSelections attribute of the multipleChoiceQuestion element tells the reading System whether a user should be allowed to select multiple answers from the list of choices.
+
+When the user's answers are encapsulated in a userResponses type by the Reading system for a multiple choice question that allows multiple selections, each userResponse element holds information about a single selection. So if the user selected three choices out of a list of five choices, the userResponses type would contain three distinct userResponse child elements that hold information about the three choices that the user selected. This is illustrated in the userResponses type below.      
+
+</tip>
+
+The Reading System renders this type as follows:
+
+Which of the following book(s) would you like to buy? 
+* Harry Potter and the chamber of secrets
+* Harry Potter and the deathly hallows
+* Harry Potter and the goblet of fire
+* Harry Potter and the half-blood Prince
+* Harry Potter and the Order of the Phoenix
+
+(Assuming that the user selects choices 2, 3 and 5)
+
+The Reading system invokes the getQuestions operation passing in the following parameter:
+
+<userResponses>
+<userResponse id="q5" value="c2"/>
+<userResponse id="q5" value="c3"/>
+<userResponse id="q5" value="c5"/>
+</userResponses>
+
+getQuestions(userResponses)
+
+This operation returns the following type:
+
+<questions>
+<multipleChoiceQuestion id="q5-2">
+
+<label xml:lang="en">
+<text>Thank you for purchasing "Harry Potter and the deathly hallows," "Harry Potter and the goblet of fire" and "Harry Potter and the Order of the Phoenix." These books have been billed to your credit card. What would you like to do next?</text> 
+</label>
+
+<choices>
+<choice id="c1">
+<label>
+<text>buy more Books</text>
+</label>
+</choice>
+
+<choice id="c2">
+<label>
+<text>Add these books to my download/streaming list</text>
+</label>
+</choice>
+
+<choice id="c3">
+<label>
+<text>Download/Stream these books now</text>
+</label>
+</choice>
+
+</choices>
+</multipleChoiceQuestion>
+</questions>
+
+The Reading system renders this type as follows:
+
+Thank you for purchasing "Harry Potter and the deathly hallows," "Harry Potter and the goblet of fire" and "Harry Potter and the Order of the Phoenix." These books have been billed to your credit card. What would you like to do next?</text> 
+* Buy more books
+* Add these books to my download/streaming list</text>
+* Download/Stream these books now</text>
+
+<tip>
+
+this example presumes that a user's billing information was supplied to the Service Provider through an alternative channel (i.e. website, phone ...). However, extra steps could be added to this example to collect the user's billing information.    
+
+</tip>
+
+<tip>
+
+If the user selects "Download/Stream these books now, the Service returns a contentList type inside a questions type containing the three selected books. 
+
+</tip>  
+
+(Assuming that the user selects "Add these books to my downloading/streaming list)
+
+The Reading system invokes the getQuestions operation passing in the following parameter:
+
+<userResponses>
+<userResponse id="q5-2" value="c2"/>
+</userResponses>
+
+getQuestions(userResponses)
+
+This operation returns the following type:
+
+<questions>
+<label xml:lang="en">
+<text>Your books have been added to your downloading/streaming list. Please select the "Download or Stream content" option in the Main menu to download/stream these books.</text>  
+</label>
+
+</questions>
+
+The Reading System renders this type as follows:
+
+Your books have been added to your downloading/streaming list. Please select the "Download or Stream content" option in the Main menu to download/stream these books.
+
+6. Usage Scenario: How to use the Dynamic Menu feature to enable a user to Download or Stream pre-selected content.
+
+Using the aforementioned Main Menu example, if the user selects "Download or Stream content", the Reading System invokes the getQuestions operation passing in the following parameter:
+
+<userResponses>
+<userResponse id="q1" value="c5"/>
+</userResponses>
+
+getQuestions(userResponses)
+
+This operation returns the following type:
+
+<questions>
+<contentList>
+
+<label xml:lang="en">
+<text>You have the following content waiting to be Downloaded/Streamed</text>
+</label>
+
+<contentItem id="hp_dh">
+<label>
+<text>Harry Potter and the deathly hallows</text>
+</label>
+</contentItem>
+
+<contentItem id="hp_gof">
+<label>
+<text>Harry Potter and the goblet of fire</text>
+</label>
+</contentItem>
+
+<contentItem id="hp_oop">
+<label>
+<text>Harry Potter and the Order of the Phoenix</text>
+</label>
+</contentItem>
+
+</contentList>
+</questions> 
+
+The Reading System renders this type as follows:
+
+You have the following content waiting to be Downloaded/Streamed
+* Harry Potter and the deathly hallows
+* Harry Potter and the goblet of fire
+* Harry Potter and the Order of the Phoenix
+
+<tip>
+
+The Service returns a contentList inside a questions type in this example. A contentList element as noted above is a special element that when present in a questions type, hands the control back to the Reading system (i.e. no further calls to the getQuestions operation are required). The Reading system then offers the user a choice to download or stream the content items available in the contentList depending on the particular context.
+
+</tip> 
+
+7. Usage Scenario: How to use the Back capability in the Dynamic Menu feature.
+
+Using the Aforementioned main Menu example, If the user selects "Search the Library," as described in "2. Usage Scenario: How to use the Dynamic Menu feature to enable a user to perform Search," the Reading system invokes the getQuestions operation passing in the following parameter:
+
+<userResponses>
+<userResponse id="q1" value="c1"/>
+</userResponses>
+
+getQuestions(userResponses)
+
+The operation returns the following questions type:
+ 
+<questions>
+<multipleChoiceQuestion id="q2">
+
+<label xml:lang="en">
+<text>What would you like to Search by?</text>  
+</label>
+
+<choices>
+<choice id="c1">
+<label>
+<text>Title</text>
+</label>
+</choice>
+
+<choice id="c2">
+<label>
+<text>Author</text>
+</label>
+</choice>
+
+<choice id="c3">
+<label>
+<text>Genre</text>
+</label>
+</choice>
+
+</choices>
+</multipleChoiceQuestion>
+</questions>
+
+The Reading System renders this type to the user as follows:
+ 
+what would you like to search by?
+* title
+* author
+* Genre
+ 
+Assuming that the user selects "Author," the reading system retrieves the next menu by passing in the following parameter to the getQuestions operation:    
+
+<userResponses>
+<userResponse id="q2" value="c1"/>
+</userResponses>
+
+getQuestions(userResponses)
+
+This operation returns the following type:
+  
+<questions>
+<inputQuestion id="q2-2">
+
+<inputTypes>
+<input type="text_numeric"/>
+<input type="text_alphanumeric"/>
+</inputTypes>
+
+<label xml:lang="en">
+<text>Please enter the name of the Author.</text>
+</label>
+
+</inputQuestion>
+</questions>
+
+ The Reading System renders this type to the user as follows:
+
+Please enter the name of the author. 
+
+the user pushes the Back button on his/her Reading system to change the search category. 
+
+<tip>
+
+a Service that claims to support the "Back Feature" in its Service Attributes is required by the spec to return the previous question (aka menu), when it receives the reserved id "back" in the userResponses parameter passed to the getQuestions operation, at any stage in the Dynamic menu lifecycle. The dynamic Menu lifecycle begins when the Reading system invokes the getQuestions operation passing in a UserResponses parameter that contains the reserved id "default" and ends when the Service returns as a child element of a questions type (i.e. the return value of an ensuing getQuestions operation), a ContentList or a Label element.                   
+
+</tip>
+
+the Reading system invokes the getQuestions operation passing in the following parameter containing the reserved id "back":
+
+<userResponses>
+<userResponse id="back" />
+</userResponses>
+ 
+the service returns the previous question (aka menu):
+
+<questions>
+<multipleChoiceQuestion id="q2">
+
+<label xml:lang="en">
+<text>What would you like to Search by?</text>  
+</label>
+
+<choices>
+<choice id="c1">
+<label>
+<text>Title</text>
+</label>
+</choice>
+
+<choice id="c2">
+<label>
+<text>Author</text>
+</label>
+</choice>
+
+<choice id="c3">
+<label>
+<text>Genre</text>
+</label>
+</choice>
+
+</choices>
+</multipleChoiceQuestion>
+</questions>
+
+The Reading System renders this type to the user as follows:
+ 
+what would you like to search by?
+* title
+* author
+* Genre  
