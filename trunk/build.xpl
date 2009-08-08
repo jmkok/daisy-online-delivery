@@ -70,5 +70,5 @@
     </p:xslt>
        	
     <p:store href="./build/do-spec-10.html" name="store"/>
-
+        
 </p:declare-step>
