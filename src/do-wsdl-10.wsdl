@@ -428,8 +428,8 @@
 			<documentation>
 				<db:para role="desc">Request the storage of bookmarks for a content item to the
 					Service.</db:para>
-				<db:para role="note">Note that the publication identifier is embedded in the
-						<db:xref linkend="tp_bookmarkSet"/> type.</db:para>
+				<!-- <db:para role="note">Note that the publication identifier is embedded in the
+						<db:xref linkend="tp_bookmarkSet"/> type.</db:para> -->
 				<db:para role="note">Note that this operation only supports the storage of bookmarks
 					for one content item at a time.</db:para>
 			</documentation>
@@ -438,8 +438,7 @@
 			<fault name="setBookmarksInternalServerError" message="tns:InternalServerErrorFault"/>
 			<fault name="setBookmarksInvalidOperation" message="tns:InvalidOperationFault"/>
 			<fault name="setBookmarksInvalidParameter" message="tns:InvalidParameterFault"/>
-			<fault name="setBookmarksOperationNotSupported" message="tns:OperationNotSupportedFault"
-			/>
+			<fault name="setBookmarksOperationNotSupported" message="tns:OperationNotSupportedFault"/>
 		</operation>
 		<operation name="getBookmarks">
 			<documentation>
