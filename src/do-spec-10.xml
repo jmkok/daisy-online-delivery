@@ -112,7 +112,7 @@
                 <listitem>
                     <para>
                         A file hosting server that is not under the control of the
-						<xref linkend="term_serviceProdiver"/>.
+						<xref linkend="term_serviceProvider"/>.
                     </para>
                 </listitem>
             </varlistentry>
@@ -127,7 +127,7 @@
                 </listitem>
             </varlistentry>
 			
-            <varlistentry xml:id="term_serviceProdiver">
+            <varlistentry xml:id="term_serviceProvider">
                 <term>Service Provider</term>
                 <listitem>
                     <para>
@@ -320,7 +320,26 @@
             <para>...</para>
             <section xml:id="operations_content_issuing_pdtb">
                 <title>Rights management</title>
-                <para>...</para>
+                <para>If <xref linkend="term_content"/> is protected using <xref linkend="bib_pdtb2"/>, then there will be a metadata item in the <link linkend="tp_contentMetadata">contentMetadata</link> named "pdtb2:specVersion" with a value of "2005-1" and there will be resources with mimeTypes beginning with "application/x-pdtb".  The <xref linkend="term_readingSystem"/> can access these resources even if it does not support <xref linkend="bib_pdtb2"/>, but it might not be able to decrypt all the <xref linkend="term_content"/>.</para>
+				<para>If some <xref linkend="term_content"/> has an Authorization Object (<abbrev>AO</abbrev>), the <xref linkend="term_readingSystem"/> can inspect it for the name of the key that secures the key to decrypt the <xref linkend="term_content"/>.</para>
+				<para>The <xref linkend="term_readingSystem"/> may call <link linkend="op_getKeyExchangeObject">getKeyExchangeObject</link> with an <link linkend="tp_itemList">itemList</link> of names of keys on its keyring (these can be all or some of the symmetric keys or public/private keypairs the <xref linkend="term_readingSystem"/> supports) and the name of the requested key.  The <xref linkend="term_service"/> is free to choose any of the keys in the supportedPublicKeyNames to encrypt the Key Exchange Object (<abbrev>KXO</abbrev>).  If the <xref linkend="term_service"/> does not have any of those keys or if the <xref linkend="term_user"/> is not authorized to access the <xref linkend="term_content"/>, then the <xref linkend="term_service"/> will instead reply with an <link linkend="ft_InvalidOperationFault">InvalidOperationFault</link>.  The <xref linkend="term_service"/> is responsible for keeping a list of authorized key names.</para>
+				<para>For example, a <xref linkend="term_user"/> wants to read an encrypted <abbrev>PDTB</abbrev> from the Zenith Library.  The <abbrev>AO</abbrev> is itself encrypted with a key named "DAISY.gy-zlog.afc26219-auth":</para>
+				<programlisting><xi:include href="./samples/authorization.xml" parse="text"></xi:include></programlisting>
+				<para>The <xref linkend="term_user"/> has keys for the <xref linkend="term_readingSystem"/> (an Acme Reader Express) as well as user account keys supplied by Haute-Bibliothèque and Apex Talking Books, Inc.  The <xref linkend="term_readingSystem"/> calls the <link linkend="op_getKeyExchangeObject">getKeyExchangeObject</link> operation with first parameter (supportedPublicKeyNames) as:</para>
+				<programlisting>
+&lt;itemList&gt;
+  &lt;!-- The vendor, model and instance keys of the reading system. --&gt;
+  &lt;item&gt;DAISY.lv-acme&lt;/item&gt;
+  &lt;item&gt;DAISY.lv-acme.ReaderExpress&lt;/item&gt;
+  &lt;item&gt;DAISY.lv-acme.0034218&lt;/item&gt;
+  &lt;!-- User account keys granted by Haute-Bibliothèque and Apex. --&gt;
+  &lt;item&gt;DAISY.ca-qqhb.006442&lt;/item&gt;
+  &lt;item&gt;DAISY.au-atbi.userKey-4C452DB4&lt;/item&gt;
+&lt;/itemList&gt;
+</programlisting>
+				<para>and the second parameter (requestedKeyName) as "DAISY.gy-zlog.afc26219-auth".</para>
+				<para>The <xref linkend="term_service"/> determines that the <xref linkend="term_user"/> is authorized to receive this key.  The <xref linkend="term_serviceProvider"/> have determined that the Acme Reader Express is a trusted <xref linkend="term_readingSystem"/> model, so the <xref linkend="term_service"/> returns a <abbrev>KXO</abbrev> encrypted with the model key, "DAISY.lv-acme.ReaderExpress":</para>
+				<programlisting><xi:include href="./samples/kxo.xml" parse="text"></xi:include></programlisting>
             </section>
         </section>
 
