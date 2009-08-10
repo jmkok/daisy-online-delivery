@@ -247,19 +247,21 @@
 	<message name="getKeyExchangeObjectRequest">
 		<part name="supportedPublicKeyNames" element="tns:itemList">
 			<documentation>
-				<db:para role="desc">DOC TODO</db:para>
+				<db:para role="desc">The identifiers of the keys on the Reading System's keyring.</db:para>
 			</documentation>
 		</part>
 		<part name="requestedKeyName" element="xsd:string">
 			<documentation>
-				<db:para role="desc">DOC TODO</db:para>
+				<db:para role="desc">The identifier of the requested key.</db:para>
 			</documentation>
 		</part>
 	</message>
 	<message name="getKeyExchangeObjectResponse">
 		<part name="result" element="xsd:string">
 			<documentation>
-				<db:para role="desc">DOC TODO</db:para>
+				<db:para role="desc">A <db:xref linkend="bib_pdtb2"/> Key Exchange Object,
+				containing the requested key encrypted using one of the keys identified
+				in supportedPublicKeyNames.</db:para>
 				<db:para role="desc">TODO should return a Key Exchange Object xml fragment</db:para>
 			</documentation>
 		</part>
@@ -466,7 +468,8 @@
 		</operation>
 		<operation name="getKeyExchangeObject">
 			<documentation>
-				<db:para role="desc">DOC TODO</db:para>
+				<db:para role="desc">Requests a <db:xref linkend="bib_pdtb2"/> Key Exchange Object
+				from the <db:xref linkend="term_service"/>.</db:para>
 			</documentation>
 			<input message="tns:getKeyExchangeObjectRequest"/>
 			<output message="tns:getKeyExchangeObjectResponse"/>
