@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BookAuthorization xmlns="http://www.daisy.org/DRM/2005/BookAuthorization"
+                   xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+                   xmlns:xe="http://www.w3.org/2001/04/xmlenc#"
+                   xmlns:odrlx="http://odrl.net/1.1/ODRL-EX"
+                   xmlns:odrld="http://odrl.net/1.1/ODRL-DD"
+                   xmlns:dba="http://www.daisy.org/DRM/2005/BookAuthorization">
+  <Issuer uid="DAISY.gy-zlog">Zenith Library of Guyana</Issuer>
+  <Book uid="DAISY.gy-zlog.afc26219" />
+  <odrlx:rights>
+    <odrlx:agreement>
+      <odrlx:asset>
+        <odrlx:context>
+          <odrld:uid>DAISY.gy-zlog.afc26219</odrld:uid>
+        </odrlx:context>
+      </odrlx:asset>
+      <odrlx:permission>
+        <odrld:play />
+        <odrld:display />
+        <odrld:print />
+      </odrlx:permission>
+    </odrlx:agreement>
+  </odrlx:rights>
+  <Keys>
+    <ds:KeyInfo>
+      <ds:KeyName>DAISY.gy-zlog.afc26219-auth</ds:KeyName>
+      <dba:KeyRequestURI media-type="application/soap+xml">http://www.zlog.gy.example/daisy-online</dba:KeyRequestURI>
+    </ds:KeyInfo>
+    <ContentKey media="audio">
+      <xe:EncryptedKey>
+        <xe:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes128-cbc" />
+        <xe:CipherData>
+          <xe:CipherValue>0000</xe:CipherValue>
+        </xe:CipherData>
+        <xe:CarriedKeyName>DAISY.gy-zlog.afc26219-audio</xe:CarriedKeyName>
+      </xe:EncryptedKey>
+    </ContentKey>
+    <EncryptedRights>
+      <xe:EncryptedKey>
+        <xe:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes128-cbc" />
+        <xe:CipherData>
+          <xe:CipherValue>0000</xe:CipherValue>
+        </xe:CipherData>
+      </xe:EncryptedKey>
+      <xe:EncryptedData Type="http://www.w3.org/2001/04/xmlenc#Element">
+        <xe:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes128-cbc" />
+        <xe:CipherData>
+          <xe:CipherValue>0000</xe:CipherValue>
+        </xe:CipherData>
+      </xe:EncryptedData>
+    </EncryptedRights>
+  </Keys>
+</BookAuthorization>
