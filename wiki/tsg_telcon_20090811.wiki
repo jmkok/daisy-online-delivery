@@ -1,0 +1,74 @@
+Present: 
+
+Regrets: 
+
+== Action Item Summary ==
+
+=== New Action Items ===
+
+=== Previous Unfinished Action Items ===
+ * Kenny create sample WSDL using WDL style, send to group for testing. [DONE]
+ * Markus get rid of RPC arrays in XSD. [DONE]
+ * Geoff check whether PDTB2 allows rights expression without requiring encryption.
+ * Nick propose closing issue 97 to list with associated argumentation [ON AGENDA]
+ * Markus add label inside metadata
+ * Markus change metadata to dublin core [ON AGENDA]
+ * Markus add contentID param to setBookmarks [DONE]
+ * Markus get rid of href in favor if "uri". [DONE]
+ * Kenny to check whether WSI Basic Profile supports MTOM. (DONE. ws-i basic profile 1.1 does not support mtom; ws-i basic profile 1.2 does.) 
+ * Geoff to modify the scenarios.
+ * Geoff to post issue 94 to the list. [DONE]
+ * Markus check with george/board on whether service provider discovery req remains for this version [DONE]
+ * Matt: overall edit/review/proofing  
+ * Geoff: terminology section (geoff has started work on the terminology section)
+ * Markus/Kenny: sequence snippets: initial spec inclusion (usage scenarios for the dynamic menus are done with the exception of the Back Usage Scenario. these scenarios can be found in the scn-temp folder in the src folder on the svn in a file called kenny-dynamic-menus.txt) 
+ * ALL: Further src authoring, new snippets (eg Installments)
+ * Matt: Further work on the XSD XSLT (matt has almost finished work on the xsd xslt; only the final touches are left)
+ * Markus/Kenny: XSD and WSDL inline doc  
+ * markus/kenny: Add "expired," "borrowed" and "default" as the three possible parameter values to the getContentList function in the documentation.        
+ * Markus/kenny: Define the logOn function in the wsdl to return a boolean. a separate function called getServiceAttributes needs to be kept in the wsdl to return the attributes of a service. [DONE]  
+ * markus/kenny: Add a required lastModifiedDate attribute (or element) to each contentItem element in the contentList type (the lastModifiedDate of a contentItem element is the last modified date of the most recently modified resource in the publication being represented by the particular contentItem element). A required lastModifiedDate attribute also needs to be added to the resource element in the contentmetadata type. 
+ * markus/kenny: add a pointer to HTTP return codes specified in Section 10 in RFC 2615 in the documentation for situations where a uri to a resource is not valid for some reason. (refers to issue 106)   
+ * Nick prepare sample instances of the Daisy Online types. [DONE]
+ * Peter/Markus/Kenny: Board Recommendations paper.
+
+==Agenda/Minutes==
+
+=== Timelines going forward (revisit w Matt) ===
+|| start final Edit/Proofing (Matt) || August 28? ||
+|| delivered to board || *September 10* ||
+
+
+=== Wrapped Document Literal Style ===
+Discussion around the sample sent out by Kenny yesterday.
+
+How do we get to a final decision re use of this style?
+
+
+=== This weeks issues ===
+
+==== getContentList(default/borrowed/expired) ====
+As per previos telcon. The following questions need to be answered:
+ * Are these three values the only ones that getContentList can take, or do we support arbitrary IDs as well?
+ * is contentMetadata/@borrowed now redundant? (getContentList(borrowed/expired) pushes the task of owning lists to the service; the RS does not need to track this)
+ * Are the values default and borrowed sufficiently distinct? Is it clear when which of them should be used?
+
+==== Issue 94 ====  
+
+==== Issue 97 ====  
+Followup from list discussion. We can close this?
+
+==== Issue 100 ====
+Done, but suggest replacing contentMetadata/contentStandard with contentMetadata/metadata/dc:format
+
+==== Issue 105 ====
+Followup, actions?
+
+==== Issue 112 ====
+
+==== Issue 113 ====
+
+==== Issue 114 ====
+
+==== Issue 115 ====
+
