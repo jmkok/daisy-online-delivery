@@ -6,7 +6,7 @@ Regrets: Dominic, Hiro, George
 
 === New Action Items ===
  * Kenny inform daisy-online group headsup, review starting 28th
- * Geoff and @Markus analyze RequirementsDocument vs current API.
+ * Geoff and Markus analyze RequirementsDocument vs current API.
  * Kenny check whether .NET supports RPC-Literal.
  * Markus look for RPC-Literal support in other platforms.
  * Geoff add documentation to @borrowed. 
@@ -17,6 +17,7 @@ Regrets: Dominic, Hiro, George
  * Geoff label Issue 94 as an enhancement, leave open but leave out of spec
  * Kenny close Issue 112
  * Markus: implement change as in Issue 115, then close
+ * Markus make finite enumeration of getContentList(id), once we know whether to keep "borrowed"
 
 === Previous Unfinished Action Items ===
  * Kenny create sample WSDL using WDL style, send to group for testing. {DONE}
