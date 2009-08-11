@@ -637,8 +637,15 @@
 				<!-- TODO may make optional and specify value if so -->
 				<xs:annotation>
 					<xs:documentation>
-						<db:para>Specifies whether the Service requires this content to be
-							returned.</db:para>
+						<db:para>Specifies whether the <db:xref linkend="term_service"/>
+						requires this <db:xref linkend="term_content"/> to be returned.</db:para>
+						<db:para>If this attribute is true, it is a
+						contract from the <db:xref linkend="term_service"/> to the 
+						<db:xref linkend="term_readingSystem"/> that the
+						<db:xref linkend="term_readingSystem"/> will at some point delete
+						the <db:xref linkend="term_content"/> and call
+						<db:link linkend="op_returnContent">returnContent</db:link> with the
+						<db:xref linkend="term_content"/>'s identifier.</db:para>
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
