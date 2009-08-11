@@ -9,7 +9,7 @@ Regrets:
 === Previous Unfinished Action Items ===
  * Kenny create sample WSDL using WDL style, send to group for testing. [DONE]
  * Markus get rid of RPC arrays in XSD. [DONE]
- * Geoff check whether PDTB2 allows rights expression without requiring encryption.
+ * Geoff check whether PDTB2 allows rights expression without requiring encryption. [ON AGENDA]
  * Nick propose closing issue 97 to list with associated argumentation [ON AGENDA]
  * Markus add label inside metadata
  * Markus change metadata to dublin core [ON AGENDA]
@@ -71,4 +71,3 @@ Followup, actions?
 ==== Issue 114 ====
 
 ==== Issue 115 ====
-
