@@ -24,6 +24,28 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
     <xsl:import href="xhtml-1_1/docbook.xsl "/>
 	<xsl:output method="xml" omit-xml-declaration="no" indent="yes"/>
+	
+	<xsl:param name="generate.toc">
+appendix  toc,title
+article/appendix  nop
+article   toc,title
+book      toc,title,example
+chapter   toc,title
+part      toc,title
+preface   toc,title
+qandadiv  toc
+qandaset  toc
+reference toc,title
+sect1     toc
+sect2     toc
+sect3     toc
+sect4     toc
+sect5     toc
+section   toc
+set       toc,title
+</xsl:param>
+	
+	
 <!-- ============================================================================= -->
     <!-- Fill in the docbook placeholder user.head.content template to add an http-equiv meta
         element -->
