@@ -21,7 +21,7 @@ Regrets:
  * Markus check with george/board on whether service provider discovery req remains for this version {DONE}
  * Matt: overall edit/review/proofing  
  * Geoff: terminology section (geoff has started work on the terminology section)
- * Markus/Kenny: sequence snippets: initial spec inclusion (usage scenarios for the dynamic menus are done with the exception of the Back Usage Scenario. these scenarios can be found in the scn-temp folder in the src folder on the svn in a file called kenny-dynamic-menus.txt) 
+ * Markus/Kenny: sequence snippets: initial spec inclusion (usage scenarios for the dynamic menus are done. these scenarios can be found in the scn-temp folder in the src folder on the svn in a file called "Dynamic Menu Usage Scenarios.txt") 
  * ALL: Further src authoring, new snippets (eg Installments)
  * Matt: Further work on the XSD XSLT (matt has almost finished work on the xsd xslt; only the final touches are left)
  * Markus/Kenny: XSD and WSDL inline doc  
