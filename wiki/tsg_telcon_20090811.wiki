@@ -3,6 +3,8 @@ Present: Kenny, Nick, Markus, Geoff, Simon, Jelle
 Regrets: Dominic, Hiro, George
 
 == Action Item Summary ==
+
+=== New Action Items ===
  * Kenny inform daisy-online group headsup, review starting 28th
  * Geoff and @Markus analyze RequirementsDocument vs current API.
  * Kenny check whether .NET supports RPC-Literal.
@@ -15,8 +17,6 @@ Regrets: Dominic, Hiro, George
  * Geoff label Issue 94 as an enhancement, leave open but leave out of spec
  * Kenny close Issue 112
  * Markus: implement change as in Issue 115, then close
-
-=== New Action Items ===
 
 === Previous Unfinished Action Items ===
  * Kenny create sample WSDL using WDL style, send to group for testing. {DONE}
