@@ -51,7 +51,7 @@ How do we get to a final decision re use of this style?
 ==== getContentList(default/borrowed/expired) ====
 As per previos telcon. The following questions need to be answered:
  * Are these three values the only ones that getContentList can take, or do we support arbitrary IDs as well?
- * is contentMetadata/@borrowed now redundant? (getContentList(borrowed/expired) pushes the task of owning lists to the service; the RS does not need to track this)
+ * is contentMetadata/@borrowed now redundant? (getContentList(borrowed/expired) pushes the task of owning lists to the service; the RS does not need to track this) OTOH, how would a player know that it needs to call getContentList(expired)
  * Are the values default and borrowed sufficiently distinct? Is it clear when which of them should be used?
 
 ==== Issue 94 ====  
