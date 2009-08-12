@@ -646,6 +646,11 @@
 						the <db:xref linkend="term_content"/> and call
 						<db:link linkend="op_returnContent">returnContent</db:link> with the
 						<db:xref linkend="term_content"/>'s identifier.</db:para>
+						<db:para>It is the responsibility of the <db:xref linkend="term_readingSystem"/>
+						to store whether some <db:xref linkend="term_content"/> is
+						borrowed or not, and to present the <db:xref linkend="term_user"/>
+						with appropriate prompts if they try to return non-borrowed
+						<db:xref linkend="term_content"/>.</db:para>
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
