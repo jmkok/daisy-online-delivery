@@ -99,10 +99,7 @@
             <varlistentry xml:id="term_session">
                 <term>Session</term>
                 <listitem>
-                    <para> A session begins after a successful <link linkend="op_logOn">logOn</link>
-                        operation. It ends after a successful <link linkend="op_logOn">logOff</link>
-                        operation, OR it may be timed out by the <xref linkend="term_service"/>.
-                            <remark role="todo">define further; MG: the operations involved and span
+                    <para><remark role="todo">define; MG: the operations involved and span
                             are defined below; this def should be more abstract </remark>
                     </para>
                 </listitem>
@@ -245,16 +242,16 @@
             <section xml:id="operations_session_duration">
                 <title>Session Duration</title>
                 <para role="definiton" xml:id="def_sessionDuration"> A <xref linkend="term_session"/> begins after a
-                    successful <xref linkend="op_logOn"/> operation. The session ends after the
-                    <xref linkend="term_readingSystem"/> has invoked the <xref linkend="op_logOff"/> operation, or it may
-                    be terminated by the <xref linkend="term_service"/>.</para>
+                    successful <function><xref linkend="op_logOn"/></function> operation. The session ends after the
+                    Reading System has invoked the <function><xref linkend="op_logOff"/></function> operation, or it may
+                    be terminated by the Service.</para>
 
                 <para>This specification does not define any behaviors regarding Service termination
                     of Sessions; time out intervals, reasons for forced termination, and related
-                    aspects are all implementation defined.</para>
+                    aspects are all defined by the implementation.</para>
 
                 <para>A Session may cover multiple HTTP connections. Since transferring and
-                    rendering of content may be very timeconsuming, Sessions should be kept open for
+                    rendering of content may be very time-consuming, Sessions should be kept open for
                     as long as possible, in order to minimize the risk for a negative User
                     experience.</para>
             </section>
@@ -265,19 +262,19 @@
                 <para role="definition" xml:id="def_sessionInitializationSequence"
                     xreflabel="Session Initialization Sequence"> To ensure interoperability and
                     consistent behavior between implementations, Reading Systems must invoke the
-                    below operations in the given sequence at the onset of every Session, and before
+                    following operations in the given sequence at the onset of every Session, and before
                     invoking any other protocol operation. <orderedlist>
                         <listitem>
-                            <para>The <xref linkend="op_logOn"/> operation, with a return value of
-                                    <varname>true</varname> (<xref linkend="bib_xsdDatatypes"/>)
+                            <para>The <function><xref linkend="op_logOn"/></function> operation, with a return value of
+                                    <constant>true</constant> (<xref linkend="bib_xsdDatatypes"/>)
                             </para>
                         </listitem>
                         <listitem>
-                            <para> The <xref linkend="op_getServiceAttributes"/> operation</para>
+                            <para> The <function><xref linkend="op_getServiceAttributes"/></function> operation</para>
                         </listitem>
                         <listitem>
-                            <para> The <xref linkend="op_setReadingSystemAttributes"/> operation,
-                                with a return value of <varname>true</varname> (<xref
+                            <para> The <function><xref linkend="op_setReadingSystemAttributes"/></function> operation,
+                                with a return value of <constant>true</constant> (<xref
                                     linkend="bib_xsdDatatypes"/>) </para>
                         </listitem>
                     </orderedlist>
@@ -289,11 +286,10 @@
                     must be either be reinitialized, or the attempt to log the Reading System on to
                     the Service must be aborted.</para>
 
-                <para>All operations defined by this specification except the <xref
-                        linkend="op_logOn"/> operation are valid to invoke after the <token>Session
+                <para>All operations defined by this specification except the <function><xref linkend="op_logOn"/></function> operation are valid to invoke after the <token>Session
                         Initialization Sequence</token> has been completed.</para>
 
-                <para>A Service must throw a <xref linkend="ft_InvalidOperationFault"/> if a Reading
+                <para>A Service must throw a <errorname><xref linkend="ft_InvalidOperationFault"/></errorname> if a Reading
                     System does not honor the above initialization sequence.</para>
             </section>
 
@@ -303,35 +299,35 @@
                     <title>Successful Session Intialization</title>
                     <orderedlist>
                         <listitem>
-                            <para>[Required] 1. The <xref linkend="term_readingSystem"/> invokes the
-                                    <xref linkend="op_logOn"/> operation, passing the following
+                            <para>[Required] 1. The Reading System invokes the
+                                    <function><xref linkend="op_logOn"/></function> operation, passing the following
                                 credentials:</para>
                             <programlisting><xi:include href="./samples/initialization-logon.xml" parse="text"/></programlisting>
-                            <para>The service returns true <remark role="todo">TODO how is this done in wrapped style</remark>
+                            <para>The service returns <constant>true</constant> <remark role="todo">TODO how is this done in wrapped style</remark>
                                 to signal the logon was successful.</para>
                         </listitem>
                         <listitem>
-                            <para>[Required] 2. The Reading System invokes the <xref
-                                    linkend="op_getServiceAttributes"/> operation. The service
-                                returns a serviceAttributes type:</para>
+                            <para>[Required] 2. The Reading System invokes the <function><xref
+                                    linkend="op_getServiceAttributes"/></function> operation. The service
+                                returns a <type>serviceAttributes</type> type:</para>
                             <programlisting><xi:include href="./samples/initialization-serviceAttributes.xml" parse="text"/></programlisting>
                         </listitem>
                         <listitem>
-                            <para>[Required] 3. The Reading System invokes the <xref
-                                    linkend="op_setReadingSystemAttributes"/> operation, passing a
-                                    <xref linkend="tp_readingSystemAttributes"/> type:</para>
+                            <para>[Required] 3. The Reading System invokes the <function><xref
+                                    linkend="op_setReadingSystemAttributes"/></function> operation, passing a
+                                    <type><xref linkend="tp_readingSystemAttributes"/></type> type:</para>
                             <programlisting><xi:include href="./samples/initialization-readingSystemAttributes.xml" parse="text"/></programlisting>
                             <para>The <xref linkend="def_sessionInitializationSequence"/> is now
                                 complete, and the Reading System may commence by invoking other
                                 operations in the protocol. At this point, Reading Systems should
-                                invoke the <xref linkend="op_getServiceAnnouncements"/> operation to
-                                retrieve any Service announcements awaiting the User's
+                                invoke the <function><xref linkend="op_getServiceAnnouncements"/></function> operation to
+                                retrieve any service announcements awaiting the User's
                                 attention.</para>
                         </listitem>
                         <listitem>
-                            <para>[Optional] 4. The Reading System invokes the <xref
-                                    linkend="op_getServiceAnnouncements"/> operation, retrieving an
-                                    <xref linkend="tp_announcements"/> type in return:</para>
+                            <para>[Optional] 4. The Reading System invokes the <function><xref
+                                    linkend="op_getServiceAnnouncements"/></function> operation, retrieving an
+                                    <type><xref linkend="tp_announcements"/></type> type in return:</para>
                             <programlisting><xi:include href="./samples/initialization-serviceAnnouncements.xml" parse="text"/></programlisting>
                         </listitem>
                     </orderedlist>
@@ -358,6 +354,11 @@
             <section xml:id="operations_content_download">
                 <title>Downloading and streaming of content</title>
                 <para><remark role="todo">Add whatever we need to say on this topic. Refer to Service Delegates. Note that download/streaming can occur after session termination.</remark></para>
+				<para><remark>Important things to include in this section:</remark></para>
+				<para>If credentials are needed to access the Content, then the Service must supply the credentials in the <abbrev>URL</abbrev> of the resource.  These credentials may be the same as the <function><xref linkend="op_logOn"/></function> credentials, but the Reading System must not send basic authentication credentials if they were not supplied in the <abbrev>URL</abbrev>.</para>
+				<para>A DAISY Online session does not need to be active in order for a Reading System to download or stream Content.</para>
+				<para>Resources may be stored on the Service's servers or with Service Delegates, without restriction.  Note that Service Delegates may require different credentials for access to resources, or may not require credentials at all.  The Service must provide this information to Reading Systems.</para>
+				<para>Range headers for HTTP GET must be supported by the Service.  Since there is no way to enforce this requirement on Service Delegates, Reading Systems must be able to handle servers that do not support range headers.</para>
             </section>            
             
              <section xml:id="operations_content_issuing_pdtb">
@@ -369,14 +370,14 @@
                  to support the PTDB2 format. How is the support communicated at initializationtime (*attributes); what will happen in 
                  case of mismatch</remark></para>   
                 <para><remark role="todo">TODO give examples of PTDB2 contentMetadata etc for encrypted books</remark></para>                
-                <section xml:id="operations_content_issuing_pdtb_example_encrypted">
-					<title>Example: An Encrypted DTB</title>
-                     <para>If <xref linkend="term_content"/> is protected using <xref linkend="bib_pdtb2"/>, then there will be a metadata item in the <link linkend="tp_contentMetadata">contentMetadata</link> named "pdtb2:specVersion" with a value of "2005-1" and there will be resources with mimeTypes beginning with "application/x-pdtb".  The <xref linkend="term_readingSystem"/> can access these resources even if it does not support <xref linkend="bib_pdtb2"/>, but it might not be able to decrypt all the <xref linkend="term_content"/>.</para>
-                     <para>If some <xref linkend="term_content"/> has an Authorization Object (<abbrev>AO</abbrev>), the <xref linkend="term_readingSystem"/> can inspect it for the name of the key that secures the key to decrypt the <xref linkend="term_content"/>.</para>
-                     <para>The <xref linkend="term_readingSystem"/> may call <link linkend="op_getKeyExchangeObject">getKeyExchangeObject</link> with an <link linkend="tp_itemList">itemList</link> of names of keys on its keyring (these can be all or some of the symmetric keys or public/private keypairs the <xref linkend="term_readingSystem"/> supports) and the name of the requested key.  The <xref linkend="term_service"/> is free to choose any of the keys in the supportedPublicKeyNames to encrypt the Key Exchange Object (<abbrev>KXO</abbrev>).  If the <xref linkend="term_service"/> does not have any of those keys or if the <xref linkend="term_user"/> is not authorized to access the <xref linkend="term_content"/>, then the <xref linkend="term_service"/> will instead reply with an <link linkend="ft_InvalidOperationFault">InvalidOperationFault</link>.  The <xref linkend="term_service"/> is responsible for keeping a list of authorized key names.</para>
-                     <para>For example, a <xref linkend="term_user"/> wants to read an encrypted <abbrev>PDTB</abbrev> from the Zenith Library.  The <abbrev>AO</abbrev> is itself encrypted with a key named "DAISY.gy-zlog.afc26219-auth":</para>
+				 <para>If Content is protected using <xref linkend="bib_pdtb2"/>, then there will be a metadata item in the <type><xref linkend="tp_contentMetadata" /></type> named <literal>pdtb2:specVersion</literal> with a value of <literal>2005-1</literal> and there will be resources with mimeTypes beginning with <literal>application/x-pdtb…</literal>.  The Reading System can access these resources even if it does not support <xref linkend="bib_pdtb2"/>, but it might not be able to decrypt all the Content.</para>
+				 <para>If some Content has an Authorization Object (<abbrev>AO</abbrev>), the Reading System can inspect it for the name of the key that secures the key to decrypt the Content.</para>
+				 <para>The Reading System may call <function><xref linkend="op_getKeyExchangeObject"/></function> with an <type><xref linkend="tp_itemList"/></type> of names of keys on its keyring (these can be all or some of the symmetric keys or public/private keypairs the Reading System supports) and the name of the requested key.  The Service is free to choose any of the keys in the <parameter>supportedPublicKeyNames</parameter> to encrypt the Key Exchange Object (<abbrev>KXO</abbrev>).  If the Service does not have any of those keys or if the User is not authorized to access the Content, then the Service will instead reply with an <errorname><xref linkend="ft_InvalidOperationFault"/></errorname>.  The Service is responsible for keeping a list of authorized key names.</para>
+				<example>
+					<title>An Encrypted DTB</title>
+                     <para>A User wants to read an encrypted <abbrev>PDTB</abbrev> from the Zenith Library.  The <abbrev>AO</abbrev> is itself encrypted with a key named <literal>DAISY.gy-zlog.afc26219-auth</literal>:</para>
                      <programlisting><xi:include href="./samples/authorization.xml" parse="text"></xi:include></programlisting>
-                     <para>The <xref linkend="term_user"/> has keys for the <xref linkend="term_readingSystem"/> (an Acme Reader Express) as well as user account keys supplied by Haute-Bibliothèque and Apex Talking Books, Inc.  The <xref linkend="term_readingSystem"/> calls the <link linkend="op_getKeyExchangeObject">getKeyExchangeObject</link> operation with first parameter (supportedPublicKeyNames) as:</para>
+                     <para>The User has keys for the Reading System (an Acme Reader Express) as well as user account keys supplied by Haute-Bibliothèque and Apex Talking Books, Inc.  The Reading System calls the <function><xref linkend="op_getKeyExchangeObject"/></function> operation with the first parameter, <parameter>supportedPublicKeyNames</parameter>, as:</para>
                      <programlisting>
 &lt;itemList&gt;
   &lt;!-- The vendor, model and instance keys of the reading system. --&gt;
@@ -386,18 +387,17 @@
   &lt;!-- User account keys granted by Haute-Bibliothèque and Apex. --&gt;
   &lt;item&gt;DAISY.ca-qqhb.006442&lt;/item&gt;
   &lt;item&gt;DAISY.au-atbi.userKey-4C452DB4&lt;/item&gt;
-&lt;/itemList&gt;
-                     </programlisting>
-                     <para>and the second parameter (requestedKeyName) as "DAISY.gy-zlog.afc26219-auth".</para>
-                     <para>The <xref linkend="term_service"/> determines that the <xref linkend="term_user"/> is authorized to receive this key.  The <xref linkend="term_serviceProvider"/> have determined that the Acme Reader Express is a trusted <xref linkend="term_readingSystem"/> model, so the <xref linkend="term_service"/> returns a <abbrev>KXO</abbrev> encrypted with the model key, "DAISY.lv-acme.ReaderExpress":</para>
+&lt;/itemList&gt;</programlisting>
+                     <para>and the second parameter,<parameter>requestedKeyName</parameter>, as <literal>DAISY.gy-zlog.afc26219-auth</literal>.</para>
+                     <para>The Service determines that the User is authorized to receive this key.  The Service Provider has determined that the Acme Reader Express is a trusted Reading System model, so the Service returns a <abbrev>KXO</abbrev> encrypted with the model key, <literal>DAISY.lv-acme.ReaderExpress</literal>:</para>
                      <programlisting><xi:include href="./samples/kxo.xml" parse="text"></xi:include></programlisting>
-                </section>
-				<section xml:id="operations_content_issuing_pdtb_example_rm_only">
-					<title>Example: Rights Management without Encryption</title>
+				</example>
+				<example>
+					<title>Rights Management without Encryption</title>
 					<para>Note that PDTB2 can be used for rights expression without encryption.  The following <abbrev>AO</abbrev> describes the permission to play the audio of a certain book which expires at midnight on 31 October 2010, but has no encrypted parts.</para>
                      <programlisting><xi:include href="./samples/authorization-unencrypted.xml" parse="text"></xi:include></programlisting>
 					<para>A PDTB2-compliant reading system will prevent the user from playing the audio after that time, even though it is not encrypted.  A non-compliant reading system's behaviour is, naturally, undefined.</para>
-                </section>
+                </example>
              </section>
         </section>
 
@@ -589,12 +589,12 @@
     </acknowledgements>
 
     <appendix xml:id="appendixWSDL" conformance="informative" xreflabel="WSDL">
-        <title>DAISY Online Protocol - WSDL Definition</title>
+        <title>DAISY Online Protocol – WSDL Definition</title>
         <programlisting><xi:include href="do-wsdl-10.wsdl" parse="text"/></programlisting>
     </appendix>
 
     <appendix xml:id="appendixXSD" conformance="normative" xreflabel="XSD">
-        <title>DAISY Online Protocol - WXS Type Definition</title>
+        <title>DAISY Online Protocol – WXS Type Definition</title>
         <programlisting><xi:include href="do-types-10.xsd" parse="text"/></programlisting>
     </appendix>
 
