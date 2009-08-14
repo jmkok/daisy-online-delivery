@@ -40,7 +40,9 @@
 						
 						<xsl:element name="db:title">
 							<xsl:text>The </xsl:text>
-							<xsl:value-of select="@name"/>
+							<xsl:element name="db:type">
+								<xsl:value-of select="@name"/>
+							</xsl:element>
 							<xsl:text> Type</xsl:text>
 						</xsl:element>
 						
@@ -216,6 +218,7 @@
 	<xsl:template name="addLink">
 		<xsl:param name="name"/>
 		
+		<xsl:element name="db:type">
 		<xsl:element name="db:link">
 			<xsl:choose>
 				<xsl:when test="contains($name, ':')">
@@ -262,6 +265,7 @@
 			</xsl:choose>
 			
 			<xsl:value-of select="$name"/>
+		</xsl:element>
 		</xsl:element>
 		
 	</xsl:template>
