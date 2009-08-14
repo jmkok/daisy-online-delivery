@@ -210,7 +210,7 @@
 												keyboard.</db:para>
 												<db:para role="note">Note: this value is a
 												superset of
-												<db:varname>TEXT_NUMERIC</db:varname>.</db:para>
+												<db:literal>TEXT_NUMERIC</db:literal>.</db:para>
 												</xs:documentation>
 												</xs:annotation>
 												</xs:enumeration>
