@@ -148,13 +148,13 @@
 				<db:para role="desc">The identity of the list to retrieve. TODO seems like we should
 					only allow the default, borrowed/issued, and expired value. No use for arbitrary
 					values.</db:para>
-				<db:para>The value <db:varname>default</db:varname> is reserved to refer to a
+				<db:para>The value <db:literal>default</db:literal> is reserved to refer to a
 					default (precomposed) content list; Services must therefore not assign
-						<db:varname>default</db:varname> as the identity value of a dynamically
+						<db:literal>default</db:literal> as the identity value of a dynamically
 					composed content list.</db:para>
-				<db:para>The value <db:varname>borrowed</db:varname> is reserved to refer to a
-					listing of the content that is currently borrowed to the User by the Service;
-					Services must therefore not assign <db:varname>borrowed</db:varname> as the
+				<db:para>The value <db:literal>borrowed</db:literal> is reserved to refer to a
+					listing of the content that is currently borrowed by the User from the Service;
+					Services must therefore not assign <db:literal>borrowed</db:literal> as the
 					identity value of a dynamically composed content list.</db:para>
 				<db:para>TODO explain that this can be used to allow the service to manage the
 					borrowed content list on the users behalf. (Hiro)</db:para>
@@ -210,9 +210,9 @@
 		<part name="responses" element="tns:userResponses">
 			<documentation>
 				<db:para role="desc">TODO desc</db:para>
-				<db:para>The value <db:varname>default</db:varname> is reserved... TODO</db:para>
-				<db:para>The value <db:varname>search</db:varname> is reserved... TODO</db:para>
-				<db:para>The value <db:varname>back</db:varname> is reserved... TODO and make
+				<db:para>The value <db:literal>default</db:literal> is reserved... TODO</db:para>
+				<db:para>The value <db:literal>back</db:literal> is reserved... TODO and make
+				<db:para>The value <db:literal>search</db:literal> is reserved... TODO</db:para>
 					reference to serverAttributes</db:para>
 			</documentation>
 		</part>
@@ -231,8 +231,8 @@
 			<documentation>
 				<db:para role="desc">The identifier of the content for which metadata is being
 					requested, as expressed by the <db:varname>id</db:varname> attribute of the
-					relevant <db:varname>contentItem</db:varname> in the <db:xref
-						linkend="tp_contentList"/> type.</db:para>
+					relevant <db:type>contentItem</db:type> in the <db:type><db:xref
+						linkend="tp_contentList"/></db:type> type.</db:para>
 			</documentation>
 		</part>
 	</message>
@@ -337,8 +337,8 @@
 			<documentation>
 				<db:para role="desc">Posts properties of the Reading System to the
 					Service.</db:para>
-				<db:para>This operation must be invoked after a successful <db:xref
-						linkend="op_logOn"/> in order to establish the [session ready state] [TODO
+				<db:para>This operation must be invoked after a successful <db:function><db:xref
+						linkend="op_logOn"/></db:function> in order to establish the [session ready state] [TODO
 					link up]. This operation may be invoked additional times during a session to
 					record dynamic changes in the Reading System properties.</db:para>
 			</documentation>
@@ -355,7 +355,7 @@
 				<db:para>The <db:varname>firstItem</db:varname> and
 						<db:varname>lastItem</db:varname> parameters are used to request subsets of
 					the content list made available by the Service. The first item in the list has
-					the index <db:varname>0</db:varname>. The value <db:varname>-1</db:varname> of
+					the index <db:literal>0</db:literal>. The value <db:literal>-1</db:literal> of
 					the lastItem parameter indicates a request to retrieve all items from
 						<db:varname>startIndex</db:varname> to the end of the list.</db:para>
 				<db:para role="req">TODO note that out-of-range lastItem and firstItem values do not
@@ -372,8 +372,8 @@
 			<documentation>
 				<db:para role="desc">Retrieves <db:xref linkend="tp_contentMetadata"/> for the
 					specified content.</db:para>
-				<db:para role="prereq">This operation is only valid if a previous call to <db:xref
-						linkend="op_issueContent"/> with a result of <db:varname>true</db:varname>
+				<db:para role="prereq">This operation is only valid if a previous call to <db:function><db:xref
+						linkend="op_issueContent"/></db:function> with a result of <db:literal>true</db:literal>
 					has been made for the given content.</db:para>
 			</documentation>
 			<input message="tns:getContentMetadataRequest"/>
@@ -414,8 +414,8 @@
 		<operation name="markAnnouncementsAsRead">
 			<documentation>
 				<db:para role="desc">Marks the specified announcements as read.</db:para>
-				<db:para role="prereq">This operation is only valid if a previous call to <db:xref
-						linkend="op_getServiceAnnouncements"/> has been made during the
+				<db:para role="prereq">This operation is only valid if a previous call to <function><db:xref
+						linkend="op_getServiceAnnouncements"/></function> has been made during the
 					session.</db:para>
 			</documentation>
 			<input message="tns:markAnnouncementsAsReadRequest"/>
