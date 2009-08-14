@@ -327,15 +327,21 @@
 					<xsl:element name="db:para">
 						<xsl:choose>
 							<xsl:when test="self::xs:enumeration">
-								<xsl:value-of select="@value"/>
+								<xsl:element name="db:literal">
+									<xsl:value-of select="@value"/>
+								</xsl:element>
 							</xsl:when>
 							<xsl:when test="self::xs:minInclusive">
 								<xsl:text>minimum value: </xsl:text>
-								<xsl:value-of select="@value"/>
+								<xsl:element name="db:literal">
+									<xsl:value-of select="@value"/>
+								</xsl:element>
 							</xsl:when>
 							<xsl:when test="self::xs:maxInclusive">
 								<xsl:text>maximum value: </xsl:text>
-								<xsl:value-of select="@value"/>
+								<xsl:element name="db:literal">
+									<xsl:value-of select="@value"/>
+								</xsl:element>
 							</xsl:when>
 						</xsl:choose>
 					</xsl:element>
@@ -545,7 +551,9 @@
 					<xsl:element name="db:emphasis">
 						<xsl:text>Data type: </xsl:text>
 					</xsl:element>
-					<xsl:value-of select="@type"/>
+					<xsl:element name="db:type">
+						<xsl:value-of select="@type"/>
+					</xsl:element>
 				</xsl:element>
 			</xsl:when>
 			<xsl:otherwise>
@@ -721,7 +729,9 @@
 									</xsl:when>
 									<xsl:when test="@type">
 										<xsl:text>Data type: </xsl:text>
-										<xsl:value-of select="@type"/>
+										<xsl:element name="db:type">
+											<xsl:value-of select="@type"/>
+										</xsl:element>
 									</xsl:when>
 									<xsl:otherwise>
 										<xsl:text>&#160;</xsl:text>
@@ -732,7 +742,9 @@
 							<xsl:if test="@fixed">
 								<xsl:element name="db:para">
 									<xsl:text>Fixed value: </xsl:text>
-									<xsl:value-of select="@fixed"/>
+									<xsl:element name="db:literal">
+										<xsl:value-of select="@fixed"/>
+									</xsl:element>
 								</xsl:element>
 							</xsl:if>
 							
@@ -746,7 +758,9 @@
 							<xsl:if test="@default">
 								<xsl:element name="db:para">
 									<xsl:text>Default Value: </xsl:text>
-									<xsl:value-of select="@default"/>
+									<xsl:element name="db:literal">
+										<xsl:value-of select="@default"/>
+									</xsl:element>
 								</xsl:element>
 							</xsl:if>
 							
