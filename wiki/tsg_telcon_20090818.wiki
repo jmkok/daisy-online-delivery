@@ -5,6 +5,16 @@ Regrets:
 == Action Item Summary ==
 
 === New Action Items ===
+ * Markus push WDL version of WSDL to SVN, then notify group. Make sure that all recent WSDL edits are pushed to the new version.
+ * Geoff: Talk to Hiro about getContentList: two or three IDs (see notes below)
+ * Markus: implement changes are per Issue 114 discussion below
+ * Kenny modify dynamic menu usage scenarios to reflect Issue 114 changes.
+ * Markus: 115 to "keyRing"
+ * Markus: make returnContent optional
+ * Jelle: propose resolution to Issue 118
+
+
+=== Previous Unfinished Action Items ===
  * Kenny inform daisy-online group headsup, review starting 28th {DONE} 
  * Geoff and Markus analyze RequirementsDocument vs current API. {ONGOING}
  * Kenny check whether .NET supports RPC-Literal. {done. WCF does support RPC-Literal. Wrapped Document Literal is the default in wcf. Older versions of .net do not support RPC-Literal.}    
@@ -18,8 +28,6 @@ Regrets:
  * Kenny close Issue 112 {DONE}
  * Markus: implement change as in Issue 115, then close
  * Markus make finite enumeration of getContentList(id), once we know whether to keep "borrowed"
-
-=== Previous Unfinished Action Items ===
  * Kenny create sample WSDL using WDL style, send to group for testing. {DONE} 
  * Markus get rid of RPC arrays in XSD. {DONE}
  * Geoff check whether PDTB2 allows rights expression without requiring encryption. {DONE. PDTB2 does allow Rights Expression language without encryption.}
