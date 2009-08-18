@@ -1,0 +1,73 @@
+Present: 
+
+Regrets: 
+
+== Action Item Summary ==
+
+=== New Action Items ===
+ * Kenny inform daisy-online group headsup, review starting 28th {DONE} 
+ * Geoff and Markus analyze RequirementsDocument vs current API.
+ * Kenny check whether .NET supports RPC-Literal. {done. WCF does support RPC-Literal. Wrapped Document Literal is the default in wcf. Older versions of .net do not support RPC-Literal.}    
+ * Markus look for RPC-Literal support in other platforms.
+ * Geoff add documentation to @borrowed. 
+ * Geoff to summarize the getContentList(borrowed/default) discussion and sent to list. See Nick's suggestion below {DONE} 
+ * Markus replace contentMetadata/contentStandard with contentMetadata/metadata/dc:format. 
+ * Markus close Issue 97
+ * Geoff to add rights expression language example to PDTB section, then close Issue 105
+ * Geoff label Issue 94 as an enhancement, leave open but leave out of spec
+ * Kenny close Issue 112 {DONE}
+ * Markus: implement change as in Issue 115, then close
+ * Markus make finite enumeration of getContentList(id), once we know whether to keep "borrowed"
+
+=== Previous Unfinished Action Items ===
+ * Kenny create sample WSDL using WDL style, send to group for testing. {DONE} 
+ * Markus get rid of RPC arrays in XSD. {DONE}
+ * Geoff check whether PDTB2 allows rights expression without requiring encryption. {ON AGENDA}
+ * Nick propose closing issue 97 to list with associated argumentation {ON AGENDA}
+ * Markus add label inside metadata
+ * Markus change metadata to dublin core {ON AGENDA}
+ * Markus add contentID param to setBookmarks {DONE}
+ * Markus get rid of href in favor if "uri". {DONE}
+ * Kenny to check whether WSI Basic Profile supports MTOM. {DONE. ws-i basic profile 1.1 does not support mtom; ws-i basic profile 1.2 does.} 
+ * Geoff to modify the scenarios.
+ * Geoff to post issue 94 to the list. {DONE}
+ * Markus check with george/board on whether service provider discovery req remains for this version {DONE}
+ * Matt: overall edit/review/proofing  
+ * Geoff: terminology section {geoff has started work on the terminology section}
+ * Markus/Kenny: sequence snippets: initial spec inclusion {usage scenarios for the dynamic menus are done. these scenarios can be found in the scn-temp folder in the src folder on the svn in a file called "Dynamic Menu Usage Scenarios.txt"} 
+ * ALL: Further src authoring, new snippets (eg Installments)
+ * Matt: Further work on the XSD XSLT {matt has almost finished work on the xsd xslt; only the final touches are left}
+ * Markus/Kenny: XSD and WSDL inline doc  
+ * markus/kenny: Add "expired," "borrowed" and "default" as the three possible parameter values to the getContentList function in the documentation. {ON AGENDA}       
+ * Markus/kenny: Define the logOn function in the wsdl to return a boolean. a separate function called getServiceAttributes needs to be kept in the wsdl to return the attributes of a service. {DONE}  
+ * markus/kenny: Add a required lastModifiedDate attribute (or element) to each contentItem element in the contentList type (the lastModifiedDate of a contentItem element is the last modified date of the most recently modified resource in the publication being represented by the particular contentItem element). A required lastModifiedDate attribute also needs to be added to the resource element in the contentmetadata type. 
+ * markus/kenny: add a pointer to HTTP return codes specified in Section 10 in RFC 2615 in the documentation for situations where a uri to a resource is not valid for some reason. (refers to issue 106)   
+ * Nick prepare sample instances of the Daisy Online types. {DONE}
+ * Peter/Markus/Kenny: Board Recommendations paper.
+
+==Agenda/Minutes==
+
+
+=== Wrapped Document Literal Style ===
+
+* Wrapped Document Literal Style support in various platforms?
+* WSDL results?  
+* Decision: RPC-Literal or Wrapped Document Literal?   
+
+=== This weeks issues ===
+
+==== getContentList(default/borrowed/expired) ====
+
+* is "borrowed" required?
+
+==== Issue 113 ====
+
+==== Issue 114 ====
+
+==== Issue 115 ====
+
+==== Issue 116 ====
+
+==== Issue 117 ====
+
+==== Issue 118 ====
