@@ -112,7 +112,7 @@ Geoff: note that these would only be used in automatic transfer model: here havi
  * require issueContent to have been called before getContentMetadata (regardless of borrowed, bought or free)
  * move the sample element to the contentList type
  * (note: sample can have multiple labels, label/audio has rangeBegin, rangeEnd and size attributes)
- * make clear that Services must allow one, but may or may not allow several calls to getContentMetadata after issuance
+ * make clear that Services must allow one, but may several calls to getContentMetadata after issuance over several sessions
 
 ==== Issue 115 ====
 Already an action item on Markus. New name is "keyNames"?
