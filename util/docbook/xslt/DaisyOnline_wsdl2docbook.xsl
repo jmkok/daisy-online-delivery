@@ -41,7 +41,7 @@
 					<db:section> <xsl:attribute name="xml:id" select="concat('ft_',@name)"/>
 						<xsl:attribute name="xreflabel" select="@name"/>
 						<xsl:variable name="conc" select="replace(@name,'Fault','')" />							
-						<db:title>The <db:errorname><xsl:value-of select="$conc"/></db:errorname> Fault</db:title>
+						<db:title>The <xsl:value-of select="$conc"/> Fault</db:title>
 						<xsl:call-template name="getWSDLDocumentation">
 							<xsl:with-param name="node" as="element()" select="current()"/>
 						</xsl:call-template>
@@ -60,7 +60,7 @@
 				<xsl:attribute name="xml:id" select="concat('op_',@name)"/>
 				<xsl:attribute name="xreflabel" select="@name"/>
 
-				<db:title>The <db:function><xsl:value-of select="@name"/></db:function> Operation</db:title>
+				<db:title>The <xsl:value-of select="@name"/> Operation</db:title>
 				
 				<xsl:call-template name="getWSDLDocumentation">
 					<xsl:with-param name="node" as="element()" select="current()"/>

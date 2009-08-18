@@ -210,7 +210,7 @@
 												keyboard.</db:para>
 												<db:para role="note">Note: this value is a
 												superset of
-												<db:literal>TEXT_NUMERIC</db:literal>.</db:para>
+												<db:varname>TEXT_NUMERIC</db:varname>.</db:para>
 												</xs:documentation>
 												</xs:annotation>
 												</xs:enumeration>
@@ -637,20 +637,8 @@
 				<!-- TODO may make optional and specify value if so -->
 				<xs:annotation>
 					<xs:documentation>
-						<db:para>Specifies whether the <db:xref linkend="term_service"/>
-						requires this <db:xref linkend="term_content"/> to be returned.</db:para>
-						<db:para>If this attribute is true, it is a
-						contract from the <db:xref linkend="term_service"/> to the 
-						<db:xref linkend="term_readingSystem"/> that the
-						<db:xref linkend="term_readingSystem"/> will at some point delete
-						the <db:xref linkend="term_content"/> and call
-						<db:link linkend="op_returnContent">returnContent</db:link> with the
-						<db:xref linkend="term_content"/>'s identifier.</db:para>
-						<db:para>It is the responsibility of the <db:xref linkend="term_readingSystem"/>
-						to store whether some <db:xref linkend="term_content"/> is
-						borrowed or not, and to present the <db:xref linkend="term_user"/>
-						with appropriate prompts if they try to return non-borrowed
-						<db:xref linkend="term_content"/>.</db:para>
+						<db:para>Specifies whether the Service requires this content to be
+							returned.</db:para>
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
