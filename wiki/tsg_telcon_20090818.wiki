@@ -113,6 +113,18 @@ Geoff: note that these would only be used in automatic transfer model: here havi
  * move the sample element to the contentList type
  * (note: sample can have multiple labels, label/audio has rangeBegin, rangeEnd and size attributes)
  * make clear that Services must allow one, but may several calls to getContentMetadata after issuance over several sessions
+ 
+Kenny: should we change the content model of sample to "resources" (eg allow the sample to be a DTB). *Decision to change sample content type.* Geoff: we could use a format attribute on resources.
+
+Geoff:
+One core problem is that metadata+sample and resources are in the same type
+
+Kenny: 
+How about splitting up like this:
+ * getContentList
+ * [optionally call] getContentMetadata (gives metadata and sample(s))
+ * issueContent returns boolean
+ * getContentResources returns resources
 
 ==== Issue 115 ====
 Already an action item on Markus. New name is "keyNames"?
