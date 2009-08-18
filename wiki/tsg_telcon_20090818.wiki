@@ -87,15 +87,18 @@ Kenny:
 
 
 ==== Issue 113 ====
+*Suggestion: See below (issue 114)*
 
 ==== Issue 114 ====
 
 *Suggestion:* 
- * require issueContent to have been called before getContentMetadata
+ * require issueContent to have been called before getContentMetadata 
  * move the sample element to the contentList type
  * (note: sample can have multiple labels, label/audio has rangeBegin, rangeEnd and size attributes)
+ * make clear that Services must allow one, but may or may not allow several calls to getContentMetadata after issuance
 
 ==== Issue 115 ====
+Already an action item on Markus. New name is "keyNames"?
 
 ==== Issue 116 ====
 
