@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<serviceAttributes>
+  <supportsServerSideBack>false</supportsServerSideBack>
+  <supportsSearch>true</supportsSearch>
+  <supportedUplinkAudioCodecs>
+    <codec>audio/mpeg</codec>
+  </supportedUplinkAudioCodecs>
+  <supportedOptionalOperations>
+    <operation>DYNAMIC_MENUS</operation>
+    <operation>SET_BOOKMARKS</operation>
+    <operation>SERVICE_ANNOUNCEMENTS</operation>
+    <operation>PDTB2_KEY_PROVISION</operation>
+  </supportedOptionalOperations>
+</serviceAttributes>
+

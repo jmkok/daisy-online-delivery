@@ -1,0 +1,34 @@
+<questions>
+	<multipleChoiceQuestion id="q1">
+		<label xml:lang="en">
+			<text>What would you like to do?</text>
+		</label>
+		<choices>
+			<choice id="c1">
+				<label>
+					<text>Search the Library</text>
+				</label>
+			</choice>
+			<choice id="c2">
+				<label>
+					<text>Update your profile</text>
+				</label>
+			</choice>
+			<choice id="c3">
+				<label>
+					<text>Take a survey</text>
+				</label>
+			</choice>
+			<choice id="c4">
+				<label>
+					<text>Buy a book</text>
+				</label>
+			</choice>
+			<choice id="c5">
+				<label>
+					<text>Download or stream content</text>
+				</label>
+			</choice>
+		</choices>
+	</multipleChoiceQuestion>
+</questions>

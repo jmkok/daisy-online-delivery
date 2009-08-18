@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="DAISYOnlineService" xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.daisy.org/ns/daisy-online/#" xmlns:db="http://docbook.org/ns/docbook"
+	targetNamespace="http://www.daisy.org/ns/daisy-online/#"
+	xmlns:zed="http://www.daisy.org/z3986/2005/bookmark/">
+
+	<documentation> Notes on docbook documentation usage: para[role="desc"] is a short core
+		definition of the item being described. Plain text can also be used, assuming that no other
+		documentation than the core definition is provided within the documentation element. </documentation>
+
+	<types>
+		<xsd:schema targetNamespace="http://www.daisy.org/ns/daisy-online/#">
+			<xsd:include schemaLocation="do-types-10.xsd"/>
+		</xsd:schema>
+	</types>
+
+	<!-- ***************************** -->
+	<!-- ********  logon/off  ******** -->
+	<!-- ***************************** -->
+
+	<message name="logOnRequest">
+		<part name="userName" element="xsd:string">
+			<documentation>
+				<db:para role="desc">The user ID</db:para>
+			</documentation>
+		</part>
+		<part name="password" element="xsd:string">
+			<documentation>
+				<db:para role="desc">The user password</db:para>
+			</documentation>
+		</part>
+	</message>
+	<message name="logOnResponse">
+		<part name="result" element="xsd:boolean">
+			<documentation>
+				<db:para role="desc">Specifies whether the log-on was successful</db:para>
+			</documentation>
+		</part>
+	</message>
+	<message name="logOffRequest"/>
+	<message name="logOffResponse"/>
+
+	<!-- ***************************** -->
+	<!-- ********  bookmarks  ******** -->
+	<!-- ***************************** -->
+
+	<message name="setBookmarksRequest">
+		<part name="contentID" element="xsd:string">
+			<documentation>
+				<db:para role="desc">The content identifier with which the bookmarks are
+					associated</db:para>
+			</documentation>
+		</part>
+		<part name="bookmarks" element="zed:bookmarkSet">
+			<documentation>
+				<db:para role="desc">The bookmarks to store</db:para>
+			</documentation>
+		</part>
+	</message>
+	<message name="setBookmarksResponse">
+		<part name="result" element="xsd:boolean">
+			<documentation>
+				<db:para role="desc">Specifies whether the bookmarks for the content were saved
+					successfully on the Service.</db:para>
+			</documentation>
+		</part>
+	</message>
+	<message name="getBookmarksRequest">
+		<part name="publicationID" element="xsd:string">
+			<documentation>
+				<db:para role="desc">The identifier of the content for which bookmarks are being
+					retrieved</db:para>
+				<db:para role="note">TODO establish that contentMetadata dc.identifier is the
+					protocols locus to establish what this identifier is.</db:para>
+			</documentation>
+		</part>
+	</message>
+	<message name="getBookmarksResponse">
+		<part name="result" element="zed:bookmarkSet">
+			<documentation>The bookmarks for the Publication.</documentation>
+		</part>
+	</message>
+
+	<!-- ******************************** -->
+	<!-- ********  issue/return  ******** -->
+	<!-- ******************************** -->
+
+	<message name="issueContentRequest">
+		<part name="contentID" element="xsd:string">
+			<documentation>
+				<db:para role="desc">The identifier of the content that this issuance request is
+					for.</db:para>
+				<db:para role="note">TODO establish that contentMetadata dc.identifier is the
+					protocols locus to establish what this identifier is.</db:para>
+			</documentation>
+		</part>
+	</message>
+	<message name="issueContentResponse">
+		<part name="result" element="xsd:boolean">
+			<documentation>
+				<db:para role="desc">Specifies whether the content was issued
+					successfully.</db:para>
+			</documentation>
+		</part>
+	</message>
+	<message name="returnContentRequest">
+		<part name="publicationID" element="xsd:string">
+			<documentation>
+				<db:para role="desc">The unique identifier of the content that this return request
+					is for.</db:para>
+				<db:para role="note">TODO establish that contentMetadata dc.identifier is the
+					protocols locus to establish what this identifier is.</db:para>
+			</documentation>
+		</part>
+	</message>
+	<message name="returnContentResponse">
+		<part name="result" element="xsd:boolean">
+			<documentation>Specifies whether the content was returned successfully.</documentation>
+		</part>
+	</message>
+
+	<!-- ********************************************* -->
+	<!-- ********  Reading System Attributes  ******** -->
+	<!-- ********************************************* -->
+
+	<message name="setReadingSystemAttributesRequest">
+		<part name="attributes" element="tns:readingSystemAttributes">
+			<documentation>
+				<db:para role="desc">The Reading System Attributes to post.</db:para>
+			</documentation>
+		</part>
+	</message>
+	<message name="setReadingSystemAttributesResponse">
+		<part name="result" element="xsd:boolean">
+			<documentation>Specifies whether the ReadingSystemAttributes were recieved successfully
+				on the Service.</documentation>
+		</part>
+	</message>
+
+
+	<!-- ********************************************* -->
+	<!-- *************  content list  **************** -->
+	<!-- ********************************************* -->
+	<message name="getContentListRequest">
+		<part name="id" element="xsd:string">
+			<documentation>
+				<db:para role="desc">The identity of the list to retrieve. TODO seems like we should
+					only allow the default, borrowed/issued, and expired value. No use for arbitrary
+					values.</db:para>
+				<db:para>The value <db:varname>default</db:varname> is reserved to refer to a
+					default (precomposed) content list; Services must therefore not assign
+						<db:varname>default</db:varname> as the identity value of a dynamically
+					composed content list.</db:para>
+				<db:para>The value <db:varname>borrowed</db:varname> is reserved to refer to a
+					listing of the content that is currently borrowed to the User by the Service;
+					Services must therefore not assign <db:varname>borrowed</db:varname> as the
+					identity value of a dynamically composed content list.</db:para>
+				<db:para>TODO explain that this can be used to allow the service to manage the
+					borrowed content list on the users behalf. (Hiro)</db:para>
+			</documentation>
+		</part>
+		<part name="firstItem" element="xsd:integer">
+			<documentation>
+				<db:para role="desc">The first item to retrieve.</db:para>
+			</documentation>
+		</part>
+		<part name="lastItem" element="xsd:integer">
+			<documentation>
+				<db:para role="desc">The last item to retrieve.</db:para>
+			</documentation>
+		</part>
+	</message>
+	<message name="getContentListResponse">
+		<part name="result" element="tns:contentList">
+			<documentation>
+				<db:para>The requested content list, or a segment thereof.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+
+	<!-- ************************************** -->
+	<!-- ********  announcements  ******** -->
+	<!-- ************************************** -->
+
+	<message name="getServiceAnnouncementsRequest"/>
+	<message name="getServiceAnnouncementsResponse">
+		<part name="result" element="tns:announcements"/>
+	</message>
+	<message name="markAnnouncementsAsReadRequest">
+		<part name="read" element="tns:itemList">
+			<documentation>
+				<db:para role="desc">The announcements to mark as read, expressed as references to
+					the announcement's ID values.</db:para>
+			</documentation>
+		</part>
+	</message>
+	<message name="markAnnouncementsAsReadResponse">
+		<part name="result" element="xsd:boolean">
+			<documentation>Specifies whether the specified announcements were successfully marked as
+				read on the Service</documentation>
+		</part>
+	</message>
+
+	<!-- ************************************** -->
+	<!-- ********      questions       ******** -->
+	<!-- ************************************** -->
+	<message name="getQuestionsRequest">
+		<part name="responses" element="tns:userResponses">
+			<documentation>
+				<db:para role="desc">TODO desc</db:para>
+				<db:para>The value <db:varname>default</db:varname> is reserved... TODO</db:para>
+				<db:para>The value <db:varname>search</db:varname> is reserved... TODO</db:para>
+				<db:para>The value <db:varname>back</db:varname> is reserved... TODO and make
+					reference to serverAttributes</db:para>
+			</documentation>
+		</part>
+	</message>
+	<message name="getQuestionsResponse">
+		<part name="result" element="tns:questions"/>
+	</message>
+
+
+	<!-- ********************************************* -->
+	<!-- ****************  metadata  ***************** -->
+	<!-- ********************************************* -->
+
+	<message name="getContentMetadataRequest">
+		<part name="contentItemID" element="xsd:ID">
+			<documentation>
+				<db:para role="desc">The identifier of the content for which metadata is being
+					requested, as expressed by the <db:varname>id</db:varname> attribute of the
+					relevant <db:varname>contentItem</db:varname> in the <db:xref
+						linkend="tp_contentList"/> type.</db:para>
+			</documentation>
+		</part>
+	</message>
+	<message name="getContentMetadataResponse">
+		<part name="result" element="tns:contentMetadata"/>
+	</message>
+
+	<!-- ********************************************* -->
+	<!-- ******************  PDTB2 ******************* -->
+	<!-- ********************************************* -->
+
+	<message name="getKeyExchangeObjectRequest">
+		<part name="supportedPublicKeyNames" element="tns:itemList">
+			<documentation>
+				<db:para role="desc">The identifiers of the keys on the Reading System's keyring.</db:para>
+			</documentation>
+		</part>
+		<part name="requestedKeyName" element="xsd:string">
+			<documentation>
+				<db:para role="desc">The identifier of the requested key.</db:para>
+			</documentation>
+		</part>
+	</message>
+	<message name="getKeyExchangeObjectResponse">
+		<part name="result" element="xsd:string">
+			<documentation>
+				<db:para role="desc">A <db:xref linkend="bib_pdtb2"/> Key Exchange Object,
+				containing the requested key encrypted using one of the keys identified
+				in supportedPublicKeyNames.</db:para>
+				<db:para role="desc">TODO should return a Key Exchange Object xml fragment</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<!-- ********************************************* -->
+	<!-- *******  Optional Operations Query ********** -->
+	<!-- ********************************************* -->
+
+	<message name="getServiceAttributesRequest">
+		<documentation>
+			<db:para role="desc">DOC TODO</db:para>
+		</documentation>
+	</message>
+	<message name="getServiceAttributesResponse">
+		<part name="result" element="tns:serviceAttributes">
+			<documentation>
+				<db:para role="desc">DOC TODO</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<portType name="daisy-online">
+
+		<!-- **************************************************** -->
+		<!-- *******  operations required for compliance ******** -->
+		<!-- **************************************************** -->
+
+		<operation name="logOn">
+			<documentation>
+				<db:para role="desc">Logs the Reading System on to the Service.</db:para>
+			</documentation>
+			<input message="tns:logOnRequest"/>
+			<output message="tns:logOnResponse"/>
+			<fault name="logOnInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="logOnInvalidOperation" message="tns:InvalidOperationFault"/>
+		</operation>
+		<operation name="logOff">
+			<documentation>Logs the Reading System off the Service.</documentation>
+			<input message="tns:logOffRequest"/>
+			<output message="tns:logOffResponse"/>
+			<fault name="logOffInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="logOffInvalidOperation" message="tns:InvalidOperationFault"/>
+		</operation>
+
+		<operation name="issueContent">
+			<documentation>
+				<db:para role="desc">Requests the issuance of the specified content.</db:para>
+			</documentation>
+			<input message="tns:issueContentRequest"/>
+			<output message="tns:returnContentResponse"/>
+			<fault name="issueContentInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="issueContentInvalidParameter" message="tns:InvalidParameterFault"/>
+			<fault name="issueContentInvalidOperation" message="tns:InvalidOperationFault"/>
+		</operation>
+
+		<operation name="returnContent">
+			<documentation>
+				<db:para role="desc">Requests the return of the specified content.</db:para>
+				<db:para>
+					<db:remark role="todo">Define how to handle this in purchase or other no-return
+						situations. Does making optional fix it all?</db:remark>
+				</db:para>
+			</documentation>
+			<input message="tns:returnContentRequest"/>
+			<output message="tns:returnContentResponse"/>
+			<fault name="returnContentInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="returnContentInvalidParameter" message="tns:InvalidParameterFault"/>
+			<fault name="returnContentInvalidOperation" message="tns:InvalidOperationFault"/>
+		</operation>
+
+		<operation name="setReadingSystemAttributes">
+			<documentation>
+				<db:para role="desc">Posts properties of the Reading System to the
+					Service.</db:para>
+				<db:para>This operation must be invoked after a successful <db:xref
+						linkend="op_logOn"/> in order to establish the [session ready state] [TODO
+					link up]. This operation may be invoked additional times during a session to
+					record dynamic changes in the Reading System properties.</db:para>
+			</documentation>
+			<input message="tns:setReadingSystemAttributesRequest"/>
+			<output message="tns:setReadingSystemAttributesResponse"/>
+			<fault name="setReadingSystemAttributesInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="setReadingSystemAttributesInvalidOperation" message="tns:InvalidOperationFault"/>
+			<fault name="setReadingSystemAttributesInvalidParameter" message="tns:InvalidParameterFault"/>
+		</operation>
+
+		<operation name="getContentList">
+			<documentation>
+				<db:para role="desc">Retrieves a list of available content.</db:para>
+				<db:para>The <db:varname>firstItem</db:varname> and
+						<db:varname>lastItem</db:varname> parameters are used to request subsets of
+					the content list made available by the Service. The first item in the list has
+					the index <db:varname>0</db:varname>. The value <db:varname>-1</db:varname> of
+					the lastItem parameter indicates a request to retrieve all items from
+						<db:varname>startIndex</db:varname> to the end of the list.</db:para>
+				<db:para role="req">TODO note that out-of-range lastItem and firstItem values do not
+					constitute Fault matter.</db:para>
+			</documentation>
+			<input message="tns:getContentListRequest"/>
+			<output message="tns:getContentListResponse"/>
+			<fault name="getContentListInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="getContentListInvalidOperation" message="tns:InvalidOperationFault"/>
+			<fault name="getContentListInvalidParameter" message="tns:InvalidParameterFault"/>
+		</operation>
+
+		<operation name="getContentMetadata">
+			<documentation>
+				<db:para role="desc">Retrieves <db:xref linkend="tp_contentMetadata"/> for the
+					specified content.</db:para>
+				<db:para role="prereq">This operation is only valid if a previous call to <db:xref
+						linkend="op_issueContent"/> with a result of <db:varname>true</db:varname>
+					has been made for the given content.</db:para>
+			</documentation>
+			<input message="tns:getContentMetadataRequest"/>
+			<output message="tns:getContentMetadataResponse"/>
+			<fault name="getContentMetadataInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="getContentMetadataInvalidOperation" message="tns:InvalidOperationFault"/>
+			<fault name="getContentMetadataInvalidParameter" message="tns:InvalidParameterFault"/>
+		</operation>
+
+		<operation name="getServiceAttributes">
+			<documentation>
+				<db:para role="desc">Retrieves Service properties, including information on which
+					optional operations it supports.</db:para>
+			</documentation>
+			<input message="tns:getServiceAttributesRequest"/>
+			<output message="tns:getServiceAttributesResponse"/>
+			<fault name="getServiceAttributesInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="getServiceAttributesInvalidOperation" message="tns:InvalidOperationFault"/>
+		</operation>
+
+
+		<!-- ************************************** -->
+		<!-- *******  optional operations  ******** -->
+		<!-- ************************************** -->
+
+		<operation name="getServiceAnnouncements">
+			<documentation>
+				<db:para role="desc">Retrieves the announcements awaiting the User's attention from
+					the Service.</db:para>
+			</documentation>
+			<input message="tns:getServiceAnnouncementsRequest"/>
+			<output message="tns:getServiceAnnouncementsResponse"/>
+			<fault name="getServiceAnnouncementsInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="getServiceAnnouncementsInvalidOperation" message="tns:InvalidOperationFault"/>
+			<fault name="getServiceAnnouncementsOperationNotSupported" message="tns:OperationNotSupportedFault"/>
+		</operation>
+
+		<operation name="markAnnouncementsAsRead">
+			<documentation>
+				<db:para role="desc">Marks the specified announcements as read.</db:para>
+				<db:para role="prereq">This operation is only valid if a previous call to <db:xref
+						linkend="op_getServiceAnnouncements"/> has been made during the
+					session.</db:para>
+			</documentation>
+			<input message="tns:markAnnouncementsAsReadRequest"/>
+			<output message="tns:markAnnouncementsAsReadResponse"/>
+			<fault name="markAnnouncementsAsReadInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="markAnnouncementsAsReadInvalidOperation" message="tns:InvalidOperationFault"/>
+			<fault name="markAnnouncementsAsReadInvalidParameter" message="tns:InvalidParameterFault"/>
+			<fault name="markAnnouncementsAsReadOperationNotSupported" message="tns:OperationNotSupportedFault"/>
+		</operation>
+
+		<operation name="setBookmarks">
+			<documentation>
+				<db:para role="desc">Request the storage of bookmarks for a content item to the
+					Service.</db:para>
+				<!-- <db:para role="note">Note that the publication identifier is embedded in the
+						<db:xref linkend="tp_bookmarkSet"/> type.</db:para> -->
+				<db:para role="note">Note that this operation only supports the storage of bookmarks
+					for one content item at a time.</db:para>
+			</documentation>
+			<input message="tns:setBookmarksRequest"/>
+			<output message="tns:setBookmarksResponse"/>
+			<fault name="setBookmarksInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="setBookmarksInvalidOperation" message="tns:InvalidOperationFault"/>
+			<fault name="setBookmarksInvalidParameter" message="tns:InvalidParameterFault"/>
+			<fault name="setBookmarksOperationNotSupported" message="tns:OperationNotSupportedFault"/>
+		</operation>
+		<operation name="getBookmarks">
+			<documentation>
+				<db:para role="desc">Retrieves bookmarks for a content item from the
+					Service.</db:para>
+			</documentation>
+			<input message="tns:getBookmarksRequest"/>
+			<output message="tns:getBookmarksResponse"/>
+			<fault name="getBookmarksInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="getBookmarksInvalidParameter" message="tns:InvalidParameterFault"/>
+			<fault name="getBookmarksInvalidOperation" message="tns:InvalidOperationFault"/>
+			<fault name="getBookmarksOperationNotSupported" message="tns:OperationNotSupportedFault"
+			/>
+		</operation>
+		<operation name="getQuestions">
+			<documentation>
+				<db:para role="desc">DOC TODO</db:para>
+			</documentation>
+			<input message="tns:getQuestionsRequest"/>
+			<output message="tns:getQuestionsResponse"/>
+			<fault name="getQuestionsInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="getQuestionsInvalidOperation" message="tns:InvalidOperationFault"/>
+			<fault name="getQuestionsOperationNotSupported" message="tns:OperationNotSupportedFault"
+			/>
+		</operation>
+		<operation name="getKeyExchangeObject">
+			<documentation>
+				<db:para role="desc">Requests a <db:xref linkend="bib_pdtb2"/> Key Exchange Object
+				from the <db:xref linkend="term_service"/>.</db:para>
+			</documentation>
+			<input message="tns:getKeyExchangeObjectRequest"/>
+			<output message="tns:getKeyExchangeObjectResponse"/>
+			<fault name="getKeyExchangeObjectInternalServerError" message="tns:InternalServerErrorFault"/>
+			<fault name="getKeyExchangeObjectInvalidOperation" message="tns:InvalidOperationFault"/>
+			<fault name="getKeyExchangeObjectInvalidParameter" message="tns:InvalidParameterFault"/>
+			<fault name="getKeyExchangeObjectOperationNotSupported" message="tns:OperationNotSupportedFault"/>
+		</operation>
+
+	</portType>
+
+	<!-- ************************************** -->
+	<!-- ********        faults        ******** -->
+	<!-- ************************************** -->
+
+	<message name="InternalServerErrorFault">
+		<documentation>
+			<db:para role="desc">An internal server error occurred on the Service and the execution
+				of the operation was halted.</db:para>
+		</documentation>
+	</message>
+	<message name="InvalidParameterFault">
+		<documentation>
+			<db:para role="desc">An invalid parameter was passed with the operation
+				request.</db:para>
+		</documentation>
+		<part name="invalidParamName" element="xsd:string">
+			<documentation>
+				<db:para role="desc">The name of the invalid parameter</db:para>
+			</documentation>
+		</part>
+		<part name="invalidParamValue" element="xsd:string">
+			<documentation>
+				<db:para role="desc">The value of the invalid parameter, serialized as a
+					string</db:para>
+			</documentation>
+		</part>
+	</message>
+	<message name="InvalidOperationFault">
+		<documentation>
+			<db:para role="desc">The current context does not permit a call to this
+				operation.</db:para>
+		</documentation>
+	</message>
+	<message name="OperationNotSupportedFault">
+		<documentation>
+			<db:para role="desc">This operation is not supported by the Service.</db:para>
+		</documentation>
+	</message>
+
+</definitions>

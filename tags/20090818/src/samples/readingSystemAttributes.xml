@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<readingSystemAttributes>
+  <manufacturer>RNIB</manufacturer>
+  <model>RNIB01</model>
+  <serialNumber>123456</serialNumber>
+  <version>1.0</version>
+  <config>
+    <supportsMultipleSelections>false</supportsMultipleSelections>
+    <preferredUILanguage>en-uk</preferredUILanguage>
+    <bandwidth>8000000</bandwidth>
+    <supportedContentStandards>
+      <supportedContentStandard>Daisy 2.02</supportedContentStandard>
+      <supportedContentStandard>ANSI/NISO Z39.86-2005</supportedContentStandard>
+    </supportedContentStandards>
+    <supportedContentProtectionStandards>
+      <supportedContentProtectionStandard>PDTB2</supportedContentProtectionStandard>
+    </supportedContentProtectionStandards>
+    <supportedMimeTypes>
+      <mimeType type="text/plain" xml:lang="en"/>
+      <mimeType type="audio/mpeg"/>
+    </supportedMimeTypes>
+    <supportedInputTypes>
+      <input type="TEXT_NUMERIC" xml:lang="en"/>
+    </supportedInputTypes>
+  </config>
+  <!-- requiresAudioLabels should be within config -->
+  <requiresAudioLabels>true</requiresAudioLabels>
+</readingSystemAttributes>
