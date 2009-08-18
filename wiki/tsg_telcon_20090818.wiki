@@ -22,10 +22,10 @@ Regrets:
 === Previous Unfinished Action Items ===
  * Kenny create sample WSDL using WDL style, send to group for testing. {DONE} 
  * Markus get rid of RPC arrays in XSD. {DONE}
- * Geoff check whether PDTB2 allows rights expression without requiring encryption. {ON AGENDA}
- * Nick propose closing issue 97 to list with associated argumentation {ON AGENDA}
+ * Geoff check whether PDTB2 allows rights expression without requiring encryption. {DONE. PDTB2 does allow Rights Expression language without encryption.}
+ * Nick propose closing issue 97 to list with associated argumentation {done} 
  * Markus add label inside metadata
- * Markus change metadata to dublin core {ON AGENDA}
+ * Markus change metadata to dublin core 
  * Markus add contentID param to setBookmarks {DONE}
  * Markus get rid of href in favor if "uri". {DONE}
  * Kenny to check whether WSI Basic Profile supports MTOM. {DONE. ws-i basic profile 1.1 does not support mtom; ws-i basic profile 1.2 does.} 
@@ -47,7 +47,6 @@ Regrets:
 
 ==Agenda/Minutes==
 
-
 === Wrapped Document Literal Style ===
 
 * Wrapped Document Literal Style support in various platforms?
@@ -58,7 +57,7 @@ Regrets:
 
 ==== getContentList(default/borrowed/expired) ====
 
-* is "borrowed" required?
+* is "borrowed" still required?
 
 ==== Issue 113 ====
 
