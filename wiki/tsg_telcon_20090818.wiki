@@ -92,14 +92,16 @@ Kenny:
 
 *Suggestion: three exclusive lists*
  * "expired" is clear: a list of issued content that must be returned/deleted
- * "issued" is a list of all content that has been issued, whether it has been downloaded or not. 
- * "new" is a list of things that has not yet been issued
+ * "issued" is a list of all content that has been issued, whether it has been downloaded or not, and whether or not the content is borrowed, free, or bought 
+ * "new" is a list of content that has not yet been issued that the user may choose to have issued
 
- * The spec should note that service providers may remove items from the "available" list 
+ * The spec should note that service providers may remove items from the "issued" list 
   * when content gets outdated or otherwise becomes irrelevant 
   * based on an [undefined] measure of the content having been accessed.
 
-Maybe contentMetadata/@borrowed needs a name change
+Note: Maybe contentMetadata/@borrowed needs a name change
+
+Geoff: note that these would only be used in automatic transfer model: here having issued and new as separate IDs isnt necessary.
 
 ==== Issue 113 ====
 *Suggestion: See below (issue 114)*
@@ -107,7 +109,7 @@ Maybe contentMetadata/@borrowed needs a name change
 ==== Issue 114 ====
 
 *Suggestion:* 
- * require issueContent to have been called before getContentMetadata 
+ * require issueContent to have been called before getContentMetadata (regardless of borrowed, bought or free)
  * move the sample element to the contentList type
  * (note: sample can have multiple labels, label/audio has rangeBegin, rangeEnd and size attributes)
  * make clear that Services must allow one, but may or may not allow several calls to getContentMetadata after issuance
