@@ -53,6 +53,8 @@ Regrets:
  * WSDL results?  
  * Decision: RPC-Literal or Wrapped Document Literal?   
 
+ * *Suggestion: Go for Wrapped Document Literal in the Draft release*
+
 === This weeks issues ===
 
 ==== getContentList(default/borrowed/expired) ====
@@ -87,6 +89,11 @@ Kenny:
 ==== Issue 113 ====
 
 ==== Issue 114 ====
+
+*Suggestion:* 
+ * require issueContent to have been called before getContentMetadata
+ * move the sample element to the contentList type
+ * (note: sample can have multiple labels, label/audio has rangeBegin, rangeEnd and size attributes)
 
 ==== Issue 115 ====
 
