@@ -1,4 +1,4 @@
-Present: 
+Present: George, Markus, Kenny, Geoff, Simon, Jelle, Markus (scribe), Nick
 
 Regrets: 
 
@@ -55,6 +55,11 @@ Regrets:
 
  * *Suggestion: Go for Wrapped Document Literal in the Draft release*
 
+Group decides to go for WDL
+
+@Markus will push new version to SVN, then notify group. Make sure that all recent WSDL edits are pushed to the new version.
+
+
 === This weeks issues ===
 
 ==== getContentList(default/borrowed/expired) ====
@@ -85,12 +90,16 @@ Kenny:
  all back-issues of all newspapers and magazines, that the user has subscribed to, 
  and that the user has downloaded since her subscription?
 
-*Suggestion:*
+*Suggestion: three exclusive lists*
  * "expired" is clear: a list of issued content that must be returned/deleted
- * "available" is a list of all content that has been issued, whether it has been downloaded or not. (To keep in harmony with operation names, "available" could be called "issued")
- * However, spec should note that service providers may remove items from the "available" list 
+ * "issued" is a list of all content that has been issued, whether it has been downloaded or not. 
+ * "new" is a list of things that has not yet been issued
+
+ * The spec should note that service providers may remove items from the "available" list 
   * when content gets outdated or otherwise becomes irrelevant 
   * based on an [undefined] measure of the content having been accessed.
+
+Maybe contentMetadata/@borrowed needs a name change
 
 ==== Issue 113 ====
 *Suggestion: See below (issue 114)*
