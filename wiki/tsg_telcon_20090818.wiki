@@ -49,15 +49,15 @@ Regrets:
 
 === Wrapped Document Literal Style ===
 
-* Wrapped Document Literal Style support in various platforms?
-* WSDL results?  
-* Decision: RPC-Literal or Wrapped Document Literal?   
+*Wrapped Document Literal Style support in various platforms?
+*WSDL results?  
+*Decision: RPC-Literal or Wrapped Document Literal?   
 
 === This weeks issues ===
 
 ==== getContentList(default/borrowed/expired) ====
 
-* is "borrowed" still required?
+*is "borrowed" still required?
 
 ==== Issue 113 ====
 
