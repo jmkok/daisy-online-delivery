@@ -122,15 +122,33 @@ One core problem is that metadata+sample and resources are in the same type
 Kenny: 
 How about splitting up like this:
  * getContentList
- * [optionally call] getContentMetadata (gives metadata and sample(s))
+ * {optionally call} getContentMetadata (gives metadata and sample(s))
  * issueContent returns boolean
  * getContentResources returns resources
 
+Simon: suggest that samples are provided as an id, instead of resources inline
+
+@markus do changes as above
+@Kenny modify dynamic menu usage scenarios to reflect the above.
+
 ==== Issue 115 ====
-Already an action item on Markus. New name is "keyNames"?
+Already an action item on @Markus. New name is "keyRing".
 
 ==== Issue 116 ====
+@markus make returnContent optional
 
 ==== Issue 117 ====
+Geoff: suggesting that rather than using the URL scheme (we are using userInfo in a nonstandard way), have an explicit attribute (user:colon scheme).
+
+Jelle: I dont see the problem. 
+
+Nick: I dont mind either way.
+
+Geoff: I think I misread the http spec. @Geoff: Mark this issue as invalid.
 
 ==== Issue 118 ====
+Need to be clear that http session and protocol session are not the same thing. The question is: do you set the cookie immediately or after logOn?
+
+Geoff: suggest that we make http session and protocol session the same thing.
+
+@Jelle propose where we should be going with 118.
