@@ -85,6 +85,12 @@ Kenny:
  all back-issues of all newspapers and magazines, that the user has subscribed to, 
  and that the user has downloaded since her subscription?
 
+*Suggestion:*
+ * "expired" is clear: a list of issued content that must be returned/deleted
+ * "available" is a list of all content that has been issued, whether it has been downloaded or not. (To keep in harmony with operation names, "available" could be called "issued")
+ * However, spec should note that service providers may remove items from the "available" list 
+  * when content gets outdated or otherwise becomes irrelevant 
+  * based on an [undefined] measure of the content having been accessed.
 
 ==== Issue 113 ====
 *Suggestion: See below (issue 114)*
