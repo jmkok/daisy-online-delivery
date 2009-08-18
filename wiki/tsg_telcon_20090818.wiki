@@ -6,13 +6,13 @@ Regrets:
 
 === New Action Items ===
  * Kenny inform daisy-online group headsup, review starting 28th {DONE} 
- * Geoff and Markus analyze RequirementsDocument vs current API.
+ * Geoff and Markus analyze RequirementsDocument vs current API. {ONGOING}
  * Kenny check whether .NET supports RPC-Literal. {done. WCF does support RPC-Literal. Wrapped Document Literal is the default in wcf. Older versions of .net do not support RPC-Literal.}    
  * Markus look for RPC-Literal support in other platforms.
  * Geoff add documentation to @borrowed. 
  * Geoff to summarize the getContentList(borrowed/default) discussion and sent to list. See Nick's suggestion below {DONE} 
  * Markus replace contentMetadata/contentStandard with contentMetadata/metadata/dc:format. 
- * Markus close Issue 97
+ * Markus close Issue 97 {DONE}
  * Geoff to add rights expression language example to PDTB section, then close Issue 105
  * Geoff label Issue 94 as an enhancement, leave open but leave out of spec
  * Kenny close Issue 112 {DONE}
@@ -49,15 +49,40 @@ Regrets:
 
 === Wrapped Document Literal Style ===
 
-*Wrapped Document Literal Style support in various platforms?
-*WSDL results?  
-*Decision: RPC-Literal or Wrapped Document Literal?   
+ * Wrapped Document Literal Style support in various platforms?
+ * WSDL results?  
+ * Decision: RPC-Literal or Wrapped Document Literal?   
 
 === This weeks issues ===
 
 ==== getContentList(default/borrowed/expired) ====
+ * is "borrowed" still required?
 
-*is "borrowed" still required?
+Geoff:
+
+ After discussion on the telecon this morning, I think there is need for 
+ only two defined  content lists: "expired" and "available".  "available" 
+ would contain a list of all the content available to the user, whether 
+ borrowed, purchased, or given without charge (such as the latest edition 
+ of a free periodical subscription).  "expired" would contain a list of 
+ the content on loan from the service that the service providers wish 
+ to take away from the user.
+
+ I think this may clear up some of the confusion between the "default" 
+ and "borrowed" lists.  I don't think we need an explicit "borrowed" 
+ list, since the contentMetadata for each item has a "borrowed" attribute 
+ to say whether the material is on loan or not.  At that point, it's a 
+ reading system function to keep track of it being borrowed.  Hiro, or 
+ anyone else, please let us know if there's another reason to have a 
+ "borrowed" content list.
+
+Kenny:
+
+ I am not as yet able to fathom the implications of a getContentList("available"). 
+ does this mean that in our scenario, as described above, we would need to return 
+ all back-issues of all newspapers and magazines, that the user has subscribed to, 
+ and that the user has downloaded since her subscription?
+
 
 ==== Issue 113 ====
 
