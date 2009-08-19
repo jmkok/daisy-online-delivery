@@ -1128,10 +1128,27 @@
 
 		<operation name="returnContent">
 			<documentation>
-				<db:para role="desc">Requests the return of the specified content.</db:para>
+				<db:para role="desc">Notify the Service that the specified content
+				has been deleted from the Reading System.</db:para>
+				<db:para>This operation is for the use of libraries and other
+				organizations with a loan programme for content.  A Reading System
+				should not call <db:function>returnContent</db:function> where the contentMetadata's
+				<db:varname>borrowed</db:varname> attribute is not
+				<db:literal>true</db:literal>.</db:para>
+				<db:para>A Reading System must delete the content before calling
+				<db:function>returnContent</db:function>.  A Reading System must not
+				call <db:function>returnContent</db:function> it never had.</db:para>
+				<db:note><db:para>This protocol cannot guarantee that a Reading System
+				has actually deleted the content before calling <db:function>returnContent</db:function>.
+				If a Service receives a call to this operation, that does not constitute
+				proof that the content has been removed.  If a Service Provider requires
+				a robust copy prevention mechanism, it should investigate a DRM solution
+				such as <db:xref linkend="bib_pdtb2"/>.</db:para>
+				</db:note>
 				<db:para>
 					<db:remark role="todo">Define how to handle this in purchase or other no-return
-						situations. Does making optional fix it all?</db:remark>
+						situations. Does making optional fix it all? GGT: No it doesn't.
+						Service could be mixed, like RNIB.</db:remark>
 				</db:para>
 			</documentation>
 			<input message="tns:returnContent_inputMessage"/>
