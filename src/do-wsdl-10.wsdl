@@ -436,15 +436,15 @@
 			<xs:element name="getContentMetadata">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" name="contentID" type="xs:string">
+						<xs:element minOccurs="1" maxOccurs="1" name="itemID" type="xs:string">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">the contentID parameter to the
+									<db:para role="desc">The itemID parameter to the
 										getContentMetadata operation. Contains the identifier of the
 										content for which metadata is being requested, as expressed
 										by the <db:varname>id</db:varname> attribute of the relevant
 											<db:varname>contentItem</db:varname> in the <db:xref
-											linkend="tp_contentList"/> type.</db:para>
+											linkend="tp_contentList"/> type.</db:para>										
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -468,6 +468,38 @@
 				</xs:complexType>
 			</xs:element>
 
+			<xs:element name="getContentResources">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" name="contentID" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">Contains the content identifier of the
+										content for which resources are being requested, as defined in the
+										<db:xref linkend="bib_dublinCore"/> identifier field of the 
+										<db:xref linkend="tp_contentMetadata"/> type. </db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			
+			<xs:element name="getContentResourcesResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" ref="common:resources">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">Contains the resources for the specified
+										content.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
 			<xs:element name="getKeyExchangeObject">
 				<xs:complexType>
 					<xs:sequence>
@@ -475,10 +507,7 @@
 							type="common:itemList">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">The supportedKeyNames parameter to the
-										getKeyExchangeObject operation. DOC TODO
-										supportedPublicKeyNames? Does itemList need to be a
-										complexType rather than an element?</db:para>
+									<db:para role="desc">The identifiers of the keys on the Reading System's keyring.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -486,9 +515,7 @@
 						<xs:element minOccurs="1" maxOccurs="1" name="requestedKeyName"
 							type="xs:string">
 							<xs:annotation>
-								<xs:documentation>
-									<db:para role="desc">DOC TODO</db:para>
-								</xs:documentation>
+								<xs:documentation>The identifier of the requested key.</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 					</xs:sequence>
@@ -502,7 +529,9 @@
 							type="xs:string">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">DOC TODO</db:para>
+									<db:para role="desc">A <db:xref linkend="bib_pdtb2"/> Key Exchange Object,
+										containing the requested key encrypted using one of the keys identified
+										in keyNames.</db:para>									
 									<db:para role="desc">TODO should return a Key Exchange Object
 										xml fragment</db:para>
 								</xs:documentation>
@@ -826,6 +855,29 @@
 		</part>
 	</message>
 
+	<!-- request and response messages for the getContentResources operation -->
+	
+	<message name="getContentResources_inputMessage">
+		<part name="parameters" element="tns:getContentResources">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the request message for the getContentResources
+					operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+	
+	<message name="getContentResources_outputMessage">
+		<part name="parameters" element="tns:getContentResourcesResponse">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the response message for the getContentResources
+					operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+	
+
 	<!-- request and response messages for the getKeyExchangeObject operation -->
 
 	<message name="getKeyExchangeObject_inputMessage">
@@ -988,19 +1040,36 @@
 			<documentation>
 				<db:para role="desc">Retrieves <db:xref linkend="tp_contentMetadata"/> for the
 					specified content.</db:para>
-				<db:para role="prereq">This operation is only valid if a previous call to <db:xref
-						linkend="op_issueContent"/> with a result of <db:varname>true</db:varname>
-					has been made for the given content.</db:para>
 			</documentation>
 			<input message="tns:getContentMetadata_inputMessage"/>
 			<output message="tns:getContentMetadata_outputMessage"/>
 			<fault name="getContentMetadata_internalServerErrorFault"
-				message="tns:internalServerErrorFault_message"/>
+			message="tns:internalServerErrorFault_message"/>
+			<!--
 			<fault name="getContentMetadata_invalidOperationFault"
-				message="tns:invalidOperationFault_message"/>
+				message="tns:invalidOperationFault_message"/> -->
 			<fault name="getContentMetadata_invalidParameterFault"
 				message="tns:invalidParameterFault_message"/>
 		</operation>
+
+		<operation name="getContentResources">
+			<documentation>
+				<db:para role="desc">Retrieves <db:xref linkend="tp_resources"/> for the
+					specified content.</db:para>
+				<db:para role="prereq">This operation is only valid if a previous call to <db:xref
+					linkend="op_issueContent"/> with a result of <db:varname>true</db:varname>
+					has been made for the given content.</db:para>
+			</documentation>
+			<input message="tns:getContentResources_inputMessage"/>
+			<output message="tns:getContentResources_outputMessage"/>
+			<fault name="getContentResources_internalServerErrorFault"
+				message="tns:internalServerErrorFault_message"/>
+			<fault name="getContentResources_invalidOperationFault"
+				message="tns:invalidOperationFault_message"/>
+			<fault name="getContentResources_invalidParameterFault"
+				message="tns:invalidParameterFault_message"/>
+		</operation>
+		
 
 		<operation name="getServiceAttributes">
 			<documentation>
@@ -1109,7 +1178,7 @@
 				message="tns:invalidParameterFault_message"/>
 			<fault name="getBookmarks_operationNotSupportedFault"
 				message="tns:operationNotSupportedFault_message"/>
-		</operation>
+		</operation> 
 
 		<operation name="getQuestions">
 			<documentation>
@@ -1129,7 +1198,8 @@
 
 		<operation name="getKeyExchangeObject">
 			<documentation>
-				<db:para role="desc">DOC TODO</db:para>
+				<db:para role="desc">Requests a <db:xref linkend="bib_pdtb2"/> Key Exchange Object 
+					from the <db:xref linkend="term_service"/>.</db:para>
 			</documentation>
 			<input message="tns:getKeyExchangeObject_inputMessage"/>
 			<output message="tns:getKeyExchangeObject_outputMessage"/>

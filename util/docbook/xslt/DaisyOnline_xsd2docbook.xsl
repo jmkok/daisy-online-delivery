@@ -22,7 +22,7 @@
 	
 	<!-- list of types - prevents processing of general-use elements in xsd -->
 	
-	<xsl:variable name="typeList">|readingSystemAttributes|announcements|contentMetadata|bookmarkSet|questions|userResponses|serviceAttributes|</xsl:variable>
+	<xsl:variable name="typeList">|readingSystemAttributes|announcements|contentMetadata|bookmarkSet|questions|userResponses|serviceAttributes|resources|</xsl:variable>
 
 	<xsl:template match="db:chapter[@xml:id='typeReference']">
 		<xsl:element name="db:chapter">

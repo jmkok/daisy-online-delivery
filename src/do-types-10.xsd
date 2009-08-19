@@ -391,26 +391,14 @@
 				<xs:element name="sample" minOccurs="0" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>
-							<db:para>A sample of the content being described, for User
-								consumption.</db:para>
+							<db:para>The identifier of a sample of the content being described, for User
+								consumption. Reading Systems may retrieve the sample by calling 
+								<db:xref linkend="op_getContentResources"/> with this identifier as the parameter.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
-						<xs:sequence>
-							<xs:element ref="label" minOccurs="1" maxOccurs="unbounded"/>
-						</xs:sequence>
+						<xs:attribute name="id" use="required" type="xs:string"/>
 					</xs:complexType>
-				</xs:element>
-
-				<xs:element name="contentStandard" type="xs:string" minOccurs="1" maxOccurs="1">
-					<xs:annotation>
-						<xs:documentation>
-							<db:para>Specifies the type of content. This element follows the same
-								convention as the <db:varname>supportedContentStandards</db:varname>
-								element of the <db:xref linkend="tp_readingSystemAttributes"/> type.
-								TODO this could be done in metadata/dc:format instead</db:para>
-						</xs:documentation>
-					</xs:annotation>
 				</xs:element>
 
 				<xs:element name="provider" minOccurs="0" maxOccurs="1">
@@ -631,57 +619,6 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
-
-				<xs:element name="resources" minOccurs="1" maxOccurs="1">
-					<xs:annotation>
-						<xs:documentation>
-							<db:para>A list of all the files that constitute the <db:xref
-									linkend="term_content"/>.</db:para>
-						</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="resource" minOccurs="1" maxOccurs="unbounded">
-								<xs:complexType>
-									<xs:attribute name="uri" type="xs:anyURI" use="required">
-										<xs:annotation>
-											<xs:documentation>
-												<db:para>The URI of the resource.</db:para>
-											</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="mimeType" type="xs:string" use="required">
-										<!-- TODO add note that PDTB2 mimetypes should be used -->
-										<!-- TODO stay silent on 2.02 Mime types? Those are not specified anywhere -->
-										<xs:annotation>
-											<xs:documentation>
-												<db:para>The <db:xref linkend="bib_mime"/> type of
-												the resource.</db:para>
-											</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="size" type="xs:int" use="required">
-										<xs:annotation>
-											<xs:documentation>
-												<db:para>The size of the resource in
-												bytes.</db:para>
-											</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-									<xs:attribute name="localFileName" type="xs:string"
-										use="required">
-										<xs:annotation>
-											<xs:documentation>
-												<db:para>The local file name of the
-												resource.</db:para>
-											</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
-								</xs:complexType>
-							</xs:element>
-						</xs:sequence>
-					</xs:complexType>
-				</xs:element>
 			</xs:sequence>
 
 			<xs:attribute name="id" type="xs:ID" use="required"/>
@@ -699,7 +636,7 @@
 			</xs:attribute>
 
 			<xs:attribute name="borrowed" type="xs:boolean" use="required">
-				<!-- TODO may make optional and specify value if so -->
+				<!-- TODO may benefit from name change "return" or slt -->
 				<xs:annotation>
 					<xs:documentation>
 						<db:para>Specifies whether the <db:xref linkend="term_service"/> requires
@@ -722,6 +659,58 @@
 
 		</xs:complexType>
 	</xs:element>
+
+	<xs:element name="resources">
+		<xs:annotation>
+			<xs:documentation>
+				<db:para>A list of all the files that constitute the <db:xref
+					linkend="term_content"/>.</db:para>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="resource" minOccurs="1" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="uri" type="xs:anyURI" use="required">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para>The URI of the resource.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="mimeType" type="xs:string" use="required">
+							<!-- TODO add note that PDTB2 mimetypes should be used -->
+							<!-- TODO stay silent on 2.02 Mime types? Those are not specified anywhere -->
+							<xs:annotation>
+								<xs:documentation>
+									<db:para>The <db:xref linkend="bib_mime"/> type of
+										the resource.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="size" type="xs:int" use="required">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para>The size of the resource in
+										bytes.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="localFileName" type="xs:string"
+							use="required">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para>The local file name of the
+										resource.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+		
 
 	<xs:element name="contentList">
 		<xs:annotation>
