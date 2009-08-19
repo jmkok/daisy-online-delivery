@@ -98,10 +98,13 @@
             <varlistentry xml:id="term_session">
                 <term>Session</term>
                 <listitem>
-                    <para>
-                        <remark role="todo">define; MG: the operations involved and span are defined
-                            below; this def should be more abstract </remark>
-                    </para>
+                    <para>A sequence of <xref linkend="term_operation"/>s
+					between one <xref linkend="term_readingSystem"/> and one
+					<xref linkend="term_service"/> with an identifier defined
+					by the <xref linkend="term_service"/>.
+					A session may persist across several <link linkend="bib_http11">HTTP</link>
+					connections.  Session IDs may be reused at the <xref linkend="term_service"/>'s
+					discretion.</para>
                 </listitem>
             </varlistentry>
             <varlistentry xml:id="term_operation">
@@ -152,33 +155,33 @@
                         defined by the <xref linkend="term_service"/> and is exposed in the <xref
                             linkend="bib_dublinCore"/> identifier field of the <xref
                             linkend="tp_contentMetadata"/> type. The identifier should be universal
-                        and static, andmust not change between sessions.</para>
-                    <para role="note">Note that it is not guaranteed that identifiers embedded in certain
-                        content formats match this content identifier.</para>
+                        and static, and must not change between sessions.</para>
+                    <note><para>It is not guaranteed that identifiers embedded in certain
+                        content formats match this content identifier.</para></note>
                 </listitem>
             </varlistentry>
-            <varlistentry xml:id="term_contentDownload">
-                <term>Content Download</term>
+            <varlistentry xml:id="term_download">
+                <term>Download</term>
                 <listitem>
                     <para> Transfer of <xref linkend="term_content"/> from the <xref
                             linkend="term_service"/> to the <xref linkend="term_readingSystem"/>,
                         which the reading system stores indefinitely. </para>
                 </listitem>
             </varlistentry>
-            <varlistentry xml:id="term_contentStreaming">
-                <term>Content Streaming</term>
+            <varlistentry xml:id="term_streaming">
+                <term>Streaming</term>
                 <listitem>
                     <para> Transfer of <xref linkend="term_content"/> from the <xref
                             linkend="term_service"/> to the <xref linkend="term_readingSystem"/>,
                         which the reading system renders immediately and stores only
                         temporarily.</para>
+					<note>
+						<para>Download and streaming of content are reading system behaviours, not aspects of the
+							protocol proper.</para>
+					</note>
                 </listitem>
             </varlistentry>
         </variablelist>
-        <note>
-            <para>Content download and streaming are reading system behaviours, not aspects of the
-                protocol proper.</para>
-        </note>
     </chapter>
 
     <chapter xml:id="conformance" conformance="normative">
@@ -204,13 +207,13 @@
                         <para>
                             <xref linkend="bib_wsibasicprofile11"/>
                         </para>
-                        <para>Note: <xref linkend="bib_httpcookies"/> states "R1121 An INSTANCE
+                        <note><para><xref linkend="bib_httpcookies"/> states "R1121 An INSTANCE
                             SHOULD NOT require consumer support for Cookies in order to function
                             correctly." The Daisy Online protocol is a session based protocol, and
-                            http cookies thus are fundamental to the protocol. </para>
+                            HTTP cookies thus are fundamental to the protocol. </para></note>
                     </listitem>
                     <listitem>
-                        <para>Secure http (https) through the use of <xref linkend="bib_ssl3.0"/>
+                        <para>Secure HTTP (HTTPS) through the use of <xref linkend="bib_ssl3.0"/>
                             and <xref linkend="bib_tls1.0"/>
                         </para>
                     </listitem>
