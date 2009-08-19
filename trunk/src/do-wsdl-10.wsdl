@@ -471,7 +471,7 @@
 			<xs:element name="getKeyExchangeObject">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" name="supportedKeyNames"
+						<xs:element minOccurs="1" maxOccurs="1" name="keyNames"
 							type="common:itemList">
 							<xs:annotation>
 								<xs:documentation>
