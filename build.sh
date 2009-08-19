@@ -10,3 +10,5 @@ cp ./util/docbook/html-css/docbook.css ./build/do.css
 java -cp $cp com.xmlcalabash.drivers.Main wsdl-finalize.xpl
 cp ./src/do-types-10.xsd ./build/do-types-10.xsd
 cp ./src/bookmark-2005-1.xsd ./build/bookmark-2005-1.xsd
+cp ./src/dc.xsd ./build/dc.xsd
+cp ./src/xml.xsd ./build/xml.xsd

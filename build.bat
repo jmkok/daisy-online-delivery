@@ -5,3 +5,5 @@ copy .\util\docbook\html-css\docbook.css .\build\do.css
 java com.xmlcalabash.drivers.Main wsdl-finalize.xpl
 copy .\src\do-types-10.xsd .\build\do-types-10.xsd
 copy .\src\bookmark-2005-1.xsd .\build\bookmark-2005-1.xsd
+copy .\src\dc.xsd .\build\dc.xsd
+copy .\src\xml.xsd .\build\xml.xsd

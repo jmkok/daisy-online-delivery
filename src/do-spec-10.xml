@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?oxygen RNGSchema="../util/docbook/rng/docbookxi.rng" type="xml"?>
 <book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
-    xmlns:xi="http://www.w3.org/2001/XInclude" xml:base=".">
+    xmlns:xi="http://www.w3.org/2001/XInclude" xml:base="." version="5.0">
 
     <title>DAISY Online Delivery Specification</title>
     <subtitle>A Web Service API for online access to DAISY and other multimedia content</subtitle>
@@ -282,14 +282,14 @@
 
                 <para>If a Service throws a <link linkend="apiReferenceFaults">Fault</link> during
                     the <token>Session Initialization Sequence</token> phase, or if the above
-                    specified return values or not given, then the session remains uninitialized and
+                    specified return values are not given, then the session remains uninitialized and
                     must be either be reinitialized, or the attempt to log the Reading System on to
                     the Service must be aborted.</para>
 
                 <para>All operations defined by this specification except the <function><xref linkend="op_logOn"/></function> operation are valid to invoke after the <token>Session
                         Initialization Sequence</token> has been completed.</para>
 
-                <para>A Service must throw a <errorname><xref linkend="ft_InvalidOperationFault"/></errorname> if a Reading
+                <para>A Service must throw a <errorname><xref linkend="ft_invalidOperationFault"/></errorname> if a Reading
                     System does not honor the above initialization sequence.</para>
             </section>
 
@@ -372,7 +372,7 @@
                 <para><remark role="todo">TODO give examples of PTDB2 contentMetadata etc for encrypted books</remark></para>                
 				 <para>If Content is protected using <xref linkend="bib_pdtb2"/>, then there will be a metadata item in the <type><xref linkend="tp_contentMetadata" /></type> named <literal>pdtb2:specVersion</literal> with a value of <literal>2005-1</literal> and there will be resources with mimeTypes beginning with <literal>application/x-pdtb…</literal>.  The Reading System can access these resources even if it does not support <xref linkend="bib_pdtb2"/>, but it might not be able to decrypt all the Content.</para>
 				 <para>If some Content has an Authorization Object (<abbrev>AO</abbrev>), the Reading System can inspect it for the name of the key that secures the key to decrypt the Content.</para>
-				 <para>The Reading System may call <function><xref linkend="op_getKeyExchangeObject"/></function> with an <type><xref linkend="tp_itemList"/></type> of names of keys on its keyring (these can be all or some of the symmetric keys or public/private keypairs the Reading System supports) and the name of the requested key.  The Service is free to choose any of the keys in the <parameter>supportedPublicKeyNames</parameter> to encrypt the Key Exchange Object (<abbrev>KXO</abbrev>).  If the Service does not have any of those keys or if the User is not authorized to access the Content, then the Service will instead reply with an <errorname><xref linkend="ft_InvalidOperationFault"/></errorname>.  The Service is responsible for keeping a list of authorized key names.</para>
+				 <para>The Reading System may call <function><xref linkend="op_getKeyExchangeObject"/></function> with a list of names of keys on its keyring (these can be all or some of the symmetric keys or public/private keypairs the Reading System supports) and the name of the requested key.  The Service is free to choose any of the keys in the <parameter>supportedPublicKeyNames</parameter> to encrypt the Key Exchange Object (<abbrev>KXO</abbrev>).  If the Service does not have any of those keys or if the User is not authorized to access the Content, then the Service will instead reply with an <errorname><xref linkend="ft_invalidOperationFault"/></errorname>.  The Service is responsible for keeping a list of authorized key names.</para>
 				<example>
 					<title>An Encrypted DTB</title>
                      <para>A User wants to read an encrypted <abbrev>PDTB</abbrev> from the Zenith Library.  The <abbrev>AO</abbrev> is itself encrypted with a key named <literal>DAISY.gy-zlog.afc26219-auth</literal>:</para>

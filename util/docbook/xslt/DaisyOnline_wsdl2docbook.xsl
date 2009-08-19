@@ -23,7 +23,7 @@
 				<db:title>Required Operations</db:title>
 				<xsl:call-template name="wsdlOperationsAsDocbook">
 					<xsl:with-param name="operations" 
-						select="$wsdl/definitions/portType/operation[count(descendant::fault[@message='tns:OperationNotSupportedFault'])=0]"/>
+						select="$wsdl/definitions/portType/operation[count(descendant::fault[@message='tns:operationNotSupportedFault_message'])=0]"/>
 				</xsl:call-template>
 			</db:section>
 			
@@ -31,19 +31,19 @@
 				<db:title>Optional Operations</db:title>
 				<xsl:call-template name="wsdlOperationsAsDocbook">
 					<xsl:with-param name="operations" 
-					select="$wsdl/definitions/portType/operation[descendant::fault[@message='tns:OperationNotSupportedFault']]"/> 
+						select="$wsdl/definitions/portType/operation[descendant::fault[@message='tns:operationNotSupportedFault_message']]"/> 
 				</xsl:call-template>
 			</db:section>
 			
 			<db:section xml:id="apiReferenceFaults">
 				<db:title>Faults</db:title>
 				<xsl:for-each select="$wsdl/definitions/message[contains(@name, 'Fault')]">
-					<db:section> <xsl:attribute name="xml:id" select="concat('ft_',@name)"/>
-						<xsl:attribute name="xreflabel" select="@name"/>
-						<xsl:variable name="conc" select="replace(@name,'Fault','')" />							
+					<db:section> <xsl:attribute name="xml:id" select="replace(concat('ft_',@name),'_message','')"/>
+						<xsl:attribute name="xreflabel" select="replace(@name,'_message','')"/>
+						<xsl:variable name="conc" select="replace(@name,'Fault_message','')" />							
 						<db:title>The <db:errorname><xsl:value-of select="$conc"/></db:errorname> Fault</db:title>
 						<xsl:call-template name="getWSDLDocumentation">
-							<xsl:with-param name="node" as="element()" select="current()"/>
+							<xsl:with-param name="node" as="element()" select="current()/part"/>
 						</xsl:call-template>
 					</db:section>
 				</xsl:for-each>
@@ -66,30 +66,48 @@
 					<xsl:with-param name="node" as="element()" select="current()"/>
 				</xsl:call-template>
 								
-				<!-- get the request and response message elements, truncate 'tns:' -->
-				<xsl:variable name="requestMessage"
-					select="$wsdl/definitions/message[@name=substring(current()/input/@message,5)]"
-					as="element()"/>
-				<xsl:variable name="responseMessage"
-					select="$wsdl/definitions/message[@name=substring(current()/output/@message,5)]"
-					as="element()"/>
-
 				<db:variablelist>
 					<!-- request message parameter info, if parameters are specificed -->
+					
+					<!-- get the request message element, truncate 'tns:' -->
+					<xsl:variable name="requestMessage"
+						select="$wsdl/definitions/message[@name=substring(current()/input/@message,5)]"
+						as="element()"/>
+					
+					<!-- Get the xs:element that represents the message (wrapper), truncate 'tns:' -->
+					<xsl:variable name="requestMessageXsdWrapperElement" 
+						select="$wsdl/definitions/types/xs:schema/xs:element[@name=substring($requestMessage/part/@element,5)]"
+						as="element()"/>
+					
 					<db:varlistentry>
 						<db:term>Request parameters</db:term>
+						<!-- 
+							<xs:complexType><xs:sequence><xs:element>* == has parameters
+							<xs:complexType><xs:annotation> == no parameters
+						-->						
 						<db:listitem>
 							<xsl:choose>
-								<xsl:when test="$requestMessage/part">
+								<xsl:when test="$requestMessageXsdWrapperElement/xs:complexType/xs:sequence/xs:element">
 									<db:variablelist>
-										<xsl:for-each select="$requestMessage/part">
+										<xsl:for-each select="$requestMessageXsdWrapperElement/xs:complexType/xs:sequence/xs:element">
 											<db:varlistentry>
 												<db:term>
-													<xsl:value-of select="@name"/>
+													<!-- the parameter name -->
+													<xsl:choose>
+														<xsl:when test="@name">
+															<xsl:value-of select="@name"/>
+														</xsl:when>
+														<xsl:when test="@ref">
+															<xsl:value-of select="substring-after(@ref,':')"/>
+														</xsl:when>
+														<xsl:otherwise>
+															Unnamed
+														</xsl:otherwise>
+													</xsl:choose>													
 												</db:term>
 												<db:listitem>
 													<xsl:call-template name="getWSDLTypeInfo">
-														<xsl:with-param name="node" select="@element" />
+														<xsl:with-param name="xsdElement" select="current()" />
 													</xsl:call-template>
 													<xsl:call-template name="getWSDLDocumentation">
 														<xsl:with-param name="node" as="element()" select="current()"/>
@@ -100,7 +118,10 @@
 									</db:variablelist>
 								</xsl:when>
 								<xsl:otherwise>
-									<db:para>This operation has no request parameters.</db:para>
+									<!-- No parameters, still get the documentation though -->
+									<xsl:call-template name="getWSDLDocumentation">
+										<xsl:with-param name="node" as="element()" select="$requestMessageXsdWrapperElement/xs:complexType"/>
+									</xsl:call-template>	
 								</xsl:otherwise>
 							</xsl:choose>
 						</db:listitem>
@@ -110,13 +131,24 @@
 						<db:term>Response</db:term>
 						<db:listitem>
 							<xsl:choose>
-								<xsl:when test="$responseMessage/part">
+								<!-- when the operation has an output -->
+								<xsl:when test="current()/output">
+									<xsl:variable name="responseMessage"
+										select="$wsdl/definitions/message[@name=substring(current()/output/@message,5)]"
+										as="element()"/>
+									
+									<!-- Get the xs:element that represents the message (wrapper), truncate 'tns:' -->
+									<xsl:variable name="responseMessageXsdWrapperElement" 
+										select="$wsdl/definitions/types/xs:schema/xs:element[@name=substring($responseMessage/part/@element,5)]"
+										as="element()"/>
+									
 									<xsl:call-template name="getWSDLTypeInfo">
-										<xsl:with-param name="node" as="attribute()"
-											select="$responseMessage/part/@element"/>
+										<xsl:with-param name="xsdElement" as="element()"
+											select="$responseMessageXsdWrapperElement/xs:complexType/xs:sequence/xs:element"/>
 									</xsl:call-template>
 									<xsl:call-template name="getWSDLDocumentation">
-										<xsl:with-param name="node" as="element()" select="$responseMessage/part"/>
+										<xsl:with-param name="node" as="element()" 
+												select="$responseMessageXsdWrapperElement/xs:complexType/xs:sequence/xs:element"/>
 									</xsl:call-template>				
 								</xsl:when>
 								<xsl:otherwise>
@@ -135,7 +167,7 @@
 										<xsl:for-each select="./fault">
 											<db:xref>
 												<xsl:attribute name="linkend" 
-													select="concat('ft_',$wsdl/definitions/message[@name=substring(current()/@message,5)]/@name)" />
+													select="replace(concat('ft_',$wsdl/definitions/message[@name=substring(current()/@message,5)]/@name),'_message','')" />
 											</db:xref>	
 											<xsl:if test="position() != last()">, </xsl:if>
 										</xsl:for-each>									
@@ -154,20 +186,25 @@
 	</xsl:template>
 
 	<xsl:template name="getWSDLDocumentation">
-		<!-- Print everything in the WSDL documentation element. If the 
+		<!-- Print everything in the WSDL documentation element, alternativey
+			an inline xs:annotation/xs:documentation element. If the 
 		  documentation element is text only, turn into para[@role="desc"], 
 		  else verbatim copy -->
-		<!-- the input node is the parent of the wanted documentation element -->
+		
+		<!-- the input node is the parent of the wanted documentation or xs:annotation element -->
 		<xsl:param name="node" as="element()"/>
 		
-		<xsl:if test="$node/documentation">
+		<!-- get the wsdl:documentation or the xs:documentation element -->
+		<xsl:variable name="dbParent" as="element()" select="$node/documentation|$node/xs:annotation/xs:documentation"/>
+		
+		<xsl:if test="$dbParent">
 			<xsl:choose>
-				<xsl:when test="$node/documentation/db:*">
-					<xsl:copy-of select="$node/documentation/db:*"/>
+				<xsl:when test="$dbParent/db:*">
+					<xsl:copy-of select="$dbParent/db:*"/>
 				</xsl:when>
 				<xsl:otherwise>
 					<db:para role="desc">
-						<xsl:copy-of select="$node/documentation/text()"/>
+						<xsl:copy-of select="$dbParent/text()"/>
 					</db:para>
 				</xsl:otherwise>
 			</xsl:choose>	
@@ -176,23 +213,29 @@
 	
 	<xsl:template name="getWSDLTypeInfo">
 		<!-- Print a db:para with type info -->
-		<!-- the input node is the wsdl "element" attribute -->
-		<xsl:param name="node" as="attribute()"/>		
+		<!-- the input node is the wsdl xsd wrapper element -->
+		<xsl:param name="xsdElement" as="element()"/>		
 		<db:para>Type:
 			<xsl:choose>
-				<xsl:when test="starts-with($node,'xsd:')">
+				<!-- get the primitive xsd types (element type="xs:*") -->
+				<!-- <xsl:when test="starts-with($xsdElement/@type,'xs:')"> -->
+				<xsl:when test="$xsdElement/@type">
 					<db:link>
 						<xsl:attribute name="xlink:href"><xsl:value-of 
-							select="concat('http://www.w3.org/TR/xmlschema-2/#',substring-after($node,'xsd:'))" />
+							select="concat('http://www.w3.org/TR/xmlschema-2/#',substring-after($xsdElement/@type,'xs:'))" />
 						</xsl:attribute>
-						<xsl:value-of select="$node" />
+						<xsl:value-of select="$xsdElement/@type" />
 					</db:link> 
 					<db:xref linkend="bib_xsdDatatypes"/>
 				</xsl:when>
-				<xsl:otherwise>
+				<xsl:when test="$xsdElement/@ref">
 					<db:xref>
-						<xsl:attribute name="linkend" select="concat('tp_',substring($node,5))" />
+						<xsl:attribute name="linkend" select="concat('tp_',substring-after($xsdElement/@ref,':'))" />
 					</db:xref>
+				</xsl:when>
+				<xsl:otherwise>
+					<!-- <xsl:message>GETTYPEINFO_OTHERWISE</xsl:message> -->
+					Enumeration
 				</xsl:otherwise>
 			</xsl:choose>
 		</db:para>
