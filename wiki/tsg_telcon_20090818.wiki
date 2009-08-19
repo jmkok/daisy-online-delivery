@@ -25,12 +25,12 @@ Regrets: Hiro
  * Markus look for RPC-Literal support in other platforms.
  * Geoff add documentation to @borrowed. 
  * Geoff to summarize the getContentList(borrowed/default) discussion and sent to list. See Nick's suggestion below {DONE} 
- * Markus replace contentMetadata/contentStandard with contentMetadata/metadata/dc:format. 
+ * Markus replace contentMetadata/contentStandard with contentMetadata/metadata/dc:format. {DONE}
  * Markus close Issue 97 {DONE}
  * Geoff to add rights expression language example to PDTB section, then close Issue 105
  * Geoff label Issue 94 as an enhancement, leave open but leave out of spec
  * Kenny close Issue 112 {DONE}
- * Markus: implement change as in Issue 115, then close
+ * Markus: implement change as in Issue 115, then close {DONE}
  * Markus make finite enumeration of getContentList(id), once we know whether to keep "borrowed"
  * Kenny create sample WSDL using WDL style, send to group for testing. {DONE} 
  * Markus get rid of RPC arrays in XSD. {DONE}
