@@ -329,7 +329,7 @@
                     <title>Successful Session Intialization</title>
                     <orderedlist>
                         <listitem>
-                            <para>[Required] 1. The Reading System invokes the <function>
+                            <para>[Required] The Reading System invokes the <function>
                                     <xref linkend="op_logOn"/>
                                 </function> operation, passing the following credentials:</para>
                             <programlisting><xi:include href="./samples/initialization-logon.xml" parse="text"/></programlisting>
@@ -338,14 +338,14 @@
                                 to signal the logon was successful.</para>
                         </listitem>
                         <listitem>
-                            <para>[Required] 2. The Reading System invokes the <function>
+                            <para>[Required] The Reading System invokes the <function>
                                     <xref linkend="op_getServiceAttributes"/>
                                 </function> operation. The service returns a
                                     <type>serviceAttributes</type> type:</para>
                             <programlisting><xi:include href="./samples/initialization-serviceAttributes.xml" parse="text"/></programlisting>
                         </listitem>
                         <listitem>
-                            <para>[Required] 3. The Reading System invokes the <function>
+                            <para>[Required] The Reading System invokes the <function>
                                     <xref linkend="op_setReadingSystemAttributes"/>
                                 </function> operation, passing a <type>
                                     <xref linkend="tp_readingSystemAttributes"/>
@@ -360,7 +360,7 @@
                                 the User's attention.</para>
                         </listitem>
                         <listitem>
-                            <para>[Optional] 4. The Reading System invokes the <function>
+                            <para>[Optional] The Reading System invokes the <function>
                                     <xref linkend="op_getServiceAnnouncements"/>
                                 </function> operation, retrieving an <type>
                                     <xref linkend="tp_announcements"/>
@@ -372,20 +372,38 @@
             </section>
         </section>
 
-        <section xml:id="operations_content_selection">
+        <section xml:id="operations_content_selection" conformance="informative">
             <title>Content Selection</title>
-            <section xml:id="operations_content_selection_noninteractive">
-                <title>Non-interactive Content Selection</title>
-                <para>
+			<para>In the noninteractive content selection model, the
+			content is selected through some out-of-band mechanism, such as
+			a "profile" system, where content is automatically selected for a User
+			based on their preferences; or a Web interface. In this model, the DAISY
+			Online Service's main role is in
+			synchronizing the content available to the User from the Service
+			and what exists on the User's Reading System.</para>
+			<note><para>The noninteractive model provides a mechanism (the <literal>expired</literal> contentList)
+			for Services to request the removal of content from Reading Systems.
+			Use of this mechanism to remove content without the User's consent is strongly discouraged.
+			</para></note>
+			<para>
+				<remark role="todo">Describe the interactive scenario (search using dynamic
+					menus)</remark>
+			</para>
+            <section xml:id="operations_content_selection_noninteractive" conformance="normative">
+                <title>Noninteractive Content Selection</title>
+				<para>The Service must provide two contentLists, <literal>available</literal>
+				and <literal>expired</literal>.
+				</para>
+				<para>
                     <remark role="todo">Describe the noninteractive scenario (Service-driven
                         selection) and the use of getContentList(default/borrowed)</remark>
                 </para>
             </section>
-            <section xml:id="operations_content_selection_interactive">
+            <section xml:id="operations_content_selection_interactive" conformance="normative">
                 <title>Interactive Content Selection</title>
                 <para>
-                    <remark role="todo">Describe the interactive scenario (search using dynamic
-                        menus)</remark>
+                    <remark role="todo">Describe the normative parts of the
+					interactive scenario</remark>
                 </para>
             </section>
         </section>
