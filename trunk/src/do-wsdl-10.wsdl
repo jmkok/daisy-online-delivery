@@ -962,24 +962,6 @@
 				message="tns:invalidParameterFault_message"/>
 		</operation>
 
-		<operation name="returnContent">
-			<documentation>
-				<db:para role="desc">Requests the return of the specified content.</db:para>
-				<db:para>
-					<db:remark role="todo">Define how to handle this in purchase or other no-return
-						situations. Does making optional fix it all?</db:remark>
-				</db:para>
-			</documentation>
-			<input message="tns:returnContent_inputMessage"/>
-			<output message="tns:returnContent_outputMessage"/>
-			<fault name="returnContent_internalServerErrorFault"
-				message="tns:internalServerErrorFault_message"/>
-			<fault name="returnContent_invalidOperationFault"
-				message="tns:invalidOperationFault_message"/>
-			<fault name="returnContent_invalidParameterFault"
-				message="tns:invalidParameterFault_message"/>
-		</operation>
-
 		<operation name="getContentList">
 			<documentation>
 				<db:para role="desc">Retrieves a list of available content.</db:para>
@@ -1071,6 +1053,26 @@
 				message="tns:operationNotSupportedFault_message"/>
 		</operation>
 
+		<operation name="returnContent">
+			<documentation>
+				<db:para role="desc">Requests the return of the specified content.</db:para>
+				<db:para>
+					<db:remark role="todo">Define how to handle this in purchase or other no-return
+						situations. Does making optional fix it all?</db:remark>
+				</db:para>
+			</documentation>
+			<input message="tns:returnContent_inputMessage"/>
+			<output message="tns:returnContent_outputMessage"/>
+			<fault name="returnContent_internalServerErrorFault"
+				message="tns:internalServerErrorFault_message"/>
+			<fault name="returnContent_invalidOperationFault"
+				message="tns:invalidOperationFault_message"/>
+			<fault name="returnContent_invalidParameterFault"
+				message="tns:invalidParameterFault_message"/>
+			<fault name="returnContent_operationNotSupportedFault"
+				message="tns:operationNotSupportedFault_message"/>
+		</operation>
+		
 		<operation name="setBookmarks">
 			<documentation>
 				<db:para role="desc">Request the storage of bookmarks for a content item to the
