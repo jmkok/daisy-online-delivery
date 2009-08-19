@@ -14,10 +14,10 @@
 		<xsl:apply-templates/>
 		<xsl:text>  &#10;</xsl:text>
 		<xsl:element name="binding" namespace="http://schemas.xmlsoap.org/wsdl/">
-			<xsl:attribute name="name">WrappedDocumentLiteralBinding</xsl:attribute>
+			<xsl:attribute name="name">DaisyOnlineService</xsl:attribute>
 			<xsl:attribute name="type">tns:daisy-online</xsl:attribute>
 			<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-			<xsl:for-each select="//operation">
+			<xsl:for-each select="//portType/operation">
 				<xsl:text>    &#10;</xsl:text>
 				<xsl:element name="operation" namespace="http://schemas.xmlsoap.org/wsdl/">
 					<xsl:attribute name="name" select="./@name"/>					
@@ -28,11 +28,23 @@
 					<xsl:element name="output" namespace="http://schemas.xmlsoap.org/wsdl/">
 						<soap:body use="literal"/>
 					</xsl:element>
+					<xsl:for-each select="./fault">
+						<xsl:text>    &#10;</xsl:text>
+						<xsl:element name="fault" namespace="http://schemas.xmlsoap.org/wsdl/">
+							<xsl:attribute name="name" select="@name" />
+							<soap:fault use="literal" name="{@name}"/>
+						</xsl:element>
+					</xsl:for-each>
+						
 				</xsl:element>
 			</xsl:for-each>
 		</xsl:element>
 	</xsl:template>
 
+<!-- <xsl:template match="xs:annotation|xs:annotation/*|wsdl:documentation|wsdl:documentation/*">
+	  <xsl:text></xsl:text>
+	</xsl:template>
+-->
 	<xsl:template match="*">
 		<xsl:copy>
 			<xsl:copy-of select="@*"/>

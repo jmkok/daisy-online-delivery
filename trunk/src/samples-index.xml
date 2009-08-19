@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <samples xmlns="http://www.daisy.org/ns/daisy-online/#" xmlns:db="http://docbook.org/ns/docbook">
   
+  <!-- a list that the DaisyOnline_xsd2docbook xsl takes as input for providing samples in the types section -->
+  
   <type name="announcements">
     <sample src="./samples/announcements.xml">
       <annotation>
