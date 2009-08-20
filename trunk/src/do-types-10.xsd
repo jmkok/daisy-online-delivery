@@ -745,11 +745,12 @@
 								</xs:annotation>
 							</xs:element>
 						</xs:sequence>
-						<xs:attribute name="id" type="xs:ID" use="required">
+						<xs:attribute name="id" type="xs:string" use="required">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para>The ID of this contentItem, unique within the
-										contentList.</db:para>
+									<db:para role="desc">The <xref linkend="term_contentIdentifier"/></db:para>
+									<db:para>Note that this value must be identical to the value of the <xref linkend="bib_dublinCore"/> <literal>identifier</literal>
+									field in the <xref linkend="tp_contentMetadata"/> of this Content item.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
