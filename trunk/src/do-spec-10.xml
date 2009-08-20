@@ -397,8 +397,27 @@
             </para>
             <section xml:id="operations_content_selection_noninteractive" conformance="normative">
                 <title>Noninteractive Content Selection</title>
-                <para>The Service must provide two contentLists, <literal>available</literal> and
-                        <literal>expired</literal>. </para>
+                <para>The Service must provide two contentLists, which may be accessed by calling
+				the <function><xref linkend="op_getContentList"/></function> operation with an
+				<parameter>id</parameter>
+				parameter of <literal>available</literal> or <literal>expired</literal>.
+				</para>
+				<itemizedlist>
+					<listitem>
+						<para>The <literal>available</literal> list shall contain those content items
+						that the User is authorized to access with the Reading System.  These may
+						or may not be issued or borrowed.</para>
+					</listitem>
+					<listitem>
+						<para>The <literal>expired</literal> list shall contain those content items
+						issued to the User which the Service requires to be removed from the
+						Reading System and returned with the
+						<function><xref linkend="op_returnContent"/></function> operation.
+						</para>
+					</listitem>
+				</itemizedlist>
+				<para>
+				</para>
                 <para>
                     <remark role="todo">Describe the noninteractive scenario (Service-driven
                         selection) and the use of getContentList(default/borrowed)</remark>
