@@ -115,8 +115,7 @@
 						<xs:element minOccurs="1" maxOccurs="1" name="contentID" type="xs:string">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">The contentID parameter to the setBookmarks
-										operation. Contains the content identifier with which the
+									<db:para role="desc">Contains the <db:xref linkend="term_contentIdentifier"/> for the content with which the
 										bookmarks are associated</db:para>
 								</xs:documentation>
 							</xs:annotation>
@@ -142,8 +141,7 @@
 							type="xs:boolean">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">return value of the setBookmarks operation.
-										Specifies whether the bookmarks for the content were saved
+									<db:para role="desc">Specifies whether the bookmarks for the content were saved
 										successfully on the Service.</db:para>
 								</xs:documentation>
 							</xs:annotation>
@@ -155,16 +153,12 @@
 			<xs:element name="getBookmarks">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" name="publicationID"
+						<xs:element minOccurs="1" maxOccurs="1" name="contentID"
 							type="xs:string">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">The publicationID parameter to the
-										getBookmarks operation. Contains the identifier of the
+									<db:para role="desc">Contains the <db:xref linkend="term_contentIdentifier"/> of the
 										content for which bookmarks are being retrieved</db:para>
-									<db:para role="note">TODO establish that contentMetadata
-										dc.identifier is the protocols locus to establish what this
-										identifier is.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -178,8 +172,8 @@
 						<xs:element minOccurs="1" maxOccurs="1" ref="daisy:bookmarkSet">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Return value of the getBookmarks operation.
-										Contains the bookmarks for the Publication.</db:para>
+									<db:para role="desc">
+										Contains the bookmarks for the content.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -193,12 +187,8 @@
 						<xs:element minOccurs="1" maxOccurs="1" name="contentID" type="xs:string">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">the contentID parameter to the issueContent
-										operation. Contains the identifier of the content that this
+									<db:para role="desc">Contains the <db:xref linkend="term_contentIdentifier"/> of the content that this
 										issuance request is for.</db:para>
-									<db:para role="note">TODO establish that contentMetadata
-										dc.identifier is the protocols locus to establish what this
-										identifier is.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -213,8 +203,7 @@
 							type="xs:boolean">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">return value of the issueContent operation.
-										Specifies whether the content was issued
+									<db:para role="desc">Specifies whether the content was issued
 										successfully.</db:para>
 								</xs:documentation>
 							</xs:annotation>
@@ -230,11 +219,8 @@
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">The contentID parameter to the
-										returnContent operation. Contains the unique identifier of
+										returnContent operation. Contains the <db:xref linkend="term_contentIdentifier"/> of
 										the content that this return request is for.</db:para>
-									<db:para role="note">TODO establish that contentMetadata
-										dc.identifier is the protocols locus to establish what this
-										identifier is.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -249,8 +235,7 @@
 							type="xs:boolean">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">return value of the returnContent
-										operation. Specifies whether the content was returned
+									<db:para role="desc">Specifies whether the content was returned
 										successfully.</db:para>
 								</xs:documentation>
 							</xs:annotation>
@@ -440,11 +425,10 @@
 			<xs:element name="getContentMetadata">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" name="itemID" type="xs:string">
+						<xs:element minOccurs="1" maxOccurs="1" name="contentID" type="xs:string">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">The itemID parameter to the
-										getContentMetadata operation. Contains the identifier of the
+									<db:para role="desc">Contains the <db:xref linkend="term_contentIdentifier"/> of the
 										content for which metadata is being requested, as expressed
 										by the <db:varname>id</db:varname> attribute of the relevant
 											<db:varname>contentItem</db:varname> in the <db:xref

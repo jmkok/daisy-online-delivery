@@ -98,13 +98,12 @@
             <varlistentry xml:id="term_session">
                 <term>Session</term>
                 <listitem>
-                    <para>A sequence of <xref linkend="term_operation"/>s
-					between one <xref linkend="term_readingSystem"/> and one
-					<xref linkend="term_service"/> with an identifier defined
-					by the <xref linkend="term_service"/>.
-					A session may persist across several <link linkend="bib_http11">HTTP</link>
-					connections.  Session IDs may be reused at the <xref linkend="term_service"/>'s
-					discretion.</para>
+                    <para>A sequence of <xref linkend="term_operation"/>s between one <xref
+                            linkend="term_readingSystem"/> and one <xref linkend="term_service"/>
+                        with an identifier defined by the <xref linkend="term_service"/>. A session
+                        may persist across several <link linkend="bib_http11">HTTP</link>
+                        connections. Session IDs may be reused at the <xref linkend="term_service"
+                        />'s discretion.</para>
                 </listitem>
             </varlistentry>
             <varlistentry xml:id="term_operation">
@@ -153,11 +152,14 @@
                 <listitem>
                     <para>An identifier of a <xref linkend="term_content"/> item. This identifier is
                         defined by the <xref linkend="term_service"/> and is exposed in the <xref
-                            linkend="bib_dublinCore"/> identifier field of the <xref
-                            linkend="tp_contentMetadata"/> type. The identifier should be universal
-                        and static, and must not change between sessions.</para>
-                    <note><para>It is not guaranteed that identifiers embedded in certain
-                        content formats match this content identifier.</para></note>
+                            linkend="bib_dublinCore"/>
+                        <literal>identifier</literal> field of the <xref
+                            linkend="tp_contentMetadata"/> type. The identifier should be
+                        universally unique and static, and must not change between sessions.</para>
+                    <note>
+                        <para>It is not guaranteed that identifiers embedded in certain content
+                            formats match this content identifier.</para>
+                    </note>
                 </listitem>
             </varlistentry>
             <varlistentry xml:id="term_download">
@@ -175,10 +177,10 @@
                             linkend="term_service"/> to the <xref linkend="term_readingSystem"/>,
                         which the reading system renders immediately and stores only
                         temporarily.</para>
-					<note>
-						<para>Download and streaming of content are reading system behaviours, not aspects of the
-							protocol proper.</para>
-					</note>
+                    <note>
+                        <para>Download and streaming of content are reading system behaviours, not
+                            aspects of the protocol proper.</para>
+                    </note>
                 </listitem>
             </varlistentry>
         </variablelist>
@@ -207,10 +209,12 @@
                         <para>
                             <xref linkend="bib_wsibasicprofile11"/>
                         </para>
-                        <note><para><xref linkend="bib_httpcookies"/> states "R1121 An INSTANCE
-                            SHOULD NOT require consumer support for Cookies in order to function
-                            correctly." The Daisy Online protocol is a session based protocol, and
-                            HTTP cookies thus are fundamental to the protocol. </para></note>
+                        <note>
+                            <para><xref linkend="bib_httpcookies"/> states "R1121 An INSTANCE SHOULD
+                                NOT require consumer support for Cookies in order to function
+                                correctly." The Daisy Online protocol is a session based protocol,
+                                and HTTP cookies thus are fundamental to the protocol. </para>
+                        </note>
                     </listitem>
                     <listitem>
                         <para>Secure HTTP (HTTPS) through the use of <xref linkend="bib_ssl3.0"/>
@@ -321,80 +325,81 @@
                         <xref linkend="ft_invalidOperationFault"/>
                     </errorname> if a Reading System does not honor the above initialization
                     sequence.</para>
-            </section>
 
-            <section xml:id="operations_session_initializationExample" conformance="informative">
-                <title>Session Initialization: Example</title>
-                <example>
-                    <title>Successful Session Intialization</title>
-                    <orderedlist>
-                        <listitem>
-                            <para>[Required] The Reading System invokes the <function>
-                                    <xref linkend="op_logOn"/>
-                                </function> operation, passing the following credentials:</para>
-                            <programlisting><xi:include href="./samples/initialization-logon.xml" parse="text"/></programlisting>
-                            <para>The service returns <constant>true</constant>
-                                <remark role="todo">TODO how is this done in wrapped style</remark>
-                                to signal the logon was successful.</para>
-                        </listitem>
-                        <listitem>
-                            <para>[Required] The Reading System invokes the <function>
-                                    <xref linkend="op_getServiceAttributes"/>
-                                </function> operation. The service returns a
-                                    <type>serviceAttributes</type> type:</para>
-                            <programlisting><xi:include href="./samples/initialization-serviceAttributes.xml" parse="text"/></programlisting>
-                        </listitem>
-                        <listitem>
-                            <para>[Required] The Reading System invokes the <function>
-                                    <xref linkend="op_setReadingSystemAttributes"/>
-                                </function> operation, passing a <type>
-                                    <xref linkend="tp_readingSystemAttributes"/>
-                                </type> type:</para>
-                            <programlisting><xi:include href="./samples/initialization-readingSystemAttributes.xml" parse="text"/></programlisting>
-                            <para>The <xref linkend="def_sessionInitializationSequence"/> is now
-                                complete, and the Reading System may commence by invoking other
-                                operations in the protocol. At this point, Reading Systems should
-                                invoke the <function>
-                                    <xref linkend="op_getServiceAnnouncements"/>
-                                </function> operation to retrieve any service announcements awaiting
-                                the User's attention.</para>
-                        </listitem>
-                        <listitem>
-                            <para>[Optional] The Reading System invokes the <function>
-                                    <xref linkend="op_getServiceAnnouncements"/>
-                                </function> operation, retrieving an <type>
-                                    <xref linkend="tp_announcements"/>
-                                </type> type in return:</para>
-                            <programlisting><xi:include href="./samples/initialization-serviceAnnouncements.xml" parse="text"/></programlisting>
-                        </listitem>
-                    </orderedlist>
-                </example>
+                <section xml:id="operations_session_initializationExample" conformance="informative">
+                    <title>Session Initialization: Example</title>
+                    <example>
+                        <title>Successful Session Intialization Sequence</title>
+                        <orderedlist>
+                            <listitem>
+                                <para>[Required] The Reading System invokes the <function>
+                                        <xref linkend="op_logOn"/>
+                                    </function> operation, passing the following credentials:</para>
+                                <programlisting><xi:include href="./samples/initialization-logon.xml" parse="text"/></programlisting>
+                                <para>The service returns <constant>true</constant>
+                                    <remark role="todo">TODO how is this done in wrapped
+                                        style</remark> to signal that the logon was
+                                    successful.</para>
+                            </listitem>
+                            <listitem>
+                                <para>[Required] The Reading System invokes the <function>
+                                        <xref linkend="op_getServiceAttributes"/>
+                                    </function> operation. The service returns a
+                                        <type>serviceAttributes</type> type:</para>
+                                <programlisting><xi:include href="./samples/initialization-serviceAttributes.xml" parse="text"/></programlisting>
+                            </listitem>
+                            <listitem>
+                                <para>[Required] The Reading System invokes the <function>
+                                        <xref linkend="op_setReadingSystemAttributes"/>
+                                    </function> operation, passing a <type>
+                                        <xref linkend="tp_readingSystemAttributes"/>
+                                    </type> type:</para>
+                                <programlisting><xi:include href="./samples/initialization-readingSystemAttributes.xml" parse="text"/></programlisting>
+                                <para>The <xref linkend="def_sessionInitializationSequence"/> is now
+                                    complete, and the Reading System may commence by invoking other
+                                    operations in the protocol. At this point, Reading Systems
+                                    should invoke the <function>
+                                        <xref linkend="op_getServiceAnnouncements"/>
+                                    </function> operation to retrieve any service announcements
+                                    awaiting the User's attention.</para>
+                            </listitem>
+                            <listitem>
+                                <para>[Optional] The Reading System invokes the <function>
+                                        <xref linkend="op_getServiceAnnouncements"/>
+                                    </function> operation, retrieving an <type>
+                                        <xref linkend="tp_announcements"/>
+                                    </type> type in return:</para>
+                                <programlisting><xi:include href="./samples/initialization-serviceAnnouncements.xml" parse="text"/></programlisting>
+                            </listitem>
+                        </orderedlist>
+                    </example>
+                </section>
             </section>
         </section>
 
         <section xml:id="operations_content_selection" conformance="informative">
             <title>Content Selection</title>
-			<para>In the noninteractive content selection model, the
-			content is selected through some out-of-band mechanism, such as
-			a "profile" system, where content is automatically selected for a User
-			based on their preferences; or a Web interface. In this model, the DAISY
-			Online Service's main role is in
-			synchronizing the content available to the User from the Service
-			and what exists on the User's Reading System.</para>
-			<note><para>The noninteractive model provides a mechanism (the <literal>expired</literal> contentList)
-			for Services to request the removal of content from Reading Systems.
-			Use of this mechanism to remove content without the User's consent is strongly discouraged.
-			</para></note>
-			<para>
-				<remark role="todo">Describe the interactive scenario (search using dynamic
-					menus)</remark>
-			</para>
+            <para>In the noninteractive content selection model, the content is selected through
+                some out-of-band mechanism, such as a "profile" system, where content is
+                automatically selected for a User based on their preferences; or a Web interface. In
+                this model, the DAISY Online Service's main role is in synchronizing the content
+                available to the User from the Service and what exists on the User's Reading
+                System.</para>
+            <note>
+                <para>The noninteractive model provides a mechanism (the <literal>expired</literal>
+                    contentList) for Services to request the removal of content from Reading
+                    Systems. Use of this mechanism to remove content without the User's consent is
+                    strongly discouraged. </para>
+            </note>
+            <para>
+                <remark role="todo">Describe the interactive scenario (search using dynamic
+                    menus)</remark>
+            </para>
             <section xml:id="operations_content_selection_noninteractive" conformance="normative">
                 <title>Noninteractive Content Selection</title>
-				<para>The Service must provide two contentLists, <literal>available</literal>
-				and <literal>expired</literal>.
-				</para>
-				<para>
+                <para>The Service must provide two contentLists, <literal>available</literal> and
+                        <literal>expired</literal>. </para>
+                <para>
                     <remark role="todo">Describe the noninteractive scenario (Service-driven
                         selection) and the use of getContentList(default/borrowed)</remark>
                 </para>
@@ -402,18 +407,108 @@
             <section xml:id="operations_content_selection_interactive" conformance="normative">
                 <title>Interactive Content Selection</title>
                 <para>
-                    <remark role="todo">Describe the normative parts of the
-					interactive scenario</remark>
+                    <remark role="todo">Describe the normative parts of the interactive
+                        scenario</remark>
                 </para>
             </section>
         </section>
 
         <section xml:id="operations_content_issuing">
             <title>Issuing (and optional return) of content</title>
-            <para>
-                <remark role="todo">Describe the steps after content selection (a contentList
-                    retrieval) has happened.</remark>
-            </para>
+            <para>Given a <xref linkend="tp_contentList"/>, retrieved using one of the methods
+                described in <xref linkend="operations_content_selection"/>, the Reading System can
+                proceed to request issuance of selected content items within the
+                    <literal>contentList</literal>, followed by download or streaming of the
+                resources that constitute the content. </para>
+
+            <section xml:id="operations_content_issuing_retrieval_sequence">
+                <title>Content Retrieval Sequence</title>
+                <para>To request issuance of and retrieve the resources of a Content item, a Reading
+                    System must invoke the following operations in the given sequence. Note that
+                    both involved operations take the <xref linkend="term_contentIdentifier"/> as a
+                    parameter.</para>
+                <orderedlist>
+                    <listitem>
+                        <para>The <function>
+                                <xref linkend="op_issueContent"/>
+                            </function> operation, with a return value of <constant>true</constant>
+                                (<xref linkend="bib_xsdDatatypes"/>) </para>
+                    </listitem>
+                    <listitem>
+                        <para>[any other operation]</para>
+                    </listitem>
+                    <listitem>
+                        <para> The <function>
+                                <xref linkend="op_getContentResources"/>
+                            </function> operation</para>
+                    </listitem>
+
+                </orderedlist>
+
+                <para>The <xref linkend="op_issueContent"/> operation constitutes the formal User
+                    request to get access to the Content. This operation must be invoked prior to
+                    the invocation of <xref linkend="op_getContentResources"/>, and must be invoked 
+                    regardless of whether the content is
+                    borrowed, purchased, or provided without any access restrictions.</para>
+
+                <para>If a Service returns <constant>false</constant> (<xref
+                        linkend="bib_xsdDatatypes"/>) or throws a <link linkend="apiReferenceFaults"
+                        >fault</link> on the <function>
+                        <xref linkend="op_issueContent"/>
+                    </function> operation, then the Content has not been issued. On invocations of <function>
+                        <xref linkend="op_getContentResources"/>
+                    </function> for a content item that has not been issued, a Service must throw a
+                        <xref linkend="ft_invalidParameterFault"/>.</para>
+
+                <para>The <xref linkend="op_getContentResources"/> operation exposes all resources
+                    that constitute the content to the Reading System. Service Providers must allow
+                    at least one call to <literal>getContentResources</literal> for each issued
+                    Content item, and should allow multiple <literal>getContentResources</literal>
+                    invocations for the same content, possibly spanning several Sessions.</para>
+
+                <para>
+                    <remark role="todo">TODO define when and how issuance ends</remark>
+                </para>
+
+            </section>
+
+            <section xml:id="operations_content_issuing_retrieval_sequence_example">
+                <title>Content Retrieval Example</title>
+                <example>
+                    <title>Content Retrieval</title>
+                    <para>Given the <xref linkend="term_contentIdentifier"/>
+                        <varname>foo</varname>, initially retrieved from the <literal>id</literal>
+                        attribute on a <literal>contentItem</literal> in a <xref
+                            linkend="tp_contentList"/>:</para>
+                    <orderedlist>
+                        <listitem>
+                            <para>[Optional] The Reading System invokes the <xref
+                                    linkend="op_getContentMetadata"/> operation using
+                                    <varname>foo</varname> as the parameter, which returns a <xref
+                                    linkend="tp_contentMetadata"/> type, containing content metadata
+                                and samples.</para>
+                            <programlisting><xi:include href="./samples/retrieval-contentMetadata.xml" parse="text"/></programlisting>
+                        </listitem>
+                        <listitem>
+                            <para>[Required] For content that the User requests issuance of, the
+                                Reading System invokes the <xref linkend="op_issueContent"/>
+                                operation, using <varname>foo</varname> as the parameter. To signal
+                                that the Content was issued, the Service returns
+                                    <constant>true</constant>. </para>
+                        </listitem>
+                        <listitem>
+                            <para>[Optional] At this point the Reading System may call other
+                                operations. The current Session may be terminated, and a new session initiated.</para>
+                        </listitem>
+                        <listitem>
+                            <para>[Required] The Reading System invokes the <xref
+                                    linkend="op_getContentResources"/> operation, which returns a
+                                    <xref linkend="tp_resources"/> type:</para>
+                            <programlisting><xi:include href="./samples/retrieval-resources.xml" parse="text"/></programlisting>
+                        </listitem>
+                    </orderedlist>
+                </example>
+            </section>
 
             <section xml:id="operations_content_download">
                 <title>Downloading and streaming of content</title>
@@ -425,6 +520,8 @@
                 <para>
                     <remark>Important things to include in this section:</remark>
                 </para>
+                <para>Info on the resources type: how some content formats allows mimetypes to be
+                    used to get the most significant stuff first</para>
                 <para>If credentials are needed to access the Content, then the Service must supply
                     the credentials in the <abbrev>URL</abbrev> of the resource. These credentials
                     may be the same as the <function>
