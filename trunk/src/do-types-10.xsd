@@ -294,9 +294,38 @@
 						<xs:sequence>
 							<xs:element ref="label" minOccurs="1" maxOccurs="1"/>
 						</xs:sequence>
-						<xs:attribute name="id" type="xs:ID" use="required"/>
-						<xs:attribute name="type" type="xs:string" use="optional"/>
+						<xs:attribute name="id" type="xs:ID" use="required">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para>The identifier of this announcement. The identifier is only valid for the duration 
+									of a <db:xref linkend="term_session"/>.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="type" use="optional" default="INFORMATION">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para>A value that indicates the nature of this announcement.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="WARNING"/>
+								<xs:enumeration value="ERROR"/>
+								<xs:enumeration value="INFORMATION"/>
+								<xs:enumeration value="SYSTEM"/>
+							</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
 						<xs:attribute name="priority" use="optional" default="3">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para>A value that indicates the priority of this announcement. 
+										The value <db:literal>1</db:literal> denotes the highest priority, and the value 
+										<db:literal>3</db:literal> the lowest.
+									</db:para>
+								</xs:documentation>
+							</xs:annotation>
 							<xs:simpleType>
 								<xs:restriction base="xs:int">
 									<xs:minInclusive value="1"/>
