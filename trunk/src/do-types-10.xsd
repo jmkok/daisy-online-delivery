@@ -310,7 +310,7 @@
 		</xs:complexType>
 	</xs:element>
 
-		<xs:element name="label">
+	<xs:element name="label">
 		<xs:annotation>
 			<xs:documentation>
 				<db:para>A multi-purpose label, containing text and optionally audio.</db:para>
@@ -391,9 +391,10 @@
 				<xs:element name="sample" minOccurs="0" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>
-							<db:para>The identifier of a sample of the content being described, for User
-								consumption. Reading Systems may retrieve the sample by calling 
-								<db:xref linkend="op_getContentResources"/> with this identifier as the parameter.</db:para>
+							<db:para>The identifier of a sample of the content being described, for
+								User consumption. Reading Systems may retrieve the sample by calling
+									<db:xref linkend="op_getContentResources"/> with this identifier
+								as the parameter.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
@@ -663,8 +664,8 @@
 	<xs:element name="resources">
 		<xs:annotation>
 			<xs:documentation>
-				<db:para>A list of all the files that constitute the <db:xref
-					linkend="term_content"/>.</db:para>
+				<db:para>A list of all the files that constitute the <db:xref linkend="term_content"
+					/>.</db:para>
 			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -683,43 +684,38 @@
 							<!-- TODO stay silent on 2.02 Mime types? Those are not specified anywhere -->
 							<xs:annotation>
 								<xs:documentation>
-									<db:para>The <db:xref linkend="bib_mime"/> type of
-										the resource.</db:para>
+									<db:para>The <db:xref linkend="bib_mime"/> type of the
+										resource.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
 						<xs:attribute name="size" type="xs:int" use="required">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para>The size of the resource in
-										bytes.</db:para>
+									<db:para>The size of the resource in bytes.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
-						<xs:attribute name="localFileName" type="xs:string"
-							use="required">
+						<xs:attribute name="localFileName" type="xs:string" use="required">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para>The local file name of the
-										resource.</db:para>
+									<db:para>The local file name of the resource.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
-									<xs:attribute name="lastModifiedDate" type="xs:dateTime"
-										use="required">
-										<xs:annotation>
-											<xs:documentation>
-												<db:para>The last modified date of the
-												resource.</db:para>
-											</xs:documentation>
-										</xs:annotation>
-									</xs:attribute>
+						<xs:attribute name="lastModifiedDate" type="xs:dateTime" use="required">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para>The last modified date of the resource.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
 					</xs:complexType>
 				</xs:element>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	
+
 	<xs:element name="contentList">
 		<xs:annotation>
 			<xs:documentation>
@@ -747,7 +743,7 @@
 							<xs:element ref="label" minOccurs="1" maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>
-										<db:para>The title, or other descriptive  text, of this
+										<db:para>The title, or other descriptive text, of this
 											contentItem.</db:para>
 									</xs:documentation>
 								</xs:annotation>
@@ -756,8 +752,13 @@
 						<xs:attribute name="id" type="xs:ID" use="required">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para>The ID of this contentItem, unique within  the
-										contentList.</db:para>
+									<db:para role="desc">The <db:xref linkend="term_contentIdentifier"
+										/> of this <db:literal>contentItem</db:literal>.</db:para>
+									<db:para>Note that this value must be identical to the value of
+										the <db:xref linkend="bib_dublinCore"/>
+										<db:literal>identifier</db:literal> field in the <db:xref
+											linkend="tp_contentMetadata"/> of this Content
+										item.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
@@ -765,44 +766,46 @@
 						<xs:attribute name="lastModifiedDate" type="xs:dateTime" use="required">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para>The last modified date of this contentItem. contains the lastModifiedDate of the most recently modified file in the content's fileset.</db:para>
-								</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-</xs:complexType>
-</xs:element>
-</xs:sequence>
-
-						<xs:attribute name="totalItems" type="xs:integer" use="required">
-							<xs:annotation>
-								<xs:documentation>
-									<db:para>The total number of content items exposed by  the
-										Service at this stage of the session. This  instance of
-											<db:varname>contentList</db:varname>  may only contain a
-										subset of the total number of  items.</db:para>
-								</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="firstItem" type="xs:integer" use="required">
-							<xs:annotation>
-								<xs:documentation>
-									<db:para>The first content item provided in this  instance of
-										contentList.</db:para>
-								</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-						<xs:attribute name="lastItem" type="xs:integer" use="required">
-							<xs:annotation>
-								<xs:documentation>
-									<db:para>The last content item provided in this  instance of
-										contentList.</db:para>
+									<db:para>The last modified date of this contentItem. contains
+										the lastModifiedDate of the most recently modified file in
+										the content's fileset.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
 					</xs:complexType>
 				</xs:element>
+			</xs:sequence>
 
-<xs:element name="inputQuestion">
+			<xs:attribute name="totalItems" type="xs:integer" use="required">
+				<xs:annotation>
+					<xs:documentation>
+						<db:para>The total number of content items exposed by the Service at this
+							stage of the session. This instance of
+								<db:varname>contentList</db:varname> may only contain a subset of
+							the total number of items.</db:para>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="firstItem" type="xs:integer" use="required">
+				<xs:annotation>
+					<xs:documentation>
+						<db:para>The first content item provided in this instance of
+							contentList.</db:para>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="lastItem" type="xs:integer" use="required">
+				<xs:annotation>
+					<xs:documentation>
+						<db:para>The last content item provided in this instance of
+							contentList.</db:para>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="inputQuestion">
 		<xs:annotation>
 			<xs:documentation>
 				<db:para role="desc">A singular question, asked by the Service directed to the User,
@@ -1131,4 +1134,3 @@
 	</xs:complexType>
 
 </xs:schema>
-
