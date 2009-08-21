@@ -111,7 +111,7 @@
                     <para> A combination of hardware and/or software that accesses a <xref
                             linkend="term_service"/> and renders <xref linkend="term_content"/> to
                         the <xref linkend="term_user"/>. A reading system may be implemented
-                        entirely on one device, or it may be split among several computers.
+                        entirely on one device, or it may be split among several.
                         Corresponds to a consumer in the <xref linkend="bib_wsibasicprofile11_conf"
                         />. </para>
                 </listitem>
@@ -234,6 +234,26 @@
                         <para>Download and streaming of content are reading system behaviours, not
                             aspects of the protocol proper.</para>
                     </note>
+                </listitem>
+            </varlistentry>
+            <varlistentry xml:id="term_issue">
+                <term>Issue content</term>
+                <listitem>
+                    <para>Grant access to content.  A Reading System uses the
+					<function><xref linkend="op_issueContent"/></function> operation
+					to request this of the Service.
+					</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry xml:id="term_return">
+                <term>Return content</term>
+                <listitem>
+                    <para>Give up access to content.  A Reading System removes
+					the content locally and uses the
+					<function><xref linkend="op_returnContent"/></function> operation
+					to notify the Service to revoke access.  This term is only
+					defined for lent or loaned content, not for free or purchased content.
+					</para>
                 </listitem>
             </varlistentry>
         </variablelist>
