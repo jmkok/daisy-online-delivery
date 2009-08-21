@@ -36,9 +36,19 @@
         </para>
         <section>
             <title>Usage scenarios</title>
-            <para>
-                <remark role="todo">Describe use scenarios: noninteractive and interactive</remark>
-            </para>
+            <section xml:id="usage_noninteractive">
+                <title>The noninteractive Usage Scenario</title>
+                <para>
+                    <remark role="todo">TODO describe principles</remark>
+                </para>
+            </section>
+
+            <section xml:id="usage_interactive">
+                <title>The interactive Usage Scenario</title>
+                <para>
+                    <remark role="todo">TODO describe principles</remark>
+                </para>
+            </section>
         </section>
     </preface>
 
@@ -398,26 +408,25 @@
             <section xml:id="operations_content_selection_noninteractive" conformance="normative">
                 <title>Noninteractive Content Selection</title>
                 <para>The Service must provide two contentLists, which may be accessed by calling
-				the <function><xref linkend="op_getContentList"/></function> operation with an
-				<parameter>id</parameter>
-				parameter of <literal>available</literal> or <literal>expired</literal>.
-				</para>
-				<itemizedlist>
-					<listitem>
-						<para>The <literal>available</literal> list shall contain those content items
-						that the User is authorized to access with the Reading System.  These may
-						or may not be issued or borrowed.</para>
-					</listitem>
-					<listitem>
-						<para>The <literal>expired</literal> list shall contain those content items
-						issued to the User which the Service requires to be removed from the
-						Reading System and returned with the
-						<function><xref linkend="op_returnContent"/></function> operation.
-						</para>
-					</listitem>
-				</itemizedlist>
-				<para>
-				</para>
+                    the <function>
+                        <xref linkend="op_getContentList"/>
+                    </function> operation with an <parameter>id</parameter> parameter of
+                        <literal>available</literal> or <literal>expired</literal>. </para>
+                <itemizedlist>
+                    <listitem>
+                        <para>The <literal>available</literal> list shall contain those content
+                            items that the User is authorized to access with the Reading System.
+                            These may or may not be issued or borrowed.</para>
+                    </listitem>
+                    <listitem>
+                        <para>The <literal>expired</literal> list shall contain those content items
+                            issued to the User which the Service requires to be removed from the
+                            Reading System and returned with the <function>
+                                <xref linkend="op_returnContent"/>
+                            </function> operation. </para>
+                    </listitem>
+                </itemizedlist>
+                <para> </para>
                 <para>
                     <remark role="todo">Describe the noninteractive scenario (Service-driven
                         selection) and the use of getContentList(default/borrowed)</remark>
@@ -466,9 +475,9 @@
 
                 <para>The <xref linkend="op_issueContent"/> operation constitutes the formal User
                     request to get access to the Content. This operation must be invoked prior to
-                    the invocation of <xref linkend="op_getContentResources"/>, and must be invoked 
-                    regardless of whether the content is
-                    borrowed, purchased, or provided without any access restrictions.</para>
+                    the invocation of <xref linkend="op_getContentResources"/>, and must be invoked
+                    regardless of whether the content is borrowed, purchased, or provided without
+                    any access restrictions.</para>
 
                 <para>If a Service returns <constant>false</constant> (<xref
                         linkend="bib_xsdDatatypes"/>) or throws a <link linkend="apiReferenceFaults"
@@ -482,8 +491,9 @@
                 <para>The <xref linkend="op_getContentResources"/> operation exposes all resources
                     that constitute the content to the Reading System. Service Providers must allow
                     at least one call to <literal>getContentResources</literal> for each issued
-                    Content item, and should allow multiple <literal>getContentResources</literal>
-                    invocations for the same content, possibly spanning several Sessions.</para>
+                    Content item. Depending on the nature of the Service, Service Providers may
+                    allow multiple subsequent <literal>getContentResources</literal> invocations for
+                    the same content, possibly spanning several Sessions.</para>
 
                 <para>
                     <remark role="todo">TODO define when and how issuance ends</remark>
@@ -517,7 +527,8 @@
                         </listitem>
                         <listitem>
                             <para>[Optional] At this point the Reading System may call other
-                                operations. The current Session may be terminated, and a new session initiated.</para>
+                                operations. The current Session may be terminated, and a new session
+                                initiated.</para>
                         </listitem>
                         <listitem>
                             <para>[Required] The Reading System invokes the <xref
@@ -644,12 +655,69 @@
 
         <section xml:id="operations_service_announcements">
             <title>Service Announcements</title>
-            <para>
-                <remark role="todo">TODO Describe service announcements and how markAnnouncements as
-                    read works; what a Service is required/expected to do when announcements are not
-                    marked as read (== should reissue until announcement is marked as read or no
-                    longer relevant)</remark>
-            </para>
+            <para><remark role="todo">TODO fix this intro</remark> Service Announcements are used as
+                a means for the Service to provide various types of information to the User.
+                Examples include: information on Service up- or downtime, information on additions
+                to the Content collection, and, in the case of interactive Services, information on
+                expired Content. </para>
+
+            <para>Service Announcements are typically retrieved at the onset of each <xref
+                    linkend="term_session"/>, but may be retrieved at any stage of a Session, as
+                long as the <xref linkend="def_sessionInitializationSequence"/> has been
+                successfully completed.</para>
+
+            <para>If a Service <link linkend="op_getServiceAttributes">supports this optional
+                    operation</link>, then Reading Systems should invoke the operation at least once
+                per Session. If a Service does not support this operation, then invocations of it
+                must result in an <xref linkend="ft_operationNotSupportedFault"/>.</para>
+
+            <para>A Reading System should invoke the <function>
+                    <xref linkend="op_markAnnouncementsAsRead"/>
+                </function> operation to signal to the Service which of the provided announcements
+                have been consumed by the User. Consistent use of <function>
+                    <xref linkend="op_markAnnouncementsAsRead"/>
+                </function> enables the Service to avoid exposing the User to the same announcement
+                multiple times. Note that a Service may also on its own accord remove individual
+                announcements from the set of distributed announcements as the embedded messages
+                become outdated or otherwise obsolete.</para>
+
+            <note>
+                <para>The identifier values of individual <xref linkend="tp_announcement"/>s in the
+                        <xref linkend="tp_announcements"/> type are only valid for the duration of
+                    the current Session. A Reading System must only invoke <function>
+                        <xref linkend="op_markAnnouncementsAsRead"/>
+                    </function> using parameter values supplied via a previous invocation of <function>
+                        <xref linkend="op_getServiceAnnouncements"/>
+                    </function>, made during the same Session. </para>
+            </note>
+
+            <section xml:id="operations_service_announcements_example" conformance="informative">
+                <title>Service Announcements Example</title>
+                <example>
+                    <title>Service Announcements </title>
+                    <orderedlist>
+                        <listitem>
+                            <para>[Optional] The Reading System invokes the <function>
+                                    <xref linkend="op_getServiceAnnouncements"/>
+                                </function> operation, retrieving a <xref linkend="tp_announcements"
+                                /> type.</para>
+                            <programlisting><xi:include href="./samples/announcements-retrieval.xml" parse="text"/></programlisting>
+                        </listitem>
+                        <listitem>
+                            <para>The user consumes the first and second of the three
+                                messages.</para>
+                        </listitem>
+                        <listitem>
+                            <para>[Optional] The Reading System invokes the <function>
+                                    <xref linkend="op_markAnnouncementsAsRead"/>
+                                </function> operation, signalling that the first and second
+                                announcements were consumed.</para>
+                            <programlisting><xi:include href="./samples/announcements-markAsRead.xml" parse="text"/></programlisting>
+                        </listitem>
+                    </orderedlist>
+                </example>
+            </section>
+
         </section>
 
         <section xml:id="operations_bookmarks">
