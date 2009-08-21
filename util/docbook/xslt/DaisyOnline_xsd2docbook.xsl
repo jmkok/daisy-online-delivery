@@ -672,11 +672,11 @@
 	<!-- iterate over the attributes and generate a table of information -->
 	<xsl:template name="addAttributeInfo">
 		
-		<!-- UNCOMMENT FOR XREF DOC ERRORS
+		<!-- UNCOMMENT FOR XREF DOC ERRORS 
 		<xsl:if test="child::xs:annotation">
 			<xsl:apply-templates select="child::xs:annotation//db:*"/>
-		</xsl:if>
-		-->
+			</xsl:if> -->
+		
 		
 		<xsl:element name="db:table">
 			<xsl:attribute name="class">attrTable</xsl:attribute>
@@ -692,13 +692,17 @@
 						<xsl:text>name</xsl:text>
 					</xsl:element>
 					<xsl:element name="db:th">
+						<xsl:attribute name="class">attrDoc</xsl:attribute>
+						<xsl:text>purpose</xsl:text>
+					</xsl:element>
+					<xsl:element name="db:th">
 						<xsl:attribute name="class">attrUse</xsl:attribute>
 						<xsl:text>use</xsl:text>
 					</xsl:element>
 					<xsl:element name="db:th">
 						<xsl:attribute name="class">attrType</xsl:attribute>
 						<xsl:text>properties</xsl:text>
-					</xsl:element>
+					</xsl:element>					
 				</xsl:element>
 			</xsl:element>
 			<xsl:element name="db:tbody">
@@ -708,6 +712,9 @@
 							<xsl:element name="db:emphasis">
 								<xsl:value-of select="@name|@ref"/>
 							</xsl:element>
+						</xsl:element>
+						<xsl:element name="db:td">							
+							<xsl:copy-of select="./xs:annotation/xs:documentation/db:*"/>							
 						</xsl:element>
 						<xsl:element name="db:td">
 							<xsl:choose>
