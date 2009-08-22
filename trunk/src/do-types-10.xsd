@@ -423,14 +423,19 @@
 				<xs:element name="sample" minOccurs="0" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>
-							<db:para>The identifier of a sample of the content being described, for
-								User consumption. Reading Systems may retrieve the sample by calling
-									<db:xref linkend="op_getContentResources"/> with this identifier
-								as the parameter.</db:para>
+							<db:para>A sample of the content being described, for
+								User consumption.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
-						<xs:attribute name="id" use="required" type="xs:string"/>
+						<xs:attribute name="id" use="required" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">An identifier of the sample.  Reading Systems may retrieve the sample by calling
+										<db:xref linkend="op_getContentResources"/> with this identifier as the parameter.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
 					</xs:complexType>
 				</xs:element>
 

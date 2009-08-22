@@ -12,13 +12,13 @@
 			Version 1, rev 7 (6 Apr 2006)
 		</xs:documentation>
 	</xs:annotation>
- 
+
 	<xs:import namespace="http://www.w3.org/2001/04/xmlenc#"
 			   schemaLocation="xmlenc.xsd" />
 
     <xs:import namespace="http://www.w3.org/2000/09/xmldsig#"
     		   schemaLocation="xmldsig.xsd" />
- 
+
 	<xs:element name="KeyExchange">
 		<xs:annotation>
 			<xs:documentation>
@@ -26,7 +26,7 @@
 				KeyExchange (Issuer, (ds:KeyInfo | Keys)+)
 			</xs:documentation>
 		</xs:annotation>
- 
+
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="Issuer" type="dkx:IssuerType" />
@@ -37,8 +37,7 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
- 
- 
+
 	<xs:complexType name="IssuerType">
 		<xs:annotation>
 			<xs:documentation>
@@ -46,14 +45,14 @@
 				Issuer (#PCDATA)
 			</xs:documentation>
 		</xs:annotation>
- 
+
 		<xs:simpleContent>
 			<xs:extension base="xs:string">
 				<xs:attribute name="uid" type="dkx:IdString" />
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
- 
+
 	<xs:simpleType name="IdString">
 		<xs:annotation>
 			<xs:documentation>
@@ -65,7 +64,7 @@
 			<xs:pattern value="([A-Za-z0-9-_:])+(\.([A-Za-z0-9-_:])+)*" />
 		</xs:restriction>
 	</xs:simpleType>
- 
+
 	<xs:complexType name="KeysType" >
 		<xs:annotation>
 			<xs:documentation>
@@ -73,7 +72,7 @@
 				Keys (ds:KeyInfo, (xe:EncryptedKey | KeyPair)+)
 			</xs:documentation>
 		</xs:annotation>
- 
+
 		<xs:sequence>
 			<xs:element ref="ds:KeyInfo" />
 			<xs:choice maxOccurs="unbounded">
@@ -82,7 +81,7 @@
 			</xs:choice>
 		</xs:sequence>
 	</xs:complexType>
- 
+
 	<xs:complexType name="UAKType" >
 		<xs:annotation>
 			<xs:documentation>
@@ -93,7 +92,7 @@
 					collectionID = Collection ID string from UAK
 			</xs:documentation>
 		</xs:annotation>
- 
+
 		<xs:simpleContent>
 			<xs:extension base="xs:base64Binary">
 				<xs:attribute name="issuerID"  type="xs:string"  use="required"/>
@@ -108,11 +107,11 @@
 				(ds:KeyInfo, xe:EncryptedKey)
 			</xs:documentation>
 		</xs:annotation>
- 
+
 		<xs:sequence>
 			<xs:element ref="ds:KeyInfo" />
 			<xs:element ref="xe:EncryptedKey" />
 		</xs:sequence>
 	</xs:complexType>
- 
+
 </xs:schema>
