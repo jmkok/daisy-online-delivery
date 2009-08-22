@@ -12,6 +12,9 @@
 	<xs:import namespace="http://www.daisy.org/z3986/2005/bookmark/"
 		schemaLocation="bookmark-2005-1.xsd"/>
 
+	<xs:import namespace="http://www.daisy.org/DRM/2005/KeyExchange"
+		schemaLocation="kxo.xsd"/>
+
 	<xs:element name="readingSystemAttributes">
 		<xs:annotation>
 			<xs:documentation>
