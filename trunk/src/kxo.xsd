@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+<xs:schema id="KeyExchange"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	targetNamespace="http://www.daisy.org/DRM/2005/KeyExchange"
 	elementFormDefault="qualified"
 	xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
@@ -61,7 +62,7 @@
 			</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:pattern value="([A-Za-z0-9-_:])+(\.([A-Za-z0-9-_:])+)*" />
+			<xs:pattern value="([-A-Za-z0-9_:])+(\.([-A-Za-z0-9_:])+)*" />
 		</xs:restriction>
 	</xs:simpleType>
 
