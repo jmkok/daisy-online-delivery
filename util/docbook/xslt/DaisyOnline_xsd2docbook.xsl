@@ -16,13 +16,18 @@
 	
 	<xsl:output method="xml" omit-xml-declaration="no" indent="yes"/>
 
+	<!-- import online types schema -->
 	<xsl:variable name="xsd" select="document('../../../src/do-types-10.xsd')"/>
-	<xsl:variable name="bsxsd" select="document('../../../src/bookmark-2005-1.xsd')"/>
+	<!-- import bookmark schema -->
+	<xsl:variable name="bookmark" select="document('../../../src/bookmark-2005-1.xsd')"/>
+	<!-- import key exchange schema -->
+	<xsl:variable name="kxo" select="document('../../../src/kxo.xsd')"/>
+	<!-- import sample file -->
 	<xsl:variable name="samplesIndex" select="document('../../../src/samples-index.xml')"/>
 	
 	<!-- list of types - prevents processing of general-use elements in xsd -->
 	
-	<xsl:variable name="typeList">|readingSystemAttributes|announcements|contentMetadata|bookmarkSet|questions|userResponses|serviceAttributes|resources|</xsl:variable>
+	<xsl:variable name="typeList">|announcements|bookmarkSet|contentList|contentMetadata|KeyExchange|questions|readingSystemAttributes|resources|serviceAttributes|userResponses|</xsl:variable>
 
 	<xsl:template match="db:chapter[@xml:id='typeReference']">
 		<xsl:element name="db:chapter">
@@ -31,7 +36,7 @@
 			<xsl:element name="db:title">Type Reference</xsl:element>
 			
 			<!-- get the top-level elements in the xsd (aka types) -->
-			<xsl:for-each select="$xsd/xs:schema/xs:element|$bsxsd/xs:schema/xs:element">
+			<xsl:for-each select="$xsd/xs:schema/xs:element|$bookmark/xs:schema/xs:element|$kxo/xs:schema/xs:element">
 				<xsl:sort select="@name" case-order="lower-first"/>
 				<xsl:if test="contains($typeList, concat('|',@name,'|'))">
 					<xsl:element name="db:section">
@@ -55,9 +60,15 @@
 							</xsl:otherwise>
 						</xsl:choose>
 						
-						<xsl:call-template name="addContentModel">
-							<xsl:with-param name="isType">true</xsl:with-param>
-						</xsl:call-template>
+						<xsl:element name="db:variablelist">
+							<xsl:call-template name="addContentModel">
+								<xsl:with-param name="isType">true</xsl:with-param>
+							</xsl:call-template>
+							
+							<xsl:if test="xs:complexType/xs:attribute">
+								<xsl:call-template name="addAttributeInfo"/>
+							</xsl:if>
+						</xsl:element>
 						
 						<!-- check if there are samples (0-n per type), if so, include -->
 						<xsl:variable name="type" select="@name" />
@@ -101,24 +112,22 @@
 	<xsl:template name="addContentModel">
 		<xsl:param name="isType" as="xs:boolean"/>
 		
-		<xsl:element name="db:variablelist">
-			<xsl:element name="db:varlistentry">
-				<xsl:element name="db:term">
-					<xsl:text>Content Model</xsl:text>
+		<xsl:element name="db:varlistentry">
+			<xsl:element name="db:term">
+				<xsl:text>Content Model</xsl:text>
+			</xsl:element>
+			
+			<xsl:element name="db:listitem">
+				<xsl:element name="db:para">
+					<xsl:call-template name="generateCM">
+						<xsl:with-param name="thisType" select="."/>
+					</xsl:call-template>
 				</xsl:element>
-				
-				<xsl:element name="db:listitem">
+				<xsl:if test=".//xs:any[count(ancestor::xs:element)=1]">
 					<xsl:element name="db:para">
-						<xsl:call-template name="generateCM">
-							<xsl:with-param name="thisType" select="."/>
-						</xsl:call-template>
+						<xsl:text>This element is extensible.</xsl:text>
 					</xsl:element>
-					<xsl:if test=".//xs:any[count(ancestor::xs:element)=1]">
-						<xsl:element name="db:para">
-							<xsl:text>This element is extensible.</xsl:text>
-						</xsl:element>
-					</xsl:if>
-				</xsl:element>
+				</xsl:if>
 			</xsl:element>
 		</xsl:element>
 	</xsl:template>
@@ -221,14 +230,43 @@
 		<xsl:element name="db:type">
 		<xsl:element name="db:link">
 			<xsl:choose>
-				<xsl:when test="contains($name, ':')">
+				<xsl:when test="contains($name, ':')
+							or (ancestor::xs:schema[@id='bookmark-2005-1'] and not($name='bookmarkSet'))
+							or (ancestor::xs:schema[@id='KeyExchange'] and not($name='KeyExchange'))">
 					<xsl:variable name="prefix" select="substring-before($name, ':')"/>
-					<xsl:variable name="localname" select="substring-after($name, ':')"/>
+					<xsl:variable name="localname">
+						<xsl:choose>
+							<xsl:when test="contains($name, ':')">
+								<xsl:value-of select="substring-after($name, ':')"/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:value-of select="$name"/>
+							</xsl:otherwise>
+						</xsl:choose>
+					</xsl:variable>
 					
 					<xsl:attribute name="xlink:href">
 						<xsl:choose>
+							<xsl:when test="ancestor::xs:schema[@id='bookmark-2005-1']">
+								<xsl:text>http://www.daisy.org/z3986/2005/Z3986-2005.html#</xsl:text>
+								<xsl:choose>
+									<xsl:when test="$name = 'title'">li_433</xsl:when>
+									<xsl:when test="$name = 'uid'">li_439</xsl:when>
+									<xsl:when test="$name = 'lastmark'">li_440</xsl:when>
+									<xsl:when test="$name = 'bookmark'">li_447</xsl:when>
+									<xsl:when test="$name = 'hilite'">li_450</xsl:when>
+									<xsl:otherwise>Bkmk</xsl:otherwise>
+								</xsl:choose>
+							</xsl:when>
+							<xsl:when test="ancestor::xs:schema[@id='KeyExchange']">
+								<xsl:text>http://www.daisy.org/projects/pdtb/daisy-pdtb-spec.html#s6.1</xsl:text>
+							</xsl:when>
 							<xsl:when test="$prefix='dc'">
 								<xsl:text>http://dublincore.org/documents/dces/#</xsl:text>
+								<xsl:value-of select="$localname"/>
+							</xsl:when>
+							<xsl:when test="$prefix='ds'">
+								<xsl:text>http://www.w3.org/TR/2002/REC-xmldsig-core-20020212/#sec-</xsl:text>
 								<xsl:value-of select="$localname"/>
 							</xsl:when>
 							<xsl:otherwise>
@@ -241,14 +279,7 @@
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:attribute name="linkend">
-						<xsl:choose>
-							<xsl:when test="ancestor::xs:schema[@id='bookmark-2005-1'] and not($name='bookmarkSet')">
-								<xsl:value-of select="concat('tp_bookmark_',$name)"/>
-							</xsl:when>
-							<xsl:otherwise>
-								<xsl:value-of select="concat('tp_',$name)"/>
-							</xsl:otherwise>
-						</xsl:choose>
+						<xsl:value-of select="concat('tp_',$name)"/>
 						<xsl:if test="not(@ref) and count(ancestor::xs:schema//xs:element[@name=$name]) &gt; 1">
 							<xsl:variable name="ecnt" select="count(preceding::xs:element[@name=$name])"/>
 							<xsl:choose>
@@ -457,8 +488,8 @@
 	<!-- entry function to generate the documentation section for an element -->
 	<xsl:template name="generateElementDocumentation">
 		
-		<!-- iterate over all elements in both xsds that are not references -->
-		<xsl:for-each select="$xsd//element[not(@ref)]|$bsxsd//element[not(@ref)]">
+		<!-- iterate over all elements that are not references -->
+		<xsl:for-each select="$xsd//element[not(@ref)]">
 			<xsl:sort select="@name" case-order="lower-first"/>
 			
 			<!-- check that the element hasn't already been processed as a type -->
@@ -527,14 +558,7 @@
 					
 					<!-- add table with attribute info, if any -->
 					<xsl:if test="xs:complexType/xs:attribute">
-						<xsl:element name="db:varlistentry">
-							<xsl:element name="db:term">
-								<xsl:text>Attributes</xsl:text>
-							</xsl:element>
-							<xsl:element name="db:listitem">
-								<xsl:call-template name="addAttributeInfo"/>
-							</xsl:element>
-						</xsl:element>
+						<xsl:call-template name="addAttributeInfo"/>
 					</xsl:if>
 				</xsl:otherwise>
 			</xsl:choose>
@@ -672,123 +696,133 @@
 	<!-- iterate over the attributes and generate a table of information -->
 	<xsl:template name="addAttributeInfo">
 		
-		<!-- UNCOMMENT FOR XREF DOC ERRORS 
-		<xsl:if test="child::xs:annotation">
-			<xsl:apply-templates select="child::xs:annotation//db:*"/>
-			</xsl:if> -->
-		
-		
-		<xsl:element name="db:table">
-			<xsl:attribute name="class">attrTable</xsl:attribute>
-			
-			<xsl:element name="db:caption">
-				<xsl:attribute name="class">hiddenCaption</xsl:attribute>
+		<xsl:element name="db:varlistentry">
+			<xsl:element name="db:term">
+				<xsl:text>Attributes</xsl:text>
 			</xsl:element>
-			
-			<xsl:element name="db:thead">
-				<xsl:element name="db:tr">
-					<xsl:element name="db:th">
-						<xsl:attribute name="class">attrName</xsl:attribute>
-						<xsl:text>name</xsl:text>
+			<xsl:element name="db:listitem">
+				
+				<xsl:element name="db:table">
+					<xsl:attribute name="class">attrTable</xsl:attribute>
+					
+					<xsl:element name="db:caption">
+						<xsl:attribute name="class">hiddenCaption</xsl:attribute>
 					</xsl:element>
-					<xsl:element name="db:th">
-						<xsl:attribute name="class">attrDoc</xsl:attribute>
-						<xsl:text>purpose</xsl:text>
+					
+					<xsl:element name="db:thead">
+						<xsl:element name="db:tr">
+							<xsl:element name="db:th">
+								<xsl:attribute name="class">attrName</xsl:attribute>
+								<xsl:text>name</xsl:text>
+							</xsl:element>
+							<xsl:element name="db:th">
+								<xsl:attribute name="class">attrDoc</xsl:attribute>
+								<xsl:text>purpose</xsl:text>
+							</xsl:element>
+							<xsl:element name="db:th">
+								<xsl:attribute name="class">attrUse</xsl:attribute>
+								<xsl:text>use</xsl:text>
+							</xsl:element>
+							<xsl:element name="db:th">
+								<xsl:attribute name="class">attrType</xsl:attribute>
+								<xsl:text>properties</xsl:text>
+							</xsl:element>					
+						</xsl:element>
 					</xsl:element>
-					<xsl:element name="db:th">
-						<xsl:attribute name="class">attrUse</xsl:attribute>
-						<xsl:text>use</xsl:text>
+					<xsl:element name="db:tbody">
+						<xsl:for-each select="xs:complexType/xs:attribute">
+							<xsl:element name="db:tr">
+								<xsl:element name="db:td">
+									<xsl:element name="db:emphasis">
+										<xsl:value-of select="@name|@ref"/>
+									</xsl:element>
+								</xsl:element>
+								<xsl:element name="db:td">							
+									<xsl:choose>
+										<xsl:when test="./xs:annotation">
+											<xsl:copy-of select="./xs:annotation/xs:documentation/db:*"/>							
+										</xsl:when>
+										<xsl:otherwise>
+											<xsl:text>&#160;</xsl:text>
+										</xsl:otherwise>
+									</xsl:choose>
+								</xsl:element>
+								<xsl:element name="db:td">
+									<xsl:choose>
+										<xsl:when test="@use">
+											<xsl:value-of select="@use"/>
+										</xsl:when>
+										<xsl:otherwise>
+											<xsl:text>optional</xsl:text>
+										</xsl:otherwise>
+									</xsl:choose>
+								</xsl:element>
+								<xsl:element name="db:td">
+									<xsl:element name="db:para">
+										<xsl:choose>
+											<xsl:when test="child::xs:simpleType">
+												<xsl:call-template name="generateCM">
+													<xsl:with-param name="thisType" select="."/>
+												</xsl:call-template>
+											</xsl:when>
+											<xsl:when test="@type">
+												<xsl:text>Data type: </xsl:text>
+												<xsl:element name="db:type">
+													<xsl:value-of select="@type"/>
+												</xsl:element>
+											</xsl:when>
+											<xsl:otherwise>
+												<xsl:text>&#160;</xsl:text>
+											</xsl:otherwise>
+										</xsl:choose>
+									</xsl:element>
+									
+									<xsl:if test="@fixed">
+										<xsl:element name="db:para">
+											<xsl:text>Fixed value: </xsl:text>
+											<xsl:element name="db:literal">
+												<xsl:value-of select="@fixed"/>
+											</xsl:element>
+										</xsl:element>
+									</xsl:if>
+									
+									<xsl:if test="@form">
+										<xsl:element name="db:para">
+											<xsl:text>Form: </xsl:text>
+											<xsl:value-of select="@form"/>
+										</xsl:element>
+									</xsl:if>
+									
+									<xsl:if test="@default">
+										<xsl:element name="db:para">
+											<xsl:text>Default Value: </xsl:text>
+											<xsl:element name="db:literal">
+												<xsl:value-of select="@default"/>
+											</xsl:element>
+										</xsl:element>
+									</xsl:if>
+									
+									<!-- display any problems -->
+									<xsl:for-each select="@*">
+										<xsl:choose>
+											<xsl:when test="contains('form|fixed|name|use|default|type|ref', local-name())"/>
+											<xsl:otherwise>
+												<xsl:element name="db:para">
+													<xsl:value-of select="local-name()"/>
+													<xsl:text> = </xsl:text>
+													<xsl:value-of select="."/>
+												</xsl:element>
+											</xsl:otherwise>
+										</xsl:choose>
+									</xsl:for-each>
+								</xsl:element>
+							</xsl:element>
+						</xsl:for-each>
 					</xsl:element>
-					<xsl:element name="db:th">
-						<xsl:attribute name="class">attrType</xsl:attribute>
-						<xsl:text>properties</xsl:text>
-					</xsl:element>					
 				</xsl:element>
 			</xsl:element>
-			<xsl:element name="db:tbody">
-				<xsl:for-each select="xs:complexType/xs:attribute">
-					<xsl:element name="db:tr">
-						<xsl:element name="db:td">
-							<xsl:element name="db:emphasis">
-								<xsl:value-of select="@name|@ref"/>
-							</xsl:element>
-						</xsl:element>
-						<xsl:element name="db:td">							
-							<xsl:copy-of select="./xs:annotation/xs:documentation/db:*"/>							
-						</xsl:element>
-						<xsl:element name="db:td">
-							<xsl:choose>
-								<xsl:when test="@use">
-									<xsl:value-of select="@use"/>
-								</xsl:when>
-								<xsl:otherwise>
-									<xsl:text>optional</xsl:text>
-								</xsl:otherwise>
-							</xsl:choose>
-						</xsl:element>
-						<xsl:element name="db:td">
-							<xsl:element name="db:para">
-								<xsl:choose>
-									<xsl:when test="child::xs:simpleType">
-										<xsl:call-template name="generateCM">
-											<xsl:with-param name="thisType" select="."/>
-										</xsl:call-template>
-									</xsl:when>
-									<xsl:when test="@type">
-										<xsl:text>Data type: </xsl:text>
-										<xsl:element name="db:type">
-											<xsl:value-of select="@type"/>
-										</xsl:element>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:text>&#160;</xsl:text>
-									</xsl:otherwise>
-								</xsl:choose>
-							</xsl:element>
-							
-							<xsl:if test="@fixed">
-								<xsl:element name="db:para">
-									<xsl:text>Fixed value: </xsl:text>
-									<xsl:element name="db:literal">
-										<xsl:value-of select="@fixed"/>
-									</xsl:element>
-								</xsl:element>
-							</xsl:if>
-							
-							<xsl:if test="@form">
-								<xsl:element name="db:para">
-									<xsl:text>Form: </xsl:text>
-									<xsl:value-of select="@form"/>
-								</xsl:element>
-							</xsl:if>
-							
-							<xsl:if test="@default">
-								<xsl:element name="db:para">
-									<xsl:text>Default Value: </xsl:text>
-									<xsl:element name="db:literal">
-										<xsl:value-of select="@default"/>
-									</xsl:element>
-								</xsl:element>
-							</xsl:if>
-							
-							<!-- display any problems -->
-							<xsl:for-each select="@*">
-								<xsl:choose>
-									<xsl:when test="contains('form|fixed|name|use|default|type|ref', local-name())"/>
-									<xsl:otherwise>
-										<xsl:element name="db:para">
-											<xsl:value-of select="local-name()"/>
-											<xsl:text> = </xsl:text>
-											<xsl:value-of select="."/>
-										</xsl:element>
-									</xsl:otherwise>
-								</xsl:choose>
-							</xsl:for-each>
-						</xsl:element>
-					</xsl:element>
-				</xsl:for-each>
-			</xsl:element>
 		</xsl:element>
+	
 	</xsl:template>
 	
 	
