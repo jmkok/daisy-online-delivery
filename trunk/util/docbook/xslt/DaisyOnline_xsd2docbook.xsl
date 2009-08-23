@@ -283,9 +283,7 @@
 						<xsl:if test="not(@ref) and count(ancestor::xs:schema//xs:element[@name=$name]) &gt; 1">
 							<xsl:variable name="ecnt" select="count(preceding::xs:element[@name=$name])"/>
 							<xsl:choose>
-								<xsl:when test="$ecnt = 0">
-									<xsl:text>1</xsl:text>
-								</xsl:when>
+								<xsl:when test="$ecnt = 0"/>
 								<xsl:otherwise>
 									<xsl:value-of select="$ecnt"/>
 								</xsl:otherwise>
@@ -621,6 +619,13 @@
 						</xsl:otherwise>
 					</xsl:choose>
 				</xsl:element>
+				
+				<!-- check if an extensible element -->
+				<xsl:if test="xs:complexType/xs:sequence/xs:choice/xs:any or xs:complexType/xs:sequence/xs:any">
+					<xsl:element name="db:para">
+						<xsl:text>This element is extensible.</xsl:text>
+					</xsl:element>
+				</xsl:if>
 			</xsl:otherwise>
 		</xsl:choose>
 		
@@ -668,7 +673,7 @@
 					</xsl:when>
 					<xsl:otherwise>
 						<xsl:for-each select="
-							ancestor::xs:schema//xs:element[descendant::xs:element[1][@ref=$name]]
+							ancestor::xs:schema//xs:element[@ref=$name]/ancestor::xs:element[1]
 							|ancestor::xs:schema//xs:element[not(descendant::xs:element)][descendant::xs:group[@ref=ancestor::xs:schema/xs:group[descendant::xs:element[@ref=$name]]/@name]]">
 							<xsl:sort select="@name"/>
 							<xsl:call-template name="addLink">
