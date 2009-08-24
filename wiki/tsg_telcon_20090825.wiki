@@ -11,7 +11,7 @@ Regrets:
 
 === Previous Unfinished Action Items ===
  * Jelle: propose resolution to Issue 118
- * Kenny modify dynamic menu usage scenarios to reflect Issue 114 changes.
+ * Kenny modify dynamic menu usage scenarios to reflect Issue 114 changes. {done}
  * Geoff and Markus analyze RequirementsDocument vs current API. {ONGOING}
  * Geoff label Issue 94 as an enhancement, leave open but leave out of spec
  * markus/kenny: Add a required lastModifiedDate attribute (or element) to each contentItem element in the contentList type (the lastModifiedDate of a contentItem element is the last modified date of the most recently modified resource in the publication being represented by the particular contentItem element). A required lastModifiedDate attribute also needs to be added to the resource element in the contentmetadata type. {Think DONE, but spec prose on installments is not}
