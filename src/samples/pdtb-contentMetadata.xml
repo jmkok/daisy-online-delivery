@@ -1,0 +1,31 @@
+<contentMetadata id="ca-qqhb.B612" borrowed="true" category="BOOK">
+  <provider id="ca-qqhb"/> <!-- La Haute-Bibliothèque -->
+  <service id="ca-qqhb-sdel"/> <!-- Service DAISY en ligne -->
+  <metadata>
+    <dc:title>Le petit prince</dc:title>
+    <size>22245250</size>
+    <dc:creator>Antoine de Saint-Exupéry</dc:creator>
+	<dc:identifier>ca-qqhb.B612</dc:identifier>
+	<dc:publisher>Livres parlés de Gaspé</dc:publisher>
+	<dc:format>ANSI/NISO Z39.86-2005</dc:format>
+	<dc:date>2010-12-30</dc:date>
+	<dc:language>fr</dc:langauge>
+	<narrator>Sophie Langevin</narrator>
+	<pdtb2:specVersion>2005-1</pdtb2:specVersion>
+  </metadata>
+  <resources>
+    <resource href="http://sqla.hbq.qc.ca/sdel/B612/Facade.opf" localFileName="Facade.opf" mimeType="text/xml" size="1623"/>
+    <resource href="http://sqla.hbq.qc.ca/sdel/B612/Facade.ncx" localFileName="Facade.ncx" mimeType="application/x-dtbncx+xml" size="1997"/>
+    <resource href="http://sqla.hbq.qc.ca/sdel/B612/Facade.xml" localFileName="Facade.xml" mimeType="application/x-dtbook+xml" size="2175"/>
+    <resource href="http://sqla.hbq.qc.ca/sdel/B612/Facade.smil" localFileName="Facade.smil" mimeType="application/smil" size="1694"/>
+    <resource href="http://sqla.hbq.qc.ca/sdel/B612/Facade.mp3" localFileName="Facade.mp3" mimeType="audio/mpeg" size="150998"/>
+    <resource href="http://sqla.hbq.qc.ca/sdel/B612/Le_petit_prince.opf" localFileName="Le_petit_prince.opf" mimeType="text/xml" size="1741"/>
+    <resource href="http://sqla.hbq.qc.ca/sdel/B612/Le_petit_prince.ppf" localFileName="Le_petit_prince.ppf" mimeType="text/xml" size="2089"/>
+    <resource href="http://sqla.hbq.qc.ca/sdel/B612/Le_petit_prince.ncx" localFileName="Le_petit_prince.ncx" mimeType="application/x-dtbncx+xml" size="2715"/>
+    <resource href="http://sqla.hbq.qc.ca/sdel/B612/Le_petit_prince.xml" localFileName="Le_petit_prince.xml" mimeType="application/x-pdtbook+xml" size="127470"/>
+    <resource href="http://sqla.hbq.qc.ca/sdel/B612/dtb_0001.smil" localFileName="dtb_0001.smil" mimeType="application/smil" size="24969"/>
+    <resource href="http://sqla.hbq.qc.ca/sdel/B612/dtb_0001_Titre.mp3" localFileName="dtb_0001_Titre.mp3" mimeType="application/x-pdtbmpeg" size="881371"/>
+    <resource href="http://sqla.hbq.qc.ca/sdel/B612/dtb_0002.smil" localFileName="dtb_0002.smil" mimeType="application/smil" size="84604"/>
+    <resource href="http://sqla.hbq.qc.ca/sdel/B612/dtb_0002_Texte.mp3" localFileName="dtb_0001_Texte.mp3" mimeType="application/x-pdtbmpeg" size="20961804"/>
+  </resources>
+</contentMetadata>
