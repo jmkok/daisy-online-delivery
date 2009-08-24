@@ -467,8 +467,8 @@
                             <remark role="todo">TODO kenny describe and refer to Wrapped Document
                                 Literal</remark>
 
-The WSDL Style used in the normative WSDL available in Appendix A, WSDL Definition, of this document is "Wrapped Document-literal." this style is a subset of the Document-Literal Style, satisfies R2712 "A document-literal binding MUST be serialized as an ENVELOPE with a soap:Body whose child element is an instance of the global element declaration
-referenced by the corresponding wsdl:message part," and thus is compliant to the WS-I Basic profile 1.1.  A Daisy Online protocol compliant WSDL must not use any other WS-I Basic profile 1.1 permitted styles (i.e. RPC-Literal).
+The WSDL Binding Style used in the normative WSDL available in <xref linkend="appendixWSDL"/>, is "Wrapped Document-literal." this style is a subset of the Document-Literal Style, satisfies R2712 "A document-literal binding MUST be serialized as an ENVELOPE with a soap:Body whose child element is an instance of the global element declaration
+referenced by the corresponding wsdl:message part" in <xref linkend="bib_doc-lit-conformance"/>, and thus is compliant with <xref linkend="bib_wsibasicprofile11"/>.  A Daisy Online protocol compliant WSDL must not use any other <xref linkend="bib_wsibasicprofile11"/> permitted Binding styles (i.e. RPC-Literal).
 
                         </para>
                         <note>
@@ -1252,6 +1252,15 @@ referenced by the corresponding wsdl:message part," and thus is compliant to the
                 <link
                     xlink:href="http://www.ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html#HTTP_Cookies"
                     >HTTP cookies in WS-I Basic Profile 1.1</link>
+            </title>
+        </biblioentry>
+
+        <biblioentry xml:id="bib_doc-lit-conformance">
+            <abbrev>Document-Literal Conformance</abbrev>
+            <title>
+                <link
+                    xlink:href="http://www.ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html#Child_Element_for_Document-Literal_Bindings"
+                    >Child Element for Document-Literal Bindings</link>
             </title>
         </biblioentry>
 
