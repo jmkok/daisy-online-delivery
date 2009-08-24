@@ -694,7 +694,6 @@
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-
 		</xs:complexType>
 	</xs:element>
 
@@ -762,7 +761,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="label" minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="label" minOccurs="0" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>
 							<db:para role="desc">A label for this content list.</db:para>
@@ -904,7 +903,7 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
-				<xs:element ref="label" minOccurs="1" maxOccurs="unbounded"/>
+				<xs:element ref="label" minOccurs="1" maxOccurs="1"/>
 			</xs:sequence>
 			<xs:attribute name="id" type="xs:ID" use="required"/>
 		</xs:complexType>
@@ -915,7 +914,7 @@
 			<xs:documentation>
 				<db:para role="desc">A sequence of questions, asked by the Service to the
 					User.</db:para>
-				<db:para>TODO contentList and label are endpoints, how to best describe
+				<db:para>TODO Kenny/Nick: contentList and label are endpoints, how to best describe
 					that?</db:para>
 				<db:para role="req">The questions element must contain either exactly one
 					contentList or exactly one label or any number of multipleChoiceQuestion and
@@ -1037,6 +1036,77 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
+				<xs:element name="supportedContentProvisionModels" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							<db:para role="desc">Specifies which <db:xref 
+								linkend="fundamentals_contentProvisionModels" /> are
+								supported by this Service. A Service must support at least one of the two models.</db:para>
+						</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="model" minOccurs="1" maxOccurs="2">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="OUT_OF_BAND">
+											<xs:annotation>
+												<xs:documentation>
+													<db:para role="desc">This service supports the <db:xref 
+													linkend="fundamentals_contentProvisionModel_outofband"/>.</db:para> 																										
+												</xs:documentation>
+											</xs:annotation>
+										</xs:enumeration>
+										<xs:enumeration value="BROWSE">
+											<xs:annotation>
+												<xs:documentation>
+													<db:para role="desc">This service supports the <db:xref 
+													linkend="fundamentals_contentProvisionModel_browse"/>.</db:para>
+												</xs:documentation>
+											</xs:annotation>
+										</xs:enumeration>
+									</xs:restriction>
+								</xs:simpleType>	
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="supportedServiceTypes" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							<db:para role="desc">Specifies which <db:xref 
+								linkend="fundamentals_serviceTypes" /> are offered by this Service.
+								A Service must support at least one of the two Services types.</db:para>
+						</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="type" minOccurs="1" maxOccurs="2">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="LIBRARY">
+											<xs:annotation>
+												<xs:documentation>
+													<db:para role="desc">This service offers the <db:xref 
+													linkend="fundamentals_serviceType_library"/>.</db:para>														
+												</xs:documentation>
+											</xs:annotation>
+										</xs:enumeration>
+										<xs:enumeration value="SHOP">
+											<xs:annotation>
+												<xs:documentation>
+													<db:para role="desc">This service offers the <db:xref 
+														linkend="fundamentals_serviceType_shop"/>.</db:para>													
+												</xs:documentation>
+											</xs:annotation>
+										</xs:enumeration>
+									</xs:restriction>
+								</xs:simpleType>	
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				
 				<xs:element name="supportsServerSideBack" type="xs:boolean" minOccurs="1"
 					maxOccurs="1">
 					<xs:annotation>

@@ -19,7 +19,7 @@
 	<xsl:template match="db:chapter[@xml:id='apiReference']">
 		<db:chapter xml:id="apiReference" conformance="normative">
 			<db:title>API Reference</db:title>
-			<db:section xml:id="apiReferenceBasic">
+			<db:section xml:id="apiReferenceRequired">
 				<db:title>Required Operations</db:title>
 				<xsl:call-template name="wsdlOperationsAsDocbook">
 					<xsl:with-param name="operations" 
@@ -27,7 +27,7 @@
 				</xsl:call-template>
 			</db:section>
 			
-			<db:section xml:id="apiReferenceAdvanced">
+			<db:section xml:id="apiReferenceOptional">
 				<db:title>Optional Operations</db:title>
 				<xsl:call-template name="wsdlOperationsAsDocbook">
 					<xsl:with-param name="operations" 
@@ -218,8 +218,7 @@
 		<db:para>Type:
 			<xsl:choose>
 				<!-- get the primitive xsd types (element type="xs:*") -->
-				<!-- <xsl:when test="starts-with($xsdElement/@type,'xs:')"> -->
-				<xsl:when test="$xsdElement/@type">
+				<xsl:when test="$xsdElement/@type and starts-with($xsdElement/@type,'xs:')">
 					<db:link>
 						<xsl:attribute name="xlink:href"><xsl:value-of 
 							select="concat('http://www.w3.org/TR/xmlschema-2/#',substring-after($xsdElement/@type,'xs:'))" />

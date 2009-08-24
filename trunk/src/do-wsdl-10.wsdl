@@ -221,8 +221,7 @@
 						<xs:element minOccurs="1" maxOccurs="1" name="contentID" type="xs:string">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">The contentID parameter to the
-										returnContent operation. Contains the <db:xref linkend="term_contentIdentifier"/> of
+									<db:para role="desc">Specifies the <db:xref linkend="term_contentIdentifier"/> of
 										the content that this return request is for.</db:para>
 								</xs:documentation>
 							</xs:annotation>
@@ -253,37 +252,48 @@
 						<xs:element minOccurs="1" maxOccurs="1" name="id">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">The id parameter to the getContentList
-										operation. Contains the identity of the list to
+									<db:para role="desc">Specifies the identity of the list to
 										retrieve.</db:para>
 									<db:para role="desc">This parameter can contain one of three
-										values i.e. default, borrowed and expired.</db:para>
-									<db:para>The value <db:varname>default</db:varname> is reserved
-										to refer to a default (precomposed) content list; Services
-										must therefore not assign <db:varname>default</db:varname>
-										as the identity value of a dynamically composed content
-										list.</db:para>
-									<db:para>The value <db:varname>borrowed</db:varname> is reserved
-										to refer to a listing of the content that is currently
-										borrowed to the User by the Service; Services must therefore
-										not assign <db:varname>borrowed</db:varname> as the identity
-										value of a dynamically composed content list.</db:para>
-									<db:para>The value <db:varname>expired</db:varname> is reserved
-										to refer to a listing of the content that is currently
-										borrowed to the User by the Service, has expired, and thus
-										should be deleted off the readingg system; Services must
-										therefore not assign <db:varname>expired</db:varname> as the
-										identity value of a dynamically composed content
-										list.</db:para>
-									<db:para>TODO explain that this can be used to allow the service
-										to manage the borrowed content list on the users behalf.
-										(Hiro)</db:para>
+									values:</db:para>
+									<db:variablelist>
+										<db:varlistentry xml:id="contentList_issued">
+											<db:term>issued</db:term>
+											<db:listitem>
+												<db:para role="desc">Refers to a list of Content that the Service currently 
+													has recorded as issued (see <db:xref linkend="op_issueContent"/>) to the User. The list includes issued Content items
+												regardless of whether they have been downloaded (in part or full) or not. The list
+												excludes content that has <db:xref linkend="contentList_expired"/>.</db:para>
+												<db:para>Services that are of the <db:link linkend="fundamentals_serviceType_library">library style</db:link> 
+													must recognize this identifier.</db:para>
+											</db:listitem>
+										</db:varlistentry>
+										<db:varlistentry xml:id="contentList_new">
+											<db:term>new</db:term>
+											<db:listitem>
+												<db:para role="desc">Refers to a list of Content that the Service offers to issue to the User.</db:para>
+												<db:para>The list excludes content that is <db:xref linkend="contentList_issued"/>, and it excludes content that 
+												has <db:xref linkend="contentList_expired"/>.</db:para>
+												<db:para>Services that support the <db:xref linkend="fundamentals_contentProvisionModel_outofband" /> must recognize this identifier.</db:para>
+											</db:listitem>
+										</db:varlistentry>
+										<db:varlistentry xml:id="contentList_expired">
+											<db:term>expired</db:term>
+											<db:listitem>
+												<db:para>Referes to a list of Content that was initially <db:xref linkend="contentList_issued"/> to the User, but has now expired.</db:para>
+												<db:para>This list is used by <db:link linkend="fundamentals_serviceType_library">library style</db:link> Services to signal
+												to the Reading System that certain Content items must be returned.</db:para>
+												<db:para>Services that are of the <db:link linkend="fundamentals_serviceType_library">library style</db:link> 
+													must recognize this identifier.</db:para>
+											</db:listitem>
+										</db:varlistentry>
+									</db:variablelist>									
 								</xs:documentation>
 							</xs:annotation>
 							<xs:simpleType>
 								<xs:restriction base="xs:string">
-									<xs:enumeration value="default"/>
-									<xs:enumeration value="borrowed"/>
+									<xs:enumeration value="issued"/>
+									<xs:enumeration value="new"/>
 									<xs:enumeration value="expired"/>
 								</xs:restriction>
 							</xs:simpleType>
@@ -292,9 +302,8 @@
 						<xs:element minOccurs="1" maxOccurs="1" name="firstItem" type="xs:integer">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">The firstItem parameter to the
-										getContentList operation. Contains the first item to
-										retrieve.</db:para>
+									<db:para role="desc">When retreiving a subset of the contentList, contains the first item in the subset to
+										retrieve. The first item in the list has the index <db:literal>0</db:literal>.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -302,9 +311,9 @@
 						<xs:element minOccurs="1" maxOccurs="1" name="lastItem" type="xs:integer">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">The lastItem parameter to the
-										getContentList operation. Contains the last item to
-										retrieve.</db:para>
+									<db:para role="desc">When retreiving a subset of the contentList, contains the last item in the subset to
+										retrieve. The value <db:literal>-1</db:literal> indicates a request to retrieve all items from
+										<db:parameter>startIndex</db:parameter> to the end of the list.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -318,8 +327,7 @@
 						<xs:element minOccurs="1" maxOccurs="1" ref="common:contentList">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Return value of the getContentList
-										operation. Contains the requested content list, or a segment
+									<db:para role="desc">Contains the requested content list, or a segment
 										thereof.</db:para>
 								</xs:documentation>
 							</xs:annotation>
@@ -1002,27 +1010,7 @@
 				message="tns:invalidParameterFault_message"/>
 		</operation>
 
-		<operation name="getContentList">
-			<documentation>
-				<db:para role="desc">Retrieves a list of available content.</db:para>
-				<db:para>The <db:varname>firstItem</db:varname> and
-						<db:varname>lastItem</db:varname> parameters are used to request subsets of
-					the content list made available by the Service. The first item in the list has
-					the index <db:varname>0</db:varname>. The value <db:varname>-1</db:varname> of
-					the lastItem parameter indicates a request to retrieve all items from
-						<db:varname>startIndex</db:varname> to the end of the list.</db:para>
-				<db:para role="req">TODO note that out-of-range lastItem and firstItem values do not
-					constitute Fault matter.</db:para>
-			</documentation>
-			<input message="tns:getContentList_inputMessage"/>
-			<output message="tns:getContentList_outputMessage"/>
-			<fault name="getContentList_internalServerErrorFault"
-				message="tns:internalServerErrorFault_message"/>
-			<fault name="getContentList_invalidOperationFault"
-				message="tns:invalidOperationFault_message"/>
-			<fault name="getContentList_invalidParameterFault"
-				message="tns:invalidParameterFault_message"/>
-		</operation>
+		
 
 		<operation name="getContentMetadata">
 			<documentation>
@@ -1076,6 +1064,22 @@
 		<!-- *******  optional operations  ******** -->
 		<!-- ************************************** -->
 
+		<operation name="getContentList">
+			<documentation>
+				<db:para role="desc">Retrieves a list of content.</db:para>
+			</documentation>
+			<input message="tns:getContentList_inputMessage"/>
+			<output message="tns:getContentList_outputMessage"/>
+			<fault name="getContentList_internalServerErrorFault"
+				message="tns:internalServerErrorFault_message"/>
+			<fault name="getContentList_invalidOperationFault"
+				message="tns:invalidOperationFault_message"/>
+			<fault name="getContentList_invalidParameterFault"
+				message="tns:invalidParameterFault_message"/>
+			<fault name="getContentList_operationNotSupportedFault"
+				message="tns:operationNotSupportedFault_message"/>		
+		</operation>
+
 		<operation name="getServiceAnnouncements">
 			<documentation>
 				<db:para role="desc">Retrieves the announcements awaiting the User's attention from
@@ -1113,27 +1117,28 @@
 		<operation name="returnContent">
 			<documentation>
 				<db:para role="desc">Notify the Service that the specified content
-				has been deleted from the Reading System.</db:para>
-				<db:para>This operation is for the use of libraries and other
-				organizations with a loan programme for content.  A Reading System
+				 has been deleted from the Reading System. A successful invocation of
+				 this operation (e.g. a return value of <db:constant>true</db:constant> from the Service) 
+					means that the Content is no longer issued to the User.
+				</db:para>
+				
+				<db:para>This operation is used exclusively in <db:link linkend="fundamentals_serviceType_library"
+					>library-style</db:link> Services.</db:para>
+				
+				<db:para> A Reading System
 				should not call <db:function>returnContent</db:function> where the contentMetadata's
 				<db:varname>borrowed</db:varname> attribute is not
 				<db:literal>true</db:literal>.</db:para>
 				<db:para>A Reading System must delete the content before calling
 				<db:function>returnContent</db:function>.  A Reading System must not
-				call <db:function>returnContent</db:function> it never had.</db:para>
+				call <db:function>returnContent</db:function> on Content it never had.</db:para>
 				<db:note><db:para>This protocol cannot guarantee that a Reading System
 				has actually deleted the content before calling <db:function>returnContent</db:function>.
 				If a Service receives a call to this operation, that does not constitute
 				proof that the content has been removed.  If a Service Provider requires
-				a robust copy prevention mechanism, it should investigate a DRM solution
+				a robust copy prevention mechanism, it should employ a DRM solution
 				such as <db:xref linkend="bib_pdtb2"/>.</db:para>
 				</db:note>
-				<db:para>
-					<db:remark role="todo">Define how to handle this in purchase or other no-return
-						situations. Does making optional fix it all? GGT: No it doesn't.
-						Service could be mixed, like RNIB.</db:remark>
-				</db:para>
 			</documentation>
 			<input message="tns:returnContent_inputMessage"/>
 			<output message="tns:returnContent_outputMessage"/>
@@ -1220,6 +1225,6 @@
 
 	</portType>
 
-	<!-- the binding elements is generated by wsdl-finalize.xsl -->
+	<!-- the binding element is generated by wsdl-finalize.xsl -->
 	
 </definitions>
