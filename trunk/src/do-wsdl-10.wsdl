@@ -252,7 +252,8 @@
 												regardless of whether they have been downloaded (in part or full) or not. The list
 												excludes content that has <db:xref linkend="contentList_expired"/>.</db:para>
 												<db:para>Services that are of the <db:link linkend="fundamentals_serviceType_library">library style</db:link> 
-													must recognize this identifier.</db:para>
+													must recognize this identifier. Services that are of the <db:link linkend="fundamentals_serviceType_shop">shop style</db:link> 
+													may recognize this identifier.</db:para>
 											</db:listitem>
 										</db:varlistentry>
 										<db:varlistentry xml:id="contentList_new">
@@ -959,9 +960,9 @@
 			<documentation>
 				<db:para role="desc">Posts properties of the Reading System to the
 					Service.</db:para>
-				<db:para>This operation must be invoked after a successful <db:xref
-						linkend="op_logOn"/> in order to establish the [session ready state] [TODO
-					link up]. This operation may be invoked additional times during a session to
+				<db:para>A Reading System must invoke this operation as part of 
+					the <db:xref linkend="def_sessionInitializationSequence"/>. 
+				This operation may be invoked additional times during a session to
 					record dynamic changes in the Reading System properties.</db:para>
 			</documentation>
 			<input message="tns:setReadingSystemAttributes_inputMessage"/>
@@ -1029,6 +1030,9 @@
 			<documentation>
 				<db:para role="desc">Retrieves Service properties, including information on which
 					optional operations the Service supports.</db:para>
+				<db:para>A Reading System must invoke this operation as part of 
+					the <db:xref linkend="def_sessionInitializationSequence"/>, and may invoke this operation
+					again later in the session to retrieve information on possible changes in Service properties.</db:para>
 			</documentation>
 			<input message="tns:getServiceAttributes_inputMessage"/>
 			<output message="tns:getServiceAttributes_outputMessage"/>

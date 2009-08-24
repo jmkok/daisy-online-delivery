@@ -19,6 +19,7 @@
 		<xs:annotation>
 			<xs:documentation>
 				<db:para role="desc">Specifies Reading System properties.</db:para>
+				<db:para>The properties specified are valid no longer than for the duration of one Session.</db:para>
 			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -97,25 +98,24 @@
 								</xs:annotation>
 							</xs:element>
 
-							<xs:element name="supportedContentStandards" minOccurs="1" maxOccurs="1">
+							<xs:element name="supportedContentFormats" minOccurs="1" maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>
 										<db:para role="desc">Specifies which kinds of content the
 											Reading System supports.</db:para>
 										<db:para>The content of this element follows the convention
-											of the Dublin Core Format property. TODO Link TODO
-											Examples 2.02 , Zed, Epub</db:para>
+											of the <db:xref linkend="bib_dublinCore"/> <db:token>Format</db:token> property.</db:para>
 									</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element name="supportedContentStandard" type="xs:string"
+										<xs:element name="contentFormat" type="xs:string"
 											minOccurs="1" maxOccurs="unbounded"/>
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
 
-							<xs:element name="supportedContentProtectionStandards" minOccurs="1"
+							<xs:element name="supportedContentProtectionFormats" minOccurs="1"
 								maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>
@@ -126,7 +126,7 @@
 								</xs:annotation>
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element name="supportedContentProtectionStandard"
+										<xs:element name="protectionFormat"
 											minOccurs="0" maxOccurs="unbounded">
 											<xs:simpleType>
 												<xs:restriction base="xs:string">
@@ -516,7 +516,7 @@
 					<xs:complexType>
 						<xs:sequence>
 							<!-- TODO use label for metadata, serviceid and providerid -->
-							<xs:element ref="dc:title">
+							<xs:element ref="dc:title" minOccurs="1" maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>
 										<db:para role="desc">The Dublin Core
@@ -525,7 +525,7 @@
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
-							<xs:element ref="dc:identifier">
+							<xs:element ref="dc:identifier" minOccurs="1" maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>
 										<db:para role="desc">The Dublin Core
@@ -543,7 +543,7 @@
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
-							<xs:element ref="dc:format" minOccurs="0" maxOccurs="1">
+							<xs:element ref="dc:format" minOccurs="1" maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>
 										<db:para role="desc">The Dublin Core
@@ -1057,6 +1057,7 @@
 		<xs:annotation>
 			<xs:documentation>
 				<db:para role="desc">Specifies Service properties.</db:para>
+				<db:para>The properties specified are valid no longer than for the duration of one Session.</db:para>				
 			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>

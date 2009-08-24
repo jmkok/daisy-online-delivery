@@ -365,6 +365,10 @@
                             the end of the issuance period for a given Content item.</para>
                     </listitem>
                     <listitem>
+                        <para><remark role="todo">Supply the @borrowed attribute - wait for Issue 132</remark></para>
+                    </listitem>
+                    
+                    <listitem>
                         <para>Declare its offering of a Library-style service in the <xref
                                 linkend="tp_supportedServiceTypes"/> element in the <xref
                                 linkend="tp_serviceAttributes"/> type returned by the <xref
@@ -433,7 +437,6 @@
                                 <xref linkend="tp_serviceAttributes"/> type returned by the <xref
                                 linkend="op_getServiceAttributes"/> operation.</para>
                     </listitem>
-
                 </itemizedlist>
             </section>
             <section xml:id="fundamentals_contentProvisionModel_reqs_browse">
