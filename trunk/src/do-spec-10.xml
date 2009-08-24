@@ -288,9 +288,9 @@
                             linkend="fundamentals_serviceTypes_reqs_shop"/></para>
                 </listitem>
                 <listitem>
-                    <para>It complies with the Content Provision Model-specific requirements defined
-                        in <xref linkend="fundamentals_contentProvisionModel_reqs_outofband"/>
-                        and/or <xref linkend="fundamentals_contentProvisionModel_reqs_browse"
+                    <para>It complies with the Content Selection Model-specific requirements defined
+                        in <xref linkend="fundamentals_contentSelectionModel_reqs_outofband"/>
+                        and/or <xref linkend="fundamentals_contentSelectionModel_reqs_browse"
                         /></para>
                 </listitem>
                 <listitem>
@@ -391,35 +391,35 @@
 
         </section>
 
-        <section xml:id="fundamentals_contentProvisionModels" conformance="normative"
-            xreflabel="Content Provision Models">
-            <title>Content Provision Models</title>
+        <section xml:id="fundamentals_contentSelectionModels" conformance="normative"
+            xreflabel="Content Selection Models">
+            <title>Content Selection Models</title>
             <para>This protocol has been designed to support two fundamental models for content
                 provision.</para>
             <itemizedlist>
-                <listitem xml:id="fundamentals_contentProvisionModel_outofband"
-                    xreflabel="Out-of-band Content Provision Model">
-                    <para>The <emphasis>out-of-band</emphasis> content provision model, where the
+                <listitem xml:id="fundamentals_contentSelectionModel_outofband"
+                    xreflabel="Out-of-band Content Selection Model">
+                    <para>The <emphasis>out-of-band</emphasis> content selection model, where the
                         User through some form of out-of-band mechanism (e.g. a web form or
                         telephone) selects content to request issuance and transfer of.</para>
                 </listitem>
-                <listitem xml:id="fundamentals_contentProvisionModel_browse"
-                    xreflabel="Browse Content Provision Model">
-                    <para>The <emphasis>browse</emphasis> content provision model, where the User
+                <listitem xml:id="fundamentals_contentSelectionModel_browse"
+                    xreflabel="Browse Content Selection Model">
+                    <para>The <emphasis>browse</emphasis> content selection model, where the User
                         browses the Service's collection using operations defined by this protocol,
                         and interactively selects Content to request issuance and transfer
                         of.</para>
                 </listitem>
             </itemizedlist>
 
-            <para>A given Service must offer one and may offer both models of content provision.
-                Reading Systems may be designed to support one or both of these content provision
+            <para>A given Service must offer one and may offer both models of content selection.
+                Reading Systems may be designed to support one or both of these content selection
                 models. A Reading System may invoke operations associated with both models during
                 the same session, providing that the Service supports both models.</para>
 
-            <section xml:id="fundamentals_contentProvisionModel_reqs_outofband">
-                <title>Out-of-band Content Provision Model Requirements</title>
-                <para>A Service employing the Out-of-band Content Provision Model must:</para>
+            <section xml:id="fundamentals_contentSelectionModel_reqs_outofband">
+                <title>Out-of-band Content Selection Model Requirements</title>
+                <para>A Service employing the Out-of-band Content Selection Model must:</para>
                 <itemizedlist>
                     <listitem>
                         <para>Provide one or several out-of-band mechanisms that lets the User
@@ -432,16 +432,16 @@
                             operations' <parameter>id</parameter> parameter</para>
                     </listitem>
                     <listitem>
-                        <para>Declare its support for the out-of-band Content Provision Model in the
-                                <xref linkend="tp_supportedContentProvisionModels"/> element in the
+                        <para>Declare its support for the Out-of-band Content Selection Model in the
+                                <xref linkend="tp_supportedContentSelectionModels"/> element in the
                                 <xref linkend="tp_serviceAttributes"/> type returned by the <xref
                                 linkend="op_getServiceAttributes"/> operation.</para>
                     </listitem>
                 </itemizedlist>
             </section>
-            <section xml:id="fundamentals_contentProvisionModel_reqs_browse">
-                <title>Browse Content Provision Model Requirements</title>
-                <para>A Service employing the Browse Content Provision Model must:</para>
+            <section xml:id="fundamentals_contentSelectionModel_reqs_browse">
+                <title>Browse Content Selection Model Requirements</title>
+                <para>A Service employing the Browse Content Selection Model must:</para>
                 <itemizedlist>
                     <listitem>
                         <para>Provide support for <link linkend="fundamentals_dynamic_menus">Dynamic
@@ -452,14 +452,13 @@
                             of.</para>
                     </listitem>
                     <listitem>
-                        <para>Declare its support for the Browse Content Provision Model in the
-                                <xref linkend="tp_supportedContentProvisionModels"/> element in the
+                        <para>Declare its support for the Browse Content Selection Model in the
+                                <xref linkend="tp_supportedContentSelectionModels"/> element in the
                                 <xref linkend="tp_serviceAttributes"/> type returned by the <xref
                                 linkend="op_getServiceAttributes"/> operation.</para>
                     </listitem>
                 </itemizedlist>
             </section>
-
         </section>
 
         <section xml:id="fundamentals_protocols" conformance="normative">
@@ -684,7 +683,7 @@
 
         <section xml:id="operations_content_selection">
             <title>Content Selection</title>
-            <para>Depending on the <link linkend="fundamentals_contentProvisionModels">content
+            <para>Depending on the <link linkend="fundamentals_contentSelectionModels">content
                     provision model</link> employed, Content selection (e.g. the mechanism with
                 which the user selects one or several content items to request issuance and transfer
                 of) is performed using two distinct approaches:</para>
@@ -692,7 +691,7 @@
             <section xml:id="operations_content_selection_outofband">
                 <title>Content Selection using the Out-of-band model</title>
 
-                <para>In the <link linkend="fundamentals_contentProvisionModel_outofband"
+                <para>In the <link linkend="fundamentals_contentSelectionModel_outofband"
                         >Out-of-band model</link> content provison form, content is selected using a
                     mechanism not defined by this protocol, and not involving the Session itself.
                     Through this mechanism, the Service, typically prior to the Session onset, has
@@ -705,7 +704,7 @@
 
                 <note>
                     <para>A Service declares whether it supports Content selection using the
-                        Out-of-band model in the <xref linkend="tp_supportedContentProvisionModels"
+                        Out-of-band model in the <xref linkend="tp_supportedContentSelectionModels"
                         /> element in the <xref linkend="tp_serviceAttributes"/> type returned by
                         the <xref linkend="op_getServiceAttributes"/> operation.</para>
                 </note>
@@ -753,14 +752,14 @@
             </section>
             <section xml:id="operations_content_selection_browse">
                 <title>Content Selection using the Browse model</title>
-                <para>In the <link linkend="fundamentals_contentProvisionModel_browse">Browse
+                <para>In the <link linkend="fundamentals_contentSelectionModel_browse">Browse
                         model</link> content provison form, content is selected dynamically within
                     the Session using the <link linkend="fundamentals_dynamic_menus">Dynamic
                         Menu</link> feature of this protocol.</para>
 
                 <note>
                     <para>A Service declares whether it supports Content selection using the Browse
-                        model in the <xref linkend="tp_supportedContentProvisionModels"/> element in
+                        model in the <xref linkend="tp_supportedContentSelectionModels"/> element in
                         the <xref linkend="tp_serviceAttributes"/> type returned by the <xref
                             linkend="op_getServiceAttributes"/> operation. Services may support the
                         Dynamic Menu feature for other purposes than supporting content selection,

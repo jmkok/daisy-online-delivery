@@ -262,7 +262,7 @@
 												<db:para role="desc">Refers to a list of Content that the Service offers to issue to the User.</db:para>
 												<db:para>The list excludes content that is <db:xref linkend="contentList_issued"/>, and it excludes content that 
 												has <db:xref linkend="contentList_expired"/>.</db:para>
-												<db:para>Services that support the <db:xref linkend="fundamentals_contentProvisionModel_outofband" /> must recognize this identifier.</db:para>
+												<db:para>Services that support the <db:xref linkend="fundamentals_contentSelectionModel_outofband" /> must recognize this identifier.</db:para>
 											</db:listitem>
 										</db:varlistentry>
 										<db:varlistentry xml:id="contentList_expired">
