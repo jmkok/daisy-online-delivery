@@ -19,9 +19,10 @@
     <resource href="http://sqla.hbq.qc.ca/sdel/B612/Facade.xml" localFileName="Facade.xml" mimeType="application/x-dtbook+xml" size="2175"/>
     <resource href="http://sqla.hbq.qc.ca/sdel/B612/Facade.smil" localFileName="Facade.smil" mimeType="application/smil" size="1694"/>
     <resource href="http://sqla.hbq.qc.ca/sdel/B612/Facade.mp3" localFileName="Facade.mp3" mimeType="audio/mpeg" size="150998"/>
+    <resource href="http://sqla.hbq.qc.ca/sdel/B612/Le_petit_prince_auth.xml" localFileName="Le_petit_prince_auth.xml" mimeType="application/x-pdtbauth+xml" size="2034"/>
+    <resource href="http://sqla.hbq.qc.ca/sdel/B612/Le_petit_prince.ncx" localFileName="Le_petit_prince.ncx" mimeType="application/x-dtbncx+xml" size="2715"/>
     <resource href="http://sqla.hbq.qc.ca/sdel/B612/Le_petit_prince.opf" localFileName="Le_petit_prince.opf" mimeType="text/xml" size="1741"/>
     <resource href="http://sqla.hbq.qc.ca/sdel/B612/Le_petit_prince.ppf" localFileName="Le_petit_prince.ppf" mimeType="text/xml" size="2089"/>
-    <resource href="http://sqla.hbq.qc.ca/sdel/B612/Le_petit_prince.ncx" localFileName="Le_petit_prince.ncx" mimeType="application/x-dtbncx+xml" size="2715"/>
     <resource href="http://sqla.hbq.qc.ca/sdel/B612/Le_petit_prince.xml" localFileName="Le_petit_prince.xml" mimeType="application/x-pdtbook+xml" size="127470"/>
     <resource href="http://sqla.hbq.qc.ca/sdel/B612/dtb_0001.smil" localFileName="dtb_0001.smil" mimeType="application/smil" size="24969"/>
     <resource href="http://sqla.hbq.qc.ca/sdel/B612/dtb_0001_Titre.mp3" localFileName="dtb_0001_Titre.mp3" mimeType="application/x-pdtbmpeg" size="881371"/>
