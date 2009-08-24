@@ -30,69 +30,71 @@
     <preface xml:id="introduction" conformance="informative">
         <title>Introduction</title>
         <para>
-            <remark role="todo">TODO describe target application domains and functionality scope.
-                Note that lending and one-way (including commercial sales) is possible. Not limited
-                to the daisy content type</remark>
+            <remark role="todo">TODO describe overview target application domains and functionality
+                scope. Mention that although focused on the DAISY DTB content type, the protocol per
+                se is not limited to DAISY</remark>
         </para>
-        <section>
-            <title>Usage scenarios</title>
-            <section xml:id="usage_menuless" conformance="informative">
-                <title>The Menuless Usage Scenario</title>
-				<para>A menuless Service or Reading System is one that does not
-				provide menu functionality; in these systems, content must be selected
-				through some out-of-band mechanism.  In this scenario, a DAISY Online
-				Service's main role is to inform a Reading System what content is
-				available to the User.
-				</para>
-				<para>If a menuless Reading System connects to a Service, then the Service
-				should provide a menuless service model.  If a Reading System connects
-				to a menuless Service, then the Reading System should operate in menuless mode.
-				</para>
-				<itemizedlist>
-					<title>Menuless Service Model Examples</title>
-					<listitem>
-						<para>The Service could provide a separate interface for content selection.
-						This could be a Web site, a call centre or some other method.
-						</para>
-					</listitem>
-					<listitem>
-						<!-- This is sometimes called a profile system; however, "profile"
-						is confusing as it can mean a number of things, so I avoided that term.
-						-GGT -->
-						<para>Content could be automatically selected for a User by the Service
-						based on their preferences.  The Service would periodically update
-						the content available.</para>
-					</listitem>
-					<listitem>
-						<para>The Service could provide periodicals.  Each time the
-						User connects to the Service, the most recent editions are available
-						to them.</para>
-					</listitem>
-				</itemizedlist>
-				<para>After a Reading System queries the Service for the list of
-				available content, it could continue in a noninteractive mode, or could
-				allow user interaction with the content.
-				A noninteractive Reading System will synchronize its content
-				with that available on the Service.  It will download those content items it
-				does not already have—up to its storage capacity.
-				An interactive Reading System will allow the User to choose what
-				content to download or stream.
-				</para>
-                <para>This specification provides a mechanism for Services to request the
-				removal of content from Reading Systems.  This is for use only with content
-				on loan from the Service, for which the loan has expired, and may aid with
-				syncronization issues.
-				<emphasis>Use of this mechanism to remove content without the User's consent is
-				strongly discouraged.</emphasis></para>
-            </section>
 
-            <section xml:id="usage_interactive">
-                <title>The interactive Usage Scenario</title>
-                <para>
-                    <remark role="todo">TODO describe principles</remark>
-                </para>
-            </section>
+
+        <!-- 
+    <section>
+    <title>Usage scenarios</title>
+    <section xml:id="usage_menuless" conformance="informative">
+    <title>The Menuless Usage Scenario</title>
+    <para>A menuless Service or Reading System is one that does not
+    provide menu functionality; in these systems, content must be selected
+    through some out-of-band mechanism.  In this scenario, a DAISY Online
+    Service's main role is to inform a Reading System what content is
+    available to the User.
+    </para>
+    <para>If a menuless Reading System connects to a Service, then the Service
+    should provide a menuless service model.  If a Reading System connects
+    to a menuless Service, then the Reading System should operate in menuless mode.
+    </para>
+    <itemizedlist>
+    <title>Menuless Service Model Examples</title>
+    <listitem>
+    <para>The Service could provide a separate interface for content selection.
+    This could be a Web site, a call centre or some other method.
+    </para>
+    </listitem>
+    <listitem> -->
+        <!-- This is sometimes called a profile system; however, "profile"
+    is confusing as it can mean a number of things, so I avoided that term.
+    -GGT -->
+        <!--
+            <para>Content could be automatically selected for a User by the Service
+                based on their preferences.  The Service would periodically update
+                the content available.</para>
+                </listitem>
+            <listitem>
+                <para>The Service could provide periodicals.  Each time the
+                    User connects to the Service, the most recent editions are available
+                    to them.</para>
+            </listitem>
+            </itemizedlist>
+            <para>After a Reading System queries the Service for the list of
+                available content, it could continue in a noninteractive mode, or could
+                allow user interaction with the content.
+                A noninteractive Reading System will synchronize its content
+                with that available on the Service.  It will download those content items it
+                does not already have—up to its storage capacity.
+                An interactive Reading System will allow the User to choose what
+                content to download or stream.
+            </para>
+            <para>This specification provides a mechanism for Services to request the
+                removal of content from Reading Systems.  This is for use only with content
+                on loan from the Service, for which the loan has expired, and may aid with
+                syncronization issues.
+                <emphasis>Use of this mechanism to remove content without the User's consent is
+                    strongly discouraged.</emphasis></para>
         </section>
+        <section xml:id="introduction_readingSystemTypes_interactive" conformance="informative">
+        <title>The Interactive Reading System</title>
+        <remark role="todo">TODO describe principles of a reading system using dynamic menus</remark>                
+        </section>     
+-->
+
     </preface>
 
     <chapter xml:id="keywords" conformance="normative">
@@ -111,9 +113,8 @@
                     <para> A combination of hardware and/or software that accesses a <xref
                             linkend="term_service"/> and renders <xref linkend="term_content"/> to
                         the <xref linkend="term_user"/>. A reading system may be implemented
-                        entirely on one device, or it may be split among several.
-                        Corresponds to a consumer in the <xref linkend="bib_wsibasicprofile11_conf"
-                        />. </para>
+                        entirely on one device, or it may be split among several. Corresponds to a
+                        consumer in the <xref linkend="bib_wsibasicprofile11_conf"/>. </para>
                 </listitem>
             </varlistentry>
             <varlistentry xml:id="term_service">
@@ -239,21 +240,20 @@
             <varlistentry xml:id="term_issue">
                 <term>Issue content</term>
                 <listitem>
-                    <para>Grant access to content.  A Reading System uses the
-					<function><xref linkend="op_issueContent"/></function> operation
-					to request this of the Service.
-					</para>
+                    <para>Grant access to content. A Reading System uses the <function>
+                            <xref linkend="op_issueContent"/>
+                        </function> operation to request this of the Service. </para>
                 </listitem>
             </varlistentry>
             <varlistentry xml:id="term_return">
                 <term>Return content</term>
                 <listitem>
-                    <para>Give up access to content.  A Reading System removes
-					the content locally and uses the
-					<function><xref linkend="op_returnContent"/></function> operation
-					to notify the Service to revoke access.  This term is only
-					defined for lent or loaned content, not for free or purchased content.
-					</para>
+                    <para>Give up access to content. A Reading System removes the content locally
+                        and uses the <function>
+                            <xref linkend="op_returnContent"/>
+                        </function> operation to notify the Service to revoke access. This term is
+                        only defined for lent or loaned content, not for free or purchased content.
+                    </para>
                 </listitem>
             </varlistentry>
         </variablelist>
@@ -261,18 +261,200 @@
 
     <chapter xml:id="conformance" conformance="normative">
         <title>Conformance Definitions</title>
-        <para>
-            <remark role="todo">Define conformance criteria for Service and Reading System. This may
-                also be placed towards the end of the spec, collecting all previously occurring
-                conformance-defining statements. TBD towards the end of the editing work.</remark>
-        </para>
+        <section xml:id="conformance_service">
+            <title>Service Conformance</title>
+            <para>A <xref linkend="term_service"/> is conformant with this specification when: </para>
+            <itemizedlist>
+                <listitem>
+                    <para>It publishes a <xref linkend="bib_wsdl1.1"/> document at its Service URI
+                        [TODO term?] whose <code>types</code>, <code>message</code>,
+                            <code>portType</code> and <code>binding</code> elements are fully <xref
+                            linkend="bib_infoset"/> compatible with the WSDL document in <xref
+                            linkend="appendixWSDL"/></para>
+                </listitem>
+                <listitem>
+                    <para>It provides implementations of all required <xref linkend="term_operation"
+                        />s of this protocol, as defined in <xref linkend="apiReferenceRequired"
+                        /></para>
+                </listitem>
+                <listitem>
+                    <para>It complies with the Service Type-specific requirements defined in <xref
+                            linkend="fundamentals_serviceTypes_reqs_library"/> and/or <xref
+                            linkend="fundamentals_serviceTypes_reqs_shop"/></para>
+                </listitem>
+                <listitem>
+                    <para>It complies with the Content Provision Model-specific requirements defined
+                        in <xref linkend="fundamentals_contentProvisionModel_reqs_outofband"/> and/or
+                            <xref linkend="fundamentals_contentProvisionModel_reqs_browse"/></para>
+                </listitem>
+                <listitem>
+                    <para>It supports the protocols defined in <xref linkend="fundamentals_protocols"
+                        /></para>
+                </listitem>
+                <listitem>
+                    <para>
+                        <remark role="todo">TODO other service conformance reqs</remark>
+                    </para>
+                </listitem>
+            </itemizedlist>
+        </section>
+        <section xml:id="conformance_readingSystem">
+            <title>Reading System Conformance</title>
+            <para>A <xref linkend="term_readingSystem"/> is conformant with this specification when: </para>
+            <itemizedlist>
+                <listitem>
+                    <para>
+                        <remark role="todo">TODO RS conformance reqs</remark>
+                    </para>
+                </listitem>
+            </itemizedlist>
+        </section>
     </chapter>
 
     <chapter xml:id="fundamentals">
         <title>Protocol Fundamentals</title>
+
+        <section xml:id="fundamentals_serviceTypes" conformance="normative"
+            xreflabel="Service types">
+            <title>Service Types</title>
+            <para>This protocol has been designed to support two types of Services:</para>
+            <itemizedlist>
+                <listitem xml:id="fundamentals_serviceType_library" xreflabel="Library Service type">
+                    <para><emphasis>Library-type</emphasis> services, which operate using a loan
+                        programme for <xref linkend="term_content"/>. The Content is borrowed, and
+                        at some point it must be returned to the Service Provider.</para>
+                </listitem>
+                <listitem xml:id="fundamentals_serviceType_shop" xreflabel="Shop Service type">
+                    <para><emphasis>Shop-type</emphasis> services, which includes both commercial
+                        (purchase) and free-of-charge content provison, where the content once
+                        issued belongs to the client indefinitely.</para>
+                </listitem>
+            </itemizedlist>
+
+            <para>The choice of Service type is not exclusive. Service Providers must offer one but may offer 
+                both of these types in a single Service.</para>
+
+            <para>While the protocol Interface and operational contract is generally common to these
+                Services types, there are some deviations, as defined below.</para>
+
+            <section xml:id="fundamentals_serviceTypes_reqs_library">
+                <title>Library-type Service Specific Requirements</title>
+                <para>A Library-type Service must:</para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Manage the User's collection of borrowed Content,
+                            including what Content is currently issued to the User, and what content
+                            has expired (e.g. Content that should be returned).</para>
+                    </listitem>
+                    <listitem>
+                        <para>Support exposing the above lists of borrowed and expired content to
+                            the Reading System by providing an implementation of the <xref
+                                linkend="op_getContentList"/> operation, when invoked with the
+                                <code>issued</code> and <code>expired</code> values of that
+                            operations' <parameter>id</parameter> parameter</para>
+                    </listitem>
+                    <listitem>
+                        <para>Provide an implementation of the <xref linkend="op_returnContent"/>
+                            operation, and contractually let an invocation of that operation signal
+                            the end of the issuance period for a given Content item.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Declare its offering of a Library-style service in the <xref
+                                linkend="tp_supportedServiceTypes"/> element in the <xref
+                                linkend="tp_serviceAttributes"/> type returned by the <xref
+                                linkend="op_getServiceAttributes"/> operation.</para>
+                    </listitem>
+                </itemizedlist>
+            </section>
+            <section xml:id="fundamentals_serviceTypes_reqs_shop">
+                <title>Shop-type Service Specific Requirements</title>
+                <para>A Shop-type Service must:</para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Declare its offering of a Shop-style service in the <xref
+                                linkend="tp_supportedServiceTypes"/> element in the <xref
+                                linkend="tp_serviceAttributes"/> type returned by the <xref
+                                linkend="op_getServiceAttributes"/> operation.</para>
+                    </listitem>
+                </itemizedlist>
+            </section>
+
+        </section>
+
+        <section xml:id="fundamentals_contentProvisionModels" conformance="normative"
+            xreflabel="Content Provision Models">
+            <title>Content Provision Models</title>
+            <para>This protocol has been designed to support two fundamental models for content provision.</para>
+            <itemizedlist>
+                <listitem xml:id="fundamentals_contentProvisionModel_outofband"
+                    xreflabel="Out-of-band Content Provision Model">
+                    <para>The <emphasis>out-of-band</emphasis> content provision model, where the User
+                        through some form of out-of-band mechanism (e.g. a web form or telephone) selects 
+                        content to request issuance and transfer of.</para>
+                </listitem>
+                <listitem xml:id="fundamentals_contentProvisionModel_browse"
+                    xreflabel="Browse Content Provision Model">
+                    <para>The <emphasis>browse</emphasis> content provision model, where the User
+                        browses the Service's collection using operations defined by this protocol,
+                        and interactively selects Content to request issuance and transfer
+                        of.</para>
+                </listitem>
+            </itemizedlist>
+
+            <para>A given Service must offer one and may offer both models of content provision.
+                Reading Systems may be designed to support one or both of these content provision
+                models. A Reading System may invoke operations associated with both models during
+                the same session, providing that the Service supports both models.</para>
+
+            <section xml:id="fundamentals_contentProvisionModel_reqs_outofband">
+                <title>Out-of-band Content Provision Model Requirements</title>
+                <para>A Service employing the Out-of-band Content Provision Model must:</para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Provide one or several out-of-band mechanisms that lets the User
+                            select Content to request issuance of.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Support exposing the selected Content to the Users' Reading System(s)
+                            by providing an implementation of the <xref linkend="op_getContentList"
+                            /> operation, when invoked with the <code>new</code> value of that
+                            operations' <parameter>id</parameter> parameter</para>
+                    </listitem>
+                    <listitem>
+                        <para>Declare its support for the out-of-band Content Provision Model in the <xref
+                                linkend="tp_supportedContentProvisionModels"/> element in the <xref
+                                linkend="tp_serviceAttributes"/> type returned by the <xref
+                                linkend="op_getServiceAttributes"/> operation.</para>
+                    </listitem>
+
+                </itemizedlist>
+            </section>
+            <section xml:id="fundamentals_contentProvisionModel_reqs_browse">
+                <title>Browse Content Provision Model Requirements</title>
+                <para>A Service employing the Browse Content Provision Model must:</para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Provide support for <link linkend="fundamentals_dynamic_menus">Dynamic
+                                Menus</link> by implementing the <xref linkend="op_getQuestions"/>
+                            operation, and provide one or several mechanisms (such as a search feature or
+                            exposure of precomposed lists) within the Dynamic Menu framework that lets the User
+                            select Content to request issuance of.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Declare its support for the Browse Content Provision Model in the
+                                <xref linkend="tp_supportedContentProvisionModels"/> element in the
+                                <xref linkend="tp_serviceAttributes"/> type returned by the <xref
+                                linkend="op_getServiceAttributes"/> operation.</para>
+                    </listitem>
+                </itemizedlist>
+            </section>
+
+        </section>
+
         <section xml:id="fundamentals_protocols" conformance="normative">
             <title>Underlying protocols</title>
-            <para> A compliant entity must support the following underlying protocols: <itemizedlist>
+            <para>A compliant Service and Reading System must support the following underlying
+                protocols: <itemizedlist>
                     <listitem>
                         <para>
                             <xref linkend="bib_http11"/>
@@ -281,6 +463,9 @@
                     <listitem>
                         <para>
                             <xref linkend="bib_wsibasicprofile11"/>
+
+                            <remark role="todo">TODO kenny describe and refer to Wrapped Document
+                                Literal</remark>
                         </para>
                         <note>
                             <para><xref linkend="bib_httpcookies"/> states "R1121 An INSTANCE SHOULD
@@ -298,30 +483,21 @@
             </para>
         </section>
         <section xml:id="fundamentals_dynamic_menus" conformance="informative">
-            <title>Dynamic Menu Generation</title>
-            <para>Many of the operations supported by this protocol (as described further in <xref
-                    linkend="operations"/>) make use of a <emphasis>dynamic menu
-                    generation</emphasis> feature to allow users to interact and exchange
-                information with the Service. The concept of dynamic menu generation is described
-                below.</para>
+            <title>Dynamic Menus</title>
             <para>
-                <remark role="todo">Describe DMG in general terms, give an abstract example</remark>
+                <remark role="todo">TODO Kenny/Nick Describe Dynamic Menus in general terms,
+                    give examples (as in /scn-temp/). Do not include the search example here, as that
+                should be in <xref linkend="operations_content_selection_browse_example"/></remark>
             </para>
             <para>
-                <remark role="todo">Need to define which of the DMG operations are
-                    endpoints.</remark>
+                <remark role="todo">Need to formally define DMG endpoints and limitations on callback, but perhaps not here, rather in
+                    XSD (see note in the questions element in xsd). Examples provided here must touch on the endpoints and callback limits though.</remark>
             </para>
         </section>
     </chapter>
 
     <chapter xml:id="operations" conformance="normative">
         <title>Protocol Operations</title>
-        <para>
-            <remark role="todo">Topic-based walkthrough of all aspects of the protocol. Makes hard
-                references to API Reference and Type Reference, where functions and types are
-                defined normatively. Always note whether part of required API or not.</remark>
-        </para>
-
 
         <section xml:id="operations_session">
             <title>Session Management and Authentication</title>
@@ -329,8 +505,8 @@
             <section xml:id="operations_session_httpAuthentication">
                 <title>http(s) authentication</title>
                 <para>
-                    <remark role="todo">Add whatever we need to say about http(s) and
-                        authentication</remark>
+                    <remark role="todo">TODO Kenny add whatever we need to say about http(s) and
+                        authentication in the context of a "session" (read below first)</remark>
                 </para>
             </section>
 
@@ -399,8 +575,9 @@
                     </errorname> if a Reading System does not honor the above initialization
                     sequence.</para>
 
-                <section xml:id="operations_session_initializationExample" conformance="informative">
-                    <title>Session Initialization: Example</title>
+                <section xml:id="operations_session_initializationExamples"
+                    conformance="informative">
+                    <title>Session Initialization Examples</title>
                     <example>
                         <title>Successful Session Intialization Sequence</title>
                         <orderedlist>
@@ -409,10 +586,8 @@
                                         <xref linkend="op_logOn"/>
                                     </function> operation, passing the following credentials:</para>
                                 <programlisting><xi:include href="./samples/initialization-logon.xml" parse="text"/></programlisting>
-                                <para>The service returns <constant>true</constant>
-                                    <remark role="todo">TODO how is this done in wrapped
-                                        style</remark> to signal that the logon was
-                                    successful.</para>
+                                <para>The service returns <constant>true</constant> to signal that
+                                    the logon was successful.</para>
                             </listitem>
                             <listitem>
                                 <para>[Required] The Reading System invokes the <function>
@@ -437,7 +612,9 @@
                                     awaiting the User's attention.</para>
                             </listitem>
                             <listitem>
-                                <para>[Optional] The Reading System invokes the <function>
+                                <para>[Optional] Providing that the Service supports this <link
+                                        linkend="op_getServiceAttributes">optional operation</link>,
+                                    the Reading System invokes the <function>
                                         <xref linkend="op_getServiceAnnouncements"/>
                                     </function> operation, retrieving an <type>
                                         <xref linkend="tp_announcements"/>
@@ -448,8 +625,120 @@
                     </example>
                 </section>
             </section>
+            <!--
+            <section xml:id="operations_session_attributes">
+                <title>Service and Reading System Attributes</title>
+                <para>
+                    <remark role="todo">TODO explain details of serviceAttributes and
+                        readingSystemAttributes, make clear that they are session-based</remark>
+                </para>
+
+            </section> -->
         </section>
 
+        <section xml:id="operations_content_selection">
+            <title>Content Selection</title>
+            <para>Depending on the <link linkend="fundamentals_contentProvisionModels">content
+                    provision model</link> employed, Content selection (e.g. the mechanism
+                with which the user selects one or several content items to request issuance and
+                transfer of) is performed using two distinct approaches:</para>
+
+            <section xml:id="operations_content_selection_outofband">
+                <title>Content Selection using the Out-of-band model</title>
+
+                <para>In the <link linkend="fundamentals_contentProvisionModel_outofband">Out-of-band
+                        model</link> content provison form, content is selected using a mechanism
+                    not defined by this protocol, and not involving the Session itself. Through this
+                    mechanism, the Service, typically prior to the Session onset, has in its
+                    possession a list of Content items to offer to the User. </para>
+
+                <para>To initiate retrieval of these Content items, the Reading System invokes the
+                        <xref linkend="op_getContentList"/> operation, passing the value
+                        <code>new</code> as the value of the <parameter>id</parameter> parameter,
+                    retrieving a <xref linkend="tp_contentList"/> in return.</para>
+
+                <note>
+                    <para>A Service declares whether it supports Content selection using the Out-of-band
+                        model in the <xref linkend="tp_supportedContentProvisionModels"/> element in
+                        the <xref linkend="tp_serviceAttributes"/> type returned by the <xref
+                            linkend="op_getServiceAttributes"/> operation.</para>
+                </note>
+
+                <section xml:id="operations_content_selection_outofband_examples">
+                    <title>Out-of-band Model Content Selection Examples</title>
+                    <example>
+                        <title>Out-of-band Model Content Selection Example: Daily newspaper
+                            subscription</title>
+                        <orderedlist>
+                            <listitem>
+                                <para>Using an out-of-band mechanism such as a web form or
+                                    telephone, a User has subscribed to a daily newspaper service.
+                                    The service is offered in a "push" style, e.g. the newspaper is
+                                    intended to be available in the Users Reading System each
+                                    morning, without the User necessarily having to explicitly
+                                    identify and request the issuance and transfer of each
+                                    individual issue.</para>
+                            </listitem>
+                            <listitem>
+                                <para>The Reading Device invokes the <xref
+                                        linkend="op_getContentList"/> operation, passing the value
+                                        <code>new</code> as the value of the
+                                        <parameter>id</parameter> parameter. The invocation is
+                                    either triggered by an explicit User interaction with the
+                                    Reading System user interface, or by a Reading System-specific
+                                    timer-based feature set to make invocations of this operation
+                                    automatically at some interval.</para>
+                            </listitem>
+                            <listitem>
+                                <para>The Service returns a <type>contentList</type> type containing
+                                    the Content items offered:</para>
+                                <programlisting><xi:include href="./samples/contentSelection-subscr.xml" parse="text"/></programlisting>
+                            </listitem>
+                            <listitem>
+                                <para>Either with or without explicit User interaction (the Reading
+                                    System may have an option to support automation of this step in
+                                    subscription/cyclic delivery contexts), the Reading System requests issuance and
+                                    transfer of the Content. See further <xref
+                                        linkend="operations_content_issuing"/></para>
+                            </listitem>
+                        </orderedlist>
+                    </example>
+                </section>
+            </section>
+            <section xml:id="operations_content_selection_browse">
+                <title>Content Selection using the Browse model</title>
+                <para>In the <link linkend="fundamentals_contentProvisionModel_browse">Browse
+                        model</link> content provison form, content is selected dynamically within
+                    the Session using the <link linkend="fundamentals_dynamic_menus">Dynamic
+                        Menu</link> feature of this protocol.</para>
+
+                <note>
+                    <para>A Service declares whether it supports Content selection using the Browse
+                        model in the <xref linkend="tp_supportedContentProvisionModels"/> element in
+                        the <xref linkend="tp_serviceAttributes"/> type returned by the <xref
+                        linkend="op_getServiceAttributes"/> operation. Services may support
+                        the Dynamic Menu feature for other purposes than supporting content selection, so
+                        the value <code>DYNAMIC_MENUS</code> in <xref linkend="tp_supportedOptionalOperations"/> does not
+                        imply that Content Selection using the Browse model is supported.</para>
+                </note>
+
+                <section xml:id="operations_content_selection_browse_example">
+                    <title>Browse Model Content Selection Example</title>
+                    <example>
+                        <title>Browse Model Content Selection Example</title>
+                        <orderedlist>
+                            <listitem>
+                                <para>
+                                    <remark role="todo">TODO Kenny: give dynamic menu example:
+                                        search, with end result contentList</remark>
+                                </para>
+                            </listitem>
+                        </orderedlist>
+                    </example>
+                </section>
+            </section>
+        </section>
+        <!--
         <section xml:id="operations_content_selection" conformance="informative">
             <title>Content Selection</title>
             <section xml:id="operations_content_selection_menuless" conformance="normative">
@@ -475,8 +764,8 @@
                 </itemizedlist>
                 <para> </para>
                 <para>
-                    <remark role="todo">Describe the menuless scenario (Service-driven
-                        selection) and the use of getContentList(default/borrowed)</remark>
+                    <remark role="todo">Describe the menuless scenario (Service-driven selection)
+                        and the use of getContentList(default/borrowed)</remark>
                 </para>
             </section>
             <section xml:id="operations_content_selection_interactive" conformance="normative">
@@ -487,15 +776,18 @@
                 </para>
             </section>
         </section>
-
+-->
         <section xml:id="operations_content_issuing">
-            <title>Issuing (and optional return) of content</title>
+            <title>Issuing and transfer of content</title>
             <para>Given a <xref linkend="tp_contentList"/>, retrieved using one of the methods
                 described in <xref linkend="operations_content_selection"/>, the Reading System can
                 proceed to request issuance of selected content items within the
                     <literal>contentList</literal>, followed by download or streaming of the
                 resources that constitute the content. </para>
-
+            <para>
+                <remark role="todo">TODO the below is ambivalent in terms of contentItem@borrowed vs
+                    contentMetadata@borrowed</remark>
+            </para>
             <section xml:id="operations_content_issuing_retrieval_sequence">
                 <title>Content Retrieval Sequence</title>
                 <para>To request issuance of and retrieve the resources of a Content item, a Reading
@@ -517,14 +809,14 @@
                                 <xref linkend="op_getContentResources"/>
                             </function> operation</para>
                     </listitem>
-
                 </orderedlist>
 
                 <para>The <xref linkend="op_issueContent"/> operation constitutes the formal User
                     request to get access to the Content. This operation must be invoked prior to
                     the invocation of <xref linkend="op_getContentResources"/>, and must be invoked
-                    regardless of whether the content is borrowed, purchased, or provided without
-                    any access restrictions.</para>
+                    regardless of whether the content is issued in a <link
+                        linkend="fundamentals_serviceType_library">library-type</link> or <link
+                        linkend="fundamentals_serviceType_shop">shop-type</link> context.</para>
 
                 <para>If a Service returns <constant>false</constant> (<xref
                         linkend="bib_xsdDatatypes"/>) or throws a <link linkend="apiReferenceFaults"
@@ -537,18 +829,14 @@
 
                 <para>The <xref linkend="op_getContentResources"/> operation exposes all resources
                     that constitute the content to the Reading System. Service Providers must allow
-                    at least one call to <literal>getContentResources</literal> for each issued
-                    Content item. Depending on the nature of the Service, Service Providers may
-                    allow multiple subsequent <literal>getContentResources</literal> invocations for
+                    at least one call to <function>getContentResources</function> for each issued
+                    Content item. Service Providers may
+                    allow multiple subsequent <function>getContentResources</function> invocations for
                     the same content, possibly spanning several Sessions.</para>
-
-                <para>
-                    <remark role="todo">TODO define when and how issuance ends</remark>
-                </para>
-
             </section>
 
-            <section xml:id="operations_content_issuing_retrieval_sequence_example">
+            <section xml:id="operations_content_issuing_retrieval_sequence_example"
+                conformance="informative">
                 <title>Content Retrieval Example</title>
                 <example>
                     <title>Content Retrieval</title>
@@ -558,17 +846,18 @@
                             linkend="tp_contentList"/>:</para>
                     <orderedlist>
                         <listitem>
-                            <para>[Optional] The Reading System invokes the <xref
-                                    linkend="op_getContentMetadata"/> operation using
-                                    <varname>foo</varname> as the parameter, which returns a <xref
+                            <para>[Optional] The Reading System invokes the <function><xref
+                                linkend="op_getContentMetadata"/></function> operation using
+                                    <code>foo</code> as the value of the <parameter>contentID</parameter> 
+                                    parameter, which returns a <xref
                                     linkend="tp_contentMetadata"/> type, containing content metadata
-                                and samples.</para>
+                                    and samples.</para>
                             <programlisting><xi:include href="./samples/retrieval-contentMetadata.xml" parse="text"/></programlisting>
                         </listitem>
                         <listitem>
                             <para>[Required] For content that the User requests issuance of, the
                                 Reading System invokes the <xref linkend="op_issueContent"/>
-                                operation, using <varname>foo</varname> as the parameter. To signal
+                                operation, using <code>foo</code> as the value of the <parameter>contentID</parameter>. To signal
                                 that the Content was issued, the Service returns
                                     <constant>true</constant>. </para>
                         </listitem>
@@ -590,12 +879,15 @@
             <section xml:id="operations_content_download">
                 <title>Downloading and streaming of content</title>
                 <para>
-                    <remark role="todo">Add whatever we need to say on this topic. Refer to Service
-                        Delegates. Note that download/streaming can occur after session
+                    <remark role="todo">TODO who writes this section?</remark>
+                </para>
+                <para>
+                    <remark role="todo">TODO Add whatever we need to say on this topic. Refer to
+                        Service Delegates. Note that download/streaming can occur after session
                         termination.</remark>
                 </para>
                 <para>
-                    <remark>Important things to include in this section:</remark>
+                    <remark>TODO Important things to include in this section:</remark>
                 </para>
                 <para>Info on the resources type: how some content formats allows mimetypes to be
                     used to get the most significant stuff first</para>
@@ -699,14 +991,74 @@
                 </example>
             </section>
         </section>
+        <section xml:id="operations_content_return">
+            <title>Content Return</title>
+            <para>Content return is employed in the case where a Reading System has content issued
+                from a Service that employs a <link linkend="fundamentals_serviceType_library"
+                    >library-type</link> Service, and where the given Content
+                item issued from that Service is explicitly of a borrowed nature (as defined by the
+                value of the <varname>borrowed</varname> attribute on <xref linkend="tp_contentItem"
+                /> in a <xref linkend="tp_contentList"/>).<remark role="todo">note may stay in
+                    contentmetadata, if so fix previous link</remark></para>
+            <para>A <link linkend="fundamentals_serviceType_library">library-type</link> Service is
+                required to manage the User's Content collection in terms of what Content is issued,
+                and what Content has expired. By invoking <xref linkend="op_getContentList"/> with
+                the <parameter>id</parameter> parameter valued <code>expired</code>, a Reading
+                System will retrieve a list of the Content items that has expired, if any. For each
+                of the Content items in this list it must then delete the Content from its local
+                storage media, followed by an invocation of <xref linkend="op_returnContent"
+                />.</para>
+
+            <section xml:id="operations_content_return_example" conformance="informative">
+                <title>Content Return Example</title>
+                <example>
+                    <title>Content Return Example</title>
+                    <orderedlist>
+                        <listitem>
+                            <para>[Required] The Reading System invokes the <function>
+                                    <xref linkend="op_getContentList"/>
+                                </function> operation with the identifier
+                                <literal>expired</literal>. The service returns a <xref
+                                    linkend="tp_contentList"/> containing the Content items that has
+                                expired. </para>
+                            <programlisting><xi:include href="./samples/return-contentList.xml" parse="text"/></programlisting>
+                            <para>(Note that the <literal>id</literal> value of the
+                                    <type>contentItem</type> elements in the list define the <xref
+                                    linkend="term_contentIdentifier"/> of the Content.)</para>
+                        </listitem>
+                        <listitem>
+                            <para>[Required] For each of the Content items in the returned list, the
+                                Reading System deletes the corresponding resources from its local
+                                filesystem. </para>
+                        </listitem>
+                        <listitem>
+                            <para>[Required] For each of the Content items in the returned list, the
+                                Reading System invokes the <xref linkend="op_returnContent"/>
+                                operation, passing the <xref linkend="term_contentIdentifier"
+                                />.</para>
+                        </listitem>
+                        <listitem>
+                            <para>[Required] For each of the <xref linkend="op_returnContent"/>
+                                invocations, the Service returns <literal>true</literal> to signal
+                                that the Content item was succesfully returned.</para>
+                        </listitem>
+                    </orderedlist>
+                </example>
+            </section>
+
+        </section>
+
 
         <section xml:id="operations_service_announcements">
             <title>Service Announcements</title>
             <para><remark role="todo">TODO fix this intro</remark> Service Announcements are used as
                 a means for the Service to provide various types of information to the User.
                 Examples include: information on Service up- or downtime, information on additions
-                to the Content collection, and, in the case of interactive Services, information on
-                expired Content. </para>
+                to the Content collection, and, in the case of <link
+                    linkend="fundamentals_serviceType_library">library-type Services</link>,
+                information on expired Content.</para>
+            <para>Note that <xref linkend="op_getServiceAnnouncements"/> is an optional operation -
+                Services may or may not support this protocol feature.</para>
 
             <para>Service Announcements are typically retrieved at the onset of each <xref
                     linkend="term_session"/>, but may be retrieved at any stage of a Session, as
@@ -725,7 +1077,7 @@
                     <xref linkend="op_markAnnouncementsAsRead"/>
                 </function> enables the Service to avoid exposing the User to the same announcement
                 multiple times. Note that a Service may also on its own accord remove individual
-                announcements from the set of distributed announcements as the embedded messages
+                announcements from the set of distributed announcements, as the embedded messages
                 become outdated or otherwise obsolete.</para>
 
             <note>
@@ -769,10 +1121,26 @@
 
         <section xml:id="operations_bookmarks">
             <title>Bookmarks and Last Reading Position</title>
+
+            <para>If a Service supports the <link linkend="op_getServiceAttributes">optional
+                    operations</link>
+                <function>
+                    <xref linkend="op_setBookmarks"/>
+                </function> and <function>
+                    <xref linkend="op_getBookmarks"/>
+                </function>, then a Reading System may invoke these operations to store and/or
+                retrieve a set of bookmarks for a given Content item.</para>
+
+            <para>The <type>
+                    <xref linkend="tp_bookmarkSet"/>
+                </type> type is a direct derivation of the <token>Portable Bookmarks and
+                    Highlights</token> grammar of <xref linkend="bib_z3986-2005"/>. <xref
+                    linkend="bib_z3986-2005-bkmk"/> constitutes the normative reference regarding
+                the use of this type.</para>
+
             <para>
-                <remark role="todo">TODO Note that Reading Systems may store bkmk serverside if this
-                    feature is supported (as per serviceAttributes). Repeat that each fragment
-                    represents one book. Give fragment example.</remark>
+                <remark role="todo">TODO Give example of User porting bookmarks between two Reading
+                    Systems (last reading pos).</remark>
                 <remark role="todo">TODO <link
                         xlink:href="http://code.google.com/p/daisy-online-delivery/issues/detail?id=34"
                         >Issue 34</link></remark>
@@ -812,6 +1180,16 @@
                     Metadata Element Set, Version 1.1</link>
             </title>
             <date>January 2008</date>
+        </biblioentry>
+        <biblioentry xml:id="bib_infoset">
+            <abbrev>INFOSET</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/xml-infoset/">XML Information Set (Second Edition)</link>
+            </title>
+            <author>
+                <personname>J Cowan, R Tobin</personname>
+            </author>
+            <date>February 2004</date>
         </biblioentry>
         <biblioentry xml:id="bib_RFC2119">
             <abbrev>RFC 2119</abbrev>
@@ -930,6 +1308,30 @@
             </title>
         </biblioentry>
 
+        <biblioentry xml:id="bib_z3986-2005">
+            <abbrev>Z39-86.2005</abbrev>
+            <title>
+                <link xlink:href="http://www.daisy.org/z3986/2005/Z3986-2005.html">ANSI/NISO
+                    Z39-86.2005 - Specifications for the Digital Talking Book </link>
+            </title>
+            <author>
+                <personname>M. Moodie, et al</personname>
+            </author>
+            <date>2005</date>
+        </biblioentry>
+
+        <biblioentry xml:id="bib_z3986-2005-bkmk">
+            <abbrev>Z39-86.2005-BOOKMARKS</abbrev>
+            <title>
+                <link xlink:href="http://www.daisy.org/z3986/2005/Z3986-2005.html#bkmk">Portable
+                    Bookmarks and Highlights</link> (part of <xref linkend="bib_z3986-2005"/>) </title>
+            <author>
+                <personname>M. Moodie, et al</personname>
+            </author>
+            <date>2005</date>
+        </biblioentry>
+
+
     </bibliography>
 
     <acknowledgements>
@@ -954,13 +1356,21 @@
 
     </acknowledgements>
 
-    <appendix xml:id="appendixWSDL" conformance="informative" xreflabel="WSDL">
-        <title>DAISY Online Protocol – WSDL Definition</title>
+    <appendix xml:id="appendixWSDL" conformance="informative">
+        <title>WSDL Definition</title>
+        <para>
+            <remark role="todo">TODO explain what this is, and add OR change to external file
+                reference, which would make the xsd appendix redundant </remark>
+        </para>
         <programlisting><xi:include href="do-wsdl-10.wsdl" parse="text"/></programlisting>
     </appendix>
 
-    <appendix xml:id="appendixXSD" conformance="normative" xreflabel="XSD">
-        <title>DAISY Online Protocol – WXS Type Definition</title>
+    <appendix xml:id="appendixXSD" conformance="normative">
+        <title>WXS Type Definition</title>
+        <para>
+            <remark role="todo">TODO explain what this is, and add OR change to external file
+                reference</remark>
+        </para>
         <programlisting><xi:include href="do-types-10.xsd" parse="text"/></programlisting>
     </appendix>
 
