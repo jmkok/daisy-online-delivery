@@ -1,4 +1,4 @@
-<wiki:toc max_depth="4" />
+<wiki:toc max_depth="5" />
 
 Present: Markus (scribe)
 
@@ -19,7 +19,7 @@ Regrets:
 
 
 == Agenda/Minutes ==
-=== r300 ==
+=== Commit 300 ==
 Discussion around r300, the commit comment of which is replicated below:
 
 This commit is a first stab at clarifying and defining targeted constraints on the interaction variation matrix constituted by 
@@ -56,10 +56,10 @@ Note - If a Service is exclusively of the shop-style type (eg supports only purc
 === Major spec sections remaining to be written ===
 
 Assign responsible names to: 
-* 4.4 Dynamic Menus (informative intro) (Nick/Kenny?)
-* 5.3.3. Downloading and streaming of content
-* 5.6. Bookmarks and Last Reading Position, inc samples and solving Issue 34
-* WSDL remark elements (all pertaining to dynamic menys)
+ * 4.4 Dynamic Menus (informative intro) (Nick/Kenny?)
+ * 5.3.3. Downloading and streaming of content
+ * 5.6. Bookmarks and Last Reading Position, inc samples and solving Issue 34
+ * WSDL remark elements (all pertaining to dynamic menys)
 
 
 === Issues ===
