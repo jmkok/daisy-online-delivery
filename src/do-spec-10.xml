@@ -259,8 +259,8 @@
             <varlistentry xml:id="term_serviceAddress">
                 <term>Service address</term>
                 <listitem>
-                    <para>The URI where a Service has published the WSDL document defining the DAISY Online Service. 
-                        <remark role="todo">TODO fix this def</remark></para>
+                    <para>The URI where a Service has published the WSDL document defining the DAISY
+                        Online Service. <remark role="todo">TODO fix this def</remark></para>
                 </listitem>
             </varlistentry>
         </variablelist>
@@ -273,8 +273,9 @@
             <para>A <xref linkend="term_service"/> is conformant with this specification when: </para>
             <itemizedlist>
                 <listitem>
-                    <para>It publishes a <xref linkend="bib_wsdl1.1"/> document at its <xref linkend="term_serviceAddress"/> whose contents comply with the requirements defined in <xref
-                            linkend="appendixWSDL"/></para>
+                    <para>It publishes a <xref linkend="bib_wsdl1.1"/> document at its <xref
+                            linkend="term_serviceAddress"/> whose contents comply with the
+                        requirements defined in <xref linkend="appendixWSDL"/></para>
                 </listitem>
                 <listitem>
                     <para>It provides implementations of all required <xref linkend="term_operation"
@@ -529,6 +530,22 @@
                         cookies and authentication in the context of a "session" (read below
                         first)</remark>
                 </para>
+                <para>
+                    <remark role="todo">TODO heres something on cookies from the old spec: " The
+                        Service must then perform the following steps to complete the authentication
+                        process: Verify the credentials passed by the Reading System to the logON
+                        function. if the authentication was successful, Issue a cookie by embedding
+                        it in the Set-Cookie http header, and send it to the Reading System along
+                        with the response to the logOn function. If the authentication was not
+                        successful, a cookie may not be sent along with the response. A Daisy Online
+                        Delivery Service is session-aware by design. Sessions must be tracked and
+                        managed through the use of cookies. Upon successful authentication, the
+                        Reading System must be issued a cookie as described above. The Reading
+                        system must send this cookie by embedding it in the Cookie http header with
+                        all subsequent http requests to the Service. A cookie in this context is
+                        opaque i.e. the Reading System is not required to understand the contents of
+                        the Cookie. "</remark>
+                </para>
             </section>
 
             <section xml:id="operations_session_duration">
@@ -595,6 +612,11 @@
                         <xref linkend="ft_invalidOperationFault"/>
                     </errorname> if a Reading System does not honor the above initialization
                     sequence.</para>
+
+                <note><para>This specification does not stipulate the nature of the credentials used 
+                    to authenticate a Reading System. The credentials used in this context may be 
+                    credentials associated to a single User, a group of Users, a Reading System, or 
+                    any other entity specified by a Service provider.</para></note>
 
                 <section xml:id="operations_session_initializationExamples"
                     conformance="informative">
@@ -1392,18 +1414,18 @@
         <title>WSDL Abstract Definition</title>
         <para>The <xref linkend="bib_wsdl1.1"/> document <link xlink:href="do-wsdl-10-wsdl"
                 >do-wsdl-10-wsdl</link>, and the document entities referenced from within it,
-            formally defines the abstract Web Service contract that all compliant Services must adher
-            to.</para>
+            formally defines the abstract Web Service contract that all compliant Services must
+            adher to.</para>
 
-        <para>All compliant Services must publish a WSDL document at the <xref linkend="term_serviceAddress"/>
-            whose <xref linkend="bib_infoset"/> - with the exception of the WSDL <code>service</code>
-            elements and its contents - is identical to <link xlink:href="do-wsdl-10-wsdl"
-                >do-wsdl-10-wsdl</link>.</para>
+        <para>All compliant Services must publish a WSDL document at the <xref
+                linkend="term_serviceAddress"/> whose <xref linkend="bib_infoset"/> - with the
+            exception of the WSDL <code>service</code> elements and its contents - is identical to
+                <link xlink:href="do-wsdl-10-wsdl">do-wsdl-10-wsdl</link>.</para>
 
         <para>Services may make use of the abstract <link xlink:href="do-wsdl-10-wsdl"
                 >do-wsdl-10-wsdl</link> by using it as a template during the creation of a concrete
-            DAISY Online Web Service (e.g. by adding to a copy of this document the Service instance specific
-                <code>service</code> element and its contents.) </para>
+            DAISY Online Web Service (e.g. by adding to a copy of this document the Service instance
+            specific <code>service</code> element and its contents.) </para>
     </appendix>
 
     <!--
