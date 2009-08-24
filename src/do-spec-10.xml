@@ -1236,6 +1236,13 @@
             </author>
             <date>February 2004</date>
         </biblioentry>
+        <biblioentry xml:id="bib_iso3166">
+            <abbrev>ISO 3166</abbrev>
+            <title>
+                <link xlink:href="http://www.iso.org/iso/en/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html"
+                    >ISO 3166-1 - Codes for the representation of names of countries and their subdivisions - Part 1: Country codes</link>
+            </title>
+        </biblioentry>
         <biblioentry xml:id="bib_RFC2119">
             <abbrev>RFC 2119</abbrev>
             <title>

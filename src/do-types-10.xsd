@@ -45,9 +45,7 @@
 				<xs:element name="serialNumber" type="xs:string" minOccurs="0" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>
-							<db:para>The serial number of the Reading System, if such is available.
-									<db:remark role="todo">TODO is this required for PDTB2?
-									(Hiro)</db:remark></db:para>
+							<db:para>The serial number of the Reading System, if such is available.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 				</xs:element>
@@ -442,18 +440,30 @@
 				<xs:element name="provider" minOccurs="0" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>
-							<db:para>Specifies the identity of the Service provider.</db:para>
+							<db:para role="desc">Specifies the identity of the Service provider.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element ref="label" minOccurs="0" maxOccurs="1"/>
+							<xs:element ref="label" minOccurs="0" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">The name of the Service Provider in human readable form.</db:para>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
 						</xs:sequence>
 						<xs:attribute name="id" type="xs:string" use="required">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para>A static unique identifier of the Service
-										provider.</db:para>
+									<db:para role="desc">A static unique identifier of the Service
+									provider.</db:para>
+									<db:para>This specification does not require a specific scheme to be used when
+										expressing this identifier. The identifier should be static (ie not change over
+										time while the Service provider remains active), and it should be globally unique.</db:para> 
+									<db:para>A recommended expression form is a 
+										hyphen-separated string consisting of a two-letter country code drawn from <db:xref linkend="bib_iso3166"/>, 
+										followed by an agency code unique within its country. For example, <db:token>us-afb</db:token>.</db:para>						
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
@@ -468,12 +478,26 @@
 					</xs:annotation>
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element ref="label" minOccurs="0" maxOccurs="1"/>
+							<xs:element ref="label" minOccurs="0" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">The name of the Service in human readable form.</db:para>
+									</xs:documentation>
+								</xs:annotation>
+								
+							</xs:element>
 						</xs:sequence>
 						<xs:attribute name="id" type="xs:string" use="required">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para>A static unique identifier of the Service.</db:para>
+									<db:para>This specification does not require a specific scheme to be used when
+										expressing this identifier. The identifier should be static (ie not change over
+										time while the Service provider remains active), and it should be globally unique.</db:para> 
+									<db:para>A recommended expression form is a 
+										hyphen-separated string consisting of a two-letter country code drawn from <db:xref linkend="bib_iso3166"/>, 
+										followed by an agency code unique within its country, followed by a Service code unique among the Services 
+										offered by the provider. For example, <db:token>us-afb-onlinelLibrary</db:token>.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
@@ -736,6 +760,7 @@
 							<xs:annotation>
 								<xs:documentation>
 									<db:para>The local file name of the resource.</db:para>
+									<db:para><db:remark role="todo">TODO kenny/nick why is this here and how does it work?</db:remark></db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
