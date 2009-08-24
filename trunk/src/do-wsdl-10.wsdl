@@ -4,10 +4,6 @@
 	xmlns:tns="http://www.daisy.org/ns/daisy-online/" xmlns:db="http://docbook.org/ns/docbook"
 	targetNamespace="http://www.daisy.org/ns/daisy-online/">
 
-	<documentation> Notes on docbook documentation usage: para[role="desc"] is a short core
-		definition of the item being described. Plain text can also be used, assuming that no other
-		documentation than the core definition is provided within the documentation element. </documentation>
-
 	<types>
 
 		<xs:schema targetNamespace="http://www.daisy.org/ns/daisy-online/"
@@ -35,8 +31,7 @@
 						<xs:element minOccurs="1" maxOccurs="1" name="username" type="xs:string">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">The user ID parameter to the logOn
-										operation</db:para>
+									<db:para role="desc">The user ID</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -44,8 +39,7 @@
 						<xs:element minOccurs="1" maxOccurs="1" name="password" type="xs:string">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">The user password parameter to the logOn
-										operation</db:para>
+									<db:para role="desc">The user password</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -59,8 +53,7 @@
 						<xs:element minOccurs="1" maxOccurs="1" name="logOnResult" type="xs:boolean">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Return value of the logOn operation.
-										Specifies whether the log-on was successful</db:para>
+									<db:para role="desc">Specifies whether the log-on was successful</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -84,9 +77,7 @@
 						<xs:element minOccurs="1" maxOccurs="1" ref="common:readingSystemAttributes">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">The readingSystemAttributes parameter to
-										the setReadingSystemAttributes operation. contains the
-										reading system attributes to post.</db:para>
+									<db:para role="desc">Contains the reading system attributes to post.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -101,8 +92,7 @@
 							name="setReadingSystemAttributesResult" type="xs:boolean">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Return value of the
-										setReadingSystemattributes operation. Specifies whether the
+									<db:para role="desc">Specifies whether the
 										ReadingSystemAttributes were recieved successfully on the
 										Service.</db:para>
 								</xs:documentation>
@@ -127,9 +117,7 @@
 						<xs:element minOccurs="1" maxOccurs="1" ref="daisy:bookmarkSet">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">the bookmarkSet parameter to the
-										setBookmarks operation. Contains the bookmarks to
-										store</db:para>
+									<db:para role="desc">Contains the bookmarks to store</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -175,8 +163,7 @@
 						<xs:element minOccurs="1" maxOccurs="1" ref="daisy:bookmarkSet">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">
-										Contains the bookmarks for the content.</db:para>
+									<db:para role="desc">Contains the bookmarks for the content.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -340,7 +327,7 @@
 				<xs:complexType>
 					<xs:annotation>
 						<xs:documentation>
-							<db:para role="desc">the getServiceAnnouncements operation has no
+							<db:para role="desc">This operation has no
 								parameters.</db:para>
 						</xs:documentation>
 					</xs:annotation>
@@ -353,8 +340,7 @@
 						<xs:element minOccurs="1" maxOccurs="1" ref="common:announcements">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Return value of the getServiceAnnouncements
-										operation. Contains the announcements from the
+									<db:para role="desc">Contains the announcements from the
 										Service.</db:para>
 								</xs:documentation>
 							</xs:annotation>
@@ -369,10 +355,10 @@
 						<xs:element minOccurs="1" maxOccurs="1" name="read" type="common:itemList">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">The read parameter to the
-										markAnnouncementsAsRead operation. contains the
+									<db:para role="desc">Contains the
 										announcements to mark as read, expressed as references to
-										the announcement's ID values.</db:para>
+										the announcement's ID values as specified in the <db:xref 
+											linkend="tp_announcements"/> type.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -387,8 +373,7 @@
 							type="xs:boolean">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Return value of the markAnnouncementsAsRead
-										operation. Specifies whether the specified announcements
+									<db:para role="desc">Specifies whether the specified announcements
 										were successfully marked as read on the Service</db:para>
 								</xs:documentation>
 							</xs:annotation>
@@ -403,13 +388,13 @@
 						<xs:element minOccurs="1" maxOccurs="1" ref="common:userResponses">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">TODO desc</db:para>
+									<db:para role="desc"><db:remark role="todo">TODO Kenny/Nick desc</db:remark></db:para>
 									<db:para>The value <db:varname>default</db:varname> is
 										reserved... TODO</db:para>
 									<db:para>The value <db:varname>search</db:varname> is
 										reserved... TODO</db:para>
 									<db:para>The value <db:varname>back</db:varname> is reserved...
-										TODO and make reference to serverAttributes</db:para>
+										TODO and make reference to serviceAttributes/supportsServerSideBack</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -423,9 +408,7 @@
 						<xs:element minOccurs="1" maxOccurs="1" ref="common:questions">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Return value of the getQuestions operation.
-										todo document what the return value actually returns.
-									</db:para>
+									<db:para role="desc"><db:remark role="todo">TODO Kenny/Nick desc</db:remark></db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -457,9 +440,7 @@
 						<xs:element minOccurs="1" maxOccurs="1" ref="common:contentMetadata">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Return value of the getContentMetadata
-										operation. Contains the metadata for the specified
-										content.</db:para>
+									<db:para role="desc">Contains the metadata for the specified content.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -490,8 +471,7 @@
 						<xs:element minOccurs="1" maxOccurs="1" ref="common:resources">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Contains the resources for the specified
-										content.</db:para>
+									<db:para role="desc">Contains the resources for the specified content.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -541,8 +521,7 @@
 				<xs:complexType>
 					<xs:annotation>
 						<xs:documentation>
-							<db:para role="desc">The getServiceAttributes operation has no
-								parameters.</db:para>
+							<db:para role="desc">The getServiceAttributes operation has no parameters.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 				</xs:complexType>
@@ -554,8 +533,7 @@
 						<xs:element minOccurs="1" maxOccurs="1" ref="common:serviceAttributes">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Return value of the getServiceAttributes
-										operation. Contains the attributes of the service.</db:para>
+									<db:para role="desc">Contains the attributes of the service.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -1050,7 +1028,7 @@
 		<operation name="getServiceAttributes">
 			<documentation>
 				<db:para role="desc">Retrieves Service properties, including information on which
-					optional operations it supports.</db:para>
+					optional operations the Service supports.</db:para>
 			</documentation>
 			<input message="tns:getServiceAttributes_inputMessage"/>
 			<output message="tns:getServiceAttributes_outputMessage"/>
@@ -1192,7 +1170,7 @@
 
 		<operation name="getQuestions">
 			<documentation>
-				<db:para role="desc">DOC TODO</db:para>
+				<db:para role="desc"><db:remark role="todo">TODO Kenny/Nick document</db:remark></db:para>
 			</documentation>
 			<input message="tns:getQuestions_inputMessage"/>
 			<output message="tns:getQuestions_outputMessage"/>
