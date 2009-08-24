@@ -960,22 +960,32 @@
                 <para>A Service may provide all or parts of its content collection in protected
                     form. This version of this specification allows the <xref linkend="bib_pdtb2"/>
                     format to be used for content protection.</para>
-                <para>
-                    <remark role="todo">TODO discuss interop issues: Neither Reading Systems nor
-                        Services are required to support the PTDB2 format. How is the support
-                        communicated at initializationtime (*attributes); what will happen in case
-                        of mismatch</remark>
-                </para>
-                <para>If Content is protected using <xref linkend="bib_pdtb2"/>, then there will be
+				<para>Neither Reading Systems nor Services are required to support <abbrev>PDTB2</abbrev>.
+				If a Reading System supports <abbrev>PDTB2</abbrev>, it should send the following
+				in its <type><xref linkend="tp_readingSystemAttributes"/></type>:</para>
+				<programlisting><xi:include href="./samples/pdtb-readingSystemAttributes.xml" parse="text" encoding="UTF-8"/></programlisting>
+				<para>If a Reading System does not support <abbrev>PDTB2</abbrev>, the Service should not provide
+				content in that format.  If a Service supports <abbrev>PDTB2</abbrev> key exchange
+				via the <function><xref linkend="op_getKeyExchangeObject"/></function> operation,
+				it must send the following in response to a valid
+				<function><xref linkend="op_getServiceAttributes"/></function> call
+				from the Reading System:</para>
+				<programlisting><xi:include href="./samples/pdtb-serviceAttributes.xml" parse="text" encoding="UTF-8"/></programlisting>
+				<para>A Service may provide Content encrypted with <abbrev>PDTB2</abbrev> even
+				if it does not support <function>getKeyExchangeObject</function>, if there is a
+				reasonable assumption that Users' Reading Systems have the keys necessary to
+				decrypt the Content.
+				</para>
+                <para>If Content is protected using <abbrev>PDTB2</abbrev>, then there will be
                     a metadata item in the <type>
                         <xref linkend="tp_contentMetadata"/>
                     </type> named <literal>pdtb2:specVersion</literal> with a value of
                         <literal>2005-1</literal> and there will be resources with mimeTypes
                     beginning with <literal>application/x-pdtb…</literal>. The Reading System can
-                    access these resources even if it does not support <xref linkend="bib_pdtb2"/>,
+                    access these resources even if it does not support <abbrev>PDTB2</abbrev>,
                     but it might not be able to decrypt all the Content.</para>
 				<example>
-					<title>PDTB <type>contentMetadata</type></title>
+					<title><abbrev>PDTB</abbrev> <type>contentMetadata</type></title>
 					<para>The following is an example of contentMetadata for an item
 					exncrypted using <abbrev>PDTB2</abbrev>.</para>
 					<programlisting><xi:include href="./samples/pdtb-contentMetadata.xml" parse="text" encoding="UTF-8"/></programlisting>
@@ -1028,12 +1038,12 @@
                 </example>
                 <example>
                     <title>Rights Management without Encryption</title>
-                    <para>Note that PDTB2 can be used for rights expression without encryption. The
+                    <para>Note that <abbrev>PDTB2</abbrev> can be used for rights expression without encryption. The
                         following <abbrev>AO</abbrev> describes the permission to play the audio of
                         a certain book which expires at midnight on 31 October 2010, but has no
                         encrypted parts.</para>
                     <programlisting><xi:include href="./samples/authorization-unencrypted.xml" parse="text"/></programlisting>
-                    <para>A PDTB2-compliant reading system will prevent the user from playing the
+                    <para>A <abbrev>PDTB2</abbrev>-compliant reading system will prevent the user from playing the
                         audio after that time, even though it is not encrypted. A non-compliant
                         reading system's behaviour is, naturally, undefined.</para>
                 </example>
