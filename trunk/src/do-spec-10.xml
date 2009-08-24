@@ -466,6 +466,10 @@
 
                             <remark role="todo">TODO kenny describe and refer to Wrapped Document
                                 Literal</remark>
+
+The WSDL Style used in the normative WSDL available in Appendix A, WSDL Definition, of this document is "Wrapped Document-literal." this style is a subset of the Document-Literal Style, satisfies R2712 "A document-literal binding MUST be serialized as an ENVELOPE with a soap:Body whose child element is an instance of the global element declaration
+referenced by the corresponding wsdl:message part," and thus is compliant to the WS-I Basic profile 1.1.  A Daisy Online protocol compliant WSDL must not use any other WS-I Basic profile 1.1 permitted styles (i.e. RPC-Literal).
+
                         </para>
                         <note>
                             <para><xref linkend="bib_httpcookies"/> states "R1121 An INSTANCE SHOULD
