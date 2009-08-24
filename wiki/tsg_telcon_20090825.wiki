@@ -48,10 +48,13 @@ Note - getQuestion may be supported by a Service for reasons other than to suppo
 
 Note - If a Service is exclusively of the shop-style type (eg supports only purchased or free content), it doesnt really have to support any getContentList, except if it allows Out-of-band content provision, in which case it must support getContentList(new)). Shop-style Services *may* support getContentList(issued) (eg "this is all the stuff you ever bought from us") if they want to. 
 
-[1] serviceAttributes/supportedContentProvisionModels/provisionModel/OUT_OF_BAND
-[2] serviceAttributes/supportedContentProvisionModels/provisionModel/BROWSE
-[3] serviceAttributes/supportedServiceTypes/serviceType/LIBRARY 
-[4] serviceAttributes/supportedServiceTypes/serviceType/SHOP
+{1} serviceAttributes/supportedContentProvisionModels/provisionModel/OUT_OF_BAND
+
+{2} serviceAttributes/supportedContentProvisionModels/provisionModel/BROWSE
+
+{3} serviceAttributes/supportedServiceTypes/serviceType/LIBRARY 
+
+{4} serviceAttributes/supportedServiceTypes/serviceType/SHOP
 
 === Major spec sections remaining to be written ===
 
@@ -59,7 +62,7 @@ Assign responsible names to:
  * 4.4 Dynamic Menus (informative intro) (Nick/Kenny?)
  * 5.3.3. Downloading and streaming of content
  * 5.6. Bookmarks and Last Reading Position, inc samples and solving Issue 34
- * WSDL remark elements (all pertaining to dynamic menys)
+ * WSDL remark elements (all pertaining to dynamic menus)
 
 
 === Issues ===
