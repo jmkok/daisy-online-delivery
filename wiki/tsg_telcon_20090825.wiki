@@ -1,0 +1,115 @@
+<wiki:toc max_depth="4" />
+
+Present: Markus (scribe)
+
+Regrets: 
+
+
+== Action Item Summary ==
+
+=== New Action Items ===
+
+=== Previous Unfinished Action Items ===
+ * Jelle: propose resolution to Issue 118
+ * Kenny modify dynamic menu usage scenarios to reflect Issue 114 changes.
+ * Geoff and Markus analyze RequirementsDocument vs current API. {ONGOING}
+ * Geoff label Issue 94 as an enhancement, leave open but leave out of spec
+ * markus/kenny: Add a required lastModifiedDate attribute (or element) to each contentItem element in the contentList type (the lastModifiedDate of a contentItem element is the last modified date of the most recently modified resource in the publication being represented by the particular contentItem element). A required lastModifiedDate attribute also needs to be added to the resource element in the contentmetadata type. {Think DONE, but spec prose on installments is not}
+ * markus/kenny: add a pointer to HTTP return codes specified in Section 10 in RFC 2615 in the documentation for situations where a uri to a resource is not valid for some reason. (refers to issue 106)   
+
+
+== Agenda/Minutes ==
+=== r300 ==
+Discussion around r300, the commit comment of which is replicated below:
+
+This commit is a first stab at clarifying and defining targeted constraints on the interaction variation matrix constituted by 
+ * whether content is borrowed or "one way"  
+ * whether content is selected "noninteractively" (getContentList(new)) or interactively (via dynamic menus)
+
+We introduce two new high-level concepts:
+ * "Service Types" which are two: library-type (requiring content return) and shop-type (not requiring content return)
+ * "Content Provision Models", which are two: 'out-of-band' (aka telephone or separate webform content selection) and 'browse'(aka "dynamic menus" selection). This refers to which process is used when the two parties negotiate and select content items to request issuance of.  (The actual terms "out-of-band" and "browse" can be replaced by better name alternatives)
+ 
+It is pointed out that these styles and models are not exclusive - that they *may* be combined: 
+ * A service may have some content it borrows, some it sells, and some it offers for free. This means that the Service is both library-type and shop-type
+ * In a given session, a Reading System may request a precomposed contentlist (via getContentList(new)), and it may also use dynamic menus to create contentlists via, say, search. This means that both the 'out-of-band' and 'browse' content provision models can be used during the same session.
+
+Consequences in API are mostly declarative:
+1. A service must declare in serviceAttributes whether it supports the content provision out-of-band model (and if it does, it must support getContentList(new)).[1]
+
+2. A service must declare in serviceAttributes whether it supports the content provision BROWSE model (and if it does, it must support getQuestion()).[2]  
+Note - getQuestion may be supported by a Service for reasons other than to support the browse provision model. Therefore, supportedOptionalOperations/DYNAMIC_MENUS remains and can be true while support for browse provision mode is false, but not vice versa.
+
+3. Because a service may choose to only support the browse model, getContentList is made an optional operation, but by means of spec prose it is stated that a service must support at least one of getContentList(new) and getQuestion. (This is stated by requiring a service to declare either or both of OUT_OF_BAND and BROWSE in [1],[2])(at least one required by the schema)
+
+4. A service mustn't really declare whether it is "library-style" (eg borrowing content), because this can be said to be implied by @borrowed in the individual contentMetadatas, but it doesn't hurt with an upfront declaration of this in serviceAttributes. Same goes for the shop-style. [3],[4] (at least one required by the schema)
+
+5. If a Service is of the library-style type (eg supports borrow), it must support getContentList(expired) and getContentList(issued)
+
+Note - If a Service is exclusively of the shop-style type (eg supports only purchased or free content), it doesnt really have to support any getContentList, except if it allows Out-of-band content provision, in which case it must support getContentList(new)). Shop-style Services *may* support getContentList(issued) (eg "this is all the stuff you ever bought from us") if they want to. 
+
+[1] serviceAttributes/supportedContentProvisionModels/provisionModel/OUT_OF_BAND
+[2] serviceAttributes/supportedContentProvisionModels/provisionModel/BROWSE
+[3] serviceAttributes/supportedServiceTypes/serviceType/LIBRARY 
+[4] serviceAttributes/supportedServiceTypes/serviceType/SHOP
+
+=== Major spec sections remaining to be written ===
+
+Assign responsible names to: 
+* 4.4 Dynamic Menus (informative intro) (Nick/Kenny?)
+* 5.3.3. Downloading and streaming of content
+* 5.6. Bookmarks and Last Reading Position, inc samples and solving Issue 34
+* WSDL remark elements (all pertaining to dynamic menys)
+
+
+=== Issues ===
+==== Issue 131 ====
+
+==== Issue 132 ====
+
+==== Issue 120 ====
+
+==== Issue 119 ====
+
+=== Previous Finished Action Items ===
+
+ * Markus push WDL version of WSDL to SVN, then notify group. Make sure that all recent WSDL edits are pushed to the new version.
+ * Geoff: Talk to Hiro about getContentList: two or three IDs (see notes below)
+ * Markus: 115 to "keyRing"
+ * Markus: make returnContent optional
+ * Markus: implement changes are per Issue 114 discussion below
+ * Kenny inform daisy-online group headsup, review starting 28th {DONE} 
+ * Geoff and Markus analyze RequirementsDocument vs current API. {ONGOING}
+ * Kenny check whether .NET supports RPC-Literal. {done. WCF does support RPC-Literal. Wrapped Document Literal is the default in wcf. Older versions of .net do not support RPC-Literal.}    
+ * Markus look for RPC-Literal support in other platforms.
+ * Geoff add documentation to @borrowed. 
+ * Geoff to summarize the getContentList(borrowed/default) discussion and sent to list. See Nick's suggestion below {DONE} 
+ * Markus replace contentMetadata/contentStandard with contentMetadata/metadata/dc:format. {DONE}
+ * Geoff to add rights expression language example to PDTB section, then close Issue 105
+
+ * Markus close Issue 97 {DONE}
+ * Kenny close Issue 112 {DONE}
+ * Markus: implement change as in Issue 115, then close {DONE}
+ * Markus make finite enumeration of getContentList(id), once we know whether to keep "borrowed"
+ * Kenny create sample WSDL using WDL style, send to group for testing. {DONE} 
+ * Markus get rid of RPC arrays in XSD. {DONE}
+ * Geoff check whether PDTB2 allows rights expression without requiring encryption. {DONE. PDTB2 does allow Rights Expression language without encryption.}
+ * Nick propose closing issue 97 to list with associated argumentation {DONE} 
+ * Markus add label inside metadata
+ * Markus change metadata to dublin core {DONE}
+ * Markus add contentID param to setBookmarks {DONE}
+ * Markus get rid of href in favor if "uri". {DONE}
+ * Kenny to check whether WSI Basic Profile supports MTOM. {DONE. ws-i basic profile 1.1 does not support mtom; ws-i basic profile 1.2 does.} 
+ * Geoff to modify the scenarios.
+ * Geoff to post issue 94 to the list. {DONE}
+ * Markus check with george/board on whether service provider discovery req remains for this version {DONE}
+ * Matt: overall edit/review/proofing  
+ * Geoff: terminology section {geoff has started work on the terminology section}
+ * Markus/Kenny: sequence snippets: initial spec inclusion {usage scenarios for the dynamic menus are done. these scenarios can be found in the scn-temp folder in the src folder on the svn in a file called "Dynamic Menu Usage Scenarios.txt"} 
+ * ALL: Further src authoring, new snippets (eg Installments)
+ * Matt: Further work on the XSD XSLT {matt has almost finished work on the xsd xslt; only the final touches are left}
+ * Markus/Kenny: XSD and WSDL inline doc  
+ * markus/kenny: Add "expired," "borrowed" and "default" as the three possible parameter values to the getContentList function in the documentation. {ON AGENDA}       
+ * Markus/kenny: Define the logOn function in the wsdl to return a boolean. a separate function called getServiceAttributes needs to be kept in the wsdl to return the attributes of a service. {DONE}  
+ * Nick prepare sample instances of the Daisy Online types. {DONE}
+ * Peter/Markus/Kenny: Board Recommendations paper.
