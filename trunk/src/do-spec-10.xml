@@ -256,6 +256,13 @@
                     </para>
                 </listitem>
             </varlistentry>
+            <varlistentry xml:id="term_serviceAddress">
+                <term>Service address</term>
+                <listitem>
+                    <para>The URI where a Service has published the WSDL document defining the DAISY Online Service. 
+                        <remark role="todo">TODO fix this def</remark></para>
+                </listitem>
+            </varlistentry>
         </variablelist>
     </chapter>
 
@@ -266,10 +273,7 @@
             <para>A <xref linkend="term_service"/> is conformant with this specification when: </para>
             <itemizedlist>
                 <listitem>
-                    <para>It publishes a <xref linkend="bib_wsdl1.1"/> document at its Service URI
-                        [TODO term?] whose <code>types</code>, <code>message</code>,
-                            <code>portType</code> and <code>binding</code> elements are fully <xref
-                            linkend="bib_infoset"/> compatible with the WSDL document in <xref
+                    <para>It publishes a <xref linkend="bib_wsdl1.1"/> document at its <xref linkend="term_serviceAddress"/> whose contents comply with the requirements defined in <xref
                             linkend="appendixWSDL"/></para>
                 </listitem>
                 <listitem>
@@ -284,12 +288,13 @@
                 </listitem>
                 <listitem>
                     <para>It complies with the Content Provision Model-specific requirements defined
-                        in <xref linkend="fundamentals_contentProvisionModel_reqs_outofband"/> and/or
-                            <xref linkend="fundamentals_contentProvisionModel_reqs_browse"/></para>
+                        in <xref linkend="fundamentals_contentProvisionModel_reqs_outofband"/>
+                        and/or <xref linkend="fundamentals_contentProvisionModel_reqs_browse"
+                        /></para>
                 </listitem>
                 <listitem>
-                    <para>It supports the protocols defined in <xref linkend="fundamentals_protocols"
-                        /></para>
+                    <para>It supports the protocols defined in <xref
+                            linkend="fundamentals_protocols"/></para>
                 </listitem>
                 <listitem>
                     <para>
@@ -331,8 +336,8 @@
                 </listitem>
             </itemizedlist>
 
-            <para>The choice of Service type is not exclusive. Service Providers must offer one but may offer 
-                both of these types in a single Service.</para>
+            <para>The choice of Service type is not exclusive. Service Providers must offer one but
+                may offer both of these types in a single Service.</para>
 
             <para>While the protocol Interface and operational contract is generally common to these
                 Services types, there are some deviations, as defined below.</para>
@@ -342,9 +347,9 @@
                 <para>A Library-type Service must:</para>
                 <itemizedlist>
                     <listitem>
-                        <para>Manage the User's collection of borrowed Content,
-                            including what Content is currently issued to the User, and what content
-                            has expired (e.g. Content that should be returned).</para>
+                        <para>Manage the User's collection of borrowed Content, including what
+                            Content is currently issued to the User, and what content has expired
+                            (e.g. Content that should be returned).</para>
                     </listitem>
                     <listitem>
                         <para>Support exposing the above lists of borrowed and expired content to
@@ -384,13 +389,14 @@
         <section xml:id="fundamentals_contentProvisionModels" conformance="normative"
             xreflabel="Content Provision Models">
             <title>Content Provision Models</title>
-            <para>This protocol has been designed to support two fundamental models for content provision.</para>
+            <para>This protocol has been designed to support two fundamental models for content
+                provision.</para>
             <itemizedlist>
                 <listitem xml:id="fundamentals_contentProvisionModel_outofband"
                     xreflabel="Out-of-band Content Provision Model">
-                    <para>The <emphasis>out-of-band</emphasis> content provision model, where the User
-                        through some form of out-of-band mechanism (e.g. a web form or telephone) selects 
-                        content to request issuance and transfer of.</para>
+                    <para>The <emphasis>out-of-band</emphasis> content provision model, where the
+                        User through some form of out-of-band mechanism (e.g. a web form or
+                        telephone) selects content to request issuance and transfer of.</para>
                 </listitem>
                 <listitem xml:id="fundamentals_contentProvisionModel_browse"
                     xreflabel="Browse Content Provision Model">
@@ -421,9 +427,9 @@
                             operations' <parameter>id</parameter> parameter</para>
                     </listitem>
                     <listitem>
-                        <para>Declare its support for the out-of-band Content Provision Model in the <xref
-                                linkend="tp_supportedContentProvisionModels"/> element in the <xref
-                                linkend="tp_serviceAttributes"/> type returned by the <xref
+                        <para>Declare its support for the out-of-band Content Provision Model in the
+                                <xref linkend="tp_supportedContentProvisionModels"/> element in the
+                                <xref linkend="tp_serviceAttributes"/> type returned by the <xref
                                 linkend="op_getServiceAttributes"/> operation.</para>
                     </listitem>
 
@@ -436,9 +442,10 @@
                     <listitem>
                         <para>Provide support for <link linkend="fundamentals_dynamic_menus">Dynamic
                                 Menus</link> by implementing the <xref linkend="op_getQuestions"/>
-                            operation, and provide one or several mechanisms (such as a search feature or
-                            exposure of precomposed lists) within the Dynamic Menu framework that lets the User
-                            select Content to request issuance of.</para>
+                            operation, and provide one or several mechanisms (such as a search
+                            feature or exposure of precomposed lists) within the Dynamic Menu
+                            framework that lets the User select Content to request issuance
+                            of.</para>
                     </listitem>
                     <listitem>
                         <para>Declare its support for the Browse Content Provision Model in the
@@ -463,19 +470,25 @@
                     <listitem>
                         <para>
                             <xref linkend="bib_wsibasicprofile11"/>
-
-                            <remark role="todo">TODO kenny describe and refer to Wrapped Document
-                                Literal</remark>
-
-The WSDL Binding Style used in the normative WSDL available in <xref linkend="appendixWSDL"/>, is "Wrapped Document-literal." this style is a subset of the Document-Literal Style, satisfies R2712 "A document-literal binding MUST be serialized as an ENVELOPE with a soap:Body whose child element is an instance of the global element declaration
-referenced by the corresponding wsdl:message part" in <xref linkend="bib_doc-lit-conformance"/>, and thus is compliant with <xref linkend="bib_wsibasicprofile11"/>.  A Daisy Online protocol compliant WSDL must not use any other <xref linkend="bib_wsibasicprofile11"/> permitted Binding styles (i.e. RPC-Literal).
-
                         </para>
+                        <para> The WSDL Binding Style used in the normative WSDL available in <xref
+                                linkend="appendixWSDL"/>, is "Wrapped Document-literal." this style
+                            is a subset of the Document-Literal Style, satisfies R2712 "A
+                            document-literal binding MUST be serialized as an ENVELOPE with a
+                            soap:Body whose child element is an instance of the global element
+                            declaration referenced by the corresponding wsdl:message part" in <xref
+                                linkend="bib_doc-lit-conformance"/>, and thus is compliant with
+                                <xref linkend="bib_wsibasicprofile11"/>. A Daisy Online protocol
+                            compliant WSDL must not use any other <xref
+                                linkend="bib_wsibasicprofile11"/> permitted Binding styles (i.e.
+                            RPC-Literal). </para>
                         <note>
-                            <para><xref linkend="bib_httpcookies"/> states "R1121 An INSTANCE SHOULD
-                                NOT require consumer support for Cookies in order to function
-                                correctly." The Daisy Online protocol is a session based protocol,
-                                and HTTP cookies thus are fundamental to the protocol. </para>
+                            <para><remark role="todo">TODO Kenny this note can be removed
+                                    right?</remark><xref linkend="bib_httpcookies"/> states "R1121
+                                An INSTANCE SHOULD NOT require consumer support for Cookies in order
+                                to function correctly." The Daisy Online protocol is a session based
+                                protocol, and HTTP cookies thus are fundamental to the protocol.
+                            </para>
                         </note>
                     </listitem>
                     <listitem>
@@ -489,13 +502,16 @@ referenced by the corresponding wsdl:message part" in <xref linkend="bib_doc-lit
         <section xml:id="fundamentals_dynamic_menus" conformance="informative">
             <title>Dynamic Menus</title>
             <para>
-                <remark role="todo">TODO Kenny/Nick Describe Dynamic Menus in general terms,
-                    give examples (as in /scn-temp/). Do not include the search example here, as that
-                should be in <xref linkend="operations_content_selection_browse_example"/></remark>
+                <remark role="todo">TODO Kenny/Nick Describe Dynamic Menus in general terms, give
+                    examples (as in /scn-temp/). Do not include the search example here, as that
+                    should be in <xref linkend="operations_content_selection_browse_example"
+                    /></remark>
             </para>
             <para>
-                <remark role="todo">Need to formally define DMG endpoints and limitations on callback, but perhaps not here, rather in
-                    XSD (see note in the questions element in xsd). Examples provided here must touch on the endpoints and callback limits though.</remark>
+                <remark role="todo">Need to formally define DMG endpoints and limitations on
+                    callback, but perhaps not here, rather in XSD (see note in the questions element
+                    in xsd). Examples provided here must touch on the endpoints and callback limits
+                    though.</remark>
             </para>
         </section>
     </chapter>
@@ -509,8 +525,9 @@ referenced by the corresponding wsdl:message part" in <xref linkend="bib_doc-lit
             <section xml:id="operations_session_httpAuthentication">
                 <title>http(s) authentication</title>
                 <para>
-                    <remark role="todo">TODO Kenny add whatever we need to say about http(s) and
-                        authentication in the context of a "session" (read below first)</remark>
+                    <remark role="todo">TODO Kenny add whatever we need to say about http(s),
+                        cookies and authentication in the context of a "session" (read below
+                        first)</remark>
                 </para>
             </section>
 
@@ -643,18 +660,18 @@ referenced by the corresponding wsdl:message part" in <xref linkend="bib_doc-lit
         <section xml:id="operations_content_selection">
             <title>Content Selection</title>
             <para>Depending on the <link linkend="fundamentals_contentProvisionModels">content
-                    provision model</link> employed, Content selection (e.g. the mechanism
-                with which the user selects one or several content items to request issuance and
-                transfer of) is performed using two distinct approaches:</para>
+                    provision model</link> employed, Content selection (e.g. the mechanism with
+                which the user selects one or several content items to request issuance and transfer
+                of) is performed using two distinct approaches:</para>
 
             <section xml:id="operations_content_selection_outofband">
                 <title>Content Selection using the Out-of-band model</title>
 
-                <para>In the <link linkend="fundamentals_contentProvisionModel_outofband">Out-of-band
-                        model</link> content provison form, content is selected using a mechanism
-                    not defined by this protocol, and not involving the Session itself. Through this
-                    mechanism, the Service, typically prior to the Session onset, has in its
-                    possession a list of Content items to offer to the User. </para>
+                <para>In the <link linkend="fundamentals_contentProvisionModel_outofband"
+                        >Out-of-band model</link> content provison form, content is selected using a
+                    mechanism not defined by this protocol, and not involving the Session itself.
+                    Through this mechanism, the Service, typically prior to the Session onset, has
+                    in its possession a list of Content items to offer to the User. </para>
 
                 <para>To initiate retrieval of these Content items, the Reading System invokes the
                         <xref linkend="op_getContentList"/> operation, passing the value
@@ -662,10 +679,10 @@ referenced by the corresponding wsdl:message part" in <xref linkend="bib_doc-lit
                     retrieving a <xref linkend="tp_contentList"/> in return.</para>
 
                 <note>
-                    <para>A Service declares whether it supports Content selection using the Out-of-band
-                        model in the <xref linkend="tp_supportedContentProvisionModels"/> element in
-                        the <xref linkend="tp_serviceAttributes"/> type returned by the <xref
-                            linkend="op_getServiceAttributes"/> operation.</para>
+                    <para>A Service declares whether it supports Content selection using the
+                        Out-of-band model in the <xref linkend="tp_supportedContentProvisionModels"
+                        /> element in the <xref linkend="tp_serviceAttributes"/> type returned by
+                        the <xref linkend="op_getServiceAttributes"/> operation.</para>
                 </note>
 
                 <section xml:id="operations_content_selection_outofband_examples">
@@ -701,8 +718,8 @@ referenced by the corresponding wsdl:message part" in <xref linkend="bib_doc-lit
                             <listitem>
                                 <para>Either with or without explicit User interaction (the Reading
                                     System may have an option to support automation of this step in
-                                    subscription/cyclic delivery contexts), the Reading System requests issuance and
-                                    transfer of the Content. See further <xref
+                                    subscription/cyclic delivery contexts), the Reading System
+                                    requests issuance and transfer of the Content. See further <xref
                                         linkend="operations_content_issuing"/></para>
                             </listitem>
                         </orderedlist>
@@ -720,10 +737,11 @@ referenced by the corresponding wsdl:message part" in <xref linkend="bib_doc-lit
                     <para>A Service declares whether it supports Content selection using the Browse
                         model in the <xref linkend="tp_supportedContentProvisionModels"/> element in
                         the <xref linkend="tp_serviceAttributes"/> type returned by the <xref
-                        linkend="op_getServiceAttributes"/> operation. Services may support
-                        the Dynamic Menu feature for other purposes than supporting content selection, so
-                        the value <code>DYNAMIC_MENUS</code> in <xref linkend="tp_supportedOptionalOperations"/> does not
-                        imply that Content Selection using the Browse model is supported.</para>
+                            linkend="op_getServiceAttributes"/> operation. Services may support the
+                        Dynamic Menu feature for other purposes than supporting content selection,
+                        so the value <code>DYNAMIC_MENUS</code> in <xref
+                            linkend="tp_supportedOptionalOperations"/> does not imply that Content
+                        Selection using the Browse model is supported.</para>
                 </note>
 
                 <section xml:id="operations_content_selection_browse_example">
@@ -834,9 +852,9 @@ referenced by the corresponding wsdl:message part" in <xref linkend="bib_doc-lit
                 <para>The <xref linkend="op_getContentResources"/> operation exposes all resources
                     that constitute the content to the Reading System. Service Providers must allow
                     at least one call to <function>getContentResources</function> for each issued
-                    Content item. Service Providers may
-                    allow multiple subsequent <function>getContentResources</function> invocations for
-                    the same content, possibly spanning several Sessions.</para>
+                    Content item. Service Providers may allow multiple subsequent
+                        <function>getContentResources</function> invocations for the same content,
+                    possibly spanning several Sessions.</para>
             </section>
 
             <section xml:id="operations_content_issuing_retrieval_sequence_example"
@@ -850,20 +868,20 @@ referenced by the corresponding wsdl:message part" in <xref linkend="bib_doc-lit
                             linkend="tp_contentList"/>:</para>
                     <orderedlist>
                         <listitem>
-                            <para>[Optional] The Reading System invokes the <function><xref
-                                linkend="op_getContentMetadata"/></function> operation using
-                                    <code>foo</code> as the value of the <parameter>contentID</parameter> 
-                                    parameter, which returns a <xref
-                                    linkend="tp_contentMetadata"/> type, containing content metadata
-                                    and samples.</para>
+                            <para>[Optional] The Reading System invokes the <function>
+                                    <xref linkend="op_getContentMetadata"/>
+                                </function> operation using <code>foo</code> as the value of the
+                                    <parameter>contentID</parameter> parameter, which returns a
+                                    <xref linkend="tp_contentMetadata"/> type, containing content
+                                metadata and samples.</para>
                             <programlisting><xi:include href="./samples/retrieval-contentMetadata.xml" parse="text"/></programlisting>
                         </listitem>
                         <listitem>
                             <para>[Required] For content that the User requests issuance of, the
                                 Reading System invokes the <xref linkend="op_issueContent"/>
-                                operation, using <code>foo</code> as the value of the <parameter>contentID</parameter>. To signal
-                                that the Content was issued, the Service returns
-                                    <constant>true</constant>. </para>
+                                operation, using <code>foo</code> as the value of the
+                                    <parameter>contentID</parameter>. To signal that the Content was
+                                issued, the Service returns <constant>true</constant>. </para>
                         </listitem>
                         <listitem>
                             <para>[Optional] At this point the Reading System may call other
@@ -999,10 +1017,10 @@ referenced by the corresponding wsdl:message part" in <xref linkend="bib_doc-lit
             <title>Content Return</title>
             <para>Content return is employed in the case where a Reading System has content issued
                 from a Service that employs a <link linkend="fundamentals_serviceType_library"
-                    >library-type</link> Service, and where the given Content
-                item issued from that Service is explicitly of a borrowed nature (as defined by the
-                value of the <varname>borrowed</varname> attribute on <xref linkend="tp_contentItem"
-                /> in a <xref linkend="tp_contentList"/>).<remark role="todo">note may stay in
+                    >library-type</link> Service, and where the given Content item issued from that
+                Service is explicitly of a borrowed nature (as defined by the value of the
+                    <varname>borrowed</varname> attribute on <xref linkend="tp_contentItem"/> in a
+                    <xref linkend="tp_contentList"/>).<remark role="todo">note may stay in
                     contentmetadata, if so fix previous link</remark></para>
             <para>A <link linkend="fundamentals_serviceType_library">library-type</link> Service is
                 required to manage the User's Content collection in terms of what Content is issued,
@@ -1188,7 +1206,8 @@ referenced by the corresponding wsdl:message part" in <xref linkend="bib_doc-lit
         <biblioentry xml:id="bib_infoset">
             <abbrev>INFOSET</abbrev>
             <title>
-                <link xlink:href="http://www.w3.org/TR/xml-infoset/">XML Information Set (Second Edition)</link>
+                <link xlink:href="http://www.w3.org/TR/xml-infoset/">XML Information Set (Second
+                    Edition)</link>
             </title>
             <author>
                 <personname>J Cowan, R Tobin</personname>
@@ -1369,22 +1388,33 @@ referenced by the corresponding wsdl:message part" in <xref linkend="bib_doc-lit
 
     </acknowledgements>
 
-    <appendix xml:id="appendixWSDL" conformance="informative">
-        <title>WSDL Definition</title>
-        <para>
-            <remark role="todo">TODO explain what this is, and add OR change to external file
-                reference, which would make the xsd appendix redundant </remark>
-        </para>
-        <programlisting><xi:include href="do-wsdl-10.wsdl" parse="text"/></programlisting>
+    <appendix xml:id="appendixWSDL" conformance="normative">
+        <title>WSDL Abstract Definition</title>
+        <para>The <xref linkend="bib_wsdl1.1"/> document <link xlink:href="do-wsdl-10-wsdl"
+                >do-wsdl-10-wsdl</link>, and the document entities referenced from within it,
+            formally defines the abstract Web Service contract that all compliant Services must adher
+            to.</para>
+
+        <para>All compliant Services must publish a WSDL document at the <xref linkend="term_serviceAddress"/>
+            whose <xref linkend="bib_infoset"/> - with the exception of the WSDL <code>service</code>
+            elements and its contents - is identical to <link xlink:href="do-wsdl-10-wsdl"
+                >do-wsdl-10-wsdl</link>.</para>
+
+        <para>Services may make use of the abstract <link xlink:href="do-wsdl-10-wsdl"
+                >do-wsdl-10-wsdl</link> by using it as a template during the creation of a concrete
+            DAISY Online Web Service (e.g. by adding to a copy of this document the Service instance specific
+                <code>service</code> element and its contents.) </para>
     </appendix>
 
+    <!--
     <appendix xml:id="appendixXSD" conformance="normative">
         <title>WXS Type Definition</title>
         <para>
             <remark role="todo">TODO explain what this is, and add OR change to external file
                 reference</remark>
         </para>
-        <programlisting><xi:include href="do-types-10.xsd" parse="text"/></programlisting>
+        <programlisting><xi:include href="../build/do-types-10.xsd" parse="text"/></programlisting>
     </appendix>
+    -->
 
 </book>
