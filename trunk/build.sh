@@ -17,3 +17,5 @@ cp ./src/xml.xsd ./build/xml.xsd
 cp ./src/xmldsig.xsd ./build/xmldsig.xsd
 cp ./src/xmlenc.xsd ./build/xmlenc.xsd
 cp ./src/kxo.xsd ./build/kxo.xsd
+
+java -cp $cp com.xmlcalabash.drivers.Main wsdl-xsd-extract.xpl

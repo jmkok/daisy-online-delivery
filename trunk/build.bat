@@ -12,3 +12,5 @@ copy .\src\xml.xsd .\build\xml.xsd
 copy .\src\xmldsig.xsd .\build\xmldsig.xsd
 copy .\src\xmlenc.xsd .\build\xmlenc.xsd
 copy .\src\kxo.xsd .\build\kxo.xsd
+
+java com.xmlcalabash.drivers.Main wsdl-xsd-extract.xpl
