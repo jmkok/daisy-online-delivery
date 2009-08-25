@@ -14,11 +14,49 @@ Regrets:
  * Kenny modify dynamic menu usage scenarios to reflect Issue 114 changes. {done}
  * Geoff and Markus analyze RequirementsDocument vs current API. {ONGOING}
  * Geoff label Issue 94 as an enhancement, leave open but leave out of spec
- * markus/kenny: Add a required lastModifiedDate attribute (or element) to each contentItem element in the contentList type (the lastModifiedDate of a contentItem element is the last modified date of the most recently modified resource in the publication being represented by the particular contentItem element). A required lastModifiedDate attribute also needs to be added to the resource element in the contentmetadata type. {Think DONE, but spec prose on installments is not}
+ * markus/kenny: Add a required lastModifiedDate attribute (or element) to each contentItem element in the contentList type (the lastModifiedDate of a contentItem element is the last modified date of the most recently modified resource in the publication being represented by the particular contentItem element). A required lastModifiedDate attribute also needs to be added to the resource element in the contentmetadata type. {Think DONE, but spec prose on installments is not} See also Issue 140.
  * markus/kenny: add a pointer to HTTP return codes specified in Section 10 in RFC 2615 in the documentation for situations where a uri to a resource is not valid for some reason. (refers to issue 106)   
 
 
 == Agenda/Minutes ==
+
+=== Call on friday ===
+Another call on friday to deal with any remaining issues, handover to Matt, identify work to be done concurrently with Matt (such as CSS and Issue 129)
+
+=== Major spec sections remaining to be written ===
+
+Assign responsible names to: 
+ * 4.4 Dynamic Menus (informative intro with samples) (Nick/Kenny?)
+ * 5.3.3. Downloading and streaming of content
+ * 5.6. Bookmarks and Last Reading Position, inc samples and solving Issue 34
+ * WSDL remark elements (all pertaining to dynamic menus)
+
+=== Issues ===
+==== Issue 133 ====
+Should all Services be required to support out-of-band content selection?
+
+==== Issue 132 ====
+Move @borrowed to contentItem? Good counter-argument in tracker.
+
+==== Issue 120 ====
+Think this one is solved: yes, it needs to support arbitrary IDs to support segmented contentLists returned from dynamic menu sessions.
+
+==== Issue 119 ====
+
+==== Issue 133 ====
+
+==== Issue 139 ====
+
+==== Issue 140 ====
+
+==== Issue 131 ====
+
+==== Issue 106 ===
+
+=== Issue 79 ===
+Making an extensible enum here is still marked as a TODO in the XSD.
+
+
 === Commit 300 ==
 Discussion around r300, the commit comment of which is replicated below:
 
@@ -55,27 +93,6 @@ Note - If a Service is exclusively of the shop-style type (eg supports only purc
 {3} serviceAttributes/supportedServiceTypes/serviceType/LIBRARY 
 
 {4} serviceAttributes/supportedServiceTypes/serviceType/SHOP
-
-=== Major spec sections remaining to be written ===
-
-Assign responsible names to: 
- * 4.4 Dynamic Menus (informative intro) (Nick/Kenny?)
- * 5.3.3. Downloading and streaming of content
- * 5.6. Bookmarks and Last Reading Position, inc samples and solving Issue 34
- * WSDL remark elements (all pertaining to dynamic menus)
-
-
-=== Issues ===
-==== Issue 131 ====
-
-==== Issue 132 ====
-
-==== Issue 120 ====
-
-==== Issue 119 ====
-
-==== Issue 133 ====
-
 
 === Previous Finished Action Items ===
 
