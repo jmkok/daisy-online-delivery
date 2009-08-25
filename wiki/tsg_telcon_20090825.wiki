@@ -36,7 +36,7 @@ Assign responsible names to:
 Should all Services be required to support out-of-band content selection?
 
 ==== Issue 132 ====
-Move @borrowed to contentItem? Good counter-argument in tracker.
+Move @borrowed to contentItem? Good counter-argument in tracker. change name to requiresReturn either case.
 
 ==== Issue 120 ====
 Think this one is solved: yes, it needs to support arbitrary IDs to support segmented contentLists returned from dynamic menu sessions.
