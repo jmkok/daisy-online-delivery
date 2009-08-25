@@ -260,7 +260,7 @@
                 <term>Service address</term>
                 <listitem>
                     <para>The URI where a Service has published the WSDL document defining the DAISY
-                        Online Service. <remark role="todo">TODO fix this def</remark></para>
+                        Online Service. <remark role="todo">TODO Kenny fix this def, use the WS correct term</remark></para>
                 </listitem>
             </varlistentry>
         </variablelist>
@@ -350,7 +350,7 @@
                     <listitem>
                         <para>Manage the User's collection of borrowed Content, including what
                             Content is currently issued to the User, and what content has expired
-                            (e.g. Content that should be returned).</para>
+                            (e.g. Content that should be returned)</para>
                     </listitem>
                     <listitem>
                         <para>Support exposing the above lists of borrowed and expired content to
@@ -362,17 +362,22 @@
                     <listitem>
                         <para>Provide an implementation of the <xref linkend="op_returnContent"/>
                             operation, and contractually let an invocation of that operation signal
-                            the end of the issuance period for a given Content item.</para>
+                            the end of the issuance period for a given Content item</para>
                     </listitem>
                     <listitem>
-                        <para><remark role="todo">Supply the @borrowed attribute - wait for Issue 132</remark></para>
+                        <para>
+                            For those Content items that are being borrowed, provide 
+                            the value <literal>true</literal> in the <code>requiresReturn</code>
+                            attribute of the <xref linkend="tp_contentMetadata"/> type returned by the <xref 
+                            linkend="op_getContentMetadata"/> operation 
+                        </para>
                     </listitem>
-                    
+
                     <listitem>
                         <para>Declare its offering of a Library-style service in the <xref
                                 linkend="tp_supportedServiceTypes"/> element in the <xref
                                 linkend="tp_serviceAttributes"/> type returned by the <xref
-                                linkend="op_getServiceAttributes"/> operation.</para>
+                                linkend="op_getServiceAttributes"/> operation</para>
                     </listitem>
                 </itemizedlist>
             </section>
@@ -615,10 +620,12 @@
                     </errorname> if a Reading System does not honor the above initialization
                     sequence.</para>
 
-                <note><para>This specification does not stipulate the nature of the credentials used 
-                    to authenticate a Reading System. The credentials used in this context may be 
-                    credentials associated to a single User, a group of Users, a Reading System, or 
-                    any other entity specified by a Service provider.</para></note>
+                <note>
+                    <para>This specification does not stipulate the nature of the credentials used
+                        to authenticate a Reading System. The credentials used in this context may
+                        be credentials associated to a single User, a group of Users, a Reading
+                        System, or any other entity specified by a Service provider.</para>
+                </note>
 
                 <section xml:id="operations_session_initializationExamples"
                     conformance="informative">
@@ -663,7 +670,8 @@
                                         <xref linkend="op_getServiceAnnouncements"/>
                                     </function> operation, retrieving an <type>
                                         <xref linkend="tp_announcements"/>
-                                    </type> type in return. See further <xref linkend="operations_service_announcements"/>.</para>
+                                    </type> type in return. See further <xref
+                                        linkend="operations_service_announcements"/>.</para>
                                 <!-- <programlisting><xi:include href="./samples/initialization-serviceAnnouncements.xml" parse="text"/></programlisting> -->
                             </listitem>
                         </orderedlist>
@@ -692,8 +700,8 @@
                 <title>Content Selection using the Out-of-band model</title>
 
                 <para>In the <link linkend="fundamentals_contentSelectionModel_outofband"
-                        >Out-of-band model</link> content provison form, content is selected using a
-                    mechanism not defined by this protocol, and not involving the Session itself.
+                        >Out-of-band model</link> content selection form, content is selected using
+                    a mechanism not defined by this protocol, and not involving the Session itself.
                     Through this mechanism, the Service, typically prior to the Session onset, has
                     in its possession a list of Content items to offer to the User. </para>
 
@@ -708,7 +716,7 @@
                         /> element in the <xref linkend="tp_serviceAttributes"/> type returned by
                         the <xref linkend="op_getServiceAttributes"/> operation.</para>
                 </note>
-
+                
                 <section xml:id="operations_content_selection_outofband_examples">
                     <title>Out-of-band Model Content Selection Examples</title>
                     <example>
@@ -735,8 +743,8 @@
                                     automatically at some interval.</para>
                             </listitem>
                             <listitem>
-                                <para>The Service returns a <xref linkend="tp_contentList"/> type containing
-                                    the Content items offered:</para>
+                                <para>The Service returns a <xref linkend="tp_contentList"/> type
+                                    containing the Content items offered:</para>
                                 <programlisting><xi:include href="./samples/contentSelection-subscr.xml" parse="text"/></programlisting>
                             </listitem>
                             <listitem>
@@ -830,17 +838,20 @@
                 proceed to request issuance of selected content items within the
                     <literal>contentList</literal>, followed by download or streaming of the
                 resources that constitute the content. </para>
-            <para>
-                <remark role="todo">TODO the below is ambivalent in terms of contentItem@borrowed vs
-                    contentMetadata@borrowed</remark>
-            </para>
+ 
             <section xml:id="operations_content_issuing_retrieval_sequence">
                 <title>Content Retrieval Sequence</title>
                 <para>To request issuance of and retrieve the resources of a Content item, a Reading
                     System must invoke the following operations in the given sequence. Note that
-                    both involved operations take the <xref linkend="term_contentIdentifier"/> as a
+                    all involved operations take the <xref linkend="term_contentIdentifier"/> as a
                     parameter.</para>
                 <orderedlist>
+                    <listitem>
+                        <para>The <function>
+                            <xref linkend="op_getContentMetadata"/>
+                        </function> operation</para>
+                    </listitem>
+                    
                     <listitem>
                         <para>The <function>
                                 <xref linkend="op_issueContent"/>
@@ -856,6 +867,11 @@
                             </function> operation</para>
                     </listitem>
                 </orderedlist>
+
+                <para>The <xref linkend="op_getContentMetadata"/> operation containts publication 
+                    metadata, information on the Content format, an optional sample, and information on whether 
+                    the content is being borrowed or not (see <xref linkend="fundamentals_serviceType_library" />).
+                 </para>
 
                 <para>The <xref linkend="op_issueContent"/> operation constitutes the formal User
                     request to get access to the Content. This operation must be invoked prior to
@@ -887,15 +903,15 @@
                 <example>
                     <title>Content Retrieval</title>
                     <para>Given the <xref linkend="term_contentIdentifier"/>
-                        <varname>uk-rnib-001</varname>, initially retrieved from the <literal>id</literal>
-                        attribute on a <literal>contentItem</literal> in a <xref
-                            linkend="tp_contentList"/>:</para>
+                        <varname>uk-rnib-001</varname>, initially retrieved from the
+                            <literal>id</literal> attribute on a <literal>contentItem</literal> in a
+                            <xref linkend="tp_contentList"/>:</para>
                     <orderedlist>
                         <listitem>
-                            <para>[Optional] The Reading System invokes the 
-                                <function><xref linkend="op_getContentMetadata"/></function> 
-                                operation using <code>uk-rnib-001</code> as the value of the
-                                    <parameter>contentID</parameter> parameter, which returns a
+                            <para>[Required] The Reading System invokes the <function>
+                                    <xref linkend="op_getContentMetadata"/>
+                                </function> operation using <code>uk-rnib-001</code> as the value of
+                                the <parameter>contentID</parameter> parameter, which returns a
                                     <xref linkend="tp_contentMetadata"/> type, containing content
                                 metadata and a sample.</para>
                             <programlisting><xi:include href="./samples/retrieval-contentMetadata.xml" parse="text"/></programlisting>
@@ -906,8 +922,8 @@
                                 operation, using <code>uk-rnib-001</code> as the value of the
                                     <parameter>contentID</parameter>.</para>
                             <programlisting><xi:include href="./samples/retrieval-issueContent.xml" parse="text"/></programlisting>
-                            <para>To signal that the Content was
-                                issued, the Service returns <constant>true</constant>.</para>
+                            <para>To signal that the Content was issued, the Service returns
+                                    <constant>true</constant>.</para>
                         </listitem>
                         <listitem>
                             <para>[Optional] At this point the Reading System may call other
@@ -962,36 +978,41 @@
                 <para>A Service may provide all or parts of its content collection in protected
                     form. This version of this specification allows the <xref linkend="bib_pdtb2"/>
                     format to be used for content protection.</para>
-				<para>Neither Reading Systems nor Services are required to support <abbrev>PDTB2</abbrev>.
-				If a Reading System supports <abbrev>PDTB2</abbrev>, it should send the following
-				in its <type><xref linkend="tp_readingSystemAttributes"/></type>:</para>
-				<programlisting><xi:include href="./samples/pdtb-readingSystemAttributes.xml" parse="text" encoding="UTF-8"/></programlisting>
-				<para>If a Reading System does not support <abbrev>PDTB2</abbrev>, the Service should not provide
-				content in that format.  If a Service supports <abbrev>PDTB2</abbrev> key exchange
-				via the <function><xref linkend="op_getKeyExchangeObject"/></function> operation,
-				it must send the following in response to a valid
-				<function><xref linkend="op_getServiceAttributes"/></function> call
-				from the Reading System:</para>
-				<programlisting><xi:include href="./samples/pdtb-serviceAttributes.xml" parse="text" encoding="UTF-8"/></programlisting>
-				<para>A Service may provide Content encrypted with <abbrev>PDTB2</abbrev> even
-				if it does not support <function>getKeyExchangeObject</function>, if there is a
-				reasonable assumption that Users' Reading Systems have the keys necessary to
-				decrypt the Content.
-				</para>
-                <para>If Content is protected using <abbrev>PDTB2</abbrev>, then there will be
-                    a metadata item in the <type>
+                <para>Neither Reading Systems nor Services are required to support
+                        <abbrev>PDTB2</abbrev>. If a Reading System supports <abbrev>PDTB2</abbrev>,
+                    it should send the following in its <type>
+                        <xref linkend="tp_readingSystemAttributes"/>
+                    </type>:</para>
+                <programlisting><xi:include href="./samples/pdtb-readingSystemAttributes.xml" parse="text" encoding="UTF-8"/></programlisting>
+                <para>If a Reading System does not support <abbrev>PDTB2</abbrev>, the Service
+                    should not provide content in that format. If a Service supports
+                        <abbrev>PDTB2</abbrev> key exchange via the <function>
+                        <xref linkend="op_getKeyExchangeObject"/>
+                    </function> operation, it must send the following in response to a valid <function>
+                        <xref linkend="op_getServiceAttributes"/>
+                    </function> call from the Reading System:</para>
+                <programlisting><xi:include href="./samples/pdtb-serviceAttributes.xml" parse="text" encoding="UTF-8"/></programlisting>
+                <para>A Service may provide Content encrypted with <abbrev>PDTB2</abbrev> even if it
+                    does not support <function>getKeyExchangeObject</function>, if there is a
+                    reasonable assumption that Users' Reading Systems have the keys necessary to
+                    decrypt the Content. </para>
+                <para>If Content is protected using <abbrev>PDTB2</abbrev>, then there will be a
+                    metadata item in the <type>
                         <xref linkend="tp_contentMetadata"/>
                     </type> named <literal>pdtb2:specVersion</literal> with a value of
                         <literal>2005-1</literal> and there will be resources with mimeTypes
                     beginning with <literal>application/x-pdtb…</literal>. The Reading System can
-                    access these resources even if it does not support <abbrev>PDTB2</abbrev>,
-                    but it might not be able to decrypt all the Content.</para>
-				<example>
-					<title><abbrev>PDTB</abbrev> <type>contentMetadata</type></title>
-					<para>The following is an example of contentMetadata for an item
-					exncrypted using <abbrev>PDTB2</abbrev>.</para>
-					<programlisting><xi:include href="./samples/pdtb-contentMetadata.xml" parse="text" encoding="UTF-8"/></programlisting>
-				</example>
+                    access these resources even if it does not support <abbrev>PDTB2</abbrev>, but
+                    it might not be able to decrypt all the Content.</para>
+                <example>
+                    <title>
+                        <abbrev>PDTB</abbrev>
+                        <type>contentMetadata</type>
+                    </title>
+                    <para>The following is an example of contentMetadata for an item exncrypted
+                        using <abbrev>PDTB2</abbrev>.</para>
+                    <programlisting><xi:include href="./samples/pdtb-contentMetadata.xml" parse="text" encoding="UTF-8"/></programlisting>
+                </example>
                 <para>If some Content has an Authorization Object (<abbrev>AO</abbrev>), the Reading
                     System can inspect it for the name of the key that secures the key to decrypt
                     the Content.</para>
@@ -1040,14 +1061,14 @@
                 </example>
                 <example>
                     <title>Rights Management without Encryption</title>
-                    <para>Note that <abbrev>PDTB2</abbrev> can be used for rights expression without encryption. The
-                        following <abbrev>AO</abbrev> describes the permission to play the audio of
-                        a certain book which expires at midnight on 31 October 2010, but has no
-                        encrypted parts.</para>
+                    <para>Note that <abbrev>PDTB2</abbrev> can be used for rights expression without
+                        encryption. The following <abbrev>AO</abbrev> describes the permission to
+                        play the audio of a certain book which expires at midnight on 31 October
+                        2010, but has no encrypted parts.</para>
                     <programlisting><xi:include href="./samples/authorization-unencrypted.xml" parse="text"/></programlisting>
-                    <para>A <abbrev>PDTB2</abbrev>-compliant reading system will prevent the user from playing the
-                        audio after that time, even though it is not encrypted. A non-compliant
-                        reading system's behaviour is, naturally, undefined.</para>
+                    <para>A <abbrev>PDTB2</abbrev>-compliant reading system will prevent the user
+                        from playing the audio after that time, even though it is not encrypted. A
+                        non-compliant reading system's behaviour is, naturally, undefined.</para>
                 </example>
             </section>
         </section>
@@ -1057,10 +1078,9 @@
                 from a Service that employs a <link linkend="fundamentals_serviceType_library"
                     >library-type</link> Service, and where the given Content item issued from that
                 Service is explicitly of a borrowed nature (as defined by the value of the
-                    <varname>borrowed</varname> attribute on <xref linkend="tp_contentItem"/> in a
-                    <xref linkend="tp_contentList"/>).<remark role="todo">note may stay in
-                    contentmetadata, if so fix previous link</remark></para>
-            <para>A <link linkend="fundamentals_serviceType_library">library-type</link> Service is
+                    <code>requiresReturn</code> attribute on <xref linkend="tp_contentMetadata"/>.</para>
+            <para>As stated in <xref linkend="fundamentals_serviceTypes_reqs_library"/>, a <link
+                    linkend="fundamentals_serviceType_library">library-type</link> Service is
                 required to manage the User's Content collection in terms of what Content is issued,
                 and what Content has expired. By invoking <xref linkend="op_getContentList"/> with
                 the <parameter>id</parameter> parameter valued <code>expired</code>, a Reading
@@ -1258,8 +1278,10 @@
         <biblioentry xml:id="bib_iso3166">
             <abbrev>ISO 3166</abbrev>
             <title>
-                <link xlink:href="http://www.iso.org/iso/en/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html"
-                    >ISO 3166-1 - Codes for the representation of names of countries and their subdivisions - Part 1: Country codes</link>
+                <link
+                    xlink:href="http://www.iso.org/iso/en/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html"
+                    >ISO 3166-1 - Codes for the representation of names of countries and their
+                    subdivisions - Part 1: Country codes</link>
             </title>
         </biblioentry>
         <biblioentry xml:id="bib_RFC2119">
@@ -1403,7 +1425,7 @@
         <biblioentry xml:id="bib_z3986-2005-bkmk">
             <abbrev>Z39-86.2005-BOOKMARKS</abbrev>
             <title>
-                <link xlink:href="http://www.daisy.org/z3986/2005/Z3986-2005.html#bkmk">Portable
+                <link xlink:href="http://www.daisy.org/z3986/2005/Z3986-2005.html#Bkmk">Portable
                     Bookmarks and Highlights</link> (part of <xref linkend="bib_z3986-2005"/>) </title>
             <author>
                 <personname>M. Moodie, et al</personname>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<contentMetadata id="Volunteering" borrowed="true" category="OTHER">
+<contentMetadata id="Volunteering" requiresReturn="true" category="OTHER">
   <sample>
     <label xml:lang="en">
       <text>Volunteering</text>

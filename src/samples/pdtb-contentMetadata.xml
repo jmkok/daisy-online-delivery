@@ -1,4 +1,4 @@
-<contentMetadata id="ca-qqhb.B612" borrowed="true" category="BOOK">
+<contentMetadata id="ca-qqhb.B612" requiresReturn="true" category="BOOK">
   <provider id="ca-qqhb"/> <!-- La Haute-Bibliothèque -->
   <service id="ca-qqhb-sdel"/> <!-- Service DAISY en ligne -->
   <metadata>
