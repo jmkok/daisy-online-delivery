@@ -439,80 +439,16 @@
 					</xs:complexType>
 				</xs:element>
 
-				<xs:element name="provider" minOccurs="0" maxOccurs="1">
-					<xs:annotation>
-						<xs:documentation>
-							<db:para role="desc">Specifies the identity of the Service provider.</db:para>
-						</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element ref="label" minOccurs="0" maxOccurs="1">
-								<xs:annotation>
-									<xs:documentation>
-										<db:para role="desc">The name of the Service Provider in human readable form.</db:para>
-									</xs:documentation>
-								</xs:annotation>
-							</xs:element>
-						</xs:sequence>
-						<xs:attribute name="id" type="xs:string" use="required">
-							<xs:annotation>
-								<xs:documentation>
-									<db:para role="desc">A static unique identifier of the Service
-									provider.</db:para>
-									<db:para>This specification does not require a specific scheme to be used when
-										expressing this identifier. The identifier should be static (ie not change over
-										time while the Service provider remains active), and it should be globally unique.</db:para> 
-									<db:para>A recommended expression form is a 
-										hyphen-separated string consisting of a two-letter country code drawn from <db:xref linkend="bib_iso3166"/>, 
-										followed by an agency code unique within its country. For example, <db:token>us-afb</db:token>.</db:para>						
-								</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-					</xs:complexType>
-				</xs:element>
-
-				<xs:element name="service" minOccurs="0" maxOccurs="1">
-					<xs:annotation>
-						<xs:documentation>
-							<db:para>Specifies the identity of the Service.</db:para>
-						</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element ref="label" minOccurs="0" maxOccurs="1">
-								<xs:annotation>
-									<xs:documentation>
-										<db:para role="desc">The name of the Service in human readable form.</db:para>
-									</xs:documentation>
-								</xs:annotation>
-								
-							</xs:element>
-						</xs:sequence>
-						<xs:attribute name="id" type="xs:string" use="required">
-							<xs:annotation>
-								<xs:documentation>
-									<db:para>A static unique identifier of the Service.</db:para>
-									<db:para>This specification does not require a specific scheme to be used when
-										expressing this identifier. The identifier should be static (ie not change over
-										time while the Service provider remains active), and it should be globally unique.</db:para> 
-									<db:para>A recommended expression form is a 
-										hyphen-separated string consisting of a two-letter country code drawn from <db:xref linkend="bib_iso3166"/>, 
-										followed by an agency code unique within its country, followed by a Service code unique among the Services 
-										offered by the provider. For example, <db:token>us-afb-onlinelLibrary</db:token>.</db:para>
-								</xs:documentation>
-							</xs:annotation>
-						</xs:attribute>
-					</xs:complexType>
-				</xs:element>
-
 				<xs:element name="metadata" minOccurs="1" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>
 							<db:para role="desc">Specifies bibliographic and other metadata about
-								the content.</db:para>
+								the Content.</db:para>
 							<db:para>Elements in the Dublin Core namespace are normatively defined
-								by <db:xref linkend="bib_dublinCore"/>.</db:para>
+								by <db:xref linkend="bib_dublinCore"/>. Note that the value of the
+							Dublin Core <db:literal>identifier</db:literal> element represents the 
+								<db:xref linkend="term_contentIdentifier"/> of the Content item
+							being described.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
@@ -652,7 +588,6 @@
 											defined in <db:xref linkend="bib_dublinCore"/></db:para>
 									</xs:documentation>
 								</xs:annotation>
-
 							</xs:element>
 
 							<xs:element name="narrator" type="xs:string" minOccurs="0" maxOccurs="1">
@@ -767,9 +702,9 @@
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">The last modified date of the resource.
-										<remark role="todo">TODO Geoff: may
+										<db:remark role="todo">TODO Geoff: may
 											want to point to your installments section here, or some
-											local doc prose</remark></db:para>
+											local doc prose</db:remark></db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
@@ -831,9 +766,9 @@
 								<xs:documentation>
 									<db:para>The last modified date of this contentItem. Contains
 										the lastModifiedDate of the most recently modified file in
-										the content's fileset. <remark role="todo">TODO Geoff: may
+										the content's fileset. <db:remark role="todo">TODO Geoff: may
 										want to point to your installments section here, or some
-										local doc prose</remark></db:para>
+										local doc prose</db:remark></db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
@@ -846,7 +781,7 @@
 					<xs:documentation>
 						<db:para>The total number of content items exposed by the Service at this
 							stage of the session. This instance of
-								<db:varname>contentList</db:varname> may only contain a subset of
+								<db:type>contentList</db:type> may only contain a subset of
 							the total number of items, e.g. it may be segmented. If the contentList
 						is not segmented, the value of this attribute is equal to the number of <db:type>contentItem</db:type>
 						children of this <db:type>contentList</db:type> element.</db:para>
@@ -962,8 +897,8 @@
 			<xs:documentation>
 				<db:para role="desc">A sequence of questions, asked by the Service to the
 					User.</db:para>
-				<db:para>TODO Kenny/Nick: contentList and label are endpoints, how to best describe
-					that?</db:para>
+				<db:para><db:remark role="todo">Kenny/Nick: contentList and label are endpoints, how to best describe
+					that?</db:remark></db:para>
 				<db:para role="req">The questions element must contain either exactly one
 					contentList or exactly one label or any number of multipleChoiceQuestion and
 					inputQuestion in any order.</db:para>
@@ -1085,6 +1020,73 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
+				<xs:element name="serviceProvider" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							<db:para role="desc">Specifies the identity of the <db:xref linkend="term_serviceProvider"/>.</db:para>
+						</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element ref="label" minOccurs="0" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">The name of the Service Provider in human readable form.</db:para>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="id" type="xs:string" use="required">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">A static unique identifier of the Service
+										provider.</db:para>
+									<db:para>This specification does not require a specific scheme to be used when
+										expressing this identifier. The identifier should be static (ie not change over
+										time while the Service provider remains active), and it should be globally unique.</db:para> 
+									<db:para>A recommended expression form is a 
+										hyphen-separated string consisting of a two-letter country code drawn from <db:xref linkend="bib_iso3166"/>, 
+										followed by an agency code unique within its country. For example, <db:token>us-afb</db:token>.</db:para>						
+								</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				
+				<xs:element name="service" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							<db:para>Specifies the identity of the <db:xref linkend="term_service"/>.</db:para>
+						</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element ref="label" minOccurs="0" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">The name of the Service in human readable form.</db:para>
+									</xs:documentation>
+								</xs:annotation>
+								
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="id" type="xs:string" use="required">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para>A static unique identifier of the Service.</db:para>
+									<db:para>This specification does not require a specific scheme to be used when
+										expressing this identifier. The identifier should be static (ie not change over
+										time while the Service provider remains active), and it should be globally unique.</db:para> 
+									<db:para>A recommended expression form is a 
+										hyphen-separated string consisting of a two-letter country code drawn from <db:xref linkend="bib_iso3166"/>, 
+										followed by an agency code unique within its country, followed by a Service code unique among the Services 
+										offered by the provider. For example, <db:token>us-afb-onlinelLibrary</db:token>.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				
 				<xs:element name="supportedContentSelectionModels" minOccurs="1" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>
@@ -1120,6 +1122,7 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
+				
 				<xs:element name="supportedServiceTypes" minOccurs="1" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>
@@ -1171,9 +1174,10 @@
 					<xs:annotation>
 						<xs:documentation>
 							<db:para role="desc">Specifies whether the Service supports searching of
-								its content collection.</db:para>
-							<db:para role="desc">Note that a search feature requires support for
-								dynamic menus [TODO proper link to DM spot]</db:para>
+								its content collection using the <db:link linkend="fundamentals_dynamic_menus"
+									>dynamic menu</db:link> feature of this protocol. See also the
+							<db:literal>DYNAMIC_MENUS</db:literal> value in <db:xref 
+								linkend="tp_supportedOptionalOperations"/></db:para>
 						</xs:documentation>
 					</xs:annotation>
 				</xs:element>
@@ -1204,7 +1208,7 @@
 					<xs:annotation>
 						<xs:documentation>
 							<db:para role="desc">Specifies which (if any) of the operations that are
-								optional per this specification are supported by the
+								<db:link linkend="apiReferenceOptional">optional per this specification</db:link> are supported by the
 								Service.</db:para>
 						</xs:documentation>
 					</xs:annotation>
