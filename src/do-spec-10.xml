@@ -663,8 +663,8 @@
                                         <xref linkend="op_getServiceAnnouncements"/>
                                     </function> operation, retrieving an <type>
                                         <xref linkend="tp_announcements"/>
-                                    </type> type in return:</para>
-                                <programlisting><xi:include href="./samples/initialization-serviceAnnouncements.xml" parse="text"/></programlisting>
+                                    </type> type in return. See further <xref linkend="operations_service_announcements"/>.</para>
+                                <!-- <programlisting><xi:include href="./samples/initialization-serviceAnnouncements.xml" parse="text"/></programlisting> -->
                             </listitem>
                         </orderedlist>
                     </example>
@@ -735,7 +735,7 @@
                                     automatically at some interval.</para>
                             </listitem>
                             <listitem>
-                                <para>The Service returns a <type>contentList</type> type containing
+                                <para>The Service returns a <xref linkend="tp_contentList"/> type containing
                                     the Content items offered:</para>
                                 <programlisting><xi:include href="./samples/contentSelection-subscr.xml" parse="text"/></programlisting>
                             </listitem>
@@ -887,25 +887,27 @@
                 <example>
                     <title>Content Retrieval</title>
                     <para>Given the <xref linkend="term_contentIdentifier"/>
-                        <varname>foo</varname>, initially retrieved from the <literal>id</literal>
+                        <varname>uk-rnib-001</varname>, initially retrieved from the <literal>id</literal>
                         attribute on a <literal>contentItem</literal> in a <xref
                             linkend="tp_contentList"/>:</para>
                     <orderedlist>
                         <listitem>
-                            <para>[Optional] The Reading System invokes the <function>
-                                    <xref linkend="op_getContentMetadata"/>
-                                </function> operation using <code>foo</code> as the value of the
+                            <para>[Optional] The Reading System invokes the 
+                                <function><xref linkend="op_getContentMetadata"/></function> 
+                                operation using <code>uk-rnib-001</code> as the value of the
                                     <parameter>contentID</parameter> parameter, which returns a
                                     <xref linkend="tp_contentMetadata"/> type, containing content
-                                metadata and samples.</para>
+                                metadata and a sample.</para>
                             <programlisting><xi:include href="./samples/retrieval-contentMetadata.xml" parse="text"/></programlisting>
                         </listitem>
                         <listitem>
                             <para>[Required] For content that the User requests issuance of, the
                                 Reading System invokes the <xref linkend="op_issueContent"/>
-                                operation, using <code>foo</code> as the value of the
-                                    <parameter>contentID</parameter>. To signal that the Content was
-                                issued, the Service returns <constant>true</constant>. </para>
+                                operation, using <code>uk-rnib-001</code> as the value of the
+                                    <parameter>contentID</parameter>.</para>
+                            <programlisting><xi:include href="./samples/retrieval-issueContent.xml" parse="text"/></programlisting>
+                            <para>To signal that the Content was
+                                issued, the Service returns <constant>true</constant>.</para>
                         </listitem>
                         <listitem>
                             <para>[Optional] At this point the Reading System may call other
@@ -1078,7 +1080,7 @@
                                 </function> operation with the identifier
                                 <literal>expired</literal>. The service returns a <xref
                                     linkend="tp_contentList"/> containing the Content items that has
-                                expired. </para>
+                                expired.</para>
                             <programlisting><xi:include href="./samples/return-contentList.xml" parse="text"/></programlisting>
                             <para>(Note that the <literal>id</literal> value of the
                                     <type>contentItem</type> elements in the list define the <xref
@@ -1094,6 +1096,9 @@
                                 Reading System invokes the <xref linkend="op_returnContent"/>
                                 operation, passing the <xref linkend="term_contentIdentifier"
                                 />.</para>
+                            <programlisting><xi:include href="./samples/return-return1.xml" parse="text"/></programlisting>
+                            <para> followed by </para>
+                            <programlisting><xi:include href="./samples/return-return2.xml" parse="text"/></programlisting>
                         </listitem>
                         <listitem>
                             <para>[Required] For each of the <xref linkend="op_returnContent"/>

@@ -8,20 +8,25 @@
 
 		<xs:schema targetNamespace="http://www.daisy.org/ns/daisy-online/"
 			xmlns:xs="http://www.w3.org/2001/XMLSchema"
-			xmlns:common="http://www.daisy.org/ns/daisy-online/common-types/"
+			elementFormDefault="qualified"
+			attributeFormDefault="unqualified"
+			xmlns:common="http://www.daisy.org/ns/daisy-online/"
 			xmlns:daisy="http://www.daisy.org/z3986/2005/bookmark/"
 			xmlns:pdtb2="http://www.daisy.org/DRM/2005/KeyExchange"
 			xmlns:db="http://docbook.org/ns/docbook"
 			xmlns:tns="http://www.daisy.org/ns/daisy-online/">
-
+			
+			<!--
 			<xs:import namespace="http://www.daisy.org/ns/daisy-online/common-types/"
 				schemaLocation="do-types-10.xsd"/>
-
+			-->
+			<xs:include schemaLocation="do-types-10.xsd"/>
+			
 			<xs:import namespace="http://www.daisy.org/z3986/2005/bookmark/"
 				schemaLocation="bookmark-2005-1.xsd"/>
 
-	<xs:import namespace="http://www.daisy.org/DRM/2005/KeyExchange"
-		schemaLocation="kxo.xsd"/>			
+			<xs:import namespace="http://www.daisy.org/DRM/2005/KeyExchange"
+				schemaLocation="kxo.xsd"/>			
 
 			<!-- message types -->
 
