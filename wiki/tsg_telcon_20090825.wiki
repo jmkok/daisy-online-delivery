@@ -36,7 +36,7 @@ Assign responsible names to:
  * WSDL remark elements (all pertaining to dynamic menus)
 
 === Issues ===
-==== Issue 133 ====
+==== Issue 135 ====
 Should all Services be required to support out-of-band content selection?
 
 ==== Issue 132 ====
