@@ -23,6 +23,9 @@ Regrets:
 === Call on friday ===
 Another call on friday to deal with any remaining issues, handover to Matt, identify work to be done concurrently with Matt (such as CSS and Issue 129)
 
+=== sample production aids ==
+The build now outputs ./build/temp-extracted.xsd, which is the XSD island in the WSDL. With this, one can author samples using a schema-aware editor.
+
 === Major spec sections remaining to be written ===
 
 Assign responsible names to: 
