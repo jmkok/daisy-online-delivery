@@ -1,13 +1,20 @@
 <wiki:toc max_depth="5" />
 
-Present: Markus (scribe)
+Present: Markus (scribe), Geoff, Dominic, Kenny, Hiro, Nick, George, Jelle, Simon, Matt
 
 Regrets: 
-
 
 == Action Item Summary ==
 
 === New Action Items ===
+ * Kenny: write prose for *4.4 Dynamic Menus* (informative intro with samples)
+ * Kenny: find all WSDL remark elements pertaining to dynamic menus and add prose etc
+ * add a pointer to HTTP return codes specified in Section 10 in RFC 2615 in the documentation for situations where a uri to a resource is not valid for some reason. (then close issue 106). 
+ * Jelle: write prose for *5.1.1 http(s) authentication*
+ * Geoff write prose for *5.3.3. Downloading and streaming of content*
+ * Nick: write prose for *5.6. Bookmarks and Last Reading Position, inc samples* 
+ * Nick, in writing the prose and producing a bookmark sample, solve Issue 34 and Issue 119 
+ * Markus: implement all issue resolutions below except that for Issue 106.
 
 === Previous Unfinished Action Items ===
  * Jelle: propose resolution to Issue 118
@@ -15,7 +22,7 @@ Regrets:
  * Geoff and Markus analyze RequirementsDocument vs current API. {ONGOING}
  * Geoff label Issue 94 as an enhancement, leave open but leave out of spec
  * markus/kenny: Add a required lastModifiedDate attribute (or element) to each contentItem element in the contentList type (the lastModifiedDate of a contentItem element is the last modified date of the most recently modified resource in the publication being represented by the particular contentItem element). A required lastModifiedDate attribute also needs to be added to the resource element in the contentmetadata type. {Think DONE, but spec prose on installments is not} See also Issue 140.
- * markus/kenny: add a pointer to HTTP return codes specified in Section 10 in RFC 2615 in the documentation for situations where a uri to a resource is not valid for some reason. (refers to issue 106)   
+ * kenny: add a pointer to HTTP return codes specified in Section 10 in RFC 2615 in the documentation for situations where a uri to a resource is not valid for some reason. (refers to issue 106)   
 
 
 == Agenda/Minutes ==
@@ -29,36 +36,50 @@ The build now outputs ./build/temp-extracted.xsd, which is the XSD island in the
 === Major spec sections remaining to be written ===
 
 Assign responsible names to: 
- * 4.4 Dynamic Menus (informative intro with samples) (Nick/Kenny?)
- * 5.1.1 http(s) authentication
- * 5.3.3. Downloading and streaming of content
- * 5.6. Bookmarks and Last Reading Position, inc samples and solving Issue 34
- * WSDL remark elements (all pertaining to dynamic menus)
+ * 4.4 Dynamic Menus (informative intro with samples) (@Kenny)
+ * 5.1.1 http(s) authentication (@Jelle)
+ * 5.3.3. Downloading and streaming of content "Geoff
+ * 5.6. Bookmarks and Last Reading Position, inc samples and solving Issue 34 and solving Issue 119 @Nick
+ * WSDL remark elements (all pertaining to dynamic menus) @Kenny
 
 === Issues ===
 ==== Issue 135 ====
 Should all Services be required to support out-of-band content selection?
 
+*Resolution*: add prose to the effect of *recommending* that Services support out-of-band CS. Explain that a RS that doesnt support dynamic menus would "fall back" to out-of-band.
+
 ==== Issue 132 ====
 Move @borrowed to contentItem? Good counter-argument in tracker. change name to requiresReturn either case.
 
+*Resolution*: retain on metadata, change name to requiresReturn, require getContentmetdata in the sequence
+
 ==== Issue 120 ====
-Think this one is solved: yes, it needs to support arbitrary IDs to support segmented contentLists returned from dynamic menu sessions.
+Think this one is solved: yes, it needs to support arbitrary IDs to support segmented contentLists returned from dynamic menu sessions. 
+
+*Resolution*: allow arbitrary IDs. questions should be changed to a contentList reference instead of type.
 
 ==== Issue 119 ====
+Nick is addressing this.
 
 ==== Issue 133 ====
+Nick: the URL may point to a script, may not contain the file name. 
+*Resolution*: specify that its relative Content root directory, and that must be a valid relative URI.
 
 ==== Issue 139 ====
+*Resolution*: move both to serviceAttributes, make clear that provider is serviceProvider 
 
 ==== Issue 140 ====
+*Resolution*: Make attributes optional
 
 ==== Issue 131 ====
+*Resolution*: make required
 
 ==== Issue 106 ===
+*Resolution*: kenny: add a pointer to HTTP return codes specified in Section 10 in RFC 2615 in the documentation for situations where a uri to a resource is not valid for some reason. (refers to issue 106).   
 
 === Issue 79 ===
 Making an extensible enum here is still marked as a TODO in the XSD.
+*Resolution*: make clear that its extensible, either through XSD or spec prose
 
 
 === Commit 300 ==
