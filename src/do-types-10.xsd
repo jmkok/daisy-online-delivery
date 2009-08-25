@@ -621,15 +621,16 @@
 			</xs:sequence>
 
 			<xs:attribute name="category" use="optional">
-				<xs:simpleType>
-					<xs:restriction base="xs:string">
-						<xs:enumeration value="BOOK"/>
-						<xs:enumeration value="MAGAZINE"/>
-						<xs:enumeration value="NEWSPAPER"/>
-						<xs:enumeration value="OTHER"/>
-						<!-- TODO make extensible -->
-					</xs:restriction>
-				</xs:simpleType>
+				<xs:annotation>
+					<xs:documentation>
+						<db:para role="desc">Specifies a publication type denomination for the Content being described.</db:para>
+						<db:para>Reading Systems may use the value provided here to categorize or sort issued Content items on
+						behalf of the User.</db:para>
+						<db:para>Any value is allowed. The values <db:literal>BOOK</db:literal>, <db:literal>MAGAZINE</db:literal>, 
+							<db:literal>NEWSPAPER</db:literal> and <db:literal>OTHER</db:literal> are recommended to use
+							for those Content items whose type can be said to match any of these terms.</db:para>
+					</xs:documentation>
+				</xs:annotation>
 			</xs:attribute>
 
 			<xs:attribute name="requiresReturn" type="xs:boolean" use="required">
