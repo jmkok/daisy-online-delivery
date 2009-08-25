@@ -1127,6 +1127,9 @@
                         </listitem>
                     </orderedlist>
                 </example>
+                <note><para>A Reading System may invoke <function><xref linkend="op_returnContent"/></function> on Content that has not yet 
+                    expired, e.g. invoke <function>returnContent</function> without a previous invocation of <xref linkend="op_getContentList"/> with the
+                <literal>expired</literal> identifier. The same requirements on resource deletion as specfied holds in this case.</para></note>
             </section>
 
         </section>
