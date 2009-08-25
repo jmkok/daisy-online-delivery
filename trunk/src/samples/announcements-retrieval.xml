@@ -1,1 +1,11 @@
-<announcements-retrieval TODO="true" />
+<announcements xmlns="http://www.daisy.org/ns/daisy-online/">
+    <announcement id="ann_1">
+        <label><text>[...]</text></label>
+    </announcement>
+    <announcement id="ann_2">
+        <label><text>[...]</text></label>
+    </announcement>
+    <announcement id="ann_3">
+        <label><text>[...]</text></label>
+    </announcement>
+</announcements>

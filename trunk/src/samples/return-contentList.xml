@@ -1,1 +1,13 @@
-<return-contentList TODO="true" />
+<contentList xmlns="http://www.daisy.org/ns/daisy-online/"
+    id="expired" totalItems="2" firstItem="0" lastItem="1">   
+    <contentItem id="uk-rnib-001">
+        <label>
+            <text>Harry Potter and the Goblets of Fire</text>
+        </label>
+    </contentItem>
+    <contentItem id="uk-rnib-002">
+        <label>
+            <text>Harry Potter and the Deathly Hallows</text>
+        </label>        
+    </contentItem>
+</contentList>

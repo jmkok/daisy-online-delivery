@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified"
-	targetNamespace="http://www.daisy.org/ns/daisy-online/common-types/"
-	xmlns="http://www.daisy.org/ns/daisy-online/common-types/"
-	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:db="http://docbook.org/ns/docbook"
+	targetNamespace="http://www.daisy.org/ns/daisy-online/"
+	xmlns="http://www.daisy.org/ns/daisy-online/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:db="http://docbook.org/ns/docbook"
 	xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 	<xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
@@ -429,7 +430,8 @@
 						<xs:attribute name="id" use="required" type="xs:string">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">An identifier of the sample.  Reading Systems may retrieve the sample by calling
+									<db:para role="desc">An identifier of the sample.</db:para>  
+									<db:para>Reading Systems may retrieve the sample by calling
 										<db:xref linkend="op_getContentResources"/> with this identifier as the parameter.</db:para>
 								</xs:documentation>
 							</xs:annotation>
@@ -504,7 +506,7 @@
 					</xs:complexType>
 				</xs:element>
 
-				<xs:element name="metadata" minOccurs="0" maxOccurs="1">
+				<xs:element name="metadata" minOccurs="1" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>
 							<db:para role="desc">Specifies bibliographic and other metadata about
@@ -683,8 +685,6 @@
 				</xs:element>
 			</xs:sequence>
 
-			<xs:attribute name="id" type="xs:ID" use="required"/>
-
 			<xs:attribute name="category" use="optional">
 				<xs:simpleType>
 					<xs:restriction base="xs:string">
@@ -764,10 +764,10 @@
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
-						<xs:attribute name="lastModifiedDate" type="xs:dateTime" use="required">
+						<xs:attribute name="lastModifiedDate" type="xs:dateTime" use="optional">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para>The last modified date of the resource.</db:para>
+									<db:para role="desc">The last modified date of the resource.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
@@ -824,7 +824,7 @@
 							</xs:annotation>
 						</xs:attribute>
 
-						<xs:attribute name="lastModifiedDate" type="xs:dateTime" use="required">
+						<xs:attribute name="lastModifiedDate" type="xs:dateTime" use="optional">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para>The last modified date of this contentItem. contains
@@ -843,23 +843,42 @@
 						<db:para>The total number of content items exposed by the Service at this
 							stage of the session. This instance of
 								<db:varname>contentList</db:varname> may only contain a subset of
-							the total number of items.</db:para>
+							the total number of items, e.g. it may be segmented. If the contentList
+						is not segmented, the value of this attribute is equal to the number of <db:type>contentItem</db:type>
+						children of this <db:type>contentList</db:type> element.</db:para>
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="firstItem" type="xs:integer" use="required">
+			<xs:attribute name="firstItem" type="xs:integer" use="optional">
 				<xs:annotation>
 					<xs:documentation>
 						<db:para>The first content item provided in this instance of
-							contentList.</db:para>
+							contentList. This attribute must be provided when a contentList
+							is segmented. If this attribute is present, the <db:code>lastItem</db:code>
+							attribute must also be present.</db:para>
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="lastItem" type="xs:integer" use="required">
+			<xs:attribute name="lastItem" type="xs:integer" use="optional">
 				<xs:annotation>
 					<xs:documentation>
 						<db:para>The last content item provided in this instance of
-							contentList.</db:para>
+							contentList. This attribute must be provided when a contentList
+							is segmented. If this attribute is present, the <db:code>firstItem</db:code>
+							attribute must also be present.</db:para>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="id" type="xs:ID" use="required">
+				<xs:annotation>
+					<xs:documentation>
+						<db:para role="desc">The identifier of this contentList.</db:para>
+						<db:para>If this contentList is being returned on an invocation of
+						<db:xref linkend="op_getContentList"/> where one of the reserved values 
+							<db:code>new</db:code>, <db:code>issued</db:code> or <db:code>expired</db:code> is passed as 
+							the value of that operations <db:parameter>id</db:parameter> parameter, then
+							the value of this id attribute must echo that value, e.g. be <db:code>new</db:code>, 
+							<db:code>issued</db:code> or <db:code>expired</db:code> respectively.</db:para>
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -881,7 +900,7 @@
 				<xs:element name="inputTypes" minOccurs="0" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>
-							<db:para>Specifies which input types the service is prepared to accept
+							<db:para>Specifies which input types the Service is prepared to accept
 								as a response to this question. </db:para>
 						</xs:documentation>
 					</xs:annotation>
