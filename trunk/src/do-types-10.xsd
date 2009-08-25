@@ -766,7 +766,10 @@
 						<xs:attribute name="lastModifiedDate" type="xs:dateTime" use="optional">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">The last modified date of the resource.</db:para>
+									<db:para role="desc">The last modified date of the resource.
+										<remark role="todo">TODO Geoff: may
+											want to point to your installments section here, or some
+											local doc prose</remark></db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
@@ -828,7 +831,9 @@
 								<xs:documentation>
 									<db:para>The last modified date of this contentItem. Contains
 										the lastModifiedDate of the most recently modified file in
-										the content's fileset.</db:para>
+										the content's fileset. <remark role="todo">TODO Geoff: may
+										want to point to your installments section here, or some
+										local doc prose</remark></db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
