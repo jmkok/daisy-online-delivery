@@ -9,7 +9,7 @@ Regrets:
 === New Action Items ===
  * Kenny: write prose for *4.4 Dynamic Menus* (informative intro with samples)
  * Kenny: find all WSDL remark elements pertaining to dynamic menus and add prose etc
- * add a pointer to HTTP return codes specified in Section 10 in RFC 2615 in the documentation for situations where a uri to a resource is not valid for some reason. (then close issue 106). 
+ * Kenny: add a pointer to HTTP return codes specified in Section 10 in RFC 2615 in the documentation for situations where a uri to a resource is not valid for some reason. (then close issue 106). Note: this could actually go into Jelle's section: Kenny: send stuff to Jelle.
  * Jelle: write prose for *5.1.1 http(s) authentication*
  * Geoff write prose for *5.3.3. Downloading and streaming of content*
  * Nick: write prose for *5.6. Bookmarks and Last Reading Position, inc samples* 
