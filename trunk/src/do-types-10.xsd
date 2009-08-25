@@ -993,14 +993,14 @@
 									<xs:sequence>
 										<xs:element ref="label" minOccurs="1" maxOccurs="1"/>
 									</xs:sequence>
-									<xs:attribute name="id" type="xs:ID"/>
+									<xs:attribute name="id" type="xs:ID" use="required"/>
 								</xs:complexType>
 							</xs:element>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
 			</xs:sequence>
-			<xs:attribute name="id" type="xs:ID"/>
+			<xs:attribute name="id" type="xs:ID" use="required"/>
 			<xs:attribute name="allowMultipleSelections" type="xs:boolean" use="optional"
 				default="false">
 				<xs:annotation>
