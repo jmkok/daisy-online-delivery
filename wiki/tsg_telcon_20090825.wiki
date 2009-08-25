@@ -30,6 +30,7 @@ The build now outputs ./build/temp-extracted.xsd, which is the XSD island in the
 
 Assign responsible names to: 
  * 4.4 Dynamic Menus (informative intro with samples) (Nick/Kenny?)
+ * 5.1.1 http(s) authentication
  * 5.3.3. Downloading and streaming of content
  * 5.6. Bookmarks and Last Reading Position, inc samples and solving Issue 34
  * WSDL remark elements (all pertaining to dynamic menus)
