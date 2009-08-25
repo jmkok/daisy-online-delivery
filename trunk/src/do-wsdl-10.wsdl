@@ -1018,7 +1018,7 @@
 					specified content.</db:para>
 				<db:para role="prereq">This operation is only valid if a previous call to <db:xref
 					linkend="op_issueContent"/> with a result of <db:varname>true</db:varname>
-					has been made for the given content.</db:para>
+					has been made for the given content, during the current or a previous Session.</db:para>
 			</documentation>
 			<input message="tns:getContentResources_inputMessage"/>
 			<output message="tns:getContentResources_outputMessage"/>
@@ -1114,7 +1114,7 @@
 				
 				<db:para> A Reading System
 				should not call <db:function>returnContent</db:function> where the contentMetadata's
-				<db:varname>borrowed</db:varname> attribute is not
+				<db:varname>requiresReturn</db:varname> attribute is not
 				<db:literal>true</db:literal>.</db:para>
 				<db:para>A Reading System must delete the content before calling
 				<db:function>returnContent</db:function>.  A Reading System must not

@@ -697,8 +697,7 @@
 				</xs:simpleType>
 			</xs:attribute>
 
-			<xs:attribute name="borrowed" type="xs:boolean" use="required">
-				<!-- TODO may benefit from name change "return" or slt -->
+			<xs:attribute name="requiresReturn" type="xs:boolean" use="required">
 				<xs:annotation>
 					<xs:documentation>
 						<db:para>Specifies whether the <db:xref linkend="term_service"/> requires
@@ -827,7 +826,7 @@
 						<xs:attribute name="lastModifiedDate" type="xs:dateTime" use="optional">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para>The last modified date of this contentItem. contains
+									<db:para>The last modified date of this contentItem. Contains
 										the lastModifiedDate of the most recently modified file in
 										the content's fileset.</db:para>
 								</xs:documentation>
@@ -877,7 +876,7 @@
 						<db:xref linkend="op_getContentList"/> where one of the reserved values 
 							<db:code>new</db:code>, <db:code>issued</db:code> or <db:code>expired</db:code> is passed as 
 							the value of that operations <db:parameter>id</db:parameter> parameter, then
-							the value of this id attribute must echo that value, e.g. be <db:code>new</db:code>, 
+							the value of this id attribute must echo the passed value, e.g. be <db:code>new</db:code>, 
 							<db:code>issued</db:code> or <db:code>expired</db:code> respectively.</db:para>
 					</xs:documentation>
 				</xs:annotation>
