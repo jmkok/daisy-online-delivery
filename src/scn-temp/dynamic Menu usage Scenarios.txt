@@ -172,35 +172,58 @@ Assuming the user entered the name "J.K. Rawling," the Reading System invokes th
 this operation returns the following questions type:
 
 <questions>
-<contentList>
+
+<contentListRef>l100</contentListRef>
+
+</questions>
+
+the reading system extracts the id of the contentList from the contentListRef element, and invokes the getContentList operation as follows:
+  
+getContentList("l100", 1, 20)
+
+<tip>
+
+the getContentList operation takes the following three parameters:
+1. id - this is the ID of the contentList type that is being requested.
+2. firstItem - this is the index of the first contentItem within the contentList type.     
+3. lastItem - this is the index of the last contentItem within the contentList type.
+
+getContentList("l100", 1, 20) thus requests the contentList type with the id "l100," and specifies that the first contentItem returned should be at index 1 and the last contentItem returned should be at index 20 (i.e. the first 20 contentItem elements) in the contentList type. 
+
+the firstItem and lastItem parameters exist to enable the reading system to request a contentList type with a specified number of contentItem child elements, in situations where memory or bandwidth constraints may not permit the retrieval of an entire contentList.
+
+</tip>              
+
+the operation returns the following contentList type:
+
+<contentList id="l100" firstItem="1" lastItem="20" totalItems="20">
 
 <label xml:lang="en">
 <text>Your Search for "J.K. Rawling" returned the following results.</text>
 </label>
 
-<contentItem id="hp_cos" lastModifiedDate="2009-08-20T11:00:00Z"
-requiresReturn="true">
+<contentItem id="hp_cos" lastModifiedDate="2009-08-20T11:00:00Z">
+
 <label>
 <text>Harry Potter and the Chamber of Secrets
 </label>
 </contentItem>
 
-<contentItem id="hp_dh" lastModifiedDate="2009-08-22T08:00:00Z"
-requiresReturn="true">
+<contentItem id="hp_dh" lastModifiedDate="2009-08-22T08:00:00Z">
+
 <label>
 <text>Harry Potter and the Deathly Hallows
 </label>
 </contentItem>
 
-<contentItem id="hp_gof" lastModifiedDate="2009-08-04T14:30:00Z"
-requiresReturn="true">
+<contentItem id="hp_gof" lastModifiedDate="2009-08-04T14:30:00Z">
+
 <label>
 <text>Harry Potter and the Goblet of Fire
 </label>
 </contentItem>
 
 </contentList>
-</questions> 
 
 The Reading System renders this type as follows:
 
@@ -209,9 +232,27 @@ Your Search for "J.K. Rawling" returned the following results:
 * harry potter and deathly hallows
 * harry potter and goblet of fire
 
-When a Service returns a contentList within a questions type,, the Reading system is logically at the end of the Service's dynamic menu.  
+When a Service returns a contentListRef child element within a questions type,, the Reading system is logically at the end of the Service's dynamic menu. the reading system extracts the id of the contentList from the contentListRef elementt as illustrated above, and invokes the getContentList operation to retrieve the contentList.      
 
 The Reading System may then retrieve information about the specific contentItems in the contentList type by invoking the getContentMetadata operation, passing in the id of the particular content item.   At this stage, the Reading system may ask the user whether he/she wishes to Download or Stream content. If the user wishes to download/stream content, the Reading system calls the issueContent operation passing in the id of the particular content item, followed by a call to the getContentResources operation, to request issuance and retrieve the uris of the resources that constitute the particular content item respectively.      
+
+<tip>
+
+the contentMetadata type returned by the getContentMetadata operation may contain a sample child element. for example:
+
+<contentMetadata>
+
+...
+
+<sample id="hp_gof_sample"/>
+
+...
+
+</contentMetadata>
+
+the reading system invokes the getContentResources operation passing in the id of the sample (in this example hp_gof_sample) to retrieve the resources that constitute the sample. the Daisy Online Protocol does not require a call to the issueContent operation if the getContentResources operation is being called to retrieve the resources for a sample. Put another way, issuance of a sample through a call to the issueContent opeeration is not required by the Daisy online protocol.
+
+</tip>          
 
 3. Usage Scenario: How to use the Dynamic menu feature to enable a user to update his/her profile. 
 
@@ -307,9 +348,11 @@ The Reading system renders this type to the user as follows:
 
 Your profile has been updated successfully!
 
-As in the case of the Service returning a contentList element within a questions type, if the Service returns a label child element in the questions type, the Reading System is logically at the end of the    Service's dynamic menu. 
+As in the case of the Service returning a contentListRef hchild element within a questions type, if the Service returns a label child element in the questions type, the Reading System is logically at the end of the    Service's dynamic menu. 
 
-<tip> If the Service intends to take the user back to a previous menu after a message such as "your profile has been updated successfully," the Service returns a multipleChoiceQuestion element within the questions type as follows:
+<tip> 
+
+If the Service intends to take the user back to a previous menu after a message such as "your profile has been updated successfully," the Service returns a multipleChoiceQuestion element within the questions type as follows:
 
 <questions>
 <multipleChoiceQuestion id="q3-4">
@@ -595,13 +638,13 @@ Thank you for purchasing "Harry Potter and the deathly hallows," "Harry Potter a
 
 <tip>
 
-this example presumes that a user's billing information was supplied to the Service Provider through an alternative channel (i.e. website, phone ...). However, extra steps could be added to this example to collect the user's billing information if such out-of-band mechanisms were not an option.    
+this example presumes that a user's billing information is supplied to the Service Provider through an out-of-band channel (i.e. website, phone ...). However, extra steps could be added to this example to collect the user's billing information if such out-of-band mechanisms were not an option.    
 
 </tip>
 
 <tip>
 
-If the user selects "Download/Stream these books now, the Service returns a contentList type inside a questions type containing the three selected books. 
+If the user selects "Download/Stream these books now, the Service returns a contentListRef child element inside a questions type that contains the id of a contentList, that can be retrieved through a call to the getContentList operation, and that contains the three selected books. 
 
 </tip>  
 
@@ -641,35 +684,56 @@ getQuestions(userResponses)
 This operation returns the following type:
 
 <questions>
-<contentList>
+
+<contentListRef>l200</contentListRef>
+
+</questions>
+
+the reading system extracts the id of the contentList from the contentListRef element, and invokes the getContentList operation as follows:
+
+getContentList("l200", 1, 20)
+
+the operation returns the following contentList type: 
+
+<contentList id="l200" firstItem="1" lastItem="20" totalItems="20">
 
 <label xml:lang="en">
 <text>You have the following content waiting to be Downloaded/Streamed</text>
 </label>
 
-<contentItem id="hp_dh" lastModifiedDate="2009-08-22T08:00:00Z"
-requiresReturn="true">
+<contentItem id="hp_dh" lastModifiedDate="2009-08-22T08:00:00Z">
+
 <label>
 <text>Harry Potter and the deathly hallows</text>
 </label>
 </contentItem>
 
-<contentItem id="hp_gof" lastModifiedDate="2009-08-04T14:30:00Z"
-requiresReturn="true">
+<contentItem id="hp_gof" lastModifiedDate="2009-08-04T14:30:00Z">
+
 <label>
 <text>Harry Potter and the goblet of fire</text>
 </label>
 </contentItem>
 
-<contentItem id="hp_oop" lastModifiedDate="2009-08-21T13:35:47Z"
-requiresReturn="true">
+<contentItem id="hp_oop" lastModifiedDate="2009-08-21T13:35:47Z">
+
 <label>
 <text>Harry Potter and the Order of the Phoenix</text>
 </label>
 </contentItem>
 
 </contentList>
-</questions> 
+
+<tip>
+
+the following three reserved IDs for the contentlist type have special significance:
+1. new
+2. issued
+3. expired.
+
+All other IDs are arbitrary.         
+
+</tip>
 
 The Reading System renders this type as follows:
 
@@ -677,12 +741,6 @@ You have the following content waiting to be Downloaded/Streamed
 * Harry Potter and the deathly hallows
 * Harry Potter and the goblet of fire
 * Harry Potter and the Order of the Phoenix
-
-<tip>
-
-The Service returns a contentList inside a questions type in this example. A contentList element as noted above is a special element that when present in a questions type, hands the control back to the Reading system (i.e. no further calls to the getQuestions operation are required). The Reading system then offers the user a choice to download or stream the content items available in the contentList depending on the particular context.
-
-</tip> 
 
 7. Usage Scenario: How to use the Back capability in the Dynamic Menu feature.
 
@@ -766,7 +824,7 @@ the user pushes the Back button on his/her Reading system to change the search c
 
 <tip>
 
-a Service that claims to support the "Back Feature" in its Service Attributes is required by the spec to return the previous question (aka menu), when it receives the reserved id "back" in the userResponses parameter passed to the getQuestions operation, at any stage in the Dynamic menu lifecycle. The dynamic Menu lifecycle begins when the Reading system invokes the getQuestions operation passing in a UserResponses parameter that contains the reserved id "default" and ends when the Service returns as a child element of a questions type (i.e. the return value of an ensuing getQuestions operation), a ContentList or a Label element.                   
+a Service that claims to support the "Back Feature" in its Service Attributes is required by the spec to return the previous question (aka menu), when it receives the reserved id "back" in the userResponses parameter passed to the getQuestions operation, at any stage in the Dynamic menu lifecycle. The dynamic Menu lifecycle begins when the Reading system invokes the getQuestions operation passing in a UserResponses parameter that contains the reserved id "default" and ends when the Service returns as a child element of a questions type (i.e. the return value of an ensuing getQuestions operation), a ContentListRef or a Label child element.                   
 
 </tip>
 
@@ -814,3 +872,6 @@ what would you like to search by?
 * title
 * author
 * Genre  
+
+
+ 
