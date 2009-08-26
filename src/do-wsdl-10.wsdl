@@ -418,16 +418,11 @@
 						<xs:element minOccurs="1" maxOccurs="1" ref="common:userResponses">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">
-										<db:remark role="todo">TODO Kenny/Nick desc</db:remark>
+									<db:para role="desc">the userResponses parameter to the getQuestions operation. Contains the user's response to a previous question, or one of the three reserved IDs: default, search or back.  
 									</db:para>
-									<db:para>The value <db:varname>default</db:varname> is
-										reserved... TODO</db:para>
-									<db:para>The value <db:varname>search</db:varname> is
-										reserved... TODO</db:para>
-									<db:para>The value <db:varname>back</db:varname> is reserved...
-										TODO and make reference to
-										serviceAttributes/supportsServerSideBack</db:para>
+									<db:para>The value <db:varname>default</db:varname> when passed in the userResponses parameter to the getQuestions operation, retrieves the root question (aka main menu) from the Service. </db:para>
+									<db:para>The value <db:varname>search</db:varname> when passed in the UserResponses parameter to the getQuestions operation, retrieves the Search menu from the Service.</db:para>
+									<db:para>The value <db:varname>back</db:varname> when passed in the userResponses parameter to the getQuestions operation, retrieves the previous question from the service. a Service is not required by the daisy Online Protocol to support the <db:varname>back</db:varname> reserved ID if it supports Dynamic Menus. A Service must explicitly declare that it supports this ID in ServiceAttributes/supportsServerSideBack</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -441,8 +436,7 @@
 						<xs:element minOccurs="1" maxOccurs="1" ref="common:questions">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">
-										<db:remark role="todo">TODO Kenny/Nick desc</db:remark>
+									<db:para role="desc">Contains one or more multiple choice or input questions. It may also contain a Label or contentListRef child elements.</db:para>    
 									</db:para>
 								</xs:documentation>
 							</xs:annotation>
@@ -1234,7 +1228,7 @@
 		<operation name="getQuestions">
 			<documentation>
 				<db:para role="desc">
-					<db:remark role="todo">TODO Kenny/Nick document</db:remark>
+Retrieves a question from the series of questions that comprise the Service's Menu System.</db:para> 
 				</db:para>
 			</documentation>
 			<input message="tns:getQuestions_inputMessage"/>
