@@ -224,7 +224,7 @@
                 <xs:complexType>
                         <xs:sequence>
                                 <xs:element ref="text" minOccurs="0"/>
-                                <xs:element ref="audio"/>
+                                <xs:element ref="audio" minOccurs="0"/>
                         </xs:sequence>
                 </xs:complexType>
         </xs:element>

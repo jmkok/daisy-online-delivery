@@ -648,10 +648,12 @@
 						<db:para>If this attribute is true, it is a contract from the <db:xref
 								linkend="term_service"/> to the <db:xref
 								linkend="term_readingSystem"/> that the <db:xref
-								linkend="term_readingSystem"/> will at some point 
-							<db:link linkend="operations_content_return">return the content</db:link></db:para> 
-						<db:para>Reading Systems should present Users with appropriate prompts if they try
-							to return non-borrowed <db:xref linkend="term_content"/>.</db:para>
+								linkend="term_readingSystem"/> will at some point <db:link
+								linkend="operations_content_return">return the
+							content</db:link></db:para>
+						<db:para>Reading Systems should present Users with appropriate prompts if
+							they try to return non-borrowed <db:xref linkend="term_content"
+							/>.</db:para>
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -696,14 +698,16 @@
 						<xs:attribute name="localURI" type="xs:anyURI" use="required">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">The local relative path of the resource.</db:para>
-									<db:para>The value of this attribute must be a URI, relative
-										to the Content's root directory. The value must contain the literal
-										filename of the resource.</db:para>
-									<db:para>This attribute is used to aid Reading Systems in retreiving
-										resources in the case where the <db:code>uri</db:code> attribute
-										does not specify a direct literal URI (such as when the URI resolves
-										to a script, or any other indirection).</db:para>
+									<db:para role="desc">The local relative path of the
+										resource.</db:para>
+									<db:para>The value of this attribute must be a URI, relative to
+										the Content's root directory. The value must contain the
+										literal filename of the resource.</db:para>
+									<db:para>This attribute is used to aid Reading Systems in
+										retreiving resources in the case where the
+											<db:code>uri</db:code> attribute does not specify a
+										direct literal URI (such as when the URI resolves to a
+										script, or any other indirection).</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
@@ -760,8 +764,8 @@
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">The <db:xref
-											linkend="term_contentIdentifier"/> of the Content that this
-											<db:type>contentItem</db:type> represents.</db:para>
+											linkend="term_contentIdentifier"/> of the Content that
+										this <db:type>contentItem</db:type> represents.</db:para>
 									<db:para>Note that this value must be identical to the value of
 										the <db:xref linkend="bib_dublinCore"/>
 										<db:literal>identifier</db:literal> field in the <db:xref
@@ -830,14 +834,14 @@
 							attribute must echo the passed value, e.g. be <db:code>new</db:code>,
 								<db:code>issued</db:code> or <db:code>expired</db:code>
 							respectively.</db:para>
-						<db:para>If the value of this attribute is not one of the three reserved values
-							above, then this is an arbitrary contentList, typically exposed as an
-							endpoint in a <db:link linkend="operations_content_selection_browse"
-								>dynamic menu search</db:link> operation sequence.</db:para>
-						<db:para>Services should persist
-							arbitrary contentList identities for the duration of a
-							Session. Services must not expose multiple arbitrary contentLists with same id
-							during the same session.</db:para>
+						<db:para>If the value of this attribute is not one of the three reserved
+							values above, then this is an arbitrary contentList, typically exposed
+							as an endpoint in a <db:link
+								linkend="operations_content_selection_browse">dynamic menu
+								search</db:link> operation sequence.</db:para>
+						<db:para>Services should persist arbitrary contentList identities for the
+							duration of a Session. Services must not expose multiple arbitrary
+							contentLists with same id during the same session.</db:para>
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -860,7 +864,7 @@
 					<xs:annotation>
 						<xs:documentation>
 							<db:para>Specifies which input types the Service is prepared to accept
-								as a response to this question. </db:para>
+								as a response to a question.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
@@ -875,9 +879,12 @@
 												<xs:documentation>
 												<db:para>The Reading System supports User input
 												using a numeric keypad.</db:para>
+													<db:para role="note">Note: this value is a
+														subset of
+														<db:varname>TEXT_ALPHANUMERIC</db:varname>.</db:para>
 												</xs:documentation>
 												</xs:annotation>
-												</xs:enumeration>
+												</xs:enumeration>	
 												<xs:enumeration value="TEXT_ALPHANUMERIC">
 												<xs:annotation>
 												<xs:documentation>
@@ -921,7 +928,11 @@
 						<db:type>contentListRef</db:type> or exactly one <db:type>label</db:type> or
 					any number of <db:type>multipleChoiceQuestion</db:type> and or
 						<db:type>inputQuestion</db:type>, in any order.</db:para>
-<db:para role="desc">If the questions element contains a <db:type>contentListRef</db:type> or a <db:type>label</db:type> child element, the Reading system is not required to call the getQuestions operation as these child elements signify a logical end to the sequence of questions that comprise a dynamic menu.</db:para>            
+				<db:para role="desc">If the questions element contains a
+						<db:type>contentListRef</db:type> or a <db:type>label</db:type> child
+					element, the Reading system is not required to call the getQuestions operation
+					as these child elements signify a logical end to the sequence of questions that
+					comprise a dynamic menu.</db:para>
 			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -938,7 +949,9 @@
 									<db:xref linkend="op_getContentList"/>
 								</db:function> passing the value given here as the value of that
 								operations <db:parameter>id</db:parameter> parameter.</db:para>
-							<db:para>A contentListRef as a child of the questions element signifies a logical end to the sequence of questions that comprise a dynamic menu. </db:para>
+							<db:para>A contentListRef as a child of the questions element signifies
+								a logical end to the sequence of questions that comprise a dynamic
+								menu. </db:para>
 						</xs:documentation>
 					</xs:annotation>
 				</xs:element>
@@ -946,7 +959,8 @@
 					<xs:annotation>
 						<xs:documentation>
 							<db:para>A label, representing a one-way message to the User. A label as
-								a child of the questions element signifies a logical end to the sequence of questions that comprise a Dynamic menu.</db:para>
+								a child of the questions element signifies a logical end to the
+								sequence of questions that comprise a Dynamic menu.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 				</xs:element>
@@ -1026,10 +1040,38 @@
 								</xs:simpleType>
 							</xs:element>
 						</xs:sequence>
-						<xs:attribute name="questionID" type="xs:ID" use="required">
+						<xs:attribute name="questionID" type="xs:NMTOKEN" use="required">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para>The ID of the question being answered</db:para>
+									<db:para>The ID of a question being answered.</db:para>
+									<db:para>The following three values of this attribute are
+										reserved for use as defined below:</db:para>
+									<db:itemizedlist>
+										<db:listitem>
+											<db:para>The value <db:varname>default</db:varname>
+												retrieves the root question (aka main menu) from the
+												Service. (This value is used to initiate a dynamic
+												menu operation sequence, and therefore does not
+												reflect an answered question)</db:para>
+										</db:listitem>
+										<db:listitem>
+											<db:para>The value <db:varname>search</db:varname>
+												retrieves the Search menu from the
+												Service.<db:remark role="todo">link to and fix
+												BROWSE/supportsSearch</db:remark></db:para>
+										</db:listitem>
+										<db:listitem>
+											<db:para>The value <db:varname>back</db:varname>
+												retrieves the previous question from the Service
+												during a dynamic menu operation sequence.</db:para>
+											<db:para>A Service is not required to support the
+												<db:varname>back</db:varname> reserved ID to claim
+												support for the Dynamic Menu feature. A Service must
+												explicitly declare whether it supports this ID in
+												<db:xref linkend="tp_serviceAttributes"
+												/>.</db:para>
+										</db:listitem>
+									</db:itemizedlist>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
@@ -1318,8 +1360,8 @@
 												<xs:documentation>
 												<db:para role="desc">Specifies that this Service
 												supports the <db:xref
-													linkend="op_getServiceAnnouncements"/> and <db:xref
-														linkend="op_markAnnouncementsAsRead"/>
+												linkend="op_getServiceAnnouncements"/> and
+												<db:xref linkend="op_markAnnouncementsAsRead"/>
 												operations.</db:para>
 												</xs:documentation>
 											</xs:annotation>
@@ -1357,22 +1399,23 @@
 		</xs:sequence>
 	</xs:complexType>
 	-->
-	
-	<xs:element name="item" type="xs:string" />
-	
+
+	<xs:element name="item" type="xs:string"/>
+
 	<xs:element name="read">
 		<xs:annotation>
 			<xs:documentation>
-				<db:para>A list of references to IDs on <db:xref linkend="tp_announcement"/>s.</db:para>
+				<db:para>A list of references to IDs on <db:xref linkend="tp_announcement"
+					/>s.</db:para>
 			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-		<xs:sequence>
-			<xs:element ref="item" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:sequence>
+			<xs:sequence>
+				<xs:element ref="item" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	
+
 	<xs:element name="keyNames">
 		<xs:annotation>
 			<xs:documentation>

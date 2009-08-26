@@ -1,0 +1,11 @@
+<questions xmlns="http://www.daisy.org/ns/daisy-online/">
+    <inputQuestion id="q10">                    
+        <inputTypes>                      
+            <input type="TEXT_ALPHANUMERIC"/>
+            <input type="AUDIO"/>                        
+        </inputTypes>                   
+        <label xml:lang="en">
+            <text>What is your name?</text>
+        </label>                 
+    </inputQuestion>
+</questions>

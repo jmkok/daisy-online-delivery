@@ -1,0 +1,5 @@
+<userResponses xmlns="http://www.daisy.org/ns/daisy-online/">
+    <userResponse questionID="q3-1" value="firstname lastname"/>
+    <userResponse questionID="q3-2" value="street number, suburb, city, state postal code, country"/>
+    <userResponse questionID="q3-3" value="c2"/>
+</userResponses>

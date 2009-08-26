@@ -1,0 +1,24 @@
+<questions xmlns="http://www.daisy.org/ns/daisy-online/">
+    <multipleChoiceQuestion id="q2">
+        <label xml:lang="en">
+            <text>What would you like to Search by?</text>
+        </label>
+        <choices>
+            <choice id="c1">
+                <label>
+                    <text>Title</text>
+                </label>
+            </choice>
+            <choice id="c2">
+                <label>
+                    <text>Author</text>
+                </label>
+            </choice>
+            <choice id="c3">
+                <label>
+                    <text>Genre</text>
+                </label>
+            </choice>
+        </choices>
+    </multipleChoiceQuestion>
+</questions>
