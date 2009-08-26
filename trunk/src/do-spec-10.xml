@@ -757,7 +757,7 @@
                     <note>
                         <para>A Service declares whether it supports Content selection using the
                             Out-of-band model in the <type><xref linkend="tp_supportedContentSelectionModels"
-                            /></type> element in the <type></type><xref linkend="tp_serviceAttributes"/></type> 
+                            /></type> element in the <type><xref linkend="tp_serviceAttributes"/></type> 
                             type returned by the <function><xref linkend="op_getServiceAttributes"/></function> 
                             operation.</para>
                     </note>            
