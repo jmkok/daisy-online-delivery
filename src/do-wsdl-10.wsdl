@@ -345,7 +345,8 @@
 									<db:para>The value of the <db:code>id</db:code> attribute on the
 										returned <db:type>contentList</db:type> must match the value
 										of the <db:parameter>id</db:parameter> parameter passed with
-										the <db:xref linkend="op_getContentList"/> operation.</db:para>
+										the <db:xref linkend="op_getContentList"/>
+										operation.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -418,11 +419,12 @@
 						<xs:element minOccurs="1" maxOccurs="1" ref="common:userResponses">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">the userResponses parameter to the getQuestions operation. Contains the user's response to a previous question, or one of the three reserved IDs: default, search or back.  
-									</db:para>
-									<db:para>The value <db:varname>default</db:varname> when passed in the userResponses parameter to the getQuestions operation, retrieves the root question (aka main menu) from the Service. </db:para>
-									<db:para>The value <db:varname>search</db:varname> when passed in the UserResponses parameter to the getQuestions operation, retrieves the Search menu from the Service.</db:para>
-									<db:para>The value <db:varname>back</db:varname> when passed in the userResponses parameter to the getQuestions operation, retrieves the previous question from the service. a Service is not required by the daisy Online Protocol to support the <db:varname>back</db:varname> reserved ID to claim support for the Dynamic Menu feature. A Service must explicitly declare that it supports this ID in ServiceAttributes/supportsServerSideBack</db:para>
+									<db:para role="desc">Contains the user's response to a previous
+										question, or, as defined in <db:xref
+											linkend="tp_userResponse"/>, one of the three reserved
+										IDs: <db:literal>default</db:literal>,
+											<db:literal>search</db:literal> or
+											<db:literal>back</db:literal>.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -436,8 +438,9 @@
 						<xs:element minOccurs="1" maxOccurs="1" ref="common:questions">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Contains one or more multiple choice or input questions. It may also contain a Label or contentListRef child elements.</db:para>    
-									</db:para>
+									<db:para role="desc">Contains one or more multiple choice or
+										input questions. It may also contain a Label or
+										contentListRef child elements.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -1090,18 +1093,18 @@
 
 		<operation name="getContentList">
 			<documentation>
-				<db:para role="desc">Retrieves a list of Content items.</db:para> 
-				<db:para>The retrieved list can either be
-					of a 'precomposed' type, in which case it is referred to by passing one of the
-					three reserved values defined in the <db:parameter>id</db:parameter> parameter
-					below (Refer to <db:xref linkend="fundamentals"/> for information on in which contexts
-					these reserved values are used).</db:para>
-				<db:para>The list can also be of a 'dynamic' type, typically being exposed by the Service
-					as the result of a <db:link linkend="operations_content_selection_browse"
-						>dynamic menu search</db:link> operation sequence. In this case, the 
-					<db:parameter>id</db:parameter> value used to refer to the list is provided in the
-					return type of a previous operation (See for example <db:xref linkend="tp_questions"/>).
-				</db:para>			
+				<db:para role="desc">Retrieves a list of Content items.</db:para>
+				<db:para>The retrieved list can either be of a 'precomposed' type, in which case it
+					is referred to by passing one of the three reserved values defined in the
+						<db:parameter>id</db:parameter> parameter below (Refer to <db:xref
+						linkend="fundamentals"/> for information on in which contexts these reserved
+					values are used).</db:para>
+				<db:para>The list can also be of a 'dynamic' type, typically being exposed by the
+					Service as the result of a <db:link
+						linkend="operations_content_selection_browse">dynamic menu search</db:link>
+					operation sequence. In this case, the <db:parameter>id</db:parameter> value used
+					to refer to the list is provided in the return type of a previous operation (See
+					for example <db:xref linkend="tp_questions"/>). </db:para>
 			</documentation>
 			<input message="tns:getContentList_inputMessage"/>
 			<output message="tns:getContentList_outputMessage"/>
@@ -1227,9 +1230,8 @@
 
 		<operation name="getQuestions">
 			<documentation>
-				<db:para role="desc">
-Retrieves a question from the series of questions that comprise the Service's Menu System.</db:para> 
-				</db:para>
+				<db:para role="desc">Retrieves a question from the series of questions that comprise
+					the Service's Menu System.</db:para>
 			</documentation>
 			<input message="tns:getQuestions_inputMessage"/>
 			<output message="tns:getQuestions_outputMessage"/>
