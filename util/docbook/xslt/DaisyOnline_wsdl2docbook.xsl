@@ -220,7 +220,7 @@
 		<!-- Print a db:para with type info -->
 		<!-- the input node is the wsdl xsd wrapper element -->
 		<xsl:param name="xsdElement" as="element()"/>		
-		<db:para>Type:
+		<db:para><xsl:text>Type: </xsl:text>
 			<xsl:choose>
 				<!-- get the primitive xsd types (element type="xs:*") -->
 				<xsl:when test="$xsdElement/@type and starts-with($xsdElement/@type,'xs:')">

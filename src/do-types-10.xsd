@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified"
 	targetNamespace="http://www.daisy.org/ns/daisy-online/"
-	xmlns="http://www.daisy.org/ns/daisy-online/"
-	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
-	xmlns:db="http://docbook.org/ns/docbook"
-	xmlns:dc="http://purl.org/dc/elements/1.1/">
+	xmlns="http://www.daisy.org/ns/daisy-online/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:db="http://docbook.org/ns/docbook" xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 	<xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
 
@@ -13,14 +11,14 @@
 	<xs:import namespace="http://www.daisy.org/z3986/2005/bookmark/"
 		schemaLocation="bookmark-2005-1.xsd"/>
 
-	<xs:import namespace="http://www.daisy.org/DRM/2005/KeyExchange"
-		schemaLocation="kxo.xsd"/>
+	<xs:import namespace="http://www.daisy.org/DRM/2005/KeyExchange" schemaLocation="kxo.xsd"/>
 
 	<xs:element name="readingSystemAttributes">
 		<xs:annotation>
 			<xs:documentation>
 				<db:para role="desc">Specifies Reading System properties.</db:para>
-				<db:para>The properties specified are valid no longer than for the duration of one Session.</db:para>
+				<db:para>The properties specified are valid no longer than for the duration of one
+					Session.</db:para>
 			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -47,7 +45,8 @@
 				<xs:element name="serialNumber" type="xs:string" minOccurs="0" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>
-							<db:para>The serial number of the Reading System, if such is available.</db:para>
+							<db:para>The serial number of the Reading System, if such is
+								available.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 				</xs:element>
@@ -105,7 +104,8 @@
 										<db:para role="desc">Specifies which kinds of content the
 											Reading System supports.</db:para>
 										<db:para>The content of this element follows the convention
-											of the <db:xref linkend="bib_dublinCore"/> <db:token>Format</db:token> property.</db:para>
+											of the <db:xref linkend="bib_dublinCore"/>
+											<db:token>Format</db:token> property.</db:para>
 									</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
@@ -127,8 +127,8 @@
 								</xs:annotation>
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element name="protectionFormat"
-											minOccurs="0" maxOccurs="unbounded">
+										<xs:element name="protectionFormat" minOccurs="0"
+											maxOccurs="unbounded">
 											<xs:simpleType>
 												<xs:restriction base="xs:string">
 												<xs:enumeration value="PDTB2"/>
@@ -299,33 +299,35 @@
 						<xs:attribute name="id" type="xs:ID" use="required">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para>The identifier of this announcement. The identifier is only valid for the duration 
-									of a <db:xref linkend="term_session"/>.</db:para>
+									<db:para>The identifier of this announcement. The identifier is
+										only valid for the duration of a <db:xref
+											linkend="term_session"/>.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
 						<xs:attribute name="type" use="optional" default="INFORMATION">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para>A value that indicates the nature of this announcement.</db:para>
+									<db:para>A value that indicates the nature of this
+										announcement.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 							<xs:simpleType>
-							<xs:restriction base="xs:string">
-								<xs:enumeration value="WARNING"/>
-								<xs:enumeration value="ERROR"/>
-								<xs:enumeration value="INFORMATION"/>
-								<xs:enumeration value="SYSTEM"/>
-							</xs:restriction>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="WARNING"/>
+									<xs:enumeration value="ERROR"/>
+									<xs:enumeration value="INFORMATION"/>
+									<xs:enumeration value="SYSTEM"/>
+								</xs:restriction>
 							</xs:simpleType>
 						</xs:attribute>
 						<xs:attribute name="priority" use="optional" default="3">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para>A value that indicates the priority of this announcement. 
-										The value <db:literal>1</db:literal> denotes the highest priority, and the value 
-										<db:literal>3</db:literal> the lowest.
-									</db:para>
+									<db:para>A value that indicates the priority of this
+										announcement. The value <db:literal>1</db:literal> denotes
+										the highest priority, and the value
+											<db:literal>3</db:literal> the lowest. </db:para>
 								</xs:documentation>
 							</xs:annotation>
 							<xs:simpleType>
@@ -422,17 +424,18 @@
 				<xs:element name="sample" minOccurs="0" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>
-							<db:para>A sample of the content being described, for
-								User consumption.</db:para>
+							<db:para>A sample of the content being described, for User
+								consumption.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
 						<xs:attribute name="id" use="required" type="xs:string">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">An identifier of the sample.</db:para>  
+									<db:para role="desc">An identifier of the sample.</db:para>
 									<db:para>Reading Systems may retrieve the sample by calling
-										<db:xref linkend="op_getContentResources"/> with this identifier as the parameter.</db:para>
+											<db:xref linkend="op_getContentResources"/> with this
+										identifier as the parameter.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
@@ -446,9 +449,9 @@
 								the Content.</db:para>
 							<db:para>Elements in the Dublin Core namespace are normatively defined
 								by <db:xref linkend="bib_dublinCore"/>. Note that the value of the
-							Dublin Core <db:literal>identifier</db:literal> element represents the 
-								<db:xref linkend="term_contentIdentifier"/> of the Content item
-							being described.</db:para>
+								Dublin Core <db:literal>identifier</db:literal> element represents
+								the <db:xref linkend="term_contentIdentifier"/> of the Content item
+								being described.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
@@ -623,12 +626,16 @@
 			<xs:attribute name="category" use="optional">
 				<xs:annotation>
 					<xs:documentation>
-						<db:para role="desc">Specifies a publication type denomination for the Content being described.</db:para>
-						<db:para>Reading Systems may use the value provided here to categorize or sort issued Content items on
-						behalf of the User.</db:para>
-						<db:para>Any value is allowed. The values <db:literal>BOOK</db:literal>, <db:literal>MAGAZINE</db:literal>, 
-							<db:literal>NEWSPAPER</db:literal> and <db:literal>OTHER</db:literal> are recommended to use
-							for those Content items whose type can be said to match any of these terms.</db:para>
+						<db:para role="desc">Specifies a publication type denomination for the
+							Content being described.</db:para>
+						<db:para>Reading Systems may use the value provided here to categorize or
+							sort issued Content items on behalf of the User.</db:para>
+						<db:para>Any value is allowed. The values <db:literal>BOOK</db:literal>,
+								<db:literal>MAGAZINE</db:literal>,
+								<db:literal>NEWSPAPER</db:literal> and
+								<db:literal>OTHER</db:literal> are recommended to use for those
+							Content items whose type can be said to match any of these
+							terms.</db:para>
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -641,14 +648,9 @@
 						<db:para>If this attribute is true, it is a contract from the <db:xref
 								linkend="term_service"/> to the <db:xref
 								linkend="term_readingSystem"/> that the <db:xref
-								linkend="term_readingSystem"/> will at some point delete the
-								<db:xref linkend="term_content"/> and call <db:link
-								linkend="op_returnContent">returnContent</db:link> with the <db:xref
-								linkend="term_content"/>'s identifier.</db:para>
-						<db:para>It is the responsibility of the <db:xref
-								linkend="term_readingSystem"/> to store whether some <db:xref
-								linkend="term_content"/> is borrowed or not, and to present the
-								<db:xref linkend="term_user"/> with appropriate prompts if they try
+								linkend="term_readingSystem"/> will at some point 
+							<db:link linkend="operations_content_return">return the content</db:link></db:para> 
+						<db:para>Reading Systems should present Users with appropriate prompts if they try
 							to return non-borrowed <db:xref linkend="term_content"/>.</db:para>
 					</xs:documentation>
 				</xs:annotation>
@@ -695,7 +697,10 @@
 							<xs:annotation>
 								<xs:documentation>
 									<db:para>The local file name of the resource.</db:para>
-									<db:para><db:remark role="todo">TODO kenny/nick why is this here and how does it work?</db:remark></db:para>
+									<db:para>
+										<db:remark role="todo">TODO kenny/nick why is this here and
+											how does it work?</db:remark>
+									</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
@@ -703,9 +708,9 @@
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">The last modified date of the resource.
-										<db:remark role="todo">TODO Geoff: may
-											want to point to your installments section here, or some
-											local doc prose</db:remark></db:para>
+											<db:remark role="todo">TODO Geoff: may want to point to
+											your installments section here, or some local doc
+											prose</db:remark></db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
@@ -743,7 +748,7 @@
 								<xs:annotation>
 									<xs:documentation>
 										<db:para>The title, or other descriptive text, of this
-											contentItem.</db:para>
+												<db:type>contentItem</db:type>.</db:para>
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
@@ -751,8 +756,9 @@
 						<xs:attribute name="id" type="xs:ID" use="required">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">The <db:xref linkend="term_contentIdentifier"
-										/> of this <db:literal>contentItem</db:literal>.</db:para>
+									<db:para role="desc">The <db:xref
+											linkend="term_contentIdentifier"/> of this
+											<db:type>contentItem</db:type>.</db:para>
 									<db:para>Note that this value must be identical to the value of
 										the <db:xref linkend="bib_dublinCore"/>
 										<db:literal>identifier</db:literal> field in the <db:xref
@@ -767,9 +773,9 @@
 								<xs:documentation>
 									<db:para>The last modified date of this contentItem. Contains
 										the lastModifiedDate of the most recently modified file in
-										the content's fileset. <db:remark role="todo">TODO Geoff: may
-										want to point to your installments section here, or some
-										local doc prose</db:remark></db:para>
+										the content's fileset. <db:remark role="todo">TODO Geoff:
+											may want to point to your installments section here, or
+											some local doc prose</db:remark></db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
@@ -781,31 +787,31 @@
 				<xs:annotation>
 					<xs:documentation>
 						<db:para>The total number of content items exposed by the Service at this
-							stage of the session. This instance of
-								<db:type>contentList</db:type> may only contain a subset of
-							the total number of items, e.g. it may be segmented. If the contentList
-						is not segmented, the value of this attribute is equal to the number of <db:type>contentItem</db:type>
-						children of this <db:type>contentList</db:type> element.</db:para>
+							stage of the session. This instance of <db:type>contentList</db:type>
+							may only contain a subset of the total number of items, e.g. it may be
+							segmented. If the contentList is not segmented, the value of this
+							attribute is equal to the number of <db:type>contentItem</db:type>
+							children of this <db:type>contentList</db:type> element.</db:para>
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="firstItem" type="xs:integer" use="optional">
 				<xs:annotation>
 					<xs:documentation>
-						<db:para>The first content item provided in this instance of
-							contentList. This attribute must be provided when a contentList
-							is segmented. If this attribute is present, the <db:code>lastItem</db:code>
-							attribute must also be present.</db:para>
+						<db:para>The first content item provided in this instance of contentList.
+							This attribute must be provided when a contentList is segmented. If this
+							attribute is present, the <db:code>lastItem</db:code> attribute must
+							also be present.</db:para>
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="lastItem" type="xs:integer" use="optional">
 				<xs:annotation>
 					<xs:documentation>
-						<db:para>The last content item provided in this instance of
-							contentList. This attribute must be provided when a contentList
-							is segmented. If this attribute is present, the <db:code>firstItem</db:code>
-							attribute must also be present.</db:para>
+						<db:para>The last content item provided in this instance of contentList.
+							This attribute must be provided when a contentList is segmented. If this
+							attribute is present, the <db:code>firstItem</db:code> attribute must
+							also be present.</db:para>
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -813,12 +819,22 @@
 				<xs:annotation>
 					<xs:documentation>
 						<db:para role="desc">The identifier of this contentList.</db:para>
-						<db:para>If this contentList is being returned on an invocation of
-						<db:xref linkend="op_getContentList"/> where one of the reserved values 
-							<db:code>new</db:code>, <db:code>issued</db:code> or <db:code>expired</db:code> is passed as 
-							the value of that operations <db:parameter>id</db:parameter> parameter, then
-							the value of this id attribute must echo the passed value, e.g. be <db:code>new</db:code>, 
-							<db:code>issued</db:code> or <db:code>expired</db:code> respectively.</db:para>
+						<db:para>If this contentList is being returned on an invocation of <db:xref
+								linkend="op_getContentList"/> where one of the reserved values
+								<db:code>new</db:code>, <db:code>issued</db:code> or
+								<db:code>expired</db:code> is passed as the value of that operations
+								<db:parameter>id</db:parameter> parameter, then the value of this id
+							attribute must echo the passed value, e.g. be <db:code>new</db:code>,
+								<db:code>issued</db:code> or <db:code>expired</db:code>
+							respectively.</db:para>
+						<db:para>If the value of this attribute is not one of the three reserved values
+							above, then this is an arbitrary contentList, typically exposed as an
+							endpoint in a <db:link linkend="operations_content_selection_browse"
+								>dynamic menu search</db:link> operation sequence.</db:para>
+						<db:para>Services should persist
+							arbitrary contentList identities for the duration of a
+							Session. Services must not expose multiple arbitrary contentLists with same id
+							during the same session.</db:para>
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -898,11 +914,15 @@
 			<xs:documentation>
 				<db:para role="desc">A sequence of questions, asked by the Service to the
 					User.</db:para>
-				<db:para><db:remark role="todo">Kenny/Nick: contentList and label are endpoints, how to best describe
-					that?</db:remark></db:para>
+				<db:para>
+					<db:remark role="todo">TODO Kenny/Nick: contentList and label are endpoints,
+						describe that below, as well as describe shortly the context in which this
+						type is passed around</db:remark>
+				</db:para>
 				<db:para role="req">The questions element must contain either exactly one
-					contentList or exactly one label or any number of multipleChoiceQuestion and
-					inputQuestion in any order.</db:para>
+						<db:type>contentListRef</db:type> or exactly one <db:type>label</db:type> or
+					any number of <db:type>multipleChoiceQuestion</db:type> and
+						<db:type>inputQuestion</db:type>, in any order.</db:para>
 			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -911,8 +931,29 @@
 					<xs:element ref="multipleChoiceQuestion"/>
 					<xs:element ref="inputQuestion"/>
 				</xs:choice>
-				<xs:element ref="contentList"/>
-				<xs:element ref="label"/>
+				<xs:element name="contentListRef" type="xs:ID">
+					<xs:annotation>
+						<xs:documentation>
+							<db:para>A reference to a <db:xref linkend="tp_contentList"/>. The
+								referenced <db:type>contentList</db:type> is retrieved by invoking <db:function>
+									<db:xref linkend="op_getContentList"/>
+								</db:function> passing the value given here as the value of that
+								operations <db:parameter>id</db:parameter> parameter.</db:para>
+							<db:para>A contentListRef as a child of question represents an endpoint
+								in a dynamic menu sequence. TODO Kenny fix verbiage in this
+								para</db:para>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="label">
+					<xs:annotation>
+						<xs:documentation>
+							<db:para>A label, representing a one-way message to the User. A label as
+								a child of question represents an endpoint in a dynamic menu
+								sequence. TODO Kenny fix verbiage in this para</db:para>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
 			</xs:choice>
 		</xs:complexType>
 	</xs:element>
@@ -1016,7 +1057,8 @@
 		<xs:annotation>
 			<xs:documentation>
 				<db:para role="desc">Specifies Service properties.</db:para>
-				<db:para>The properties specified are valid no longer than for the duration of one Session.</db:para>				
+				<db:para>The properties specified are valid no longer than for the duration of one
+					Session.</db:para>
 			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -1024,7 +1066,8 @@
 				<xs:element name="serviceProvider" minOccurs="0" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>
-							<db:para role="desc">Specifies the identity of the <db:xref linkend="term_serviceProvider"/>.</db:para>
+							<db:para role="desc">Specifies the identity of the <db:xref
+									linkend="term_serviceProvider"/>.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
@@ -1032,7 +1075,8 @@
 							<xs:element ref="label" minOccurs="0" maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>
-										<db:para role="desc">The name of the Service Provider in human readable form.</db:para>
+										<db:para role="desc">The name of the Service Provider in
+											human readable form.</db:para>
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
@@ -1042,22 +1086,27 @@
 								<xs:documentation>
 									<db:para role="desc">A static unique identifier of the Service
 										provider.</db:para>
-									<db:para>This specification does not require a specific scheme to be used when
-										expressing this identifier. The identifier should be static (ie not change over
-										time while the Service provider remains active), and it should be globally unique.</db:para> 
-									<db:para>A recommended expression form is a 
-										hyphen-separated string consisting of a two-letter country code drawn from <db:xref linkend="bib_iso3166"/>, 
-										followed by an agency code unique within its country. For example, <db:token>us-afb</db:token>.</db:para>						
+									<db:para>This specification does not require a specific scheme
+										to be used when expressing this identifier. The identifier
+										should be static (ie not change over time while the Service
+										provider remains active), and it should be globally
+										unique.</db:para>
+									<db:para>A recommended expression form is a hyphen-separated
+										string consisting of a two-letter country code drawn from
+											<db:xref linkend="bib_iso3166"/>, followed by an agency
+										code unique within its country. For example,
+											<db:token>us-afb</db:token>.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
 					</xs:complexType>
 				</xs:element>
-				
+
 				<xs:element name="service" minOccurs="0" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>
-							<db:para>Specifies the identity of the <db:xref linkend="term_service"/>.</db:para>
+							<db:para>Specifies the identity of the <db:xref linkend="term_service"
+								/>.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
@@ -1065,35 +1114,42 @@
 							<xs:element ref="label" minOccurs="0" maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>
-										<db:para role="desc">The name of the Service in human readable form.</db:para>
+										<db:para role="desc">The name of the Service in human
+											readable form.</db:para>
 									</xs:documentation>
 								</xs:annotation>
-								
+
 							</xs:element>
 						</xs:sequence>
 						<xs:attribute name="id" type="xs:string" use="required">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para>A static unique identifier of the Service.</db:para>
-									<db:para>This specification does not require a specific scheme to be used when
-										expressing this identifier. The identifier should be static (ie not change over
-										time while the Service provider remains active), and it should be globally unique.</db:para> 
-									<db:para>A recommended expression form is a 
-										hyphen-separated string consisting of a two-letter country code drawn from <db:xref linkend="bib_iso3166"/>, 
-										followed by an agency code unique within its country, followed by a Service code unique among the Services 
-										offered by the provider. For example, <db:token>us-afb-onlinelLibrary</db:token>.</db:para>
+									<db:para>This specification does not require a specific scheme
+										to be used when expressing this identifier. The identifier
+										should be static (ie not change over time while the Service
+										provider remains active), and it should be globally
+										unique.</db:para>
+									<db:para>A recommended expression form is a hyphen-separated
+										string consisting of a two-letter country code drawn from
+											<db:xref linkend="bib_iso3166"/>, followed by an agency
+										code unique within its country, followed by a Service code
+										unique among the Services offered by the provider. For
+										example,
+										<db:token>us-afb-onlinelLibrary</db:token>.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
 					</xs:complexType>
 				</xs:element>
-				
+
 				<xs:element name="supportedContentSelectionModels" minOccurs="1" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>
-							<db:para role="desc">Specifies which <db:xref 
-								linkend="fundamentals_contentSelectionModels" /> are
-								supported by this Service. A Service must support at least one of the two models.</db:para>
+							<db:para role="desc">Specifies which <db:xref
+									linkend="fundamentals_contentSelectionModels"/> are supported by
+								this Service. A Service must support at least one of the two
+								models.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
@@ -1104,32 +1160,37 @@
 										<xs:enumeration value="OUT_OF_BAND">
 											<xs:annotation>
 												<xs:documentation>
-													<db:para role="desc">This service supports the <db:xref 
-													linkend="fundamentals_contentSelectionModel_outofband"/>.</db:para> 																										
+												<db:para role="desc">This service supports the
+												<db:xref
+												linkend="fundamentals_contentSelectionModel_outofband"
+												/>.</db:para>
 												</xs:documentation>
 											</xs:annotation>
 										</xs:enumeration>
 										<xs:enumeration value="BROWSE">
 											<xs:annotation>
 												<xs:documentation>
-													<db:para role="desc">This service supports the <db:xref 
-													linkend="fundamentals_contentSelectionModel_browse"/>.</db:para>
+												<db:para role="desc">This service supports the
+												<db:xref
+												linkend="fundamentals_contentSelectionModel_browse"
+												/>.</db:para>
 												</xs:documentation>
 											</xs:annotation>
 										</xs:enumeration>
 									</xs:restriction>
-								</xs:simpleType>	
+								</xs:simpleType>
 							</xs:element>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
-				
+
 				<xs:element name="supportedServiceTypes" minOccurs="1" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>
-							<db:para role="desc">Specifies which <db:xref 
-								linkend="fundamentals_serviceTypes" /> are offered by this Service.
-								A Service must support at least one of the two Services types.</db:para>
+							<db:para role="desc">Specifies which <db:xref
+									linkend="fundamentals_serviceTypes"/> are offered by this
+								Service. A Service must support at least one of the two Services
+								types.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
@@ -1140,26 +1201,29 @@
 										<xs:enumeration value="LIBRARY">
 											<xs:annotation>
 												<xs:documentation>
-													<db:para role="desc">This service offers the <db:xref 
-													linkend="fundamentals_serviceType_library"/>.</db:para>														
+												<db:para role="desc">This service offers the
+												<db:xref
+												linkend="fundamentals_serviceType_library"
+												/>.</db:para>
 												</xs:documentation>
 											</xs:annotation>
 										</xs:enumeration>
 										<xs:enumeration value="SHOP">
 											<xs:annotation>
 												<xs:documentation>
-													<db:para role="desc">This service offers the <db:xref 
-														linkend="fundamentals_serviceType_shop"/>.</db:para>													
+												<db:para role="desc">This service offers the
+												<db:xref linkend="fundamentals_serviceType_shop"
+												/>.</db:para>
 												</xs:documentation>
 											</xs:annotation>
 										</xs:enumeration>
 									</xs:restriction>
-								</xs:simpleType>	
+								</xs:simpleType>
 							</xs:element>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
-				
+
 				<xs:element name="supportsServerSideBack" type="xs:boolean" minOccurs="1"
 					maxOccurs="1">
 					<xs:annotation>
@@ -1175,10 +1239,11 @@
 					<xs:annotation>
 						<xs:documentation>
 							<db:para role="desc">Specifies whether the Service supports searching of
-								its content collection using the <db:link linkend="fundamentals_dynamic_menus"
-									>dynamic menu</db:link> feature of this protocol. See also the
-							<db:literal>DYNAMIC_MENUS</db:literal> value in <db:xref 
-								linkend="tp_supportedOptionalOperations"/></db:para>
+								its content collection using the <db:link
+									linkend="fundamentals_dynamic_menus">dynamic menu</db:link>
+								feature of this protocol. See also the
+									<db:literal>DYNAMIC_MENUS</db:literal> value in <db:xref
+									linkend="tp_supportedOptionalOperations"/></db:para>
 						</xs:documentation>
 					</xs:annotation>
 				</xs:element>
@@ -1209,8 +1274,8 @@
 					<xs:annotation>
 						<xs:documentation>
 							<db:para role="desc">Specifies which (if any) of the operations that are
-								<db:link linkend="apiReferenceOptional">optional per this specification</db:link> are supported by the
-								Service.</db:para>
+									<db:link linkend="apiReferenceOptional">optional per this
+									specification</db:link> are supported by the Service.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
