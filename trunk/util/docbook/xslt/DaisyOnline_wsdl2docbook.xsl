@@ -222,7 +222,13 @@
 		<xsl:param name="xsdElement" as="element()"/>		
 		<db:para><xsl:text>Type: </xsl:text>
 			<xsl:choose>
-				<!-- get the primitive xsd types (element type="xs:*") -->
+				<!-- the special case of the abstract itemList
+				<xsl:when test="$xsdElement[@type and contains(@type,'itemList')]">
+					A <db:code><xsl:value-of select="@name"/></db:code> element with one or several 
+					<db:xref linkend="tp_item"/> element children.
+					</xsl:when>  -->
+				
+				<!-- the primitive xsd types (element type="xs:*") -->
 				<xsl:when test="$xsdElement/@type and starts-with($xsdElement/@type,'xs:')">
 					<db:link>
 						<xsl:attribute name="xlink:href"><xsl:value-of 
@@ -232,15 +238,16 @@
 					</db:link><xsl:text> </xsl:text> 
 					<db:xref linkend="bib_xsdDatatypes"/>
 				</xsl:when>
+				<!-- type refs -->
 				<xsl:when test="$xsdElement/@ref">
 					<xsl:text> </xsl:text>
 					<db:xref>
 						<xsl:attribute name="linkend" select="concat('tp_',substring-after($xsdElement/@ref,':'))" />
 					</db:xref>
-				</xsl:when>
+				</xsl:when>				
 				<xsl:otherwise>
-					<!-- <xsl:message>GETTYPEINFO_OTHERWISE</xsl:message> -->
-					<db:remark role="todo">TODO check this in wsdl2docbook.xsl</db:remark>
+					<xsl:comment>TODO Fix final else clause in wsdl2docbook.xsl</xsl:comment>
+					<db:remark role="todo">TODO Fix final else clause in wsdl2docbook.xsl</db:remark>
 				</xsl:otherwise>
 			</xsl:choose>
 		</db:para>
