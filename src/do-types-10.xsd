@@ -757,8 +757,8 @@
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">The <db:xref
-											linkend="term_contentIdentifier"/> of this
-											<db:type>contentItem</db:type>.</db:para>
+											linkend="term_contentIdentifier"/> of the Content that this
+											<db:type>contentItem</db:type> represents.</db:para>
 									<db:para>Note that this value must be identical to the value of
 										the <db:xref linkend="bib_dublinCore"/>
 										<db:literal>identifier</db:literal> field in the <db:xref

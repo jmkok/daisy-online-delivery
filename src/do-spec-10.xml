@@ -421,6 +421,11 @@
                 Reading Systems may be designed to support one or both of these content selection
                 models. A Reading System may invoke operations associated with both models during
                 the same session, providing that the Service supports both models.</para>
+            
+            <para>To ensure maximum interoperability, Service Providers are strongly recommended to 
+                provide support for the Out-of-band Content selection model. This selection model 
+                can then function as a fallback for Reading Systems who do not support the Browse 
+                selection model.</para>
 
             <section xml:id="fundamentals_contentSelectionModel_reqs_outofband">
                 <title>Out-of-band Content Selection Model Requirements</title>
@@ -449,10 +454,10 @@
                 <para>A Service employing the Browse Content Selection Model must:</para>
                 <itemizedlist>
                     <listitem>
-                        <para>Provide support for <link linkend="fundamentals_dynamic_menus">Dynamic
-                                Menus</link> by implementing the <xref linkend="op_getQuestions"/>
+                        <para>Provide support for the <link linkend="fundamentals_dynamic_menus">Dynamic
+                                Menu</link> protocol feature by implementing the <xref linkend="op_getQuestions"/>
                             operation, and provide one or several mechanisms (such as a search
-                            feature or exposure of precomposed lists) within the Dynamic Menu
+                            feature or other exposure of composed lists) within the Dynamic Menu
                             framework that lets the User select Content to request issuance
                             of.</para>
                     </listitem>
@@ -709,14 +714,7 @@
                         <xref linkend="op_getContentList"/> operation, passing the value
                         <code>new</code> as the value of the <parameter>id</parameter> parameter,
                     retrieving a <xref linkend="tp_contentList"/> in return.</para>
-
-                <note>
-                    <para>A Service declares whether it supports Content selection using the
-                        Out-of-band model in the <xref linkend="tp_supportedContentSelectionModels"
-                        /> element in the <xref linkend="tp_serviceAttributes"/> type returned by
-                        the <xref linkend="op_getServiceAttributes"/> operation.</para>
-                </note>
-                
+               
                 <section xml:id="operations_content_selection_outofband_examples">
                     <title>Out-of-band Model Content Selection Examples</title>
                     <example>
@@ -756,6 +754,13 @@
                             </listitem>
                         </orderedlist>
                     </example>
+                    <note>
+                        <para>A Service declares whether it supports Content selection using the
+                            Out-of-band model in the <type><xref linkend="tp_supportedContentSelectionModels"
+                            /></type> element in the <type></type><xref linkend="tp_serviceAttributes"/></type> 
+                            type returned by the <function><xref linkend="op_getServiceAttributes"/></function> 
+                            operation.</para>
+                    </note>            
                 </section>
             </section>
             <section xml:id="operations_content_selection_browse">
@@ -1079,7 +1084,7 @@
                 from a Service that employs a <link linkend="fundamentals_serviceType_library"
                     >library-type</link> Service, and where the given Content item issued from that
                 Service is explicitly of a borrowed nature (as defined by the value of the
-                    <code>requiresReturn</code> attribute on <xref linkend="tp_contentMetadata"/>.</para>
+                    <code>requiresReturn</code> attribute on <xref linkend="tp_contentMetadata"/>).</para>
             <para>As stated in <xref linkend="fundamentals_serviceTypes_reqs_library"/>, a <link
                     linkend="fundamentals_serviceType_library">library-type</link> Service is
                 required to manage the User's Content collection in terms of what Content is issued,
