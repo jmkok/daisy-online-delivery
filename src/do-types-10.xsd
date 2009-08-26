@@ -1325,8 +1325,9 @@
 												<xs:documentation>
 												<db:para role="desc">Specifies that this Service
 												supports the <db:xref
-												linkend="op_getServiceAnnouncements"/>
-												operation.</db:para>
+													linkend="op_getServiceAnnouncements"/> and <db:xref
+														linkend="op_markAnnouncementsAsRead"/>
+												operations.</db:para>
 												</xs:documentation>
 											</xs:annotation>
 										</xs:enumeration>
@@ -1350,6 +1351,7 @@
 		</xs:complexType>
 	</xs:element>
 
+	<!--
 	<xs:complexType name="itemList">
 		<xs:annotation>
 			<xs:documentation>
@@ -1361,5 +1363,34 @@
 			<xs:element name="item" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
+	-->
+	
+	<xs:element name="item" type="xs:string" />
+	
+	<xs:element name="read">
+		<xs:annotation>
+			<xs:documentation>
+				<db:para>A list of references to IDs on <db:xref linkend="tp_announcement"/>s.</db:para>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+		<xs:sequence>
+			<xs:element ref="item" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="keyNames">
+		<xs:annotation>
+			<xs:documentation>
+				<db:para>A list of key names.</db:para>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="item" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 
 </xs:schema>

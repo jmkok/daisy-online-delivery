@@ -27,7 +27,7 @@
 	
 	<!-- list of types - prevents processing of general-use elements in xsd -->
 	
-	<xsl:variable name="typeList">|announcements|bookmarkSet|contentList|contentMetadata|KeyExchange|questions|readingSystemAttributes|resources|serviceAttributes|userResponses|</xsl:variable>
+	<xsl:variable name="typeList">|announcements|bookmarkSet|contentList|contentMetadata|KeyExchange|questions|readingSystemAttributes|resources|serviceAttributes|userResponses|read|keyNames|</xsl:variable>
 
 	<xsl:template match="db:chapter[@xml:id='typeReference']">
 		<xsl:element name="db:chapter">

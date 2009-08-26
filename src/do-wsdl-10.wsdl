@@ -385,7 +385,7 @@
 			<xs:element name="markAnnouncementsAsRead">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" name="read" type="common:itemList">
+						<xs:element minOccurs="1" maxOccurs="1" ref="common:read">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">Contains the announcements to mark as read,
@@ -525,8 +525,7 @@
 			<xs:element name="getKeyExchangeObject">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" name="keyNames"
-							type="common:itemList">
+						<xs:element minOccurs="1" maxOccurs="1" ref="common:keyNames">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">The identifiers of the keys on the Reading
