@@ -422,7 +422,7 @@
 									</db:para>
 									<db:para>The value <db:varname>default</db:varname> when passed in the userResponses parameter to the getQuestions operation, retrieves the root question (aka main menu) from the Service. </db:para>
 									<db:para>The value <db:varname>search</db:varname> when passed in the UserResponses parameter to the getQuestions operation, retrieves the Search menu from the Service.</db:para>
-									<db:para>The value <db:varname>back</db:varname> when passed in the userResponses parameter to the getQuestions operation, retrieves the previous question from the service. a Service is not required by the daisy Online Protocol to support the <db:varname>back</db:varname> reserved ID if it supports Dynamic Menus. A Service must explicitly declare that it supports this ID in ServiceAttributes/supportsServerSideBack</db:para>
+									<db:para>The value <db:varname>back</db:varname> when passed in the userResponses parameter to the getQuestions operation, retrieves the previous question from the service. a Service is not required by the daisy Online Protocol to support the <db:varname>back</db:varname> reserved ID to claim support for the Dynamic Menu feature. A Service must explicitly declare that it supports this ID in ServiceAttributes/supportsServerSideBack</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
