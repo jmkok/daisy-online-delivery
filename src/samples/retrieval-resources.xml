@@ -1,11 +1,11 @@
 <resources xmlns="http://www.daisy.org/ns/daisy-online/">
-    <resource mimeType="text/xml" size="123456" localFileName="package.opf"
+    <resource mimeType="text/xml" size="123456" localURI="package.opf"
         uri="http://rnib.org/content/package.opf"/>
-    <resource mimeType="application/x-dtbncx+xml" size="123456" localFileName="nav.ncx"
+    <resource mimeType="application/x-dtbncx+xml" size="123456" localURI="nav.ncx"
         uri="http://rnib.org/content/nav.ncx"/>
-    <resource mimeType="application/smil" size="567890" localFileName="content.smil"
+    <resource mimeType="application/smil" size="567890" localURI="content.smil"
         uri="http://rnib.org/content/chapter_1.smil"/>
-    <resource mimeType="audio/mpeg" size="123456789" localFileName="content.mp3"
+    <resource mimeType="audio/mpeg" size="123456789" localURI="content.mp3"
         uri="http://rnib.org/content/chapter_1.mp3"/>
     <!-- ... additional resources ... -->
 </resources>
