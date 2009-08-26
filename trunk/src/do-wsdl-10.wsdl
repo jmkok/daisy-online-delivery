@@ -7,26 +7,24 @@
 	<types>
 
 		<xs:schema targetNamespace="http://www.daisy.org/ns/daisy-online/"
-			xmlns:xs="http://www.w3.org/2001/XMLSchema"
-			elementFormDefault="qualified"
-			attributeFormDefault="unqualified"
-			xmlns:common="http://www.daisy.org/ns/daisy-online/"
+			xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+			attributeFormDefault="unqualified" xmlns:common="http://www.daisy.org/ns/daisy-online/"
 			xmlns:daisy="http://www.daisy.org/z3986/2005/bookmark/"
 			xmlns:pdtb2="http://www.daisy.org/DRM/2005/KeyExchange"
 			xmlns:db="http://docbook.org/ns/docbook"
 			xmlns:tns="http://www.daisy.org/ns/daisy-online/">
-			
+
 			<!--
 			<xs:import namespace="http://www.daisy.org/ns/daisy-online/common-types/"
 				schemaLocation="do-types-10.xsd"/>
 			-->
 			<xs:include schemaLocation="do-types-10.xsd"/>
-			
+
 			<xs:import namespace="http://www.daisy.org/z3986/2005/bookmark/"
 				schemaLocation="bookmark-2005-1.xsd"/>
 
 			<xs:import namespace="http://www.daisy.org/DRM/2005/KeyExchange"
-				schemaLocation="kxo.xsd"/>			
+				schemaLocation="kxo.xsd"/>
 
 			<!-- message types -->
 
@@ -58,7 +56,8 @@
 						<xs:element minOccurs="1" maxOccurs="1" name="logOnResult" type="xs:boolean">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Specifies whether the log-on was successful</db:para>
+									<db:para role="desc">Specifies whether the log-on was
+										successful</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -82,7 +81,8 @@
 						<xs:element minOccurs="1" maxOccurs="1" ref="common:readingSystemAttributes">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Contains the reading system attributes to post.</db:para>
+									<db:para role="desc">Contains the reading system attributes to
+										post.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -113,8 +113,9 @@
 						<xs:element minOccurs="1" maxOccurs="1" name="contentID" type="xs:string">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Contains the <db:xref linkend="term_contentIdentifier"/> for the content with which the
-										bookmarks are associated</db:para>
+									<db:para role="desc">Contains the <db:xref
+											linkend="term_contentIdentifier"/> for the content with
+										which the bookmarks are associated</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -137,8 +138,8 @@
 							type="xs:boolean">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Specifies whether the bookmarks for the content were saved
-										successfully on the Service.</db:para>
+									<db:para role="desc">Specifies whether the bookmarks for the
+										content were saved successfully on the Service.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -149,12 +150,12 @@
 			<xs:element name="getBookmarks">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" name="contentID"
-							type="xs:string">
+						<xs:element minOccurs="1" maxOccurs="1" name="contentID" type="xs:string">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Contains the <db:xref linkend="term_contentIdentifier"/> of the
-										content for which bookmarks are being retrieved</db:para>
+									<db:para role="desc">Contains the <db:xref
+											linkend="term_contentIdentifier"/> of the content for
+										which bookmarks are being retrieved</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -168,7 +169,8 @@
 						<xs:element minOccurs="1" maxOccurs="1" ref="daisy:bookmarkSet">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Contains the bookmarks for the content.</db:para>
+									<db:para role="desc">Contains the bookmarks for the
+										content.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -182,8 +184,9 @@
 						<xs:element minOccurs="1" maxOccurs="1" name="contentID" type="xs:string">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Contains the <db:xref linkend="term_contentIdentifier"/> of the content that this
-										issuance request is for.</db:para>
+									<db:para role="desc">Contains the <db:xref
+											linkend="term_contentIdentifier"/> of the content that
+										this issuance request is for.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -213,8 +216,9 @@
 						<xs:element minOccurs="1" maxOccurs="1" name="contentID" type="xs:string">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Specifies the <db:xref linkend="term_contentIdentifier"/> of
-										the content that this return request is for.</db:para>
+									<db:para role="desc">Specifies the <db:xref
+											linkend="term_contentIdentifier"/> of the content that
+										this return request is for.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -241,62 +245,79 @@
 			<xs:element name="getContentList">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" name="id">
+						<xs:element minOccurs="1" maxOccurs="1" name="id" type="xs:ID">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">Specifies the identity of the list to
 										retrieve.</db:para>
-									<db:para role="desc">This parameter can contain one of three
-									values:</db:para>
+									<db:para role="desc">The following three values are reserved,
+										and must not be used as identities of contentLists except in
+										the contexts defined below.</db:para>
 									<db:variablelist>
 										<db:varlistentry xml:id="contentList_issued">
 											<db:term>issued</db:term>
 											<db:listitem>
-												<db:para role="desc">Refers to a list of Content that the Service currently 
-													has recorded as issued (see <db:xref linkend="op_issueContent"/>) to the User. The list includes issued Content items
-												regardless of whether they have been downloaded (in part or full) or not. The list
-												excludes content that has <db:xref linkend="contentList_expired"/>.</db:para>
-												<db:para>Services that are of the <db:link linkend="fundamentals_serviceType_library">library style</db:link> 
-													must recognize this identifier. Services that are of the <db:link linkend="fundamentals_serviceType_shop">shop style</db:link> 
-													may recognize this identifier.</db:para>
+												<db:para role="desc">Refers to a list of Content
+												that the Service currently has recorded as issued
+												(see <db:xref linkend="op_issueContent"/>) to the
+												User. The list includes issued Content items
+												regardless of whether they have been downloaded
+												(in part or full) or not. The list excludes
+												content that has <db:xref
+												linkend="contentList_expired"/>.</db:para>
+												<db:para>Services that are of the <db:link
+												linkend="fundamentals_serviceType_library">library
+												style</db:link> must recognize this identifier.
+												Services that are of the <db:link
+												linkend="fundamentals_serviceType_shop">shop
+												style</db:link> may recognize this
+												identifier.</db:para>
 											</db:listitem>
 										</db:varlistentry>
 										<db:varlistentry xml:id="contentList_new">
 											<db:term>new</db:term>
 											<db:listitem>
-												<db:para role="desc">Refers to a list of Content that the Service offers to issue to the User.</db:para>
-												<db:para>The list excludes content that is <db:xref linkend="contentList_issued"/>, and it excludes content that 
-												has <db:xref linkend="contentList_expired"/>.</db:para>
-												<db:para>Services that support the <db:xref linkend="fundamentals_contentSelectionModel_outofband" /> must recognize this identifier.</db:para>
+												<db:para role="desc">Refers to a list of Content
+												that the Service offers to issue to the
+												User.</db:para>
+												<db:para>The list excludes content that is <db:xref
+												linkend="contentList_issued"/>, and it excludes
+												content that has <db:xref
+												linkend="contentList_expired"/>.</db:para>
+												<db:para>Services that support the <db:xref
+												linkend="fundamentals_contentSelectionModel_outofband"
+												/> must recognize this identifier.</db:para>
 											</db:listitem>
 										</db:varlistentry>
 										<db:varlistentry xml:id="contentList_expired">
 											<db:term>expired</db:term>
 											<db:listitem>
-												<db:para>Referes to a list of Content that was initially <db:xref linkend="contentList_issued"/> to the User, but has now expired.</db:para>
-												<db:para>This list is used by <db:link linkend="fundamentals_serviceType_library">library style</db:link> Services to signal
-												to the Reading System that certain Content items must be returned.</db:para>
-												<db:para>Services that are of the <db:link linkend="fundamentals_serviceType_library">library style</db:link> 
-													must recognize this identifier.</db:para>
+												<db:para>Referes to a list of Content that was
+												initially <db:xref linkend="contentList_issued"/>
+												to the User, but has now expired.</db:para>
+												<db:para>This list is used by <db:link
+												linkend="fundamentals_serviceType_library">library
+												style</db:link> Services to signal to the Reading
+												System that certain Content items must be
+												returned.</db:para>
+												<db:para>Services that are of the <db:link
+												linkend="fundamentals_serviceType_library">library
+												style</db:link> must recognize this
+												identifier.</db:para>
 											</db:listitem>
 										</db:varlistentry>
-									</db:variablelist>									
+									</db:variablelist>
 								</xs:documentation>
 							</xs:annotation>
-							<xs:simpleType>
-								<xs:restriction base="xs:string">
-									<xs:enumeration value="issued"/>
-									<xs:enumeration value="new"/>
-									<xs:enumeration value="expired"/>
-								</xs:restriction>
-							</xs:simpleType>
 						</xs:element>
 
 						<xs:element minOccurs="1" maxOccurs="1" name="firstItem" type="xs:integer">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">When retreiving a subset of the contentList, contains the first item in the subset to
-										retrieve. The first item in the list has the index <db:literal>0</db:literal>.</db:para>
+									<db:para role="desc">When retreiving a subset of the
+										contentList, contains the first item in the subset to
+										retrieve. The first item in the list has the index
+											<db:literal>0</db:literal>.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -304,9 +325,12 @@
 						<xs:element minOccurs="1" maxOccurs="1" name="lastItem" type="xs:integer">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">When retreiving a subset of the contentList, contains the last item in the subset to
-										retrieve. The value <db:literal>-1</db:literal> indicates a request to retrieve all items from
-										<db:parameter>startIndex</db:parameter> to the end of the list.</db:para>
+									<db:para role="desc">When retreiving a subset of the
+										contentList, contains the last item in the subset to
+										retrieve. The value <db:literal>-1</db:literal> indicates a
+										request to retrieve all items from
+											<db:parameter>startIndex</db:parameter> to the end of
+										the list.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -320,8 +344,12 @@
 						<xs:element minOccurs="1" maxOccurs="1" ref="common:contentList">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Contains the requested content list, or a segment
-										thereof.</db:para>
+									<db:para role="desc">Contains the requested content list, or a
+										segment thereof.</db:para>
+									<db:para>The value of the <db:code>id</db:code> attribute on the
+										returned <db:type>contentList</db:type> must match the value
+										of the <db:parameter>id</db:parameter> parameter passed with
+										the <db:xref linkend="op_getContentList"/> operation.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -333,8 +361,7 @@
 				<xs:complexType>
 					<xs:annotation>
 						<xs:documentation>
-							<db:para role="desc">This operation has no
-								parameters.</db:para>
+							<db:para role="desc">This operation has no parameters.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 				</xs:complexType>
@@ -361,10 +388,10 @@
 						<xs:element minOccurs="1" maxOccurs="1" name="read" type="common:itemList">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Contains the
-										announcements to mark as read, expressed as references to
-										the announcement's ID values as specified in the <db:xref 
-											linkend="tp_announcements"/> type.</db:para>
+									<db:para role="desc">Contains the announcements to mark as read,
+										expressed as references to the announcement's ID values as
+										specified in the <db:xref linkend="tp_announcements"/>
+										type.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -379,8 +406,9 @@
 							type="xs:boolean">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Specifies whether the specified announcements
-										were successfully marked as read on the Service</db:para>
+									<db:para role="desc">Specifies whether the specified
+										announcements were successfully marked as read on the
+										Service</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -394,13 +422,16 @@
 						<xs:element minOccurs="1" maxOccurs="1" ref="common:userResponses">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc"><db:remark role="todo">TODO Kenny/Nick desc</db:remark></db:para>
+									<db:para role="desc">
+										<db:remark role="todo">TODO Kenny/Nick desc</db:remark>
+									</db:para>
 									<db:para>The value <db:varname>default</db:varname> is
 										reserved... TODO</db:para>
 									<db:para>The value <db:varname>search</db:varname> is
 										reserved... TODO</db:para>
 									<db:para>The value <db:varname>back</db:varname> is reserved...
-										TODO and make reference to serviceAttributes/supportsServerSideBack</db:para>
+										TODO and make reference to
+										serviceAttributes/supportsServerSideBack</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -414,7 +445,9 @@
 						<xs:element minOccurs="1" maxOccurs="1" ref="common:questions">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc"><db:remark role="todo">TODO Kenny/Nick desc</db:remark></db:para>
+									<db:para role="desc">
+										<db:remark role="todo">TODO Kenny/Nick desc</db:remark>
+									</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -428,11 +461,12 @@
 						<xs:element minOccurs="1" maxOccurs="1" name="contentID" type="xs:string">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Contains the <db:xref linkend="term_contentIdentifier"/> of the
-										content for which metadata is being requested, as expressed
-										by the <db:varname>id</db:varname> attribute of the relevant
+									<db:para role="desc">Contains the <db:xref
+											linkend="term_contentIdentifier"/> of the content for
+										which metadata is being requested, as expressed by the
+											<db:varname>id</db:varname> attribute of the relevant
 											<db:varname>contentItem</db:varname> in the <db:xref
-											linkend="tp_contentList"/> type.</db:para>										
+											linkend="tp_contentList"/> type.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -446,7 +480,8 @@
 						<xs:element minOccurs="1" maxOccurs="1" ref="common:contentMetadata">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Contains the metadata for the specified content.</db:para>
+									<db:para role="desc">Contains the metadata for the specified
+										content.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -461,23 +496,25 @@
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">Contains the content identifier of the
-										content for which resources are being requested, as defined in the
-										<db:xref linkend="bib_dublinCore"/> identifier field of the 
-										<db:xref linkend="tp_contentMetadata"/> type. </db:para>
+										content for which resources are being requested, as defined
+										in the <db:xref linkend="bib_dublinCore"/> identifier field
+										of the <db:xref linkend="tp_contentMetadata"/> type.
+									</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			
+
 			<xs:element name="getContentResourcesResponse">
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element minOccurs="1" maxOccurs="1" ref="common:resources">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Contains the resources for the specified content.</db:para>
+									<db:para role="desc">Contains the resources for the specified
+										content.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -492,7 +529,8 @@
 							type="common:itemList">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">The identifiers of the keys on the Reading System's keyring.</db:para>
+									<db:para role="desc">The identifiers of the keys on the Reading
+										System's keyring.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -500,7 +538,8 @@
 						<xs:element minOccurs="1" maxOccurs="1" name="requestedKeyName"
 							type="xs:string">
 							<xs:annotation>
-								<xs:documentation>The identifier of the requested key.</xs:documentation>
+								<xs:documentation>The identifier of the requested
+									key.</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 					</xs:sequence>
@@ -513,9 +552,9 @@
 						<xs:element minOccurs="1" maxOccurs="1" ref="pdtb2:KeyExchange">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">A <db:xref linkend="bib_pdtb2"/> Key Exchange Object,
-										containing the requested key encrypted using one of the keys identified
-										in keyNames.</db:para>									
+									<db:para role="desc">A <db:xref linkend="bib_pdtb2"/> Key
+										Exchange Object, containing the requested key encrypted
+										using one of the keys identified in keyNames.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -527,7 +566,8 @@
 				<xs:complexType>
 					<xs:annotation>
 						<xs:documentation>
-							<db:para role="desc">The getServiceAttributes operation has no parameters.</db:para>
+							<db:para role="desc">The getServiceAttributes operation has no
+								parameters.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 				</xs:complexType>
@@ -539,7 +579,8 @@
 						<xs:element minOccurs="1" maxOccurs="1" ref="common:serviceAttributes">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Contains the attributes of the service.</db:para>
+									<db:para role="desc">Contains the attributes of the
+										service.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -836,7 +877,7 @@
 	</message>
 
 	<!-- request and response messages for the getContentResources operation -->
-	
+
 	<message name="getContentResources_inputMessage">
 		<part name="parameters" element="tns:getContentResources">
 			<documentation>
@@ -846,7 +887,7 @@
 			</documentation>
 		</part>
 	</message>
-	
+
 	<message name="getContentResources_outputMessage">
 		<part name="parameters" element="tns:getContentResourcesResponse">
 			<documentation>
@@ -856,7 +897,7 @@
 			</documentation>
 		</part>
 	</message>
-	
+
 
 	<!-- request and response messages for the getKeyExchangeObject operation -->
 
@@ -907,8 +948,8 @@
 	<message name="internalServerErrorFault_message">
 		<part name="fault" element="tns:internalServerErrorFault">
 			<documentation>
-				<db:para role="desc">An internal server error occurred on the Service and the execution
-					of the operation was halted.</db:para>
+				<db:para role="desc">An internal server error occurred on the Service and the
+					execution of the operation was halted.</db:para>
 			</documentation>
 		</part>
 	</message>
@@ -965,10 +1006,10 @@
 			<documentation>
 				<db:para role="desc">Posts properties of the Reading System to the
 					Service.</db:para>
-				<db:para>A Reading System must invoke this operation as part of 
-					the <db:xref linkend="def_sessionInitializationSequence"/>. 
-				This operation may be invoked additional times during a session to
-					record dynamic changes in the Reading System properties.</db:para>
+				<db:para>A Reading System must invoke this operation as part of the <db:xref
+						linkend="def_sessionInitializationSequence"/>. This operation may be invoked
+					additional times during a session to record dynamic changes in the Reading
+					System properties.</db:para>
 			</documentation>
 			<input message="tns:setReadingSystemAttributes_inputMessage"/>
 			<output message="tns:setReadingSystemAttributes_outputMessage"/>
@@ -994,17 +1035,22 @@
 				message="tns:invalidParameterFault_message"/>
 		</operation>
 
-		
+
 
 		<operation name="getContentMetadata">
 			<documentation>
 				<db:para role="desc">Retrieves <db:xref linkend="tp_contentMetadata"/> for the
 					specified content.</db:para>
+				<db:para>This operation is required in the <db:xref
+						linkend="def_contentRetrievalSequence"/>, and may also be called during
+					other stages of a Session, as long as the <db:xref
+						linkend="def_sessionInitializationSequence"/> has been successfully
+					completed.</db:para>
 			</documentation>
 			<input message="tns:getContentMetadata_inputMessage"/>
 			<output message="tns:getContentMetadata_outputMessage"/>
 			<fault name="getContentMetadata_internalServerErrorFault"
-			message="tns:internalServerErrorFault_message"/>
+				message="tns:internalServerErrorFault_message"/>
 			<!--
 			<fault name="getContentMetadata_invalidOperationFault"
 				message="tns:invalidOperationFault_message"/> -->
@@ -1014,11 +1060,12 @@
 
 		<operation name="getContentResources">
 			<documentation>
-				<db:para role="desc">Retrieves <db:xref linkend="tp_resources"/> for the
-					specified content.</db:para>
+				<db:para role="desc">Retrieves <db:xref linkend="tp_resources"/> for the specified
+					content.</db:para>
 				<db:para role="prereq">This operation is only valid if a previous call to <db:xref
-					linkend="op_issueContent"/> with a result of <db:varname>true</db:varname>
-					has been made for the given content, during the current or a previous Session.</db:para>
+						linkend="op_issueContent"/> with a result of <db:varname>true</db:varname>
+					has been made for the given content, during the current or a previous
+					Session.</db:para>
 			</documentation>
 			<input message="tns:getContentResources_inputMessage"/>
 			<output message="tns:getContentResources_outputMessage"/>
@@ -1029,15 +1076,16 @@
 			<fault name="getContentResources_invalidParameterFault"
 				message="tns:invalidParameterFault_message"/>
 		</operation>
-		
+
 
 		<operation name="getServiceAttributes">
 			<documentation>
 				<db:para role="desc">Retrieves Service properties, including information on which
 					optional operations the Service supports.</db:para>
-				<db:para>A Reading System must invoke this operation as part of 
-					the <db:xref linkend="def_sessionInitializationSequence"/>, and may invoke this operation
-					again later in the session to retrieve information on possible changes in Service properties.</db:para>
+				<db:para>A Reading System must invoke this operation as part of the <db:xref
+						linkend="def_sessionInitializationSequence"/>, and may invoke this operation
+					again later in the session to retrieve information on possible changes in
+					Service properties.</db:para>
 			</documentation>
 			<input message="tns:getServiceAttributes_inputMessage"/>
 			<output message="tns:getServiceAttributes_outputMessage"/>
@@ -1053,7 +1101,12 @@
 
 		<operation name="getContentList">
 			<documentation>
-				<db:para role="desc">Retrieves a list of content.</db:para>
+				<db:para role="desc">Retrieves a list of content. The retrieved list can either be
+					of a 'precomposed' type, in which case it is referred to by passing one of the
+					three reserved values defined in the <db:parameter>id</db:parameter> parameter
+					below, or it can be of a 'dynamic' type, typically being exposed by the Service
+					as the result of a <db:link linkend="operations_content_selection_browse"
+						>dynamic menu search</db:link> operation sequence.</db:para>
 			</documentation>
 			<input message="tns:getContentList_inputMessage"/>
 			<output message="tns:getContentList_outputMessage"/>
@@ -1064,7 +1117,7 @@
 			<fault name="getContentList_invalidParameterFault"
 				message="tns:invalidParameterFault_message"/>
 			<fault name="getContentList_operationNotSupportedFault"
-				message="tns:operationNotSupportedFault_message"/>		
+				message="tns:operationNotSupportedFault_message"/>
 		</operation>
 
 		<operation name="getServiceAnnouncements">
@@ -1103,28 +1156,28 @@
 
 		<operation name="returnContent">
 			<documentation>
-				<db:para role="desc">Notify the Service that the specified content
-				 has been deleted from the Reading System. A successful invocation of
-				 this operation (e.g. a return value of <db:constant>true</db:constant> from the Service) 
-					means that the Content is no longer issued to the User.
-				</db:para>
-				
-				<db:para>This operation is used exclusively in <db:link linkend="fundamentals_serviceType_library"
-					>library-style</db:link> Services.</db:para>
-				
-				<db:para> A Reading System
-				should not call <db:function>returnContent</db:function> where the contentMetadata's
-				<db:varname>requiresReturn</db:varname> attribute is not
-				<db:literal>true</db:literal>.</db:para>
+				<db:para role="desc">Notify the Service that the specified content has been deleted
+					from the Reading System. A successful invocation of this operation (e.g. a
+					return value of <db:constant>true</db:constant> from the Service) means that the
+					Content is no longer issued to the User. </db:para>
+
+				<db:para>This operation is used exclusively in <db:link
+						linkend="fundamentals_serviceType_library">library-style</db:link>
+					Services.</db:para>
+
+				<db:para> A Reading System should not call <db:function>returnContent</db:function>
+					where the contentMetadata's <db:varname>requiresReturn</db:varname> attribute is
+					not <db:literal>true</db:literal>.</db:para>
 				<db:para>A Reading System must delete the content before calling
-				<db:function>returnContent</db:function>.  A Reading System must not
-				call <db:function>returnContent</db:function> on Content it never had.</db:para>
-				<db:note><db:para>This protocol cannot guarantee that a Reading System
-				has actually deleted the content before calling <db:function>returnContent</db:function>.
-				If a Service receives a call to this operation, that does not constitute
-				proof that the content has been removed.  If a Service Provider requires
-				a robust copy prevention mechanism, it should employ a DRM solution
-				such as <db:xref linkend="bib_pdtb2"/>.</db:para>
+						<db:function>returnContent</db:function>. A Reading System must not call
+						<db:function>returnContent</db:function> on Content it never had.</db:para>
+				<db:note>
+					<db:para>This protocol cannot guarantee that a Reading System has actually
+						deleted the content before calling <db:function>returnContent</db:function>.
+						If a Service receives a call to this operation, that does not constitute
+						proof that the content has been removed. If a Service Provider requires a
+						robust copy prevention mechanism, it should employ a DRM solution such as
+							<db:xref linkend="bib_pdtb2"/>.</db:para>
 				</db:note>
 			</documentation>
 			<input message="tns:returnContent_inputMessage"/>
@@ -1138,7 +1191,7 @@
 			<fault name="returnContent_operationNotSupportedFault"
 				message="tns:operationNotSupportedFault_message"/>
 		</operation>
-		
+
 		<operation name="setBookmarks">
 			<documentation>
 				<db:para role="desc">Request the storage of bookmarks for a content item to the
@@ -1175,11 +1228,13 @@
 				message="tns:invalidParameterFault_message"/>
 			<fault name="getBookmarks_operationNotSupportedFault"
 				message="tns:operationNotSupportedFault_message"/>
-		</operation> 
+		</operation>
 
 		<operation name="getQuestions">
 			<documentation>
-				<db:para role="desc"><db:remark role="todo">TODO Kenny/Nick document</db:remark></db:para>
+				<db:para role="desc">
+					<db:remark role="todo">TODO Kenny/Nick document</db:remark>
+				</db:para>
 			</documentation>
 			<input message="tns:getQuestions_inputMessage"/>
 			<output message="tns:getQuestions_outputMessage"/>
@@ -1195,7 +1250,7 @@
 
 		<operation name="getKeyExchangeObject">
 			<documentation>
-				<db:para role="desc">Requests a <db:xref linkend="bib_pdtb2"/> Key Exchange Object 
+				<db:para role="desc">Requests a <db:xref linkend="bib_pdtb2"/> Key Exchange Object
 					from the <db:xref linkend="term_service"/>.</db:para>
 			</documentation>
 			<input message="tns:getKeyExchangeObject_inputMessage"/>
@@ -1213,5 +1268,5 @@
 	</portType>
 
 	<!-- the binding element is generated by wsdl-finalize.xsl -->
-	
+
 </definitions>
