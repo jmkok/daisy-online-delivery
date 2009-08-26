@@ -229,17 +229,18 @@
 							select="concat('http://www.w3.org/TR/xmlschema-2/#',substring-after($xsdElement/@type,'xs:'))" />
 						</xsl:attribute>
 						<xsl:value-of select="$xsdElement/@type" />
-					</db:link> 
+					</db:link><xsl:text> </xsl:text> 
 					<db:xref linkend="bib_xsdDatatypes"/>
 				</xsl:when>
 				<xsl:when test="$xsdElement/@ref">
+					<xsl:text> </xsl:text>
 					<db:xref>
 						<xsl:attribute name="linkend" select="concat('tp_',substring-after($xsdElement/@ref,':'))" />
 					</db:xref>
 				</xsl:when>
 				<xsl:otherwise>
 					<!-- <xsl:message>GETTYPEINFO_OTHERWISE</xsl:message> -->
-					Enumeration
+					<db:remark role="todo">TODO check this in wsdl2docbook.xsl</db:remark>
 				</xsl:otherwise>
 			</xsl:choose>
 		</db:para>
