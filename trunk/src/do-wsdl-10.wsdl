@@ -14,10 +14,6 @@
 			xmlns:db="http://docbook.org/ns/docbook"
 			xmlns:tns="http://www.daisy.org/ns/daisy-online/">
 
-			<!--
-			<xs:import namespace="http://www.daisy.org/ns/daisy-online/common-types/"
-				schemaLocation="do-types-10.xsd"/>
-			-->
 			<xs:include schemaLocation="do-types-10.xsd"/>
 
 			<xs:import namespace="http://www.daisy.org/z3986/2005/bookmark/"
@@ -1104,7 +1100,7 @@
 				<db:para>The retrieved list can either be
 					of a 'precomposed' type, in which case it is referred to by passing one of the
 					three reserved values defined in the <db:parameter>id</db:parameter> parameter
-					below (Refer to <xref linkend="fundamentals"/> for information on in which contexts
+					below (Refer to <db:xref linkend="fundamentals"/> for information on in which contexts
 					these reserved values are used).</db:para>
 				<db:para>The list can also be of a 'dynamic' type, typically being exposed by the Service
 					as the result of a <db:link linkend="operations_content_selection_browse"
