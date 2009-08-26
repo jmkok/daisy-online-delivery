@@ -917,15 +917,11 @@
 			<xs:documentation>
 				<db:para role="desc">A sequence of questions, asked by the Service to the
 					User.</db:para>
-				<db:para>
-					<db:remark role="todo">TODO Kenny/Nick: contentList and label are endpoints,
-						describe that below, as well as describe shortly the context in which this
-						type is passed around</db:remark>
-				</db:para>
 				<db:para role="req">The questions element must contain either exactly one
 						<db:type>contentListRef</db:type> or exactly one <db:type>label</db:type> or
-					any number of <db:type>multipleChoiceQuestion</db:type> and
+					any number of <db:type>multipleChoiceQuestion</db:type> and or
 						<db:type>inputQuestion</db:type>, in any order.</db:para>
+<db:para role="desc">If the questions element contains a <db:type>contentListRef</db:type> or a <db:type>label</db:type> child element, the Reading system is not required to call the getQuestions operation as these child elements signify a logical end to the sequence of questions that comprise a dynamic menu.</db:para>            
 			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -942,9 +938,7 @@
 									<db:xref linkend="op_getContentList"/>
 								</db:function> passing the value given here as the value of that
 								operations <db:parameter>id</db:parameter> parameter.</db:para>
-							<db:para>A contentListRef as a child of question represents an endpoint
-								in a dynamic menu sequence. TODO Kenny fix verbiage in this
-								para</db:para>
+							<db:para>A contentListRef as a child of the questions element signifies a logical end to the sequence of questions that comprise a dynamic menu. </db:para>
 						</xs:documentation>
 					</xs:annotation>
 				</xs:element>
@@ -952,8 +946,7 @@
 					<xs:annotation>
 						<xs:documentation>
 							<db:para>A label, representing a one-way message to the User. A label as
-								a child of question represents an endpoint in a dynamic menu
-								sequence. TODO Kenny fix verbiage in this para</db:para>
+								a child of the questions element signifies a logical end to the sequence of questions that comprise a Dynamic menu.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 				</xs:element>
