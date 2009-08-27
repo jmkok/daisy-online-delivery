@@ -67,8 +67,8 @@
 								<xs:annotation>
 									<xs:documentation>
 										<db:para role="desc">Specifies whether the Reading System
-											supports multiple selections for a multiple choice type
-											question.</db:para>
+											supports multiple selections for a <db:xref linkend="tp_multipleChoiceQuestion"/>.
+										</db:para>
 										<db:para role="req">If this element is set to false, the
 											Service must not present the allowMultipleSelections
 											attribute with a value of true on the <db:xref
@@ -77,8 +77,6 @@
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
-							<!-- TODO this is redundant now, question is always grouped now 
-       <xs:element name="supportsGroupedQuestions" type="xs:boolean" minOccurs="1" maxOccurs="1"/> -->
 							<xs:element name="preferredUILanguage" minOccurs="1" maxOccurs="1"
 								type="xs:language">
 								<xs:annotation>
@@ -150,11 +148,14 @@
 										<db:para>A Service may use this information to adapt content
 											types offered to the Reading System as labels and
 											content.</db:para>
+										<db:para>Content types for which support is implied by the Content
+											formats in <db:xref linkend="tp_supportedContentFormats"/> need
+											 not be included here.</db:para>
 									</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element name="mimeType" minOccurs="1"
+										<xs:element name="mimeType" minOccurs="0"
 											maxOccurs="unbounded">
 											<xs:complexType>
 												<xs:attribute name="type" type="xs:string"
@@ -451,7 +452,13 @@
 								by <db:xref linkend="bib_dublinCore"/>. Note that the value of the
 								Dublin Core <db:literal>identifier</db:literal> element represents
 								the <db:xref linkend="term_contentIdentifier"/> of the Content item
-								being described.</db:para>
+								being described.</db:para>							
+							<db:para>Additional arbitrary metadata can be provided using the generic <db:type>meta</db:type> 
+							element for any exrpession not relating to Dublin Core.</db:para>
+							<db:para>The prefix <db:literal>pdtb2</db:literal> in the name attribute of a meta element 
+								is reserved to refer to properties of <db:xref linkend="bib_pdtb2"/>.</db:para>
+							<db:para>The value <db:literal>pdtb2:specVersion</db:literal> in the name attribute of a meta element
+								signals that the content being described is protected using means defined by <db:xref linkend="bib_pdtb2"/></db:para>
 						</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
@@ -613,8 +620,17 @@
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
-
-							<!-- TODO 0-1 elements in pdtb namespace with specVersion -->
+							<xs:element name="meta" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">An arbitrary meta element</db:para>
+									</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attribute name="name" use="required" />
+									<xs:attribute name="content" use="required" />
+								</xs:complexType>
+							</xs:element>							
 							<xs:choice minOccurs="0" maxOccurs="unbounded">
 								<xs:any namespace="##other" processContents="lax"/>
 							</xs:choice>
@@ -933,6 +949,7 @@
 					element, the Reading system is not required to call the getQuestions operation
 					as these child elements signify a logical end to the sequence of questions that
 					comprise a dynamic menu.</db:para>
+				<db:para>For examples on usage of the questions type, refer to <db:xref linkend="appendixDynamicMenuExamples"/>.</db:para>
 			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>

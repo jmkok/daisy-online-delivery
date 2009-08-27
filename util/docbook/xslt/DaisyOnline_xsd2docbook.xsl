@@ -74,8 +74,10 @@
 						<xsl:variable name="type" select="@name" />
 						<xsl:choose>
 							<xsl:when test="count($samplesIndex/daisy:samples/daisy:type[@name=$type]/daisy:sample) > 0">
+								<db:section xml:id="{$type}-examples">
+									<db:title><xsl:value-of select="$type"/> Examples</db:title>
 								<xsl:for-each select="$samplesIndex/daisy:samples/daisy:type[@name=$type]/daisy:sample">
-									<db:section> <db:title><xsl:value-of select="$type"/> example</db:title>
+									<db:example> <db:title><xsl:value-of select="@title"/></db:title>
 									<xsl:if test="./daisy:annotation/db:*">
 										<xsl:copy-of select="./daisy:annotation/db:*" />
 									</xsl:if>
@@ -85,8 +87,9 @@
 										<xsl:attribute name="parse">text</xsl:attribute>
 									</xsl:element>
 									</db:programlisting>
-									</db:section>
+									</db:example>
 								</xsl:for-each>
+									</db:section>
 							</xsl:when>	
 							<xsl:otherwise>
 								<xsl:message>Warning: no type sample(s) found for <xsl:value-of select="$type" /></xsl:message>

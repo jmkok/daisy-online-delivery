@@ -1,0 +1,24 @@
+<readingSystemAttributes xmlns="http://www.daisy.org/ns/daisy-online/">
+  <manufacturer>ACME Corporation</manufacturer>
+  <model>Pocket Phantom</model>
+  <serialNumber>123456</serialNumber>
+  <version>1.23</version>
+  <config>
+    <supportsMultipleSelections>false</supportsMultipleSelections>
+    <preferredUILanguage>en</preferredUILanguage>
+    <bandwidth>8000000</bandwidth>
+    <supportedContentFormats>
+      <contentFormat>ANSI/NISO Z39.86-2005</contentFormat>
+    </supportedContentFormats>
+    <supportedContentProtectionFormats>
+      <protectionFormat>PDTB2</protectionFormat>
+    </supportedContentProtectionFormats>
+    <supportedMimeTypes>
+      <mimeType type="audio/mpeg"/>
+    </supportedMimeTypes>
+    <supportedInputTypes>
+      <input type="TEXT_NUMERIC" xml:lang="en"/>
+    </supportedInputTypes>
+  </config>
+  <requiresAudioLabels>true</requiresAudioLabels>
+</readingSystemAttributes>

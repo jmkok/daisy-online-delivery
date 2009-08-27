@@ -1,49 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <samples xmlns="http://www.daisy.org/ns/daisy-online/#" xmlns:db="http://docbook.org/ns/docbook">
-  
+
   <!-- a list that the DaisyOnline_xsd2docbook xsl takes as input for providing samples in the types section -->
-  
+
   <type name="announcements">
-    <sample src="./samples/announcements.xml">
+    <sample src="./samples/types-announcements.xml" title="announcements"> </sample>
+  </type>
+
+  <type name="resources">
+    <sample src="./samples/types-resources.xml" title="The resources type using script URIs">
       <annotation>
-        <db:para><db:remark role="todo">TODO Sample annotation is possible but not required</db:remark></db:para>
+        <db:para>This example shows a <db:type>resources</db:type> type where the uri attribute
+          refers to a script that does not literally expose the names of the resources. The
+            <db:code>localURI</db:code> attribute is used by the Reading System during download to
+          recreate the correct relational placement of the resources that constitute the Content.
+        </db:para>
       </annotation>
     </sample>
   </type>
-  
-  <type name="questions">
-    <sample src="./samples/questions_contentList.xml">
+
+  <type name="contentList">
+    <sample src="./samples/types-contentList-1.xml" title="A complete contentList using bimodal labels">
       <annotation>
-        <db:para><db:remark role="todo">TODO Sample annotation is possible but not required</db:remark></db:para>
+        <db:para>This example shows a <db:type>contentList</db:type> type. Labels are provided in
+          both text and audio modalities. </db:para>
+        <db:para>Since the <db:code>firstItem</db:code> and <db:code>lastItem</db:code> attributes
+          are missing on the root element, this contentList is not segmented.</db:para>
       </annotation>
     </sample>
-    <sample src="./samples/questions_multipleChoice.xml">
+    <sample src="./samples/types-contentList-2.xml" title="A segmented contentList">
       <annotation>
-        <db:para><db:remark role="todo">TODO Sample annotation is possible but not required</db:remark></db:para>
+        <db:para>This example shows a segmented <db:type>contentList</db:type> type. The <db:code>totalItems</db:code>
+          attribute specifies the total number of Content items in this contentList. The 
+          <db:code>firstItem</db:code> and <db:code>lastItem</db:code> attributes
+          specifies which of those items are included in this segment.</db:para>
       </annotation>
-    </sample>    
+    </sample>
   </type>
 
   <type name="contentMetadata">
-    <sample src="./samples/contentMetadata.xml">
+    <sample src="./samples/types-contentMetadata.xml" title="Typical book Content metadata">
       <annotation>
-         <db:para><db:remark role="todo">TODO Sample annotation is possible but not required</db:remark></db:para>
+        <db:para>This example shows Content metadata for a book. Note how the
+            <db:code>requiresReturn</db:code> attribute on the root element signals that this is a
+          Content item provided under a loan programme. Note also how the presence of the
+            <db:code>pdtb2:specVersion</db:code> meta element signals that this Content item is
+          protected using <db:xref linkend="bib_pdtb2"/> (see further <db:xref
+            linkend="operations_content_issuing_pdtb"/>). </db:para>
+        <db:para>Additional metadata can be provided using <db:code>dc:</db:code> prefixed elements
+          for <db:xref linkend="bib_dublinCore"/> expressions, and the <db:type>meta</db:type>
+          element for any expression not relating to Dublin Core.</db:para>
       </annotation>
     </sample>
   </type>
 
   <type name="readingSystemAttributes">
-    <sample src="./samples/readingSystemAttributes.xml">
+    <sample src="./samples/types-readingSystemAttributes-1.xml"
+      title="readingSystemAttributes for a typical 
+      portable audio-centric Reading System">
       <annotation>
-        <db:para><db:remark role="todo">TODO Sample annotation is possible but not required</db:remark></db:para>
+        <db:para>This example shows <db:type>readingSystemAttributes</db:type> for a typical small
+          portable audio-centric Reading System. The Reading System only supports content in the
+          ANSI/NISO Z39.86-2005 format, it only has a numeric keypad, and, since it has set the
+            <db:code>requiresAudioLabels</db:code> field to true, it likely does not have built-in
+          text display or Text-to-speech capabilities. The Reading System does support Content
+          protected using <db:xref linkend="bib_pdtb2"/>.</db:para>
+      </annotation>
+    </sample>
+    <sample src="./samples/types-readingSystemAttributes-2.xml"
+      title="readingSystemAttributes for a typical software-based
+       Reading System">
+      <annotation>
+        <db:para>This example shows <db:type>readingSystemAttributes</db:type> for a typical
+          software-based Reading System (although it could as well be hardware based). The Reading
+          System supports content in two formats, has the capabilities of full keybord input as well
+          as User audio recording. Since it has set the <db:code>requiresAudioLabels</db:code> field
+          to false, it likely does have a built-in text display, or Text-to-speech capabilities. The
+          Reading System does not support Content protected using <db:xref linkend="bib_pdtb2"
+          />.</db:para>
       </annotation>
     </sample>
   </type>
-  
+
   <type name="serviceAttributes">
-    <sample src="./samples/serviceAttributes.xml">
+    <sample src="./samples/types-serviceAttributes-2.xml"
+      title="serviceAttributes type for a typical minimal library service">
       <annotation>
-        <db:para><db:remark role="todo">TODO Sample annotation is possible but not required</db:remark></db:para>
+        <db:para>This example shows <db:type>serviceAttributes</db:type> for a Service that only
+          supports the Out-of-band <db:xref linkend="fundamentals_contentSelectionModels"/>,
+          provides only a Library-style service (see <db:xref linkend="fundamentals_serviceTypes"/>
+          ), and and does not support any aspect of the <db:xref
+            linkend="fundamentals_dynamic_menus"/> feature of this protocol.</db:para>
+      </annotation>
+    </sample>
+    <sample src="./samples/types-serviceAttributes-1.xml"
+      title="serviceAttributes type for a typical maximally extended service">
+      <annotation>
+        <db:para>This example shows <db:type>serviceAttributes</db:type> for a Service that supports
+          both available <db:xref linkend="fundamentals_contentSelectionModels"/> (which means that
+          it also must support Dynamic Menus), provides Content under both loan and purchase
+          programmes (see <db:xref linkend="fundamentals_serviceTypes"/>), and provides some or all
+          of its Content encrypted using <db:xref linkend="bib_pdtb2"/>.</db:para>
       </annotation>
     </sample>
   </type>

@@ -1,1 +1,28 @@
-<initialization-serviceAttributes TODO="true" />
+<serviceAttributes xmlns="http://www.daisy.org/ns/daisy-online/">
+    <serviceProvider id="uk-rnib">
+        <label>
+            <text>Royal National Institute for the Blind (RNIB)</text>
+        </label>  
+    </serviceProvider>
+    <service id="uk-rnib-onlineLibrary">
+        <label>
+            <text>The RNIB Online Library</text>
+        </label>     
+    </service>
+    <supportedContentSelectionModels>
+        <model>OUT_OF_BAND</model>
+        <model>BROWSE</model>
+    </supportedContentSelectionModels>
+    <supportedServiceTypes>
+        <type>LIBRARY</type>
+    </supportedServiceTypes>
+    <supportsServerSideBack>false</supportsServerSideBack>
+    <supportsSearch>true</supportsSearch>
+    <supportedUplinkAudioCodecs></supportedUplinkAudioCodecs>
+    <supportedOptionalOperations>
+        <operation>DYNAMIC_MENUS</operation>
+        <operation>GET_BOOKMARKS</operation>
+        <operation>SET_BOOKMARKS</operation>
+        <operation>SERVICE_ANNOUNCEMENTS</operation>
+    </supportedOptionalOperations>
+</serviceAttributes>
