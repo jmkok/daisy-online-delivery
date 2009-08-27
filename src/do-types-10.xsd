@@ -1052,13 +1052,17 @@
 												retrieves the root question (aka main menu) from the
 												Service. (This value is used to initiate a dynamic
 												menu operation sequence, and therefore does not
-												reflect an answered question)</db:para>
+												reflect an answered question.)</db:para>
 										</db:listitem>
 										<db:listitem>
 											<db:para>The value <db:varname>search</db:varname>
 												retrieves the Search menu from the
-												Service.<db:remark role="todo">link to and fix
-												BROWSE/supportsSearch</db:remark></db:para>
+												Service.</db:para><db:para>A Service is not required to support the
+													<db:varname>search</db:varname> reserved ID to claim
+													support for the Dynamic Menu feature. A Service must
+													explicitly declare whether it supports this ID in
+													<db:xref linkend="tp_serviceAttributes"
+													/>.</db:para>
 										</db:listitem>
 										<db:listitem>
 											<db:para>The value <db:varname>back</db:varname>
