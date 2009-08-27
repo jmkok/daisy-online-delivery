@@ -592,63 +592,68 @@
                             <listitem>
                                 <para>One or more multiple choice questions or input questions
                                     through the <xref linkend="tp_multipleChoiceQuestion"/> and
-                                        <xref linkend="tp_inputQuestion"/> child
-                                    elements.
-                                </para>
+                                        <xref linkend="tp_inputQuestion"/> child elements. </para>
                             </listitem>
                             <listitem>
-                                <para>A <xref linkend="tp_label"/> child element.
-                                </para>
+                                <para>A <xref linkend="tp_label"/> child element. </para>
                             </listitem>
                             <listitem>
                                 <para>The ID of a <xref linkend="tp_contentList"/> type through the
-                                        <xref linkend="tp_contentListRef"/> child element.
-                                </para>
+                                        <xref linkend="tp_contentListRef"/> child element. </para>
                             </listitem>
                         </itemizedlist>
                     </para>
 
-                    <para>Although the questions type conceptually corresponds to a container
-                        for one or more questions (multiple choice question(s) or input
-                        question(s)), it can also contain a <xref linkend="tp_label"/> child element or a <xref linkend="tp_contentListRef"/>
-                        child element. The occurence of <type>label</type> or <type>contentListRef</type> corresponds to the case 
-                        where a Dynamic Menu operation sequence has reached its "logical end", e.g. when the
-                        Service presents a final result to the User. In the label case, the result is an informative 
-                        statement ("Thank you for borrowing this book!"), and in the contentListRef case it
-                        is a reference to a list of Content items that have been made available as a result of the
-                        Dynamic Menu operation sequence. Refer to <xref
-                            linkend="appendixDynamicMenuExamples_profileUpdate"/> for concrete examples on "logical ends".</para>                        
+                    <para>Although the questions type conceptually corresponds to a container for
+                        one or more questions (multiple choice question(s) or input question(s)), it
+                        can also contain a <xref linkend="tp_label"/> child element or a <xref
+                            linkend="tp_contentListRef"/> child element. The occurence of
+                            <type>label</type> or <type>contentListRef</type> corresponds to the
+                        case where a Dynamic Menu operation sequence has reached its "logical end",
+                        e.g. when the Service presents a final result to the User. In the
+                            <type>label</type> case, the result is an informative statement ("Thank
+                        you for borrowing this book!"), and in the <type>contentListRef</type> case
+                        it is a reference to a list of Content items that have been made available
+                        as a result of the Dynamic Menu operation sequence. Refer to <xref
+                            linkend="appendixDynamicMenuExamples_profileUpdate"/> for concrete
+                        examples on "logical ends".</para>
                 </section>
                 <section xml:id="fundamentals_dynamic_menus_concept2">
                     <title>A Menu System has a root question</title>
 
                     <para>A Menu System has a root question - the first question in the series of
-                        interconnected questions, conceptually corresponding to the "main menu".</para>
+                        interconnected questions, conceptually corresponding to the "main
+                        menu".</para>
 
                     <para>A Reading system Retrieves the root question (aka main menu) of a Service
                         by invoking the <function>getQuestions</function> operation and passing in
-                        the reserved id <literal>default</literal>. Refer to <xref linkend="appendixDynamicMenuExamples_mainMenu"/> for a concrete
-                        example.
-                    </para>
-                    
-                    <note><para>There are two additional reserved IDs used on the context of <function>getQuestion</function>: <literal>search</literal> and <literal>back</literal>, whose
-                    use is defined in <xref linkend="tp_userResponse"/>.</para></note>
-                 </section>
+                        the reserved id <literal>default</literal>. Refer to <xref
+                            linkend="appendixDynamicMenuExamples_mainMenu"/> for a concrete
+                        example.</para>
+
+                    <note>
+                        <para>There are two additional reserved IDs used on the context of
+                                <function>getQuestion</function>: <literal>search</literal> and
+                                <literal>back</literal>, whose use is defined in <xref
+                                linkend="tp_userResponse"/>.</para>
+                    </note>
+                </section>
                 <section xml:id="fundamentals_dynamic_menus_concept3">
                     <title>The response determines the next question</title>
 
                     <para>In a menu system, a User's response to a question determines what question
-                        will be presented to the user next. The Dynamic Menu feature of this protocol
-                    has been designed to be as efficient as possible in terms of the number of operation invocations
-                    required, therefore the <xref linkend="op_getQuestions"/> operation takes as a parameter the User's
+                        will be presented to the user next. The Dynamic Menu feature of this
+                        protocol has been designed to be as efficient as possible in terms of the
+                        number of operation invocations required, therefore the <xref
+                            linkend="op_getQuestions"/> operation takes as a parameter the User's
                         response to the <emphasis>previous</emphasis> question.</para>
 
                     <para>The <xref linkend="op_getQuestions"/> operation takes one parameter. The
                         data type of this parameter is <type>
                             <xref linkend="tp_userResponses"/>
-                        </type>.</para> 
-                        
-                        <para>The <type>userResponses</type> type has been designed to carry the
+                        </type>.</para>
+
+                    <para>The <type>userResponses</type> type has been designed to carry the
                         response(s) of a user to a question(s). The response can either be a
                         choice(s) that the user picked for a <xref
                             linkend="tp_multipleChoiceQuestion"/>, or a numeric, alphanumeric or
@@ -814,6 +819,8 @@
                             </listitem>
                         </orderedlist>
                     </example>
+                    <note><para>The <xref linkend="op_getServiceAttributes"/> and <xref linkend="op_setReadingSystemAttributes"/> operations 
+                        may be called additional times during a Session to notify changes of properties in the Service or Reading System.</para></note>
                 </section>
             </section>
             <!--
@@ -904,7 +911,9 @@
                 <para>In the <link linkend="fundamentals_contentSelectionModel_browse">Browse
                         model</link> content selection model, content is selected dynamically within
                     the Session using the <link linkend="fundamentals_dynamic_menus">Dynamic
-                        Menu</link> feature of this protocol.</para>
+                    Menu</link> feature of this protocol. Refer to <xref linkend="appendixDynamicMenuExamples_search"/>
+                    and Refer to <xref linkend="appendixDynamicMenuExamples_retrieve"/> for examples of Content selection
+                using the Dynamic Menu feature.</para>
 
                 <note>
                     <para>A Service declares whether it supports Content selection using the Browse
@@ -913,65 +922,12 @@
                             linkend="op_getServiceAttributes"/> operation. Services may support the
                         Dynamic Menu feature for other purposes than supporting content selection,
                         so the value <code>DYNAMIC_MENUS</code> in <xref
-                            linkend="tp_supportedOptionalOperations"/> does not imply that Content
+                            linkend="tp_supportedOptionalOperations"/> alone does not imply that Content
                         Selection using the Browse model is supported.</para>
                 </note>
-
-                <section xml:id="operations_content_selection_browse_example">
-                    <title>Browse Model Content Selection Example</title>
-                    <example>
-                        <title>Browse Model Content Selection Example</title>
-                        <orderedlist>
-                            <listitem>
-                                <para>
-                                    <remark role="todo">TODO Kenny: give dynamic menu example:
-                                        search, with end result contentList</remark>
-                                </para>
-                            </listitem>
-                        </orderedlist>
-                    </example>
-                </section>
             </section>
         </section>
-        <!--
-        <section xml:id="operations_content_selection" conformance="informative">
-            <title>Content Selection</title>
-            <section xml:id="operations_content_selection_menuless" conformance="normative">
-                <title>menuless Content Selection</title>
-                <para>The Service must provide two contentLists, which may be accessed by calling
-                    the <function>
-                        <xref linkend="op_getContentList"/>
-                    </function> operation with an <parameter>id</parameter> parameter of
-                        <literal>available</literal> or <literal>expired</literal>. </para>
-                <itemizedlist>
-                    <listitem>
-                        <para>The <literal>available</literal> list shall contain those content
-                            items that the User is authorized to access with the Reading System.
-                            These may or may not be issued or borrowed.</para>
-                    </listitem>
-                    <listitem>
-                        <para>The <literal>expired</literal> list shall contain those content items
-                            issued to the User which the Service requires to be removed from the
-                            Reading System and returned with the <function>
-                                <xref linkend="op_returnContent"/>
-                            </function> operation. </para>
-                    </listitem>
-                </itemizedlist>
-                <para> </para>
-                <para>
-                    <remark role="todo">Describe the menuless scenario (Service-driven selection)
-                        and the use of getContentList(default/borrowed)</remark>
-                </para>
-            </section>
-            <section xml:id="operations_content_selection_interactive" conformance="normative">
-                <title>Interactive Content Selection</title>
-                <para>
-                    <remark role="todo">Describe the normative parts of the interactive
-                        scenario</remark>
-                </para>
-            </section>
-        </section>
--->
+ 
         <section xml:id="operations_content_issuing">
             <title>Issuing and transfer of content</title>
             <para>Given a <xref linkend="tp_contentList"/>, retrieved using one of the methods
@@ -1176,6 +1132,8 @@
                     <para>The following is an example of contentMetadata for an item exncrypted
                         using <abbrev>PDTB2</abbrev>.</para>
                     <programlisting><xi:include href="./samples/pdtb-contentMetadata.xml" parse="text" encoding="UTF-8"/></programlisting>
+                    <para>... and the associated <type>resources</type>:</para>
+                    <programlisting><xi:include href="./samples/pdtb-resources.xml" parse="text" encoding="UTF-8"/></programlisting>
                 </example>
                 <para>If some Content has an Authorization Object (<abbrev>AO</abbrev>), the Reading
                     System can inspect it for the name of the key that secures the key to decrypt
@@ -1389,7 +1347,7 @@
                 </function>, then a Reading System may invoke these operations to store and/or
                 retrieve a set of bookmarks for a given Content item. Note that the grammar used
                 also includes a dedicated <code>lastMark</code> element which is used to persist the
-                location where user most recently ceased reading.</para>
+                location where the User most recently ceased reading.</para>
 
             <para>The <type>
                     <xref linkend="tp_bookmarkSet"/>
@@ -1737,192 +1695,219 @@
 
     <appendix xml:id="appendixDynamicMenuExamples" conformance="informative">
         <title>Dynamic Menu Usage Examples</title>
-        <para><remark role="todo">TODO extensive editing remains in this appendix</remark></para>
+        <para>
+            <remark role="todo">TODO extensive editing remains in this appendix</remark>
+        </para>
         <section xml:id="appendixDynamicMenuExamples_mainMenu">
-            <title>Retrieving the main menu</title>
-            <para>The Reading System retrieves the Main Menu of the Service by invoking the
-                getQuestions operation with the reserved id "default" by passing in the following
-                parameter:
-                <programlisting><xi:include href="./samples/dynamicMenusIntro-5.xml" parse="text"/></programlisting>
-            </para>
-            <para>The operation returns the following questions type:
-                <programlisting><xi:include href="./samples/dynamicMenusExamples-mainMenu-1.xml" parse="text"/></programlisting>
-            </para>
-            <para role="tip"> Each userResponse element contains the user's response to a particular
-                question. There are three reserved ids that have a special meaning: 1. default -
-                returns the question that comprises the Main Menu. 2. search - Returns the question
-                that comprises the search menu. 3. back - Returns the previous question. </para>
-            <para> A question can be a multiple choice question (see <xref
-                    linkend="tp_multipleChoiceQuestion"/>), or a question that can receive a numeric
-                text, alfanumeric text or audio response from the user (see <xref
-                    linkend="tp_inputQuestion"/>). If the userResponse element is being used to
-                encapsulate the user's response to a multiple choice question, the id attribute of
-                the userResponse element contains the same value as the id attribute of the
-                corresponding multipleChoiceQuestion element, and the value attribute of the
-                userResponse element contains the same value as the id attribute of the choice
-                element that the user selected. If the userResponse element is being used to
-                encapsulate the user's response to a question that receives numeric text,
-                alfanumeric text or an audio response, the id attribute of the userResponse element
-                contains the same value as the id attribute of the corresponding inputQuestion
-                element, and the value attribute of the userResponse element contains: 1. The
-                numeric or alfanumeric text that the user entered if the question receives a numeric
-                or alfanumeric response. 2. An empty string or omitted altogether if the question
-                receives an audio response. </para>
+            <title>Retrieving the Main Menu</title>
+            <example>
+                <title>Dynamic Menu example: Retrieving the Main Menu</title>
+                <para>The Reading System retrieves the Main Menu of the Service by invoking the
+                    <xref linkend="op_getQuestions"/> operation with the reserved id "default" by passing in the
+                    following parameter:
+                    <programlisting><xi:include href="./samples/dynamicMenusExamples-mainMenu-0.xml" parse="text"/></programlisting>
+                </para>
+                <para>The operation returns the following questions type, which conceptually corresponds to the Service's "Main Menu":
+                    <programlisting xml:id="appendixDynamicMenuExamples_mainMenuCode" xreflabel="Main Menu"><xi:include href="./samples/dynamicMenusExamples-mainMenu-1.xml" parse="text"/></programlisting>
+                </para>
+                <para role="tip"> Each userResponse element contains the user's response to a
+                    particular question. As formally defined in <xref linkend="tp_userResponse"/>, there are three reserved ids that have a special meaning:
+                    <itemizedlist>
+                        <listitem><para><code>default</code> - returns the question that comprises the Main Menu</para></listitem> 
+                        <listitem><para><code>search</code> - returns the question that comprises the search menu</para></listitem> 
+                        <listitem><para><code>back</code> - returns the previous question.</para></listitem>                   
+                    </itemizedlist>                    
+                </para>
+                <para> A question can be a multiple choice question (see <xref
+                        linkend="tp_multipleChoiceQuestion"/>), or a question that can receive a
+                    numeric text, alphanumeric text or audio response from the user (see <xref
+                    linkend="tp_inputQuestion"/>).</para> 
+                <para>If the <xref linkend="tp_userResponse"/> element is being used to
+                    encapsulate the User's response to a multiple choice question, the <code>questionID</code> attribute
+                    of the <type>userResponse</type> element contains the same value as the <code>id</code> attribute of the
+                    corresponding <type>multipleChoiceQuestion</type> element, and the <code>value</code> attribute of the
+                    <type>userResponse</type> element contains the same value as the <code>id</code> attribute of the <type>choice</type>
+                    element that the User selected.</para>
+                <para>If the <type>userResponse</type> element is being used to
+                    encapsulate the User's response to a question that receives numeric text,
+                    alphanumeric text or an audio response (i.e. an <xref linkend="tp_inputQuestion"/>), 
+                    then the <code>questionID</code> attribute of the <type>userResponse</type>
+                    element contains the same value as the <code>id</code> attribute of the corresponding
+                    <type>inputQuestion</type> element, and the <code>value</code> attribute of the <type>userResponse</type> element
+                    contains: 
+                    <itemizedlist>
+                        <listitem><para>The numeric or alfanumeric text that the user entered if the
+                        question receives a numeric or alfanumeric response.</para></listitem>
+                        <listitem><para>An empty string or
+                            omitted altogether if the question receives an audio response.</para></listitem>
+                    </itemizedlist>
+                </para>
 
-            <para>If the question receives an audio response, the audio response is base 64 encoded
-                and encapsulated in the data child element of the userResponse element. </para>
+                <para>If the question receives an audio response, the audio response is base 64
+                    encoded and encapsulated in the data child element of the userResponse element.</para>
 
-            <para role="tip">The values assigned to the id attributes of the inputQuestion,
-                multipleChoiceQuestion and choice elements in all the examples listed in this
-                section are arbitrary. These ids are defined in the Daisy Online xsd as the xsd id
-                type, and thus can take any unique value.</para>
+                <para role="tip">The values assigned to the <code>id</code> attributes of the <type>inputQuestion</type>,
+                    <type>multipleChoiceQuestion</type> and <type>choice</type> elements in all the examples listed in this
+                    section are arbitrary. These IDs are defined in <xref linkend="appendixWSDL"/> as the XSD
+                    ID type (see <xref linkend="bib_xsdDatatypes"/>), and thus can take any unique value.</para>
 
-            <para>The Reading system renders this type to the user in the following way: What Would
-                you like to do? * Search the Library * Update your profile * Take a Survey. * Buy a
-                book * Download or Stream content </para>
-
+                <para>The Reading system renders this type to the user in the following way:
+                    <literallayout>
+What Would you like to do? 
+ * Search the Library 
+ * Update your profile 
+ * Take a Survey. 
+ * Buy a book 
+ * Download or Stream content 
+</literallayout></para>
+            </example>
         </section>
         <section xml:id="appendixDynamicMenuExamples_search">
             <title>Performing Search</title>
-            <para>As Search is envisaged to be a very important part of the Online Distribution of
-                content, and thus the Reading Systems may have specific user interface components to
-                invoke search, a special id is available and can be passed into the getQuestions
-                operation to retrieve the menu specific to search.
-                <programlisting><xi:include href="./samples/dynamicMenusExamples-search-1.xml" parse="text"/></programlisting>
-            </para>
+            <example>
+                <title>Dynamic Menu example: Performing a Search of the Service's Content
+                    Collection</title>
 
-            <para role="tip">Using the aforementioned Main Menu example, if the user selects "Search
-                the Library," the following userResponses type could also be used to retrieve the
-                Search menu:
-                <programlisting><xi:include href="./samples/dynamicMenusExamples-search-2.xml" parse="text"/></programlisting>
-            </para>
+                <para>As Search is envisaged to be a very important part of the Online Distribution
+                    of content, and thus the Reading Systems may have specific user interface
+                    components to invoke search, a special id is available and can be passed into
+                    the <xref linkend="op_getQuestions"/> operation to retrieve the menu specific to search.
+                    <programlisting><xi:include href="./samples/dynamicMenusExamples-search-1.xml" parse="text"/></programlisting>
+                </para>
 
-            <para>The reserved Search id thus, is a shortcut provided for those Reading systems that
-                have explicit user interface components for invoking the Search feature.</para>
+                <para role="tip">Using the <xref linkend="appendixDynamicMenuExamples_mainMenuCode"/> 
+                    from <xref linkend="appendixDynamicMenuExamples_mainMenu"/>, if the user selects the
+                    "Search the Library" option, the following <type>userResponses</type> type could also be used to
+                    retrieve the Search menu:
+                    <programlisting><xi:include href="./samples/dynamicMenusExamples-search-2.xml" parse="text"/></programlisting>
+                </para>
 
-            <para>The operation returns the following questions type:
-                <programlisting><xi:include href="./samples/dynamicMenusExamples-search-3.xml" parse="text"/></programlisting>
-                The Reading System renders this type to the user as follows:
-                <literallayout>
-                        What would you like to search by?
-                            * Title
-                            * Author
-                            * Genre
-                    </literallayout>
-            </para>
+                <para>The reserved <code>search</code> id thus, is a shortcut provided for those Reading systems
+                    that have explicit user interface components for invoking the Search
+                    feature.</para>
 
-            <para>Assuming that the user selects "Author," the reading system retrieves the next
-                menu by passing in the following parameter to the getQuestions operation:
-                <programlisting><xi:include href="./samples/dynamicMenusExamples-search-4.xml" parse="text"/></programlisting>
-            </para>
+                <para>The operation returns the following questions type:
+                    <programlisting><xi:include href="./samples/dynamicMenusExamples-search-3.xml" parse="text"/></programlisting>
+                    The Reading System renders this type to the user as follows:
+                    <literallayout>
+      What would you like to search by?
+       * Title
+       * Author
+       * Genre
+     </literallayout>
+                </para>
 
-            <para>This operation returns the following type:
-                <programlisting><xi:include href="./samples/dynamicMenusExamples-search-5.xml" parse="text"/></programlisting>
-                The Reading System renders this type to the user as follows:
-                <literallayout>Please enter the name of the author.</literallayout>
-            </para>
+                <para>Assuming that the user selects "Author," the reading system retrieves the next
+                    menu by passing in the following parameter to the getQuestions operation:
+                    <programlisting><xi:include href="./samples/dynamicMenusExamples-search-4.xml" parse="text"/></programlisting>
+                </para>
 
-            <para>Assuming the user entered the name "J.K. Rawling," the Reading System invokes the
-                getQuestions operation with the following parameter:
-                <programlisting><xi:include href="./samples/dynamicMenusExamples-search-6.xml" parse="text"/></programlisting>
-                This operation returns the following questions type:
-                <programlisting><xi:include href="./samples/dynamicMenusExamples-search-7.xml" parse="text"/></programlisting>
-                The reading system extracts the id of the contentList from the contentListRef
-                element, and invokes the getContentList operation as follows:
-                <programlisting><xi:include href="./samples/dynamicMenusExamples-search-8.xml" parse="text"/></programlisting>
-                thus requesting the contentList type with the id "l100," and specifying that the
-                first contentItem returned should be at index 0 and the last contentItem returned
-                should be at index 20 (i.e. the first 21 contentItem elements) in the contentList
-                type. The firstItem and lastItem parameters exist to enable the reading system to
-                request a contentList type with a specified number of contentItem child elements, in
-                situations where memory or bandwidth constraints may not permit the retrieval of an
-                entire contentList. </para>
+                <para>This operation returns the following type:
+                    <programlisting><xi:include href="./samples/dynamicMenusExamples-search-5.xml" parse="text"/></programlisting>
+                    The Reading System renders this type to the user as follows:
+                    <literallayout>Please enter the name of the author.</literallayout>
+                </para>
 
-            <para>The operation returns the following contentList type:
-                <programlisting><xi:include href="./samples/dynamicMenusExamples-search-9.xml" parse="text"/></programlisting>
-                The Reading System renders this type as follows:
-                <literallayout>
+                <para>Assuming the user entered the name "J.K. Rowling," the Reading System invokes
+                    the getQuestions operation with the following parameter:
+                    <programlisting><xi:include href="./samples/dynamicMenusExamples-search-6.xml" parse="text"/></programlisting>
+                    This operation returns the following questions type:
+                    <programlisting><xi:include href="./samples/dynamicMenusExamples-search-7.xml" parse="text"/></programlisting>
+                    The reading system extracts the id of the contentList from the contentListRef
+                    element, and invokes the getContentList operation as follows:
+                    <programlisting><xi:include href="./samples/dynamicMenusExamples-search-8.xml" parse="text"/></programlisting>
+                    thus requesting the contentList type with the id "l100," and specifying that the
+                    first contentItem returned should be at index 0 and the last contentItem
+                    returned should be at index 20 (i.e. the first 21 contentItem elements) in the
+                    contentList type. The firstItem and lastItem parameters exist to enable the
+                    reading system to request a contentList type with a specified number of
+                    contentItem child elements, in situations where memory or bandwidth constraints
+                    may not permit the retrieval of an entire contentList. </para>
+
+                <para>The operation returns the following contentList type:
+                    <programlisting><xi:include href="./samples/dynamicMenusExamples-search-9.xml" parse="text"/></programlisting>
+                    The Reading System renders this type as follows:
+                    <literallayout>
 Your Search for "J.K. Rawling" returned the following results: 
 * harry potter and chamber of secrets
 * harry potter and deathly hallows
 * harry potter and goblet of fire
 </literallayout>
-            </para>
-            <para>When a Service returns a contentListRef child element within a questions type, the
-                Reading system is logically at the end of the Service's dynamic menu. The reading
-                system extracts the id of the contentList from the contentListRef elementt as
-                illustrated above, and invokes the getContentList operation to retrieve the
-                contentList. </para>
-            <para>The Reading System may then retrieve information about the specific contentItems
-                in the contentList type by invoking the getContentMetadata operation, passing in the
-                id of the particular content item. At this stage, the Reading system may ask the
-                user whether he/she wishes to Download or Stream content. If the user wishes to
-                download/stream content, the Reading system calls the issueContent operation passing
-                in the id of the particular content item, followed by a call to the
-                getContentResources operation, to request issuance and retrieve the uris of the
-                resources that constitute the particular content item respectively. </para>
-            <!--
-<para role="tip">
-The contentMetadata type returned by the getContentMetadata operation may contain a sample child element. for example:
-<contentMetadata>
-...
-<sample id="hp_gof_sample"/>
-...
-</contentMetadata>
-the reading system invokes the getContentResources operation passing in the id of the sample (in this example hp_gof_sample) to retrieve the resources that constitute the sample. the Daisy Online Protocol does not require a call to the issueContent operation if the getContentResources operation is being called to retrieve the resources for a sample. Put another way, issuance of a sample through a call to the issueContent opeeration is not required by the Daisy online protocol.
-</paratip> 
-                        -->
+                </para>
+                <para>When a Service returns a contentListRef child element within a questions type,
+                    the Reading system is logically at the end of the Service's dynamic menu. The
+                    reading system extracts the id of the contentList from the contentListRef
+                    elementt as illustrated above, and invokes the getContentList operation to
+                    retrieve the contentList. </para>
+                <para>The Reading System may then retrieve information about the specific
+                    contentItems in the contentList type by invoking the getContentMetadata
+                    operation, passing in the id of the particular content item. At this stage, the
+                    Reading system may ask the user whether he/she wishes to Download or Stream
+                    content. If the user wishes to download/stream content, the Reading system calls
+                    the issueContent operation passing in the id of the particular content item,
+                    followed by a call to the getContentResources operation, to request issuance and
+                    retrieve the uris of the resources that constitute the particular content item
+                    respectively. </para>
+            </example>
         </section>
         <section xml:id="appendixDynamicMenuExamples_profileUpdate">
             <title>Updating the User Profile</title>
+            <example>
+                <title>Dynamic Menu example: Updating the User Profile</title>
 
-            <para>Using the [TODO link]aforementioned Main Menu example, if the user selects "update
-                your profile," the Reading System invokes the getQuestions operation with the
-                following parameter:
-                <programlisting><xi:include href="./samples/dynamicMenusExamples-userprofile-1.xml" parse="text"/></programlisting>
-                This operation returns the following type:
-                <programlisting><xi:include href="./samples/dynamicMenusExamples-userprofile-2.xml" parse="text"/></programlisting>
-                The Reading system renders this type as follows:
-                <literallayout>
+                <para>Using the <xref linkend="appendixDynamicMenuExamples_mainMenuCode"/> 
+                    from <xref linkend="appendixDynamicMenuExamples_mainMenu"/>, if the user selects the
+                    "Update your profile" option, the Reading System invokes the getQuestions operation
+                    with the following parameter:
+                    <programlisting><xi:include href="./samples/dynamicMenusExamples-userprofile-1.xml" parse="text"/></programlisting>
+                    This operation returns the following type:
+                    <programlisting><xi:include href="./samples/dynamicMenusExamples-userprofile-2.xml" parse="text"/></programlisting>
+                    The Reading system renders this type as follows:
+                    <literallayout>
 Your name:
 Your Address: 
 Your Gender
 * Male
 * Female
 </literallayout>
-            </para>
-            <para>After the user responds to the questions, the Reading System invokes the
-                getQuestions operation passing in the following parameter:
-                <programlisting><xi:include href="./samples/dynamicMenusExamples-userprofile-3.xml" parse="text"/></programlisting>
-                This operation returns the following type:
-                <programlisting><xi:include href="./samples/dynamicMenusExamples-userprofile-4.xml" parse="text"/></programlisting>
-                The Reading system renders this type to the user as follows:
-                <literallayout>
+                </para>
+                <para>After the user responds to the questions, the Reading System invokes the
+                    getQuestions operation passing in the following parameter:
+                    <programlisting><xi:include href="./samples/dynamicMenusExamples-userprofile-3.xml" parse="text"/></programlisting>
+                    This operation returns the following type:
+                    <programlisting><xi:include href="./samples/dynamicMenusExamples-userprofile-4.xml" parse="text"/></programlisting>
+                    The Reading system renders this type to the user as follows:
+                    <literallayout>
 Your profile has been updated successfully!
 </literallayout>
-            </para>
-            <para>As in the case of the Service returning a contentListRef child element within a
-                questions type, if the Service returns a label child element in the questions type,
-                the Reading System is logically at the end of the Service's dynamic menu.</para>
+                </para>
+                <para>As in the case of the Service returning a contentListRef child element within
+                    a questions type, if the Service returns a label child element in the questions
+                    type, the Reading System is logically at the end of the Service's dynamic
+                    menu.</para>
 
-            <para role="tip"> If the Service intends to take the user back to a previous menu after
-                a message such as "your profile has been updated successfully," the Service returns
-                a multipleChoiceQuestion element within the questions type as follows:
-                <programlisting><xi:include href="./samples/dynamicMenusExamples-userprofile-5.xml" parse="text"/></programlisting>
-            </para>
-
+                <para role="tip"> If the Service intends to take the user back to a previous menu
+                    after a message such as "your profile has been updated successfully," the
+                    Service returns a multipleChoiceQuestion element within the questions type as
+                    follows:
+                    <programlisting><xi:include href="./samples/dynamicMenusExamples-userprofile-5.xml" parse="text"/></programlisting>
+                </para>
+            </example>
         </section>
         <section xml:id="appendixDynamicMenuExamples_survey">
             <title>Taking a Survey (with audio responses)</title>
+            <example>
+                <title>Dynamic Menu example: Taking a Survey (with audio responses)e</title>
 
-            <para>Using the aforementioned [TODO link]Main Menu example, if the user selects "Take a
-                Survey", the Reading System invokes the getQuestions operation passing in the
-                following parameter:
-                <programlisting><xi:include href="./samples/dynamicMenusExamples-survey-1.xml" parse="text"/></programlisting>
-                This operation returns the following type: <programlisting><xi:include href="./samples/dynamicMenusExamples-survey-2.xml" parse="text"/></programlisting>
-                <literallayout>
-The Reading system renders this type as follows:
-
+                <para>Using the <xref linkend="appendixDynamicMenuExamples_mainMenuCode"/> 
+                    from <xref linkend="appendixDynamicMenuExamples_mainMenu"/>, if the user selects the
+                    "Take a Survey" option, the Reading System invokes the getQuestions operation passing
+                    in the following parameter:
+                    <programlisting><xi:include href="./samples/dynamicMenusExamples-survey-1.xml" parse="text"/></programlisting>
+                    This operation returns the following type: <programlisting><xi:include href="./samples/dynamicMenusExamples-survey-2.xml" parse="text"/></programlisting>
+                    The Reading system renders this type as follows:
+                    
+                    <literallayout>
 What is your favourite feature in the Service?:
 
 On a scale of one to four, where four is very satisfied and 1 is not satisfied, how would you rate the Service?
@@ -1933,45 +1918,49 @@ On a scale of one to four, where four is very satisfied and 1 is not satisfied, 
 
 Please provide feedback on the Service.:
 </literallayout>
-            </para>
+                </para>
 
-            <para>After the user responds to the questions, the Reading System invokes the
-                getQuestions operation passing in the following parameter:
-                <programlisting><xi:include href="./samples/dynamicMenusExamples-survey-3.xml" parse="text"/></programlisting>
-                This operation returns the following type:
-                <programlisting><xi:include href="./samples/dynamicMenusExamples-survey-4.xml" parse="text"/></programlisting>
-                The Reading System renders this type as follows:
-                <literallayout>
+                <para>After the user responds to the questions, the Reading System invokes the
+                    getQuestions operation passing in the following parameter:
+                    <programlisting><xi:include href="./samples/dynamicMenusExamples-survey-3.xml" parse="text"/></programlisting>
+                    This operation returns the following type:
+                    <programlisting><xi:include href="./samples/dynamicMenusExamples-survey-4.xml" parse="text"/></programlisting>
+                    The Reading System renders this type as follows:
+                    <literallayout>
 Thank you for taking the Survey! What would you like to do next?
 * Take another Survey.
 * Go back to the previous menu. 
 * Go back to the Main Menu
 </literallayout></para>
+            </example>
         </section>
         <section xml:id="appendixDynamicMenuExamples_purchase">
             <title>Content Purchase</title>
+            <example>
+                <title>Dynamic Menu example: Content purchase</title>
 
-            <para>Using the aforementioned Main Menu example [TODO link], if the user selects "Buy a
-                Book," the Reading System invokes the getQuestions operation passing in the
-                following parameter:
-                <programlisting><xi:include href="./samples/dynamicMenusExamples-purchase-1.xml" parse="text"/></programlisting>
-                This operation returns the following type:
-                <programlisting><xi:include href="./samples/dynamicMenusExamples-purchase-2.xml" parse="text"/></programlisting>
-            </para>
-            <para role="tip">The allowMultipleSelections attribute of the multipleChoiceQuestion
-                element tells the reading System whether a user should be allowed to select multiple
-                answers from the list of choices.</para>
+                <para>Using the <xref linkend="appendixDynamicMenuExamples_mainMenuCode"/> 
+                    from <xref linkend="appendixDynamicMenuExamples_mainMenu"/>, if the user selects the
+                    "Buy a Book" option, the Reading System invokes the getQuestions operation passing in
+                    the following parameter:
+                    <programlisting><xi:include href="./samples/dynamicMenusExamples-purchase-1.xml" parse="text"/></programlisting>
+                    This operation returns the following type:
+                    <programlisting><xi:include href="./samples/dynamicMenusExamples-purchase-2.xml" parse="text"/></programlisting>
+                </para>
+                <para role="tip">The allowMultipleSelections attribute of the multipleChoiceQuestion
+                    element tells the Reading System whether a user should be allowed to select
+                    multiple answers from the list of choices.</para>
 
-            <para>When the User's answers are encapsulated in a userResponses type by the Reading
-                System for a multiple choice question that allows multiple selections, each
-                userResponse element holds information about a single selection. So if the user
-                selected three choices out of a list of five choices, the userResponses type would
-                contain three distinct userResponse child elements that hold information about the
-                three choices that the user selected. This is illustrated in the userResponses type
-                below. </para>
+                <para>When the User's answers are encapsulated in a userResponses type by the
+                    Reading System for a multiple choice question that allows multiple selections,
+                    each userResponse element holds information about a single selection. So if the
+                    user selected three choices out of a list of five choices, the userResponses
+                    type would contain three distinct userResponse child elements that hold
+                    information about the three choices that the user selected. This is illustrated
+                    in the userResponses type below. </para>
 
-            <para>The Reading System renders this type as follows:
-                <literallayout>
+                <para>The Reading System renders this type as follows:
+                    <literallayout>
 Which of the following book(s) would you like to buy? 
 * Harry Potter and the chamber of secrets
 * Harry Potter and the deathly hallows
@@ -1979,93 +1968,70 @@ Which of the following book(s) would you like to buy?
 * Harry Potter and the half-blood Prince
 * Harry Potter and the Order of the Phoenix
 </literallayout>
-                (Assuming that the user selects choices 2, 3 and 5) </para>
+                    (Assuming that the user selects choices 2, 3 and 5) </para>
 
-            <para>The Reading system invokes the getQuestions operation passing in the following
-                parameter:
-                <programlisting><xi:include href="./samples/dynamicMenusExamples-purchase-3.xml" parse="text"/></programlisting>
-                This operation returns the following type:
-                <programlisting><xi:include href="./samples/dynamicMenusExamples-purchase-4.xml" parse="text"/></programlisting>
-                The Reading system renders this type as follows:
-                <literallayout>
+                <para>The Reading system invokes the getQuestions operation passing in the following
+                    parameter:
+                    <programlisting><xi:include href="./samples/dynamicMenusExamples-purchase-3.xml" parse="text"/></programlisting>
+                    This operation returns the following type:
+                    <programlisting><xi:include href="./samples/dynamicMenusExamples-purchase-4.xml" parse="text"/></programlisting>
+                    The Reading system renders this type as follows:
+                    <literallayout>
 Thank you for purchasing "Harry Potter and the deathly hallows," "Harry Potter and the goblet of fire" and "Harry Potter and the Order of the Phoenix." These books have been billed to your credit card. What would you like to do next? 
 * Buy more books
 * Add these books to my download/streaming list
 * Download/Stream these books now
 </literallayout>
-            </para>
-            <para role="tip">This example presumes that a user's billing information is supplied to
-                the Service Provider through an out-of-band channel (i.e. website, phone ...).
-                However, extra steps could be added to this example to collect the user's billing
-                information if such out-of-band mechanisms were not an option. </para>
+                </para>
+                <para role="tip">This example presumes that a user's billing information is supplied
+                    to the Service Provider through an out-of-band channel (i.e. website, phone
+                    ...). However, extra steps could be added to this example to collect the user's
+                    billing information if such out-of-band mechanisms were not an option. </para>
 
-            <para role="tip">If the user selects "Download/Stream these books now, the Service
-                returns a contentListRef child element inside a questions type that contains the id
-                of a contentList, that can be retrieved through a call to the getContentList
-                operation, and that contains the three selected books. </para>
+                <para role="tip">If the user selects "Download/Stream these books now, the Service
+                    returns a contentListRef child element inside a questions type that contains the
+                    id of a contentList, that can be retrieved through a call to the getContentList
+                    operation, and that contains the three selected books. </para>
 
-            <para>Assuming that the user selects "Add these books to my downloading/streaming list,
-                the Reading System invokes the getQuestions operation passing in the following
-                parameter:
-                <programlisting><xi:include href="./samples/dynamicMenusExamples-purchase-5.xml" parse="text"/></programlisting>
-                This operation returns the following type:
-                <programlisting><xi:include href="./samples/dynamicMenusExamples-purchase-6.xml" parse="text"/></programlisting>
-                The Reading System renders this type as follows:
-                <literallayout>
+                <para>Assuming that the user selects "Add these books to my downloading/streaming
+                    list, the Reading System invokes the getQuestions operation passing in the
+                    following parameter:
+                    <programlisting><xi:include href="./samples/dynamicMenusExamples-purchase-5.xml" parse="text"/></programlisting>
+                    This operation returns the following type:
+                    <programlisting><xi:include href="./samples/dynamicMenusExamples-purchase-6.xml" parse="text"/></programlisting>
+                    The Reading System renders this type as follows:
+                    <literallayout>
 Your books have been added to your downloading/streaming list. Please select the "Download or Stream content" option in the Main menu to download/stream these books.
 </literallayout>
-            </para>
+                </para>
+            </example>
         </section>
         <section xml:id="appendixDynamicMenuExamples_retrieve">
-            <title>Retrieving Content</title>
+            <title>Retrieving a Content list</title>
+            <example>
+                <title>Dynamic Menu example: Retrieving a Content list</title>
 
-            <para>Using the aforementioned Main Menu example [TODO link], if the user selects
-                "Download or Stream content", the Reading System invokes the getQuestions operation
-                passing in the following parameter:
-                <programlisting><xi:include href="./samples/dynamicMenusExamples-retrieve-1.xml" parse="text"/></programlisting>
-                This operation returns the following type:
-                <programlisting><xi:include href="./samples/dynamicMenusExamples-retrieve-2.xml" parse="text"/></programlisting>
-                The reading system extracts the id of the contentList from the contentListRef
-                element, and invokes the getContentList operation as follows:
-                <programlisting><xi:include href="./samples/dynamicMenusExamples-retrieve-3.xml" parse="text"/></programlisting>
-                the operation returns the following contentList type:
-                <programlisting><xi:include href="./samples/dynamicMenusExamples-retrieve-4.xml" parse="text"/></programlisting>
-                The Reading System renders this type as follows:
-                <literallayout>
+                <para>Using the <xref linkend="appendixDynamicMenuExamples_mainMenuCode"/> 
+                    from <xref linkend="appendixDynamicMenuExamples_mainMenu"/>, if the user selects the
+                    "Download or Stream content" option, the Reading System invokes the getQuestions
+                    operation passing in the following parameter:
+                    <programlisting><xi:include href="./samples/dynamicMenusExamples-retrieve-1.xml" parse="text"/></programlisting>
+                    This operation returns the following type:
+                    <programlisting><xi:include href="./samples/dynamicMenusExamples-retrieve-2.xml" parse="text"/></programlisting>
+                    The reading system extracts the id of the contentList from the contentListRef
+                    element, and invokes the getContentList operation as follows:
+                    <programlisting><xi:include href="./samples/dynamicMenusExamples-retrieve-3.xml" parse="text"/></programlisting>
+                    the operation returns the following contentList type:
+                    <programlisting><xi:include href="./samples/dynamicMenusExamples-retrieve-4.xml" parse="text"/></programlisting>
+                    The Reading System renders this type as follows:
+                    <literallayout>
 You have the following content waiting to be Downloaded/Streamed
 * Harry Potter and the deathly hallows
 * Harry Potter and the goblet of fire
 * Harry Potter and the Order of the Phoenix
 </literallayout>
-            </para>
+                </para>
+            </example>
         </section>
-        
-        <!-- <section xml:id="fundamentals_dynamic_menus_example_back">
-            <title>The menu "back" feature</title>
-            <para><remark role="todo">May be redundant, given good enough defs in xsd</remark>A
-                Service that supports the "Back Feature" in its Service Attributes is required by
-                the spec to return the previous question (aka menu), when it receives the reserved
-                id "back" in the userResponses parameter passed to the getQuestions operation, at
-                any stage in the Dynamic menu lifecycle. </para>
-
-            <para>The dynamic Menu lifecycle begins when the Reading system invokes the getQuestions
-                operation passing in a UserResponses parameter that contains the reserved id
-                "default" and ends when the Service returns as a child element of a questions type
-                (i.e. the return value of an ensuing getQuestions operation), a ContentListRef or a
-                Label child element.</para>
-
-        </section>-->
-
     </appendix>
-    <!--
-    <appendix xml:id="appendixXSD" conformance="normative">
-        <title>WXS Type Definition</title>
-        <para>
-            <remark role="todo">TODO explain what this is, and add OR change to external file
-                reference</remark>
-        </para>
-        <programlisting><xi:include href="../build/do-types-10.xsd" parse="text"/></programlisting>
-    </appendix>
-    -->
-
 </book>

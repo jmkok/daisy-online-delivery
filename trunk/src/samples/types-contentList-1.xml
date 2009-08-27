@@ -1,0 +1,19 @@
+<contentList xmlns="http://www.daisy.org/ns/daisy-online/" 
+    id="cl123" totalItems="2">
+    <label xml:lang="en">
+        <text>Please select from these publications.</text>
+        <audio uri="http://rnib.org/static/PleaseChooseFrom.mp3" size="12342"/>
+    </label>
+    <contentItem id="uk-rnib-001">
+        <label xml:lang="en">
+            <text>Harry Potter and the Chamber of Secrets</text>
+            <audio uri="http://rnib.org/content/titles/hp_cs.mp3" size="130821"/>
+        </label>
+    </contentItem>
+    <contentItem id="uk-rnib-002">
+        <label xml:lang="en">
+            <text>Harry Potter and the Goblets of Fire</text>
+            <audio uri="http://rnib.org/content/titles/hp_gf.mp3" size="130821"/>
+        </label>
+    </contentItem>
+</contentList>

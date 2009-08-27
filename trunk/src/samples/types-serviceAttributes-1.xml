@@ -1,0 +1,24 @@
+<serviceAttributes xmlns="http://www.daisy.org/ns/daisy-online/">
+  <serviceProvider id="uk-org-rnib" />
+  <service id="uk-org-rnib-libraryServiceDeluxe" />
+  <supportedContentSelectionModels>
+    <model>BROWSE</model>
+    <model>OUT_OF_BAND</model>
+  </supportedContentSelectionModels>
+  <supportedServiceTypes>
+    <type>LIBRARY</type>
+    <type>SHOP</type>
+  </supportedServiceTypes>
+  <supportsServerSideBack>true</supportsServerSideBack>
+  <supportsSearch>true</supportsSearch>
+  <supportedUplinkAudioCodecs>
+    <codec>audio/mpeg</codec>
+  </supportedUplinkAudioCodecs>
+  <supportedOptionalOperations>
+    <operation>DYNAMIC_MENUS</operation>
+    <operation>SET_BOOKMARKS</operation>
+    <operation>GET_BOOKMARKS</operation>
+    <operation>SERVICE_ANNOUNCEMENTS</operation>
+    <operation>PDTB2_KEY_PROVISION</operation>
+  </supportedOptionalOperations>
+</serviceAttributes>

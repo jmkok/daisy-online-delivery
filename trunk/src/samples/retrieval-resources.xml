@@ -3,9 +3,9 @@
         uri="http://rnib.org/content/package.opf"/>
     <resource mimeType="application/x-dtbncx+xml" size="123456" localURI="nav.ncx"
         uri="http://rnib.org/content/nav.ncx"/>
-    <resource mimeType="application/smil" size="567890" localURI="content.smil"
+    <resource mimeType="application/smil" size="567890" localURI="chapter_1.smil"
         uri="http://rnib.org/content/chapter_1.smil"/>
-    <resource mimeType="audio/mpeg" size="123456789" localURI="content.mp3"
+    <resource mimeType="audio/mpeg" size="123456789" localURI="chapter_1.mp3"
         uri="http://rnib.org/content/chapter_1.mp3"/>
     <!-- ... additional resources ... -->
 </resources>
