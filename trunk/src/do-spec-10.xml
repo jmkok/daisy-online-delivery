@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <?oxygen RNGSchema="../util/docbook/rng/docbookxi.rng" type="xml"?>
 <book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns:xi="http://www.w3.org/2001/XInclude" xml:base="." version="5.0">
@@ -1107,12 +1107,31 @@
                 <para>Info on the resources type: how some content formats allows mimetypes to be
                     used to get the most significant stuff first</para>
                 <para>If credentials are needed to access the Content, then the Service must supply
-                    the credentials in the <abbrev>URL</abbrev> of the resource. These credentials
-                    may be the same as the <function>
+                    the credentials in the userinfo field of the <abbrev>URL</abbrev> of the resource.
+                    The URL scheme is as given in RFC 2396, section 3.2.2: <remark role="todo">Add reference to RFC 2396</remark>
+                    <replaceable>userinfo</replaceable>@<replaceable>host</replaceable>:<replaceable>port</replaceable>.
+                    If the credentials consist of a user name and password, then the userinfo must be of the
+                    form <replaceable>user</replaceable>:<replaceable>password</replaceable>.
+                    These credentials may be the same as the <function>
                         <xref linkend="op_logOn"/>
                     </function> credentials, but the Reading System must not send basic
                     authentication credentials if they were not supplied in the
                     <abbrev>URL</abbrev>.</para>
+                
+                <note><title>Security considerations</title>
+                    <para>RFC 2396 recommends against the use of the
+                    <replaceable>user</replaceable>:<replaceable>password</replaceable>
+                    scheme for userinfo, due to the possibility of passing passwords in the clear.
+                    A Service should not use this scheme except over a secure session,
+                    for resources that are served via a secure protocol (such as HTTPS).</para>                
+                    <para>The requirement that credentials must be supplied by the Service implies that
+                    the Service must be able to retrieve these credentials.  A popular security measure,
+                    storing only one-way hashes of passwords to prevent decryption if the password file or
+                    database is accessed by untrusted parties, is therefore impossible to implement.
+                    Services must use some other measure of securly storing passwords for itself or for
+                    Service Delegates.
+                    </para>
+                </note>
                 <para>A DAISY Online session does not need to be active in order for a Reading
                     System to download or stream Content.</para>
                 <para>Resources may be stored on the Service's servers or with Service Delegates,
