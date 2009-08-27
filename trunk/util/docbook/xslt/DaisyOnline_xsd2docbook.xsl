@@ -14,7 +14,7 @@
 		in surrounding parts of the host document
 	-->
 	
-	<xsl:output method="xml" omit-xml-declaration="no" indent="yes"/>
+	<xsl:output method="xml" omit-xml-declaration="no" indent="no"/>
 
 	<!-- import online types schema -->
 	<xsl:variable name="xsd" select="document('../../../src/do-types-10.xsd')"/>
@@ -81,8 +81,7 @@
 									<xsl:if test="./daisy:annotation/db:*">
 										<xsl:copy-of select="./daisy:annotation/db:*" />
 									</xsl:if>
-									<db:programlisting>
-									<xsl:element name="xi:include">
+									<db:programlisting><xsl:element name="xi:include">
 										<xsl:attribute name="href" select="resolve-uri(@src,base-uri())" />
 										<xsl:attribute name="parse">text</xsl:attribute>
 									</xsl:element>
