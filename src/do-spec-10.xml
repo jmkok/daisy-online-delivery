@@ -873,7 +873,7 @@
                             <listitem>
                                 <para>The Reading Device invokes the <xref
                                         linkend="op_getContentList"/> operation, passing the value
-                                        <code>new</code> as the value of the
+                                        <literal>new</literal> as the value of the
                                         <parameter>id</parameter> parameter. The invocation is
                                     either triggered by an explicit User interaction with the
                                     Reading System user interface, or by a Reading System-specific
@@ -1002,7 +1002,7 @@
                     <title>Content Retrieval</title>
                     <para>Given the <xref linkend="term_contentIdentifier"/>
                         <varname>uk-rnib-001</varname>, initially retrieved from the
-                            <literal>id</literal> attribute on a <literal>contentItem</literal> in a
+                            <literal>id</literal> attribute on a <type>contentItem</type> in a
                             <xref linkend="tp_contentList"/>:</para>
                     <orderedlist>
                         <listitem>
@@ -1041,45 +1041,55 @@
             <section xml:id="operations_content_download">
                 <title>Downloading and streaming of content</title>
                 <para>
-                    <remark role="todo">TODO who writes this section?</remark>
+                    <remark role="todo">TODO who writes this section? GGT is writing this section.</remark>
                 </para>
                 <para>
                     <remark role="todo">TODO Add whatever we need to say on this topic. Refer to
-                        Service Delegates. Note that download/streaming can occur after session
-                        termination.</remark>
+                        Service Delegates.</remark>
                 </para>
                 <para>
                     <remark>TODO Important things to include in this section:</remark>
                 </para>
                 <para>Info on the resources type: how some content formats allows mimetypes to be
                     used to get the most significant stuff first</para>
-                <para>If credentials are needed to access the Content, then the Service must supply
-                    the credentials in the userinfo field of the <abbrev>URL</abbrev> of the
-                    resource. The URL scheme is as given in RFC 2396, section 3.2.2: <remark
-                        role="todo">Add reference to RFC 2396</remark>
+				<para>The <code>localFileName</code> attribute specifies the path (delimited with
+				<literal>/</literal>) of the resource relative to the content's root directory.
+				This can be used by download Reading Systems to name the local files.  It can
+				be used by streaming Reading Systems to identify the URI of a resource that is
+				referenced by another resource (such as the link to an audio resource in a
+				SMIL resource in a DAISY DTB).</para>
+                <para>The <code>mimeType</code> attribute specifies <remark role="todo">FIXME</remark>
+				</para>
+				<para>The HTTP Basic Authentication Scheme (in <xref linkend="bib_RFC2617"/>) may be used to secure content against unauthorized access.
+				Since Basic Authentication credentials appear in HTTP headers, they should be used only with
+				HTTPS.
+				If Basic Authentication credentials are needed to access the Content, then the Service must supply
+                    the credentials in the <replaceable>userinfo</replaceable> field of the <abbrev>URI</abbrev> of the
+                    resource. The URI scheme for the server field is as given in
+					<xref linkend="bib_RFC2396"/>, section 3.2.2:
                     <replaceable>userinfo</replaceable>@<replaceable>host</replaceable>:<replaceable>port</replaceable>.
-                    If the credentials consist of a user name and password, then the userinfo must
+                    If the credentials consist of a user name and password, then the <replaceable>userinfo</replaceable> must
                     be of the form
-                        <replaceable>user</replaceable>:<replaceable>password</replaceable>. These
+                        <replaceable>userid</replaceable>:<replaceable>password</replaceable>. These
                     credentials may be the same as the <function>
                         <xref linkend="op_logOn"/>
                     </function> credentials, but the Reading System must not send basic
                     authentication credentials if they were not supplied in the
-                    <abbrev>URL</abbrev>.</para>
-
+                    <abbrev>URI</abbrev>.</para>
                 <note>
                     <title>Security considerations</title>
                     <para>RFC 2396 recommends against the use of the
-                            <replaceable>user</replaceable>:<replaceable>password</replaceable>
-                        scheme for userinfo, due to the possibility of passing passwords in the
-                        clear. A Service should not use this scheme except over a secure session,
+                            <replaceable>userid</replaceable>:<replaceable>password</replaceable>
+                        scheme for <replaceable>userinfo</replaceable>, due to the possibility of transmitting passwords in the
+                        clear. A Service should not use this scheme except over a secure connection,
                         for resources that are served via a secure protocol (such as HTTPS).</para>
                     <para>The requirement that credentials must be supplied by the Service implies
-                        that the Service must be able to retrieve these credentials. A popular
-                        security measure, storing only one-way hashes of passwords to prevent
-                        decryption if the password file or database is accessed by untrusted
-                        parties, is therefore impossible to implement. Services must use some other
-                        measure of securly storing passwords for itself or for Service Delegates.
+                        that the Service must be able to retrieve these credentials. Best practices
+						for authentication are to store a cryptographic hash of each password, to prevent
+                        decryption if the password database is accessed by untrusted parties;
+						however, this method prevents retrieval by the Service.  Services must use some other
+                        method of securely storing passwords for its resources or for Service Delegates'
+						resources.
                     </para>
                 </note>
                 <para>A DAISY Online session does not need to be active in order for a Reading
@@ -1088,9 +1098,18 @@
                     without restriction. Note that Service Delegates may require different
                     credentials for access to resources, or may not require credentials at all. The
                     Service must provide this information to Reading Systems.</para>
-                <para>Range headers for HTTP GET must be supported by the Service. Since there is no
+                <para>If HTTP or HTTPS is used by the Service for serving resources, Range
+				Retrieval Requests (described in section 14.35 of <link linkend="bib_http11">RFC 2616</link>)
+				must be honoured by the Service where possible.  Services must use correct
+				status codes and Content-Range and Content-Length headers when serving partial
+				content (described in section 14.16 of RFC 2616).  Since there is no
                     way to enforce this requirement on Service Delegates, Reading Systems must be
                     able to handle servers that do not support range headers.</para>
+            </section>
+            <section xml:id="operations_content_installments">
+                <title>Publishing content in installments</title>
+				<para><remark role="todo">GGT: Write about how installments are
+				handled.</remark></para>
             </section>
 
             <section xml:id="operations_content_issuing_pdtb">
@@ -1498,15 +1517,30 @@
         <biblioentry xml:id="bib_RFC2119">
             <abbrev>RFC 2119</abbrev>
             <title>
-                <link xlink:href="http://www.ietf.org/rfc/rfc2119.txt">Key words for use in RFCs to
+                <link xlink:href="http://tools.ietf.org/html/rfc2119">Key words for use in RFCs to
                     Indicate Requirement Levels, RFC 2119</link>
             </title>
             <date>March 1997</date>
         </biblioentry>
+        <biblioentry xml:id="bib_RFC2396">
+            <abbrev>RFC 2396</abbrev>
+            <title>
+                <link xlink:href="http://tools.ietf.org/html/rfc2396">Uniform Resource Identifiers
+				(URI): Generic Syntax, RFC 2396</link>
+            </title>
+            <date>August 1998</date>
+        </biblioentry>
+        <biblioentry xml:id="bib_RFC2617">
+            <abbrev>RFC 2617</abbrev>
+            <title>
+                <link xlink:href="http://tools.ietf.org/html/rfc2617">HTTP Authentication: Basic and Digest Access Authentication, RFC 2617</link>
+            </title>
+            <date>June 1999</date>
+        </biblioentry>
         <biblioentry xml:id="bib_mime">
             <abbrev>MIME</abbrev>
             <title>
-                <link xlink:href="http://www.rfc-editor.org/rfc/rfc2046.txt">Multipurpose Internet
+                <link xlink:href="http://tools.ietf.org/html/rfc2046">Multipurpose Internet
                     Mail Extensions (MIME) Part Two: Media Types, RFC 2046</link>
             </title>
             <author>
@@ -1541,9 +1575,10 @@
         <biblioentry xml:id="bib_http11">
             <abbrev>HTTP 1.1</abbrev>
             <title>
-                <link xlink:href="http://www.w3.org/Protocols/rfc2616/rfc2616.html">HyperText
-                    Transfer Protocol 1.1</link>
+                <link xlink:href="http://tools.ietf.org/html/rfc2616">HyperText
+                    Transfer Protocol 1.1, RFC 2616</link>
             </title>
+			<date>June 1999</date>
         </biblioentry>
 
         <biblioentry xml:id="bib_httpcookies">
