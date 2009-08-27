@@ -12,7 +12,7 @@
 		The generated xml uses a predictable id generation, so that its members can be referenced safely 
 		in surrounding parts of the host document
 	-->
-	<xsl:output method="xml" omit-xml-declaration="no" indent="yes"/>
+	<xsl:output method="xml" omit-xml-declaration="no" indent="no"/>
 
 	<xsl:variable name="wsdl" select="document('../../../src/do-wsdl-10.wsdl')"/>
 

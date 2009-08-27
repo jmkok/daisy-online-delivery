@@ -34,11 +34,19 @@
         </p:input>
     </p:xslt>
     
- 	<!-- include for the type samples -->
- 	<p:xinclude name="xinclude-2"/>
+    <!--  temp
+ 	<p:store href="./build/temp-pre-do-spec-10.xml" name="storeDocBookPre" />
+     -->
+     
+ 	<!-- include for the type samples, created by xsd2docbook -->
+ 	<p:xinclude name="xinclude-2">
+ 		<p:input port="source">
+	        <p:pipe step="expandDocBookXSD" port="result"/>
+	    </p:input>
+ 	</p:xinclude>
  	
  	<!-- store docbook only for debugging purposes -->
- 	<p:store href="./build/do-spec-10.xml" name="storeDocBook" />
+ 	<p:store href="./build/temp-do-spec-10.xml" name="storeDocBook" />
  	
 	<p:validate-with-relax-ng assert-valid="true" name="validate">
 	    <p:input port="source">

@@ -7,5 +7,5 @@
         uri="http://rnib.org/content/chapter_1.smil"/>
     <resource mimeType="audio/mpeg" size="123456789" localURI="chapter_1.mp3"
         uri="http://rnib.org/content/chapter_1.mp3"/>
-    <!-- ... additional resources ... -->
+   <!-- … -->
 </resources>
