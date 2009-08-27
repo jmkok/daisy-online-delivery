@@ -1162,7 +1162,7 @@
                     </function> with a list of names of keys on its keyring (these can be all or
                     some of the symmetric keys or public/private keypairs the Reading System
                     supports) and the name of the requested key. The Service is free to choose any
-                    of the keys in the <parameter>supportedPublicKeyNames</parameter> to encrypt the
+                    of the keys in the <parameter>keyNames</parameter> to encrypt the
                     Key Exchange Object (<abbrev>KXO</abbrev>). If the Service does not have any of
                     those keys or if the User is not authorized to access the Content, then the
                     Service will instead reply with an <errorname>
@@ -1180,17 +1180,8 @@
                         Inc. The Reading System calls the <function>
                             <xref linkend="op_getKeyExchangeObject"/>
                         </function> operation with the first parameter,
-                            <parameter>supportedPublicKeyNames</parameter>, as:</para>
-                    <programlisting>
-&lt;itemList&gt;
-  &lt;!-- The vendor, model and instance keys of the reading system. --&gt;
-  &lt;item&gt;DAISY.lv-acme&lt;/item&gt;
-  &lt;item&gt;DAISY.lv-acme.ReaderExpress&lt;/item&gt;
-  &lt;item&gt;DAISY.lv-acme.0034218&lt;/item&gt;
-  &lt;!-- User account keys granted by Haute-Bibliothèque and Apex. --&gt;
-  &lt;item&gt;DAISY.ca-qqhb.006442&lt;/item&gt;
-  &lt;item&gt;DAISY.au-atbi.userKey-4C452DB4&lt;/item&gt;
-&lt;/itemList&gt;</programlisting>
+                            <parameter>keyNames</parameter>, as:</para>
+                    <programlisting><xi:include href="./samples/pdtb-keyNames.xml" parse="text"/></programlisting>
                     <para>and the second parameter,<parameter>requestedKeyName</parameter>, as
                             <literal>DAISY.gy-zlog.afc26219-auth</literal>.</para>
                     <para>The Service determines that the User is authorized to receive this key.
