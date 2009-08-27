@@ -1114,8 +1114,6 @@
 				message="tns:invalidOperationFault_message"/>
 			<fault name="getContentList_invalidParameterFault"
 				message="tns:invalidParameterFault_message"/>
-			<fault name="getContentList_operationNotSupportedFault"
-				message="tns:operationNotSupportedFault_message"/>
 		</operation>
 
 		<operation name="getServiceAnnouncements">

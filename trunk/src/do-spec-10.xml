@@ -197,7 +197,7 @@
             <varlistentry xml:id="term_content">
                 <term>Content</term>
                 <listitem>
-                    <para> Assets made available by the <xref linkend="term_service"/>. Can refer to
+                    <para>Assets made available by the <xref linkend="term_service"/>. Can refer to
                         DAISY DTBs or other resources. </para>
                 </listitem>
             </varlistentry>
@@ -208,8 +208,9 @@
                         defined by the <xref linkend="term_service"/> and is exposed in the <xref
                             linkend="bib_dublinCore"/>
                         <literal>identifier</literal> field of the <xref
-                            linkend="tp_contentMetadata"/> type. The identifier should be
-                        universally unique and static, and must not change between sessions.</para>
+                            linkend="tp_contentMetadata"/> type. The identifier must be unique
+                        within the scope of the Service, and it must be static, i.e. not change over
+                        time.</para>
                     <note>
                         <para>It is not guaranteed that identifiers embedded in certain content
                             formats match this content identifier.</para>
@@ -493,7 +494,7 @@
                                 <xref linkend="bib_wsibasicprofile11"/>. A Daisy Online protocol
                             compliant WSDL must not use any other <xref
                                 linkend="bib_wsibasicprofile11"/> permitted Binding styles (i.e.
-                                RPC-Literal). </para>
+                            RPC-Literal). </para>
                         <!--
                         <note>
                             <para><remark role="todo">TODO Kenny this note can be removed
@@ -524,148 +525,138 @@
                 system that meets its requirements, and modify such a menu system at any stage
                 without requiring any change on the Reading System.</para>
 
-            <section xml:id="fundamentals_dynamic_menus_concepts">
-                <title>Concepts and Feature Details</title>
+            <para>As described in <xref linkend="fundamentals_contentSelectionModels"/>, a Service
+                that supports the <xref linkend="fundamentals_contentSelectionModel_browse"/> must
+                also support the Dynamic Menu feature in order to allow the user to select Content
+                to request issuance and transfer of. Services that only provide the <xref
+                    linkend="fundamentals_contentSelectionModel_outofband"/> do not need to support
+                Dynamic Menus. Note however (and as exemplified in <xref
+                    linkend="appendixDynamicMenuExamples"/>) that it is perfectly possible to use
+                Dynamic Menus for other purposes than content selection.</para>
 
-                <para>The Dynamic Menu feature is built on the concepts listed below. For each
-                    concept, the details of how the concept is implemented in this protocol are also
-                    listed.</para>
+            <para>Services declare whether they support Dynamic Menus in the <xref
+                    linkend="tp_supportedOptionalOperations"/> field of <xref
+                    linkend="tp_serviceAttributes"/>.</para>
+
+            <para>This section describes the fundamental concepts underlying the design of the
+                Dynamic Menu feature. For implementation examples of how to employ this feature,
+                refer to <xref linkend="appendixDynamicMenuExamples"/>.</para>
+
+            <section xml:id="fundamentals_dynamic_menus_concepts">
+                <title>Fundamental Concepts of the Dynamic Menu Feature</title>
 
                 <section xml:id="fundamentals_dynamic_menus_concept1">
-                    <title>Concept 1: a Menu System is a series of interconnected questions</title>
+                    <title>A Menu System is a series of interconnected questions</title>
 
                     <para>The Dynamic Menu feature requires the implementation of the single
                         operation <function>
                             <xref linkend="op_getQuestions"/>
                         </function>. The <function>getQuestions</function> operation is invoked when
-                        a Reading System needs to retrieve a question from a Service. There are two
-                        kinds of questions: multiple choice questions and input questions.</para>
+                        a Reading System wants to initiate a Dynamic Menu operation sequence, as
+                        well as when it wants to retrieve the next question (aka menu item) in the
+                        operation sequence. </para>
 
-                    <para>Multiple choice questions are questions that include a pre-defined set of
-                        choices that a user is required to pick from in order to answer the
-                        question. A Multiple choice question is represented by the <xref
-                            linkend="tp_multipleChoiceQuestion"/> element, which appears inside the
-                            <xref linkend="tp_questions"/> element.</para>
+                    <para>There are two kinds of questions: </para>
 
-                    <para>Input questions are questions that do not offer such a pre-defined set of
-                        choices, but require the user to respond to the question through either
-                        numeric, alphanumeric or audio input.</para>
+                    <itemizedlist>
+                        <listitem>
+                            <para>Multiple choice questions are questions that include a pre-defined
+                                set of choices that a user is required to pick from in order to
+                                answer the question. A Multiple choice question is represented by
+                                the <xref linkend="tp_multipleChoiceQuestion"/> element, which
+                                appears inside the <xref linkend="tp_questions"/> element.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Input questions are questions that do not offer such a pre-defined
+                                set of choices, but require the user to respond to the question
+                                through either numeric, alphanumeric or audio input. An input
+                                question is represented by the <xref linkend="tp_inputQuestion"/>
+                                element which appears inside the <xref linkend="tp_questions"/>
+                                element.</para>
 
-                    <para>A Service can specify whether an input question requires numeric,
-                        alphanumeric or audio input from a user by specifying "TEXT_NUMERIC",
-                        "TEXT_ALPHANUMERIC" or "AUDIO" in the <xref linkend="tp_inputTypes"/>
-                        element which appears inside the inputQuestion element, for example:
-                        <programlisting><xi:include href="./samples/dynamicMenusIntro-1.xml" parse="text"/></programlisting>
-                    </para>
+                            <para>A Service can specify whether a given input question requires a
+                                numeric, alphanumeric or audio-based response from the User.
+                                Combined modalities are also allowed. The required response modality
+                                for an input question is specified in the <xref
+                                    linkend="tp_inputTypes"/> element which appears inside the <xref
+                                    linkend="tp_inputQuestion"/> element.</para>
+                            <para>A Reading System declares which input types it supports in <xref
+                                    linkend="tp_readingSystemAttributes"/>, which means that the
+                                Service can adapt to possible Reading System constraints in this
+                                regard. </para>
+                        </listitem>
+                    </itemizedlist>
 
-                    <para>An input question, as illustrated above, is represented by the <xref
-                            linkend="tp_inputQuestion"/> element which appears inside the <xref
-                            linkend="tp_questions"/> element.</para>
-
-                    <para>The getQuestions operation returns a questions type, that may contain: <itemizedlist>
+                    <para>The <xref linkend="op_getQuestions"/> operation returns a <xref
+                            linkend="tp_questions"/> type, that may contain: <itemizedlist>
                             <listitem>
                                 <para>One or more multiple choice questions or input questions
-                                    through the multipleChoiceQuestion and inputQuestion child
-                                    elements, for example: <programlisting><xi:include href="./samples/dynamicMenusIntro-2.xml" parse="text"/></programlisting>
-                                    <!--
-                                    Which corresponds to the following three questions:
-                                    i. Your Name?
-                                    ii. your Address?
-                                    iii. Your gender?
-                                    *Male
-                                    * Female -->
+                                    through the <xref linkend="tp_multipleChoiceQuestion"/> and
+                                        <xref linkend="tp_inputQuestion"/> child
+                                    elements.
                                 </para>
                             </listitem>
                             <listitem>
-                                <para>A <xref linkend="tp_label"/> child element, for example:
-                                    <programlisting><xi:include href="./samples/dynamicMenusIntro-3.xml" parse="text"/></programlisting>
+                                <para>A <xref linkend="tp_label"/> child element.
                                 </para>
                             </listitem>
                             <listitem>
                                 <para>The ID of a <xref linkend="tp_contentList"/> type through the
-                                        <xref linkend="tp_contentListRef"/> child element, for
-                                    example:
-                                    <programlisting><xi:include href="./samples/dynamicMenusIntro-4.xml" parse="text"/></programlisting>
+                                        <xref linkend="tp_contentListRef"/> child element.
                                 </para>
                             </listitem>
                         </itemizedlist>
                     </para>
 
-                    <note>
-                        <para>Note: Although the questions type conceptually corresponds to a
-                            container for one or more questions (multiple choice question(s) or
-                            input question(s)), as illustrated above, it can also contain a label
-                            child element or a contentListRef child element. More information about
-                            the contexts in which a Service may return a label child element or a
-                            contentListRef child element is available in <xref
-                                linkend="appendixDynamicMenuExamples"/> See also <xref
-                                linkend="fundamentals_dynamic_menus_concept4"/>.</para>
-                    </note>
+                    <para>Although the questions type conceptually corresponds to a container
+                        for one or more questions (multiple choice question(s) or input
+                        question(s)), it can also contain a <xref linkend="tp_label"/> child element or a <xref linkend="tp_contentListRef"/>
+                        child element. The occurence of <type>label</type> or <type>contentListRef</type> corresponds to the case 
+                        where a Dynamic Menu operation sequence has reached its "logical end", e.g. when the
+                        Service presents a final result to the User. In the label case, the result is an informative 
+                        statement ("Thank you for borrowing this book!"), and in the contentListRef case it
+                        is a reference to a list of Content items that have been made available as a result of the
+                        Dynamic Menu operation sequence. Refer to <xref
+                            linkend="appendixDynamicMenuExamples_profileUpdate"/> for concrete examples on "logical ends".</para>                        
                 </section>
                 <section xml:id="fundamentals_dynamic_menus_concept2">
-                    <title>Concept 2: a Menu System has a root question</title>
+                    <title>A Menu System has a root question</title>
 
                     <para>A Menu System has a root question - the first question in the series of
-                        interconnected questions, typically referred to as the "main menu".</para>
+                        interconnected questions, conceptually corresponding to the "main menu".</para>
 
                     <para>A Reading system Retrieves the root question (aka main menu) of a Service
                         by invoking the <function>getQuestions</function> operation and passing in
-                        the reserved id <literal>default</literal> through the userResponses
-                        parameter:
-                        <programlisting><xi:include href="./samples/dynamicMenusIntro-5.xml" parse="text"/></programlisting>
+                        the reserved id <literal>default</literal>. Refer to <xref linkend="appendixDynamicMenuExamples_mainMenu"/> for a concrete
+                        example.
                     </para>
-                    <!-- TODO See further... -->
-                    <!--                                    
-                    the entire usage scenario is available in the next section in "1. Usage Scenario: How to use the dynamic menu 
-                    feature to retrieve the Main Menu from a Service." the next section also provides detailed information on the three 
-                    pre-defined reserved IDs that have a special significance when present in a userResponses type:        
-                    a. Default.
-                    b. Search.
-                    c. back.-->
-                </section>
+                    
+                    <note><para>There are two additional reserved IDs used on the context of <function>getQuestion</function>: <literal>search</literal> and <literal>back</literal>, whose
+                    use is defined in <xref linkend="tp_userResponse"/>.</para></note>
+                 </section>
                 <section xml:id="fundamentals_dynamic_menus_concept3">
-                    <title>Concept 3: the response determines the next question</title>
+                    <title>The response determines the next question</title>
 
                     <para>In a menu system, a User's response to a question determines what question
-                        will be presented to the user next.</para>
+                        will be presented to the user next. The Dynamic Menu feature of this protocol
+                    has been designed to be as efficient as possible in terms of the number of operation invocations
+                    required, therefore the <xref linkend="op_getQuestions"/> operation takes as a parameter the User's
+                        response to the <emphasis>previous</emphasis> question.</para>
 
                     <para>The <xref linkend="op_getQuestions"/> operation takes one parameter. The
                         data type of this parameter is <type>
                             <xref linkend="tp_userResponses"/>
-                        </type>. The <type>userResponses</type> type has been designed to carry the
+                        </type>.</para> 
+                        
+                        <para>The <type>userResponses</type> type has been designed to carry the
                         response(s) of a user to a question(s). The response can either be a
                         choice(s) that the user picked for a <xref
-                            linkend="tp_multipleChoiceQuestion"/>, or a NUMERIC, ALPHA NUMERIC or
-                        AUDIO response to an <xref linkend="tp_inputQuestion"/>. The
+                            linkend="tp_multipleChoiceQuestion"/>, or a numeric, alphanumeric or
+                        audio-based response to an <xref linkend="tp_inputQuestion"/>. The
                             <type>userResponses</type> type can have one or more <type>
                             <xref linkend="tp_userResponse"/>
                         </type> child elements. Each <type>userResponse</type> child element
                         contains the user's response to a particular question.</para>
-
-                    <para>For example, given the question "what is your name?" to which the user
-                        responds with an alphanumeric input "Joe", the resultant
-                            <type>userResponses</type> type passed by the Reading System as a
-                        parameter to the next getQuestions operation call would be:
-                        <programlisting><xi:include href="./samples/dynamicMenusIntro-6.xml" parse="text"/></programlisting>
-                    </para>
-                    <!--
-                    for more information on how the userResponses type can be used in different scenarios, please refer to the next section.  
-                    -->
-                </section>
-                <section xml:id="fundamentals_dynamic_menus_concept4">
-                    <title>Concept 4: the logical end</title>
-                    <para>There may be a logical end to a menu system: the last question in a series
-                        of questions.</para>
-                    <para>When an invocation of the <function>
-                            <xref linkend="op_getQuestions"/>
-                        </function> operation results in a questions type that contains a <xref
-                            linkend="tp_label"/> or <xref linkend="tp_contentListRef"/> child
-                        element, no further calls to the <function>getQuestions</function> operation
-                        are required, and the operation sequence is conceived to be at its logical
-                        end.</para>
-                    <!--
-                    for further information about the Label and [element name?] elements appearing as child elements of the questions type, please refer to the next section.   
-                    -->
                 </section>
             </section>
         </section>
@@ -1107,29 +1098,32 @@
                 <para>Info on the resources type: how some content formats allows mimetypes to be
                     used to get the most significant stuff first</para>
                 <para>If credentials are needed to access the Content, then the Service must supply
-                    the credentials in the userinfo field of the <abbrev>URL</abbrev> of the resource.
-                    The URL scheme is as given in RFC 2396, section 3.2.2: <remark role="todo">Add reference to RFC 2396</remark>
+                    the credentials in the userinfo field of the <abbrev>URL</abbrev> of the
+                    resource. The URL scheme is as given in RFC 2396, section 3.2.2: <remark
+                        role="todo">Add reference to RFC 2396</remark>
                     <replaceable>userinfo</replaceable>@<replaceable>host</replaceable>:<replaceable>port</replaceable>.
-                    If the credentials consist of a user name and password, then the userinfo must be of the
-                    form <replaceable>user</replaceable>:<replaceable>password</replaceable>.
-                    These credentials may be the same as the <function>
+                    If the credentials consist of a user name and password, then the userinfo must
+                    be of the form
+                        <replaceable>user</replaceable>:<replaceable>password</replaceable>. These
+                    credentials may be the same as the <function>
                         <xref linkend="op_logOn"/>
                     </function> credentials, but the Reading System must not send basic
                     authentication credentials if they were not supplied in the
                     <abbrev>URL</abbrev>.</para>
-                
-                <note><title>Security considerations</title>
+
+                <note>
+                    <title>Security considerations</title>
                     <para>RFC 2396 recommends against the use of the
-                    <replaceable>user</replaceable>:<replaceable>password</replaceable>
-                    scheme for userinfo, due to the possibility of passing passwords in the clear.
-                    A Service should not use this scheme except over a secure session,
-                    for resources that are served via a secure protocol (such as HTTPS).</para>                
-                    <para>The requirement that credentials must be supplied by the Service implies that
-                    the Service must be able to retrieve these credentials.  A popular security measure,
-                    storing only one-way hashes of passwords to prevent decryption if the password file or
-                    database is accessed by untrusted parties, is therefore impossible to implement.
-                    Services must use some other measure of securly storing passwords for itself or for
-                    Service Delegates.
+                            <replaceable>user</replaceable>:<replaceable>password</replaceable>
+                        scheme for userinfo, due to the possibility of passing passwords in the
+                        clear. A Service should not use this scheme except over a secure session,
+                        for resources that are served via a secure protocol (such as HTTPS).</para>
+                    <para>The requirement that credentials must be supplied by the Service implies
+                        that the Service must be able to retrieve these credentials. A popular
+                        security measure, storing only one-way hashes of passwords to prevent
+                        decryption if the password file or database is accessed by untrusted
+                        parties, is therefore impossible to implement. Services must use some other
+                        measure of securly storing passwords for itself or for Service Delegates.
                     </para>
                 </note>
                 <para>A DAISY Online session does not need to be active in order for a Reading
@@ -1287,9 +1281,10 @@
                                 Reading System invokes the <xref linkend="op_returnContent"/>
                                 operation, passing the <xref linkend="term_contentIdentifier"
                                 />.</para>
+                            <!--
                             <programlisting><xi:include href="./samples/return-return1.xml" parse="text"/></programlisting>
                             <para> followed by </para>
-                            <programlisting><xi:include href="./samples/return-return2.xml" parse="text"/></programlisting>
+                            <programlisting><xi:include href="./samples/return-return2.xml" parse="text"/></programlisting> -->
                         </listitem>
                         <listitem>
                             <para>[Required] For each of the <xref linkend="op_returnContent"/>
@@ -1420,10 +1415,15 @@
                 <para>This specification does not endorse this behavior, but merely suggests that
                     Services should be designed with the awareness that a Reading System may post a
                         <xref linkend="tp_bookmarkSet"/> type even if the given Content type is not
-                        ANSI/NISO Z39.86.</para>
+                    ANSI/NISO Z39.86.</para>
             </note>
             <!--</section>-->
-            
+            <note>
+                <para><xref linkend="bib_z3986-2005-bkmk"/> allows User audio recordings in notes.
+                    This version of this specification does not allow such recordings to be
+                    submitted to the Service as part of the <xref linkend="op_setBookmarks"/>
+                    operation.</para>
+            </note>
             <section xml:id="operations_bookmarks_example" conformance="informative">
                 <title>Bookmarks Example</title>
                 <example>
@@ -1456,10 +1456,9 @@
                                 the <type>bookmarkSet</type> type as parameters.</para>
                         </listitem>
                         <listitem>
-                            <para>The user goes home, logs in to the same Service, and opens the Content 
-                                with Content Identifier
-                                <literal>us-rfbd-JT065</literal> on a portable Reading
-                                System.</para>
+                            <para>The user goes home, logs in to the same Service, and opens the
+                                Content with Content Identifier <literal>us-rfbd-JT065</literal> on
+                                a portable Reading System.</para>
                             <para>The user activates the "load bookmarks from service" feature on
                                 the Reading System. The reading system invokes the <xref
                                     linkend="op_getBookmarks"/> operation, passing the Content
@@ -1738,7 +1737,8 @@
 
     <appendix xml:id="appendixDynamicMenuExamples" conformance="informative">
         <title>Dynamic Menu Usage Examples</title>
-        <section xml:id="fundamentals_dynamic_menus_example_mainMenu">
+        <para><remark role="todo">TODO extensive editing remains in this appendix</remark></para>
+        <section xml:id="appendixDynamicMenuExamples_mainMenu">
             <title>Retrieving the main menu</title>
             <para>The Reading System retrieves the Main Menu of the Service by invoking the
                 getQuestions operation with the reserved id "default" by passing in the following
@@ -1782,7 +1782,7 @@
                 book * Download or Stream content </para>
 
         </section>
-        <section xml:id="fundamentals_dynamic_menus_example_search">
+        <section xml:id="appendixDynamicMenuExamples_search">
             <title>Performing Search</title>
             <para>As Search is envisaged to be a very important part of the Online Distribution of
                 content, and thus the Reading Systems may have specific user interface components to
@@ -1873,7 +1873,7 @@ the reading system invokes the getContentResources operation passing in the id o
 </paratip> 
                         -->
         </section>
-        <section xml:id="fundamentals_dynamic_menus_example_profileUpdate">
+        <section xml:id="appendixDynamicMenuExamples_profileUpdate">
             <title>Updating the User Profile</title>
 
             <para>Using the [TODO link]aforementioned Main Menu example, if the user selects "update
@@ -1912,7 +1912,7 @@ Your profile has been updated successfully!
             </para>
 
         </section>
-        <section xml:id="fundamentals_dynamic_menus_example_survey">
+        <section xml:id="appendixDynamicMenuExamples_survey">
             <title>Taking a Survey (with audio responses)</title>
 
             <para>Using the aforementioned [TODO link]Main Menu example, if the user selects "Take a
@@ -1948,7 +1948,7 @@ Thank you for taking the Survey! What would you like to do next?
 * Go back to the Main Menu
 </literallayout></para>
         </section>
-        <section xml:id="fundamentals_dynamic_menus_example_purchase">
+        <section xml:id="appendixDynamicMenuExamples_purchase">
             <title>Content Purchase</title>
 
             <para>Using the aforementioned Main Menu example [TODO link], if the user selects "Buy a
@@ -2016,7 +2016,7 @@ Your books have been added to your downloading/streaming list. Please select the
 </literallayout>
             </para>
         </section>
-        <section xml:id="fundamentals_dynamic_menus_example_retrieve">
+        <section xml:id="appendixDynamicMenuExamples_retrieve">
             <title>Retrieving Content</title>
 
             <para>Using the aforementioned Main Menu example [TODO link], if the user selects
@@ -2039,7 +2039,8 @@ You have the following content waiting to be Downloaded/Streamed
 </literallayout>
             </para>
         </section>
-        <section xml:id="fundamentals_dynamic_menus_example_back">
+        
+        <!-- <section xml:id="fundamentals_dynamic_menus_example_back">
             <title>The menu "back" feature</title>
             <para><remark role="todo">May be redundant, given good enough defs in xsd</remark>A
                 Service that supports the "Back Feature" in its Service Attributes is required by
@@ -2053,7 +2054,7 @@ You have the following content waiting to be Downloaded/Streamed
                 (i.e. the return value of an ensuing getQuestions operation), a ContentListRef or a
                 Label child element.</para>
 
-        </section>
+        </section>-->
 
     </appendix>
     <!--
