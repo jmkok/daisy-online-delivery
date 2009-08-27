@@ -1055,7 +1055,7 @@
 				<db:para role="desc">Retrieves <db:xref linkend="tp_resources"/> for the specified
 					content.</db:para>
 				<db:para role="prereq">This operation is only valid if a previous call to <db:xref
-						linkend="op_issueContent"/> with a result of <db:varname>true</db:varname>
+						linkend="op_issueContent"/> with a result of <db:literal>true</db:literal>
 					has been made for the given content, during the current or a previous
 					Session.</db:para>
 			</documentation>

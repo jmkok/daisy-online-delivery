@@ -25,6 +25,6 @@
         mimeType="application/x-pdtbmpeg" size="881371"/>
     <resource uri="http://sqla.hbq.qc.ca/sdel/B612/dtb_0002.smil" localURI="dtb_0002.smil"
         mimeType="application/smil" size="84604"/>
-    <resource uri="http://sqla.hbq.qc.ca/sdel/B612/dtb_0002_Texte.mp3" localURI="dtb_0001_Texte.mp3"
+    <resource uri="http://sqla.hbq.qc.ca/sdel/B612/dtb_0002_Texte.mp3" localURI="dtb_0002_Texte.mp3"
         mimeType="application/x-pdtbmpeg" size="20961804"/>
 </resources>
