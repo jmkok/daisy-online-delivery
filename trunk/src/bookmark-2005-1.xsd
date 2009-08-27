@@ -3,8 +3,11 @@
 <xs:schema id="bookmark-2005-1"
 	xmlns="http://www.daisy.org/z3986/2005/bookmark/"
 	targetNamespace="http://www.daisy.org/z3986/2005/bookmark/"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:db="http://docbook.org/ns/docbook">
+        
+        <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
         
         <xs:annotation>
                 <xs:documentation>
@@ -78,6 +81,7 @@
                 </xs:annotation>
                 <xs:complexType>
                         <xs:group ref="bookmarkContent"/>
+                        <xs:attribute name="label" type="xs:string" use="optional"/>
                 </xs:complexType>
         </xs:element>
         
@@ -94,8 +98,12 @@
                         </xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
-                        <xs:group ref="bookmarkContent"/>
+                        <xs:sequence>
+                                <xs:group ref="bookmarkContent"/>
+                                <xs:element ref="note" minOccurs="0"/>
+                        </xs:sequence>
                         <xs:attribute name="label" type="xs:string" use="optional"/>
+                        <xs:attribute ref="xml:lang" use="optional"/>
                 </xs:complexType>
         </xs:element>
         
@@ -178,13 +186,12 @@
         </xs:element>
         
         
-        <xs:element name="URI">
+        <xs:element name="URI" type="xs:anyURI">
                 <xs:annotation>
                         <xs:documentation>
                                 <db:para>pointer to id of &lt;par&gt; or &lt;seq&gt; in SMIL that contains the bookmark.</db:para>
                         </xs:documentation>
                 </xs:annotation>
-                <xs:complexType mixed="true"/>
         </xs:element>
         
         
@@ -205,7 +212,7 @@
                         </xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
-                        <xs:attribute name="src" form="unqualified" type="xs:string"/>
+                        <xs:attribute name="src" form="unqualified" type="xs:anyURI"/>
                         <xs:attribute name="clipBegin" form="unqualified" type="xs:string"/>
                         <xs:attribute name="clipEnd" form="unqualified" type="xs:string"/>
                 </xs:complexType>
@@ -222,10 +229,13 @@
                         </xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
-                        <xs:sequence>
-                                <xs:element ref="text" minOccurs="0"/>
-                                <xs:element ref="audio" minOccurs="0"/>
-                        </xs:sequence>
+                        <xs:choice>
+                                <xs:sequence>
+                                        <xs:element ref="text"/>
+                                        <xs:element ref="audio" minOccurs="0"/>
+                                </xs:sequence>
+                                <xs:element ref="audio"/>
+                        </xs:choice>
                 </xs:complexType>
         </xs:element>
         
@@ -241,7 +251,6 @@
                                 </xs:sequence>
                                 <xs:element ref="charOffset"/>
                         </xs:choice>
-                        <xs:element ref="note" minOccurs="0"/>
                 </xs:sequence>
         </xs:group>
         
