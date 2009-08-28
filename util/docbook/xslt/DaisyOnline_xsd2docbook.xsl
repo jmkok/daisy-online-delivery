@@ -245,11 +245,11 @@
 	<!-- wrap groups in parentheses -->
 	<xsl:template name="processCMGroup">
 		
-		<xsl:text> (</xsl:text>
+		<xsl:text> ( </xsl:text>
 			<xsl:call-template name="generateCM">
 				<xsl:with-param name="thisType" select="."/>
 			</xsl:call-template>
-		<xsl:text>)</xsl:text>
+		<xsl:text> )</xsl:text>
 		
 		<xsl:call-template name="addModifier"/>
 		<xsl:text> </xsl:text>
