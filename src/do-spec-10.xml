@@ -502,8 +502,8 @@
                 <section xml:id="fundamentals_protocols_https-ssl">
                     <title>https and SSL</title>
 
-                    <para>If an http connection needs to be secured, the URI should state “https://”
-                        instead of “http://”. Any certificates used by the server should be
+                    <para>If an http connection needs to be secured, the URI should state "https://"
+                        instead of "http://". Any certificates used by the server should be
                         registered and should not be self signed <remark role="todo"
                             >TODO [Jelle] confirm</remark>.</para>
 
@@ -530,9 +530,18 @@
                     <para>For purposes of data/content transfer, <code>range</code> requests and
                         responses must be implemented by the server [<remark role="todo">TODO link to range header
                         RFC]</remark>. When server-side scripts are being used to serve content, then at
-                        least the “Content-Length”, “Content-Range” and “HTTP/1.0 206 Partial
-                        Content” headers must be specified, and the “Content-Type” and “Last-Modified”
+                        least the "Content-Length", "Content-Range" and "HTTP/1.0 206 Partial
+                        Content" headers must be specified, and the "Content-Type" and "Last-Modified"
                         headers should be verified. <remark role="todo">TODO verified or specified?</remark></para>
+						
+						<para><remark>Moved from 5.3.3.</remark>
+						If HTTP or HTTPS is used by the Service for serving resources, Range Retrieval
+                    Requests (described in section 14.35 of <link linkend="bib_http11">RFC
+                        2616</link>) must be honoured by the Service where possible. Services must
+                    use correct status codes and Content-Range and Content-Length headers when
+                    serving partial content (described in section 14.16 of RFC 2616). Since there is
+                    no way to enforce this requirement on Service Delegates, Reading Systems must be
+                    able to handle servers that do not support range headers.</para>
                 </section>
             </section>
 
@@ -563,7 +572,14 @@
                 
                 <para>When a Reading System encounters an URL that specifies authentication, then the Reading System client is
                     required to use that authentication in its connection to the Service. Basic
-                    Authentication must be used (<xref linkend="bib_RFC2617"/>).</para> 
+                    Authentication must be used (<xref linkend="bib_RFC2617"/>).
+					
+					<remark>Moved from 5.3.3.</remark>
+					The HTTP Basic Authentication Scheme (in <xref linkend="bib_RFC2617"/>) may be
+                    used to secure content against unauthorized access. Since Basic Authentication
+                    credentials appear in HTTP headers, they should be used only with HTTPS.
+					
+					</para> 
                 
 
                 <section xml:id="fundamentals_protocols_underlying_cookies">
@@ -1125,9 +1141,7 @@
                 <para>The <code>mimeType</code> attribute specifies <remark role="todo"
                         >FIXME</remark>
                 </para>
-                <para>The HTTP Basic Authentication Scheme (in <xref linkend="bib_RFC2617"/>) may be
-                    used to secure content against unauthorized access. Since Basic Authentication
-                    credentials appear in HTTP headers, they should be used only with HTTPS. If
+                <para>If
                     Basic Authentication credentials are needed to access the Content, then the
                     Service must supply the credentials in the <replaceable>userinfo</replaceable>
                     field of the <abbrev>URI</abbrev> of the resource. The URI scheme for the server
@@ -1163,13 +1177,6 @@
                     without restriction. Note that Service Delegates may require different
                     credentials for access to resources, or may not require credentials at all. The
                     Service must provide this information to Reading Systems.</para>
-                <para>If HTTP or HTTPS is used by the Service for serving resources, Range Retrieval
-                    Requests (described in section 14.35 of <link linkend="bib_http11">RFC
-                        2616</link>) must be honoured by the Service where possible. Services must
-                    use correct status codes and Content-Range and Content-Length headers when
-                    serving partial content (described in section 14.16 of RFC 2616). Since there is
-                    no way to enforce this requirement on Service Delegates, Reading Systems must be
-                    able to handle servers that do not support range headers.</para>
             </section>
             <section xml:id="operations_content_installments">
                 <title>Publishing content in installments</title>
