@@ -2,6 +2,7 @@
 <xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified"
 	targetNamespace="http://www.daisy.org/ns/daisy-online/"
 	xmlns="http://www.daisy.org/ns/daisy-online/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
 	xmlns:db="http://docbook.org/ns/docbook" xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 	<xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
@@ -67,8 +68,8 @@
 								<xs:annotation>
 									<xs:documentation>
 										<db:para role="desc">Specifies whether the Reading System
-											supports multiple selections for a <db:xref linkend="tp_multipleChoiceQuestion"/>.
-										</db:para>
+											supports multiple selections for a <db:xref
+												linkend="tp_multipleChoiceQuestion"/>. </db:para>
 										<db:para role="req">If this element is set to false, the
 											Service must not present the allowMultipleSelections
 											attribute with a value of true on the <db:xref
@@ -148,9 +149,10 @@
 										<db:para>A Service may use this information to adapt content
 											types offered to the Reading System as labels and
 											content.</db:para>
-										<db:para>Content types for which support is implied by the Content
-											formats in <db:xref linkend="tp_supportedContentFormats"/> need
-											 not be included here.</db:para>
+										<db:para>Content types for which support is implied by the
+											Content formats in <db:xref
+												linkend="tp_supportedContentFormats"/> need not be
+											included here.</db:para>
 									</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
@@ -263,15 +265,16 @@
 					<xs:annotation>
 						<xs:documentation>
 							<db:para role="desc">Specifies whether the Reading System requires audio
-								labels for messages (<db:xref linkend="tp_label"/>) issued by the
+								labels for messages (see <db:xref linkend="tp_label"/>) issued by the
 								Service.
-								<!-- This may occur when a Reading System does not have a built-in TTS. -->
 							</db:para>
-							<db:para role="req">If a Service does not support audio labels, it must
+							<db:para role="req"><!-- If a Service does not support audio labels, it must
 								throw an OperationNotSupported Fault on subsequent calls to
-								operations that include <db:xref linkend="tp_label"/> types. TODO
+								operations that include <db:xref linkend="tp_label"/> types. --> 
+								<db:remark role="todo">TODO specify what a Service should do if
+									it does not support audio labels.</db:remark><!--TODO
 								this isnt really compatible with the use of label in eg
-								metadata.</db:para>
+								metadata. --> </db:para>
 						</xs:documentation>
 					</xs:annotation>
 				</xs:element>
@@ -347,7 +350,10 @@
 	<xs:element name="label">
 		<xs:annotation>
 			<xs:documentation>
-				<db:para>A multi-purpose label, containing text and optionally audio.</db:para>
+				<db:para role="desc">A multi-purpose label, containing text and optionally audio.</db:para>
+				<db:para>To achieve maximum interoperability, Services should support the provision of audio labels, 
+				as Reading Systems may <db:link linkend="tp_requiresAudioLabels">require</db:link> such to
+				provided in order to function.</db:para>
 			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -437,7 +443,8 @@
 									<db:para>Reading Systems may retrieve the sample by calling
 											<db:xref linkend="op_getContentResources"/> with this
 										identifier as the parameter. Reading Systems must not invoke
-									<db:xref linkend="op_issueContent"/> using the ID of a sample.</db:para>
+											<db:xref linkend="op_issueContent"/> using the ID of a
+										sample.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
@@ -453,18 +460,21 @@
 								by <db:xref linkend="bib_dublinCore"/>. Note that the value of the
 								Dublin Core <db:literal>identifier</db:literal> element represents
 								the <db:xref linkend="term_contentIdentifier"/> of the Content item
-								being described.</db:para>							
-							<db:para>Additional arbitrary metadata can be provided using the generic <db:type>meta</db:type> 
-							element for any exrpession not relating to Dublin Core.</db:para>
-							<db:para>The prefix <db:literal>pdtb2</db:literal> in the name attribute of a meta element 
-								is reserved to refer to properties of <db:xref linkend="bib_pdtb2"/>.</db:para>
-							<db:para>The value <db:literal>pdtb2:specVersion</db:literal> in the name attribute of a meta element
-								signals that the content being described is protected using means defined by <db:xref linkend="bib_pdtb2"/></db:para>
+								being described.</db:para>
+							<db:para>Additional arbitrary metadata can be provided using the generic
+									<db:type>meta</db:type> element for any exrpession not relating
+								to Dublin Core.</db:para>
+							<db:para>The prefix <db:literal>pdtb2</db:literal> in the name attribute
+								of a meta element is reserved to refer to properties of <db:xref
+									linkend="bib_pdtb2"/>.</db:para>
+							<db:para>The value <db:literal>pdtb2:specVersion</db:literal> in the
+								name attribute of a meta element signals that the content being
+								described is protected using means defined by <db:xref
+									linkend="bib_pdtb2"/></db:para>
 						</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
 						<xs:sequence>
-							<!-- TODO use label for metadata, serviceid and providerid -->
 							<xs:element ref="dc:title" minOccurs="1" maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>
@@ -628,10 +638,10 @@
 									</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
-									<xs:attribute name="name" use="required" />
-									<xs:attribute name="content" use="required" />
+									<xs:attribute name="name" use="required"/>
+									<xs:attribute name="content" use="required"/>
 								</xs:complexType>
-							</xs:element>							
+							</xs:element>
 							<xs:choice minOccurs="0" maxOccurs="unbounded">
 								<xs:any namespace="##other" processContents="lax"/>
 							</xs:choice>
@@ -696,8 +706,6 @@
 							</xs:annotation>
 						</xs:attribute>
 						<xs:attribute name="mimeType" type="xs:string" use="required">
-							<!-- TODO add note that PDTB2 mimetypes should be used -->
-							<!-- TODO stay silent on 2.02 Mime types? Those are not specified anywhere -->
 							<xs:annotation>
 								<xs:documentation>
 									<db:para>The <db:xref linkend="bib_mime"/> type of the
@@ -896,12 +904,12 @@
 												<xs:documentation>
 												<db:para>The Reading System supports User input
 												using a numeric keypad.</db:para>
-													<db:para role="note">Note: this value is a
-														subset of
-														<db:varname>TEXT_ALPHANUMERIC</db:varname>.</db:para>
+												<db:para role="note">Note: this value is a subset
+												of
+												<db:varname>TEXT_ALPHANUMERIC</db:varname>.</db:para>
 												</xs:documentation>
 												</xs:annotation>
-												</xs:enumeration>	
+												</xs:enumeration>
 												<xs:enumeration value="TEXT_ALPHANUMERIC">
 												<xs:annotation>
 												<xs:documentation>
@@ -950,7 +958,8 @@
 					element, the Reading system is not required to call the getQuestions operation
 					as these child elements signify a logical end to the sequence of questions that
 					comprise a dynamic menu.</db:para>
-				<db:para>For examples on usage of the questions type, refer to <db:xref linkend="appendixDynamicMenuExamples"/>.</db:para>
+				<db:para>For examples on usage of the questions type, refer to <db:xref
+						linkend="appendixDynamicMenuExamples"/>.</db:para>
 			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -1047,10 +1056,18 @@
 							<xs:element name="data" minOccurs="0" maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>
-										<db:para>TODO specify that WAV is required, other codecs
-											supported by the service declared by
-											getServiceAttributes. TODO add note that MTOM is not
-											allowed.</db:para>
+										<db:para role="desc">Embeds the data of an audio-based User
+											response.</db:para>
+										<db:para>Services must accept audio in the <db:xref
+												linkend="bib_wav"/> audio file format. Services may
+											support additional audio file formats to be used when a
+											Reading System posts audio, and must specify if they do so in <db:xref
+												linkend="tp_serviceAttributes"/>.</db:para>
+										<db:para>This specification does not allow <db:xref linkend="bib_mtom"/> encoded 
+										data in this type.</db:para>
+										<db:para><db:remark role="todo">TODO See <db:link 
+											xlink:href="http://code.google.com/p/daisy-online-delivery/issues/detail?id=104"
+											>Issue 104</db:link> </db:remark></db:para>
 									</xs:documentation>
 								</xs:annotation>
 								<xs:simpleType>
@@ -1075,12 +1092,13 @@
 										<db:listitem>
 											<db:para>The value <db:varname>search</db:varname>
 												retrieves the Search menu from the
-												Service.</db:para><db:para>A Service is not required to support the
-													<db:varname>search</db:varname> reserved ID to claim
-													support for the Dynamic Menu feature. A Service must
-													explicitly declare whether it supports this ID in
-													<db:xref linkend="tp_serviceAttributes"
-													/>.</db:para>
+												Service.</db:para>
+											<db:para>A Service is not required to support the
+												<db:varname>search</db:varname> reserved ID to
+												claim support for the Dynamic Menu feature. A
+												Service must explicitly declare whether it supports
+												this ID in <db:xref linkend="tp_serviceAttributes"
+												/>.</db:para>
 										</db:listitem>
 										<db:listitem>
 											<db:para>The value <db:varname>back</db:varname>

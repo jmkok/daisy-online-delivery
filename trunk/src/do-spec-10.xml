@@ -1153,7 +1153,7 @@
                 <note>
                     <para>Content <xref linkend="tp_sample"/>s (see the <type>contentMetaData</type> in <xref 
                     linkend="operations_content_issuing_retrieval_sequence_example"/>) are 
-                        retrieved using the same basic principle as Content retrieval, with the exception 
+                        retrieved using the same basic principle as in Content retrieval, with the exception 
                         that Reading Systems must not call <xref linkend="op_issueContent"/> when requesting a sample. 
                     </para>
                     <para>A sample is retrieved by invoking the <xref linkend="op_getContentResources"/> operation, passing the
@@ -1686,6 +1686,17 @@
             </title>
         </biblioentry>
 
+        <biblioentry xml:id="bib_mtom">
+            <abbrev>MTOM</abbrev>
+            <title>
+                <link xlink:href="http://www.w3.org/TR/soap12-mtom/">SOAP Message Transmission Optimization Mechanism</link>
+            </title>
+            <author>
+                <personname>M Gudgin, et al</personname>
+            </author>
+            <date>January 2005</date>            
+        </biblioentry>
+
         <biblioentry xml:id="bib_soap1.1">
             <abbrev>SOAP 1.1</abbrev>
             <title>
@@ -1778,6 +1789,12 @@
             <date>2005</date>
         </biblioentry>
 
+        <biblioentry xml:id="bib_wav">
+            <abbrev>RIFF WAVE</abbrev>
+            <title>
+                <link xlink:href="http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html"
+                    >RIFF WAVE PCM soundfile format <remark role="todo">TODO is there a canonical spec for RIFF WAVE?</remark></link></title>
+        </biblioentry>
 
     </bibliography>
 
@@ -1893,7 +1910,7 @@
 
                 <para>If the question receives an audio response, the audio response is base 64
                     encoded and encapsulated in the data child element of the userResponse
-                    element.</para>
+                    element. See <xref linkend="tp_data"/> for file format requirements.</para>
 
                 <para role="tip">The values assigned to the <code>id</code> attributes of the
                         <type>inputQuestion</type>, <type>multipleChoiceQuestion</type> and
