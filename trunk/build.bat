@@ -1,6 +1,6 @@
 mkdir "build"
 
-REM set CLASSPATH=%CLASSPATH%;.\lib\calabash.jar;.\lib\saxon9-s9api.jar;.\lib\jing.jar 
+REM set CLASSPATH=%CLASSPATH%;.\lib\calabash.jar;.\lib\saxon9-s9api.jar;.\lib\jing_20090818.jar;.\lib\saxon9.jar
 set CLASSPATH=%CLASSPATH%;.\lib\calumet.jar;.\lib\xercesImpl.jar;.\lib\xml-apis.jar;.\lib\serializer.jar;.\lib\commons-httpclient-3.1.jar;.\lib\commons-logging-1.1.1.jar;.\lib\commons-codec-1.3.jar;.\lib\jing.jar;.\lib\saxon9.jar;.\lib\saxon9-dom.jar;.\lib\xalan.jar
 
 
