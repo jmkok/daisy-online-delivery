@@ -1121,7 +1121,7 @@
                         <listitem>
                             <para>[Required] The Reading System invokes the <function>
                                     <xref linkend="op_getContentMetadata"/>
-                                </function> operation using <code>uk-rnib-001</code> as the value of
+                                </function> operation using <literal>uk-rnib-001</literal> as the value of
                                 the <parameter>contentID</parameter> parameter, which returns a
                                     <xref linkend="tp_contentMetadata"/> type, containing content
                                 metadata and a sample.</para>
@@ -1130,7 +1130,7 @@
                         <listitem>
                             <para>[Required] For content that the User requests issuance of, the
                                 Reading System invokes the <xref linkend="op_issueContent"/>
-                                operation, using <code>uk-rnib-001</code> as the value of the
+                                operation, using <literal>uk-rnib-001</literal> as the value of the
                                     <parameter>contentID</parameter>.</para>
                             <programlisting><xi:include href="./samples/retrieval-issueContent.xml" parse="text"/></programlisting>
                             <para>To signal that the Content was issued, the Service returns
@@ -1165,36 +1165,30 @@
             
             <section xml:id="operations_content_download">
                 <title>Downloading and streaming of content</title>
-                <para>
-                    <remark role="todo">TODO who writes this section? GGT is writing this
-                        section.</remark>
-                </para>
-                <para>
-                    <remark role="todo">TODO Add whatever we need to say on this topic. Refer to
-                        Service Delegates.</remark>
-                </para>
-                <para>
-                    <remark>TODO Important things to include in this section:</remark>
-                </para>
-                <para>Info on the resources type: how some content formats allows mimetypes to be
-                    used to get the most significant stuff first</para>
-                <para>The <code>localFileName</code> attribute specifies the path (delimited with
+				<para>Once the Reading System has retrieved the list of <type>resources</type> for an item of
+				content, it may begin downloading or streaming the resources using the URIs
+				supplied in the <type>resource</type>s attributes.</para>
+                <para>Services may publish resources with URIs unrelated to the names in a content
+				item's fileset. The <code>localFileName</code> attribute specifies the path (delimited with
                         <literal>/</literal>) of the resource relative to the content's root
                     directory. This can be used by download Reading Systems to name the local files.
                     It can be used by streaming Reading Systems to identify the URI of a resource
                     that is referenced by another resource (such as the link to an audio resource in
                     a SMIL resource in a DAISY DTB).</para>
-                <para>The <code>mimeType</code> attribute specifies <remark role="todo"
-                        >FIXME</remark>
-                </para>
-                <para>Resources may be secured with Basic Authentication. See
-				<xref linkend="fundamentals_protocols_basic_authentication"/> for details.</para>
+                <para>The <code>mimeType</code> attribute specifies the <xref linkend="bib_mime"/>
+				type of each resource.  Reading Systems may use this information to
+				order the transfer of resources, e.g. a streaming Reading System may retrieve the
+				<abbrev>OPF</abbrev>, <abbrev>NCX</abbrev> and <abbrev>SMIL</abbrev> files of a DTB
+				all at once to allow for quick navigation.</para>
                 <para>A DAISY Online session does not need to be active in order for a Reading
                     System to download or stream Content.</para>
                 <para>Resources may be stored on the Service's servers or with Service Delegates,
                     without restriction. Note that Service Delegates may require different
                     credentials for access to resources, or may not require credentials at all. The
                     Service must provide this information to Reading Systems.</para>
+                <para>Resources from the Service or from Serice Delegates may be secured with
+				Basic Authentication. The credentials must be specified in the URI of each resource
+				so secured. See <xref linkend="fundamentals_protocols_basic_authentication"/>.</para>
             </section>
             <section xml:id="operations_content_installments">
                 <title>Publishing content in installments</title>
