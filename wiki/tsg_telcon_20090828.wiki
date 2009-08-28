@@ -5,17 +5,17 @@ Present: Markus (scribe), Geoff, Matt, Jelle, Dominic, Hiro, Nick, Kenny
 Regrets: 
 
 == Action Item Summary ==
+ 
+=== New Action Items ===
  * Geoff: lift over underlying protocol topics from to 5.3.3 to 4.3
  * Jelle: and Nick read 4.3 and send thoughts/proposals to Kenny
  * Kenny: modify 4.3, then notify Markus
  * Geoff: work further on 5.3.3 and 5.3.4, then notify Markus
  * Markus: minor mods as below
  * Markus: announce the release before friday is over in Honolulu
- 
-=== New Action Items ===
- * Kenny: write prose for *4.4 Dynamic Menus* (informative intro with samples) {DONE}
- * Kenny: find all WSDL remark elements pertaining to dynamic menus and add prose etc {DONE}
- * Kenny: add a pointer to HTTP return codes specified in Section 10 in RFC 2615 in the documentation for situations where a uri to a resource is not valid for some reason. {DONE, but not integrated in spec yet} (then close issue 106). 
+
+=== Previous Unfinished Action Items ===
+{DONE, but not integrated in spec yet} (then close issue 106). 
  * Jelle: write prose for *5.1.1 http(s) authentication* {DONE, merged with "underlying protocols}
  * Geoff: write prose for *5.3.3. Downloading and streaming of content* {ONGOING}
  * Geoff: write prose on how installments work in section 5, then close Issue 102. {ONGOING}
@@ -23,7 +23,6 @@ Regrets:
  * Nick, in writing the prose and producing a bookmark sample, solve Issue 34 and Issue 119 {ONGOING}
  * Markus: implement all issue resolutions below except that for Issue 106.{DONE}
 
-=== Previous Unfinished Action Items ===
  * Jelle: propose resolution to Issue 118
  * Geoff and Markus analyze RequirementsDocument vs current API. {ONGOING}
 
