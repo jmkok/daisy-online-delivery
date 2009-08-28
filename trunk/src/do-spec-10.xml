@@ -30,9 +30,11 @@
     <preface xml:id="introduction" conformance="informative">
         <title>Introduction</title>
         <para>
-            <remark role="todo">TODO describe overview target application domains and functionality
-                scope. Mention that although focused on the DAISY DTB content type, the protocol per
-                se is not limited to DAISY. Note that service discovery is not in scope</remark>
+            <remark role="todo">TODO Introduction remains to the written. It will give an overview of 
+            	target application domains and functionality scope. It will mention that although focused 
+            	on the DAISY DTB content type, the protocol per
+                se is not limited to DAISY. It will note that service discovery is not in scope, but that
+                a mechanism for that may be produced by DAISY as a separate specification.</remark>
         </para>
 
 
@@ -578,7 +580,7 @@
 
             <section xml:id="fundamentals_protocols_soap">
                 <title>SOAP</title>
-
+                <para><remark role="todo">TODO refer normatively to SOAP1.1 and any other associated normative ref</remark></para>
                 <section xml:id="fundamentals_protocols_wsdlbindingstyle">
                     <title>WSDL Binding Style</title>
                     <para> The WSDL Binding Style used in the normative WSDL available in <xref
@@ -799,7 +801,7 @@
     </chapter>
 
     <chapter xml:id="operations" conformance="normative">
-        <title>Protocol Operations</title>
+        <title>Protocol Overview</title>
 
         <section xml:id="operations_session">
             <title>Session Management and Authentication</title>
@@ -1000,7 +1002,7 @@
                                     System may have an option to support automation of this step in
                                     subscription/cyclic delivery contexts), the Reading System
                                     requests issuance and transfer of the Content. See further <xref
-                                        linkend="operations_content_issuing"/></para>
+                                        linkend="operations_content_issuing"/>.</para>
                             </listitem>
                         </orderedlist>
                     </example>
@@ -1147,8 +1149,20 @@
                         </listitem>
                     </orderedlist>
                 </example>
+                
+                <note>
+                    <para>Content <xref linkend="tp_sample"/>s (see the <type>contentMetaData</type> in <xref 
+                    linkend="operations_content_issuing_retrieval_sequence_example"/>) are 
+                        retrieved using the same basic principle as Content retrieval, with the exception 
+                        that Reading Systems must not call <xref linkend="op_issueContent"/> when requesting a sample. 
+                    </para>
+                    <para>A sample is retrieved by invoking the <xref linkend="op_getContentResources"/> operation, passing the
+                    ID of the sample, as given in the <type>contentMetadata</type> type.</para>
+                </note>
+ 
             </section>
-
+            
+            
             <section xml:id="operations_content_download">
                 <title>Downloading and streaming of content</title>
                 <para>
@@ -1353,7 +1367,7 @@
 
         <section xml:id="operations_service_announcements">
             <title>Service Announcements</title>
-            <para><remark role="todo">TODO fix this intro</remark> Service Announcements are used as
+            <para><remark role="todo">TODO fix this introduction</remark> Service Announcements are used as
                 a means for the Service to provide various types of information to the User.
                 Examples include: information on Service up- or downtime, information on additions
                 to the Content collection, and, in the case of <link

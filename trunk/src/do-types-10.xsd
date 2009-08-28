@@ -436,7 +436,8 @@
 									<db:para role="desc">An identifier of the sample.</db:para>
 									<db:para>Reading Systems may retrieve the sample by calling
 											<db:xref linkend="op_getContentResources"/> with this
-										identifier as the parameter.</db:para>
+										identifier as the parameter. Reading Systems must not invoke
+									<db:xref linkend="op_issueContent"/> using the ID of a sample.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
