@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="ASCII"?>
 <!--This file was created automatically by html2xhtml-->
 <!--from the HTML stylesheets.-->
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:doc="http://nwalsh.com/xsl/documentation/1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/1999/xhtml" exclude-result-prefixes="doc" version="1.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:d="http://docbook.org/ns/docbook"
+xmlns:doc="http://nwalsh.com/xsl/documentation/1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/1999/xhtml" exclude-result-prefixes="doc d" version="1.0">
 
 <!-- ********************************************************************
-     $Id: pi.xsl 8097 2008-08-03 13:20:21Z mzjn $
+     $Id: pi.xsl 8394 2009-04-02 20:31:30Z mzjn $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -15,7 +16,7 @@
 
 <doc:reference xmlns=""><info xmlns="http://www.w3.org/1999/xhtml"><title>HTML Processing Instruction Reference</title>
     <releaseinfo role="meta">
-      $Id: pi.xsl 8097 2008-08-03 13:20:21Z mzjn $
+      $Id: pi.xsl 8394 2009-04-02 20:31:30Z mzjn $
     </releaseinfo>
   </info>
   <partintro xmlns="http://www.w3.org/1999/xhtml" xml:id="partintro">
@@ -577,7 +578,7 @@
     <variablelist>
       <varlistentry><term>row-height="<replaceable>height</replaceable>"</term>
         <listitem>
-          <para>Specifies the label height (including units)</para>
+          <para>Specifies the row height (including units)</para>
         </listitem>
       </varlistentry>
     </variablelist>
@@ -882,7 +883,7 @@
   </refparameter>
 </doc:pi>
 <xsl:template name="pi.dbcmdlist">
-  <xsl:variable name="cmdsynopses" select="..//cmdsynopsis"/>
+  <xsl:variable name="cmdsynopses" select="..//d:cmdsynopsis"/>
   <xsl:if test="count($cmdsynopses)&lt;1">
     <xsl:message><xsl:text>No cmdsynopsis elements matched dbcmdlist PI, perhaps it's nested too deep?</xsl:text>
     </xsl:message>
@@ -912,7 +913,7 @@
   </refparameter>
 </doc:pi>
 <xsl:template name="pi.dbfunclist">
-  <xsl:variable name="funcsynopses" select="..//funcsynopsis"/>
+  <xsl:variable name="funcsynopses" select="..//d:funcsynopsis"/>
   <xsl:if test="count($funcsynopses)&lt;1">
     <xsl:message><xsl:text>No funcsynopsis elements matched dbfunclist PI, perhaps it's nested too deep?</xsl:text>
     </xsl:message>
@@ -989,7 +990,7 @@
       <xsl:choose>
         <xsl:when test="$content/*">
           <xsl:choose>
-            <xsl:when test="$content/*[1][self::html]">
+            <xsl:when test="$content/*[1][self::d:html]">
               <!-- include just the children of html wrapper -->
               <xsl:copy-of select="$content/*[1]/node()"/>
             </xsl:when>

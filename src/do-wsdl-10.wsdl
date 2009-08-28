@@ -8,7 +8,7 @@
 
 		<xs:schema targetNamespace="http://www.daisy.org/ns/daisy-online/"
 			xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-			attributeFormDefault="unqualified" xmlns:common="http://www.daisy.org/ns/daisy-online/"
+			attributeFormDefault="unqualified"
 			xmlns:daisy="http://www.daisy.org/z3986/2005/bookmark/"
 			xmlns:pdtb2="http://www.daisy.org/DRM/2005/KeyExchange"
 			xmlns:db="http://docbook.org/ns/docbook"
@@ -74,7 +74,7 @@
 			<xs:element name="setReadingSystemAttributes">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" ref="common:readingSystemAttributes">
+						<xs:element minOccurs="1" maxOccurs="1" ref="readingSystemAttributes">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">Contains the reading system attributes to
@@ -337,7 +337,7 @@
 			<xs:element name="getContentListResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" ref="common:contentList">
+						<xs:element minOccurs="1" maxOccurs="1" ref="contentList">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">Contains the requested content list, or a
@@ -367,7 +367,7 @@
 			<xs:element name="getServiceAnnouncementsResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" ref="common:announcements">
+						<xs:element minOccurs="1" maxOccurs="1" ref="announcements">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">Contains the announcements from the
@@ -382,7 +382,7 @@
 			<xs:element name="markAnnouncementsAsRead">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" ref="common:read">
+						<xs:element minOccurs="1" maxOccurs="1" ref="read">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">Contains the announcements to mark as read,
@@ -416,7 +416,7 @@
 			<xs:element name="getQuestions">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" ref="common:userResponses">
+						<xs:element minOccurs="1" maxOccurs="1" ref="userResponses">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">Contains the user's response to a previous
@@ -435,7 +435,7 @@
 			<xs:element name="getQuestionsResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" ref="common:questions">
+						<xs:element minOccurs="1" maxOccurs="1" ref="questions">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">Contains one or more multiple choice or
@@ -470,7 +470,7 @@
 			<xs:element name="getContentMetadataResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" ref="common:contentMetadata">
+						<xs:element minOccurs="1" maxOccurs="1" ref="contentMetadata">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">Contains the metadata for the specified
@@ -503,7 +503,7 @@
 			<xs:element name="getContentResourcesResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" ref="common:resources">
+						<xs:element minOccurs="1" maxOccurs="1" ref="resources">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">Contains the resources for the specified
@@ -518,7 +518,7 @@
 			<xs:element name="getKeyExchangeObject">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" ref="common:keyNames">
+						<xs:element minOccurs="1" maxOccurs="1" ref="keyNames">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">The identifiers of the keys on the Reading
@@ -568,7 +568,7 @@
 			<xs:element name="getServiceAttributesResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" ref="common:serviceAttributes">
+						<xs:element minOccurs="1" maxOccurs="1" ref="serviceAttributes">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">Contains the attributes of the

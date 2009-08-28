@@ -242,7 +242,14 @@
 				<xsl:when test="$xsdElement/@ref">
 					<xsl:text> </xsl:text>
 					<db:xref>
-						<xsl:attribute name="linkend" select="concat('tp_',substring-after($xsdElement/@ref,':'))" />
+						<xsl:choose>
+							<xsl:when test="contains($xsdElement/@ref,':')">
+								<xsl:attribute name="linkend" select="concat('tp_',substring-after($xsdElement/@ref,':'))" />
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:attribute name="linkend" select="concat('tp_',$xsdElement/@ref)" />
+							</xsl:otherwise>
+						</xsl:choose>
 					</db:xref>
 				</xsl:when>				
 				<xsl:otherwise>
