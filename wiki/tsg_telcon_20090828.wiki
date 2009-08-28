@@ -10,6 +10,7 @@ Regrets:
  * Kenny: modify 4.3, then notify Markus
  * Geoff: work further on 5.3.3 and 5.3.4, then notify Markus
  * Markus: minor mods as below
+ * Markus: announce the release before friday is over in Honolulu
  
 === New Action Items ===
  * Kenny: write prose for *4.4 Dynamic Menus* (informative intro with samples) {DONE}
@@ -40,12 +41,9 @@ The following sections/items are known to be unfinished:
  * _Markus:_ make sure all unfinished sections marked as such
  * A few issues marked as defects
 
-==== Which of the above to address before sending the draft out ====
-
-==== Which of the above to mark in draft as unfinished ====
 
 === Work Mode during editing phase ===
-Matt owns document, minimize merge hell by avoiding that others commit to the main docs. Instead Submit change proposals as issues or on list.
+Matt owns document, minimize merge hell by avoiding that others commit to the main docs. Instead Submit change proposals as issues or on list, or notify Matt that a substantial edits are done to a whole section.
 
 ==== Concurrent work ====
  * Who wants to take a stab at the CSS? {@Matt} 
