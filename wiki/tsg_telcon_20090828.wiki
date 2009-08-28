@@ -1,0 +1,43 @@
+<wiki:toc max_depth="5" />
+
+Present: Markus (scribe), 
+Regrets: 
+
+== Action Item Summary ==
+
+=== New Action Items ===
+ * Kenny: write prose for *4.4 Dynamic Menus* (informative intro with samples) {DONE}
+ * Kenny: find all WSDL remark elements pertaining to dynamic menus and add prose etc {DONE}
+ * Kenny: add a pointer to HTTP return codes specified in Section 10 in RFC 2615 in the documentation for situations where a uri to a resource is not valid for some reason. {DONE, but not integrated in spec yet} (then close issue 106). 
+ * Jelle: write prose for *5.1.1 http(s) authentication* {DONE, merged with "underlying protocols}
+ * Geoff: write prose for *5.3.3. Downloading and streaming of content* {ONGOING}
+ * Geoff: write prose on how installments work in section 5, then close Issue 102. {ONGOING}
+ * Nick: write prose for *5.6. Bookmarks and Last Reading Position, inc samples* {DONE}
+ * Nick, in writing the prose and producing a bookmark sample, solve Issue 34 and Issue 119 {ONGOING}
+ * Markus: implement all issue resolutions below except that for Issue 106.{DONE}
+
+=== Previous Unfinished Action Items ===
+ * Jelle: propose resolution to Issue 118
+ * Geoff and Markus analyze RequirementsDocument vs current API. {ONGOING}
+
+== Agenda/Minutes ==
+=== Unfinished Sections ===
+The following sections/items are known to be unfinished:
+ * The Introduction
+ * 4.3 Underlying protocols (Jelles submission for 5.1.1 "https and authentication" was merged in here. Note that 5.3.3 touches on the same topics, so there is some overlap
+ * Installments (Geoff)
+ * No prose/example on how to retrieve samples (do we require issueContent on samples?)
+ * Not yet specified that WAV is the required form for userResponse/audiodata
+ * Edits remain in Appendix B.
+ * A few issues marked as defects
+
+==== Which of the above to address before sending the draft out ====
+
+==== Which of the above to mark in draft as unfinished ====
+
+=== Work Mode during editing phase ===
+Matt owns document, minimize merge hell by avoiding that others commit to the main docs. Instead Submit change proposals as issues or on list.
+
+==== Concurrent work ====
+ * Who wants to take a stab at the CSS? 
+ * Pick up the requirements fulfilment analysis thread that Geoff started
