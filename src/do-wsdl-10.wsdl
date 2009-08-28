@@ -518,7 +518,7 @@
 			<xs:element name="getKeyExchangeObject">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" ref="keyNames">
+						<xs:element minOccurs="1" maxOccurs="1" ref="keyRing">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">The identifiers of the keys on the Reading
@@ -546,7 +546,7 @@
 								<xs:documentation>
 									<db:para role="desc">A <db:xref linkend="bib_pdtb2"/> Key
 										Exchange Object, containing the requested key encrypted
-										using one of the keys identified in keyNames.</db:para>
+										using one of the keys identified in keyRing.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>

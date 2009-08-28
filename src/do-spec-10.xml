@@ -1223,12 +1223,11 @@
                 <example>
                     <title>
                         <abbrev>PDTB</abbrev>
-                        <type>contentMetadata</type>
+                        <type>contentMetadata</type> and <type>resources</type>
                     </title>
-                    <para>The following is an example of contentMetadata for an item exncrypted
-                        using <abbrev>PDTB2</abbrev>.</para>
+                    <para>The following is an example of the <type>contentMetadata</type> and
+					<type>resources</type> for an item encrypted using <abbrev>PDTB2</abbrev>.</para>
                     <programlisting><xi:include href="./samples/pdtb-contentMetadata.xml" parse="text" encoding="UTF-8"/></programlisting>
-                    <para>... and the associated <type>resources</type>:</para>
                     <programlisting><xi:include href="./samples/pdtb-resources.xml" parse="text" encoding="UTF-8"/></programlisting>
                 </example>
                 <para>If some Content has an Authorization Object (<abbrev>AO</abbrev>), the Reading
@@ -1239,7 +1238,7 @@
                     </function> with a list of names of keys on its keyring (these can be all or
                     some of the symmetric keys or public/private keypairs the Reading System
                     supports) and the name of the requested key. The Service is free to choose any
-                    of the keys in the <parameter>keyNames</parameter> to encrypt the Key Exchange
+                    of the keys in the <parameter>keyRing</parameter> to encrypt the Key Exchange
                     Object (<abbrev>KXO</abbrev>). If the Service does not have any of those keys or
                     if the User is not authorized to access the Content, then the Service will
                     instead reply with an <errorname>
@@ -1257,8 +1256,8 @@
                         Inc. The Reading System calls the <function>
                             <xref linkend="op_getKeyExchangeObject"/>
                         </function> operation with the first parameter,
-                            <parameter>keyNames</parameter>, as:</para>
-                    <programlisting><xi:include href="./samples/pdtb-keyNames.xml" parse="text"/></programlisting>
+                            <parameter>keyRing</parameter>, as:</para>
+                    <programlisting><xi:include href="./samples/pdtb-keyRing.xml" parse="text"/></programlisting>
                     <para>and the second parameter,<parameter>requestedKeyName</parameter>, as
                             <literal>DAISY.gy-zlog.afc26219-auth</literal>.</para>
                     <para>The Service determines that the User is authorized to receive this key.
