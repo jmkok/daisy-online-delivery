@@ -168,6 +168,7 @@ div.note, div.important, div.warning, div.caution, div.tip
   border: solid #000000 1px;
   padding: 5px;
   width: 75%;
+  margin-bottom: 10px;
 }
 
 div.note th, div.important th, div.warning th, div.caution th, div.tip th
