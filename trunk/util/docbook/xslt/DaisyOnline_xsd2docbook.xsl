@@ -5,6 +5,7 @@
 	xmlns:daisy="http://www.daisy.org/ns/daisy-online/#"
 	xpath-default-namespace="http://www.w3.org/2001/XMLSchema"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="db"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
 	xmlns:xi="http://www.w3.org/2001/XInclude">
 	<!--
 		Transform a docbook instance to a docbook instance, inserting data
@@ -24,7 +25,9 @@
 	<xsl:variable name="kxo" select="document('../../../src/kxo.xsd')"/>
 	<!-- import sample file -->
 	<xsl:variable name="samplesIndex" select="document('../../../src/samples-index.xml')"/>
-	
+	<!-- import wsdl -->
+	<xsl:variable name="wsdl" select="document('../../../src/do-wsdl-10.wsdl')"/>
+		
 	<!-- list of types - prevents processing of general-use elements in xsd -->
 	
 	<xsl:variable name="typeList">|announcements|bookmarkSet|contentList|contentMetadata|KeyExchange|questions|readingSystemAttributes|resources|serviceAttributes|userResponses|read|keyNames|</xsl:variable>
@@ -61,6 +64,12 @@
 						</xsl:choose>
 						
 						<xsl:element name="db:variablelist">
+							
+							<xsl:call-template name="addUsedBy">
+								
+							</xsl:call-template>
+							
+							
 							<xsl:call-template name="addContentModel">
 								<xsl:with-param name="isType">true</xsl:with-param>
 							</xsl:call-template>
@@ -107,10 +116,50 @@
 		</xsl:element>
 	</xsl:template>
 	
-	
+	<!-- adds info on which operations passes or returns the primary types -->
+	<xsl:template name="addUsedBy">
+		<xsl:variable name="curTypeName" select="current()/@name"/>
+		
+		<xsl:element name="db:varlistentry">
+			<xsl:element name="db:term">
+				<xsl:text>Used By</xsl:text>
+			</xsl:element>
+			
+			<xsl:element name="db:listitem">
+				<xsl:variable name="wsdl-elements" as="element()*" select="$wsdl/wsdl:definitions/wsdl:types/xs:schema/xs:element"/>
+				
+				<xsl:for-each select="$wsdl-elements">
+					<xsl:variable name="p" select="position()"/>
+					<!-- curWsdlXsElement is the wsdl xsd wrapper named a la getServiceAttributes and getServiceAttributesResponse -->
+					<xsl:variable name="curWsdlXsElement" select="$wsdl-elements[$p]" as="element()"/>
+					<!-- if curWsdlXsElement has a descendant xs:element with a ref that matches curTypeName except prefix, then a match -->
+					<xsl:if test="$curWsdlXsElement//xs:element/@ref eq  $curTypeName or $curTypeName eq substring-after($curWsdlXsElement//xs:element/@ref,':')">
+						<db:para>
+							<xsl:choose>
+								<xsl:when test="contains($curWsdlXsElement/@name, 'Response')">
+									<xsl:element name="db:xref">
+										<xsl:attribute name="linkend">
+											<xsl:value-of select="concat('op_',replace($curWsdlXsElement/@name,'Response',''))"/>
+										</xsl:attribute>									
+									</xsl:element>
+									<xsl:text> (response)</xsl:text>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:element name="db:xref">
+										<xsl:attribute name="linkend"><xsl:value-of select="concat('op_',$curWsdlXsElement/@name)"/></xsl:attribute>
+									</xsl:element>
+									<xsl:text> (parameter)</xsl:text>
+								</xsl:otherwise>
+							</xsl:choose>														
+						</db:para>	
+					</xsl:if>					
+				</xsl:for-each>
+			</xsl:element>	
+		</xsl:element>		
+	</xsl:template>	
 	
 	<!-- adds the content model section for the primary types -->
-	
+		
 	<xsl:template name="addContentModel">
 		<xsl:param name="isType" as="xs:boolean"/>
 		

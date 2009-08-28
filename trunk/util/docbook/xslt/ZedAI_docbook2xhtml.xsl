@@ -21,9 +21,14 @@
     dependency, and will set para/@style to "noXHTML2"
         * The editor credit on the title page has custom styling
 -->
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
+    xmlns:saxon="http://icl.com/saxon"
+    xmlns:db="http://docbook.org/ns/docbook"
+    >
     <xsl:import href="xhtml-1_1/docbook.xsl "/>
-	<xsl:output method="xml" omit-xml-declaration="no" indent="yes"/>
+	<xsl:output method="xhtml" omit-xml-declaration="no" indent="yes" exclude-result-prefixes="saxon" />
+    <!--xmlns="http://www.w3.org/1999/xhtml"-->
+    <!--     xmlns:x="http://www.w3.org/1999/xhtml" -->
 	
 	<xsl:param name="generate.toc">
 appendix  toc,title
@@ -50,15 +55,18 @@ set       toc,title
     <!-- Fill in the docbook placeholder user.head.content template to add an http-equiv meta
         element -->
     
-    <xsl:template name="user.head.content">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    </xsl:template>
+    <xsl:template name="user.head.content">        
+        <xsl:element name="meta" namespace="http://www.w3.org/1999/xhtml">
+            <xsl:attribute name="http-equiv">Content-Type</xsl:attribute>
+            <xsl:attribute name="content">text/html; charset=utf-8</xsl:attribute>
+        </xsl:element>
+    </xsl:template>    
     
 <!-- ============================================================================= -->
     <!-- remark[@role='todo'] = span[@class='todo'] -->
 
     <!-- Note:  template copied from inline.xsl and modified -->
-    <xsl:template match="remark[@role='todo']">
+    <xsl:template match="db:remark[@role='todo']">
                 <xsl:param name="content">
                     <xsl:call-template name="anchor"/>
                     <xsl:call-template name="simple.xlink">
@@ -86,7 +94,7 @@ set       toc,title
     <!-- For chapters, preface, sections, and appendices that have @conformance, add a "This section is ..." line -->
     <!-- We match on title so that we can insert the text after the heading -->
     <xsl:template
-        match="chapter/title|preface/title|section/title|appendix/title|bibliography/title">
+        match="db:chapter/db:title|db:preface/db:title|db:section/db:title|db:appendix/db:title|db:bibliography/db:title">
         <xsl:apply-imports />
         <!-- Do everything the normal transform does before adding more text -->
         <xsl:variable name="conformanceLevel" select="../@conformance" />
@@ -113,29 +121,7 @@ set       toc,title
         </xsl:if>
     </xsl:template>
     
- <!-- ============================================================================= -->
-    <!-- For paragraphs that have a dependency on XHTML2 not being available to us, insert some
-        extra text and a style. -->
-    <!-- This is just a copy of the usual para template, with slight modifications -->
-    <xsl:template match="para[@condition='noXHTML2']">
-        <xsl:call-template name="paragraph">
-            <xsl:with-param name="class">noXHTML2</xsl:with-param>
-            <xsl:with-param name="content">
-                <xsl:if test="position() = 1 and parent::listitem">
-                    <xsl:call-template name="anchor">
-                        <xsl:with-param name="node" select="parent::listitem"/>
-                    </xsl:call-template>
-                </xsl:if>
-                
-                <xsl:call-template name="anchor"/>
-                <xsl:element name="em" namespace="http://www.w3.org/1999/xhtml">
-                    <xsl:attribute name="class">noXHTML2</xsl:attribute>
-                    [Note:  This paragraph is subject to change if/when XHTML2 is available]
-                </xsl:element>
-                <xsl:apply-templates/>
-            </xsl:with-param>
-        </xsl:call-template>
-    </xsl:template>
+
  
     <!-- ============================================================================= -->
     <!-- Change the way credits are done for the editor -->

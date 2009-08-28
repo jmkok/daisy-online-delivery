@@ -76,7 +76,11 @@
   		</p:input>
                  
     </p:xslt>
+    
+    <p:delete name="cleanup" match="comment()|@xml:space">
+    	
+    </p:delete>
        	
-    <p:store href="./build/do-spec-10.html" name="store"/>
+    <p:store href="./build/do-spec-10.html" name="store" />
         
 </p:declare-step>
