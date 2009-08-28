@@ -1,10 +1,16 @@
 <wiki:toc max_depth="5" />
 
-Present: Markus (scribe), 
+Present: Markus (scribe), Geoff, Matt, Jelle, Dominic, Hiro, Nick, Kenny
+ 
 Regrets: 
 
 == Action Item Summary ==
-
+ * Geoff: lift over underlying protocol topics from to 5.3.3 to 4.3
+ * Jelle: and Nick read 4.3 and send thoughts/proposals to Kenny
+ * Kenny: modify 4.3, then notify Markus
+ * Geoff: work further on 5.3.3 and 5.3.4, then notify Markus
+ * Markus: minor mods as below
+ 
 === New Action Items ===
  * Kenny: write prose for *4.4 Dynamic Menus* (informative intro with samples) {DONE}
  * Kenny: find all WSDL remark elements pertaining to dynamic menus and add prose etc {DONE}
@@ -25,11 +31,13 @@ Regrets:
 The following sections/items are known to be unfinished:
  * The Introduction
  * 4.3 Underlying protocols (Jelles submission for 5.1.1 "https and authentication" was merged in here. Note that 5.3.3 touches on the same topics, so there is some overlap
- * 5.3.3. Downloading and streaming of content (Geoff)
- * 5.3.4. Publishing content in installments (Geoff)
- * No prose/example on how to retrieve samples (do we require issueContent on samples?)
- * Not yet specified that WAV is the required form for userResponse/audiodata
- * Edits remain in Appendix B.
+ * _Geoff - TODAY_ 5.3.3. Downloading and streaming of content (some more work needed
+ * _Geoff - TODAY_ at least a stub of 5.3.4. Publishing content in installments (Geoff) - will add only a brief overview
+ * _Markus, add_: No prose/example on how to retrieve samples (do we require issueContent on samples?) *Resolution*: must not do issueContent on samples
+ * _Markus, add_: Not yet specified that WAV must be supported by services form for userResponse/audiodata
+ * Geoff: lift over 5.3.3 prose to underlying protocols before Kenny wakes up
+ * _Markus:_ Edits remain in Appendix B.
+ * _Markus:_ make sure all unfinished sections marked as such
  * A few issues marked as defects
 
 ==== Which of the above to address before sending the draft out ====
@@ -40,5 +48,5 @@ The following sections/items are known to be unfinished:
 Matt owns document, minimize merge hell by avoiding that others commit to the main docs. Instead Submit change proposals as issues or on list.
 
 ==== Concurrent work ====
- * Who wants to take a stab at the CSS? 
+ * Who wants to take a stab at the CSS? {@Matt} 
  * Pick up the requirements fulfilment analysis thread that Geoff started
