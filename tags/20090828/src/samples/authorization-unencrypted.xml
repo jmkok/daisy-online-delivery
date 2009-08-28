@@ -1,0 +1,24 @@
+<BookAuthorization xmlns="http://www.daisy.org/DRM/2005/BookAuthorization"
+                   xmlns:odrlx="http://odrl.net/1.1/ODRL-EX"
+                   xmlns:odrld="http://odrl.net/1.1/ODRL-DD">
+  <Issuer uid="DAISY.jp-toplib">Top Library</Issuer>
+  <Book uid="DAISY.jp-toplib.dtb03457" />
+  <odrlx:rights>
+    <odrlx:agreement>
+      <odrlx:asset>
+        <odrlx:context>
+          <odrld:uid>DAISY.jp-toplib.dtb03457</odrld:uid>
+        </odrlx:context>
+      </odrlx:asset>
+      <odrlx:permission>
+        <odrld:play>
+          <odrlx:constraint>
+            <odrld:datetime>
+              <odrld:end>2010-10-31T23:59:59</odrld:end>
+            </odrld:datetime>
+          </odrlx:constraint>
+        </odrld:play>
+      </odrlx:permission>
+    </odrlx:agreement>
+  </odrlx:rights>
+</BookAuthorization>

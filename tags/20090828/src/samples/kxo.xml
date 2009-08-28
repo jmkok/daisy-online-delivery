@@ -1,0 +1,17 @@
+<KeyExchange xmlns="http://www.daisy.org/DRM/2005/KeyExchange"
+             xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+             xmlns:xe="http://www.w3.org/2001/04/xmlenc#">
+  <Issuer uid="DAISY.gy-zlog">Zenith Library of Guyana</Issuer>
+  <Keys>
+    <ds:KeyInfo>
+      <ds:KeyName>DAISY.lv-acme.ReaderExpress</ds:KeyName>
+    </ds:KeyInfo>
+    <xe:EncryptedKey>
+      <xe:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#rsa-1_5" />
+      <xe:CipherData>
+        <xe:CipherValue>0000</xe:CipherValue>
+      </xe:CipherData>
+      <xe:CarriedKeyName>DAISY.gy-zlog.afc26219-auth</xe:CarriedKeyName>
+    </xe:EncryptedKey>
+  </Keys>
+</KeyExchange>

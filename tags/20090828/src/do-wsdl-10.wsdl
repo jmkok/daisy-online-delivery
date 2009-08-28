@@ -1,0 +1,1267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="DAISYOnlineService" xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.daisy.org/ns/daisy-online/" xmlns:db="http://docbook.org/ns/docbook"
+	targetNamespace="http://www.daisy.org/ns/daisy-online/">
+
+	<types>
+
+		<xs:schema targetNamespace="http://www.daisy.org/ns/daisy-online/"
+			xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+			attributeFormDefault="unqualified"
+			xmlns:daisy="http://www.daisy.org/z3986/2005/bookmark/"
+			xmlns:pdtb2="http://www.daisy.org/DRM/2005/KeyExchange"
+			xmlns:db="http://docbook.org/ns/docbook"
+			xmlns:tns="http://www.daisy.org/ns/daisy-online/">
+
+			<xs:include schemaLocation="do-types-10.xsd"/>
+
+			<xs:import namespace="http://www.daisy.org/z3986/2005/bookmark/"
+				schemaLocation="bookmark-2005-1.xsd"/>
+
+			<xs:import namespace="http://www.daisy.org/DRM/2005/KeyExchange"
+				schemaLocation="kxo.xsd"/>
+
+			<!-- message types -->
+
+			<xs:element name="logOn">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" name="username" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">The user ID</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+
+						<xs:element minOccurs="1" maxOccurs="1" name="password" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">The user password</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="logOnResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" name="logOnResult" type="xs:boolean">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">Specifies whether the log-on was
+										successful</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="logOff">
+				<xs:complexType>
+					<xs:annotation>
+						<xs:documentation>
+							<db:para role="desc">The logOff operation has no parameters.</db:para>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="setReadingSystemAttributes">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" ref="readingSystemAttributes">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">Contains the reading system attributes to
+										post.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="setReadingSystemAttributesResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1"
+							name="setReadingSystemAttributesResult" type="xs:boolean">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">Specifies whether the
+										ReadingSystemAttributes were recieved successfully on the
+										Service.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="setBookmarks">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" name="contentID" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">Contains the <db:xref
+											linkend="term_contentIdentifier"/> for the content with
+										which the bookmarks are associated</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+
+						<xs:element minOccurs="1" maxOccurs="1" ref="daisy:bookmarkSet">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">Contains the bookmarks to store</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="setBookmarksResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" name="setBookmarksResult"
+							type="xs:boolean">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">Specifies whether the bookmarks for the
+										content were saved successfully on the Service.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="getBookmarks">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" name="contentID" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">Contains the <db:xref
+											linkend="term_contentIdentifier"/> of the content for
+										which bookmarks are being retrieved</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="getBookmarksResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" ref="daisy:bookmarkSet">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">Contains the bookmarks for the
+										content.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="issueContent">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" name="contentID" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">Contains the <db:xref
+											linkend="term_contentIdentifier"/> of the content that
+										this issuance request is for.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="issueContentResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" name="issueContentResult"
+							type="xs:boolean">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">Specifies whether the content was issued
+										successfully.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="returnContent">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" name="contentID" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">Specifies the <db:xref
+											linkend="term_contentIdentifier"/> of the content that
+										this return request is for.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="returnContentResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" name="returnContentResult"
+							type="xs:boolean">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">Specifies whether the content was returned
+										successfully.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="getContentList">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" name="id" type="xs:ID">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">Specifies the identity of the list to
+										retrieve.</db:para>
+									<db:para role="desc">The following three values are reserved,
+										and must not be used as identities of contentLists except in
+										the contexts defined below.</db:para>
+									<db:variablelist>
+										<db:varlistentry xml:id="contentList_issued">
+											<db:term>issued</db:term>
+											<db:listitem>
+												<db:para role="desc">Refers to a list of Content
+												that the Service currently has recorded as issued
+												(see <db:xref linkend="op_issueContent"/>) to the
+												User. The list includes issued Content items
+												regardless of whether they have been downloaded
+												(in part or full) or not. The list excludes
+												content that has <db:xref
+												linkend="contentList_expired"/>.</db:para>
+												<db:para>Services that are of the <db:link
+												linkend="fundamentals_serviceType_library">library
+												style</db:link> must recognize this identifier.
+												Services that are of the <db:link
+												linkend="fundamentals_serviceType_shop">shop
+												style</db:link> may recognize this
+												identifier.</db:para>
+											</db:listitem>
+										</db:varlistentry>
+										<db:varlistentry xml:id="contentList_new">
+											<db:term>new</db:term>
+											<db:listitem>
+												<db:para role="desc">Refers to a list of Content
+												that the Service offers to issue to the
+												User.</db:para>
+												<db:para>The list excludes content that is <db:xref
+												linkend="contentList_issued"/>, and it excludes
+												content that has <db:xref
+												linkend="contentList_expired"/>.</db:para>
+												<db:para>Services that support the <db:xref
+												linkend="fundamentals_contentSelectionModel_outofband"
+												/> must recognize this identifier.</db:para>
+											</db:listitem>
+										</db:varlistentry>
+										<db:varlistentry xml:id="contentList_expired">
+											<db:term>expired</db:term>
+											<db:listitem>
+												<db:para>Referes to a list of Content that was
+												initially <db:xref linkend="contentList_issued"/>
+												to the User, but has now expired.</db:para>
+												<db:para>This list is used by <db:link
+												linkend="fundamentals_serviceType_library">library
+												style</db:link> Services to signal to the Reading
+												System that certain Content items must be
+												returned.</db:para>
+												<db:para>Services that are of the <db:link
+												linkend="fundamentals_serviceType_library">library
+												style</db:link> must recognize this
+												identifier.</db:para>
+											</db:listitem>
+										</db:varlistentry>
+									</db:variablelist>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+
+						<xs:element minOccurs="1" maxOccurs="1" name="firstItem" type="xs:integer">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">When retreiving a subset of the
+										contentList, contains the first item in the subset to
+										retrieve. The first item in the list has the index
+											<db:literal>0</db:literal>.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+
+						<xs:element minOccurs="1" maxOccurs="1" name="lastItem" type="xs:integer">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">When retreiving a subset of the
+										contentList, contains the last item in the subset to
+										retrieve. The value <db:literal>-1</db:literal> indicates a
+										request to retrieve all items from
+											<db:parameter>startIndex</db:parameter> to the end of
+										the list.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="getContentListResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" ref="contentList">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">Contains the requested content list, or a
+										segment thereof.</db:para>
+									<db:para>The value of the <db:code>id</db:code> attribute on the
+										returned <db:type>contentList</db:type> must match the value
+										of the <db:parameter>id</db:parameter> parameter passed with
+										the <db:xref linkend="op_getContentList"/>
+										operation.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="getServiceAnnouncements">
+				<xs:complexType>
+					<xs:annotation>
+						<xs:documentation>
+							<db:para role="desc">This operation has no parameters.</db:para>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="getServiceAnnouncementsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" ref="announcements">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">Contains the announcements from the
+										Service.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="markAnnouncementsAsRead">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" ref="read">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">Contains the announcements to mark as read,
+										expressed as references to the announcement's ID values as
+										specified in the <db:xref linkend="tp_announcements"/>
+										type.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="markAnnouncementsAsReadResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" name="markAnnouncementsAsReadResult"
+							type="xs:boolean">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">Specifies whether the specified
+										announcements were successfully marked as read on the
+										Service</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="getQuestions">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" ref="userResponses">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">Contains the user's response to a previous
+										question, or, as defined in <db:xref
+											linkend="tp_userResponse"/>, one of the three reserved
+										IDs: <db:literal>default</db:literal>,
+											<db:literal>search</db:literal> or
+											<db:literal>back</db:literal>.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="getQuestionsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" ref="questions">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">Contains one or more multiple choice or
+										input questions. It may also contain a Label or
+										contentListRef child elements.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="getContentMetadata">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" name="contentID" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">Contains the <db:xref
+											linkend="term_contentIdentifier"/> of the content for
+										which metadata is being requested, as expressed by the
+											<db:varname>id</db:varname> attribute of the relevant
+											<db:varname>contentItem</db:varname> in the <db:xref
+											linkend="tp_contentList"/> type.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="getContentMetadataResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" ref="contentMetadata">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">Contains the metadata for the specified
+										content.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="getContentResources">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" name="contentID" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">Contains the content identifier of the
+										content for which resources are being requested, as defined
+										in the <db:xref linkend="bib_dublinCore"/> identifier field
+										of the <db:xref linkend="tp_contentMetadata"/> type.
+									</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="getContentResourcesResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" ref="resources">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">Contains the resources for the specified
+										content.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="getKeyExchangeObject">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" ref="keyRing">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">The identifiers of the keys on the Reading
+										System's keyring.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+
+						<xs:element minOccurs="1" maxOccurs="1" name="requestedKeyName"
+							type="xs:string">
+							<xs:annotation>
+								<xs:documentation>The identifier of the requested
+									key.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="getKeyExchangeObjectResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" ref="pdtb2:KeyExchange">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">A <db:xref linkend="bib_pdtb2"/> Key
+										Exchange Object, containing the requested key encrypted
+										using one of the keys identified in keyRing.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="getServiceAttributes">
+				<xs:complexType>
+					<xs:annotation>
+						<xs:documentation>
+							<db:para role="desc">The getServiceAttributes operation has no
+								parameters.</db:para>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="getServiceAttributesResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" ref="serviceAttributes">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">Contains the attributes of the
+										service.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<!-- fault types -->
+
+			<xs:element name="internalServerErrorFault" type="tns:internalServerErrorFaultType"/>
+
+			<xs:complexType name="internalServerErrorFaultType">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="reason" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:element name="invalidOperationFault" type="tns:invalidOperationFaultType"/>
+
+			<xs:complexType name="invalidOperationFaultType">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="reason" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:element name="invalidParameterFault" type="tns:invalidParameterFaultType"/>
+
+			<xs:complexType name="invalidParameterFaultType">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="reason" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:element name="operationNotSupportedFault" type="tns:operationNotSupportedFaultType"/>
+
+			<xs:complexType name="operationNotSupportedFaultType">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="reason" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+
+		</xs:schema>
+
+	</types>
+
+	<!-- request and response messages for the LogOn operation -->
+
+	<message name="logOn_inputMessage">
+		<part name="parameters" element="tns:logOn">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the request message for the logon operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<message name="logOn_outputMessage">
+		<part name="parameters" element="tns:logOnResponse">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the response message for the logOn operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<!-- request message for the LogOff operation. there is no response message defined here as the LogOff operation is a one-way operation. -->
+
+	<message name="logOff_inputMessage">
+		<part name="parameters" element="tns:logOff">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the request message for the logOff operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<!-- request and response messages for the SetReadingSystemAttributes operation -->
+
+	<message name="setReadingSystemAttributes_inputMessage">
+		<part name="parameters" element="tns:setReadingSystemAttributes">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the request message for the setReadingSystemAttributes
+					operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<message name="setReadingSystemAttributes_outputMessage">
+		<part name="parameters" element="tns:setReadingSystemAttributesResponse">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the response message for the setReadingSystemAttributes
+					operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<!-- request and response messages for the setBookmarks operation -->
+
+	<message name="setBookmarks_inputMessage">
+		<part name="parameters" element="tns:setBookmarks">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the request message for the setBookmarks
+					operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<message name="setBookmarks_outputMessage">
+		<part name="parameters" element="tns:setBookmarksResponse">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the response message for the setBookmarks
+					operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<!-- request and response messages for the getBookmarks operation. -->
+
+	<message name="getBookmarks_inputMessage">
+		<part name="parameters" element="tns:getBookmarks">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the request message for the getBookmarks
+					operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<message name="getBookmarks_outputMessage">
+		<part name="parameters" element="tns:getBookmarksResponse">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the response message for the getBookmarks
+					operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<!-- request and response messages for the issueContent operation -->
+	<message name="issueContent_inputMessage">
+		<part name="parameters" element="tns:issueContent">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the request message for the issueContent
+					operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<message name="issueContent_outputMessage">
+		<part name="parameters" element="tns:issueContentResponse">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the response message for the issueContent
+					operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<!-- request and response messages for the returnContent operation -->
+
+	<message name="returnContent_inputMessage">
+		<part name="parameters" element="tns:returnContent">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the request message for the returnContent
+					operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<message name="returnContent_outputMessage">
+		<part name="parameters" element="tns:returnContentResponse">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the response message for the returnContent
+					operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<!-- request and response messages for the getContentList operation -->
+
+	<message name="getContentList_inputMessage">
+		<part name="parameters" element="tns:getContentList">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the request message for the getContentList
+					operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<message name="getContentList_outputMessage">
+		<part name="parameters" element="tns:getContentListResponse">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the response message for the getContentList
+					operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<!-- request and response messages for the getServiceAnnouncements operation -->
+
+	<message name="getServiceAnnouncements_inputMessage">
+		<part name="parameters" element="tns:getServiceAnnouncements">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the request message for the getServiceAnnouncements
+					operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<message name="getServiceAnnouncements_outputMessage">
+		<part name="parameters" element="tns:getServiceAnnouncementsResponse">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the response message for the getServiceAnnouncements
+					operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<!-- request and response messages for the markAnnouncementsAsRead operation -->
+
+	<message name="markAnnouncementsAsRead_inputMessage">
+		<part name="parameters" element="tns:markAnnouncementsAsRead">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the request message for the markAnnouncementsAsRead
+					operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<message name="markAnnouncementsAsRead_outputMessage">
+		<part name="parameters" element="tns:markAnnouncementsAsReadResponse">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the response message for the markAnnouncementsAsRead
+					operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<!-- request and response messages for the getQuestions Operation -->
+
+	<message name="getQuestions_inputMessage">
+		<part name="parameters" element="tns:getQuestions">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the request message for the getQuestions
+					operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<message name="getQuestions_outputMessage">
+		<part name="parameters" element="tns:getQuestionsResponse">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the response message for the getQuestions
+					operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<!-- request and response messages for the getContentMetadata operation -->
+
+	<message name="getContentMetadata_inputMessage">
+		<part name="parameters" element="tns:getContentMetadata">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the request message for the getContentMetadata
+					operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<message name="getContentMetadata_outputMessage">
+		<part name="parameters" element="tns:getContentMetadataResponse">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the response message for the getContentMetadata
+					operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<!-- request and response messages for the getContentResources operation -->
+
+	<message name="getContentResources_inputMessage">
+		<part name="parameters" element="tns:getContentResources">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the request message for the getContentResources
+					operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<message name="getContentResources_outputMessage">
+		<part name="parameters" element="tns:getContentResourcesResponse">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the response message for the getContentResources
+					operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+
+	<!-- request and response messages for the getKeyExchangeObject operation -->
+
+	<message name="getKeyExchangeObject_inputMessage">
+		<part name="parameters" element="tns:getKeyExchangeObject">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the request message for the getKeyExchangeObject
+					operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<message name="getKeyExchangeObject_outputMessage">
+		<part name="parameters" element="tns:getKeyExchangeObjectResponse">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the response message for the getKeyExchangeObject
+					operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<!-- request and response messages for the getServiceAttributes operation -->
+
+	<message name="getServiceAttributes_inputMessage">
+		<part name="parameters" element="tns:getServiceAttributes">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the request message for the getServiceAttributes
+					operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<message name="getServiceAttributes_outputMessage">
+		<part name="parameters" element="tns:getServiceAttributesResponse">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the response message for the getServiceAttributes
+					operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<!-- fault messages -->
+
+	<message name="internalServerErrorFault_message">
+		<part name="fault" element="tns:internalServerErrorFault">
+			<documentation>
+				<db:para role="desc">An internal server error occurred on the Service and the
+					execution of the operation was halted.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<message name="invalidOperationFault_message">
+		<part name="fault" element="tns:invalidOperationFault">
+			<documentation>
+				<db:para role="desc">The current context does not permit a call to this
+					operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<message name="invalidParameterFault_message">
+		<part name="fault" element="tns:invalidParameterFault">
+			<documentation>
+				<db:para role="desc">An invalid parameter was passed with the operation
+					request.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<message name="operationNotSupportedFault_message">
+		<part name="fault" element="tns:operationNotSupportedFault">
+			<documentation>
+				<db:para role="desc">This operation is not supported by the Service.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<portType name="daisy-online">
+
+		<!-- **************************************************** -->
+		<!-- *******  operations required for compliance ******** -->
+		<!-- **************************************************** -->
+
+		<operation name="logOn">
+			<documentation>
+				<db:para role="desc">Logs the Reading System on to the Service.</db:para>
+			</documentation>
+			<input message="tns:logOn_inputMessage"/>
+			<output message="tns:logOn_outputMessage"/>
+			<fault name="logOn_internalServerErrorFault"
+				message="tns:internalServerErrorFault_message"/>
+			<fault name="logOn_invalidOperationFault" message="tns:invalidOperationFault_message"/>
+		</operation>
+
+		<operation name="logOff">
+			<documentation>Logs the Reading System off the Service.</documentation>
+			<input message="tns:logOff_inputMessage"/>
+		</operation>
+
+		<operation name="setReadingSystemAttributes">
+			<documentation>
+				<db:para role="desc">Posts properties of the Reading System to the
+					Service.</db:para>
+				<db:para>A Reading System must invoke this operation as part of the <db:xref
+						linkend="def_sessionInitializationSequence"/>. This operation may be invoked
+					additional times during a session to record dynamic changes in the Reading
+					System properties.</db:para>
+			</documentation>
+			<input message="tns:setReadingSystemAttributes_inputMessage"/>
+			<output message="tns:setReadingSystemAttributes_outputMessage"/>
+			<fault name="setReadingSystemAttributes_internalServerErrorFault"
+				message="tns:internalServerErrorFault_message"/>
+			<fault name="setReadingSystemAttributes_invalidOperationFault"
+				message="tns:invalidOperationFault_message"/>
+			<fault name="setReadingSystemAttributes_invalidParameterFault"
+				message="tns:invalidParameterFault_message"/>
+		</operation>
+
+		<operation name="issueContent">
+			<documentation>
+				<db:para role="desc">Requests the issuance of the specified content.</db:para>
+			</documentation>
+			<input message="tns:issueContent_inputMessage"/>
+			<output message="tns:issueContent_outputMessage"/>
+			<fault name="issueContent_internalServerErrorFault"
+				message="tns:internalServerErrorFault_message"/>
+			<fault name="issueContent_invalidOperationFault"
+				message="tns:invalidOperationFault_message"/>
+			<fault name="issueContent_invalidParameterFault"
+				message="tns:invalidParameterFault_message"/>
+		</operation>
+
+
+
+		<operation name="getContentMetadata">
+			<documentation>
+				<db:para role="desc">Retrieves <db:xref linkend="tp_contentMetadata"/> for the
+					specified content.</db:para>
+				<db:para>This operation is required in the <db:xref
+						linkend="def_contentRetrievalSequence"/>, and may also be called during
+					other stages of a Session, as long as the <db:xref
+						linkend="def_sessionInitializationSequence"/> has been successfully
+					completed.</db:para>
+			</documentation>
+			<input message="tns:getContentMetadata_inputMessage"/>
+			<output message="tns:getContentMetadata_outputMessage"/>
+			<fault name="getContentMetadata_internalServerErrorFault"
+				message="tns:internalServerErrorFault_message"/>
+			<!--
+			<fault name="getContentMetadata_invalidOperationFault"
+				message="tns:invalidOperationFault_message"/> -->
+			<fault name="getContentMetadata_invalidParameterFault"
+				message="tns:invalidParameterFault_message"/>
+		</operation>
+
+		<operation name="getContentResources">
+			<documentation>
+				<db:para role="desc">Retrieves <db:xref linkend="tp_resources"/> for the specified
+					content.</db:para>
+				<db:para role="prereq">This operation is only valid if a previous call to <db:xref
+						linkend="op_issueContent"/> with a result of <db:literal>true</db:literal>
+					has been made for the given content, during the current or a previous
+					Session.</db:para>
+			</documentation>
+			<input message="tns:getContentResources_inputMessage"/>
+			<output message="tns:getContentResources_outputMessage"/>
+			<fault name="getContentResources_internalServerErrorFault"
+				message="tns:internalServerErrorFault_message"/>
+			<fault name="getContentResources_invalidOperationFault"
+				message="tns:invalidOperationFault_message"/>
+			<fault name="getContentResources_invalidParameterFault"
+				message="tns:invalidParameterFault_message"/>
+		</operation>
+
+
+		<operation name="getServiceAttributes">
+			<documentation>
+				<db:para role="desc">Retrieves Service properties, including information on which
+					optional operations the Service supports.</db:para>
+				<db:para>A Reading System must invoke this operation as part of the <db:xref
+						linkend="def_sessionInitializationSequence"/>, and may invoke this operation
+					again later in the session to retrieve information on possible changes in
+					Service properties.</db:para>
+			</documentation>
+			<input message="tns:getServiceAttributes_inputMessage"/>
+			<output message="tns:getServiceAttributes_outputMessage"/>
+			<fault name="getServiceAttributes_internalServerErrorFault"
+				message="tns:internalServerErrorFault_message"/>
+			<fault name="getServiceAttributes_invalidOperationFault"
+				message="tns:invalidOperationFault_message"/>
+		</operation>
+
+		<!-- ************************************** -->
+		<!-- *******  optional operations  ******** -->
+		<!-- ************************************** -->
+
+		<operation name="getContentList">
+			<documentation>
+				<db:para role="desc">Retrieves a list of Content items.</db:para>
+				<db:para>The retrieved list can either be of a 'precomposed' type, in which case it
+					is referred to by passing one of the three reserved values defined in the
+						<db:parameter>id</db:parameter> parameter below (Refer to <db:xref
+						linkend="fundamentals"/> for information on in which contexts these reserved
+					values are used).</db:para>
+				<db:para>The list can also be of a 'dynamic' type, typically being exposed by the
+					Service as the result of a <db:link
+						linkend="operations_content_selection_browse">dynamic menu search</db:link>
+					operation sequence. In this case, the <db:parameter>id</db:parameter> value used
+					to refer to the list is provided in the return type of a previous operation (See
+					for example <db:xref linkend="tp_questions"/>). </db:para>
+			</documentation>
+			<input message="tns:getContentList_inputMessage"/>
+			<output message="tns:getContentList_outputMessage"/>
+			<fault name="getContentList_internalServerErrorFault"
+				message="tns:internalServerErrorFault_message"/>
+			<fault name="getContentList_invalidOperationFault"
+				message="tns:invalidOperationFault_message"/>
+			<fault name="getContentList_invalidParameterFault"
+				message="tns:invalidParameterFault_message"/>
+		</operation>
+
+		<operation name="getServiceAnnouncements">
+			<documentation>
+				<db:para role="desc">Retrieves the announcements awaiting the User's attention from
+					the Service.</db:para>
+			</documentation>
+			<input message="tns:getServiceAnnouncements_inputMessage"/>
+			<output message="tns:getServiceAnnouncements_outputMessage"/>
+			<fault name="getServiceAnnouncements_internalServerErrorFault"
+				message="tns:internalServerErrorFault_message"/>
+			<fault name="getServiceAnnouncements_invalidOperationFault"
+				message="tns:invalidOperationFault_message"/>
+			<fault name="getServiceAnnouncements_operationNotSupportedFault"
+				message="tns:operationNotSupportedFault_message"/>
+		</operation>
+
+		<operation name="markAnnouncementsAsRead">
+			<documentation>
+				<db:para role="desc">Marks the specified announcements as read.</db:para>
+				<db:para role="prereq">This operation is only valid if a previous call to <db:xref
+						linkend="op_getServiceAnnouncements"/> has been made during the
+					session.</db:para>
+			</documentation>
+			<input message="tns:markAnnouncementsAsRead_inputMessage"/>
+			<output message="tns:markAnnouncementsAsRead_outputMessage"/>
+			<fault name="markAnnouncementsAsRead_internalServerErrorFault"
+				message="tns:internalServerErrorFault_message"/>
+			<fault name="markAnnouncementsAsRead_invalidOperationFault"
+				message="tns:invalidOperationFault_message"/>
+			<fault name="markAnnouncementsAsRead_invalidParameterFault"
+				message="tns:invalidParameterFault_message"/>
+			<fault name="markAnnouncementsAsRead_operationNotSupportedFault"
+				message="tns:operationNotSupportedFault_message"/>
+		</operation>
+
+		<operation name="returnContent">
+			<documentation>
+				<db:para role="desc">Notify the Service that the specified content has been deleted
+					from the Reading System. A successful invocation of this operation (e.g. a
+					return value of <db:constant>true</db:constant> from the Service) means that the
+					Content is no longer issued to the User. </db:para>
+
+				<db:para>This operation is used exclusively in <db:link
+						linkend="fundamentals_serviceType_library">library-style</db:link>
+					Services.</db:para>
+
+				<db:para> A Reading System should not call <db:function>returnContent</db:function>
+					where the contentMetadata's <db:varname>requiresReturn</db:varname> attribute is
+					not <db:literal>true</db:literal>.</db:para>
+				<db:para>A Reading System must delete the content before calling
+						<db:function>returnContent</db:function>. A Reading System must not call
+						<db:function>returnContent</db:function> on Content it never had.</db:para>
+				<db:note>
+					<db:para>This protocol cannot guarantee that a Reading System has actually
+						deleted the content before calling <db:function>returnContent</db:function>.
+						If a Service receives a call to this operation, that does not constitute
+						proof that the content has been removed. If a Service Provider requires a
+						robust copy prevention mechanism, it should employ a DRM solution such as
+							<db:xref linkend="bib_pdtb2"/>.</db:para>
+				</db:note>
+			</documentation>
+			<input message="tns:returnContent_inputMessage"/>
+			<output message="tns:returnContent_outputMessage"/>
+			<fault name="returnContent_internalServerErrorFault"
+				message="tns:internalServerErrorFault_message"/>
+			<fault name="returnContent_invalidOperationFault"
+				message="tns:invalidOperationFault_message"/>
+			<fault name="returnContent_invalidParameterFault"
+				message="tns:invalidParameterFault_message"/>
+			<fault name="returnContent_operationNotSupportedFault"
+				message="tns:operationNotSupportedFault_message"/>
+		</operation>
+
+		<operation name="setBookmarks">
+			<documentation>
+				<db:para role="desc">Request the storage of bookmarks for a content item to the
+					Service.</db:para>
+				<!-- <db:para role="note">Note that the publication identifier is embedded in the
+						<db:xref linkend="tp_bookmarkSet"/> type.</db:para> -->
+				<db:para role="note">Note that this operation only supports the storage of bookmarks
+					for one content item at a time.</db:para>
+			</documentation>
+			<input message="tns:setBookmarks_inputMessage"/>
+			<output message="tns:setBookmarks_outputMessage"/>
+			<fault name="setBookmarks_internalServerErrorFault"
+				message="tns:internalServerErrorFault_message"/>
+			<fault name="setBookmarks_invalidOperationFault"
+				message="tns:invalidOperationFault_message"/>
+			<fault name="setBookmarks_invalidParameterFault"
+				message="tns:invalidParameterFault_message"/>
+			<fault name="setBookmarks_operationNotSupportedFault"
+				message="tns:operationNotSupportedFault_message"/>
+		</operation>
+
+		<operation name="getBookmarks">
+			<documentation>
+				<db:para role="desc">Retrieves bookmarks for a content item from the
+					Service.</db:para>
+			</documentation>
+			<input message="tns:getBookmarks_inputMessage"/>
+			<output message="tns:getBookmarks_outputMessage"/>
+			<fault name="getBookmarks_internalServerErrorFault"
+				message="tns:internalServerErrorFault_message"/>
+			<fault name="getBookmarks_invalidOperationFault"
+				message="tns:invalidOperationFault_message"/>
+			<fault name="getBookmarks_invalidParameterFault"
+				message="tns:invalidParameterFault_message"/>
+			<fault name="getBookmarks_operationNotSupportedFault"
+				message="tns:operationNotSupportedFault_message"/>
+		</operation>
+
+		<operation name="getQuestions">
+			<documentation>
+				<db:para role="desc">Retrieves a question from the series of questions that comprise
+					the Service's Menu System.</db:para>
+			</documentation>
+			<input message="tns:getQuestions_inputMessage"/>
+			<output message="tns:getQuestions_outputMessage"/>
+			<fault name="getQuestions_internalServerErrorFault"
+				message="tns:internalServerErrorFault_message"/>
+			<fault name="getQuestions_invalidOperationFault"
+				message="tns:invalidOperationFault_message"/>
+			<fault name="getQuestions_invalidParameterFault"
+				message="tns:invalidParameterFault_message"/>
+			<fault name="getQuestions_operationNotSupportedFault"
+				message="tns:operationNotSupportedFault_message"/>
+		</operation>
+
+		<operation name="getKeyExchangeObject">
+			<documentation>
+				<db:para role="desc">Requests a <db:xref linkend="bib_pdtb2"/> Key Exchange Object
+					from the <db:xref linkend="term_service"/>.</db:para>
+			</documentation>
+			<input message="tns:getKeyExchangeObject_inputMessage"/>
+			<output message="tns:getKeyExchangeObject_outputMessage"/>
+			<fault name="getKeyExchangeObject_internalServerErrorFault"
+				message="tns:internalServerErrorFault_message"/>
+			<fault name="getKeyExchangeObject_invalidOperationFault"
+				message="tns:invalidOperationFault_message"/>
+			<fault name="getKeyExchangeObject_invalidParameterFault"
+				message="tns:invalidParameterFault_message"/>
+			<fault name="getKeyExchangeObject_operationNotSupportedFault"
+				message="tns:operationNotSupportedFault_message"/>
+		</operation>
+
+	</portType>
+
+	<!-- the binding element is generated by wsdl-finalize.xsl -->
+
+</definitions>

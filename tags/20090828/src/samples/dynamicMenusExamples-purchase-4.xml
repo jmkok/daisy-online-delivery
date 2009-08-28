@@ -1,0 +1,26 @@
+<questions xmlns="http://www.daisy.org/ns/daisy-online/">
+    <multipleChoiceQuestion id="q5-1">
+        <label xml:lang="en">
+            <text>Thank you for purchasing "Harry Potter and the deathly hallows," "Harry Potter and
+                the goblet of fire" and "Harry Potter and the Order of the Phoenix." These books
+                have been billed to your credit card. What would you like to do next?</text>
+        </label>
+        <choices>
+            <choice id="c1">
+                <label>
+                    <text>Buy more Books</text>
+                </label>
+            </choice>
+            <choice id="c2">
+                <label>
+                    <text>Add these books to my download/streaming list</text>
+                </label>
+            </choice>
+            <choice id="c3">
+                <label>
+                    <text>Download/Stream these books now</text>
+                </label>
+            </choice>
+        </choices>
+    </multipleChoiceQuestion>
+</questions>

@@ -1,0 +1,1686 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<!-- saved from url=(0063)http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm -->
+
+
+<title>DAISY Online Delivery Specification Web Service API Version 1.0</title>
+<meta content="MSHTML 6.00.5730.13" name="GENERATOR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+BODY {
+        FONT-WEIGHT: normal; MARGIN-LEFT: 10%; MARGIN-RIGHT: 15%; FONT-STYLE: normal; FONT-FAMILY: arial, verdana, sans-serif
+}
+H6 {
+        MARGIN-TOP: 1.2em; FONT-WEIGHT: bold; FONT-SIZE: 75%; MARGIN-BOTTOM: 0.2em; COLOR: #000099
+}
+H5 {
+        MARGIN-TOP: 1.2em; FONT-WEIGHT: bold; FONT-SIZE: 80%; MARGIN-BOTTOM: 0.2em; COLOR: #000099
+}
+H4 {
+        MARGIN-TOP: 2em; FONT-WEIGHT: bold; FONT-SIZE: 88%; MARGIN-BOTTOM: 0.4em; COLOR: #000099
+}
+H3 {
+        MARGIN-TOP: 2em; FONT-WEIGHT: bold; FONT-SIZE: 100%; MARGIN-BOTTOM: 0.5em; COLOR: #000099; LETTER-SPACING: 0.04em
+}
+H2 {
+        MARGIN-TOP: 2.5em; FONT-WEIGHT: bold; FONT-SIZE: 115%; MARGIN-BOTTOM: 0.5em; COLOR: #000099; LETTER-SPACING: 0.15em
+}
+H1 {
+        MARGIN-TOP: 3em; FONT-WEIGHT: bold; FONT-SIZE: 130%; MARGIN-BOTTOM: 0.5em; COLOR: #000099; LETTER-SPACING: 0.2em
+}
+UL.linklist {
+        MARGIN-LEFT: 0em; LIST-STYLE-TYPE: none
+}
+UL.linklist UL {
+        MARGIN-LEFT: 2em; LIST-STYLE-TYPE: none
+}
+.top {
+        DISPLAY: block; FONT-SIZE: 80%
+}
+IMG {
+        FLOAT: right
+}
+*.box {
+        BORDER-RIGHT: rgb(100,100,100) 1px solid; PADDING-RIGHT: 0.3em; BORDER-TOP: rgb(100,100,100) 1px solid; PADDING-LEFT: 0.3em; FONT-SIZE: 95%; PADDING-BOTTOM: 0.3em; BORDER-LEFT: rgb(100,100,100) 1px solid; PADDING-TOP: 0.3em; BORDER-BOTTOM: rgb(100,100,100) 1px solid
+}
+*.author {
+        FONT-SIZE: 80%; COLOR: #000099
+}
+*.comment {
+        DISPLAY: none; FONT-SIZE: 80%; COLOR: #000099
+}
+*.alert {
+        BORDER-RIGHT: red 1px solid; PADDING-RIGHT: 0.2em; BORDER-TOP: red 1px solid; PADDING-LEFT: 0.2em; FONT-WEIGHT: bold; FONT-SIZE: 95%; PADDING-BOTTOM: 0.2em; BORDER-LEFT: red 1px solid; PADDING-TOP: 0.2em; BORDER-BOTTOM: red 1px solid
+}
+*.action {
+        BORDER-RIGHT: rgb(0,0,50) 1px solid; PADDING-RIGHT: 0.2em; BORDER-TOP: rgb(0,0,50) 1px solid; PADDING-LEFT: 0.2em; FONT-WEIGHT: bold; FONT-SIZE: 90%; PADDING-BOTTOM: 0.2em; BORDER-LEFT: rgb(0,0,50) 1px solid; COLOR: rgb(0,0,153); PADDING-TOP: 0.2em; BORDER-BOTTOM: rgb(0,0,50) 1px solid; BACKGROUND-COLOR: rgb(240,240,240)
+}
+SPAN.bullet {
+        FONT-FAMILY: "Courier New", sans-serif
+}
+SPAN.padding {
+        FONT: 0.3em "Courier New", sans-serif
+}
+CODE {
+        FONT: 80% "Courier New", sans-serif
+}
+SPAN.indent {
+        MARGIN-LEFT: 1em; TEXT-INDENT: -1em
+}
+SPAN.indent2 {
+        TEXT-INDENT: 1.5em
+}
+OL.indent3 {
+        MARGIN-TOP: 0em
+}
+DT {
+        FONT-WEIGHT: bold
+}
+PRE {
+        MARGIN-LEFT: 10px
+}
+SPAN.bg-yellow {
+        BACKGROUND: white
+}
+.edit-delete {
+        BACKGROUND: #cccccc; TEXT-DECORATION: line-through
+}
+</style>
+
+<style type="text/css">
+LI.c1 {
+        DISPLAY: inline; LIST-STYLE-TYPE: none
+}
+</style>
+</head><body>
+<div><a href="http://www.daisy.org/"><img alt="DAISY Consortium Logo - Link to Home Page" src="dowsapi.htm_files/daisylogo-w.gif" border="0" height="110" width="150"></a>
+<h1>DAISY Online Delivery Specification Web Service API Version 1.0</h1>
+<h2>DAISY Consortium Last Call Draft - May 6, 2009</h2>
+<dl>
+<dt>This version:</dt>
+<dd><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm">http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm</a></dd>
+<dt>Latest version:</dt>
+<dd><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm">http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm</a></dd>
+<dt>Editor:</dt>
+<dd><a href="mailto:kenny.johar@visionaustralia.org">Kenny Johar</a>, <a href="http://www.visionaustralia.org/">Vision Australia</a></dd>
+</dl>
+<hr></div>
+<div><a id="abstract" name="abstract"></a>
+<h2>Abstract</h2>
+<p>In accordance with the movement of the software industry towards a
+service oriented architecture, the DAISY Online Delivery Specification
+has a Web Service at its core. This Web Service API is responsible for
+facilitating all interactions between a Reading System and a Service
+Provider, including the Downloading and Streaming of content. It is
+important to note however that this specification also allows for the
+Downloading and Streaming of content directly over http and https, as
+detailed in this document.</p>
+<p>This document is a part of a suite of three documents that together
+compose the normative part of the DAISY Online Delivery Specification.
+All these documents are detailed in the <a href="http://www.daisy.org/projects/daisy-online-delivery/index.php">DAISY Online Delivery Specification Overview</a>.</p>
+<a id="sod" name="sod"></a>
+<h2>Status of this Document</h2>
+<p>This section describes the status of this document at the time of its publication.</p>
+<p>This document is the Last Call working draft by the DAISY Online Working Group of the DAISY Consortium.</p>
+<p>The DAISY Online Working Group believes that the development of this
+document is mostly complete. This draft is being published to allow for
+review by other Members and Friends of the DAISY Consortium.</p>
+<p>There is a companion document available that assists in the
+understanding and implementation of the Web Service API detailed in
+this document:</p>
+<ul>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/doprimer.htm">DAISY Online Delivery Specification Primer</a></li>
+</ul>
+<p>The <a href="http://www.daisy.org/projects/daisy-online-delivery/doprimer.htm">DAISY Online Delivery Specification Primer</a>
+provides an introduction to the concepts behind and reasons for the
+development of the DAISY Online Delivery Specification, usage scenarios
+that the Web Service API can address, and best practices to aid the
+implementation of the Web Service API. Please refer to this document
+for clarification on any ambiguities that might arise when refering to
+the DAISY Online Delivery Specification Web Service API.</p>
+<p>Please do not cite this document as anything other than a work in progress.</p>
+</div>
+<div><a id="toc" name="toc"></a>
+<h2>Table of Contents</h2>
+<ul>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#intro">1. Introduction</a></li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#authentication">2. Authentication and Session Management</a></li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#security">3. Message Identity, Integrity and Confidentiality</a></li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#binary">4. Downloading and Streaming Binary Data</a></li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#apiintro">5. Introduction to the Web Service API</a></li>
+<li class="c1">
+<ul>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#general">5.1. General Functions</a></li>
+<li class="c1">
+<ul>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getdelayperiod">5.1.1 Function getDelayPeriod</a></li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getsettings">5.1.2 Function getSettings</a></li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#setSettings">5.1.3 Function setSettings</a></li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#setreadingsystemattributes">5.1.4 Function setReadingSystemAttributes</a></li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#setmessagemimetypes">5.1.5 Function setMessageMimeTypes</a></li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#setkeypress">5.1.6 Function setKeyPress</a></li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getserviceannouncements">5.1.8 Function getServiceAnnouncements</a></li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getserviceannouncementsmetadata">5.1.9 Function getServiceAnnouncementsMetadata</a></li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#logon">5.1.10 Function logOn</a></li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#logoff">5.1.11 Function logOff</a></li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getdatetime">5.1.12 Function getDateTime</a></li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#markAnnouncementsAsRead">5.1.13 Function markAnnouncementsAsRead</a></li>
+</ul>
+</li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#contentfunctions">5.2 Content Functions</a></li>
+<li class="c1">
+<ul>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#issuecontent">5.2.1 Function issueContent</a></li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#returncontent">5.2.2 Function returnContent</a></li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#searchcontent">5.2.3 Function searchContent</a></li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getcontentstatus">5.2.4 Function getContentStatus</a></li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#setcontentstatus">5.2.5 Function setContentStatus</a></li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getcontentmetadata">5.2.6 Function getContentMetadata</a></li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getcontentlist">5.2.7 Function getContentList</a></li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getcontentlistmetadata">5.2.8 Function getContentListMetadata</a></li>
+</ul>
+</li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#bookmarkfunctions">5.3 Bookmark Functions</a></li>
+<li class="c1">
+<ul>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getbookmarks">5.3.1 Function getBookmarks</a></li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#setbookmarks">5.3.2 Function setBookmarks</a></li>
+</ul>
+</li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#dsfunctions">5.4 Downloading and Streaming Functions</a></li>
+<li class="c1">
+<ul>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getresource">5.4.1 Function getResource</a></li>
+</ul>
+</li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#dynamicmenufunctions">5.5 Dynamic Menu Generation Functions</a></li>
+<li class="c1">
+<ul>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getuserinput">5.5.1 Function getUserInput</a></li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getuserannouncement">5.5.2 Function getUserAnnouncement</a></li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getUserChoices">5.5.3 Function getUserChoices</a></li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getuserchoicesmetadata">5.5.4 Function getUserChoicesMetadata</a></li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getgroupedquestions">5.5.5</a></li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getgroupedquestionsmetadata">5.5.6 Function getGroupedQuestionsMetadata</a></li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#postuserresponses">5.5.7 Function postUserResponses</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#conformance">6. Conformance Requirements.</a></li>
+</ul>
+</div>
+<div><a id="intro" name="intro"></a>
+<h2>1. Introduction</h2>
+<p>This sectionn is informative.</p>
+<p>This document details the Web Service API, Authentication and
+Session Management process, Message identity, integrity and
+confidentiality, binary encoding and conformance requirements for the
+DAISY Online Delivery Specification.</p>
+<p>Refer to the <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm">DAISY Online Delivery Specification Markup Language Ontology</a>
+document for details on the canonical representation of the lexical and
+value spaces of each of the types mentioned in this document.</p>
+<p>To ensure interoperability between various implementations of the
+DAISY Online Delivery Specification on different platforms, it is
+mandatory that all normative sections of this document be adhered to in
+the respective implementations. refer to the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#conformance">Conformance Requirements</a> section of this document for further details on ensuring compliance to the DAISY Online Delivery Specification.</p>
+<p>All function declarations in the Web Service API detailed in this
+document are provided in Visual Basic .net, Java and C# to aid
+understanding.</p>
+<p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+"SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119.</a></p>
+<p>If you believe there are any errors in this document, please send your feedback to the <a href="mailto:kenny.johar@visionaustralia.org">Editor</a> of the DAISY Online Delivery Specification.</p>
+<a id="authentication" name="authentication"></a>
+<h2>2. Authentication and Session Management</h2>
+<p>This section is normative.</p>
+<p>A Reading System must perform the following step for authentication:</p>
+<ul>
+<li>Call the <a href="#logon">logOn function</a>, passing in the relevant credentials to the function.</li>
+</ul>
+<p>Please note, this specification does not stipulate the nature of the
+credentials used too authenticate a Reading System. The credentials
+used in this context MAY be credentials associated to a user, a Reading
+System, or any other entity specified by a Service provider.</p>
+<p>The Service must then perform the following steps to complete the authentication process:</p>
+<ol>
+<li>Verify the credentials passed by the Reading System to the <a href="#logon">logON function</a>.</li>
+<li>if the authentication was successful, Issue a cookie by embedding
+it in the Set-Cookie http header, and send it to the Reading System
+along with the response to the <a href="#logOn">logOn function</a>. If the authentication was not successful, a cookie may not be sent along with the response.</li>
+</ol>
+<p>A Daisy Online Delivery Service is session-aware by design. Sessions
+must be tracked and managed through the use of cookies. Upon successful
+authentication, the Reading System must be issued a cookie as described
+above. The Reading system must send this cookie by embedding it in the
+Cookie http header with all subsequent http requests to the Service. A
+cookie in this context is opaque i.e. the Reading System is not
+required to understand the contents of the Cookie.</p>
+<p>The Service MUST keep the session with the Reading System alive for
+60 minutes in the event of no activity, before explicitly terminating
+the session.</p>
+<a id="security" name="security"></a>
+<h2>3. Message Identity, Integrity and Confidentiality</h2>
+<p>This section is normative.</p>
+<p>A compliant Service may be hosted over http or https. The Daisy
+Online Delivery Specification relies on transport layer security
+mechanisms i.e. https through TLS 1.0 or SSL 3.0, to ensure message
+identity, integrity and confidentiality. Although the specification
+allows the hosting of a compliant Service over http, it is very
+important to note that such a usage scenario is inherently insecure.</p>
+<p>Please also note, protection of content on a Reading System is out
+of scope for the Daisy Online Delivery Specification. For protection of
+Daisy Content, please refer to the <a href="http://www.daisy.org/projects/pdtb/daisy-pdtb-spec.html">Protected Digital Talking Book Specification.</a></p>
+<a id="binary" name="binary"></a>
+<h2>4. Downloading and Streaming Binary Data</h2>
+<p>This section is normative.</p>
+<p>All soap messages flowing between the Reading System and the Service MUST be <a href="http://schemas.xmlsoap.org/soap/mtom/SOAP11MTOM10.pdf">MTOM</a> encoded. Any soap message that is not <a href="http://schemas.xmlsoap.org/soap/mtom/SOAP11MTOM10.pdf">MTOM</a> encoded MUST be rejected by the recipient.</p>
+<p>This specification does not mandate that all content be downloaded and streamed using the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#appintro">Web Service API</a>.
+Downloading and Streaming over http and https is permitted. However,
+the Reading System MUST support Basic Authentication over http and
+https to ensure compliance to this specification, as detailed in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#conformance">Conformance Requirements</a> section of this document.</p>
+<p>Basic Authentication is the mechanism that this specification
+provides for the authentication of a Reading System to a Service
+Provider in a direct Downloading/Streaming context. However, it is
+important to note that Basic Authentication is not required in all
+direct Downloading/Streaming contexts i.e. A Service Provider may
+choose to host its content over http/https for direct
+Downloading/Streaming without requiring the Reading System to
+authenticate itself through Basic Authentication. If the Service
+Provider opts for Basic Authentication, the Service Provider must
+supply the credentials required for authentication in the url to the
+content by adhering to the following pattern:
+http|https://username:password@domain.com</p>
+<p>Please also note, Basic Authentication over http is inherently
+insecure as the credentials are sent in clear with each http request.
+Although this Specification allows the use of Basic Authentication over
+http, it is recommended that Basic Authentication over https be used
+for maximum security.</p>
+<a id="apiintro" name="apiintro"></a>
+<h2>5. Introduction to the Web Service API</h2>
+<p>This section is informative.</p>
+<p>this API is comprised of 27 functions that have been divided into 5
+distinct functional categories. All simple (aka primitive) types
+mentioned in this API are expressed in terms of the <a href="http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/">w3c Schema Language Part 2: Datatypes</a> specification. All complex (aka custom) types are described in the <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm">DAISY Online Delivery Specification Markup Language Ontology</a>
+document, and are cross referenced from the relevant sections in this
+document. The rationale behind expressing all types in the <a href="http://www.w3.org/XML/Schema">w3c xml schema language</a>
+is to keep the DAISY Online Delivery Specification programming language
+agnostic. It is envisaged that all these types will be deserialised to
+native programming constructs in the respective programming languages.</p>
+<p>Each of the functional categories and the associated functions are detailed herein.</p>
+<a id="general" name="general"></a>
+<h3>5.1. General Functions</h3>
+<p>this section is informative.</p>
+<p>The General category contains functions that enable a reading system to perform the following activities:</p>
+<ul>
+<li>Retrieve announcements that are awaiting a user's attention rom the service.</li>
+<li>Save and Retrieve the User's settings from the service.</li>
+<li>Register specific characteristics of the reading system with the service.</li>
+<li>Notify the Service of any errors that the Reading System encountered while in execution.</li>
+<li>Post diagnostic information to the Service.</li>
+<li>Perform other administrative tasks.</li>
+</ul>
+<p>A detailed description of each of these general purpose functions follows.</p>
+<a id="getdelayperiod" name="getdelayperiod"></a>
+<h4>5.1.1. Function getDelayPeriod</h4>
+<p>This section is normative.</p>
+<p>Gets the delay period from the Service after which the execution MUST resume as normal.</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public function getDelayPeriod() as <a href="http://www.w3.org/TR/xmlschema-2/#int">integer</a></code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.w3.org/TR/xmlschema-2/#int">int</a> getDelayPeriod()</code></p>
+<h5>Parameters</h5>
+<p>No parameters.</p>
+<h5>Return Value</h5>
+<p>Returns the number of seconds that the reading system MUST wait before resuming execution, as an <a href="http://www.w3.org/TR/xmlschema-2/#int">int type</a>.</p>
+<h5>Exceptions</h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+</tbody>
+</table>
+<h5>Remarks</h5>
+<p>The Reading System calls this function when a previous function call throws the <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#servicebusy">Service busy</a> exception. The Reading System then waits for 'n' number of seconds (as returned by this function) before resuming execution.</p>
+<a id="getsettings" name="getsettings"></a>
+<h4>5.1.2. Function getSettings</h4>
+<p>This section is normative.</p>
+<p>Retrieves the settings that were saved to the service through a prior call to the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#setsettings">setSettings</a> function.</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public function getSettings() as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#settings">Settings</a></code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#settings">Settings</a> getSettings()</code></p>
+<h5>Parameters</h5>
+<p>No parameters.</p>
+<h5>Return Value</h5>
+<p>Returns the settings that the reading system saved to the Service through a prior call to the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#setsettings">setSettings</a> function, as a <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#settings">Settings type</a>.</p>
+<h5>Exceptions</h5>
+<h5>Remarks</h5>
+<p>The Reading System MUST call this function when it needs to retrieve
+the settings that it saved to the Service through a prior call to the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#setsettings">setSettings</a> function.</p>
+<a id="setsettings" name="setsettings"></a>
+<h4>5.1.3. Function setSettings</h4>
+<p>This section is normative.</p>
+<p>Saves the settings to the Service which MAY later be retrieved through a call to the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getsettings">getSettings</a> function.</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public function setSettings(settings as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#settings">Settings</a>) as <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a></code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a> setSettings(<a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#settings">Settings</a> settings)</code></p>
+<h5>Parameters</h5>
+<p>settings as the <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#settings">Settings type</a>.</p>
+<h5>Return Value</h5>
+<p>returns a <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a> that indicates whether the settings were saved successfully on the Service.</p>
+<h5>Exceptions</h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+</tbody>
+</table>
+<h5>Remarks</h5>
+<p>The Reading System MUST call this function when it needs to save the
+current settings to the Service, which it MAY later retrieve through a
+call to the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getsettings">getSettings</a> function.</p>
+<a id="setreadingsystemattributes" name="setreadingsystemattributes"></a>
+<h4>5.1.4. Function setReadingSystemAttributes</h4>
+<p>This section is normative.</p>
+<p>Posts the attributes (aka characteristics) of the Reading System to the Service.</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public function setReadingSystemAttributes(readingSystemAttributes as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#readingsystemattributes">ReadingSystemAttributes</a>) as <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a></code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a> setReadingSystemAttributes(<a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#readingsystemattributes">ReadingSystemAttributes</a> readingSystemAttributes)</code></p>
+<h5>Parameters</h5>
+<p>readingSystemAttributes as the <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#readingsystemattributes">ReadingSystemAttributes type</a>.</p>
+<h5>Return Value</h5>
+<p>returns a <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a>
+that indicates whether the ReadingSystemAttributes (aka characteristics
+of the reading system) were saved successfully on the Service.</p>
+<h5>Exceptions</h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.%20aisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+</tbody>
+</table>
+<h5>Remarks</h5>
+<p>The Reading System MUST call this function when it needs to post its
+attributes (aka characteristics) to the Service. This function must be
+the first function that the Reading System calls after a successful log
+on through the <a href="#logon">logOn function.</a></p>
+<a id="setmessagemimetypes" name="setmessagemimetypes"></a>
+<h4>5.1.5. Function setMessageMimeTypes</h4>
+<p>This section is normative.</p>
+<p>Posts the information about what MIME types are supported on the Reading System to the Service.</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public function setMessageMimeTypes(mimeTypes as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#mimeTypes">mimeTypes</a>) as <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a></code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a> setMessageMimeTypes(<a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#mimetypes">mimeTypes</a> mimeTypes)</code></p>
+<h5>Parameters</h5>
+<p>mimeTypes as the <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#mimetypes">mimeTypes type</a>.</p>
+<h5>Return Value</h5>
+<p>returns a <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a> that indicates whether the mimeTypes were saved successfully on the Service.</p>
+<h5>Exceptions</h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+</tbody>
+</table>
+<h5>Remarks</h5>
+<p>The Reading System MUST call this function when it needs to post the
+information about the MIME types that are supported on the Reading
+System to render messages from the Service. The Service thenceforth
+MUST provide the Reading System messages containing the MIME types that
+are explicitly stated in the <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#mimetypes">mimeTypes type</a>,
+passed as a parameter to this function. Please note, this function is
+used to post information to the service pertaining to the messages that
+MAY be rendered on a Reading System from the service; this function has
+no bearing on the content received on the Reading System from the
+Service (i.e. this function impacts only the <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#message">Message type</a>).</p>
+<a id="setkeypress" name="setkeypress"></a>
+<h4>5.1.6. function setKeyPress</h4>
+<p>This section is normative.</p>
+<p>Posts a key pushed by a user on a Reading System to the Service.</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public function setKeyPress(keyInfo as <a href="http://www.w3.org/TR/xmlschema-2/#string">String</a>) as <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a></code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a> setKeyPress(<a href="http://www.w3.org/TR/xmlschema-2/#string">String</a> keyInfo)</code></p>
+<h5>Parameters</h5>
+<p>keyInfo as the <a href="http://www.w3.org/TR/xmlschema-2/#string">String type</a>.</p>
+<h5>Return Value</h5>
+<p>returns a <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a> that indicates whether the keyInfo parameter was saved successfully on the Service.</p>
+<h5>Exceptions</h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+</tbody>
+</table>
+<h5>Remarks</h5>
+<p>The Reading System MUST call this function when it needs to post the
+information about the key pushed by the User to the Service.</p>
+<a id="seterror" name="seterror"></a>
+<h4>5.1.7. Function setError</h4>
+<p>This section is normative.</p>
+<p>Posts an error that occured on the Reading System to the Service.</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public function setError(errorDescription as <a href="http://www.w3.org/TR/xmlschema-2/#string">String</a>) as <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a></code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a> setError(<a href="http://www.w3.org/TR/xmlschema-2/#string">String</a> errorDescription)</code></p>
+<h5>Parameters</h5>
+<p>errorDescription as the <a href="http://www.w3.org/TR/xmlschema-2/#string">String type</a>.</p>
+<h5>Return Value</h5>
+<p>returns a <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a> that indicates whether the errorDescription parameter was saved successfully on the Service.</p>
+<h5>Exceptions</h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+</tbody>
+</table>
+<h5>Remarks</h5>
+<p>The Reading System MUST call this function when it needs to post the description of an error that occurred to the Service.</p>
+<a id="getserviceannouncements" name="getserviceannouncements"></a>
+<h4>5.1.8. Function getServiceAnnouncements</h4>
+<p>This section is normative.</p>
+<p>Retrieves the announcements awaiting the User's attention from the Service.</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public function getServiceAnnouncements(rangeBegin as <a href="http://www.w3.org/TR/xmlschema-2/#int">Integer</a>, rangeEnd as <a href="http://www.w3.org/TR/xmlschema-2/#int">Integer</a>) as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#announcements">Announcements</a></code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#announcements">Announcements</a> getServiceAnnouncements(<a href="http://www.w3.org/TR/xmlschema-2/#int">int</a> rangeBegin, <a href="http://www.w3.org/TR/xmlschema-2/#int">int</a> rangeEnd)</code></p>
+<h5>Parameters</h5>
+<p>rangeBegin as <a href="http://www.w3.org/TR/xmlschema-2/#int">Int type</a>: The index of the first announcement to be retur ed. rangeEnd as <a href="http://www.w3.org/TR/xmlschema-2/#int">Int type</a>: The index of the last announcement to be returned.</p>
+<h5>Return Value</h5>
+<p>Returns the announcements that are awaiting the User's attention through the <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#announcements">Announcements type</a>.</p>
+<h5>Exceptions</h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#invalidparameter">Invalid Parameter</a></td>
+<td>An invalid parameter was passed to the function.</td>
+</tr>
+</tbody>
+</table>
+<h5>Remarks</h5>
+<p>The Reading System MUST call this function when it needs to retrieve
+the announcements that are awaiting the User's attention. If the
+rangeBegin and rangeEnd parameters contain the value -1, the Service
+MUST return all the announcements awaiting the user's attention.</p>
+<a id="getserviceannouncementsmetadata" name="getserviceannouncementsmetadata"></a>
+<h4>5.1.9. Function getServiceAnnouncementsMetadata</h4>
+<p>This section is normative.</p>
+<p>Retrieves the metadata about the announcements awaiting the User's attention from the Service.</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public function getServiceAnnouncementsMetadata() as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#announcementsmetadata">AnnouncementsMetadata</a></code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#announcementsmetadata">AnnouncementsMetadata</a> getServiceAnnouncementsMetadata()</code></p>
+<h5>Parameters</h5>
+<p>No parameters.</p>
+<h5>Return Value</h5>
+<p>Returns metadata about the announcements awaiting the User's attention through an <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#announcementsmetadata">AnnouncementsMetadata type</a>.</p>
+<h5>Exceptions</h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+</tbody>
+</table>
+<h5>Remarks</h5>
+<p>The Reading System MUST call this function when it needs to retrieve
+the metadata about the announcements awaiting the User's attention from
+the Service. The Reading System MAY then use this metadata information
+to pass the correct parameters into the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getserviceannouncements">getServiceAnnouncements</a> function.</p>
+<a id="logon" name="logon"></a>
+<h4>5.1.10. Function logOn</h4>
+<p>This section is normative.</p>
+<p>Logs the Reading System on to the Service.</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public sub logOn(userName as <a href="http://www.w3.org/TR/xmlschema-2/#string">String</a>, password as <a href="http://www.w3.org/TR/xmlschema-2/#string">String</a>) as <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a></code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a> logOn(<a href="http://www.w3.org/TR/xmlschema-2/#string">String</a> userName, <a href="http://www.w3.org/TR/xmlschema-2/#string">String</a> password)</code></p>
+<h5>Parameters</h5>
+<p>userName as the <a href="http://www.w3.org/TR/xmlschema-2/#string">String</a> type. password as the <a href="http://www.w3.org/TR/xmlschema-2/#string">String</a> type.</p>
+<h5>Return Value</h5>
+<p>Returns a <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a> type that indicates whether the authentication was successful.</p>
+<h5>Exceptions</h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+</tbody>
+</table>
+<h5>Remarks</h5>
+<p>The Reading System MUST call this function to log on to the Service.
+This function must be the first function that the Reading System calls
+in a particular session. The Service must innitialise a new session if
+the log on is successful. please refer to the <a href="#authentication">Authentication and Session Management</a> section for further information.</p>
+<a id="logoff" name="logoff"></a>
+<h4>5.1.11. Function logOff</h4>
+<p>This section is normative.</p>
+<p>Logs the Reading System off the Service.</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public sub logOff()</code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public void logOff()&lt; CODE&gt;</code></p>
+<h5><code>Parameters</code></h5>
+<p><code>No Parameters.</code></p>
+<h5><code>Return Value</code></h5>
+<p><code>No Return Value.</code></p>
+<h5><code>Exceptions</code></h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+</tbody>
+</table>
+<h5><code>Remarks</code></h5>
+<p><code>The Reading System MUST call this function when it needs to
+log off from the Service. The Service MUST explicitly terminate the
+session when this function is called, and all subsequent interactions
+between the Reading System and the Service MUST require the
+establishment of a new session through the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#authentication">Authentication process.</a></code></p>
+<code><a id="getdatetime" name="getdatetime"></a></code>
+<h4><code>5.1.12. Function getDateTime</code></h4>
+<p><code>This section is normative.</code></p>
+<p><code>Retrieves the current date and time from the Service.</code></p>
+<p><code>Namespace: http://www.daisy.org/ns/doml#</code></p>
+<h5><code>Syntax</code></h5>
+<p><code><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public function getDateTime() as <a href="http://www.w3.org/TR/xmlschema-2/#string">String</a></code></code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.w3.org/TR/xmlschema-2/#string">String</a> getDateTime()</code></p>
+<h5>Parameters</h5>
+<p>No Parameters.</p>
+<h5>Return Value</h5>
+<p>The current date and time on the Service as a <a href="http://www.w3.org/TR/xmlschema-2/#string">String</a>.</p>
+<h5>Exceptions</h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+</tbody>
+</table>
+<h5>Remarks</h5>
+<p>The date and time returned by this function MUST conform to the
+date/time profile as per ISO 8601. A timezone identifier and a
+granularity to one second are both required.</p>
+<a id="markAnnouncementsAsRead" name="markAnnouncementsAsRead"></a>
+<h4>5.1.13. Function markAnnouncementsAsRead</h4>
+<p>This section is normative.</p>
+<p>Marks the specified announcements as read.</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public function markAnnouncementsAsRead(rangeBegin as <a href="http://www.w3.org/TR/xmlschema-2/#int">Integer</a>, rangeEnd as <a href="http://www.w3.org/TR/xmlschema-2/#int">Integer</a>) as <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a></code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a> markAnnouncementsAsRead(<a href="http://www.w3.org/TR/xmlschema-2/#int">int</a> rangeBegin, <a href="http://www.w3.org/TR/xmlschema-2/#int">int</a> rangeEnd)</code></p>
+<h5>Parameters</h5>
+<p>rangeBegin as <a href="http://www.w3.org/TR/xmlschema-2/#int">Int type</a>: The index of the first announcement to be marked as read. rangeEnd as <a href="http://www.w3.org/TR/xmlschema-2/#int">Int type</a>: The index of the last announcement to be marked as read.</p>
+<h5>Return Value</h5>
+<p>Returns a boolean flag that indicates whether the specified announcements were successfully marke as read on the Service.</p>
+<h5>Exceptions</h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#invalidparameter">Invalid Parameter</a></td>
+<td>An invalid parameter was passed to the function.</td>
+</tr>
+</tbody>
+</table>
+<h5>Remarks</h5>
+<p>The Reading System MUST call this function when it needs to mark the
+announcements specified through the rangeBegin and rangeEnd parameters
+as read on the Service.</p>
+<a id="contentfunctions" name="contentfunctions"></a>
+<h3>5.2. Content Functions</h3>
+<p>this section is informative.</p>
+<p>The Content category contains functions that enable a reading system to perform the following activities:</p>
+<ul>
+<li>Request the issuance of the specified content.</li>
+<li>Return the specified content.</li>
+<li>Perform a search on the available content.</li>
+<li>Retrieve the status of the specified content.</li>
+<li>Post the status of the specified content.</li>
+<li>Retrieve metadata for the specified content.</li>
+<li>Retrieve a list of available content.</li>
+<li>Retrieve metadata for a list of available content.</li>
+</ul>
+<p>A detailed description of each of these Content functions follows.</p>
+<a id="issuecontent" name="issuecontent"></a>
+<h4>5.2.1. Function issueContent</h4>
+<p>This section is normative.</p>
+<p>Requests the issuance of the specified content.</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public function issueContent(contentID as <a href="http://www.w3.org/TR/xmlschema-2/#string">String</a>) as <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a></code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a> issueContent(<a href="http://www.w3.org/TR/xmlschema-2/#string">String</a> contentID)</code></p>
+<h5>Parameters</h5>
+<p>contentID as <a href="http://www.w3.org/TR/xmlschema-2/#string">String</a>: The unique identifier of the content that this issuance request is for.</p>
+<h5>Return Value</h5>
+<p>returns a <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a> that indicates whether the content (specified through the contentID parameter) was issued successfully.</p>
+<h5>Exceptions</h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#invalidparameter">Invalid Parameter</a></td>
+<td>An invalid parameter was passed to the function.</td>
+</tr>
+</tbody>
+</table>
+<h5>Remarks</h5>
+<p>The Reading System MUST call this function when it needs to request
+the issuance of the specified content. The Service MUST return true to
+indicate that the content was issued successfully, and false otherwise.</p>
+<a id="returncontent" name="returncontent"></a>
+<h4>5.2.2. Function returnCont nt</h4>
+<p>This section is normative.</p>
+<p>Returns the specified content.</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public function returnContent(contentID as <a href="http://www.w3.org/TR/xmlschema-2/#string">String</a>) as <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a></code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a> returnContent(<a href="http://www.w3.org/TR/xmlschema-2/#string">String</a> contentID)</code></p>
+<h5>Parameters</h5>
+<p>contentID as <a href="http://www.w3.org/TR/xmlschema-2/#string">String</a>: The unique id of the content for which the return request is being made.</p>
+<h5>Return Value</h5>
+<p>returns a <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a> that indicates whether the content (specified through the contentID parameter) was returned successfully.</p>
+<h5>Exceptions</h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#invalidparameter">Invalid Parameter</a></td>
+<td>An invalid parameter was passed to the function.</td>
+</tr>
+</tbody>
+</table>
+<h5>Remarks</h5>
+<p>The Reading System MUST call this function when it needs to request
+the return of the specified content. The Reading System MUST delete
+this content from its storage if the return value of this function is
+true.</p>
+<a id="searchcontent" name="searchcontent"></a>
+<h4>5.2.3. Function searchContent</h4>
+<p>This section is normative.</p>
+<p>Performs a search on the available content.</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public function searchContent(searchCriteria as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#searchcriteria">SearchCriteria</a>) as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#contentlist">ContentList</a></code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#contentlist">ContentList</a> searchContent(<a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#searchcriteria">SearchCriteria</a> searchCriteria)</code></p>
+<h5>Parameters</h5>
+<p>searchCriteria as the <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#searchcriteria">SearchCriteria type</a>.</p>
+<h5>Return Value</h5>
+<p>Returns a unique identifier as <a href="http://www.w3.org/TR/xmlschema-2/#string">String</a>, that MUST be passed into the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getContentListMetadata">getContentListMetadata</a> and <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getContentList">getContentList</a> functions to retrieve the metadata about the search results, and the actual search results yielded by a call to this function.</p>
+<h5>Exceptions</h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+</tbody>
+</table>
+<h5>Remarks</h5>
+<p>The Reading System MUST call this function when it needs to search
+content on the Service. Please note, the search performed by this
+function is context dependent; for example, this function MAY be used
+to perform a search within the parameters of a previous search.</p>
+<a id="getcontentstatus" name="getcontentstatus"></a>
+<h4>5.2.4. Function getContentStatus</h4>
+<p>This section is normative.</p>
+<p>Retrieves the status of the specified content, that was saved to the Service through a prior call to the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#setcontentstatus">setContentStatus</a> function.</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public function getContentStatus(contentID as <a href="http://www.w3.org/TR/xmlschema-2/#string">String</a>) as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#contentstatus">ContentStatus</a></code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#contentstatus">ContentStatus</a> getContentStatus(<a href="http://www.w3.org/TR/xmlschema-2/#string">String</a> contentID)</code></p>
+<h5>Parameters</h5>
+<p>contentID as <a href="http://www.w3.org/TR/xmlschema-2/#string">String</a>: The unique identifier of the content that the status is being requested for.</p>
+<h5>Return Value</h5>
+<p>Returns the status of the content (specified through the contentID parameter), as the <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#contentstatus">ContentStatus type</a>.</p>
+<h5>Exceptions</h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#invalidparameter">Invalid Parameter</a></td>
+<td>An invalid parameter was passed to the function.</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#notissued">Not Issued</a></td>
+<td>The specified content has not been issued as yet.</td>
+</tr>
+</tbody>
+</table>
+<h5>Remarks</h5>
+<p>The Reading System MUST call this function when it needs to retrieve
+the status of the specified content, that it saved to the Service
+through a prior call to the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#setcontentstatus">setContentStatus</a> function.</p>
+<a id="setcontentstatus" name="setcontentstatus"></a>
+<h4>5.2.5. Function setContentStatus</h4>
+<p>This section is normative.</p>
+<p>Saves the status of the specified content to the Service.</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public function setContentStatus(contentStatus as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#contentstatus">ContentStatus</a>) as <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a></code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a> setCon entStatus(<a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#contentstatus">ContentStatus</a> contentStatus)</code></p>
+<h5>Parameters</h5>
+<p>contentStatus as the <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#contentstatus">ContentStatus type</a>.</p>
+<h5>Return Value</h5>
+<p>returns a <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a> that indicates whether the status of the specified content was saved successfully on the Service.</p>
+<h5>Exceptions</h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+</tbody>
+</table>
+<h5>Remarks</h5>
+<p>The Reading System MUST call this function when it needs to save the
+status of the specified content to the Service, which it MAY later
+retrieve through a call to the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getcontentstatus">getContentStatus</a> function.</p>
+<a id="getcontentmetadata" name="getcontentmetadata"></a>
+<h4>5.2.6. Function getContentMetadata</h4>
+<p>This section is normative.</p>
+<p>Retrieves the metadata for the specified content.</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public function getContentMetadata(contentID as <a href="http://www.w3.org/TR/xmlschema-2/#string">String</a>) as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#contentmetadata">ContentMetadata</a></code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#contentmetadata">ContentMetadata</a> getContentMetadata(<a href="http://www.w3.org/TR/xmlschema-2/#string">String</a> contentID)</code></p>
+<h5>Parameters</h5>
+<p>contentID as <a href="http://www.w3.org/TR/xmlschema-2/#string">String</a>: The unique identifier of the content for which the metadata is being requested.</p>
+<h5>Return Value</h5>
+<p>Returns the metadata for the specified content, as the <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#contentmetadata">ContentMetadata type</a>.</p>
+<h5>Exceptions</h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#invalidparameter">Invalid Parameter</a></td>
+<td>An invalid parameter was passed to the function.</td>
+</tr>
+</tbody>
+</table>
+<h5>Remarks</h5>
+<p>The Reading System MUST call this function when it needs to retrieve the metadata for the specified content.</p>
+<a id="getcontentlist" name="getcontentlist"></a>
+<h4>5.2.7. Function getContentList</h4>
+<p>This section is normative.</p>
+<p>Retrieves a list of available content.</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public function getContentList(userResponses as <a href="http://www%20daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userresponses">UserResponses</a>, rangeBegin as <a href="http://www.w3.org/TR/xmlschema-2/#int">Integer</a>, rangeEnd as <a href="http://www.w3.org/TR/xmlschema-2/#int">Integer</a>) as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#contentlist">ContentList</a></code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#contentlist">ContentList</a> getContentList(<a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userresponses">UserResponses</a> userResponses, <a href="http://www.w3.org/TR/xmlschema-2/#int">int</a> rangeBegin, <a href="http://www.w3.org/TR/xmlschema-2/#int">int</a> rangeEnd)</code></p>
+<h5>Parameters</h5>
+<p>userResponses as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userresponses">UserResponses type</a>: Response(s) to a previous question. rangeBegin as <a href="http://www.w3.org/TR/xmlschema-2/#int">Int</a>: The ordinal of the start list item in the range of list items to be returned. rangeEnd as <a href="http://www.w3.org/TR/xmlschema-2/#int">Int</a>: The ordinal of the end list item in the range of list items to be returned.</p>
+<h5>Return Value</h5>
+<p>Returns a list of content, as a <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#contentlist">ContentList type</a>.</p>
+<h5>Exceptions</h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#invalidparameter">Invalid Parameter</a></td>
+<td>An invalid parameter was passed to the function.</td>
+</tr>
+</tbody>
+</table>
+<h5>Remarks</h5>
+<p>The Reading System MUST call this function when it needs to retrieve
+a list of content on the basis of a response(s) to a previous question.
+If the rangeBegin and rangeEnd parameters contain the value -1, the
+Service MUST return all the items in the list of content.</p>
+<a id="getcontentlistmetadata" name="getcontentlistmetadata"></a>
+<h4>5.2.8. Function getContentListMetadata</h4>
+<p>This section is normative.</p>
+<p>Retrieves the metadata for a list of content. This list MAY then be retrieved through a call to the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getContentlist">getContentList</a> function.</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public function getContentListMetadata(userResponses as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userresponses">UserResponses</a>) as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#contentlistmetadata">ContentListMetadata</a></code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#contentlistmetadata">ContentListMetadata</a> getContentListMetadata( <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userresponses">UserResponses</a> userResponses)</code></p>
+<h5>Parameters</h5>
+<p>userResponses as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userresponses">UserResponses type</a>: Response(s) to a previous question.</p>
+<h5>Return Value</h5>
+<p>Returns the me adata for a list of content, as the <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#contentlistmetadata">ContentListMetadata type</a>.</p>
+<h5>Exceptions</h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+</tbody>
+</table>
+<h5>Remarks</h5>
+<p>The Reading System MUST call this function when it needs to retrieve
+metadata for a list of content. This list of content MAY then be
+retrieved through a call to the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getContentlist">getContentList</a>
+function. The userResponses parameter passed into this function MUST be
+identical in its value space to the userResponses parameter passed into
+the ensuing <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getContentList">getContentList</a>
+function. The Service MUST not act on the userResponses parameter
+passed into this function in any other way but to retrieve metadata
+information about a list of content. The actual registration of the
+content of the userResponses parameter MUST be done in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getcontentlist">getContentList</a> function.</p>
+<a id="bookmarkfunctions" name="bookmarkfunctions"></a>
+<h3>5.3. Bookmark Functions</h3>
+<p>this section is informative.</p>
+<p>The Bookmark category contains functions that enable a reading system to perform the following activities:</p>
+<ul>
+<li>Retrieve Bookmark information about a publication from the Service.</li>
+<li>Save Bookmark information about a Publication to the Service.</li>
+</ul>
+<p>A detailed description of each of these Bookmark functions follows.</p>
+<a id="getbookmarks" name="getbookmarks"></a>
+<h4>5.3.1. Function getBookmarks</h4>
+<p>This section is normative.</p>
+<p>Retrieves the bookmark information about a Publication, that was saved to the service through a prior call to the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#setBookmarks">setBookmarks</a> function.</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public function getBookmarks(publicationID as <a href="http://www.w3.org/TR/xmlschema-2/#string">String</a>) as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#bookmarkset">BookmarkSet</a></code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#bookmarkset">BookmarkSet</a> getBookmarks(<a href="http://www.w3.org/TR/xmlschema-2/#string">String</a> publicationID)</code></p>
+<h5>Parameters</h5>
+<p>publicationID as <a href="http://www.w3.org/TR/xmlschema-2/#string">String</a>: The unique id of the Publication for which the bookmarks are being retrieved.</p>
+<h5>Return Value</h5>
+<p>Returns the bookmarks for the Publication (specified through the publicationID parameter), as a <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#bookmarkset">BookmarkSet type</a>.</p>
+<h5>Exceptions</h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/pro%20ects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#invalidparameter">Invalid Parameter</a></td>
+<td>An invalid parameter was passed to the function.</td>
+</tr>
+</tbody>
+</table>
+<h5>Remarks</h5>
+<p>The Reading System MUST call this function when it needs to retrieve
+the bookmarks for a Publication, that it saved to the Service through a
+prior call to the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#setBookmarks">setBookmarks</a> function.</p>
+<a id="setbookmarks" name="setbookmarks"></a>
+<h4>5.3.2. Function setBookmarks</h4>
+<p>This section is normative.</p>
+<p>Saves the bookmarks for a Publication to the Service.</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public function setBookmarks(bookmarks as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#bookmarkset">BookmarkSet</a>) as <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a></code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a> setBookmarks(<a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#bookmarkset">BookmarkSet</a> bookmarks)</code></p>
+<h5>Parameters</h5>
+<p>Bookmarks for a Publication as a <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#bookmarkset">BookmarkSet type</a>.</p>
+<h5>Return Value</h5>
+<p>returns a <a href="http://www.w3.org/TR/xmlschema-2/#boolean">Boolean</a> that indicates whether the bookmarks for the Publication were saved successfully on the Service.</p>
+<h5>Exceptions</h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+</tbody>
+</table>
+<h5>Remarks</h5>
+<p>The Reading System MUST call this function when it needs to save the
+bookmarks for a Publication to the Service. These bookmarks MAY at
+another instance then be retrieved through a call to the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getBookmarks">getBookmarks</a> function.</p>
+<a id="dsfunctions" name="dsfunctions"></a>
+<h3>5.4. Downloading and Streaming Functions</h3>
+<p>this section is informative.</p>
+<p>The Downloading and Streaming category contains a function that enables a reading system to perform the following activities:</p>
+<ul>
+<li>Download Content.</li>
+<li>Review content while the download is in progress (aka progressive download).</li>
+<li>Stream Content.</li>
+</ul>
+<p>A detailed description of the function follows.</p>
+<a id="getresource" name="getresource"></a>
+<h4>5.4.1. Function getResource</h4>
+<p>This section is normative.</p>
+<p>Retrieves a specified number of bytes for the requested Resource from the Service.</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public function getResource(uID as <a href="http://www.w3.org/TR/xmlschema-2/#string">String</a>, uri as <a href="http://www.w3.org/TR/xmlschema-2/#string">String</a>, rangeBegin as <a href="http://www.w3.org/TR/xmlschema-2/#long">Long</a>, rangeEnd as <a href="http://www.w3.org/TR/xmlschema-2/#long">Long</a>) as <a href="http://www.w3.org/TR/xmlschema%202/#byte">Byte</a>()</code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.w3.org/TR/xmlschema-2/#byte">Byte</a>[] getResource(<a href="http://www.w3.org/TR/xmlschema-2/#string">String</a> uID, <a href="http://www.w3.org/TR/xmlschema-2/#string">String</a> uri, <a href="http://www.w3.org/TR/xmlschema-2/#long">Long</a> rangeBegin, <a href="http://www.w3.org/TR/xmlschema-2/#long">Long</a> rangeEnd)</code></p>
+<h5>Parameters</h5>
+<p>uID as <a href="http://www.w3.org/TR/xmlschema-2/#string">String</a>: The unique identifier of the publication which contains the resource being retrieved. uri as <a href="http://www.w3.org/TR/xmlschema-2/#string">String</a>: The filename (or path/filename) of the resource inside the Publication. rangeBegin as <a href="http://www.w3.org/TR/xmlschema-2/#long">Long</a>: The ordinal of the start byte in the byte range to be retrieved. rangeEnd as <a href="http://www.w3.org/TR/xmlschema-2/#long">Long</a>: The ordinal of the end byte in the byte range to be retrieved.</p>
+<h5>Return Value</h5>
+<p>Returns a base 64 encoded <a href="http://www.w3.org/TR/xmlschema-2/#byte">byte</a> array.</p>
+<h5>Exceptions</h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#invalidparameter">Invalid Parameter</a></td>
+<td>An invalid parameter was passed to the function.</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#notissued">Not Issued</a></td>
+<td>The requested resource has not been issued to the User as yet.</td>
+</tr>
+</tbody>
+</table>
+<h5>Remarks</h5>
+<p>The Reading System MUST call this function when it needs to download
+or stream content. If the uri parameter is not specified, the uID
+parameter MUST contain a filename that includes the extension of the
+file being requested.</p>
+<a id="dynamicmenufunctions" name="dynamicmenufunctions"></a>
+<h3>5.5. Dynamic Menu Generation Functions</h3>
+<p>this section is informative.</p>
+<p>The Dynamic Menu Generation category contains functions that enable a reading system to perform the following activities:</p>
+<ul>
+<li>Retrieve an input type question from the Service.</li>
+<li>Retrieve an announcement (aka prompt) from the Service.</li>
+<li>Retrieve a choices type question from the Service.</li>
+<li>Retrieve metadata for a choices type question from the Service.</li>
+<li>Retrieve a grouped set of questions from the Service.</li>
+<li>Retrieve metadata for a grouped set of questions from the Service.</li>
+</ul>
+<p>A detailed description of each of these Bookmark functions follows.</p>
+<a id="getuserinput" name="getuserinput"></a>
+<h4>5.5.1. Function getUserInput</h4>
+<p>This section is normative.</p>
+<p>Retrieves an input type question.</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public function getUserInput(userResponses as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userresponses">UserResponses</a>) as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userinput">UserInput</a></code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userinput">UserInput</a> getUserInput( <a href="http://www.daisy.org/projects/daisy-onl%20ne-delivery/doml-ontology.htm#userresponses">UserResponses</a> userResponses)</code></p>
+<h5>Parameters</h5>
+<p>userResponses as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userresponses">UserResponses type</a>: Response(s) to a previous question.</p>
+<h5>Return Value</h5>
+<p>Returns an input type question, as the <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userinput">UserInput type</a>.</p>
+<h5>Exceptions</h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+</tbody>
+</table>
+<h5>Remarks</h5>
+<p>The Reading System MUST call this function when it needs to retrieve an input type question.</p>
+<a id="getuserannouncement" name="getuserannouncement"></a>
+<h4>5.5.2. Function getUserAnnouncement</h4>
+<p>This section is normative.</p>
+<p>Retrieves an announcement (aka prompt).</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public function getUserAnnouncement(userResponses as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userresponses">UserResponses</a>) as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#announcements">Announcements</a></code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#announcements">Announcements</a> getUserAnnouncement( <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userresponses">UserResponses</a> userResponses)</code></p>
+<h5>Parameters</h5>
+<p>userResponses as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userresponses">UserResponses type</a>: Response(s) to a previous question.</p>
+<h5>Return Value</h5>
+<p>Returns an announcement, as the <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#announcements">Announcements type</a>.</p>
+<h5>Exceptions</h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+</tbody>
+</table>
+<h5>Remarks</h5>
+<p>The Reading System MUST call this function when it needs to retrieve
+an announcement based on the response(s) to a previous question.</p>
+<a id="getuserchoices" name="getuserchoices"></a>
+<h4>5.5.3. Function getUserChoices</h4>
+<p>This section is normative.</p>
+<p>Retrieves a choices type question.</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public function getUserChoices(userResponses as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userresponses">UserResponses</a>, rangeBegin as <a href="http://www.w3.org/TR/xmlschema-2/#int">Integer</a>, rangeEnd as <a href="http://www.w3.org/TR/xmlschema-2/#int">Integer</a>) as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userchoices">UserChoices</a></code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userchoices">UserChoices</a> getUserChoices( <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userresponses">UserResponses</a> userResponses, <a href="http://www.w3.org/TR/xmlschema-2/#int">Integer</a> rangeBegin, <a href="http://www.w3.org/TR/xmlschema-2/#int">Integer</a> rangeEnd)</code></p>
+<h5>Parameters</h5>
+<p>userResponses as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userresponses">UserResponses type</a>: Response(s) to a previous question. rangeBegin as <a href="http://www.w3.org/TR/xmlschema-2/#int">Int type</a>: The index of the first choice to be returned. rangeEnd as <a href="http://www.w3.org/TR/xmlschema-2/#int">Int type</a>: The index of the last choice to be returned.</p>
+<h5>Return Value</h5>
+<p>Returns a choices type question, as the <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userchoices">UserChoices type</a>.</p>
+<h5>Exceptions</h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+</tbody>
+</table>
+<h5>Remarks</h5>
+<p>The Reading System MUST call this function when it needs to retrieve
+a choices type question. If the rangeBegin and rangeEnd parameters
+contain the value -1, the Service MUST return all the choices in the
+choices type question.</p>
+<a id="getuserchoicesmetadata" name="getuserchoicesmetadata"></a>
+<h4>5.5.4. Function getUserChoicesMetadata</h4>
+<p>This section is normative.</p>
+<p>Retrieves the metadata for a choices type question.</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public function getUserChoicesMetadata(userResponses as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userresponses">UserResponses</a>) as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userchoicesmetadata">UserChoicesMetadata</a></code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userchoicesmetadata">UserChoicesMetadata</a> getUserChoicesMetadata( <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userresponses">UserResponses</a> userResponses)</code></p>
+<h5>Parameters</h5>
+<p>userResponses as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userresponses">UserResponses type</a>: Response(s) to a previous question.</p>
+<h5>Return Value</h5>
+<p>Returns the metadata for a choices type question, as the <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userchoicesmetadata">UserChoicesMetadata type</a>.</p>
+<h5>Exceptions</h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+</tbody>
+</table>
+<h5>Remarks</h5>
+<p>The eading System MUST call this function when it needs to retrieve
+metadata for a choices type question. This choices type question MAY
+then be retrieved through a call to the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getUserChoices">getUserChoices</a>
+function. The userResponses parameter passed into this function MUST be
+identical in its value space to the userResponses parameter passed into
+the ensuing <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getuserchoices">getUserChoices</a>
+function. The Service MUST not act on the userResponses parameter
+passed into this function in any other way but to retrieve metadata
+information about a choices type question. The actual registration of
+the content of the userResponses parameter MUST be done in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getUserChoices">getUserChoices</a> function.</p>
+<a id="getgroupedquestions" name="getgroupedquestions"></a>
+<h4>5.5.5. Function getGroupedQuestions</h4>
+<p>This section is normative.</p>
+<p>Retrieves a grouped set of questions.</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public function getGroupedQuestions(userResponses as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userresponses">UserResponses</a>, rangeBegin as <a href="http://www.w3.org/TR/xmlschema-2/#int">Integer</a>, rangeEnd as <a href="http://www.w3.org/TR/xmlschema-2/#int">Integer</a>) as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#groupedquestions">GroupedQuestions</a></code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#groupedquestions">GroupedQuestions</a> getGroupedQuestions( <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userresponses">UserResponses</a> userResponses, <a href="http://www.w3.org/TR/xmlschema-2/#int">int</a> rangeBegin, <a href="http://www.w3.org/TR/xmlschema-2/#int">int</a> rangeEnd)</code></p>
+<h5>Parameters</h5>
+<p>userResponses as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userresponses">UserResponses type</a>: Response(s) to a previous question. rangeBegin as <a href="http://www.w3.org/TR/xmlschema-2/#int">Int type</a>: The ordinal of the first question to be returned. rangeEnd as <a href="http://www.w3.org/TR/xmlschema-2/#int">Int type</a>: The ordinal of the last question to be returned.</p>
+<h5>Return Value</h5>
+<p>Returns a grouped set of questions, as the <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#groupedquestions">GroupedQuestions type</a>.</p>
+<h5>Exceptions</h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+</tbody>
+</table>
+<h5>Remarks</h5>
+<p>The Reading System MUST call this function when it needs to retrieve
+a grouped set of questions. If the rangeBegin and rangeEnd parameters
+contain the value -1, the Service MUST return all the questions in the
+grouped set of questions.</p>
+<h4><a id="getgroupedquestionsmetadata" name="getgroupedquestionsmetadata">5.5.6. Function getGroupedQuestionsMetadata</a></h4>
+<p>This section is normative.</p>
+<p>Retrieves the metadata for a set of grouped questions. This set MAY then be retrieved through a call to the <a href="http://www.daisy.org/projects/daisy-onl%20ne-delivery/dowsapi.htm#getGroupedQuestions">getGroupedQuestions</a> function.</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public function getGroupedQuestionsMetadata(userResponses as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userresponses">UserResponses</a>) as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#groupedQuestionsmetadata">groupedQuestionsMetadata</a></code></p>
+<p><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#groupedquestionsmetadata">groupedQuestionsMetadata</a> getGroupedQuestionsMetadata( <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userresponses">UserResponses</a> userResponses)</code></p>
+<h5>Parameters</h5>
+<p>userResponses as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userresponses">UserResponses type</a>: Response(s) to a previous question.</p>
+<h5>Return Value</h5>
+<p>Returns the metadata for a set of grouped questions, as the <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#groupedquestionsmetadata">groupedQuestionsMetadata type</a>.</p>
+<h5>Exceptions</h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+</tbody>
+</table>
+<h5>Remarks</h5>
+<p>The Reading System MUST call this function when it needs to retrieve
+metadata for a set of grouped questions. This set MAY then be retrieved
+through a call to the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getgroupedquestions">getGroupedQuestions</a>
+function. The userResponses parameter passed into this function MUST be
+identical in its value space to the userResponses parameter passed into
+the ensuing <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getgroupedquestions">getGroupedQuestions</a>
+function. The Service MUST not act on the userResponses parameter
+passed into this function in any other way but to retrieve metadata
+information about a set of grouped questions. The actual registration
+of the content of the userResponses parameter MUST be done in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getgroupedquestions">getGroupedQuestions</a> function.</p>
+<a id="postuserresponses" name="postuserresponses"></a>
+<h4>5.5.7. Function postUserResponses</h4>
+<p>This section is normative.</p>
+<p>Posts the user's response(s) to the Service.</p>
+<p>Namespace: http://www.daisy.org/ns/doml#</p>
+<h5>Syntax</h5>
+<p><em>Visual Basic (Declaration):</em><br>
+<br>
+<code>public function postUserResponses(userResponses as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userresponses">UserResponses</a>) as <a href="http://www.w3.org/TR/xmlschema-2/#string">String</a></code></p>
+<p><code><em>Java or c# (Declaration)</em><br>
+<br>
+<code>public <a href="http://www.w3.org/TR/xmlschema-2/#string">String</a> postUserResponses( <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userresponses">UserResponses</a> userResponses)</code></code></p>
+<h5>Parameters</h5>
+<p>userResponses as <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#userresponses">UserResponses type</a>: Response(s) to a previous question.</p>
+<h5>Return Value</h5>
+<p>Returns the name of the function t at the Reading System MUST call next as a <a href="http://www.w3.org/TR/xmlschema-2/#string">String type</a>. Please note, the only allowed values are the names of the functions explicitly defined in this document.</p>
+<h5>Exceptions</h5>
+<table>
+<thead>
+<tr>
+<th>Exception Type</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology#notauthorised">Not Authorised</a></td>
+<td>The Reading System is not authorised to call this function</td>
+</tr>
+<tr>
+<td><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#internalservererror">Internal Server Error</a></td>
+<td>An internal server error occured on the Service and the execution was haulted.</td>
+</tr>
+</tbody>
+</table>
+<h5>Remarks</h5>
+<p>This function enables any function in the DAISY Online Delivery Specification Web Service API to be chained to the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#dynamicmenufunctions">Dynamic Menu Generation functions</a>. Each of the <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#dynamicmenutypes">Dynamic Menu Generation types</a> described in the <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm">DAISY Online Delivery Specification Markup Language Ontology</a>,
+only allow the getUserInput, getUserAnnouncement, getUserChoices,
+getGroupedQuestions, getContentList and postUserResponses functions as
+the legal callback functions through their respective callbackFunction
+elements. If a function that is not a part of this function list e.g. <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#searchcontent">searchContent</a>
+needs to be included in this list, the postUserResponses function MAY
+be specified in the list instead, and the name of the excluded function
+MAY then be returned as a return value of this function.</p>
+<a id="conformance" name="conformance"></a>
+<h3>6. Conformance Requirements</h3>
+<p>This section is normative.</p>
+<p>To claim conformance to the DAISY Online Technical Specification, A Reading system MUST:</p>
+<ol>
+<li>Support all mandatory functions -- <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getgroupedquestions">getGroupedQuestions</a> and <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getgroupedquestionsmetadata">getGroupedQuestionsMetadata</a>
+functions are the only two optional functions in The DAISY Online
+Delivery Specification Web Service API. If the Reading System does not
+intend to support these functions, it MUST set the <em>supportsGroupedQuestions</em> element in the <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#readingsystemattributes">ReadingSystemAttributes</a> type to false when passing it to the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#setreadingsystemattributes">setReadingSystemAttributes</a> function.</li>
+<li>Support the stipulated Authentication and Session Management mechanism as detailed in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#authentication">Authentication and Session Management section</a> of this document.</li>
+<li>Support the stipulated Binary encoding mechanism as detailed in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#binary">Downloading and Streaming Binary Data section</a> of this document.</li>
+<li>Support all mandatory types detailed in the <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm">DOML Ontology Document</a> -- <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#groupedquestions">groupedQuestions</a> and <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#groupedquestionsmetadata">groupedQuestionsMetadata</a> are the only two types that are opti nal in this specification. If a Reading System does not intend to support the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getgroupedquestions">getGroupedQuestions</a> and <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getgroupedquestionsmetadata">getGroupedQuestionsMetadata</a> functions, the Reading System is not required to support these two optional types.</li>
+<li>Support all stipulations pertaining to Message Identity, Integrity and Confidentiality as detailed in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#security">Message Identity, Integrity and Confidentiality section</a> of this document.</li>
+<li>Ensure the deletion of the relevant content from its storage, upon the receipt of a true return value from the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#returnContent">returnContent</a> function.</li>
+<li>Support ssl 3.0/tls 1.0.</li>
+<li>Support Basic Authentication over http and https.</li>
+<li>Ensure compliance to the <a href="http://www.ws-i.org/Profiles/BasicProfile-1.1.html">WS-I Basic Profile 1.1</a></li>
+</ol>
+<p>To claim conformance to the DAISY Online Technical Specification, A Service MUST:</p>
+<ol>
+<li>Support all mandatory functions -- <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getgroupedquestions">getGroupedQuestions</a> and <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getgroupedquestionsmetadata">getGroupedQuestionsMetadata</a>
+functions are the only two optional functions in The DAISY Online
+Delivery Specification Web Service API. If the Reading System does not
+intend to support these functions, it MUST set the <em>supportsGroupedQuestions</em> element in the <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#readingsystemattributes">ReadingSystemAttributes</a> type to false when passing it to the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#setreadingsystemattributes">setReadingSystemAttributes</a> function.</li>
+<li>Support the stipulated Authentication and Session Management mechanism as detailed in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#authentication">Authentication and Session Management section</a> of this document.</li>
+<li>Support the stipulated Binary encoding mechanism as detailed in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#binary">Downloading and Streaming Binary Data section</a> of this document.</li>
+<li>Support all mandatory types detailed in the <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm">DOML Ontology Document</a> -- <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#groupedquestions">groupedQuestions</a> and <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm#groupedquestionsmetadata">groupedQuestionsMetadata</a> are the only two types that are optional in this specification. If a Reading System does not intend to support the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getgroupedquestions">getGroupedQuestions</a> and <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getgroupedquestionsmetadata">getGroupedQuestionsMetadata</a> functions, the Reading System is not required to support these two optional types.</li>
+<li>Support all stipulations pertaining to Message Identity, Integrity and Confidentiality as detailed in <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#security">Message Identity, Integrity and Confidentiality section</a> of this document.</li>
+<li>Ensure compliance to the <a href="http://www.ws-i.org/Profiles/BasicProfile-1.1.html">WS-I Basic Profile 1.1</a></li>
+</ol>
+</div>
+</body></html>
