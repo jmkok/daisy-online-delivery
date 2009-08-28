@@ -475,67 +475,98 @@
             <title>Underlying protocols</title>
 
             <section xml:id="fundamentals_protocols_http">
-                <title>The http protocol</title>
-                <para>This specification employs the http (<xref linkend="bib_http11"/>) protocol for two purposes:</para>
+                <title>HTTP</title>
+                <para>This specification employs <xref linkend="bib_http11"/> for two purposes:</para>
                 <itemizedlist>
                     <listitem>
-                        <para>for the transport layer of the soap messages</para>
+                        <para>for the transport layer of the SOAP messages, and</para>
                     </listitem>
                     <listitem>
-                        <para>for transfer of Content data (as indicated/specified by the soap
+                        <para>for transfer of Content data (as indicated/specified in the SOAP
                             messages).</para>
                     </listitem>
                 </itemizedlist>
 
                 <para>Services and Reading Systems must support <xref linkend="bib_http11"/> and
-                    secure HTTP (HTTPS) through the use of <xref linkend="bib_ssl3.0"/> and <xref
+                    secure HTTP (HTTPS) through the use of <xref linkend="bib_ssl3.0"/> or <xref
                         linkend="bib_tls1.0"/>.</para> 
  
-                <para>The use of the http protocol must be implemented as specified by <xref
+                <para>The use of HTTP must conform to <xref
                     linkend="bib_http11"/> and <xref linkend="bib_RFC2617"/>. </para>
                 
-                <para>Services and Reading Systems must support http sessions as 
+                <para>Services and Reading Systems must support HTTP sessions as 
                     specified by <xref linkend="bib_rfc2109"/>. Note that an established HTTP session does not 
-                    implicitly mean that the Reading System have logged on to the Service successfully 
+                    implicitly mean that the Reading System has logged on to the Service successfully 
                     (see <xref linkend="operations_session"/>).</para>
                                                 
-                <section xml:id="fundamentals_protocols_https-ssl">
-                    <title>https and SSL</title>
+                <section xml:id="fundamentals_protocols_https">
+                    <title>HTTPS</title>
+					<para>HTTPS for both SOAP and Content transfer is recommended.  The
+					use of HTTPS prevents SOAP transactions, the URIs of HTTP requests,
+					Content transferred and User credentials from being accessed by
+					unauthorizaed parties.  It allows the Reading System to verify the identity
+					of the Service through the use of certificates.  However, it does not ensure
+					that the Reading System or the Service keeps data encrypted once it is received.</para>
 
-                    <para>If an http connection needs to be secured, the URI should state "https://"
-                        instead of "http://". Any certificates used by the server should be
-                        registered and should not be self signed <remark role="todo"
-                            >TODO [Jelle] confirm</remark>.</para>
-
-                    <para>HTTPS may be used without authentication.</para>
-
-                    <para>The use of https/ssl enables the following features:</para>
-                    <itemizedlist>
-                        <listitem>
-                            <para>hides (encrypts) the called URI</para>
-                        </listitem>
-                        <listitem>
-                            <para>hides (encrypts) the used authentication </para>
-                        </listitem>
-                        <listitem>
-                            <para>encrypts the content verify the authenticity of the server</para>
-                        </listitem>
-                    </itemizedlist>
-                    <para>Note that it does not ensures that the client keeps the data
-                        encrypted.</para>
+					<para>All URIs that identify resources served over HTTPS must begin with
+					<literal>https://</literal>.</para>
+					
+					<para>It is recommended that any certificates used by the server be
+					registered with a certificate authority and not be self-signed.</para>
                 </section>
 
+                <section xml:id="fundamentals_protocols_basic_authentication">
+                    <title>HTTP Basic Authentication</title>
+				<para>The HTTP Basic Authentication Scheme (in <xref linkend="bib_RFC2617"/>) may be
+                    used to secure content against unauthorized access. Since Basic Authentication
+                    credentials appear in HTTP headers, they should be used only with HTTPS. If
+                    Basic Authentication credentials are needed to access resrouces, then the
+                    Service must supply the credentials in the <replaceable>userinfo</replaceable>
+                    field of the <abbrev>URI</abbrev> of the resource. The scheme for the server
+                    field in the URI is as given in <xref linkend="bib_RFC2396"/>, section 3.2.2:
+                        <replaceable>userinfo</replaceable>@<replaceable>host</replaceable>:<replaceable>port</replaceable>.
+                    If the credentials consist of a user name and password, then the
+                        <replaceable>userinfo</replaceable> must be of the form
+                        <replaceable>userid</replaceable>:<replaceable>password</replaceable>. These
+                    credentials may be the same as the <function>
+                        <xref linkend="op_logOn"/>
+                    </function> credentials, but the Reading System must not send basic
+                    authentication credentials if they were not supplied in the
+                    <abbrev>URI</abbrev>.</para>
+				<para>HTTP Authentication should not be used to log on to the Service.
+				For user authentication
+				in the SOAP session, see <xref linkend="fundamentals_protocols_authentication"/>.</para>
+                <note>
+                    <title>Security considerations</title>
+                    <para>RFC 2396 recommends against the use of the
+                            <replaceable>userid</replaceable>:<replaceable>password</replaceable>
+                        scheme for <replaceable>userinfo</replaceable>, due to the possibility of
+                        transmitting passwords in the clear. A Service should not use this scheme
+                        except over a secure connection, for resources that are served via a secure
+                        protocol (such as HTTPS).</para>
+                    <para>The requirement that credentials must be supplied by the Service implies
+                        that the Service must be able to retrieve these credentials. Best practices
+                        for authentication are to store a cryptographic hash of each password, to
+                        prevent decryption if the password database is accessed by untrusted
+                        parties; however, this method prevents retrieval by the Service. Services
+                        must use some other method of securely storing passwords for its resources
+                        or for Service Delegates' resources. </para>
+                </note>
+				</section>
+				
                 <section xml:id="fundamentals_protocols_http_range">
-                    <title>http range headers</title>
+                    <title>HTTP range headers</title>
+					<!--
                     <para>For purposes of data/content transfer, <code>range</code> requests and
                         responses must be implemented by the server [<remark role="todo">TODO link to range header
                         RFC]</remark>. When server-side scripts are being used to serve content, then at
                         least the "Content-Length", "Content-Range" and "HTTP/1.0 206 Partial
                         Content" headers must be specified, and the "Content-Type" and "Last-Modified"
                         headers should be verified. <remark role="todo">TODO verified or specified?</remark></para>
+						-->
 						
-						<para><remark>Moved from 5.3.3.</remark>
-						If HTTP or HTTPS is used by the Service for serving resources, Range Retrieval
+						<!--<remark>Moved from 5.3.3.-->
+						<para>If HTTP or HTTPS is used by the Service for serving resources, Range Retrieval
                     Requests (described in section 14.35 of <link linkend="bib_http11">RFC
                         2616</link>) must be honoured by the Service where possible. Services must
                     use correct status codes and Content-Range and Content-Length headers when
@@ -565,8 +596,12 @@
             </section>
 
             <section xml:id="fundamentals_protocols_authentication">
-                <title>Authentication</title>
+                <title>User Authentication</title>
 
+				<!--
+				<remark>This text is misleading.  *Basic* Authentication is used for
+				resources only.  However, the User still authenticates to the Service
+				using the protocol we specify.</remark>
                 <para>Authentication primarily is used when accessing Content resources. Using it for the
                     soap messages is not advised as the soap layer has its own <xref linkend="op_logOn"/> operation.</para>
                 
@@ -574,27 +609,20 @@
                     required to use that authentication in its connection to the Service. Basic
                     Authentication must be used (<xref linkend="bib_RFC2617"/>).
 					
-					<remark>Moved from 5.3.3.</remark>
-					The HTTP Basic Authentication Scheme (in <xref linkend="bib_RFC2617"/>) may be
-                    used to secure content against unauthorized access. Since Basic Authentication
-                    credentials appear in HTTP headers, they should be used only with HTTPS.
-					
 					</para> 
-                
+                -->
 
-                <section xml:id="fundamentals_protocols_underlying_cookies">
-                    <title>Use of Cookies</title>
                     <para>The Service must perform the following steps to complete the
                         authentication process:</para>
                     <itemizedlist>
                         <listitem>
-                            <para>Verify the credentials passed by the Reading System to the logOn
-                                function.</para>
+                            <para>Verify the credentials passed by the Reading System to the <function><xref linkend="op_logOn"/></function>
+                                operation.</para>
                         </listitem>
                         <listitem>
                             <para>If the authentication was successful, issue a cookie by embedding
-                                it in the Set-Cookie http header, and send it to the Reading System
-                                along with the response to the logOn function.</para>
+                                it in the Set-Cookie HTTP header, and send it to the Reading System
+                                along with the response to the <function>logOn</function> operation.</para>
                         </listitem>
                         <listitem>
                             <para>If the authentication was not successful, a cookie may not be sent
@@ -602,14 +630,18 @@
                         </listitem>
                     </itemizedlist>
 
-                    <para>A Daisy Online Delivery Service is Session-aware by design. Sessions must
+                    <para>A Daisy Online Service is Session-aware by design. Sessions must
                         be tracked and managed through the use of cookies. Upon successful
                         authentication, the Reading System must be issued a cookie as described
-                        above. The Reading system must send this cookie by embedding it in the
-                        Cookie http header with all subsequent http requests to the Service. A
+                        above. The Reading System must send this cookie by embedding it in the
+                        Cookie HTTP header with all subsequent HTTP requests to the Service. A
                         cookie in this context is opaque i.e. the Reading System is not required to
-                        understand the contents of the Cookie.> </para>
-                </section>
+                        understand the contents of the Cookie. </para>
+					
+					<para>While Basic Authentication may be used to secure content
+					(see <xref linkend="fundamentals_protocols_basic_authentication"/>),
+					it is not recommended to use Basic Authentication for the SOAP messages.</para>
+                
             </section>
 
         </section>
@@ -1141,36 +1173,8 @@
                 <para>The <code>mimeType</code> attribute specifies <remark role="todo"
                         >FIXME</remark>
                 </para>
-                <para>If
-                    Basic Authentication credentials are needed to access the Content, then the
-                    Service must supply the credentials in the <replaceable>userinfo</replaceable>
-                    field of the <abbrev>URI</abbrev> of the resource. The URI scheme for the server
-                    field is as given in <xref linkend="bib_RFC2396"/>, section 3.2.2:
-                        <replaceable>userinfo</replaceable>@<replaceable>host</replaceable>:<replaceable>port</replaceable>.
-                    If the credentials consist of a user name and password, then the
-                        <replaceable>userinfo</replaceable> must be of the form
-                        <replaceable>userid</replaceable>:<replaceable>password</replaceable>. These
-                    credentials may be the same as the <function>
-                        <xref linkend="op_logOn"/>
-                    </function> credentials, but the Reading System must not send basic
-                    authentication credentials if they were not supplied in the
-                    <abbrev>URI</abbrev>.</para>
-                <note>
-                    <title>Security considerations</title>
-                    <para>RFC 2396 recommends against the use of the
-                            <replaceable>userid</replaceable>:<replaceable>password</replaceable>
-                        scheme for <replaceable>userinfo</replaceable>, due to the possibility of
-                        transmitting passwords in the clear. A Service should not use this scheme
-                        except over a secure connection, for resources that are served via a secure
-                        protocol (such as HTTPS).</para>
-                    <para>The requirement that credentials must be supplied by the Service implies
-                        that the Service must be able to retrieve these credentials. Best practices
-                        for authentication are to store a cryptographic hash of each password, to
-                        prevent decryption if the password database is accessed by untrusted
-                        parties; however, this method prevents retrieval by the Service. Services
-                        must use some other method of securely storing passwords for its resources
-                        or for Service Delegates' resources. </para>
-                </note>
+                <para>Resources may be secured with Basic Authentication. See
+				<xref linkend="fundamentals_protocols_basic_authentication"/> for details.</para>
                 <para>A DAISY Online session does not need to be active in order for a Reading
                     System to download or stream Content.</para>
                 <para>Resources may be stored on the Service's servers or with Service Delegates,
