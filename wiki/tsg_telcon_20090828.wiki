@@ -25,7 +25,8 @@ Regrets:
 The following sections/items are known to be unfinished:
  * The Introduction
  * 4.3 Underlying protocols (Jelles submission for 5.1.1 "https and authentication" was merged in here. Note that 5.3.3 touches on the same topics, so there is some overlap
- * Installments (Geoff)
+ * 5.3.3. Downloading and streaming of content (Geoff)
+ * 5.3.4. Publishing content in installments (Geoff)
  * No prose/example on how to retrieve samples (do we require issueContent on samples?)
  * Not yet specified that WAV is the required form for userResponse/audiodata
  * Edits remain in Appendix B.
