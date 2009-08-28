@@ -1437,7 +1437,7 @@
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="keyNames">
+	<xs:element name="keyRing">
 		<xs:annotation>
 			<xs:documentation>
 				<db:para>A list of key names.</db:para>
