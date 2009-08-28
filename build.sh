@@ -4,8 +4,8 @@ then
     mkdir "build"
 fi
 
-#cp=./lib/calabash.jar:./lib/saxon9-s9api.jar:./lib/jing.jar
-cp=./lib/calumet.jar:./lib/xercesImpl.jar:./lib/xml-apis.jar:./lib/serializer.jar:./lib/commons-httpclient-3.1.jar:./lib/commons-logging-1.1.1.jar:./lib/commons-codec-1.3.jar:./lib/jing.jar:./lib/saxon9.jar:./lib/saxon9-dom.jar
+#cp=./lib/calabash.jar:./lib/saxon9-s9api.jar:./lib/jing_20090818.jar:./lib/saxon9.jar
+cp=./lib/calumet.jar:./lib/xercesImpl.jar:./lib/xml-apis.jar:./lib/serializer.jar:./lib/commons-httpclient-3.1.jar:./lib/commons-logging-1.1.1.jar:./lib/commons-codec-1.3.jar:./lib/jing.jar:./lib/saxon9.jar:./lib/saxon9-dom.jar:./lib/xalan.jar
 
 #java -cp $cp com.xmlcalabash.drivers.Main wsdl-finalize.xpl
 java -cp $cp com.emc.documentum.xml.xproc.tool.Cmd wsdl-finalize.xpl

@@ -30,11 +30,11 @@
     <preface xml:id="introduction" conformance="informative">
         <title>Introduction</title>
         <para>
-            <remark role="todo">TODO Introduction remains to the written. It will give an overview of 
-            	target application domains and functionality scope. It will mention that although focused 
-            	on the DAISY DTB content type, the protocol per
-                se is not limited to DAISY. It will note that service discovery is not in scope, but that
-                a mechanism for that may be produced by DAISY as a separate specification.</remark>
+            <remark role="todo">TODO Introduction remains to the written. It will give an overview
+                of target application domains and functionality scope. It will mention that although
+                focused on the DAISY DTB content type, the protocol per se is not limited to DAISY.
+                It will note that service discovery is not in scope, but that a mechanism for that
+                may be produced by DAISY as a separate specification.</remark>
         </para>
 
 
@@ -263,8 +263,8 @@
                 <term>Service address</term>
                 <listitem>
                     <para>The URI where a Service has published the WSDL document defining the DAISY
-                        Online Service. <remark role="todo">TODO Kenny fix this def, use the WS
-                            correct term</remark></para>
+                        Online Service. <remark role="todo">TODO this term is slightly misleading, 
+                            should perhaps be called "Service metadata endpoint" instead</remark></para>
                 </listitem>
             </varlistentry>
         </variablelist>
@@ -478,109 +478,120 @@
 
             <section xml:id="fundamentals_protocols_http">
                 <title>HTTP</title>
-                <para>This specification employs <xref linkend="bib_http11"/> for two purposes:</para>
+                <para>This specification employs <xref linkend="bib_http11"/> for two
+                    purposes:</para>
                 <itemizedlist>
                     <listitem>
-                        <para>for the transport layer of the SOAP messages, and</para>
+                        <para>for the transport layer of the SOAP messages (i.e. for all API calls),
+                            and</para>
                     </listitem>
                     <listitem>
-                        <para>for transfer of Content data (as indicated/specified in the SOAP
-                            messages).</para>
+                        <para>for the transfer of Content data (the URIs of the resources that
+                            constitute the Content are retrieved through an invocation of the <xref
+                                linkend="op_getContentResources"/> operation).</para>
                     </listitem>
                 </itemizedlist>
 
                 <para>Services and Reading Systems must support <xref linkend="bib_http11"/> and
                     secure HTTP (HTTPS) through the use of <xref linkend="bib_ssl3.0"/> or <xref
-                        linkend="bib_tls1.0"/>.</para> 
- 
-                <para>The use of HTTP must conform to <xref
-                    linkend="bib_http11"/> and <xref linkend="bib_RFC2617"/>. </para>
-                
-                <para>Services and Reading Systems must support HTTP sessions as 
-                    specified by <xref linkend="bib_rfc2109"/>. Note that an established HTTP session does not 
-                    implicitly mean that the Reading System has logged on to the Service successfully 
-                    (see <xref linkend="operations_session"/>).</para>
-                                                
+                        linkend="bib_tls1.0"/>.</para>
+
+                <para>The use of HTTP must conform to <xref linkend="bib_http11"/> and <xref
+                        linkend="bib_RFC2617"/>. </para>
+
+                <para>Services and Reading Systems must support HTTP sessions as specified by <xref
+                        linkend="bib_rfc2109"/>. Note that an established HTTP session does not
+                    implicitly mean that the Reading System has logged on to the Service
+                    successfully (see <xref linkend="operations_session"/>).</para>
+
+                <para>For all HTTP and HTTPS requests sent by a Reading system to a Service, a
+                    Service must return the appropriate HTTP status code in the HTTP response as
+                    specified by <xref linkend="bib_http11"/> (Section 10).</para>
+
                 <section xml:id="fundamentals_protocols_https">
                     <title>HTTPS</title>
-					<para>HTTPS for both SOAP and Content transfer is recommended.  The
-					use of HTTPS prevents SOAP transactions, the URIs of HTTP requests,
-					Content transferred and User credentials from being accessed by
-					unauthorized parties.  It allows the Reading System to verify the identity
-					of the Service through the use of certificates.  However, it does not ensure
-					that the Reading System or the Service keeps data encrypted once it is received.</para>
+                    <para>HTTPS for both SOAP and Content transfer is recommended. The use of HTTPS
+                        prevents SOAP transactions, the URIs of HTTP requests, Content transferred
+                        and User credentials from being accessed by unauthorized parties. It allows
+                        the Reading System to verify the identity of the Service through the use of
+                        certificates. However, it does not ensure that the Reading System or the
+                        Service keeps data encrypted once it is received.</para>
 
-					<para>All URIs that identify resources served over HTTPS must begin with
-					<literal>https://</literal>.</para>
-					
-					<para>It is recommended that any certificates used by the server be
-					registered with a certificate authority and not be self-signed.</para>
+                    <para>All URIs that identify resources served over HTTPS must begin with
+                            <literal>https://</literal>.</para>
+
+                    <para>It is recommended that any certificates used by the server be registered
+                    with a certificate authority and not be self-signed.</para>
+                    
+                    <para>A compliant Reading System must support HTTPS. For Services, support for HTTPS is
+                        recommended.</para>
                 </section>
 
                 <section xml:id="fundamentals_protocols_basic_authentication">
                     <title>HTTP Basic Authentication</title>
-				<para>The HTTP Basic Authentication Scheme (in <xref linkend="bib_RFC2617"/>) may be
-                    used to secure content against unauthorized access. Since Basic Authentication
-                    credentials appear in HTTP headers, they should be used only with HTTPS. If
-                    Basic Authentication credentials are needed to access resources, then the
-                    Service must supply the credentials in the <replaceable>userinfo</replaceable>
-                    field of the <abbrev>URI</abbrev> of the resource. The scheme for the server
-                    field in the URI is as given in <xref linkend="bib_RFC2396"/>, section 3.2.2:
-                        <replaceable>userinfo</replaceable>@<replaceable>host</replaceable>:<replaceable>port</replaceable>.
-                    If the credentials consist of a user name and password, then the
-                        <replaceable>userinfo</replaceable> must be of the form
-                        <replaceable>userid</replaceable>:<replaceable>password</replaceable>. These
-                    credentials may be the same as the <function>
-                        <xref linkend="op_logOn"/>
-                    </function> credentials, but the Reading System must not send basic
-                    authentication credentials if they were not supplied in the
-                    <abbrev>URI</abbrev>.</para>
-				<para>HTTP Authentication should not be used to log on to the Service.
-				For user authentication
-				in the SOAP session, see <xref linkend="fundamentals_protocols_authentication"/>.</para>
-                <note>
-                    <title>Security considerations</title>
-                    <para>RFC 2396 recommends against the use of the
-                            <replaceable>userid</replaceable>:<replaceable>password</replaceable>
-                        scheme for <replaceable>userinfo</replaceable>, due to the possibility of
-                        transmitting passwords in the clear. A Service should not use this scheme
-                        except over a secure connection, for resources that are served via a secure
-                        protocol (such as HTTPS).</para>
-                    <para>The requirement that credentials must be supplied by the Service implies
-                        that the Service must be able to retrieve these credentials. Best practices
-                        for authentication are to store a cryptographic hash of each password, to
-                        prevent decryption if the password database is accessed by untrusted
-                        parties; however, this method prevents retrieval by the Service. Services
-                        must use some other method of securely storing passwords for its resources
-                        or for Service Delegates' resources. </para>
-                </note>
-				</section>
-				
+                    <para>The HTTP Basic Authentication Scheme (in <xref linkend="bib_RFC2617"/>)
+                        may be used to secure content against unauthorized access. Since Basic
+                        Authentication credentials appear in HTTP headers, they should be used only
+                        with HTTPS. If Basic Authentication credentials are needed to access
+                        resources, then the Service must supply the credentials in the
+                            <replaceable>userinfo</replaceable> field of the <abbrev>URI</abbrev> of
+                        the resource. The scheme for the server field in the URI is as given in
+                            <xref linkend="bib_RFC2396"/>, section 3.2.2:
+                            <replaceable>userinfo</replaceable>@<replaceable>host</replaceable>:<replaceable>port</replaceable>.
+                        If the credentials consist of a user name and password, then the
+                            <replaceable>userinfo</replaceable> must be of the form
+                            <replaceable>userid</replaceable>:<replaceable>password</replaceable>.
+                        These credentials may be the same as the <function>
+                            <xref linkend="op_logOn"/>
+                        </function> credentials, but the Reading System must not send basic
+                        authentication credentials if they were not supplied in the
+                            <abbrev>URI</abbrev>.</para>
+                    <para>HTTP Authentication should not be used to log on to the Service. For user
+                        authentication in the SOAP session, see <xref
+                            linkend="fundamentals_protocols_authentication"/>.</para>
+                    <note>
+                        <title>Security considerations</title>
+                        <para>RFC 2396 recommends against the use of the
+                                <replaceable>userid</replaceable>:<replaceable>password</replaceable>
+                            scheme for <replaceable>userinfo</replaceable>, due to the possibility
+                            of transmitting passwords in the clear. A Service should not use this
+                            scheme except over a secure connection, for resources that are served
+                            via a secure protocol (such as HTTPS).</para>
+                        <para>The requirement that credentials must be supplied by the Service
+                            implies that the Service must be able to retrieve these credentials.
+                            Best practices for authentication are to store a cryptographic hash of
+                            each password, to prevent decryption if the password database is
+                            accessed by untrusted parties; however, this method prevents retrieval
+                            by the Service. Services must use some other method of securely storing
+                            passwords for its resources or for Service Delegates' resources. </para>
+                    </note>
+                    
+                    <para>A compliant Reading System must support Basic Authentication for Content 
+                        retrieval. For Services, support for Basic Authentication for Content retrieval 
+                        is recommended.</para>
+                </section>
+
                 <section xml:id="fundamentals_protocols_http_range">
                     <title>HTTP range headers</title>
-					<!--
-                    <para>For purposes of data/content transfer, <code>range</code> requests and
-                        responses must be implemented by the server [<remark role="todo">TODO link to range header
-                        RFC]</remark>. When server-side scripts are being used to serve content, then at
-                        least the "Content-Length", "Content-Range" and "HTTP/1.0 206 Partial
-                        Content" headers must be specified, and the "Content-Type" and "Last-Modified"
-                        headers should be verified. <remark role="todo">TODO verified or specified?</remark></para>
-						-->
-						
-						<!--<remark>Moved from 5.3.3.-->
-						<para>If HTTP or HTTPS is used by the Service for serving resources, Range Retrieval
-                    Requests (described in section 14.35 of <link linkend="bib_http11">RFC
-                        2616</link>) must be honoured by the Service where possible. Services must
-                    use correct status codes and Content-Range and Content-Length headers when
-                    serving partial content (described in section 14.16 of RFC 2616). Since there is
-                    no way to enforce this requirement on Service Delegates, Reading Systems must be
-                    able to handle servers that do not support range headers.</para>
+
+                    <para>If HTTP or HTTPS is used by the Service for serving resources, Range
+                        Retrieval Requests (described in section 14.35 of <link linkend="bib_http11"
+                            >RFC 2616</link>) must be honoured by the Service where possible.
+                        Services must use correct status codes and Content-Range and Content-Length
+                        headers when serving partial content (described in section 14.16 of RFC
+                        2616). Since there is no way to enforce this requirement on Service
+                        Delegates, Reading Systems must be able to handle servers that do not
+                        support range headers.</para>
                 </section>
             </section>
 
-            <section xml:id="fundamentals_protocols_soap">
-                <title>SOAP</title>
-                <para><remark role="todo">TODO refer normatively to SOAP1.1 and any other associated normative ref</remark></para>
+            <section xml:id="fundamentals_protocols_wsi">
+                <title>WS-I Basic Profile</title>
+
+                <para>This protocol defined by this specification is compliant with <xref
+                        linkend="bib_wsibasicprofile11"/>, therefore by deduction all
+                    implementations must also be compliant with the WS-I Basic profile.</para>
+
                 <section xml:id="fundamentals_protocols_wsdlbindingstyle">
                     <title>WSDL Binding Style</title>
                     <para> The WSDL Binding Style used in the normative WSDL available in <xref
@@ -598,55 +609,43 @@
             </section>
 
             <section xml:id="fundamentals_protocols_authentication">
-                <title>User Authentication</title>
+                <title>User Authentication and cookies</title>
 
-				<!--
-				<remark>This text is misleading.  *Basic* Authentication is used for
-				resources only.  However, the User still authenticates to the Service
-				using the protocol we specify.</remark>
-                <para>Authentication primarily is used when accessing Content resources. Using it for the
-                    soap messages is not advised as the soap layer has its own <xref linkend="op_logOn"/> operation.</para>
-                
-                <para>When a Reading System encounters an URL that specifies authentication, then the Reading System client is
-                    required to use that authentication in its connection to the Service. Basic
-                    Authentication must be used (<xref linkend="bib_RFC2617"/>).
-					
-					</para> 
-                -->
+                <para>The Service must perform the following steps to complete the authentication
+                    process:</para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Verify the credentials passed by the Reading System to the <function>
+                                <xref linkend="op_logOn"/>
+                            </function> operation.</para>
+                    </listitem>
+                    <listitem>
+                        <para>If the authentication was successful, issue a cookie by embedding it
+                            in the Set-Cookie HTTP header, and send it to the Reading System along
+                            with the response to the <function>logOn</function> operation.</para>
+                    </listitem>
+                    <!--
+                    <listitem>
+                        <para>If the authentication was not successful, a cookie must not be sent
+                            along with the response.</para> 
+                            </listitem> -->
+                </itemizedlist>
 
-                    <para>The Service must perform the following steps to complete the
-                        authentication process:</para>
-                    <itemizedlist>
-                        <listitem>
-                            <para>Verify the credentials passed by the Reading System to the <function><xref linkend="op_logOn"/></function>
-                                operation.</para>
-                        </listitem>
-                        <listitem>
-                            <para>If the authentication was successful, issue a cookie by embedding
-                                it in the Set-Cookie HTTP header, and send it to the Reading System
-                                along with the response to the <function>logOn</function> operation.</para>
-                        </listitem>
-                        <listitem>
-                            <para>If the authentication was not successful, a cookie may not be sent
-                                along with the response.</para>
-                        </listitem>
-                    </itemizedlist>
+                <para>A Daisy Online Service is Session-aware by design. Sessions must be tracked
+                    and managed through the use of cookies. Upon successful authentication, the
+                    Reading System must be issued a cookie as described above. The Reading System
+                    must send this cookie by embedding it in the Cookie HTTP header with all
+                    subsequent HTTP requests to the Service. A cookie in this context is opaque i.e.
+                    the Reading System is not required to understand the contents of the
+                    Cookie.</para>
 
-                    <para>A Daisy Online Service is Session-aware by design. Sessions must
-                        be tracked and managed through the use of cookies. Upon successful
-                        authentication, the Reading System must be issued a cookie as described
-                        above. The Reading System must send this cookie by embedding it in the
-                        Cookie HTTP header with all subsequent HTTP requests to the Service. A
-                        cookie in this context is opaque i.e. the Reading System is not required to
-                        understand the contents of the Cookie. </para>
-					
-					<para>While Basic Authentication may be used to secure content
-					(see <xref linkend="fundamentals_protocols_basic_authentication"/>),
-					it is not recommended to use Basic Authentication for the SOAP messages.</para>
-                
+                <para>While Basic Authentication may be used to secure content (see <xref
+                        linkend="fundamentals_protocols_basic_authentication"/>), Basic
+                    Authentication must not be used for the SOAP messages.</para>
             </section>
 
         </section>
+
         <section xml:id="fundamentals_dynamic_menus" conformance="informative">
             <title>Dynamic Menus</title>
 
@@ -1024,7 +1023,7 @@
                         model</link> content selection model, content is selected dynamically within
                     the Session using the <link linkend="fundamentals_dynamic_menus">Dynamic
                         Menu</link> feature of this protocol. Refer to <xref
-                        linkend="appendixDynamicMenuExamples_search"/> and Refer to <xref
+                        linkend="appendixDynamicMenuExamples_search"/> and <xref
                         linkend="appendixDynamicMenuExamples_retrieve"/> for examples of Content
                     selection using the Dynamic Menu feature.</para>
 
@@ -1121,10 +1120,10 @@
                         <listitem>
                             <para>[Required] The Reading System invokes the <function>
                                     <xref linkend="op_getContentMetadata"/>
-                                </function> operation using <literal>uk-rnib-001</literal> as the value of
-                                the <parameter>contentID</parameter> parameter, which returns a
-                                    <xref linkend="tp_contentMetadata"/> type, containing content
-                                metadata and a sample.</para>
+                                </function> operation using <literal>uk-rnib-001</literal> as the
+                                value of the <parameter>contentID</parameter> parameter, which
+                                returns a <xref linkend="tp_contentMetadata"/> type, containing
+                                content metadata and a sample.</para>
                             <programlisting><xi:include href="./samples/retrieval-contentMetadata.xml" parse="text"/></programlisting>
                         </listitem>
                         <listitem>
@@ -1149,64 +1148,65 @@
                         </listitem>
                     </orderedlist>
                 </example>
-                
+
                 <note>
-                    <para>Content <xref linkend="tp_sample"/>s (see the <type>contentMetaData</type> in <xref 
-                    linkend="operations_content_issuing_retrieval_sequence_example"/>) are 
-                        retrieved using the same basic principle as in Content retrieval, with the exception 
-                        that Reading Systems must not call <xref linkend="op_issueContent"/> when requesting a sample. 
-                    </para>
-                    <para>A sample is retrieved by invoking the <xref linkend="op_getContentResources"/> operation, passing the
-                    ID of the sample, as given in the <type>contentMetadata</type> type.</para>
+                    <para>Content <xref linkend="tp_sample"/>s (see the <type>contentMetaData</type>
+                        in <xref linkend="operations_content_issuing_retrieval_sequence_example"/>)
+                        are retrieved using the same basic principle as in Content retrieval, with
+                        the exception that Reading Systems must not call <xref
+                            linkend="op_issueContent"/> when requesting a sample. </para>
+                    <para>A sample is retrieved by invoking the <xref
+                            linkend="op_getContentResources"/> operation, passing the ID of the
+                        sample, as given in the <type>contentMetadata</type> type.</para>
                 </note>
- 
+
             </section>
-            
-            
+
+
             <section xml:id="operations_content_download">
                 <title>Downloading and streaming of content</title>
-				<para>Once the Reading System has retrieved the list of <type>resources</type> for an item of
-				content, it may begin downloading or streaming the resources using the URIs
-				supplied in the <type>resource</type>s attributes.</para>
+                <para>Once the Reading System has retrieved the list of <type>resources</type> for
+                    an item of content, it may begin downloading or streaming the resources using
+                    the URIs supplied in the <type>resource</type>s attributes.</para>
                 <para>Services may publish resources with URIs unrelated to the names in a content
-				item's fileset. The <code>localFileName</code> attribute specifies the path (delimited with
-                        <literal>/</literal>) of the resource relative to the content's root
-                    directory. This can be used by download Reading Systems to name the local files.
-                    It can be used by streaming Reading Systems to identify the URI of a resource
-                    that is referenced by another resource (such as the link to an audio resource in
-                    a SMIL resource in a DAISY DTB).</para>
+                    item's fileset. The <code>localFileName</code> attribute specifies the path
+                    (delimited with <literal>/</literal>) of the resource relative to the content's
+                    root directory. This can be used by download Reading Systems to name the local
+                    files. It can be used by streaming Reading Systems to identify the URI of a
+                    resource that is referenced by another resource (such as the link to an audio
+                    resource in a SMIL resource in a DAISY DTB).</para>
                 <para>The <code>mimeType</code> attribute specifies the <xref linkend="bib_mime"/>
-				type of each resource.  Reading Systems may use this information to
-				order the transfer of resources, e.g. a streaming Reading System may retrieve the
-				<abbrev>OPF</abbrev>, <abbrev>NCX</abbrev> and <abbrev>SMIL</abbrev> files of a DTB
-				all at once to allow for quick navigation.</para>
+                    type of each resource. Reading Systems may use this information to order the
+                    transfer of resources, e.g. a streaming Reading System may retrieve the
+                        <abbrev>OPF</abbrev>, <abbrev>NCX</abbrev> and <abbrev>SMIL</abbrev> files
+                    of a DTB all at once to allow for quick navigation.</para>
                 <para>A DAISY Online session does not need to be active in order for a Reading
                     System to download or stream Content.</para>
                 <para>Resources may be stored on the Service's servers or with Service Delegates,
                     without restriction. Note that Service Delegates may require different
                     credentials for access to resources, or may not require credentials at all. The
                     Service must provide this information to Reading Systems.</para>
-                <para>Resources from the Service or from Service Delegates may be secured with
-				Basic Authentication. The credentials must be specified in the URI of each resource
-				so secured. See <xref linkend="fundamentals_protocols_basic_authentication"/>.</para>
+                <para>Resources from the Service or from Service Delegates may be secured with Basic
+                    Authentication. The credentials must be specified in the URI of each resource so
+                    secured. See <xref linkend="fundamentals_protocols_basic_authentication"
+                    />.</para>
             </section>
-			
+
             <section xml:id="operations_content_installments">
                 <title>Publishing updates or installments</title>
-				<para><type>contentItems</type> in a <type>contentList</type> have an optional attribute,
-				<code>lastModifiedDate</code>, which
-				indicates that last time the content was modified.  Reading Systems may use this
-				to determine if the content has been updated since the last time it was accessed.
-				Similarly, <type>resource</type>s in a <type>resources</type> list have an optional
-				attribute also named <code>lastModifiedDate</code>, which
-				indicates that last time that resource was modified.  The content modification
-				time should match the most recent resource modification time.
-				Reading Systems may use this
-				to determine which resources been updated since the last time it was accessed.</para>
-				<para>This functionality can be used by the Service to, e.g., publish corrections to the content.
-				The Service could also publish content in installments by progressively updating the same
-				content item.
-                </para>
+                <para><type>contentItems</type> in a <type>contentList</type> have an optional
+                    attribute, <code>lastModifiedDate</code>, which indicates that last time the
+                    content was modified. Reading Systems may use this to determine if the content
+                    has been updated since the last time it was accessed. Similarly,
+                        <type>resource</type>s in a <type>resources</type> list have an optional
+                    attribute also named <code>lastModifiedDate</code>, which indicates that last
+                    time that resource was modified. The content modification time should match the
+                    most recent resource modification time. Reading Systems may use this to
+                    determine which resources been updated since the last time it was
+                    accessed.</para>
+                <para>This functionality can be used by the Service to, e.g., publish corrections to
+                    the content. The Service could also publish content in installments by
+                    progressively updating the same content item. </para>
             </section>
 
             <section xml:id="operations_content_issuing_pdtb">
@@ -1246,7 +1246,8 @@
                         <type>contentMetadata</type> and <type>resources</type>
                     </title>
                     <para>The following is an example of the <type>contentMetadata</type> and
-					<type>resources</type> for an item encrypted using <abbrev>PDTB2</abbrev>.</para>
+                            <type>resources</type> for an item encrypted using
+                            <abbrev>PDTB2</abbrev>.</para>
                     <programlisting><xi:include href="./samples/pdtb-contentMetadata.xml" parse="text" encoding="UTF-8"/></programlisting>
                     <programlisting><xi:include href="./samples/pdtb-resources.xml" parse="text" encoding="UTF-8"/></programlisting>
                 </example>
@@ -1373,8 +1374,8 @@
 
         <section xml:id="operations_service_announcements">
             <title>Service Announcements</title>
-            <para><remark role="todo">TODO fix this introduction</remark> Service Announcements are used as
-                a means for the Service to provide various types of information to the User.
+            <para><remark role="todo">TODO fix this introduction</remark> Service Announcements are
+                used as a means for the Service to provide various types of information to the User.
                 Examples include: information on Service up- or downtime, information on additions
                 to the Content collection, and, in the case of <link
                     linkend="fundamentals_serviceType_library">library-type Services</link>,
@@ -1617,7 +1618,7 @@
             </title>
             <date>August 1998</date>
         </biblioentry>
-<!--
+        <!--
         <biblioentry xml:id="bib_RFC2616">
             <abbrev>RFC 2616</abbrev>
             <title>
@@ -1627,7 +1628,7 @@
             </title>
             <date>June 1999</date>
         </biblioentry>
--->                
+-->
         <biblioentry xml:id="bib_RFC2617">
             <abbrev>RFC 2617</abbrev>
             <title>
@@ -1701,12 +1702,13 @@
         <biblioentry xml:id="bib_mtom">
             <abbrev>MTOM</abbrev>
             <title>
-                <link xlink:href="http://www.w3.org/TR/soap12-mtom/">SOAP Message Transmission Optimization Mechanism</link>
+                <link xlink:href="http://www.w3.org/TR/soap12-mtom/">SOAP Message Transmission
+                    Optimization Mechanism</link>
             </title>
             <author>
                 <personname>M Gudgin, et al</personname>
             </author>
-            <date>January 2005</date>            
+            <date>January 2005</date>
         </biblioentry>
 
         <biblioentry xml:id="bib_soap1.1">
@@ -1728,13 +1730,14 @@
         <biblioentry xml:id="bib_rfc2109">
             <abbrev>RFC 2109</abbrev>
             <title>
-                <link xlink:href="http://tools.ietf.org/html/rfc2109">HTTP State Management Mechanism</link>
+                <link xlink:href="http://tools.ietf.org/html/rfc2109">HTTP State Management
+                    Mechanism</link>
             </title>
             <author>
                 <personname>D. Kristol</personname>
             </author>
             <date>February 1997</date>
-            
+
         </biblioentry>
 
         <biblioentry xml:id="bib_ssl3.0">
@@ -1804,8 +1807,11 @@
         <biblioentry xml:id="bib_wav">
             <abbrev>RIFF WAVE</abbrev>
             <title>
-                <link xlink:href="http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html"
-                    >RIFF WAVE PCM soundfile format <remark role="todo">TODO is there a canonical spec for RIFF WAVE?</remark></link></title>
+                <link
+                    xlink:href="http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html"
+                    >RIFF WAVE PCM soundfile format <remark role="todo">TODO is there a canonical
+                        spec for RIFF WAVE?</remark></link>
+            </title>
         </biblioentry>
 
     </bibliography>
@@ -1859,7 +1865,9 @@
     <appendix xml:id="appendixDynamicMenuExamples" conformance="informative">
         <title>Dynamic Menu Usage Examples</title>
         <para>
-            <remark role="todo">TODO this section is unfinished - extensive editing remains</remark>
+            <remark role="todo">TODO this section is unfinished - extensive editing remains. This
+                section will eventually be lifted out to become a standalone informative primer
+                document.</remark>
         </para>
         <section xml:id="appendixDynamicMenuExamples_mainMenu">
             <title>Retrieving the Main Menu</title>
@@ -1921,8 +1929,8 @@
                 </para>
 
                 <para>If the question receives an audio response, the audio response is base 64
-                    encoded and encapsulated in the data child element of the userResponse
-                    element. See <xref linkend="tp_data"/> for file format requirements.</para>
+                    encoded and encapsulated in the data child element of the userResponse element.
+                    See <xref linkend="tp_data"/> for file format requirements.</para>
 
                 <para role="tip">The values assigned to the <code>id</code> attributes of the
                         <type>inputQuestion</type>, <type>multipleChoiceQuestion</type> and
