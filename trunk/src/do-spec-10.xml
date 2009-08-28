@@ -1190,10 +1190,22 @@
 				Basic Authentication. The credentials must be specified in the URI of each resource
 				so secured. See <xref linkend="fundamentals_protocols_basic_authentication"/>.</para>
             </section>
+			
             <section xml:id="operations_content_installments">
-                <title>Publishing content in installments</title>
-                <para>
-                    <remark role="todo">GGT: Write about how installments are handled.</remark>
+                <title>Publishing updates or installments</title>
+				<para><type>contentItems</type> in a <type>contentList</type> have an optional attribute,
+				<code>lastModifiedDate</code>, which
+				indicates that last time the content was modified.  Reading Systems may use this
+				to determine if the content has been updated since the last time it was accessed.
+				Similarly, <type>resource</type>s in a <type>resources</type> list have an optional
+				attribute also named <code>lastModifiedDate</code>, which
+				indicates that last time that resource was modified.  The content modification
+				time should match the most recent resource modification time.
+				Reading Systems may use this
+				to determine which resources been updated since the last time it was accessed.</para>
+				<para>This functionality can be used by the Service to, e.g., publish corrections to the content.
+				The Service could also publish content in installments by progressively updating the same
+				content item.
                 </para>
             </section>
 
