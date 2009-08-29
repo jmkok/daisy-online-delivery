@@ -94,7 +94,7 @@
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">Specifies whether the
-										ReadingSystemAttributes were recieved successfully on the
+										ReadingSystemAttributes were received successfully on the
 										Service.</db:para>
 								</xs:documentation>
 							</xs:annotation>
@@ -288,7 +288,7 @@
 										<db:varlistentry xml:id="contentList_expired">
 											<db:term>expired</db:term>
 											<db:listitem>
-												<db:para>Referes to a list of Content that was
+												<db:para>Refers to a list of Content that was
 												initially <db:xref linkend="contentList_issued"/>
 												to the User, but has now expired.</db:para>
 												<db:para>This list is used by <db:link
@@ -310,7 +310,7 @@
 						<xs:element minOccurs="1" maxOccurs="1" name="firstItem" type="xs:integer">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">When retreiving a subset of the
+									<db:para role="desc">When retrieving a subset of the
 										contentList, contains the first item in the subset to
 										retrieve. The first item in the list has the index
 											<db:literal>0</db:literal>.</db:para>
@@ -321,7 +321,7 @@
 						<xs:element minOccurs="1" maxOccurs="1" name="lastItem" type="xs:integer">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">When retreiving a subset of the
+									<db:para role="desc">When retrieving a subset of the
 										contentList, contains the last item in the subset to
 										retrieve. The value <db:literal>-1</db:literal> indicates a
 										request to retrieve all items from
