@@ -958,7 +958,7 @@
 			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="1">
+			<xs:choice>
 				<xs:choice minOccurs="1" maxOccurs="unbounded">
 					<xs:element ref="multipleChoiceQuestion"/>
 					<xs:element ref="inputQuestion"/>
