@@ -235,7 +235,7 @@
                         which the reading system renders immediately and stores only
                         temporarily.</para>
                     <note>
-                        <para>Download and streaming of content are reading system behaviours, not
+                        <para>Download and streaming of content are reading system behaviors, not
                             aspects of the protocol proper.</para>
                     </note>
                 </listitem>
@@ -331,7 +331,7 @@
             <itemizedlist>
                 <listitem xml:id="fundamentals_serviceType_library" xreflabel="Library Service type">
                     <para><emphasis>Library-type</emphasis> services, which operate using a loan
-                        programme for <xref linkend="term_content"/>. The Content is borrowed, and
+                        program for <xref linkend="term_content"/>. The Content is borrowed, and
                         at some point it must be returned to the Service Provider.</para>
                 </listitem>
                 <listitem xml:id="fundamentals_serviceType_shop" xreflabel="Shop Service type">
@@ -576,7 +576,7 @@
 
                     <para>If HTTP or HTTPS is used by the Service for serving resources, Range
                         Retrieval Requests (described in section 14.35 of <link linkend="bib_http11"
-                            >RFC 2616</link>) must be honoured by the Service where possible.
+                            >RFC 2616</link>) must be honored by the Service where possible.
                         Services must use correct status codes and Content-Range and Content-Length
                         headers when serving partial content (described in section 14.16 of RFC
                         2616). Since there is no way to enforce this requirement on Service
@@ -692,14 +692,14 @@
 
                     <itemizedlist>
                         <listitem>
-                            <para>Multiple choice questions are questions that include a pre-defined
+                            <para>Multiple choice questions are questions that include a predefined
                                 set of choices that a user is required to pick from in order to
                                 answer the question. A Multiple choice question is represented by
                                 the <xref linkend="tp_multipleChoiceQuestion"/> element, which
                                 appears inside the <xref linkend="tp_questions"/> element.</para>
                         </listitem>
                         <listitem>
-                            <para>Input questions are questions that do not offer such a pre-defined
+                            <para>Input questions are questions that do not offer such a predefined
                                 set of choices, but require the user to respond to the question
                                 through either numeric, alphanumeric or audio input. An input
                                 question is represented by the <xref linkend="tp_inputQuestion"/>
@@ -1078,7 +1078,7 @@
                     </listitem>
                 </orderedlist>
 
-                <para>The <xref linkend="op_getContentMetadata"/> operation containts publication
+                <para>The <xref linkend="op_getContentMetadata"/> operation contains publication
                     metadata, information on the Content format, an optional sample, and information
                     on whether the content is being borrowed or not (see <xref
                         linkend="fundamentals_serviceType_library"/>). </para>
@@ -1297,7 +1297,7 @@
                     <programlisting><xi:include href="./samples/authorization-unencrypted.xml" parse="text"/></programlisting>
                     <para>A <abbrev>PDTB2</abbrev>-compliant reading system will prevent the user
                         from playing the audio after that time, even though it is not encrypted. A
-                        non-compliant reading system's behaviour is, naturally, undefined.</para>
+                        non-compliant reading system's behavior is, naturally, undefined.</para>
                 </example>
             </section>
         </section>
@@ -1339,7 +1339,7 @@
                         <listitem>
                             <para>[Required] For each of the Content items in the returned list, the
                                 Reading System deletes the corresponding resources from its local
-                                filesystem. </para>
+                                file system. </para>
                         </listitem>
                         <listitem>
                             <para>[Required] For each of the Content items in the returned list, the
@@ -1354,7 +1354,7 @@
                         <listitem>
                             <para>[Required] For each of the <xref linkend="op_returnContent"/>
                                 invocations, the Service returns <literal>true</literal> to signal
-                                that the Content item was succesfully returned.</para>
+                                that the Content item was successfully returned.</para>
                         </listitem>
                     </orderedlist>
                 </example>
@@ -1432,7 +1432,7 @@
                         <listitem>
                             <para>[Optional] The Reading System invokes the <function>
                                     <xref linkend="op_markAnnouncementsAsRead"/>
-                                </function> operation, signalling that the first and second
+                                </function> operation, signaling that the first and second
                                 announcements were consumed.</para>
                             <programlisting><xi:include href="./samples/announcements-markAsRead.xml" parse="text"/></programlisting>
                         </listitem>
@@ -1552,12 +1552,12 @@
 
     <chapter xml:id="apiReference" conformance="normative">
         <title>API Definition</title>
-        <para>Dont edit this chapter here in the docbook source - autogenerated from WSDL</para>
+        <para>Don't edit this chapter here in the docbook source - autogenerated from WSDL</para>
     </chapter>
 
     <chapter xml:id="typeReference" conformance="normative">
         <title>Type Definition</title>
-        <para>Dont edit this chapter here in the docbook source - autogenerated from XSD</para>
+        <para>Daunt edit this chapter here in the docbook source - autogenerated from XSD</para>
     </chapter>
 
     <bibliography conformance="normative">
@@ -1817,7 +1817,7 @@
     </bibliography>
 
     <acknowledgements>
-        <title>Acknowledgements</title>
+        <title>Acknowledgments</title>
         <para>The following individuals were members of the DAISY Online Working Group at the time
             of the publication of this specification:</para>
         <para>
@@ -1848,7 +1848,7 @@
         <para>The <xref linkend="bib_wsdl1.1"/> document <link xlink:href="do-wsdl-10-wsdl"
                 >do-wsdl-10-wsdl</link>, and the document entities referenced from within it,
             formally defines the abstract Web Service contract that all compliant Services must
-            adher to.</para>
+            adhere to.</para>
 
         <para>All compliant Services must publish a WSDL document at the <xref
                 linkend="term_serviceAddress"/> whose <xref linkend="bib_infoset"/> - with the
@@ -1918,8 +1918,8 @@
                         <type>inputQuestion</type> element, and the <code>value</code> attribute of
                     the <type>userResponse</type> element contains: <itemizedlist>
                         <listitem>
-                            <para>The numeric or alfanumeric text that the user entered if the
-                                question receives a numeric or alfanumeric response.</para>
+                            <para>The numeric or alphanumeric text that the user entered if the
+                                question receives a numeric or alphanumeric response.</para>
                         </listitem>
                         <listitem>
                             <para>An empty string or omitted altogether if the question receives an
@@ -2027,7 +2027,7 @@ Your Search for "J.K. Rawling" returned the following results:
                 <para>When a Service returns a contentListRef child element within a questions type,
                     the Reading system is logically at the end of the Service's dynamic menu. The
                     reading system extracts the id of the contentList from the contentListRef
-                    elementt as illustrated above, and invokes the getContentList operation to
+                    element as illustrated above, and invokes the getContentList operation to
                     retrieve the contentList. </para>
                 <para>The Reading System may then retrieve information about the specific
                     contentItems in the contentList type by invoking the getContentMetadata
@@ -2098,7 +2098,7 @@ Your profile has been updated successfully!
                     <programlisting><xi:include href="./samples/dynamicMenusExamples-survey-2.xml" parse="text"/></programlisting>
                     The Reading system renders this type as follows:
                     <literallayout>
-What is your favourite feature in the Service?:
+What is your favorite feature in the Service?:
 
 On a scale of one to four, where four is very satisfied and 1 is not satisfied, how would you rate the Service?
 * 1
