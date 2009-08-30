@@ -28,14 +28,12 @@
     
     <xsl:import href="xhtml-1_1/docbook.xsl "/>
     
-    <xsl:output method="xml" 
-        doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" 
-        doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+    <xsl:output method="xhtml" 
         encoding="UTF-8" 
-        omit-xml-declaration="yes"
+        omit-xml-declaration="no"
         indent="yes"
         exclude-result-prefixes="saxon db"/>
-    
+
     <xsl:param name="generate.toc">
 appendix  toc,title
 article/appendix  nop
@@ -125,6 +123,29 @@ set       toc,title
             </xsl:element>
         </xsl:if>
     </xsl:template>
+    
+    
+    
+    <!-- ============================================================================= -->
+    <!-- add daisy logo -->
+    
+    <xsl:template name="user.header.content">
+        <xsl:element name="a">
+            <xsl:attribute name="href">http://www.daisy.org/</xsl:attribute>
+            <xsl:element name="img">
+                <xsl:attribute name="src">http://www.daisy.org/images/daisylogo-w.gif</xsl:attribute>
+                <xsl:attribute name="alt">DAISY Consortium Logo - Link to Home Page</xsl:attribute>
+                <xsl:attribute name="width">150</xsl:attribute>
+                <xsl:attribute name="height">110</xsl:attribute>
+                <xsl:attribute name="border">0</xsl:attribute>
+                <xsl:attribute name="class">logo</xsl:attribute>
+            </xsl:element>
+        </xsl:element>
+    </xsl:template>    
+    
+    
+    <!-- ============================================================================= -->
+    <!-- add text labels for release info and publication date -->
     
     <xsl:template match="db:releaseinfo" mode="titlepage.mode">
         <xsl:element name="p">
