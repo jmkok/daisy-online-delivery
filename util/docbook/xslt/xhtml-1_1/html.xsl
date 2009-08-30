@@ -167,12 +167,9 @@ xmlns="http://www.w3.org/1999/xhtml" version="1.0">
       <xsl:with-param name="object" select="$node"/>
     </xsl:call-template>
   </xsl:variable>
-  <xslo:if xmlns:xslo="http://www.w3.org/1999/XSL/Transform" xmlns:saxon="http://icl.com/saxon" test="not($node[parent::d:blockquote])"><xsl:if test="$conditional = 0 or $node/@id or $node/@xml:id">
-    <!-- DAISY - MG: forced anchor tags into xhtml namespace, otherwise end up in saxon -->
-    <xsl:element name="a" namespace="http://www.w3.org/1999/xhtml">
-      <xsl:attribute name="id"><xsl:value-of select="$id"/></xsl:attribute>
-    </xsl:element>
-  </xsl:if></xslo:if>
+  <xsl:if test="not($node[parent::d:blockquote])"><xsl:if test="$conditional = 0 or $node/@id or $node/@xml:id">
+    <a id="{$id}"/>
+  </xsl:if></xsl:if>
 </xsl:template>
 
 <xsl:template name="href.target.uri">
