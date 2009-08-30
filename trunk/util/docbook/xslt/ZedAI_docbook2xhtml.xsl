@@ -24,13 +24,19 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
     xmlns:saxon="http://icl.com/saxon"
     xmlns:db="http://docbook.org/ns/docbook"
-    >
+    xmlns="http://www.w3.org/1999/xhtml">
+    
     <xsl:import href="xhtml-1_1/docbook.xsl "/>
-	<xsl:output method="xhtml" omit-xml-declaration="no" indent="yes" exclude-result-prefixes="saxon" />
-    <!--xmlns="http://www.w3.org/1999/xhtml"-->
-    <!--     xmlns:x="http://www.w3.org/1999/xhtml" -->
-	
-	<xsl:param name="generate.toc">
+    
+    <xsl:output method="xml" 
+        doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" 
+        doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+        encoding="UTF-8" 
+        omit-xml-declaration="yes"
+        indent="yes"
+        exclude-result-prefixes="saxon db"/>
+    
+    <xsl:param name="generate.toc">
 appendix  toc,title
 article/appendix  nop
 article   toc,title
@@ -49,7 +55,6 @@ sect5     toc
 section   toc
 set       toc,title
 </xsl:param>
-	
 	
 <!-- ============================================================================= -->
     <!-- Fill in the docbook placeholder user.head.content template to add an http-equiv meta
@@ -121,7 +126,22 @@ set       toc,title
         </xsl:if>
     </xsl:template>
     
-
+    <xsl:template match="db:releaseinfo" mode="titlepage.mode">
+        <xsl:element name="p">
+            <xsl:attribute name="class">releaseinfo</xsl:attribute>
+            <xsl:text>STATUS: </xsl:text>
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+    
+    <xsl:template match="db:pubdate" mode="titlepage.mode">
+        <xsl:element name="p">
+            <xsl:attribute name="class">pubdate</xsl:attribute>
+            <xsl:text>Last update: </xsl:text>
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+    
  
     <!-- ============================================================================= -->
     <!-- Change the way credits are done for the editor -->
