@@ -163,7 +163,13 @@ set       toc,title
         </xsl:element>
     </xsl:template>
     
- 
+    <!-- ============================================================================= -->
+    <!-- override titlepage hr separators -->
+   
+    <xsl:template name="book.titlepage.separator"/>
+    <xsl:template name="section.titlepage.separator"/>
+    
+    
     <!-- ============================================================================= -->
     <!-- Change the way credits are done for the editor -->
     <xsl:template match="editor" mode="titlepage.mode">
