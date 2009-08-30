@@ -52,8 +52,14 @@ sect4     toc
 sect5     toc
 section   toc
 set       toc,title
-</xsl:param>
-	
+    </xsl:param>
+ 
+<!-- ============================================================================= -->
+    <!-- set the target location for a tags that link externally -->
+    
+    <xsl:variable name="ulink.target">_self</xsl:variable>
+    
+    
 <!-- ============================================================================= -->
     <!-- Fill in the docbook placeholder user.head.content template to add an http-equiv meta
         element -->
@@ -64,8 +70,6 @@ set       toc,title
             <xsl:attribute name="content">text/html; charset=utf-8</xsl:attribute>
         </xsl:element>
     </xsl:template>
-    
-    <xsl:variable name="ulink.target">_self</xsl:variable>
     
 <!-- ============================================================================= -->
     <!-- remark[@role='todo'] = span[@class='todo'] -->
