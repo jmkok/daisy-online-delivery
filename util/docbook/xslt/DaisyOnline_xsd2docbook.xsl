@@ -137,16 +137,20 @@
 						<db:para>
 							<xsl:choose>
 								<xsl:when test="contains($curWsdlXsElement/@name, 'Response')">
-									<xsl:element name="db:xref">
-										<xsl:attribute name="linkend">
-											<xsl:value-of select="concat('op_',replace($curWsdlXsElement/@name,'Response',''))"/>
-										</xsl:attribute>									
+									<xsl:element name="db:code">
+										<xsl:element name="db:xref">
+											<xsl:attribute name="linkend">
+												<xsl:value-of select="concat('op_',replace($curWsdlXsElement/@name,'Response',''))"/>
+											</xsl:attribute>									
+										</xsl:element>
 									</xsl:element>
 									<xsl:text> (response)</xsl:text>
 								</xsl:when>
 								<xsl:otherwise>
-									<xsl:element name="db:xref">
-										<xsl:attribute name="linkend"><xsl:value-of select="concat('op_',$curWsdlXsElement/@name)"/></xsl:attribute>
+									<xsl:element name="db:code">
+										<xsl:element name="db:xref">
+											<xsl:attribute name="linkend"><xsl:value-of select="concat('op_',$curWsdlXsElement/@name)"/></xsl:attribute>
+										</xsl:element>
 									</xsl:element>
 									<xsl:text> (parameter)</xsl:text>
 								</xsl:otherwise>
