@@ -63,7 +63,9 @@ set       toc,title
             <xsl:attribute name="http-equiv">Content-Type</xsl:attribute>
             <xsl:attribute name="content">text/html; charset=utf-8</xsl:attribute>
         </xsl:element>
-    </xsl:template>    
+    </xsl:template>
+    
+    <xsl:variable name="ulink.target">_self</xsl:variable>
     
 <!-- ============================================================================= -->
     <!-- remark[@role='todo'] = span[@class='todo'] -->

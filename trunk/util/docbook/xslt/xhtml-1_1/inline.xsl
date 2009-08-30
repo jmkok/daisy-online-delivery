@@ -139,9 +139,7 @@ xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:suwl="http://nwalsh.com/xslt/ex
                     <xsl:value-of select="$target.show"/>
                   </xsl:when>
                   <xsl:otherwise>
-                  <!-- DAISY - MG: $ulink not declared, results in invalid target. hard coded _self
-                  <xsl:value-of select="$ulink.target"/> -->
-                    <xsl:text>_self</xsl:text>
+                  <xsl:value-of select="$ulink.target"/>
                   </xsl:otherwise>
                 </xsl:choose>
               </xsl:attribute>
