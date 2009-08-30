@@ -306,14 +306,14 @@ em.noXHTML2
 /* jpritchett@rfbd.org, 28 May 2009:  Styling for title page info */
 p.releaseinfo
 {
-    font-size:  140%;
-    color: #005A9C;
+    font-size:  80%;
+    color: #000099;
 }
 
 p.pubdate
 {
-    font-size:  120%;
-    color: #005A9C;
+    font-size:  75%;
+    color: #000099;
 }
 
 span.editedby
@@ -331,18 +331,21 @@ div.bibliolist
 /* markus: copy-in common.css for brevity */
 
 h1, h2, h3, h4, h5, h6 { text-align: left }
-h1, h2, h3, h4, h5, h6 span.titlesub { color: #005A9C }
-h1 { font: 170% sans-serif; padding-bottom: 2em; }
+h1, h2, h3, h4, h5, h6 span.titlesub { color: #000099; }
+h1 { font: bold 130% sans-serif; letter-spacing: .2em; }
 span.titlesub {font: 80% sans-serif;}
-h2 { font: 140% sans-serif; padding-top: 1em; border-bottom: 1px solid #005A9C }
-h3 { font: 120% sans-serif; padding-top: 0.7em; }
-h4 { font: bold 100% sans-serif }
-h5 { font: italic 100% sans-serif }
-h6 { font: small-caps 100% sans-serif }
+h2 { font: 115% sans-serif; padding-top: 1em; border-bottom: 1px solid #000099; }
+h3 { font: bold 100% sans-serif; padding-top: 0.7em; }
+h4 { font: bold 88% sans-serif }
+h5 { font: italic 80% sans-serif }
+h6 { font: small-caps 75% sans-serif }
+
+h1.title, h2.subtitle { margin: 2px; padding: 0px; border-width: 0px; }
+h2.subtitle { color: #000000; }
 
 body {
   margin-top: 2em;
-  margin-left: 1em; 
+  margin-left: 5em; 
   margin-right:3em;
   margin-bottom:2em;
   font-family: sans-serif;
@@ -353,8 +356,21 @@ body {
   background-repeat: no-repeat;
 }
 
-code {
-	color: #660099; font-family: monospace; font-weight: bold
+code.function, span.type, span.errorname {
+	font-family: monospace;
+	font-weight: bold
+}
+
+code.function {
+    color: purple;
+}
+
+span.type {
+    color: navy;
+}
+
+span.errorname {
+    color: red;
 }
 
 .ednote {
