@@ -2214,7 +2214,7 @@ You have the following content waiting to be Downloaded/Streamed
         </section>
     </appendix>
     
-    <appendix role="acknowledgements">
+    <appendix  xml:id="acknowledgements" role="acknowledgements">
         <title>Acknowledgments</title>
         <para>The following individuals were members of the DAISY Online Working Group at the time
             of the publication of this specification:</para>
