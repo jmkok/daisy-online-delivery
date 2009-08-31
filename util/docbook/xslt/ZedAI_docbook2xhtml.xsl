@@ -211,8 +211,8 @@ set       toc,title
         <hr/>
     </xsl:template>
     
-    <xsl:template match="db:pubdate"/>
-    
+    <xsl:template match="db:pubdate" mode="titlepage.mode"/>
+        
     <!-- ============================================================================= -->
     <!-- override titlepage hr separators -->
    
