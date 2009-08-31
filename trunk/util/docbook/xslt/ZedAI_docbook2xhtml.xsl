@@ -191,7 +191,7 @@ set       toc,title
     
     
     <!-- ============================================================================= -->
-    <!-- add text labels for release info and publication date -->
+    <!-- format release info and publication date as single heading per w3c -->
     
     <xsl:template match="db:releaseinfo" mode="titlepage.mode">
         <xsl:element name="p">
@@ -210,6 +210,8 @@ set       toc,title
         
         <hr/>
     </xsl:template>
+    
+    <xsl:template match="db:pubdate"/>
     
     <!-- ============================================================================= -->
     <!-- override titlepage hr separators -->
