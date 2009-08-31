@@ -304,7 +304,7 @@ em.noXHTML2
 /* jpritchett@rfbd.org, 28 May 2009:  Styling for title page info */
 p.releaseinfo
 {
-    font-size:  120%;
+    font-size:  130%;
     color: #005A9C;
 }
 
@@ -329,7 +329,7 @@ div.bibliolist
 
 h1, h2, h3, h4, h5, h6 { text-align: left }
 h1, h2, h3, h4, h5, h6 span.titlesub, div.abstract p.title, div.toc p { color: #005A9C }
-h1 { font: 170% sans-serif; padding-bottom: 1em;}
+h1 { font: 170% sans-serif; }
 span.titlesub {font: 80% sans-serif;}
 h2, div.abstract p.title, div.toc p { font: 140% sans-serif;  }
 h2 { padding-top: 1em; }
