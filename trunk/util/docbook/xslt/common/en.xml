@@ -84,8 +84,8 @@
 <l:gentext key="MsgOrig" text="Origin"/>
 <l:gentext key="msgorig" text="Origin"/>
 <l:gentext key="NOTE" text="NOTE"/>
-<l:gentext key="Note" text="Note"/>
-<l:gentext key="note" text="Note"/>
+<l:gentext key="Note" text="Note:"/>
+<l:gentext key="note" text="Note:"/>
 <l:gentext key="Part" text="Part"/>
 <l:gentext key="part" text="Part"/>
 <l:gentext key="Preface" text="Preface"/>
