@@ -23,6 +23,7 @@
 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
     xmlns:saxon="http://icl.com/saxon"
+    xmlns:exsl="http://exslt.org/common"
     xmlns:db="http://docbook.org/ns/docbook"
     xmlns="http://www.w3.org/1999/xhtml">
     
@@ -32,7 +33,7 @@
         encoding="UTF-8" 
         omit-xml-declaration="no"
         indent="yes"
-        exclude-result-prefixes="saxon db"/>
+        exclude-result-prefixes="saxon db exsl"/>
 
     <xsl:param name="generate.toc">
 appendix  toc,title
@@ -110,6 +111,101 @@ set       toc,title
             <xsl:attribute name="content">text/html; charset=utf-8</xsl:attribute>
         </xsl:element>
     </xsl:template>
+    
+    <!-- ============================================================================= -->
+    <!-- override section title page templates to remove all the excess divs and correct heading levels -->
+    
+    <xsl:template name="section.titlepage">
+        
+            <xsl:variable name="recto.content">
+                <xsl:call-template name="section.titlepage.before.recto"/>
+                <xsl:call-template name="section.titlepage.recto"/>
+            </xsl:variable>
+            <xsl:variable name="recto.elements.count">
+                <xsl:choose>
+                    <xsl:when test="function-available('exsl:node-set')"><xsl:value-of select="count(exsl:node-set($recto.content)/*)"/></xsl:when>
+                    <xsl:when test="contains(system-property('xsl:vendor'), 'Apache Software Foundation')">
+                        <!--Xalan quirk--><xsl:value-of select="count(exsl:node-set($recto.content)/*)"/></xsl:when>
+                    <xsl:otherwise>1</xsl:otherwise>
+                </xsl:choose>
+            </xsl:variable>
+            <xsl:if test="(normalize-space($recto.content) != '') or ($recto.elements.count &gt; 0)">
+                <xsl:copy-of select="$recto.content"/>
+            </xsl:if>
+            <xsl:variable name="verso.content">
+                <xsl:call-template name="section.titlepage.before.verso"/>
+                <xsl:call-template name="section.titlepage.verso"/>
+            </xsl:variable>
+            <xsl:variable name="verso.elements.count">
+                <xsl:choose>
+                    <xsl:when test="function-available('exsl:node-set')"><xsl:value-of select="count(exsl:node-set($verso.content)/*)"/></xsl:when>
+                    <xsl:when test="contains(system-property('xsl:vendor'), 'Apache Software Foundation')">
+                        <!--Xalan quirk--><xsl:value-of select="count(exsl:node-set($verso.content)/*)"/></xsl:when>
+                    <xsl:otherwise>1</xsl:otherwise>
+                </xsl:choose>
+            </xsl:variable>
+            <xsl:if test="(normalize-space($verso.content) != '') or ($verso.elements.count &gt; 0)">
+                <xsl:copy-of select="$verso.content"/>
+            </xsl:if>
+            <xsl:call-template name="section.titlepage.separator"/>
+    
+    </xsl:template>
+    
+    <xsl:template match="db:title" mode="section.titlepage.recto.auto.mode">
+         <xsl:apply-templates select="." mode="section.titlepage.recto.mode"/>
+    </xsl:template>
+    
+    <xsl:template name="section.level">
+        <xsl:param name="node" select="."/>
+        <xsl:choose>
+            <xsl:when test="local-name($node)='sect1'">1</xsl:when>
+            <xsl:when test="local-name($node)='sect2'">2</xsl:when>
+            <xsl:when test="local-name($node)='sect3'">3</xsl:when>
+            <xsl:when test="local-name($node)='sect4'">4</xsl:when>
+            <xsl:when test="local-name($node)='sect5'">5</xsl:when>
+            <xsl:when test="local-name($node)='section'">
+                <xsl:choose>
+                    <!-- bumping all values up one to make lower than the chapter -->
+                    <xsl:when test="$node/../../../../../../db:section">6</xsl:when>
+                    <xsl:when test="$node/../../../../../db:section">6</xsl:when>
+                    <xsl:when test="$node/../../../../db:section">5</xsl:when>
+                    <xsl:when test="$node/../../../db:section">4</xsl:when>
+                    <xsl:when test="$node/../../db:section">3</xsl:when>
+                    <xsl:when test="$node/../db:section">2</xsl:when>
+                    <xsl:otherwise>1</xsl:otherwise>
+                </xsl:choose>
+            </xsl:when>
+            <xsl:when test="local-name($node)='refsect1' or
+                local-name($node)='refsect2' or
+                local-name($node)='refsect3' or
+                local-name($node)='refsection' or
+                local-name($node)='refsynopsisdiv'">
+                <xsl:call-template name="refentry.section.level">
+                    <xsl:with-param name="node" select="$node"/>
+                </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="local-name($node)='simplesect'">
+                <xsl:choose>
+                    <xsl:when test="$node/../../db:sect1">2</xsl:when>
+                    <xsl:when test="$node/../../db:sect2">3</xsl:when>
+                    <xsl:when test="$node/../../db:sect3">4</xsl:when>
+                    <xsl:when test="$node/../../db:sect4">5</xsl:when>
+                    <xsl:when test="$node/../../db:sect5">5</xsl:when>
+                    <xsl:when test="$node/../../db:section">
+                        <xsl:choose>
+                            <xsl:when test="$node/../../../../../db:section">5</xsl:when>
+                            <xsl:when test="$node/../../../../db:section">4</xsl:when>
+                            <xsl:when test="$node/../../../db:section">3</xsl:when>
+                            <xsl:otherwise>2</xsl:otherwise>
+                        </xsl:choose>
+                    </xsl:when>
+                    <xsl:otherwise>1</xsl:otherwise>
+                </xsl:choose>
+            </xsl:when>
+            <xsl:otherwise>1</xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>    
+    
     
 <!-- ============================================================================= -->
     <!-- remark[@role='todo'] = span[@class='todo'] -->
@@ -212,7 +308,7 @@ set       toc,title
     </xsl:template>
     
     <xsl:template match="db:pubdate" mode="titlepage.mode"/>
-        
+     
     <!-- ============================================================================= -->
     <!-- override titlepage hr separators -->
    
