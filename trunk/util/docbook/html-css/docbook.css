@@ -346,8 +346,8 @@ div.abstract p.title b, div.toc p b { font-weight: normal; }
 div.toc p { text-indent: -15px; }
 
 body {
-  margin-top: 2em;
-  margin-left: 1em; 
+  margin-top: 3em;
+  margin-left: 5em; 
   margin-right:3em;
   margin-bottom:2em;
   font-family: sans-serif;
