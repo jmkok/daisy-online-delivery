@@ -155,18 +155,18 @@ em
 /* admonition headings */
 
 .note h3 {
+    font-size: 100%;
+    font-weight: bold;
     margin-top: 0px;
+    margin-bottom: 3px;
     padding-top: 0px;
-    color: #000090;
+    color: #000000;
     width: 100%;
-    background-color: #efefef;
-    text-indent: 1em;
 }
 
 div.note, div.important, div.warning, div.caution, div.tip
 {
-  border: solid #000000 1px;
-  padding: 5px;
+  padding: 2px;
   width: 75%;
   margin-bottom: 10px;
 }
