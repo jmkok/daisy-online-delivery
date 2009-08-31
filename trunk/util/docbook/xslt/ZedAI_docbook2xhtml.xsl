@@ -39,9 +39,9 @@ appendix  toc,title
 article/appendix  nop
 article   toc,title
 book      toc,title,example
-chapter   toc,title
+chapter   title
 part      toc,title
-preface   toc,title
+preface   title
 qandadiv  toc
 qandaset  toc
 reference toc,title
@@ -50,10 +50,50 @@ sect2     toc
 sect3     toc
 sect4     toc
 sect5     toc
-section   toc
 set       toc,title
     </xsl:param>
  
+ 
+ 
+    <!-- ============================================================================= -->
+    <!-- override to order as a spec document -->
+    
+    <xsl:template match="db:book">
+        <xsl:call-template name="id.warning"/>
+        
+        <div>
+            <xsl:apply-templates select="." mode="common.html.attributes"/>
+            <xsl:if test="$generate.id.attributes != 0">
+                <xsl:attribute name="id">
+                    <xsl:call-template name="object.id"/>
+                </xsl:attribute>
+            </xsl:if>
+            
+            <xsl:call-template name="book.titlepage"/>
+            
+            <h2>Status of this Document</h2>
+            <xsl:apply-templates select="db:info/db:annotation[@xml:id='status']/*"/>
+            
+            <xsl:variable name="toc.params">
+                <xsl:call-template name="find.path.params">
+                    <xsl:with-param name="table" select="normalize-space($generate.toc)"/>
+                </xsl:call-template>
+            </xsl:variable>
+            
+            <xsl:call-template name="make.lots">
+                <xsl:with-param name="toc.params" select="$toc.params"/>
+                <xsl:with-param name="toc">
+                    <xsl:call-template name="division.toc">
+                        <xsl:with-param name="toc.title.p" select="contains($toc.params, 'title')"/>
+                    </xsl:call-template>
+                </xsl:with-param>
+            </xsl:call-template>
+            
+            <xsl:apply-templates/>
+            
+        </div>
+    </xsl:template>
+    
 <!-- ============================================================================= -->
     <!-- set the target location for a tags that link externally -->
     
@@ -167,6 +207,15 @@ set       toc,title
             <xsl:text>Last update: </xsl:text>
             <xsl:apply-templates/>
         </xsl:element>
+        
+        <dl>
+            <dt class="verLabel">This version: </dt>
+            <dd><a href="http://www.daisy.org/projects/">http://www.daisy.org/projects/</a></dd>
+            <dt class="verLabel">First Public Draft : </dt>
+            <dd><a href="http://www.daisy.org/projects/">http://www.daisy.org/projects/</a></dd>
+        </dl>
+        
+        <hr/>
     </xsl:template>
     
     <!-- ============================================================================= -->
