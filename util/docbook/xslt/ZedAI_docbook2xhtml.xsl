@@ -62,7 +62,7 @@ set       toc,title
     <xsl:template match="db:book">
         <xsl:call-template name="id.warning"/>
         
-        <div>
+        <xsl:element name="div" namespace="http://www.w3.org/1999/xhtml">
             <xsl:apply-templates select="." mode="common.html.attributes"/>
             <xsl:if test="$generate.id.attributes != 0">
                 <xsl:attribute name="id">
@@ -72,7 +72,7 @@ set       toc,title
             
             <xsl:call-template name="book.titlepage"/>
             
-            <h2>Status of this Document</h2>
+            <xsl:element name="h2" namespace="http://www.w3.org/1999/xhtml">Status of this Document</xsl:element>
             <xsl:apply-templates select="db:info/db:annotation[@xml:id='status']/*"/>
             
             <xsl:variable name="toc.params">
@@ -92,7 +92,7 @@ set       toc,title
             
             <xsl:apply-templates/>
             
-        </div>
+        </xsl:element>
     </xsl:template>
     
 <!-- ============================================================================= -->
@@ -111,6 +111,88 @@ set       toc,title
             <xsl:attribute name="content">text/html; charset=utf-8</xsl:attribute>
         </xsl:element>
     </xsl:template>
+    
+    
+    <!-- ============================================================================= -->
+    <!-- override title page templates to remove all the excess divs -->
+    
+    
+    <xsl:template name="book.titlepage">
+            <xsl:variable name="recto.content">
+                <xsl:call-template name="book.titlepage.before.recto"/>
+                <xsl:call-template name="book.titlepage.recto"/>
+            </xsl:variable>
+            <xsl:variable name="recto.elements.count">
+                <xsl:choose>
+                    <xsl:when test="function-available('exsl:node-set')"><xsl:value-of select="count(exsl:node-set($recto.content)/*)"/></xsl:when>
+                    <xsl:when test="contains(system-property('xsl:vendor'), 'Apache Software Foundation')">
+                        <!--Xalan quirk--><xsl:value-of select="count(exsl:node-set($recto.content)/*)"/></xsl:when>
+                    <xsl:otherwise>1</xsl:otherwise>
+                </xsl:choose>
+            </xsl:variable>
+            <xsl:if test="(normalize-space($recto.content) != '') or ($recto.elements.count &gt; 0)">
+                <xsl:copy-of select="$recto.content"/>
+            </xsl:if>
+            <xsl:variable name="verso.content">
+                <xsl:call-template name="book.titlepage.before.verso"/>
+                <xsl:call-template name="book.titlepage.verso"/>
+            </xsl:variable>
+            <xsl:variable name="verso.elements.count">
+                <xsl:choose>
+                    <xsl:when test="function-available('exsl:node-set')"><xsl:value-of select="count(exsl:node-set($verso.content)/*)"/></xsl:when>
+                    <xsl:when test="contains(system-property('xsl:vendor'), 'Apache Software Foundation')">
+                        <!--Xalan quirk--><xsl:value-of select="count(exsl:node-set($verso.content)/*)"/></xsl:when>
+                    <xsl:otherwise>1</xsl:otherwise>
+                </xsl:choose>
+            </xsl:variable>
+            <xsl:if test="(normalize-space($verso.content) != '') or ($verso.elements.count &gt; 0)">
+                <xsl:copy-of select="$verso.content"/>
+            </xsl:if>
+            <xsl:call-template name="book.titlepage.separator"/>
+    </xsl:template>
+    
+    <xsl:template match="db:title" mode="book.titlepage.recto.auto.mode">
+            <xsl:apply-templates select="." mode="book.titlepage.recto.mode"/>
+    </xsl:template>
+    
+    <xsl:template name="chapter.titlepage">
+            <xsl:variable name="recto.content">
+                <xsl:call-template name="chapter.titlepage.before.recto"/>
+                <xsl:call-template name="chapter.titlepage.recto"/>
+            </xsl:variable>
+            <xsl:variable name="recto.elements.count">
+                <xsl:choose>
+                    <xsl:when test="function-available('exsl:node-set')"><xsl:value-of select="count(exsl:node-set($recto.content)/*)"/></xsl:when>
+                    <xsl:when test="contains(system-property('xsl:vendor'), 'Apache Software Foundation')">
+                        <!--Xalan quirk--><xsl:value-of select="count(exsl:node-set($recto.content)/*)"/></xsl:when>
+                    <xsl:otherwise>1</xsl:otherwise>
+                </xsl:choose>
+            </xsl:variable>
+            <xsl:if test="(normalize-space($recto.content) != '') or ($recto.elements.count &gt; 0)">
+                <xsl:copy-of select="$recto.content"/>
+            </xsl:if>
+            <xsl:variable name="verso.content">
+                <xsl:call-template name="chapter.titlepage.before.verso"/>
+                <xsl:call-template name="chapter.titlepage.verso"/>
+            </xsl:variable>
+            <xsl:variable name="verso.elements.count">
+                <xsl:choose>
+                    <xsl:when test="function-available('exsl:node-set')"><xsl:value-of select="count(exsl:node-set($verso.content)/*)"/></xsl:when>
+                    <xsl:when test="contains(system-property('xsl:vendor'), 'Apache Software Foundation')">
+                        <!--Xalan quirk--><xsl:value-of select="count(exsl:node-set($verso.content)/*)"/></xsl:when>
+                    <xsl:otherwise>1</xsl:otherwise>
+                </xsl:choose>
+            </xsl:variable>
+            <xsl:if test="(normalize-space($verso.content) != '') or ($verso.elements.count &gt; 0)">
+                <xsl:copy-of select="$verso.content"/>
+            </xsl:if>
+            <xsl:call-template name="chapter.titlepage.separator"/>
+    </xsl:template>
+    
+    <xsl:template match="db:title" mode="chapter.titlepage.recto.auto.mode">
+            <xsl:apply-templates select="." mode="chapter.titlepage.recto.mode"/>
+    </xsl:template>
+    
     
     <!-- ============================================================================= -->
     <!-- override section title page templates to remove all the excess divs and correct heading levels -->
@@ -272,7 +354,7 @@ set       toc,title
     <!-- add daisy logo -->
     
     <xsl:template name="user.header.content">
-        <xsl:element name="a">
+        <xsl:element name="a" namespace="http://www.w3.org/1999/xhtml">
             <xsl:attribute name="href">http://www.daisy.org/</xsl:attribute>
             <xsl:element name="img">
                 <xsl:attribute name="src">http://www.daisy.org/images/daisylogo-w.gif</xsl:attribute>
@@ -290,21 +372,37 @@ set       toc,title
     <!-- format release info and publication date as single heading per w3c -->
     
     <xsl:template match="db:releaseinfo" mode="titlepage.mode">
-        <xsl:element name="p">
+        <xsl:element name="p" namespace="http://www.w3.org/1999/xhtml">
             <xsl:attribute name="class">releaseinfo</xsl:attribute>
             <xsl:apply-templates/>
             <xsl:text> </xsl:text>
             <xsl:apply-templates select="../db:pubdate/node()"/>
         </xsl:element>
         
-        <dl>
-            <dt class="verLabel">This version: </dt>
-            <dd><a href="http://www.daisy.org/projects/">http://www.daisy.org/projects/</a></dd>
-            <dt class="verLabel">First Public Draft : </dt>
-            <dd><a href="http://www.daisy.org/projects/">http://www.daisy.org/projects/</a></dd>
-        </dl>
+        <xsl:element name="dl" namespace="http://www.w3.org/1999/xhtml">
+            <xsl:element name="dt" namespace="http://www.w3.org/1999/xhtml">
+                <xsl:attribute name="class">verLabel</xsl:attribute>
+                <xsl:text>This version: </xsl:text>
+             </xsl:element>
+            <xsl:element name="dd" namespace="http://www.w3.org/1999/xhtml">
+                <xsl:element name="a" namespace="http://www.w3.org/1999/xhtml">
+                    <xsl:attribute name="href">http://www.daisy.org/projects/</xsl:attribute>
+                    <xsl:text>http://www.daisy.org/projects/</xsl:text>
+                </xsl:element>
+            </xsl:element>
+            <xsl:element name="dt" namespace="http://www.w3.org/1999/xhtml">
+                <xsl:attribute name="class">verLabel</xsl:attribute>
+                <xsl:text>First Public Draft : </xsl:text>
+            </xsl:element>
+            <xsl:element name="dd" namespace="http://www.w3.org/1999/xhtml">
+                <xsl:element name="a" namespace="http://www.w3.org/1999/xhtml">
+                    <xsl:attribute name="href">http://www.daisy.org/projects/</xsl:attribute>
+                    <xsl:text>http://www.daisy.org/projects/</xsl:text>
+                </xsl:element>
+            </xsl:element>
+        </xsl:element>
         
-        <hr/>
+        <xsl:element name="hr" namespace="http://www.w3.org/1999/xhtml"/>
     </xsl:template>
     
     <xsl:template match="db:pubdate" mode="titlepage.mode"/>
