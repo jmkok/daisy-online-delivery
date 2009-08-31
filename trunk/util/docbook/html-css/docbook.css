@@ -344,6 +344,7 @@ div.abstract p.title b, div.toc p b { font-weight: normal; }
 
 /* remove indent on toc title para */
 div.toc p { text-indent: -15px; }
+div.toc { margin-top: 2em; }
 
 body {
   margin-top: 3em;
