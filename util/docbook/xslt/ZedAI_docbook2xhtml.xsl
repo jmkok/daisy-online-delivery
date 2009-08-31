@@ -196,16 +196,9 @@ set       toc,title
     <xsl:template match="db:releaseinfo" mode="titlepage.mode">
         <xsl:element name="p">
             <xsl:attribute name="class">releaseinfo</xsl:attribute>
-            <xsl:text>STATUS: </xsl:text>
             <xsl:apply-templates/>
-        </xsl:element>
-    </xsl:template>
-    
-    <xsl:template match="db:pubdate" mode="titlepage.mode">
-        <xsl:element name="p">
-            <xsl:attribute name="class">pubdate</xsl:attribute>
-            <xsl:text>Last update: </xsl:text>
-            <xsl:apply-templates/>
+            <xsl:text> </xsl:text>
+            <xsl:apply-templates select="../db:pubdate/node()"/>
         </xsl:element>
         
         <dl>
