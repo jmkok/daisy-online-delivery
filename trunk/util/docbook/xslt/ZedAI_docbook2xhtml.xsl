@@ -379,28 +379,7 @@ set       toc,title
             <xsl:apply-templates select="../db:pubdate/node()"/>
         </xsl:element>
         
-        <xsl:element name="dl" namespace="http://www.w3.org/1999/xhtml">
-            <xsl:element name="dt" namespace="http://www.w3.org/1999/xhtml">
-                <xsl:attribute name="class">verLabel</xsl:attribute>
-                <xsl:text>This version: </xsl:text>
-             </xsl:element>
-            <xsl:element name="dd" namespace="http://www.w3.org/1999/xhtml">
-                <xsl:element name="a" namespace="http://www.w3.org/1999/xhtml">
-                    <xsl:attribute name="href">http://www.daisy.org/projects/</xsl:attribute>
-                    <xsl:text>http://www.daisy.org/projects/</xsl:text>
-                </xsl:element>
-            </xsl:element>
-            <xsl:element name="dt" namespace="http://www.w3.org/1999/xhtml">
-                <xsl:attribute name="class">verLabel</xsl:attribute>
-                <xsl:text>First Public Draft : </xsl:text>
-            </xsl:element>
-            <xsl:element name="dd" namespace="http://www.w3.org/1999/xhtml">
-                <xsl:element name="a" namespace="http://www.w3.org/1999/xhtml">
-                    <xsl:attribute name="href">http://www.daisy.org/projects/</xsl:attribute>
-                    <xsl:text>http://www.daisy.org/projects/</xsl:text>
-                </xsl:element>
-            </xsl:element>
-        </xsl:element>
+        <xsl:apply-templates select="../db:annotation[@role='specLinks']/*"/>
         
         <xsl:element name="hr" namespace="http://www.w3.org/1999/xhtml"/>
     </xsl:template>
