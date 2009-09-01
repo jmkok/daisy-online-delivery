@@ -1834,21 +1834,17 @@
     
     <appendix xml:id="appendixWSDL" conformance="normative">
         <title>WSDL Abstract Definition</title>
-        <para>The <xref linkend="bib_wsdl1.1"/> document <link xlink:href="do-wsdl-10.wsdl"
-                >do-wsdl-10.wsdl</link>, and the document entities referenced from within it,
-            formally defines the abstract Web Service contract that all compliant Services must
-            adhere to.</para>
+        <para>The <xref linkend="bib_wsdl1.1"/> entities defined in the accompanying
+            <link xlink:href="do-wsdl-10.wsdl">do-wsdl-10.wsdl</link> document constitute the abstract Web Service 
+            contract that all compliant Services must adhere to.</para>
 
-        <para>All compliant Services must publish a WSDL document at the <xref
-                linkend="term_serviceAddress"/> whose <xref linkend="bib_infoset"/> - with the
-            exception of the WSDL <code>service</code> element and its contents - is identical to
-                <link xlink:href="do-wsdl-10.wsdl">do-wsdl-10.wsdl</link>.</para>
-
-        <para>Services may make use of the abstract <link xlink:href="do-wsdl-10.wsdl"
-                >do-wsdl-10.wsdl</link> by using it as a template during the creation of a concrete
-            DAISY Online Web Service (by adding the Service instance specific <code>service</code>
-            element and its contents to a copy of <link xlink:href="do-wsdl-10.wsdl"
-                >do-wsdl-10.wsdl</link>). </para>
+        <para>Service implementors must publish a concrete WSDL document at their <xref linkend="term_serviceAddress"/>.
+            The <xref linkend="bib_infoset"/> of the concrete WSDL document must be identical to the 
+            <link xlink:href="do-wsdl-10.wsdl">do-wsdl-10.wsdl</link> document and must include
+            a custom WSDL <code>service</code> element to define the locally supported ports.</para>
+        
+        <para>The abstract <link xlink:href="do-wsdl-10.wsdl">do-wsdl-10.wsdl</link> document should be used
+            as a template for creating the concrete document.</para>
     </appendix>
 
     <appendix xml:id="appendixDynamicMenuExamples" conformance="informative">
