@@ -268,7 +268,8 @@
                                 and uses the <function>
                                     <xref linkend="op_returnContent"/>
                                 </function> operation to notify the Service to revoke access. This term is
-                                only defined for lent or loaned content, not for free or purchased content.
+                                only defined for loaned or rented content, not for free or purchased content.
+								Content that has been returned is no longer issued.
                             </para>
                         </listitem>
                     </varlistentry>
@@ -343,22 +344,23 @@
         <section xml:id="fundamentals_serviceTypes" conformance="normative"
             xreflabel="Service types">
             <title>Service Types</title>
-            <para>This protocol has been designed to support two types of Services:</para>
+            <para>This protocol has been designed to support two types of Services:
+			<remark role="todo">TODO: These definitions are incorrect.  See note at end of section.</remark>
+			</para>
             <itemizedlist>
                 <listitem xml:id="fundamentals_serviceType_library" xreflabel="Library Service type">
-                    <para><emphasis>Library-type</emphasis> services, which operate using a loan
-                        program for <xref linkend="term_content"/>. The Content is borrowed, and
+                    <para>A <emphasis>Library-type</emphasis> service, which operates using a loan
+                        or rental program for <xref linkend="term_content"/>. The Content is borrowed or rented;
                         at some point it must be returned to the Service Provider.</para>
                 </listitem>
                 <listitem xml:id="fundamentals_serviceType_shop" xreflabel="Shop Service type">
-                    <para><emphasis>Shop-type</emphasis> services, which includes both commercial
+                    <para>A <emphasis>Shop-type</emphasis> service, which includes both commercial
                         (purchase) and free-of-charge content provision, where the content once
                         issued belongs to the client indefinitely.</para>
                 </listitem>
             </itemizedlist>
-
-            <para>The choice of Service type is not exclusive. Service Providers must offer one but
-                may offer both of these types in a single Service.</para>
+			
+            <para>Services must support one or both of these types.</para>
 
             <para>While the protocol Interface and operational contract is generally common to these
                 Services types, there are some deviations, as defined below.</para>
@@ -368,49 +370,75 @@
                 <para>A Library-type Service must:</para>
                 <itemizedlist>
                     <listitem>
-                        <para>Manage the User's collection of borrowed Content, including what
-                            Content is currently issued to the User, and what content has expired
-                            (e.g. Content that should be returned)</para>
+                        <para>Manage the User's collection of issued Content and what content has expired.
+							When <function><xref linkend="op_getContentList"/></function> is called with
+							an <parameter>id</parameter> parameter of
+                                <literal>issued</literal> or <literal>expired</literal>,
+							the appropriate <type><xref linkend="tp_contentList"/></type> must be returned.
+							</para>
+							<para><remark role="todo">TODO: Move the following into the documentation for
+							getContentList:</remark></para>
+							<para>
+							All content items that have been issued and must be returned must be present
+							in either the <literal>issued</literal> or <literal>expired</literal> list.
+							Non-returnable content may be present in the <literal>issued</literal> list,
+							but shall not be present in the <literal>expired</literal> list.
+							</para>
                     </listitem>
                     <listitem>
-                        <para>Support exposing the above lists of borrowed and expired content to
-                            the Reading System by providing an implementation of the <xref
-                                linkend="op_getContentList"/> operation, when invoked with the
-                                <code>issued</code> and <code>expired</code> values of that
-                            operations' <parameter>id</parameter> parameter</para>
+                        <para>Implement the <function><xref linkend="op_returnContent"/></function>
+                            operation.</para>
                     </listitem>
                     <listitem>
-                        <para>Provide an implementation of the <xref linkend="op_returnContent"/>
-                            operation, and contractually let an invocation of that operation signal
-                            the end of the issuance period for a given Content item</para>
-                    </listitem>
-                    <listitem>
-                        <para> For those Content items that are being borrowed, provide the value
-                                <literal>true</literal> in the <code>requiresReturn</code> attribute
-                            of the <xref linkend="tp_contentMetadata"/> type returned by the <xref
-                                linkend="op_getContentMetadata"/> operation </para>
+                        <para>For those Content items that must be returned, the attribute
+						of their <type><xref linkend="tp_contentMetadata"/></type> must be
+                                <literal>true</literal>.</para>
                     </listitem>
 
                     <listitem>
-                        <para>Declare its offering of a Library-style service in the <xref
+                        <para><remark role="todo">TODO: Rewrite this for conciseness.</remark>
+						Declare its offering of a Library-type service in the <xref
                                 linkend="tp_supportedServiceTypes"/> element in the <xref
                                 linkend="tp_serviceAttributes"/> type returned by the <xref
                                 linkend="op_getServiceAttributes"/> operation</para>
                     </listitem>
                 </itemizedlist>
+
             </section>
             <section xml:id="fundamentals_serviceTypes_reqs_shop">
                 <title>Shop-type Service Specific Requirements</title>
                 <para>A Shop-type Service must:</para>
                 <itemizedlist>
                     <listitem>
-                        <para>Declare its offering of a Shop-style service in the <xref
+                        <para>Manage the User's collection of issued Content.
+							When <function>getContentList</function> is called with
+							an <parameter>id</parameter> parameter of
+                                <literal>issued</literal>, the Service must reply with a
+								(possibly empty) <type>contentList</type> of issued content.
+							When <function>getContentList</function> is called with
+							an <parameter>id</parameter> parameter of
+                                <literal>expired</literal>, the Service must reply with an
+								empty <type>contentList</type>.  <remark role="todo">TODO: Not true
+								in mixed service types.
+								Fix this before release</remark>
+						</para>
+                    </listitem>
+                    <listitem>
+                        <para><remark role="todo">TODO: Rewrite this for conciseness.</remark>
+                        Declare its offering of a Shop-type service in the <xref
                                 linkend="tp_supportedServiceTypes"/> element in the <xref
                                 linkend="tp_serviceAttributes"/> type returned by the <xref
                                 linkend="op_getServiceAttributes"/> operation.</para>
                     </listitem>
                 </itemizedlist>
+				<note><para>Despite their names, Service types do not constrain the type of
+				service offered.  A "Library-type" Service may charge a rental fee for content.
+				A "Shop-type" Service may in fact be a library that uses <xref linkend="bib_pdtb2"/> to time-limit
+				its materials but does not require calls to <function>returnContent</function>.
+				</para></note>
+				
             </section>
+
 
         </section>
 
@@ -457,7 +485,7 @@
                         <para>Support exposing the selected Content to the Users' Reading System(s)
                             by providing an implementation of the <xref linkend="op_getContentList"
                             /> operation, when invoked with the <code>new</code> value of that
-                            operations' <parameter>id</parameter> parameter</para>
+                            operation's <parameter>id</parameter> parameter</para>
                     </listitem>
                     <listitem>
                         <para>Declare its support for the Out-of-band Content Selection Model in the
