@@ -2217,23 +2217,90 @@ You have the following content waiting to be Downloaded/Streamed
         <para>
             <remark role="todo">TODO collect complete current member list</remark>
         </para>
-        <!-- <itemizedlist>
+        
+        <itemizedlist>
             <listitem>
-            <para>
-            <personname>
-            <firstname>Kenny</firstname>
-            <surname>Johar</surname>
-            </personname>
-            <jobtitle>Enterprise Architect</jobtitle>, <orgname>Vision Australia</orgname>
-            (co-chair) </para>
+                <para>
+                    <personname>
+                        <firstname>Markus</firstname>
+                        <surname>Gylling</surname>
+                    </personname>,
+                    <jobtitle>CTO</jobtitle>, <orgname>DAISY Consortium</orgname>
+                    (co-chair) </para>
             </listitem>
-            </itemizedlist> -->
+            <listitem>
+                <para>
+                    <personname>
+                        <firstname>Kenny</firstname>
+                        <surname>Johar</surname>
+                    </personname>,
+                    <jobtitle>Enterprise Architect</jobtitle>, <orgname>Vision Australia</orgname>
+                    (co-chair) </para>
+            </listitem>
+            <listitem>
+                <para>
+                    <personname>
+                        <firstname>Hiro</firstname>
+                        <surname>Fujimori</surname>
+                    </personname>,
+                    <jobtitle></jobtitle>, <orgname>Plextor</orgname>
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    <personname>
+                        <firstname>Geoff</firstname>
+                        <surname>Gilmour-Taylor</surname>
+                    </personname>,
+                    <jobtitle></jobtitle>, <orgname>CNIB</orgname>
+                 </para>
+            </listitem>
+            <listitem>
+                <para>
+                    <personname>
+                        <firstname>Jelle</firstname>
+                        <surname>Martijn Kok</surname>
+                    </personname>,
+                    <jobtitle></jobtitle>, <orgname>Solutions Radio</orgname>
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    <personname>
+                        <firstname>Simon</firstname>
+                        <surname>Roy</surname>
+                    </personname>,
+                    <jobtitle></jobtitle>, <orgname>Humanware</orgname>
+                </para>
+            </listitem>
+            <listitem>
+                <para>
+                    <personname>
+                        <firstname>Nick</firstname>
+                        <surname>Willliamson</surname>
+                    </personname>,
+                    <jobtitle></jobtitle>, <orgname>RNIB</orgname>
+                </para>
+            </listitem>
+        </itemizedlist>
         
         <para>The editors also wish to thank the following individuals for their contribution,
-            either as former members of the Working Group, or as individual contributors:</para>
+            either as former members of the Working Group or as individual contributors:</para>
         <para>
             <remark role="todo">TODO collect complete former contributor list</remark>
         </para>
+        
+        <itemizedlist>
+            <listitem>
+                <para>
+                    <personname>
+                        <firstname>Clive</firstname>
+                        <surname>Lansink</surname>
+                    </personname>,
+                    <jobtitle></jobtitle>, <orgname></orgname>
+                </para>
+            </listitem>
+        </itemizedlist>
     </appendix>
  
 </book>
