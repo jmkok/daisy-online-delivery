@@ -456,3 +456,20 @@ th.attrHeaderDefault {
 dt.verLabel {
     font-weight: bold;
 }
+
+.statusDisclaimer {
+    font-style: italic;
+}
+
+
+.specLabel {
+    font-weight: bold;
+    margin-bottom: 5px;
+    padding-bottom: 0px;
+}
+
+.specLink {
+    text-indent: 2em;
+    margin-top: 0px;
+    padding-top: 0px;
+}
