@@ -26,15 +26,65 @@
         </editor>
         -->
         
+        <annotation role="specLinks">
+            <para>
+                <remark role="todo">TODO: add the correct links</remark>
+            </para>
+            <para role="specLabel">This version:</para>
+            <para role="specLink">
+                <link xlink:href="http://www.daisy.org/projects/">http://www.daisy.org/projects/</link>
+            </para>
+            <para role="specLabel">First Public Draft:</para>
+            <para role="specLink">
+                <link xlink:href="http://www.daisy.org/projects/">http://www.daisy.org/projects/</link>
+            </para>
+        </annotation>
+        
         <abstract>
             <title>Abstract</title>
             <para>
-                <remark role="todo">TODO: write an abstract</remark>
+                    The DAISY Online Delivery Protocol is a web service API that facilitates the issuing of content from service
+                    providers to end users. Although at its core it was designed to facilitate the downloading of DAISY content,
+                    the API is flexible enough to allow any content to be downloaded from a service provider, making it a flexible
+                    and lightweight solution to the growing need for online delivery of published content.
             </para>
         </abstract>
         
         <annotation xml:id="status">
-            <remark role="todo">TODO: write the current status info</remark>
+            <para>
+                <emphasis role="statusDisclaimer">
+                    This section describes the status of this document at the time of its publication. 
+                    Other documents may supersede this document. A list of current DAISY publications 
+                    and the latest revision of this specification can be found in the DAISY projects
+                    index at <link xlink:href="http://www.daisy.org/projects/">http://www.daisy.org/projects/</link>.
+                </emphasis>
+            </para>
+            <para>
+                This document was developed by the DAISY Online working group as a part of its
+                activities. For a complete list of members at the time of publication, please refer to
+                <xref linkend="acknowledgements"/>.
+            </para>
+            <para>
+                This document is a Working Group Draft. It completely supersedes the first draft
+                of the specification that was released on April 15, 2009.
+            </para>
+            <para>
+                This document is considered by the Working Group members to be complete and stable
+                for use in creating implementations of the protocol. It is anticipated that some aspects
+                of the protocol may change before Recommendation status is given to the document,
+                but substantive revisions to the core functionality outlined in this document are not
+                anticipated.
+            </para>
+            <para>
+                Please report errors in this document and suggestions for the protocol to the Working Group 
+                through the public feedback form available on the DAISY site at 
+                <link xlink:href="http://www.daisy.org/support/contactus.php">http://www.daisy.org/support/contactus.php</link>.
+                When submitting your feedback, please ensure that the Message Category field has been 
+                set to the value "Project: DAISY Online Delivery".
+            </para>
+            <para>
+                The English version of this specification is the only normative version.
+            </para>
         </annotation>
         
     </info>
@@ -122,6 +172,76 @@
                 the meanings outlined in this section.</para>
            
                 <variablelist>
+                 
+                    <varlistentry xml:id="term_content">
+                        <term>Content</term>
+                        <listitem>
+                            <para>Assets made available by the <xref linkend="term_service"/>. Can refer to
+                                DAISY DTBs or other resources. </para>
+                        </listitem>
+                    </varlistentry>
+                    
+                    <varlistentry xml:id="term_contentIdentifier">
+                        <term>Content Identifier</term>
+                        <listitem>
+                            <para>An identifier of a <xref linkend="term_content"/> item. This identifier is
+                                defined by the <xref linkend="term_service"/> and is exposed in the <xref
+                                    linkend="bib_dublinCore"/>
+                                <literal>identifier</literal> field of the <xref
+                                    linkend="tp_contentMetadata"/> type. The identifier must be unique
+                                within the scope of the Service, and it must be static, i.e. not change over
+                                time.</para>
+                            <note>
+                                <para>It is not guaranteed that identifiers embedded in certain content
+                                    formats match this content identifier.</para>
+                            </note>
+                        </listitem>
+                    </varlistentry>
+                    
+                    <varlistentry xml:id="term_download">
+                        <term>Download</term>
+                        <listitem>
+                            <para> Transfer of <xref linkend="term_content"/> from the <xref
+                                linkend="term_service"/> to the <xref linkend="term_readingSystem"/>,
+                                which the reading system stores indefinitely. </para>
+                        </listitem>
+                    </varlistentry>
+                    
+                    <varlistentry xml:id="term_fault">
+                        <term>Fault</term>
+                        <listitem>
+                            <para> A <xref linkend="bib_soap1.1"/> Fault. It is used to carry error and/or
+                                status information within a SOAP message. <xref linkend="apiReferenceFaults"
+                                /> defines the faults used for this protocol. </para>
+                        </listitem>
+                    </varlistentry>
+                    
+                    <varlistentry xml:id="term_interface">
+                        <term>Interface</term>
+                        <listitem>
+                            <para> A <xref linkend="bib_wsdl1.1"/> port type. A set of <xref
+                                linkend="term_operation"/>s supported by the <xref
+                                    linkend="term_service"/>. </para>
+                        </listitem>
+                    </varlistentry>
+                    
+                    <varlistentry xml:id="term_issue">
+                        <term>Issue content</term>
+                        <listitem>
+                            <para>Grant access to content. A Reading System uses the <function>
+                                <xref linkend="op_issueContent"/>
+                            </function> operation to request this of the Service. </para>
+                        </listitem>
+                    </varlistentry>
+                    
+                    <varlistentry xml:id="term_operation">
+                            <term>Operation</term>
+                            <listitem>
+                                <para> A <xref linkend="bib_wsdl1.1"/> operation. An action supported by the
+                                    <xref linkend="term_service"/>. </para>
+                            </listitem>
+                        </varlistentry>
+                    
                     <varlistentry xml:id="term_readingSystem">
                         <term>Reading System</term>
                         <listitem>
@@ -132,6 +252,20 @@
                                 consumer in the <xref linkend="bib_wsibasicprofile11_conf"/>. </para>
                         </listitem>
                     </varlistentry>
+                    
+                    <varlistentry xml:id="term_return">
+                        <term>Return content</term>
+                        <listitem>
+                            <para>Give up access to content. A Reading System removes the content locally
+                                and uses the <function>
+                                    <xref linkend="op_returnContent"/>
+                                </function> operation to notify the Service to revoke access. This term is
+                                only defined for loaned or rented content, not for free or purchased content.
+								Content that has been returned is no longer issued.
+                            </para>
+                        </listitem>
+                    </varlistentry>
+                    
                     <varlistentry xml:id="term_service">
                         <term>Service</term>
                         <listitem>
@@ -139,20 +273,21 @@
                                 an instance in the <xref linkend="bib_wsibasicprofile11_conf"/>. </para>
                         </listitem>
                     </varlistentry>
+                    
+                    <varlistentry xml:id="term_serviceAddress">
+                        <term>Service address</term>
+                        <listitem>
+                            <para>The URI where a Service has published the WSDL document defining the DAISY
+                                Online Service. <remark role="todo">TODO this term is slightly misleading, 
+                                    should perhaps be called "Service metadata endpoint" instead</remark></para>
+                        </listitem>
+                    </varlistentry>
+                    
                     <varlistentry xml:id="term_serviceDelegate">
                         <term>Service Delegate</term>
                         <listitem>
                             <para> A file hosting server that is not under the control of the <xref
                                 linkend="term_serviceProvider"/>. </para>
-                        </listitem>
-                    </varlistentry>
-                    
-                    <varlistentry xml:id="term_user">
-                        <term>User</term>
-                        <listitem>
-                            <para> A person who interacts with, or accesses <xref linkend="term_content"/>
-                                from, a <xref linkend="term_service"/> using a <xref
-                                    linkend="term_readingSystem"/>. </para>
                         </listitem>
                     </varlistentry>
                     
@@ -175,71 +310,7 @@
                                 />'s discretion.</para>
                         </listitem>
                     </varlistentry>
-                    <varlistentry xml:id="term_operation">
-                        <term>Operation</term>
-                        <listitem>
-                            <para> A <xref linkend="bib_wsdl1.1"/> operation. An action supported by the
-                                <xref linkend="term_service"/>. </para>
-                        </listitem>
-                    </varlistentry>
-                    <varlistentry xml:id="term_interface">
-                        <term>Interface</term>
-                        <listitem>
-                            <para> A <xref linkend="bib_wsdl1.1"/> port type. A set of <xref
-                                linkend="term_operation"/>s supported by the <xref
-                                    linkend="term_service"/>. </para>
-                        </listitem>
-                    </varlistentry>
-                    <!--
-                        <varlistentry xml:id="term_parameter">
-                        <term>Parameter</term>
-                        <listitem>
-                        <para>
-                        <remark>This is not defined in any of the referred specs.
-                        I don't think it would be of any help to define it here. -Geoff</remark>
-                        </para>
-                        </listitem>
-                        </varlistentry>
-                    -->
-                    <varlistentry xml:id="term_fault">
-                        <term>Fault</term>
-                        <listitem>
-                            <para> A <xref linkend="bib_soap1.1"/> Fault. It is used to carry error and/or
-                                status information within a SOAP message. <xref linkend="apiReferenceFaults"
-                                /> defines the faults used for this protocol. </para>
-                        </listitem>
-                    </varlistentry>
-                    <varlistentry xml:id="term_content">
-                        <term>Content</term>
-                        <listitem>
-                            <para>Assets made available by the <xref linkend="term_service"/>. Can refer to
-                                DAISY DTBs or other resources. </para>
-                        </listitem>
-                    </varlistentry>
-                    <varlistentry xml:id="term_contentIdentifier">
-                        <term>Content Identifier</term>
-                        <listitem>
-                            <para>An identifier of a <xref linkend="term_content"/> item. This identifier is
-                                defined by the <xref linkend="term_service"/> and is exposed in the <xref
-                                    linkend="bib_dublinCore"/>
-                                <literal>identifier</literal> field of the <xref
-                                    linkend="tp_contentMetadata"/> type. The identifier must be unique
-                                within the scope of the Service, and it must be static, i.e. not change over
-                                time.</para>
-                            <note>
-                                <para>It is not guaranteed that identifiers embedded in certain content
-                                    formats match this content identifier.</para>
-                            </note>
-                        </listitem>
-                    </varlistentry>
-                    <varlistentry xml:id="term_download">
-                        <term>Download</term>
-                        <listitem>
-                            <para> Transfer of <xref linkend="term_content"/> from the <xref
-                                linkend="term_service"/> to the <xref linkend="term_readingSystem"/>,
-                                which the reading system stores indefinitely. </para>
-                        </listitem>
-                    </varlistentry>
+                    
                     <varlistentry xml:id="term_streaming">
                         <term>Streaming</term>
                         <listitem>
@@ -253,34 +324,16 @@
                             </note>
                         </listitem>
                     </varlistentry>
-                    <varlistentry xml:id="term_issue">
-                        <term>Issue content</term>
+                    
+                    <varlistentry xml:id="term_user">
+                        <term>User</term>
                         <listitem>
-                            <para>Grant access to content. A Reading System uses the <function>
-                                <xref linkend="op_issueContent"/>
-                            </function> operation to request this of the Service. </para>
+                            <para> A person who interacts with, or accesses <xref linkend="term_content"/>
+                                from, a <xref linkend="term_service"/> using a <xref
+                                    linkend="term_readingSystem"/>. </para>
                         </listitem>
                     </varlistentry>
-                    <varlistentry xml:id="term_return">
-                        <term>Return content</term>
-                        <listitem>
-                            <para>Give up access to content. A Reading System removes the content locally
-                                and uses the <function>
-                                    <xref linkend="op_returnContent"/>
-                                </function> operation to notify the Service to revoke access. This term is
-                                only defined for loaned or rented content, not for free or purchased content.
-								Content that has been returned is no longer issued.
-                            </para>
-                        </listitem>
-                    </varlistentry>
-                    <varlistentry xml:id="term_serviceAddress">
-                        <term>Service address</term>
-                        <listitem>
-                            <para>The URI where a Service has published the WSDL document defining the DAISY
-                                Online Service. <remark role="todo">TODO this term is slightly misleading, 
-                                    should perhaps be called "Service metadata endpoint" instead</remark></para>
-                        </listitem>
-                    </varlistentry>
+                    
                 </variablelist>
     
     </chapter>
