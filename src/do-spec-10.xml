@@ -43,8 +43,8 @@
         <abstract>
             <title>Abstract</title>
             <para>
-                    The DAISY Online Delivery Protocol is a web service API that facilitates the issuing of content from service
-                    providers to end users. Although designed to facilitate the downloading of DAISY content,
+                    The DAISY Online Delivery Protocol is a web service API that facilitates the discovery and delivery of 
+                    content from service providers by end users. Although designed to facilitate the downloading of DAISY content,
                     the API allows any content to be downloaded from a service provider, making it a flexible
                     and lightweight solution to the growing need for online delivery of published content.
             </para>
@@ -60,7 +60,7 @@
                 </emphasis>
             </para>
             <para>
-                This document was developed by the DAISY Online working group as a part of its
+                This document was developed by the DAISY Online Working Group as a part of its
                 activities. For a complete list of members at the time of publication, please refer to
                 <xref linkend="acknowledgements"/>.
             </para>
