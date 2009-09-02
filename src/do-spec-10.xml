@@ -99,66 +99,6 @@
                 may be produced by DAISY as a separate specification.</remark>
         </para>
         
-
-        <!-- 
-    <section>
-    <title>Usage scenarios</title>
-    <section xml:id="usage_menuless" conformance="informative">
-    <title>The Menuless Usage Scenario</title>
-    <para>A menuless Service or Reading System is one that does not
-    provide menu functionality; in these systems, content must be selected
-    through some out-of-band mechanism.  In this scenario, a DAISY Online
-    Service's main role is to inform a Reading System what content is
-    available to the User.
-    </para>
-    <para>If a menuless Reading System connects to a Service, then the Service
-    should provide a menuless service model.  If a Reading System connects
-    to a menuless Service, then the Reading System should operate in menuless mode.
-    </para>
-    <itemizedlist>
-    <title>Menuless Service Model Examples</title>
-    <listitem>
-    <para>The Service could provide a separate interface for content selection.
-    This could be a Web site, a call centre or some other method.
-    </para>
-    </listitem>
-    <listitem> -->
-        <!-- This is sometimes called a profile system; however, "profile"
-    is confusing as it can mean a number of things, so I avoided that term.
-    -GGT -->
-        <!--
-            <para>Content could be automatically selected for a User by the Service
-                based on their preferences.  The Service would periodically update
-                the content available.</para>
-                </listitem>
-            <listitem>
-                <para>The Service could provide periodicals.  Each time the
-                    User connects to the Service, the most recent editions are available
-                    to them.</para>
-            </listitem>
-            </itemizedlist>
-            <para>After a Reading System queries the Service for the list of
-                available content, it could continue in a noninteractive mode, or could
-                allow user interaction with the content.
-                A noninteractive Reading System will synchronize its content
-                with that available on the Service.  It will download those content items it
-                does not already have—up to its storage capacity.
-                An interactive Reading System will allow the User to choose what
-                content to download or stream.
-            </para>
-            <para>This specification provides a mechanism for Services to request the
-                removal of content from Reading Systems.  This is for use only with content
-                on loan from the Service, for which the loan has expired, and may aid with
-                syncronization issues.
-                <emphasis>Use of this mechanism to remove content without the User's consent is
-                    strongly discouraged.</emphasis></para>
-        </section>
-        <section xml:id="introduction_readingSystemTypes_interactive" conformance="informative">
-        <title>The Interactive Reading System</title>
-        <remark role="todo">TODO describe principles of a reading system using dynamic menus</remark>                
-        </section>     
--->
-
     </chapter>
     
     <chapter xml:id="terminology">
