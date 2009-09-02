@@ -257,7 +257,7 @@
                         <listitem>
                             <para> Transfer of <xref linkend="term_content"/> from the <xref
                                 linkend="term_service"/> to the <xref linkend="term_readingSystem"/>,
-                                which the reading system renders immediately and stores only
+                                which the <xref linkend="term_readingSystem"/> renders immediately and stores only
                                 temporarily.</para>
                             <note>
                                 <para><xref linkend="term_download"/> and streaming are Reading System behaviors, not
@@ -345,7 +345,7 @@
                 <listitem xml:id="fundamentals_serviceType_library" xreflabel="Library Service type">
                     <para>A <emphasis>Library-type</emphasis> service, which operates using a loan
                         or rental program for <xref linkend="term_content"/>. The Content is borrowed or rented;
-                        at some point it must be returned to the Service Provider.</para>
+                        at some point it must be returned to the <xref linkend="term_serviceProvider"/>.</para>
                 </listitem>
                 <listitem xml:id="fundamentals_serviceType_shop" xreflabel="Shop Service type">
                     <para>A <emphasis>Shop-type</emphasis> service, which includes both commercial
@@ -436,76 +436,65 @@
 
         </section>
 
-        <section xml:id="fundamentals_contentSelectionModels" conformance="normative"
-            xreflabel="Content Selection Models">
-            <title>Content Selection Models</title>
-            <para>This protocol has been designed to support two fundamental models for content
-                provision.</para>
+        <section xml:id="fundamentals_contentSelectionMethods" conformance="normative"
+            xreflabel="Content Selection Methods">
+            <title>Content Selection Methods</title>
+            <para>This protocol supports two content selection methods:</para>
             <itemizedlist>
-                <listitem xml:id="fundamentals_contentSelectionModel_outofband"
-                    xreflabel="Out-of-band Content Selection Model">
-                    <para>The <emphasis>out-of-band</emphasis> content selection model, where the
-                        User through some form of out-of-band mechanism (e.g. a web form or
-                        telephone) selects content to request issuance and transfer of.</para>
+                <listitem xml:id="fundamentals_contentSelectionMethod_outofband"
+                    xreflabel="Out-of-band Content Selection Method">
+                    <para>an <emphasis>out-of-band</emphasis> method, where the
+                        <xref linkend="term_content"/> for the <xref linkend="term_user"/> is 
+                        automatically selected or assigned through 
+                        an out-of-band mechanism like a web form or content distribution system; and</para>
                 </listitem>
-                <listitem xml:id="fundamentals_contentSelectionModel_browse"
-                    xreflabel="Browse Content Selection Model">
-                    <para>The <emphasis>browse</emphasis> content selection model, where the User
-                        browses the Service's collection using operations defined by this protocol,
-                        and interactively selects Content to request issuance and transfer
-                        of.</para>
+                <listitem xml:id="fundamentals_contentSelectionMethod_browse"
+                    xreflabel="Browse Content Selection Method">
+                    <para>a <emphasis>browsing</emphasis> method, where the <xref linkend="term_user"/>
+                        browses the <xref linkend="term_service"/>'s collection using 
+                        <xref linkend="term_operation"/>s defined by this protocol.</para>
                 </listitem>
             </itemizedlist>
 
-            <para>A given Service must offer one and may offer both models of content selection.
-                Reading Systems may be designed to support one or both of these content selection
-                models. A Reading System may invoke operations associated with both models during
-                the same session, providing that the Service supports both models.</para>
-
-            <para>To ensure maximum interoperability, Service Providers are strongly recommended to
-                provide support for the Out-of-band Content selection model. This selection model
-                can then function as a fallback for Reading Systems who do not support the Browse
-                selection model.</para>
+            <para>A <xref linkend="term_serviceProvider"/> must offer <xref linkend="term_user"/>s at least 
+                one content selection method. A <xref linkend="term_service"/> is not required to support both models.</para>
+            
+            <para>
+                A <xref linkend="term_readingSystem"/> should support both content selection
+                models for maximum interopability, but is only required to support
+                one model for conformance.
+            </para>
 
             <section xml:id="fundamentals_contentSelectionModel_reqs_outofband">
-                <title>Out-of-band Content Selection Model Requirements</title>
-                <para>A Service employing the Out-of-band Content Selection Model must:</para>
+                <title>Out-of-band Content Selection Method Requirements</title>
+                <para>A <xref linkend="term_service"/> offering the <xref linkend="fundamentals_contentSelectionMethod_outofband"/> is
+                    compliant if it:</para>
                 <itemizedlist>
                     <listitem>
-                        <para>Provide one or several out-of-band mechanisms that lets the User
-                            select Content to request issuance of.</para>
+                        <para>provides one or more out-of-band mechanisms for the selection/assignment of <xref linkend="term_content"/>;</para>
                     </listitem>
                     <listitem>
-                        <para>Support exposing the selected Content to the Users' Reading System(s)
-                            by providing an implementation of the <xref linkend="op_getContentList"
-                            /> operation, when invoked with the <code>new</code> value of that
-                            operation's <parameter>id</parameter> parameter</para>
+                        <para>declares support for the <xref linkend="fundamentals_contentSelectionMethod_outofband"/> in the
+                            <xref linkend="tp_supportedContentSelectionModels"/> service attribute; and</para>
                     </listitem>
                     <listitem>
-                        <para>Declare its support for the Out-of-band Content Selection Model in the
-                                <xref linkend="tp_supportedContentSelectionModels"/> element in the
-                                <xref linkend="tp_serviceAttributes"/> type returned by the <xref
-                                linkend="op_getServiceAttributes"/> operation.</para>
+                        <para>exposes the selected <xref linkend="term_content"/> to the <xref linkend="term_user"/>s'
+                            <xref linkend="term_readingSystem"/>(s) through the <xref linkend="op_getContentList"/> operation
+                            when the operation is invoked with the <parameter>id</parameter> parameter set to the value <code>new</code>.</para>
                     </listitem>
                 </itemizedlist>
             </section>
             <section xml:id="fundamentals_contentSelectionModel_reqs_browse">
                 <title>Browse Content Selection Model Requirements</title>
-                <para>A Service employing the Browse Content Selection Model must:</para>
+                <para>A <xref linkend="term_service"/> offering the <xref linkend="fundamentals_contentSelectionMethod_browse"/> is
+                    compliant if it:</para>
                 <itemizedlist>
                     <listitem>
-                        <para>Provide support for the <link linkend="fundamentals_dynamic_menus"
-                                >Dynamic Menu</link> protocol feature by implementing the <xref
-                                linkend="op_getQuestions"/> operation, and provide one or several
-                            mechanisms (such as a search feature or other exposure of composed
-                            lists) within the Dynamic Menu framework that lets the User select
-                            Content to request issuance of.</para>
+                        <para>provides support for the <link linkend="fundamentals_dynamic_menus">Dynamic Menus</link> protocol feature; and</para>
                     </listitem>
                     <listitem>
-                        <para>Declare its support for the Browse Content Selection Model in the
-                                <xref linkend="tp_supportedContentSelectionModels"/> element in the
-                                <xref linkend="tp_serviceAttributes"/> type returned by the <xref
-                                linkend="op_getServiceAttributes"/> operation.</para>
+                        <para>declares support for the <xref linkend="fundamentals_contentSelectionMethod_browse"/> in the
+                                <xref linkend="tp_supportedContentSelectionModels"/> service attribute.</para>
                     </listitem>
                 </itemizedlist>
             </section>
@@ -530,20 +519,20 @@
                     </listitem>
                 </itemizedlist>
 
-                <para>Services and Reading Systems must support <xref linkend="bib_http11"/> and
+                <para><xref linkend="term_service"/>s and <xref linkend="term_readingSystem"/>s must support <xref linkend="bib_http11"/> and
                     secure HTTP (HTTPS) through the use of <xref linkend="bib_ssl3.0"/> or <xref
                         linkend="bib_tls1.0"/>.</para>
 
                 <para>The use of HTTP must conform to <xref linkend="bib_http11"/> and <xref
                         linkend="bib_RFC2617"/>. </para>
 
-                <para>Services and Reading Systems must support HTTP sessions as specified by <xref
+                <para><xref linkend="term_service"/>s and <xref linkend="term_readingSystem"/>s must support HTTP sessions as specified by <xref
                         linkend="bib_rfc2109"/>. Note that an established HTTP session does not
-                    implicitly mean that the Reading System has logged on to the Service
+                    implicitly mean that the <xref linkend="term_readingSystem"/> has logged on to the <xref linkend="term_service"/>
                     successfully (see <xref linkend="operations_session"/>).</para>
 
-                <para>For all HTTP and HTTPS requests sent by a Reading system to a Service, a
-                    Service must return the appropriate HTTP status code in the HTTP response as
+                <para>For all HTTP and HTTPS requests sent by a <xref linkend="term_readingSystem"/> to a <xref linkend="term_service"/>, a
+                    <xref linkend="term_service"/> must return the appropriate HTTP status code in the HTTP response as
                     specified by <xref linkend="bib_http11"/> (Section 10).</para>
 
                 <section xml:id="fundamentals_protocols_https">
@@ -551,9 +540,9 @@
                     <para>HTTPS for both SOAP and Content transfer is recommended. The use of HTTPS
                         prevents SOAP transactions, the URIs of HTTP requests, Content transferred
                         and User credentials from being accessed by unauthorized parties. It allows
-                        the Reading System to verify the identity of the Service through the use of
-                        certificates. However, it does not ensure that the Reading System or the
-                        Service keeps data encrypted once it is received.</para>
+                        the <xref linkend="term_readingSystem"/> to verify the identity of the <xref linkend="term_service"/> through the use of
+                        certificates. However, it does not ensure that the <xref linkend="term_readingSystem"/> or the
+                        <xref linkend="term_service"/> keeps data encrypted once it is received.</para>
 
                     <para>All URIs that identify resources served over HTTPS must begin with
                             <literal>https://</literal>.</para>
@@ -561,7 +550,7 @@
                     <para>It is recommended that any certificates used by the server be registered
                     with a certificate authority and not be self-signed.</para>
                     
-                    <para>A compliant Reading System must support HTTPS. For Services, support for HTTPS is
+                    <para>A compliant <xref linkend="term_readingSystem"/> must support HTTPS. For <xref linkend="term_service"/>s, support for HTTPS is
                         recommended.</para>
                 </section>
 
@@ -571,7 +560,7 @@
                         may be used to secure content against unauthorized access. Since Basic
                         Authentication credentials appear in HTTP headers, they should be used only
                         with HTTPS. If Basic Authentication credentials are needed to access
-                        resources, then the Service must supply the credentials in the
+                        resources, then the <xref linkend="term_service"/> must supply the credentials in the
                             <replaceable>userinfo</replaceable> field of the <abbrev>URI</abbrev> of
                         the resource. The scheme for the server field in the URI is as given in
                             <xref linkend="bib_RFC2396"/>, section 3.2.2:
@@ -581,10 +570,10 @@
                             <replaceable>userid</replaceable>:<replaceable>password</replaceable>.
                         These credentials may be the same as the <function>
                             <xref linkend="op_logOn"/>
-                        </function> credentials, but the Reading System must not send basic
+                        </function> credentials, but the <xref linkend="term_readingSystem"/> must not send basic
                         authentication credentials if they were not supplied in the
                             <abbrev>URI</abbrev>.</para>
-                    <para>HTTP Authentication should not be used to log on to the Service. For user
+                    <para>HTTP Authentication should not be used to log on to the <xref linkend="term_service"/>. For user
                         authentication in the SOAP session, see <xref
                             linkend="fundamentals_protocols_authentication"/>.</para>
                     <note>
@@ -592,33 +581,33 @@
                         <para>RFC 2396 recommends against the use of the
                                 <replaceable>userid</replaceable>:<replaceable>password</replaceable>
                             scheme for <replaceable>userinfo</replaceable>, due to the possibility
-                            of transmitting passwords in the clear. A Service should not use this
+                            of transmitting passwords in the clear. A <xref linkend="term_service"/> should not use this
                             scheme except over a secure connection, for resources that are served
                             via a secure protocol (such as HTTPS).</para>
-                        <para>The requirement that credentials must be supplied by the Service
-                            implies that the Service must be able to retrieve these credentials.
+                        <para>The requirement that credentials must be supplied by the <xref linkend="term_service"/>
+                            implies that the <xref linkend="term_service"/> must be able to retrieve these credentials.
                             Best practices for authentication are to store a cryptographic hash of
                             each password, to prevent decryption if the password database is
                             accessed by untrusted parties; however, this method prevents retrieval
-                            by the Service. Services must use some other method of securely storing
+                            by the <xref linkend="term_service"/>. <xref linkend="term_service"/>s must use some other method of securely storing
                             passwords for its resources or for Service Delegates' resources. </para>
                     </note>
                     
-                    <para>A compliant Reading System must support Basic Authentication for Content 
-                        retrieval. For Services, support for Basic Authentication for Content retrieval 
+                    <para>A compliant <xref linkend="term_readingSystem"/> must support Basic Authentication for Content 
+                        retrieval. For <xref linkend="term_service"/>s, support for Basic Authentication for Content retrieval 
                         is recommended.</para>
                 </section>
 
                 <section xml:id="fundamentals_protocols_http_range">
                     <title>HTTP range headers</title>
 
-                    <para>If HTTP or HTTPS is used by the Service for serving resources, Range
+                    <para>If HTTP or HTTPS is used by the <xref linkend="term_service"/> for serving resources, Range
                         Retrieval Requests (described in section 14.35 of <link linkend="bib_http11"
-                            >RFC 2616</link>) must be honored by the Service where possible.
-                        Services must use correct status codes and Content-Range and Content-Length
+                            >RFC 2616</link>) must be honored by the <xref linkend="term_service"/> where possible.
+                        <xref linkend="term_service"/>s must use correct status codes and Content-Range and Content-Length
                         headers when serving partial content (described in section 14.16 of RFC
                         2616). Since there is no way to enforce this requirement on Service
-                        Delegates, Reading Systems must be able to handle servers that do not
+                        Delegates, <xref linkend="term_readingSystem"/>s must be able to handle servers that do not
                         support range headers.</para>
                 </section>
             </section>
@@ -649,17 +638,17 @@
             <section xml:id="fundamentals_protocols_authentication">
                 <title>User Authentication and cookies</title>
 
-                <para>The Service must perform the following steps to complete the authentication
+                <para>The <xref linkend="term_service"/> must perform the following steps to complete the authentication
                     process:</para>
                 <itemizedlist>
                     <listitem>
-                        <para>Verify the credentials passed by the Reading System to the <function>
+                        <para>Verify the credentials passed by the <xref linkend="term_readingSystem"/> to the <function>
                                 <xref linkend="op_logOn"/>
                             </function> operation.</para>
                     </listitem>
                     <listitem>
                         <para>If the authentication was successful, issue a cookie by embedding it
-                            in the Set-Cookie HTTP header, and send it to the Reading System along
+                            in the Set-Cookie HTTP header, and send it to the <xref linkend="term_readingSystem"/> along
                             with the response to the <function>logOn</function> operation.</para>
                     </listitem>
                     <!--
@@ -669,12 +658,12 @@
                             </listitem> -->
                 </itemizedlist>
 
-                <para>A Daisy Online Service is Session-aware by design. Sessions must be tracked
+                <para>A Daisy Online <xref linkend="term_service"/> is Session-aware by design. Sessions must be tracked
                     and managed through the use of cookies. Upon successful authentication, the
-                    Reading System must be issued a cookie as described above. The Reading System
+                    <xref linkend="term_readingSystem"/> must be issued a cookie as described above. The <xref linkend="term_readingSystem"/>
                     must send this cookie by embedding it in the Cookie HTTP header with all
-                    subsequent HTTP requests to the Service. A cookie in this context is opaque i.e.
-                    the Reading System is not required to understand the contents of the
+                    subsequent HTTP requests to the <xref linkend="term_service"/>. A cookie in this context is opaque i.e.
+                    the <xref linkend="term_readingSystem"/> is not required to understand the contents of the
                     Cookie.</para>
 
                 <para>While Basic Authentication may be used to secure content (see <xref
@@ -689,22 +678,22 @@
 
             <para>The Dynamic Menu feature of this protocol enables a <xref linkend="term_service"/>
                 to offer a menu system to a <xref linkend="term_readingSystem"/> that is entirely
-                defined by the Service, and that does not require any explicit semantic
-                understanding on the part of a Reading System for rendering to the <xref
-                    linkend="term_user"/>. This offers a Service the flexibility to define a menu
+                defined by the <xref linkend="term_service"/>, and that does not require any explicit semantic
+                understanding on the part of a <xref linkend="term_readingSystem"/> for rendering to the <xref
+                    linkend="term_user"/>. This offers a <xref linkend="term_service"/> the flexibility to define a menu
                 system that meets its requirements, and modify such a menu system at any stage
-                without requiring any change on the Reading System.</para>
+                without requiring any change on the <xref linkend="term_readingSystem"/>.</para>
 
-            <para>As described in <xref linkend="fundamentals_contentSelectionModels"/>, a Service
-                that supports the <xref linkend="fundamentals_contentSelectionModel_browse"/> must
+            <para>As described in <xref linkend="fundamentals_contentSelectionMethods"/>, a <xref linkend="term_service"/>
+                that supports the <xref linkend="fundamentals_contentSelectionMethod_browse"/> must
                 also support the Dynamic Menu feature in order to allow the user to select Content
-                to request issuance and transfer of. Services that only provide the <xref
-                    linkend="fundamentals_contentSelectionModel_outofband"/> do not need to support
+                to request issuance and transfer of. <xref linkend="term_service"/>s that only provide the <xref
+                    linkend="fundamentals_contentSelectionMethod_outofband"/> do not need to support
                 Dynamic Menus. Note however (and as exemplified in <xref
                     linkend="appendixDynamicMenuExamples"/>) that it is perfectly possible to use
                 Dynamic Menus for other purposes than content selection.</para>
 
-            <para>Services declare whether they support Dynamic Menus in the <xref
+            <para><xref linkend="term_service"/>s declare whether they support Dynamic Menus in the <xref
                     linkend="tp_supportedOptionalOperations"/> field of <xref
                     linkend="tp_serviceAttributes"/>.</para>
 
@@ -722,7 +711,7 @@
                         operation <function>
                             <xref linkend="op_getQuestions"/>
                         </function>. The <function>getQuestions</function> operation is invoked when
-                        a Reading System wants to initiate a Dynamic Menu operation sequence, as
+                        a <xref linkend="term_readingSystem"/> wants to initiate a Dynamic Menu operation sequence, as
                         well as when it wants to retrieve the next question (aka menu item) in the
                         operation sequence. </para>
 
@@ -744,15 +733,15 @@
                                 element which appears inside the <xref linkend="tp_questions"/>
                                 element.</para>
 
-                            <para>A Service can specify whether a given input question requires a
+                            <para>A <xref linkend="term_service"/> can specify whether a given input question requires a
                                 numeric, alphanumeric or audio-based response from the User.
                                 Combined modalities are also allowed. The required response modality
                                 for an input question is specified in the <xref
                                     linkend="tp_inputTypes"/> element which appears inside the <xref
                                     linkend="tp_inputQuestion"/> element.</para>
-                            <para>A Reading System declares which input types it supports in <xref
+                            <para>A <xref linkend="term_readingSystem"/> declares which input types it supports in <xref
                                     linkend="tp_readingSystemAttributes"/>, which means that the
-                                Service can adapt to possible Reading System constraints in this
+                                <xref linkend="term_service"/> can adapt to possible <xref linkend="term_readingSystem"/> constraints in this
                                 regard. </para>
                         </listitem>
                     </itemizedlist>
@@ -780,7 +769,7 @@
                             linkend="tp_contentListRef"/> child element. The occurrence of
                             <type>label</type> or <type>contentListRef</type> corresponds to the
                         case where a Dynamic Menu operation sequence has reached its "logical end",
-                        e.g. when the Service presents a final result to the User. In the
+                        e.g. when the <xref linkend="term_service"/> presents a final result to the User. In the
                             <type>label</type> case, the result is an informative statement ("Thank
                         you for borrowing this book!"), and in the <type>contentListRef</type> case
                         it is a reference to a list of Content items that have been made available
@@ -795,7 +784,7 @@
                         interconnected questions, conceptually corresponding to the "main
                         menu".</para>
 
-                    <para>A Reading system Retrieves the root question (aka main menu) of a Service
+                    <para>A <xref linkend="term_readingSystem"/> Retrieves the root question (aka main menu) of a <xref linkend="term_service"/>
                         by invoking the <function>getQuestions</function> operation and passing in
                         the reserved id <literal>default</literal>. Refer to <xref
                             linkend="appendixDynamicMenuExamples_mainMenu"/> for a concrete
@@ -848,11 +837,11 @@
                 <para role="definiton" xml:id="def_sessionDuration"> A <xref linkend="term_session"
                     /> begins after a successful <function>
                         <xref linkend="op_logOn"/>
-                    </function> operation. The session ends after the Reading System has invoked the <function>
+                    </function> operation. The session ends after the <xref linkend="term_readingSystem"/> has invoked the <function>
                         <xref linkend="op_logOff"/>
-                    </function> operation, or it may be terminated by the Service.</para>
+                    </function> operation, or it may be terminated by the <xref linkend="term_service"/>.</para>
 
-                <para>This specification does not define any behaviors regarding Service termination
+                <para>This specification does not define any behaviors regarding <xref linkend="term_service"/> termination
                     of Sessions; time out intervals, reasons for forced termination, and related
                     aspects are all defined by the implementation.</para>
 
@@ -867,7 +856,7 @@
 
                 <para role="definition" xml:id="def_sessionInitializationSequence"
                     xreflabel="Session Initialization Sequence"> To ensure interoperability and
-                    consistent behavior between implementations, Reading Systems must invoke the
+                    consistent behavior between implementations, <xref linkend="term_readingSystem"/>s must invoke the
                     following operations in the given sequence at the onset of every Session, and
                     before invoking any other protocol operation. <orderedlist>
                         <listitem>
@@ -892,27 +881,27 @@
                     </orderedlist>
                 </para>
 
-                <para>If a Service throws a <link linkend="apiReferenceFaults">Fault</link> during
+                <para>If a <xref linkend="term_service"/> throws a <link linkend="apiReferenceFaults">Fault</link> during
                     the <token>Session Initialization Sequence</token> phase, or if the above
                     specified return values are not given, then the session remains uninitialized
-                    and must be either be reinitialized, or the attempt to log the Reading System on
-                    to the Service must be aborted.</para>
+                    and must be either be reinitialized, or the attempt to log the <xref linkend="term_readingSystem"/> on
+                    to the <xref linkend="term_service"/> must be aborted.</para>
 
                 <para>All operations defined by this specification except the <function>
                         <xref linkend="op_logOn"/>
                     </function> operation are valid to invoke after the <token>Session
                         Initialization Sequence</token> has been completed.</para>
 
-                <para>A Service must throw a <errorname>
+                <para>A <xref linkend="term_service"/> must throw a <errorname>
                         <xref linkend="ft_invalidOperationFault"/>
-                    </errorname> if a Reading System does not honor the above initialization
+                    </errorname> if a <xref linkend="term_readingSystem"/> does not honor the above initialization
                     sequence.</para>
 
                 <note>
                     <para>This specification does not stipulate the nature of the credentials used
-                        to authenticate a Reading System. The credentials used in this context may
+                        to authenticate a <xref linkend="term_readingSystem"/>. The credentials used in this context may
                         be credentials associated to a single User, a group of Users, a Reading
-                        System, or any other entity specified by a Service provider.</para>
+                        System, or any other entity specified by a <xref linkend="term_serviceProvider"/>.</para>
                 </note>
 
                 <section xml:id="operations_session_initializationExamples"
@@ -922,39 +911,39 @@
                         <title>Successful Session Initialization Sequence</title>
                         <orderedlist>
                             <listitem>
-                                <para>[Required] The Reading System invokes the <function>
+                                <para>[Required] The <xref linkend="term_readingSystem"/> invokes the <function>
                                         <xref linkend="op_logOn"/>
                                     </function> operation, passing the following credentials:</para>
                                 <programlisting><xi:include href="./samples/initialization-logon.xml" parse="text"/></programlisting>
-                                <para>The service returns <constant>true</constant> to signal that
+                                <para>The <xref linkend="term_service"/> returns <constant>true</constant> to signal that
                                     the logon was successful.</para>
                             </listitem>
                             <listitem>
-                                <para>[Required] The Reading System invokes the <function>
+                                <para>[Required] The <xref linkend="term_readingSystem"/> invokes the <function>
                                         <xref linkend="op_getServiceAttributes"/>
-                                    </function> operation. The service returns a
+                                    </function> operation. The <xref linkend="term_service"/> returns a
                                         <type>serviceAttributes</type> type:</para>
                                 <programlisting><xi:include href="./samples/initialization-serviceAttributes.xml" parse="text"/></programlisting>
                             </listitem>
                             <listitem>
-                                <para>[Required] The Reading System invokes the <function>
+                                <para>[Required] The <xref linkend="term_readingSystem"/> invokes the <function>
                                         <xref linkend="op_setReadingSystemAttributes"/>
                                     </function> operation, passing a <type>
                                         <xref linkend="tp_readingSystemAttributes"/>
                                     </type> type:</para>
                                 <programlisting><xi:include href="./samples/initialization-readingSystemAttributes.xml" parse="text"/></programlisting>
                                 <para>The <xref linkend="def_sessionInitializationSequence"/> is now
-                                    complete, and the Reading System may commence by invoking other
-                                    operations in the protocol. At this point, Reading Systems
+                                    complete, and the <xref linkend="term_readingSystem"/> may commence by invoking other
+                                    operations in the protocol. At this point, <xref linkend="term_readingSystem"/>s
                                     should invoke the <function>
                                         <xref linkend="op_getServiceAnnouncements"/>
                                     </function> operation to retrieve any service announcements
                                     awaiting the User's attention.</para>
                             </listitem>
                             <listitem>
-                                <para>[Optional] Providing that the Service supports this <link
+                                <para>[Optional] Providing that the <xref linkend="term_service"/> supports this <link
                                         linkend="op_getServiceAttributes">optional operation</link>,
-                                    the Reading System invokes the <function>
+                                    the <xref linkend="term_readingSystem"/> invokes the <function>
                                         <xref linkend="op_getServiceAnnouncements"/>
                                     </function> operation, retrieving an <type>
                                         <xref linkend="tp_announcements"/>
@@ -968,7 +957,7 @@
                         <para>The <xref linkend="op_getServiceAttributes"/> and <xref
                                 linkend="op_setReadingSystemAttributes"/> operations may be called
                             additional times during a Session to notify changes of properties in the
-                            Service or Reading System.</para>
+                            <xref linkend="term_service"/> or <xref linkend="term_readingSystem"/>.</para>
                     </note>
                 </section>
             </section>
@@ -985,7 +974,7 @@
 
         <section xml:id="operations_content_selection">
             <title>Content Selection</title>
-            <para>Depending on the <link linkend="fundamentals_contentSelectionModels">content
+            <para>Depending on the <link linkend="fundamentals_contentSelectionMethods">content
                     provision model</link> employed, Content selection (e.g. the mechanism with
                 which the user selects one or several content items to request issuance and transfer
                 of) is performed using two distinct approaches:</para>
@@ -993,13 +982,13 @@
             <section xml:id="operations_content_selection_outofband">
                 <title>Content Selection using the Out-of-band model</title>
 
-                <para>In the <link linkend="fundamentals_contentSelectionModel_outofband"
+                <para>In the <link linkend="fundamentals_contentSelectionMethod_outofband"
                         >Out-of-band model</link> content selection form, content is selected using
                     a mechanism not defined by this protocol, and not involving the Session itself.
-                    Through this mechanism, the Service, typically prior to the Session onset, has
+                    Through this mechanism, the <xref linkend="term_service"/>, typically prior to the Session onset, has
                     in its possession a list of Content items to offer to the User. </para>
 
-                <para>To initiate retrieval of these Content items, the Reading System invokes the
+                <para>To initiate retrieval of these Content items, the <xref linkend="term_readingSystem"/> invokes the
                         <xref linkend="op_getContentList"/> operation, passing the value
                         <code>new</code> as the value of the <parameter>id</parameter> parameter,
                     retrieving a <xref linkend="tp_contentList"/> in return.</para>
@@ -1014,7 +1003,7 @@
                                 <para>Using an out-of-band mechanism such as a web form or
                                     telephone, a User has subscribed to a daily newspaper service.
                                     The service is offered in a "push" style, e.g. the newspaper is
-                                    intended to be available in the Users Reading System each
+                                    intended to be available in the Users <xref linkend="term_readingSystem"/> each
                                     morning, without the User necessarily having to explicitly
                                     identify and request the issuance and transfer of each
                                     individual issue.</para>
@@ -1025,26 +1014,26 @@
                                         <literal>new</literal> as the value of the
                                         <parameter>id</parameter> parameter. The invocation is
                                     either triggered by an explicit User interaction with the
-                                    Reading System user interface, or by a Reading System-specific
+                                    <xref linkend="term_readingSystem"/> user interface, or by a <xref linkend="term_readingSystem"/>-specific
                                     timer-based feature set to make invocations of this operation
                                     automatically at some interval.</para>
                             </listitem>
                             <listitem>
-                                <para>The Service returns a <xref linkend="tp_contentList"/> type
+                                <para>The <xref linkend="term_service"/> returns a <xref linkend="tp_contentList"/> type
                                     containing the Content items offered:</para>
                                 <programlisting><xi:include href="./samples/contentSelection-subscr.xml" parse="text"/></programlisting>
                             </listitem>
                             <listitem>
                                 <para>Either with or without explicit User interaction (the Reading
                                     System may have an option to support automation of this step in
-                                    subscription/cyclic delivery contexts), the Reading System
+                                    subscription/cyclic delivery contexts), the <xref linkend="term_readingSystem"/>
                                     requests issuance and transfer of the Content. See further <xref
                                         linkend="operations_content_issuing"/>.</para>
                             </listitem>
                         </orderedlist>
                     </example>
                     <note>
-                        <para>A Service declares whether it supports Content selection using the
+                        <para>A <xref linkend="term_service"/> declares whether it supports Content selection using the
                             Out-of-band model in the <type>
                                 <xref linkend="tp_supportedContentSelectionModels"/>
                             </type> element in the <type>
@@ -1057,7 +1046,7 @@
             </section>
             <section xml:id="operations_content_selection_browse">
                 <title>Content Selection using the Browse model</title>
-                <para>In the <link linkend="fundamentals_contentSelectionModel_browse">Browse
+                <para>In the <link linkend="fundamentals_contentSelectionMethod_browse">Browse
                         model</link> content selection model, content is selected dynamically within
                     the Session using the <link linkend="fundamentals_dynamic_menus">Dynamic
                         Menu</link> feature of this protocol. Refer to <xref
@@ -1066,10 +1055,10 @@
                     selection using the Dynamic Menu feature.</para>
 
                 <note>
-                    <para>A Service declares whether it supports Content selection using the Browse
+                    <para>A <xref linkend="term_service"/> declares whether it supports Content selection using the Browse
                         model in the <xref linkend="tp_supportedContentSelectionModels"/> element in
                         the <xref linkend="tp_serviceAttributes"/> type returned by the <xref
-                            linkend="op_getServiceAttributes"/> operation. Services may support the
+                            linkend="op_getServiceAttributes"/> operation. <xref linkend="term_service"/>s may support the
                         Dynamic Menu feature for other purposes than supporting content selection,
                         so the value <code>DYNAMIC_MENUS</code> in <xref
                             linkend="tp_supportedOptionalOperations"/> alone does not imply that
@@ -1081,7 +1070,7 @@
         <section xml:id="operations_content_issuing">
             <title>Issuing and transfer of content</title>
             <para>Given a <xref linkend="tp_contentList"/>, retrieved using one of the methods
-                described in <xref linkend="operations_content_selection"/>, the Reading System can
+                described in <xref linkend="operations_content_selection"/>, the <xref linkend="term_readingSystem"/> can
                 proceed to request issuance of selected content items within the
                     <type>contentList</type>, followed by download or streaming of the resources
                 that constitute the content. </para>
@@ -1128,19 +1117,19 @@
                         linkend="fundamentals_serviceType_library">library-type</link> or <link
                         linkend="fundamentals_serviceType_shop">shop-type</link> context.</para>
 
-                <para>If a Service returns <constant>false</constant> (<xref
+                <para>If a <xref linkend="term_service"/> returns <constant>false</constant> (<xref
                         linkend="bib_xsdDatatypes"/>) or throws a <link linkend="apiReferenceFaults"
                         >fault</link> on the <function>
                         <xref linkend="op_issueContent"/>
                     </function> operation, then the Content has not been issued. On invocations of <function>
                         <xref linkend="op_getContentResources"/>
-                    </function> for a content item that has not been issued, a Service must throw a
+                    </function> for a content item that has not been issued, a <xref linkend="term_service"/> must throw a
                         <xref linkend="ft_invalidParameterFault"/>.</para>
 
                 <para>The <xref linkend="op_getContentResources"/> operation exposes all resources
-                    that constitute the content to the Reading System. Service Providers must allow
+                    that constitute the content to the <xref linkend="term_readingSystem"/>. <xref linkend="term_serviceProvider"/>s must allow
                     at least one call to <function>getContentResources</function> for each issued
-                    Content item. Service Providers may allow multiple subsequent
+                    Content item. <xref linkend="term_serviceProvider"/>s may allow multiple subsequent
                         <function>getContentResources</function> invocations for the same content,
                     possibly spanning several Sessions.</para>
             </section>
@@ -1156,7 +1145,7 @@
                             linkend="tp_contentList"/>:</para>
                     <orderedlist>
                         <listitem>
-                            <para>[Required] The Reading System invokes the <function>
+                            <para>[Required] The <xref linkend="term_readingSystem"/> invokes the <function>
                                     <xref linkend="op_getContentMetadata"/>
                                 </function> operation using <literal>uk-rnib-001</literal> as the
                                 value of the <parameter>contentID</parameter> parameter, which
@@ -1166,20 +1155,20 @@
                         </listitem>
                         <listitem>
                             <para>[Required] For content that the User requests issuance of, the
-                                Reading System invokes the <xref linkend="op_issueContent"/>
+                                <xref linkend="term_readingSystem"/> invokes the <xref linkend="op_issueContent"/>
                                 operation, using <literal>uk-rnib-001</literal> as the value of the
                                     <parameter>contentID</parameter>.</para>
                             <programlisting><xi:include href="./samples/retrieval-issueContent.xml" parse="text"/></programlisting>
-                            <para>To signal that the Content was issued, the Service returns
+                            <para>To signal that the Content was issued, the <xref linkend="term_service"/> returns
                                     <constant>true</constant>.</para>
                         </listitem>
                         <listitem>
-                            <para>[Optional] At this point the Reading System may call other
+                            <para>[Optional] At this point the <xref linkend="term_readingSystem"/> may call other
                                 operations. The current Session may be terminated, and a new session
                                 initiated.</para>
                         </listitem>
                         <listitem>
-                            <para>[Required] The Reading System invokes the <xref
+                            <para>[Required] The <xref linkend="term_readingSystem"/> invokes the <xref
                                     linkend="op_getContentResources"/> operation, which returns a
                                     <xref linkend="tp_resources"/> type:</para>
                             <programlisting><xi:include href="./samples/retrieval-resources.xml" parse="text"/></programlisting>
@@ -1191,7 +1180,7 @@
                     <para>Content <xref linkend="tp_sample"/>s (see the <type>contentMetaData</type>
                         in <xref linkend="operations_content_issuing_retrieval_sequence_example"/>)
                         are retrieved using the same basic principle as in Content retrieval, with
-                        the exception that Reading Systems must not call <xref
+                        the exception that <xref linkend="term_readingSystem"/>s must not call <xref
                             linkend="op_issueContent"/> when requesting a sample. </para>
                     <para>A sample is retrieved by invoking the <xref
                             linkend="op_getContentResources"/> operation, passing the ID of the
@@ -1203,28 +1192,28 @@
 
             <section xml:id="operations_content_download">
                 <title>Downloading and streaming of content</title>
-                <para>Once the Reading System has retrieved the list of <type>resources</type> for
+                <para>Once the <xref linkend="term_readingSystem"/> has retrieved the list of <type>resources</type> for
                     an item of content, it may begin downloading or streaming the resources using
                     the URIs supplied in the <type>resource</type>s attributes.</para>
-                <para>Services may publish resources with URIs unrelated to the names in a content
+                <para><xref linkend="term_service"/>s may publish resources with URIs unrelated to the names in a content
                     item's fileset. The <code>localFileName</code> attribute specifies the path
                     (delimited with <literal>/</literal>) of the resource relative to the content's
-                    root directory. This can be used by download Reading Systems to name the local
-                    files. It can be used by streaming Reading Systems to identify the URI of a
+                    root directory. This can be used by download <xref linkend="term_readingSystem"/>s to name the local
+                    files. It can be used by streaming <xref linkend="term_readingSystem"/>s to identify the URI of a
                     resource that is referenced by another resource (such as the link to an audio
                     resource in a SMIL resource in a DAISY DTB).</para>
                 <para>The <code>mimeType</code> attribute specifies the <xref linkend="bib_mime"/>
-                    type of each resource. Reading Systems may use this information to order the
-                    transfer of resources, e.g. a streaming Reading System may retrieve the
+                    type of each resource. <xref linkend="term_readingSystem"/>s may use this information to order the
+                    transfer of resources, e.g. a streaming <xref linkend="term_readingSystem"/> may retrieve the
                         <abbrev>OPF</abbrev>, <abbrev>NCX</abbrev> and <abbrev>SMIL</abbrev> files
                     of a DTB all at once to allow for quick navigation.</para>
                 <para>A DAISY Online session does not need to be active in order for a Reading
                     System to download or stream Content.</para>
-                <para>Resources may be stored on the Service's servers or with Service Delegates,
+                <para>Resources may be stored on the <xref linkend="term_service"/>'s servers or with Service Delegates,
                     without restriction. Note that Service Delegates may require different
                     credentials for access to resources, or may not require credentials at all. The
-                    Service must provide this information to Reading Systems.</para>
-                <para>Resources from the Service or from Service Delegates may be secured with Basic
+                    <xref linkend="term_service"/> must provide this information to <xref linkend="term_readingSystem"/>s.</para>
+                <para>Resources from the <xref linkend="term_service"/> or from Service Delegates may be secured with Basic
                     Authentication. The credentials must be specified in the URI of each resource so
                     secured. See <xref linkend="fundamentals_protocols_basic_authentication"
                     />.</para>
@@ -1234,48 +1223,48 @@
                 <title>Publishing updates or installments</title>
                 <para><type>contentItems</type> in a <type>contentList</type> have an optional
                     attribute, <code>lastModifiedDate</code>, which indicates that last time the
-                    content was modified. Reading Systems may use this to determine if the content
+                    content was modified. <xref linkend="term_readingSystem"/>s may use this to determine if the content
                     has been updated since the last time it was accessed. Similarly,
                         <type>resource</type>s in a <type>resources</type> list have an optional
                     attribute also named <code>lastModifiedDate</code>, which indicates that last
                     time that resource was modified. The content modification time should match the
-                    most recent resource modification time. Reading Systems may use this to
+                    most recent resource modification time. <xref linkend="term_readingSystem"/>s may use this to
                     determine which resources been updated since the last time it was
                     accessed.</para>
-                <para>This functionality can be used by the Service to, e.g., publish corrections to
-                    the content. The Service could also publish content in installments by
+                <para>This functionality can be used by the <xref linkend="term_service"/> to, e.g., publish corrections to
+                    the content. The <xref linkend="term_service"/> could also publish content in installments by
                     progressively updating the same content item. </para>
             </section>
 
             <section xml:id="operations_content_issuing_pdtb">
                 <title>Rights management</title>
-                <para>A Service may provide all or parts of its content collection in protected
+                <para>A <xref linkend="term_service"/> may provide all or parts of its content collection in protected
                     form. This version of this specification allows the <xref linkend="bib_pdtb2"/>
                     format to be used for content protection.</para>
-                <para>Neither Reading Systems nor Services are required to support
-                        <abbrev>PDTB2</abbrev>. If a Reading System supports <abbrev>PDTB2</abbrev>,
+                <para>Neither <xref linkend="term_readingSystem"/>s nor <xref linkend="term_service"/>s are required to support
+                        <abbrev>PDTB2</abbrev>. If a <xref linkend="term_readingSystem"/> supports <abbrev>PDTB2</abbrev>,
                     it should send the following in its <type>
                         <xref linkend="tp_readingSystemAttributes"/>
                     </type>:</para>
                 <programlisting><xi:include href="./samples/pdtb-readingSystemAttributes.xml" parse="text" encoding="UTF-8"/></programlisting>
-                <para>If a Reading System does not support <abbrev>PDTB2</abbrev>, the Service
-                    should not provide content in that format. If a Service supports
+                <para>If a <xref linkend="term_readingSystem"/> does not support <abbrev>PDTB2</abbrev>, the <xref linkend="term_service"/>
+                    should not provide content in that format. If a <xref linkend="term_service"/> supports
                         <abbrev>PDTB2</abbrev> key exchange via the <function>
                         <xref linkend="op_getKeyExchangeObject"/>
                     </function> operation, it must send the following in response to a valid <function>
                         <xref linkend="op_getServiceAttributes"/>
-                    </function> call from the Reading System:</para>
+                    </function> call from the <xref linkend="term_readingSystem"/>:</para>
                 <programlisting><xi:include href="./samples/pdtb-serviceAttributes.xml" parse="text" encoding="UTF-8"/></programlisting>
-                <para>A Service may provide Content encrypted with <abbrev>PDTB2</abbrev> even if it
+                <para>A <xref linkend="term_service"/> may provide Content encrypted with <abbrev>PDTB2</abbrev> even if it
                     does not support <function>getKeyExchangeObject</function>, if there is a
-                    reasonable assumption that Users' Reading Systems have the keys necessary to
+                    reasonable assumption that Users' <xref linkend="term_readingSystem"/>s have the keys necessary to
                     decrypt the Content. </para>
                 <para>If Content is protected using <abbrev>PDTB2</abbrev>, then there will be a
                     metadata item in the <type>
                         <xref linkend="tp_contentMetadata"/>
                     </type> named <literal>pdtb2:specVersion</literal> with a value of
                         <literal>2005-1</literal> and there will be resources with mimeTypes
-                    beginning with <literal>application/x-pdtb…</literal>. The Reading System can
+                    beginning with <literal>application/x-pdtb…</literal>. The <xref linkend="term_readingSystem"/> can
                     access these resources even if it does not support <abbrev>PDTB2</abbrev>, but
                     it might not be able to decrypt all the Content.</para>
                 <example>
@@ -1292,17 +1281,17 @@
                 <para>If some Content has an Authorization Object (<abbrev>AO</abbrev>), the Reading
                     System can inspect it for the name of the key that secures the key to decrypt
                     the Content.</para>
-                <para>The Reading System may call <function>
+                <para>The <xref linkend="term_readingSystem"/> may call <function>
                         <xref linkend="op_getKeyExchangeObject"/>
                     </function> with a list of names of keys on its keyring (these can be all or
-                    some of the symmetric keys or public/private keypairs the Reading System
-                    supports) and the name of the requested key. The Service is free to choose any
+                    some of the symmetric keys or public/private keypairs the <xref linkend="term_readingSystem"/>
+                    supports) and the name of the requested key. The <xref linkend="term_service"/> is free to choose any
                     of the keys in the <parameter>keyRing</parameter> to encrypt the Key Exchange
-                    Object (<abbrev>KXO</abbrev>). If the Service does not have any of those keys or
-                    if the User is not authorized to access the Content, then the Service will
+                    Object (<abbrev>KXO</abbrev>). If the <xref linkend="term_service"/> does not have any of those keys or
+                    if the User is not authorized to access the Content, then the <xref linkend="term_service"/> will
                     instead reply with an <errorname>
                         <xref linkend="ft_invalidOperationFault"/>
-                    </errorname>. The Service is responsible for keeping a list of authorized key
+                    </errorname>. The <xref linkend="term_service"/> is responsible for keeping a list of authorized key
                     names.</para>
                 <example>
                     <title>An Encrypted DTB</title>
@@ -1310,18 +1299,18 @@
                         Library. The <abbrev>AO</abbrev> is itself encrypted with a key named
                             <literal>DAISY.gy-zlog.afc26219-auth</literal>:</para>
                     <programlisting><xi:include href="./samples/authorization.xml" parse="text"/></programlisting>
-                    <para>The User has keys for the Reading System (an Acme Reader Express) as well
+                    <para>The User has keys for the <xref linkend="term_readingSystem"/> (an Acme Reader Express) as well
                         as user account keys supplied by Haute-Bibliothèque and Apex Talking Books,
-                        Inc. The Reading System calls the <function>
+                        Inc. The <xref linkend="term_readingSystem"/> calls the <function>
                             <xref linkend="op_getKeyExchangeObject"/>
                         </function> operation with the first parameter,
                             <parameter>keyRing</parameter>, as:</para>
                     <programlisting><xi:include href="./samples/pdtb-keyRing.xml" parse="text"/></programlisting>
                     <para>and the second parameter,<parameter>requestedKeyName</parameter>, as
                             <literal>DAISY.gy-zlog.afc26219-auth</literal>.</para>
-                    <para>The Service determines that the User is authorized to receive this key.
-                        The Service Provider has determined that the Acme Reader Express is a
-                        trusted Reading System model, so the Service returns a <abbrev>KXO</abbrev>
+                    <para>The <xref linkend="term_service"/> determines that the User is authorized to receive this key.
+                        The <xref linkend="term_serviceProvider"/> has determined that the Acme Reader Express is a
+                        trusted <xref linkend="term_readingSystem"/> model, so the <xref linkend="term_service"/> returns a <abbrev>KXO</abbrev>
                         encrypted with the model key,
                         <literal>DAISY.lv-acme.ReaderExpress</literal>:</para>
                     <programlisting><xi:include href="./samples/kxo.xml" parse="text"/></programlisting>
@@ -1333,22 +1322,22 @@
                         play the audio of a certain book which expires at midnight on 31 October
                         2010, but has no encrypted parts.</para>
                     <programlisting><xi:include href="./samples/authorization-unencrypted.xml" parse="text"/></programlisting>
-                    <para>A <abbrev>PDTB2</abbrev>-compliant reading system will prevent the user
+                    <para>A <abbrev>PDTB2</abbrev>-compliant <xref linkend="term_readingSystem"/> will prevent the user
                         from playing the audio after that time, even though it is not encrypted. A
-                        non-compliant reading system's behavior is, naturally, undefined.</para>
+                        non-compliant <xref linkend="term_readingSystem"/>'s behavior is, naturally, undefined.</para>
                 </example>
             </section>
         </section>
         <section xml:id="operations_content_return">
             <title>Content Return</title>
-            <para>Content return is employed in the case where a Reading System has content issued
-                from a Service that employs a <link linkend="fundamentals_serviceType_library"
-                    >library-type</link> Service, and where the given Content item issued from that
-                Service is explicitly of a borrowed nature (as defined by the value of the
+            <para>Content return is employed in the case where a <xref linkend="term_readingSystem"/> has content issued
+                from a <xref linkend="term_service"/> that employs a <link linkend="fundamentals_serviceType_library"
+                    >library-type</link> <xref linkend="term_service"/>, and where the given Content item issued from that
+                <xref linkend="term_service"/> is explicitly of a borrowed nature (as defined by the value of the
                     <code>requiresReturn</code> attribute on <xref linkend="tp_contentMetadata"
                 />).</para>
             <para>As stated in <xref linkend="fundamentals_serviceTypes_reqs_library"/>, a <link
-                    linkend="fundamentals_serviceType_library">library-type</link> Service is
+                    linkend="fundamentals_serviceType_library">library-type</link> <xref linkend="term_service"/> is
                 required to manage the User's Content collection in terms of what Content is issued,
                 and what Content has expired. By invoking <xref linkend="op_getContentList"/> with
                 the <parameter>id</parameter> parameter valued <code>expired</code>, a Reading
@@ -1363,10 +1352,10 @@
                     <title>Content Return Example</title>
                     <orderedlist>
                         <listitem>
-                            <para>[Required] The Reading System invokes the <function>
+                            <para>[Required] The <xref linkend="term_readingSystem"/> invokes the <function>
                                     <xref linkend="op_getContentList"/>
                                 </function> operation with the identifier
-                                <literal>expired</literal>. The service returns a <xref
+                                <literal>expired</literal>. The <xref linkend="term_service"/> returns a <xref
                                     linkend="tp_contentList"/> containing the Content items that has
                                 expired.</para>
                             <programlisting><xi:include href="./samples/return-contentList.xml" parse="text"/></programlisting>
@@ -1376,12 +1365,12 @@
                         </listitem>
                         <listitem>
                             <para>[Required] For each of the Content items in the returned list, the
-                                Reading System deletes the corresponding resources from its local
+                                <xref linkend="term_readingSystem"/> deletes the corresponding resources from its local
                                 file system. </para>
                         </listitem>
                         <listitem>
                             <para>[Required] For each of the Content items in the returned list, the
-                                Reading System invokes the <xref linkend="op_returnContent"/>
+                                <xref linkend="term_readingSystem"/> invokes the <xref linkend="op_returnContent"/>
                                 operation, passing the <xref linkend="term_contentIdentifier"
                                 />.</para>
                             <!--
@@ -1391,13 +1380,13 @@
                         </listitem>
                         <listitem>
                             <para>[Required] For each of the <xref linkend="op_returnContent"/>
-                                invocations, the Service returns <literal>true</literal> to signal
+                                invocations, the <xref linkend="term_service"/> returns <literal>true</literal> to signal
                                 that the Content item was successfully returned.</para>
                         </listitem>
                     </orderedlist>
                 </example>
                 <note>
-                    <para>A Reading System may invoke <function>
+                    <para>A <xref linkend="term_readingSystem"/> may invoke <function>
                             <xref linkend="op_returnContent"/>
                         </function> on Content that has not yet expired, e.g. invoke
                             <function>returnContent</function> without a previous invocation of
@@ -1413,38 +1402,38 @@
         <section xml:id="operations_service_announcements">
             <title>Service Announcements</title>
             <para><remark role="todo">TODO fix this introduction</remark> Service Announcements are
-                used as a means for the Service to provide various types of information to the User.
-                Examples include: information on Service up- or downtime, information on additions
+                used as a means for the <xref linkend="term_service"/> to provide various types of information to the User.
+                Examples include: information on <xref linkend="term_service"/> up- or downtime, information on additions
                 to the Content collection, and, in the case of <link
                     linkend="fundamentals_serviceType_library">library-type Services</link>,
                 information on expired Content.</para>
             <para>Note that <xref linkend="op_getServiceAnnouncements"/> is an optional operation -
-                Services may or may not support this protocol feature.</para>
+                <xref linkend="term_service"/>s may or may not support this protocol feature.</para>
 
             <para>Service Announcements are typically retrieved at the onset of each <xref
                     linkend="term_session"/>, but may be retrieved at any stage of a Session, as
                 long as the <xref linkend="def_sessionInitializationSequence"/> has been
                 successfully completed.</para>
 
-            <para>If a Service <link linkend="op_getServiceAttributes">supports this optional
-                    operation</link>, then Reading Systems should invoke the operation at least once
-                per Session. If a Service does not support this operation, then invocations of it
+            <para>If a <xref linkend="term_service"/> <link linkend="op_getServiceAttributes">supports this optional
+                    operation</link>, then <xref linkend="term_readingSystem"/>s should invoke the operation at least once
+                per Session. If a <xref linkend="term_service"/> does not support this operation, then invocations of it
                 must result in an <xref linkend="ft_operationNotSupportedFault"/>.</para>
 
-            <para>A Reading System should invoke the <function>
+            <para>A <xref linkend="term_readingSystem"/> should invoke the <function>
                     <xref linkend="op_markAnnouncementsAsRead"/>
-                </function> operation to signal to the Service which of the provided announcements
+                </function> operation to signal to the <xref linkend="term_service"/> which of the provided announcements
                 have been consumed by the User. Consistent use of <function>
                     <xref linkend="op_markAnnouncementsAsRead"/>
-                </function> enables the Service to avoid exposing the User to the same announcement
-                multiple times. Note that a Service may also on its own accord remove individual
+                </function> enables the <xref linkend="term_service"/> to avoid exposing the User to the same announcement
+                multiple times. Note that a <xref linkend="term_service"/> may also on its own accord remove individual
                 announcements from the set of distributed announcements, as the embedded messages
                 become outdated or otherwise obsolete.</para>
 
             <note>
                 <para>The identifier values of individual <xref linkend="tp_announcement"/>s in the
                         <xref linkend="tp_announcements"/> type are only valid for the duration of
-                    the current Session. A Reading System must only invoke <function>
+                    the current Session. A <xref linkend="term_readingSystem"/> must only invoke <function>
                         <xref linkend="op_markAnnouncementsAsRead"/>
                     </function> using parameter values supplied via a previous invocation of <function>
                         <xref linkend="op_getServiceAnnouncements"/>
@@ -1457,7 +1446,7 @@
                     <title>Service Announcements </title>
                     <orderedlist>
                         <listitem>
-                            <para>[Optional] The Reading System invokes the <function>
+                            <para>[Optional] The <xref linkend="term_readingSystem"/> invokes the <function>
                                     <xref linkend="op_getServiceAnnouncements"/>
                                 </function> operation, retrieving a <xref linkend="tp_announcements"
                                 /> type.</para>
@@ -1468,7 +1457,7 @@
                                 messages.</para>
                         </listitem>
                         <listitem>
-                            <para>[Optional] The Reading System invokes the <function>
+                            <para>[Optional] The <xref linkend="term_readingSystem"/> invokes the <function>
                                     <xref linkend="op_markAnnouncementsAsRead"/>
                                 </function> operation, signaling that the first and second
                                 announcements were consumed.</para>
@@ -1483,13 +1472,13 @@
         <section xml:id="operations_bookmarks">
             <title>Bookmarks and Last Reading Position</title>
 
-            <para>If a Service supports the <link linkend="op_getServiceAttributes">optional
+            <para>If a <xref linkend="term_service"/> supports the <link linkend="op_getServiceAttributes">optional
                     operations</link>
                 <function>
                     <xref linkend="op_setBookmarks"/>
                 </function> and <function>
                     <xref linkend="op_getBookmarks"/>
-                </function>, then a Reading System may invoke these operations to store and/or
+                </function>, then a <xref linkend="term_readingSystem"/> may invoke these operations to store and/or
                 retrieve a set of bookmarks for a given Content item. Note that the grammar used
                 also includes a dedicated <code>lastMark</code> element which is used to persist the
                 location where the User most recently ceased reading.</para>
@@ -1509,14 +1498,14 @@
                     bookmarks and highlights for <xref linkend="bib_z3986-2005"/> and its
                     predecessor. Until <xref linkend="bib_z3986-2005-bkmk"/> is revised to be more
                     agnostic in terms of what content types it supports, there is a possibility that
-                    Reading Systems may attempt to make use of this grammar in content contexts
+                    <xref linkend="term_readingSystem"/>s may attempt to make use of this grammar in content contexts
                     other than Z39.86. To use this grammar in the context of <xref
                         linkend="bib_d202"/> content for example, all that is needed is to consider
                     the <code>ncxRef</code> value valid even if it's URI points to a fragment in a
                     DAISY 2.02 NCC document instead of a Z39.86 NCX document. </para>
 
                 <para>This specification does not endorse this behavior, but merely suggests that
-                    Services should be designed with the awareness that a Reading System may post a
+                    <xref linkend="term_service"/>s should be designed with the awareness that a <xref linkend="term_readingSystem"/> may post a
                         <xref linkend="tp_bookmarkSet"/> type even if the given Content type is not
                     ANSI/NISO Z39.86.</para>
             </note>
@@ -1524,7 +1513,7 @@
             <note>
                 <para><xref linkend="bib_z3986-2005-bkmk"/> allows User audio recordings in notes.
                     This version of this specification does not allow such recordings to be
-                    submitted to the Service as part of the <xref linkend="op_setBookmarks"/>
+                    submitted to the <xref linkend="term_service"/> as part of the <xref linkend="op_setBookmarks"/>
                     operation.</para>
             </note>
             <section xml:id="operations_bookmarks_example" conformance="informative">
@@ -1532,12 +1521,12 @@
                 <example>
                     <title>Moving Bookmarks across Reading Systems</title>
                     <para>In this example a User wishes to transfer the bookmarks of a Content item
-                        between two Reading Systems.</para>
+                        between two <xref linkend="term_readingSystem"/>s.</para>
 
-                    <para>The example assumes that the service allows the particular Content to be
-                        issued to multiple Reading Systems. It further assumes that both Reading
-                        Systems and the Service support the <xref linkend="op_getBookmarks"/> and
-                            <xref linkend="op_setBookmarks"/> operations. Note that the Service
+                    <para>The example assumes that the <xref linkend="term_service"/> allows the particular Content to be
+                        issued to multiple <xref linkend="term_readingSystem"/>s. It further assumes that both Reading
+                        Systems and the <xref linkend="term_service"/> support the <xref linkend="op_getBookmarks"/> and
+                            <xref linkend="op_setBookmarks"/> operations. Note that the <xref linkend="term_service"/>
                         declares whether it supports these operations in the <xref
                             linkend="tp_serviceAttributes"/> type, retrieved by the <xref
                             linkend="op_getServiceAttributes"/> operation.</para>
@@ -1551,7 +1540,7 @@
                                 System.</para>
                         </listitem>
                         <listitem>
-                            <para>The Reading System creates a <xref linkend="tp_bookmarkSet"/>
+                            <para>The <xref linkend="term_readingSystem"/> creates a <xref linkend="tp_bookmarkSet"/>
                                 type:
                                 <programlisting><xi:include href="./samples/bookmarks.xml" parse="text"/></programlisting>
                                 ... and then invokes the <xref linkend="op_setBookmarks"/>
@@ -1559,13 +1548,13 @@
                                 the <type>bookmarkSet</type> type as parameters.</para>
                         </listitem>
                         <listitem>
-                            <para>The user goes home, logs in to the same Service, and opens the
+                            <para>The user goes home, logs in to the same <xref linkend="term_service"/>, and opens the
                                 Content with Content Identifier <literal>us-rfbd-JT065</literal> on
-                                a portable Reading System.</para>
+                                a portable <xref linkend="term_readingSystem"/>.</para>
                             <para>The user activates the "load bookmarks from service" feature on
-                                the Reading System. The reading system invokes the <xref
+                                the <xref linkend="term_readingSystem"/>. The <xref linkend="term_readingSystem"/> invokes the <xref
                                     linkend="op_getBookmarks"/> operation, passing the Content
-                                Identifier as a parameter. The Service returns the exact same
+                                Identifier as a parameter. The <xref linkend="term_service"/> returns the exact same
                                     <type>bookmarkSet</type> that was stored previously.</para>
                         </listitem>
                     </orderedlist>
@@ -1858,7 +1847,7 @@
         <title>WSDL Abstract Definition</title>
         <para>The <xref linkend="bib_wsdl1.1"/> entities defined in the accompanying
             <link xlink:href="do-wsdl-10.wsdl">do-wsdl-10.wsdl</link> document constitute the abstract Web Service 
-            contract that all compliant Services must adhere to.</para>
+            contract that all compliant <xref linkend="term_service"/>s must adhere to.</para>
 
         <para>Service implementors must publish a concrete WSDL document at some URI.
             The <xref linkend="bib_infoset"/> of the concrete WSDL document must be identical to the 

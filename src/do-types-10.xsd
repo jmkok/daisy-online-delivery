@@ -1220,7 +1220,7 @@
 					<xs:annotation>
 						<xs:documentation>
 							<db:para role="desc">Specifies which <db:xref
-									linkend="fundamentals_contentSelectionModels"/> are supported by
+									linkend="fundamentals_contentSelectionMethods"/> are supported by
 								this Service. A Service must support at least one of the two
 								models.</db:para>
 						</xs:documentation>
@@ -1235,7 +1235,7 @@
 												<xs:documentation>
 												<db:para role="desc">This service supports the
 												<db:xref
-												linkend="fundamentals_contentSelectionModel_outofband"
+												linkend="fundamentals_contentSelectionMethod_outofband"
 												/>.</db:para>
 												</xs:documentation>
 											</xs:annotation>
@@ -1245,7 +1245,7 @@
 												<xs:documentation>
 												<db:para role="desc">This service supports the
 												<db:xref
-												linkend="fundamentals_contentSelectionModel_browse"
+												linkend="fundamentals_contentSelectionMethod_browse"
 												/>.</db:para>
 												</xs:documentation>
 											</xs:annotation>
