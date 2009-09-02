@@ -475,11 +475,11 @@
                     </listitem>
                     <listitem>
                         <para>declares support for the <xref linkend="fundamentals_contentSelectionMethod_outofband"/> in the
-                            <xref linkend="tp_supportedContentSelectionModels"/> service attribute; and</para>
+                            <code role="type"><xref linkend="tp_supportedContentSelectionModels"/></code> service attribute; and</para>
                     </listitem>
                     <listitem>
                         <para>exposes the selected <xref linkend="term_content"/> to the <xref linkend="term_user"/>s'
-                            <xref linkend="term_readingSystem"/>(s) through the <xref linkend="op_getContentList"/> operation
+                            <xref linkend="term_readingSystem"/>(s) through the <code><xref linkend="op_getContentList"/></code> operation
                             when the operation is invoked with the <parameter>id</parameter> parameter set to the value <code>new</code>.</para>
                     </listitem>
                 </itemizedlist>
@@ -494,7 +494,7 @@
                     </listitem>
                     <listitem>
                         <para>declares support for the <xref linkend="fundamentals_contentSelectionMethod_browse"/> in the
-                                <xref linkend="tp_supportedContentSelectionModels"/> service attribute.</para>
+                            <code role="type"><xref linkend="tp_supportedContentSelectionModels"/></code> service attribute.</para>
                     </listitem>
                 </itemizedlist>
             </section>
