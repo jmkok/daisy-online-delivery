@@ -88,7 +88,7 @@
       <annotation>
         <db:para>This example shows <db:type>serviceAttributes</db:type> for a Service that only
           supports the Out-of-band <db:xref linkend="fundamentals_contentSelectionMethods"/>,
-          provides only a Library-style service (see <db:xref linkend="fundamentals_serviceTypes"/>
+          provides only a Library-style service (see <db:xref linkend="fundamentals_serviceModels"/>
           ), and and does not support any aspect of the <db:xref
             linkend="fundamentals_dynamic_menus"/> feature of this protocol.</db:para>
       </annotation>
@@ -99,7 +99,7 @@
         <db:para>This example shows <db:type>serviceAttributes</db:type> for a Service that supports
           both available <db:xref linkend="fundamentals_contentSelectionMethods"/> (which means that
           it also must support Dynamic Menus), provides Content under both loan and purchase
-          programmes (see <db:xref linkend="fundamentals_serviceTypes"/>), and provides some or all
+          programmes (see <db:xref linkend="fundamentals_serviceModels"/>), and provides some or all
           of its Content encrypted using <db:xref linkend="bib_pdtb2"/>.</db:para>
       </annotation>
     </sample>

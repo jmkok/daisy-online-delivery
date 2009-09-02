@@ -203,9 +203,8 @@
                         <listitem>
                             <para>Give up access to <xref linkend="term_content"/>. Content is returned when
                                 the <xref linkend="term_readingSystem"/> has removed the locally-stored data
-                                and called the <function>
-                                    <xref linkend="op_returnContent"/>
-                                </function> operation to notify the <xref linkend="term_service"/> to revoke access and remove from 
+                                and called the <function><xref linkend="op_returnContent"/></function> operation 
+                                to notify the <xref linkend="term_service"/> to revoke access and remove from 
                                 the <xref linkend="term_user"/>'s collection of issued Content. This term applies only
                                 to loaned or rented Content, not free or purchased Content.
                             </para>
@@ -298,8 +297,8 @@
                     </listitem>
                     <listitem>
                         <para>It complies with the Service Type-specific requirements defined in <xref
-                            linkend="fundamentals_serviceTypes_reqs_library"/> and/or <xref
-                                linkend="fundamentals_serviceTypes_reqs_shop"/></para>
+                            linkend="fundamentals_serviceModels_reqs_lender"/> and/or <xref
+                                linkend="fundamentals_serviceModels_reqs_acquisition"/></para>
                     </listitem>
                     <listitem>
                         <para>It complies with the Content Selection Model-specific requirements defined
@@ -335,105 +334,95 @@
     <chapter xml:id="fundamentals">
         <title>Protocol Fundamentals</title>
 
-        <section xml:id="fundamentals_serviceTypes" conformance="normative"
-            xreflabel="Service types">
-            <title>Service Types</title>
-            <para>This protocol has been designed to support two types of Services:
-			<remark role="todo">TODO: These definitions are incorrect.  See note at end of section.</remark>
-			</para>
+        <section xml:id="fundamentals_serviceModels" conformance="normative"
+            xreflabel="Service Models">
+            <title>Service Models</title>
+            <para>The DAISY Online Delivery Protocol supports two basic service models:</para>
+            
             <itemizedlist>
-                <listitem xml:id="fundamentals_serviceType_library" xreflabel="Library Service type">
-                    <para>A <emphasis>Library-type</emphasis> service, which operates using a loan
-                        or rental program for <xref linkend="term_content"/>. The Content is borrowed or rented;
-                        at some point it must be returned to the <xref linkend="term_serviceProvider"/>.</para>
+                <listitem xml:id="fundamentals_serviceModel_lender" xreflabel="Lender Model">
+                    <para>a <emphasis>lender</emphasis> model, in which <xref linkend="term_content"/> is loaned
+                        or rented by a <xref linkend="term_user"/> for a fixed period of time and must be returned 
+                        to the <xref linkend="term_serviceProvider"/>; and</para>
                 </listitem>
-                <listitem xml:id="fundamentals_serviceType_shop" xreflabel="Shop Service type">
-                    <para>A <emphasis>Shop-type</emphasis> service, which includes both commercial
-                        (purchase) and free-of-charge content provision, where the content once
-                        issued belongs to the client indefinitely.</para>
+                <listitem xml:id="fundamentals_serviceModel_acquisition" xreflabel="Acquisition Model">
+                    <para>an <emphasis>acquisition</emphasis> model, in which the <xref linkend="term_user"/>
+                        becomes the owner of the acquired content. This model encompasses both commercial
+                        and free-of-charge <xref linkend="term_content"/>.</para>
+                        <note>
+                            <para>
+                                It is possible for a <xref linkend="term_serviceProvider"/> to use the PDTB2 specification
+                                to expire acquired <xref linkend="term_content"/> without employing a <xref linkend="fundamentals_serviceModel_lender"/>.
+                            </para>
+                        </note>
                 </listitem>
             </itemizedlist>
-			
-            <para>Services must support one or both of these types.</para>
+	
+	<note>
+	    <para>
+	        This protocol does not restrict the possible service models to these two definitions. Combinations and variations
+	        on the models should be possible using the <xref linkend="term_operation"/>s defined in the protocol. The
+	        <xref linkend="term_serviceProvider"/>, however, is solely responsible for ensuring that their model
+	        is compatible with the protocol.
+	    </para>
+	</note>
 
-            <para>While the protocol Interface and operational contract is generally common to these
-                Services types, there are some deviations, as defined below.</para>
-
-            <section xml:id="fundamentals_serviceTypes_reqs_library">
-                <title>Library-type Service Specific Requirements</title>
-                <para>A Library-type Service must:</para>
+            <section xml:id="fundamentals_serviceModels_reqs_lender">
+                <title>Basic Lender Model</title>
+                <para>A <xref linkend="term_service"/> should meet the following requirements when implementing a basic <xref linkend="fundamentals_serviceModel_lender"/>:</para>
                 <itemizedlist>
                     <listitem>
-                        <para>Manage the User's collection of issued Content and what content has expired.
-							When <function><xref linkend="op_getContentList"/></function> is called with
-							an <parameter>id</parameter> parameter of
-                                <literal>issued</literal> or <literal>expired</literal>,
-							the appropriate <type><xref linkend="tp_contentList"/></type> must be returned.
-							</para>
-							<para><remark role="todo">TODO: Move the following into the documentation for
-							getContentList:</remark></para>
-							<para>
-							All content items that have been issued and must be returned must be present
-							in either the <literal>issued</literal> or <literal>expired</literal> list.
-							Non-returnable content may be present in the <literal>issued</literal> list,
-							but shall not be present in the <literal>expired</literal> list.
-							</para>
+                        <para>
+                            It should be capable of managing the collection of <xref linkend="term_content"/> 
+                            that has been issued to a <xref linkend="term_user"/>, in particular what 
+                            <xref linkend="term_content"/> is still valid and what <xref linkend="term_content"/> has expired.
+                        </para>
                     </listitem>
                     <listitem>
-                        <para>Implement the <function><xref linkend="op_returnContent"/></function>
-                            operation.</para>
+                        <para>
+                            It should respond to the invocation of the <function><xref linkend="op_getContentList"/></function> 
+                            operation by providing a <type><xref linkend="tp_contentList"/></type> of issued or expired content 
+                            when the operation is called with an <parameter>id</parameter> parameter of <literal>issued</literal> 
+                            or <literal>expired</literal>.
+                        </para>
+                        <note>
+                            <para>
+                                All <xref linkend="term_content"/> that must be returned must remain present
+                                in the <literal>issued</literal> list until it is returned and removed the from collection
+                                list by calling the <function><xref linkend="op_returnContent"/></function> operation.
+                            </para>
+                        </note>
                     </listitem>
                     <listitem>
-                        <para>For those Content items that must be returned, the attribute
-						of their <type><xref linkend="tp_contentMetadata"/></type> must be
-                                <literal>true</literal>.</para>
+                        <para>It should implement the <function><xref linkend="op_returnContent"/></function>
+                            operation to allow <xref linkend="term_user"/>s to return their issued <xref linkend="term_content"/>.</para>
                     </listitem>
-
                     <listitem>
-                        <para><remark role="todo">TODO: Rewrite this for conciseness.</remark>
-						Declare its offering of a Library-type service in the <xref
-                                linkend="tp_supportedServiceTypes"/> element in the <xref
-                                linkend="tp_serviceAttributes"/> type returned by the <xref
-                                linkend="op_getServiceAttributes"/> operation</para>
+                            <remark role="todo">
+                                    TODO: no attribute specified an not clear what reference is to
+                            </remark>
+                            
+                            <para>It should set the the ??? attribute in the <type><xref linkend="tp_contentMetadata"/></type>
+		      of the issued content  to <literal>true</literal>.</para>
                     </listitem>
                 </itemizedlist>
-
             </section>
-            <section xml:id="fundamentals_serviceTypes_reqs_shop">
-                <title>Shop-type Service Specific Requirements</title>
-                <para>A Shop-type Service must:</para>
-                <itemizedlist>
-                    <listitem>
-                        <para>Manage the User's collection of issued Content.
-							When <function>getContentList</function> is called with
-							an <parameter>id</parameter> parameter of
-                                <literal>issued</literal>, the Service must reply with a
-								(possibly empty) <type>contentList</type> of issued content.
-							When <function>getContentList</function> is called with
-							an <parameter>id</parameter> parameter of
-                                <literal>expired</literal>, the Service must reply with an
-								empty <type>contentList</type>.  <remark role="todo">TODO: Not true
-								in mixed service types.
-								Fix this before release</remark>
-						</para>
-                    </listitem>
-                    <listitem>
-                        <para><remark role="todo">TODO: Rewrite this for conciseness.</remark>
-                        Declare its offering of a Shop-type service in the <xref
-                                linkend="tp_supportedServiceTypes"/> element in the <xref
-                                linkend="tp_serviceAttributes"/> type returned by the <xref
-                                linkend="op_getServiceAttributes"/> operation.</para>
-                    </listitem>
-                </itemizedlist>
-				<note><para>Despite their names, Service types do not constrain the type of
-				service offered.  A "Library-type" Service may charge a rental fee for content.
-				A "Shop-type" Service may in fact be a library that uses <xref linkend="bib_pdtb2"/> to time-limit
-				its materials but does not require calls to <function>returnContent</function>.
-				</para></note>
-				
+            
+            <section xml:id="fundamentals_serviceModels_reqs_acquisition">
+                <title>Basic Acquisition Model</title>
+                <para>
+                    There is only one requirement for a <xref linkend="term_service"/> to implement a basic 
+                    <xref linkend="fundamentals_serviceModel_acquisition"/>: it should respond to calls to the 
+                    <function><xref linkend="op_getContentList"/></function> operation by providing an empty 
+                    <type><xref linkend="tp_contentList"/></type>.
+                </para>
+                <note>
+                    <para>
+                        More complex acquisition models may require the management of issued <xref linkend="term_content"/>
+                        to allow repeat downloads or resumption of failed downloads.
+                    </para>
+                </note>
             </section>
-
-
         </section>
 
         <section xml:id="fundamentals_contentSelectionMethods" conformance="normative"
@@ -480,7 +469,7 @@
                     <listitem>
                         <para>exposes the selected <xref linkend="term_content"/> to the <xref linkend="term_user"/>s'
                             <xref linkend="term_readingSystem"/>(s) through the <code><xref linkend="op_getContentList"/></code> operation
-                            when the operation is invoked with the <parameter>id</parameter> parameter set to the value <code>new</code>.</para>
+                            when the operation is invoked with the <parameter>id</parameter> parameter set to the value <literal>new</literal>.</para>
                     </listitem>
                 </itemizedlist>
             </section>
@@ -501,57 +490,62 @@
         </section>
 
         <section xml:id="fundamentals_protocols" conformance="normative">
-            <title>Underlying protocols</title>
+            <title>Underlying Protocols</title>
 
             <section xml:id="fundamentals_protocols_http">
                 <title>HTTP</title>
-                <para>This specification employs <xref linkend="bib_http11"/> for two
-                    purposes:</para>
+                <para>This specification uses <xref linkend="bib_http11"/>:</para>
                 <itemizedlist>
                     <listitem>
-                        <para>for the transport layer of the SOAP messages (i.e. for all API calls),
+                        <para>as the transport layer for all SOAP messages sent and received by a <xref linkend="term_service"/>;
                             and</para>
                     </listitem>
                     <listitem>
-                        <para>for the transfer of Content data (the URIs of the resources that
-                            constitute the Content are retrieved through an invocation of the <xref
-                                linkend="op_getContentResources"/> operation).</para>
+                        <para>for the transfer of <xref linkend="term_content"/> data.</para>
                     </listitem>
                 </itemizedlist>
 
                 <para><xref linkend="term_service"/>s and <xref linkend="term_readingSystem"/>s must support <xref linkend="bib_http11"/> and
-                    secure HTTP (HTTPS) through the use of <xref linkend="bib_ssl3.0"/> or <xref
+                    secure HTTP (HTTPS) through either <xref linkend="bib_ssl3.0"/> or <xref
                         linkend="bib_tls1.0"/>.</para>
 
                 <para>The use of HTTP must conform to <xref linkend="bib_http11"/> and <xref
                         linkend="bib_RFC2617"/>. </para>
 
-                <para><xref linkend="term_service"/>s and <xref linkend="term_readingSystem"/>s must support HTTP sessions as specified by <xref
-                        linkend="bib_rfc2109"/>. Note that an established HTTP session does not
-                    implicitly mean that the <xref linkend="term_readingSystem"/> has logged on to the <xref linkend="term_service"/>
-                    successfully (see <xref linkend="operations_session"/>).</para>
+                <para><xref linkend="term_service"/>s and <xref linkend="term_readingSystem"/>s must support HTTP sessions as specified in <xref
+                linkend="bib_rfc2109"/>.</para>
+                
+                <note>
+                    <para>An established HTTP session is not a valid indicator that a <xref linkend="term_readingSystem"/> has 
+                        successfully logged on to the <xref linkend="term_service"/> (see <xref linkend="operations_session"/>).</para>
+                </note>
 
-                <para>For all HTTP and HTTPS requests sent by a <xref linkend="term_readingSystem"/> to a <xref linkend="term_service"/>, a
-                    <xref linkend="term_service"/> must return the appropriate HTTP status code in the HTTP response as
-                    specified by <xref linkend="bib_http11"/> (Section 10).</para>
+                <para>A <xref linkend="term_service"/> must return the appropriate HTTP status code in the HTTP response (as
+                    specified by <xref linkend="bib_http11"/>, Section 10) to all HTTP and HTTPS requests sent by a 
+                    <xref linkend="term_readingSystem"/>.</para>
 
                 <section xml:id="fundamentals_protocols_https">
                     <title>HTTPS</title>
-                    <para>HTTPS for both SOAP and Content transfer is recommended. The use of HTTPS
-                        prevents SOAP transactions, the URIs of HTTP requests, Content transferred
-                        and User credentials from being accessed by unauthorized parties. It allows
-                        the <xref linkend="term_readingSystem"/> to verify the identity of the <xref linkend="term_service"/> through the use of
-                        certificates. However, it does not ensure that the <xref linkend="term_readingSystem"/> or the
-                        <xref linkend="term_service"/> keeps data encrypted once it is received.</para>
+                    <para>The use of HTTPS for all transactions with a <xref linkend="term_service"/> is recommended
+                        because the data being exchanged may contain confidential information.
+                    </para>
 
-                    <para>All URIs that identify resources served over HTTPS must begin with
-                            <literal>https://</literal>.</para>
-
-                    <para>It is recommended that any certificates used by the server be registered
-                    with a certificate authority and not be self-signed.</para>
+                    <para>
+                        HTTPS also allows the <xref linkend="term_readingSystem"/> to verify the identity of the 
+                        <xref linkend="term_service"/> through the use of certificates.
+                        It is recommended when implementing HTTPS that all certificates be registered with a 
+                        certificate authority and not be self-signed.
+                    </para>
                     
-                    <para>A compliant <xref linkend="term_readingSystem"/> must support HTTPS. For <xref linkend="term_service"/>s, support for HTTPS is
-                        recommended.</para>
+                    <para>
+                        All URIs that identify resources served over HTTPS must use the 
+                        standard URI prefix <literal>https://</literal>.
+                    </para>
+
+                    <para>
+                        A compliant <xref linkend="term_readingSystem"/> must support HTTPS.
+                        Support for HTTPS is recommended for <xref linkend="term_service"/>s.
+                    </para>
                 </section>
 
                 <section xml:id="fundamentals_protocols_basic_authentication">
@@ -990,7 +984,7 @@
 
                 <para>To initiate retrieval of these Content items, the <xref linkend="term_readingSystem"/> invokes the
                         <xref linkend="op_getContentList"/> operation, passing the value
-                        <code>new</code> as the value of the <parameter>id</parameter> parameter,
+                        <literal>new</literal> as the value of the <parameter>id</parameter> parameter,
                     retrieving a <xref linkend="tp_contentList"/> in return.</para>
 
                 <section xml:id="operations_content_selection_outofband_examples">
@@ -1108,14 +1102,14 @@
                 <para>The <xref linkend="op_getContentMetadata"/> operation contains publication
                     metadata, information on the Content format, an optional sample, and information
                     on whether the content is being borrowed or not (see <xref
-                        linkend="fundamentals_serviceType_library"/>). </para>
+                        linkend="fundamentals_serviceModel_lender"/>). </para>
 
                 <para>The <xref linkend="op_issueContent"/> operation constitutes the formal User
                     request to get access to the Content. This operation must be invoked prior to
                     the invocation of <xref linkend="op_getContentResources"/>, and must be invoked
                     regardless of whether the content is issued in a <link
-                        linkend="fundamentals_serviceType_library">library-type</link> or <link
-                        linkend="fundamentals_serviceType_shop">shop-type</link> context.</para>
+                        linkend="fundamentals_serviceModel_lender">library-type</link> or <link
+                        linkend="fundamentals_serviceModel_acquisition">shop-type</link> context.</para>
 
                 <para>If a <xref linkend="term_service"/> returns <constant>false</constant> (<xref
                         linkend="bib_xsdDatatypes"/>) or throws a <link linkend="apiReferenceFaults"
@@ -1331,13 +1325,13 @@
         <section xml:id="operations_content_return">
             <title>Content Return</title>
             <para>Content return is employed in the case where a <xref linkend="term_readingSystem"/> has content issued
-                from a <xref linkend="term_service"/> that employs a <link linkend="fundamentals_serviceType_library"
+                from a <xref linkend="term_service"/> that employs a <link linkend="fundamentals_serviceModel_lender"
                     >library-type</link> <xref linkend="term_service"/>, and where the given Content item issued from that
                 <xref linkend="term_service"/> is explicitly of a borrowed nature (as defined by the value of the
                     <code>requiresReturn</code> attribute on <xref linkend="tp_contentMetadata"
                 />).</para>
-            <para>As stated in <xref linkend="fundamentals_serviceTypes_reqs_library"/>, a <link
-                    linkend="fundamentals_serviceType_library">library-type</link> <xref linkend="term_service"/> is
+            <para>As stated in <xref linkend="fundamentals_serviceModels_reqs_lender"/>, a <link
+                    linkend="fundamentals_serviceModel_lender">library-type</link> <xref linkend="term_service"/> is
                 required to manage the User's Content collection in terms of what Content is issued,
                 and what Content has expired. By invoking <xref linkend="op_getContentList"/> with
                 the <parameter>id</parameter> parameter valued <code>expired</code>, a Reading
@@ -1405,7 +1399,7 @@
                 used as a means for the <xref linkend="term_service"/> to provide various types of information to the User.
                 Examples include: information on <xref linkend="term_service"/> up- or downtime, information on additions
                 to the Content collection, and, in the case of <link
-                    linkend="fundamentals_serviceType_library">library-type Services</link>,
+                    linkend="fundamentals_serviceModel_lender">library-type Services</link>,
                 information on expired Content.</para>
             <para>Note that <xref linkend="op_getServiceAnnouncements"/> is an optional operation -
                 <xref linkend="term_service"/>s may or may not support this protocol feature.</para>
