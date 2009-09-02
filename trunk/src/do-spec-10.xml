@@ -451,7 +451,7 @@
                 <listitem xml:id="fundamentals_contentSelectionMethod_browse"
                     xreflabel="Browse Content Selection Method">
                     <para>a <emphasis>browsing</emphasis> method, where the <xref linkend="term_user"/>
-                        browses the <xref linkend="term_service"/>'s collection using 
+                        browses the <xref linkend="term_serviceProvider"/>'s collection using 
                         <xref linkend="term_operation"/>s defined by this protocol.</para>
                 </listitem>
             </itemizedlist>
