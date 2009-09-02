@@ -222,15 +222,6 @@
                         </listitem>
                     </varlistentry>
                     
-                    <varlistentry xml:id="term_serviceAddress">
-                        <term>Service address</term>
-                        <listitem>
-                            <para>The URI where a <xref linkend="term_serviceProvider"/> has published the WSDL document 
-                                defining the <xref linkend="term_service"/>. <remark role="todo">TODO this term is slightly misleading, 
-                                    should perhaps be called "Service metadata endpoint" instead</remark></para>
-                        </listitem>
-                    </varlistentry>
-                    
                     <varlistentry xml:id="term_serviceDelegate">
                         <term>Service Delegate</term>
                         <listitem>
@@ -296,8 +287,8 @@
                 <para>A <xref linkend="term_service"/> is conformant with this specification when: </para>
                 <itemizedlist>
                     <listitem>
-                        <para>It publishes a <xref linkend="bib_wsdl1.1"/> document at its <xref
-                            linkend="term_serviceAddress"/> whose contents comply with the
+                        <para>It publishes a <xref linkend="bib_wsdl1.1"/> document, at some URI,
+                            whose contents comply with the
                             requirements defined in <xref linkend="appendixWSDL"/></para>
                     </listitem>
                     <listitem>
@@ -1869,7 +1860,7 @@
             <link xlink:href="do-wsdl-10.wsdl">do-wsdl-10.wsdl</link> document constitute the abstract Web Service 
             contract that all compliant Services must adhere to.</para>
 
-        <para>Service implementors must publish a concrete WSDL document at their <xref linkend="term_serviceAddress"/>.
+        <para>Service implementors must publish a concrete WSDL document at some URI.
             The <xref linkend="bib_infoset"/> of the concrete WSDL document must be identical to the 
             <link xlink:href="do-wsdl-10.wsdl">do-wsdl-10.wsdl</link> document and must include
             a custom WSDL <code>service</code> element to define the locally supported ports.</para>
