@@ -417,7 +417,6 @@ div.vocabulary dl {margin-bottom: 2%;}
 
 
 table.attrTable {
-	width: 85%;
 	border: 1px solid black;
 	margin: .25em;
 	padding: 0px;
@@ -470,6 +469,21 @@ dt.verLabel {
 
 .specLink {
     text-indent: 2em;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+.typeProperty {
+    padding-left: 15px;
+}
+
+
+dt {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+dd {
     margin-top: 0px;
     padding-top: 0px;
 }
