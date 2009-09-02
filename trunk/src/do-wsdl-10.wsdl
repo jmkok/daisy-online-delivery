@@ -281,7 +281,7 @@
 												content that has <db:xref
 												linkend="contentList_expired"/>.</db:para>
 												<db:para>Services that support the <db:xref
-												linkend="fundamentals_contentSelectionModel_outofband"
+												linkend="fundamentals_contentSelectionMethod_outofband"
 												/> must recognize this identifier.</db:para>
 											</db:listitem>
 										</db:varlistentry>
