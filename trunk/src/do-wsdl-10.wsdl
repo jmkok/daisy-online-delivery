@@ -262,10 +262,10 @@
 												content that has <db:xref
 												linkend="contentList_expired"/>.</db:para>
 												<db:para>Services that are of the <db:link
-												linkend="fundamentals_serviceType_library">library
+												linkend="fundamentals_serviceModel_lender">library
 												style</db:link> must recognize this identifier.
 												Services that are of the <db:link
-												linkend="fundamentals_serviceType_shop">shop
+												linkend="fundamentals_serviceModel_acquisition">shop
 												style</db:link> may recognize this
 												identifier.</db:para>
 											</db:listitem>
@@ -292,12 +292,12 @@
 												initially <db:xref linkend="contentList_issued"/>
 												to the User, but has now expired.</db:para>
 												<db:para>This list is used by <db:link
-												linkend="fundamentals_serviceType_library">library
+												linkend="fundamentals_serviceModel_lender">library
 												style</db:link> Services to signal to the Reading
 												System that certain Content items must be
 												returned.</db:para>
 												<db:para>Services that are of the <db:link
-												linkend="fundamentals_serviceType_library">library
+												linkend="fundamentals_serviceModel_lender">library
 												style</db:link> must recognize this
 												identifier.</db:para>
 											</db:listitem>
@@ -1158,7 +1158,7 @@
 					Content is no longer issued to the User. </db:para>
 
 				<db:para>This operation is used exclusively in <db:link
-						linkend="fundamentals_serviceType_library">library-style</db:link>
+						linkend="fundamentals_serviceModel_lender">library-style</db:link>
 					Services.</db:para>
 
 				<db:para> A Reading System should not call <db:function>returnContent</db:function>

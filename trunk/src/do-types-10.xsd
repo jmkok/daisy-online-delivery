@@ -1261,7 +1261,7 @@
 					<xs:annotation>
 						<xs:documentation>
 							<db:para role="desc">Specifies which <db:xref
-									linkend="fundamentals_serviceTypes"/> are offered by this
+									linkend="fundamentals_serviceModels"/> are offered by this
 								Service. A Service must support at least one of the two Services
 								types.</db:para>
 						</xs:documentation>
@@ -1276,7 +1276,7 @@
 												<xs:documentation>
 												<db:para role="desc">This service offers the
 												<db:xref
-												linkend="fundamentals_serviceType_library"
+												linkend="fundamentals_serviceModel_lender"
 												/>.</db:para>
 												</xs:documentation>
 											</xs:annotation>
@@ -1285,7 +1285,7 @@
 											<xs:annotation>
 												<xs:documentation>
 												<db:para role="desc">This service offers the
-												<db:xref linkend="fundamentals_serviceType_shop"
+												<db:xref linkend="fundamentals_serviceModel_acquisition"
 												/>.</db:para>
 												</xs:documentation>
 											</xs:annotation>
