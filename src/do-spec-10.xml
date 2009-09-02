@@ -143,9 +143,9 @@
                         <listitem>
                             <para> Transfer of <xref linkend="term_content"/> from the <xref
                                 linkend="term_service"/> to the <xref linkend="term_readingSystem"/>,
-                                which the <xref linkend="term_readingSystem"/> stores in non-volatile memory. </para>
+                                which the Reading System stores in non-volatile memory. </para>
                             <note>
-                                <para>Download and <xref linkend="term_streaming"/> are <xref linkend="term_readingSystem"/> behaviors, not
+                                <para>Download and <xref linkend="term_streaming"/> are Reading System behaviors, not
                                     aspects of this protocol.</para>
                             </note>
                         </listitem>
@@ -156,7 +156,7 @@
                         <listitem>
                             <para> A <xref linkend="bib_soap1.1"/> Fault. A fault carries error and/or
                                 status information in a SOAP message. <xref linkend="apiReferenceFaults"
-                                /> defines the faults used for this protocol. </para>
+                                /> defines the faults used in this protocol. </para>
                         </listitem>
                     </varlistentry>
                     
@@ -201,13 +201,13 @@
                     <varlistentry xml:id="term_return">
                         <term>Return content</term>
                         <listitem>
-                            <para>Surrender access to <xref linkend="term_content"/>. <xref linkend="term_content"/> is returned when
+                            <para>Give up access to <xref linkend="term_content"/>. Content is returned when
                                 the <xref linkend="term_readingSystem"/> has removed the locally-stored data
-                                and invoked the <function>
+                                and called the <function>
                                     <xref linkend="op_returnContent"/>
                                 </function> operation to notify the <xref linkend="term_service"/> to revoke access and remove from 
-                                the <xref linkend="term_user"/>'s collection of issued <xref linkend="term_content"/>. This term applies only
-                                to loaned or rented <xref linkend="term_content"/>, not free or purchased <xref linkend="term_content"/>.
+                                the <xref linkend="term_user"/>'s collection of issued Content. This term applies only
+                                to loaned or rented Content, not free or purchased Content.
                             </para>
                         </listitem>
                     </varlistentry>
@@ -245,7 +245,7 @@
                             <para> The person(s) or organization(s) who own a <xref linkend="term_service"/>. </para>
                             <note>
                                 <para>The Service Provider may not be the same entity who owns the servers 
-                                    the <xref linkend="term_service"/> runs on.</para>
+                                    the Service runs on.</para>
                             </note>
                         </listitem>
                     </varlistentry>
@@ -255,10 +255,9 @@
                         <listitem>
                             <para>A sequence of <xref linkend="term_operation"/>s between one <xref
                                 linkend="term_readingSystem"/> and one <xref linkend="term_service"/>
-                                using an identifier defined by the <xref linkend="term_service"/>. A session
+                                using an identifier defined by the Service. A session
                                 may persist across several <link linkend="bib_http11">HTTP</link>
-                                connections. Session IDs may be reused at the <xref linkend="term_service"
-                                />'s discretion.</para>
+                                connections. Session identifiers may be reused at the Service's discretion.</para>
                         </listitem>
                     </varlistentry>
                     
@@ -270,7 +269,7 @@
                                 which the reading system renders immediately and stores only
                                 temporarily.</para>
                             <note>
-                                <para><xref linkend="term_download"/> and streaming are <xref linkend="term_readingSystem"/> behaviors, not
+                                <para><xref linkend="term_download"/> and streaming are Reading System behaviors, not
                                     aspects of this protocol.</para>
                             </note>
                         </listitem>
