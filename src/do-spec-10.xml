@@ -457,7 +457,7 @@
             </itemizedlist>
 
             <para>A <xref linkend="term_serviceProvider"/> must offer <xref linkend="term_user"/>s at least 
-                one content selection method. A <xref linkend="term_service"/> is not required to support both models.</para>
+                one content selection method. A <xref linkend="term_service"/> is not required to support both methods.</para>
             
             <para>
                 A <xref linkend="term_readingSystem"/> should support both content selection
