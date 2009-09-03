@@ -428,6 +428,24 @@
                     specified by <xref linkend="bib_http11"/>, Section 10) to all HTTP and HTTPS requests sent by a 
                     <xref linkend="term_readingSystem"/>.</para>
 
+                <section xml:id="fundamentals_protocols_authentication">
+                    <title>HTTP Cookies</title>
+                    
+                    <para>
+                        The DAISY Online Delivery protocol requires the use of <xref linkend="bib_httpcookies"/>
+                        (as defined in the <xref linkend="bib_wsibasicprofile11"/>) to maintain stateful sessions.
+                        A <xref linkend="term_service"/> must be able to manage HTTP Cookies.
+                    </para>
+                    
+                    <para>
+                        As per the <xref linkend="bib_wsibasicprofile11"/>, a <xref linkend="term_readingSystem"/>
+                        must not process or manipulate the cookies created by the <xref linkend="term_service"/>.
+                        The <xref linkend="term_readingSystem"/> must, however, be able to receive and send the cookies
+                        that are transmitted to it by a <xref linkend="term_service"/>.
+                    </para>
+                    
+                </section>
+                
                 <section xml:id="fundamentals_protocols_https">
                     <title>HTTPS</title>
                     <para>The use of HTTPS for all transactions with a <xref linkend="term_service"/> is recommended
@@ -580,63 +598,7 @@
                     </para>
                 </section>
             </section>
-
-            <section xml:id="fundamentals_protocols_authentication">
-                <title>User Authentication and Cookies</title>
-                
-                <para>
-                    The DAISY Online Delivery Protocol uses <xref linkend="term_session"/>s to maintain
-                    state between calls to a <xref linkend="term_service"/>. A <xref linkend="term_session"/> is 
-                    established when a <xref linkend="term_service"/> authenticates a <xref linkend="term_readingSystem"/>
-                    and sets an HTTP Cookie with a unique identifier for the <xref linkend="term_session"/>.
-                </para>
-                
-                <para>
-                    The steps for establishing a <xref linkend="term_session"/> are as follows:
-                </para>
-                
-                <orderedlist>
-                    <listitem>
-                        <para>The <xref linkend="term_readingSystem"/> must pass the log in credentials 
-                            to the <xref linkend="term_service"/> by calling the 
-                            <function><xref linkend="op_logOn"/></function> operation.</para>
-                        <note>
-                            <para>
-                                The <xref linkend="term_serviceProvider"/> is responsible for stipulating and supplying 
-                                the credentials required to authenticate a <xref linkend="term_readingSystem"/>.
-                                A non-exhaustive list of ways to provide credentials includes: per <xref linkend="term_user"/>, 
-                                per group or class of <xref linkend="term_user"/>, or per <xref linkend="term_readingSystem"/>.
-                            </para>
-                        </note>
-                        <note>
-                            <para>
-                                The <function><xref linkend="op_logOn"/></function> operation must be called to establish a session 
-                                even if no credentials are required to access the <xref linkend="term_service"/>. 
-                            </para>
-                        </note>
-                    </listitem>
-                    <listitem>
-                        <para>
-                            The <xref linkend="term_service"/> must verify the provided credentials and, if valid,
-                            issue a cookie with a unique identifier for the session and embed it in the Set-Cookie HTTP response header.
-                        </para>
-                    </listitem>
-                    <listitem>
-                        <para>
-                            The <xref linkend="term_service"/> must send the cookie to the <xref linkend="term_readingSystem"/>
-                            along with the successful response to the <function><xref linkend="op_logOn"/></function> operation.
-                        </para>
-                    </listitem>
-                </orderedlist>
-
-                <para>
-                    The <xref linkend="term_readingSystem"/> must return the <xref linkend="term_session"/> cookie with each
-                    subsequent call to the <xref linkend="term_service"/>. The <xref linkend="term_readingSystem"/> should not
-                    alter or modify the cookie in any way.
-                </para>
-
-            </section>
-
+            
         </section>
 
     </chapter>
@@ -670,8 +632,8 @@
             
             <note>
                 <para>
-                    This protocol does not restrict the possible service models to these two definitions. Combinations and variations
-                    on the models should be possible using the <xref linkend="term_operation"/>s defined in the protocol. The
+                    This specification does not restrict the possible service models to these two definitions. Combinations and variations
+                    on the models should be possible using the <xref linkend="term_operation"/>s defined by the protocol. The
                     <xref linkend="term_serviceProvider"/>, however, is solely responsible for ensuring that their model
                     is compatible with the protocol.
                 </para>
@@ -738,10 +700,53 @@
          <section xml:id="overview_session">
             <title>Session Management and Authentication</title>
 
-            <section xml:id="overview_session_duration">
+             <para>
+                 The steps for establishing a <xref linkend="term_session"/> are as follows:
+             </para>
+             
+             <orderedlist>
+                 <listitem>
+                     <para>The <xref linkend="term_readingSystem"/> must pass the log in credentials 
+                         to the <xref linkend="term_service"/> by calling the 
+                         <function><xref linkend="op_logOn"/></function> operation.</para>
+                     <note>
+                         <para>
+                             The <xref linkend="term_serviceProvider"/> is responsible for stipulating and supplying 
+                             the credentials required to authenticate a <xref linkend="term_readingSystem"/>.
+                             A non-exhaustive list of ways to provide credentials includes: per <xref linkend="term_user"/>, 
+                             per group or class of <xref linkend="term_user"/>, or per <xref linkend="term_readingSystem"/>.
+                         </para>
+                     </note>
+                     <note>
+                         <para>
+                             The <function><xref linkend="op_logOn"/></function> operation must be called to establish a session 
+                             even if no credentials are required to access the <xref linkend="term_service"/>. 
+                         </para>
+                     </note>
+                 </listitem>
+                 <listitem>
+                     <para>
+                         The <xref linkend="term_service"/> must verify the provided credentials and, if valid,
+                         issue a cookie with a unique identifier for the session and embed it in the Set-Cookie HTTP response header.
+                     </para>
+                 </listitem>
+                 <listitem>
+                     <para>
+                         The <xref linkend="term_service"/> must send the cookie to the <xref linkend="term_readingSystem"/>
+                         along with the successful response to the <function><xref linkend="op_logOn"/></function> operation.
+                     </para>
+                 </listitem>
+             </orderedlist>
+             
+             <para>
+                 The <xref linkend="term_readingSystem"/> must return the <xref linkend="term_session"/> cookie with each
+                 subsequent call to the <xref linkend="term_service"/>. The <xref linkend="term_readingSystem"/> should not
+                 alter or modify the cookie in any way.
+             </para>
+             
+             <section xml:id="overview_session_duration">
                 <title>Session Duration</title>
-                <para role="definiton" xml:id="def_sessionDuration"> A <xref linkend="term_session"
-                    /> begins after a successful <function>
+                <para role="definiton" xml:id="def_sessionDuration"> A <xref linkend="term_session"/> begins after a successful <function>
                         <xref linkend="op_logOn"/>
                     </function> operation. The session ends after the <xref linkend="term_readingSystem"/> has invoked the <function>
                         <xref linkend="op_logOff"/>
