@@ -433,15 +433,18 @@
                     
                     <para>
                         The DAISY Online Delivery protocol requires the use of <xref linkend="bib_httpcookies"/>
-                        (as defined in the <xref linkend="bib_wsibasicprofile11"/>) to maintain stateful sessions.
-                        A <xref linkend="term_service"/> must be able to manage HTTP Cookies.
+                        (as defined in <xref linkend="bib_wsibasicprofile11"/>) to maintain stateful sessions.
                     </para>
                     
                     <para>
-                        As per the <xref linkend="bib_wsibasicprofile11"/>, a <xref linkend="term_readingSystem"/>
-                        must not process or manipulate the cookies created by the <xref linkend="term_service"/>.
+                        As per the <xref linkend="bib_wsibasicprofile11"/>, a compliant <xref linkend="term_readingSystem"/>
+                        must not process or manipulate the cookies created by a <xref linkend="term_service"/>.
                         The <xref linkend="term_readingSystem"/> must, however, be able to receive and send the cookies
                         that are transmitted to it by a <xref linkend="term_service"/>.
+                    </para>
+                    
+                    <para>
+                        A compliant <xref linkend="term_service"/> must be able to manage HTTP Cookies.
                     </para>
                     
                 </section>
@@ -697,52 +700,169 @@
             </section>
         </section>
         
+        
+        
          <section xml:id="overview_session">
-            <title>Session Management and Authentication</title>
-
-             <para>
-                 The steps for establishing a <xref linkend="term_session"/> are as follows:
-             </para>
+             <title>User Authentication and Session Management</title>
              
-             <orderedlist>
-                 <listitem>
-                     <para>The <xref linkend="term_readingSystem"/> must pass the log in credentials 
-                         to the <xref linkend="term_service"/> by calling the 
-                         <function><xref linkend="op_logOn"/></function> operation.</para>
-                     <note>
+             <section xml:id="overview_session_initializationSequence">
+                 <title>Session Initialization</title>
+                 
+                 <para role="definition" xml:id="def_sessionInitializationSequence"
+                     xreflabel="Session Initialization Sequence">
+                     The following steps must be followed when starting a <xref linkend="term_session"/>
+                     to authenticate the <xref linkend="term_readingSystem"/> to the <xref linkend="term_service"/>:
+                 </para>
+                 
+                 <orderedlist>
+                     <listitem>
+                         <para>The <xref linkend="term_readingSystem"/> must pass the <xref linkend="term_user"/>'s log in credentials 
+                             to the <xref linkend="term_service"/> by calling the 
+                             <function><xref linkend="op_logOn"/></function> operation.</para>
+                         <note>
+                             <para>
+                                 The <xref linkend="term_serviceProvider"/> is responsible for stipulating and supplying 
+                                 the <xref linkend="term_user"/> with the credentials required to authenticate a 
+                                 <xref linkend="term_readingSystem"/>.
+                                 A non-exhaustive list of ways to provide credentials includes: per <xref linkend="term_user"/>, 
+                                 per group or class of <xref linkend="term_user"/>, or per <xref linkend="term_readingSystem"/>.
+                             </para>
+                         </note>
+                         <note>
+                             <para>
+                                 The <function><xref linkend="op_logOn"/></function> operation must be called to establish a session 
+                                 even if no credentials are required to access the <xref linkend="term_service"/>. 
+                             </para>
+                         </note>
+                     </listitem>
+                     <listitem>
                          <para>
-                             The <xref linkend="term_serviceProvider"/> is responsible for stipulating and supplying 
-                             the credentials required to authenticate a <xref linkend="term_readingSystem"/>.
-                             A non-exhaustive list of ways to provide credentials includes: per <xref linkend="term_user"/>, 
-                             per group or class of <xref linkend="term_user"/>, or per <xref linkend="term_readingSystem"/>.
+                             The <xref linkend="term_service"/> must verify the provided credentials and, if valid,
+                             issue an <xref linkend="bib_httpcookies"/> with a unique identifier for the <xref linkend="term_session"/> and embed 
+                             it in the Set-Cookie HTTP response header.
                          </para>
-                     </note>
-                     <note>
+                     </listitem>
+                     <listitem>
                          <para>
-                             The <function><xref linkend="op_logOn"/></function> operation must be called to establish a session 
-                             even if no credentials are required to access the <xref linkend="term_service"/>. 
+                             The <xref linkend="term_service"/> must send the cookie to the <xref linkend="term_readingSystem"/>
+                             when returning the successful response to the <function><xref linkend="op_logOn"/></function> operation.
                          </para>
+                     </listitem>
+                 </orderedlist>
+                 
+                 <para> 
+                     After a successful log on response has been returned, the <xref linkend="term_readingSystem"/> must 
+                     next invoke the following operations in the given sequence before invoking any other protocol operations:
+                 </para>
+                 
+                 <orderedlist>
+                     <listitem>
+                         <para>
+                             The <function><xref linkend="op_getServiceAttributes"/></function> operation must be called to
+                             discover necessary information about the <xref linkend="term_service"/>.
+                         </para>
+                     </listitem>
+                     <listitem>
+                         <para>
+                             The <function><xref linkend="op_setReadingSystemAttributes"/></function> operation must be called
+                             to provide information about the <xref linkend="term_readingSystem"/>'s capabilities 
+                             to the <xref linkend="term_service"/>. The <xref linkend="term_service"/> must respond to this operation
+                             call with a return value of <constant>true</constant> (<xref linkend="bib_xsdDatatypes"/>).
+                         </para>
+                     </listitem>
+                 </orderedlist>
+                 
+                 <para>
+                     If a <xref linkend="term_service"/> returns a <link linkend="apiReferenceFaults">Fault</link> during
+                     any of these initialization steps, or if a required return values is not given, then the <xref linkend="term_readingSystem"/>
+                     must attempt to re-initialize the session or abort the log on process.
+                 </para>
+                 
+                 <note>
+                     <para>
+                         How many attempts are made to re-initialize a <xref linkend="term_session"/> before aborting, how long to wait 
+                         between failed log on attempts and how to inform a <xref linkend="term_user"/> of a failed log on are 
+                         <xref linkend="term_readingSystem"/> behaviours and not specified by this protocol.
+                     </para>
+                 </note>
+                 
+                 <para>
+                     A <xref linkend="term_service"/> must throw a <errorname>
+                     <xref linkend="ft_invalidOperationFault"/>
+                 </errorname> if a <xref linkend="term_readingSystem"/> does not honor the above initialization
+                     sequence.
+                 </para>
+                 
+                 <note>
+                     <para>This specification does not stipulate the nature of the credentials used
+                         to authenticate a <xref linkend="term_readingSystem"/>. The credentials used in this context may
+                         be credentials associated to a single User, a group of Users, a Reading
+                         System, or any other entity specified by a <xref linkend="term_serviceProvider"/>.
+                     </para>
+                 </note>
+                 
+                 <para>
+                     After a successful log on and initialization sequence has been completed, a 
+                     <xref linkend="term_readingSystem"/> can invoke any operations defined by this specification.
+                 </para>
+                 
+                 <section xml:id="overview_session_initializationExamples"
+                     conformance="informative">
+                     <title>Session Initialization Examples</title>
+                     <example>
+                         <title>Successful Session Initialization Sequence</title>
+                         <orderedlist>
+                             <listitem>
+                                 <para>[Required] The <xref linkend="term_readingSystem"/> invokes the <function>
+                                     <xref linkend="op_logOn"/>
+                                 </function> operation, passing the following credentials:</para>
+                                 <programlisting><xi:include href="./samples/initialization-logon.xml" parse="text"/></programlisting>
+                                 <para>The <xref linkend="term_service"/> returns <constant>true</constant> to signal that
+                                     the logon was successful.</para>
+                             </listitem>
+                             <listitem>
+                                 <para>[Required] The <xref linkend="term_readingSystem"/> invokes the <function>
+                                     <xref linkend="op_getServiceAttributes"/>
+                                 </function> operation. The <xref linkend="term_service"/> returns a
+                                     <type>serviceAttributes</type> type:</para>
+                                 <programlisting><xi:include href="./samples/initialization-serviceAttributes.xml" parse="text"/></programlisting>
+                             </listitem>
+                             <listitem>
+                                 <para>[Required] The <xref linkend="term_readingSystem"/> invokes the <function>
+                                     <xref linkend="op_setReadingSystemAttributes"/>
+                                 </function> operation, passing a <type>
+                                     <xref linkend="tp_readingSystemAttributes"/>
+                                 </type> type:</para>
+                                 <programlisting><xi:include href="./samples/initialization-readingSystemAttributes.xml" parse="text"/></programlisting>
+                                 <para>The <xref linkend="def_sessionInitializationSequence"/> is now
+                                     complete, and the <xref linkend="term_readingSystem"/> may commence by invoking other
+                                     operations in the protocol. At this point, <xref linkend="term_readingSystem"/>s
+                                     should invoke the <function>
+                                         <xref linkend="op_getServiceAnnouncements"/>
+                                     </function> operation to retrieve any service announcements
+                                     awaiting the User's attention.</para>
+                             </listitem>
+                             <listitem>
+                                 <para>[Optional] Providing that the <xref linkend="term_service"/> supports this <link
+                                     linkend="op_getServiceAttributes">optional operation</link>,
+                                     the <xref linkend="term_readingSystem"/> invokes the <function>
+                                         <xref linkend="op_getServiceAnnouncements"/>
+                                     </function> operation, retrieving an <type>
+                                         <xref linkend="tp_announcements"/>
+                                     </type> type in return. See further <xref
+                                         linkend="overview_service_announcements"/>.</para>
+                                 <!-- <programlisting><xi:include href="./samples/initialization-serviceAnnouncements.xml" parse="text"/></programlisting> -->
+                             </listitem>
+                         </orderedlist>
+                     </example>
+                     <note>
+                         <para>The <xref linkend="op_getServiceAttributes"/> and <xref
+                             linkend="op_setReadingSystemAttributes"/> operations may be called
+                             additional times during a Session to notify changes of properties in the
+                             <xref linkend="term_service"/> or <xref linkend="term_readingSystem"/>.</para>
                      </note>
-                 </listitem>
-                 <listitem>
-                     <para>
-                         The <xref linkend="term_service"/> must verify the provided credentials and, if valid,
-                         issue a cookie with a unique identifier for the session and embed it in the Set-Cookie HTTP response header.
-                     </para>
-                 </listitem>
-                 <listitem>
-                     <para>
-                         The <xref linkend="term_service"/> must send the cookie to the <xref linkend="term_readingSystem"/>
-                         along with the successful response to the <function><xref linkend="op_logOn"/></function> operation.
-                     </para>
-                 </listitem>
-             </orderedlist>
-             
-             <para>
-                 The <xref linkend="term_readingSystem"/> must return the <xref linkend="term_session"/> cookie with each
-                 subsequent call to the <xref linkend="term_service"/>. The <xref linkend="term_readingSystem"/> should not
-                 alter or modify the cookie in any way.
-             </para>
+                 </section>
+             </section>
              
              <section xml:id="overview_session_duration">
                 <title>Session Duration</title>
@@ -762,116 +882,6 @@
                     experience.</para>
             </section>
 
-            <section xml:id="overview_session_initializationSequence">
-                <title>Session Initialization Sequence</title>
-
-                <para role="definition" xml:id="def_sessionInitializationSequence"
-                    xreflabel="Session Initialization Sequence"> To ensure interoperability and
-                    consistent behavior between implementations, <xref linkend="term_readingSystem"/>s must invoke the
-                    following operations in the given sequence at the onset of every Session, and
-                    before invoking any other protocol operation. <orderedlist>
-                        <listitem>
-                            <para>The <function>
-                                    <xref linkend="op_logOn"/>
-                                </function> operation, with a return value of
-                                    <constant>true</constant> (<xref linkend="bib_xsdDatatypes"/>)
-                            </para>
-                        </listitem>
-                        <listitem>
-                            <para> The <function>
-                                    <xref linkend="op_getServiceAttributes"/>
-                                </function> operation</para>
-                        </listitem>
-                        <listitem>
-                            <para> The <function>
-                                    <xref linkend="op_setReadingSystemAttributes"/>
-                                </function> operation, with a return value of
-                                    <constant>true</constant> (<xref linkend="bib_xsdDatatypes"/>)
-                            </para>
-                        </listitem>
-                    </orderedlist>
-                </para>
-
-                <para>If a <xref linkend="term_service"/> throws a <link linkend="apiReferenceFaults">Fault</link> during
-                    the <token>Session Initialization Sequence</token> phase, or if the above
-                    specified return values are not given, then the session remains uninitialized
-                    and must be either be reinitialized, or the attempt to log the <xref linkend="term_readingSystem"/> on
-                    to the <xref linkend="term_service"/> must be aborted.</para>
-
-                <para>All operations defined by this specification except the <function>
-                        <xref linkend="op_logOn"/>
-                    </function> operation are valid to invoke after the <token>Session
-                        Initialization Sequence</token> has been completed.</para>
-
-                <para>A <xref linkend="term_service"/> must throw a <errorname>
-                        <xref linkend="ft_invalidOperationFault"/>
-                    </errorname> if a <xref linkend="term_readingSystem"/> does not honor the above initialization
-                    sequence.</para>
-
-                <note>
-                    <para>This specification does not stipulate the nature of the credentials used
-                        to authenticate a <xref linkend="term_readingSystem"/>. The credentials used in this context may
-                        be credentials associated to a single User, a group of Users, a Reading
-                        System, or any other entity specified by a <xref linkend="term_serviceProvider"/>.</para>
-                </note>
-
-                <section xml:id="overview_session_initializationExamples"
-                    conformance="informative">
-                    <title>Session Initialization Examples</title>
-                    <example>
-                        <title>Successful Session Initialization Sequence</title>
-                        <orderedlist>
-                            <listitem>
-                                <para>[Required] The <xref linkend="term_readingSystem"/> invokes the <function>
-                                        <xref linkend="op_logOn"/>
-                                    </function> operation, passing the following credentials:</para>
-                                <programlisting><xi:include href="./samples/initialization-logon.xml" parse="text"/></programlisting>
-                                <para>The <xref linkend="term_service"/> returns <constant>true</constant> to signal that
-                                    the logon was successful.</para>
-                            </listitem>
-                            <listitem>
-                                <para>[Required] The <xref linkend="term_readingSystem"/> invokes the <function>
-                                        <xref linkend="op_getServiceAttributes"/>
-                                    </function> operation. The <xref linkend="term_service"/> returns a
-                                        <type>serviceAttributes</type> type:</para>
-                                <programlisting><xi:include href="./samples/initialization-serviceAttributes.xml" parse="text"/></programlisting>
-                            </listitem>
-                            <listitem>
-                                <para>[Required] The <xref linkend="term_readingSystem"/> invokes the <function>
-                                        <xref linkend="op_setReadingSystemAttributes"/>
-                                    </function> operation, passing a <type>
-                                        <xref linkend="tp_readingSystemAttributes"/>
-                                    </type> type:</para>
-                                <programlisting><xi:include href="./samples/initialization-readingSystemAttributes.xml" parse="text"/></programlisting>
-                                <para>The <xref linkend="def_sessionInitializationSequence"/> is now
-                                    complete, and the <xref linkend="term_readingSystem"/> may commence by invoking other
-                                    operations in the protocol. At this point, <xref linkend="term_readingSystem"/>s
-                                    should invoke the <function>
-                                        <xref linkend="op_getServiceAnnouncements"/>
-                                    </function> operation to retrieve any service announcements
-                                    awaiting the User's attention.</para>
-                            </listitem>
-                            <listitem>
-                                <para>[Optional] Providing that the <xref linkend="term_service"/> supports this <link
-                                        linkend="op_getServiceAttributes">optional operation</link>,
-                                    the <xref linkend="term_readingSystem"/> invokes the <function>
-                                        <xref linkend="op_getServiceAnnouncements"/>
-                                    </function> operation, retrieving an <type>
-                                        <xref linkend="tp_announcements"/>
-                                    </type> type in return. See further <xref
-                                        linkend="overview_service_announcements"/>.</para>
-                                <!-- <programlisting><xi:include href="./samples/initialization-serviceAnnouncements.xml" parse="text"/></programlisting> -->
-                            </listitem>
-                        </orderedlist>
-                    </example>
-                    <note>
-                        <para>The <xref linkend="op_getServiceAttributes"/> and <xref
-                                linkend="op_setReadingSystemAttributes"/> operations may be called
-                            additional times during a Session to notify changes of properties in the
-                            <xref linkend="term_service"/> or <xref linkend="term_readingSystem"/>.</para>
-                    </note>
-                </section>
-            </section>
             <!--
             <section xml:id="overview_session_attributes">
                 <title>Service and Reading System Attributes</title>
