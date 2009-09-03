@@ -325,16 +325,14 @@ set       toc,title
         <xsl:apply-imports />
         <!-- Do everything the normal transform does before adding more text -->
         <xsl:variable name="conformanceLevel" select="../@conformance" />
+        <xsl:variable name="parentName" select="local-name(..)"/>
         <xsl:variable name="structureName">
             <xsl:choose>
-                <xsl:when test="local-name(..)='preface'">
-                    <xsl:value-of select="'section'" />
-                </xsl:when>
-                <xsl:when test="local-name(..)='bibliography'">
-                    <xsl:value-of select="'section'" />
+                <xsl:when test="$parentName='preface' or $parentName='chapter' or $parentName='bibliography'">
+                    <xsl:text>section</xsl:text>
                 </xsl:when>
                 <xsl:otherwise>
-                    <xsl:value-of select="local-name(..)"/>
+                    <xsl:value-of select="$parentName"/>
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
