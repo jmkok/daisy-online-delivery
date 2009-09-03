@@ -423,35 +423,6 @@ table.attrTable {
 	border-spacing: 0px;
 }
 
-caption.hiddenCaption {
-	font-size: 0em;
-}
-
-table.attrTable th {
-	background: #efefef;
-}
-
-table.attrTable th, td {
-	padding: 2px;
-}
-
-th.attrHeaderName {
-	width: 25%;
-}
-
-th.attrHeaderUse {
-	width: 20%;
-}
-
-th.attrHeaderType {
-	width: 45%;
-}
-
-th.attrHeaderDefault {
-	width: 10%;
-}
-
-
 dt.verLabel {
     font-weight: bold;
 }
