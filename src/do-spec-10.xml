@@ -522,15 +522,18 @@
                 <section xml:id="fundamentals_protocols_https">
                     <title>HTTPS</title>
                     <para>The use of HTTPS for all transactions with a <xref linkend="term_service"/> is recommended
-                        because the data being exchanged may contain confidential information.
-                    </para>
-
-                    <para>
+                        as the data being exchanged may contain confidential information.
                         HTTPS also allows the <xref linkend="term_readingSystem"/> to verify the identity of the 
                         <xref linkend="term_service"/> through the use of certificates.
-                        It is recommended when implementing HTTPS that all certificates be registered with a 
-                        certificate authority and not be self-signed.
                     </para>
+                    
+                    <note>
+                        <title>Security consideration</title>
+                        <para>
+                            It is recommended when implementing HTTPS that all certificates be registered with a 
+                            certificate authority and not be self-signed.
+                        </para>
+                    </note>
                     
                     <para>
                         All URIs that identify resources served over HTTPS must use the 
@@ -548,45 +551,60 @@
                     <para>The HTTP Basic Authentication Scheme described in <xref linkend="bib_RFC2617"/>
                         may be used to secure <xref linkend="term_content"/> against unauthorized access.</para>
                     
-                    <para>
-                        It is reommended that Basic Authentication only be used when a secure connection (HTTPS)
-                        can be ensured between the <xref linkend="term_readingSystem"/> and <xref linkend="term_service"/>
-                        to prevent the exposure of the credentials transmitted in HTTP headers. 
-                    </para>
+                    <note>
+                        <title>Security consideration</title>
+                        <para>
+                            It is reommended that Basic Authentication only be used when a secure connection (HTTPS)
+                            can be ensured between the <xref linkend="term_readingSystem"/> and <xref linkend="term_service"/>
+                            to prevent the exposure of the credentials transmitted in HTTP headers. 
+                        </para>
+                    </note>
                     
                     <para>
                         When using Basic Authentication, the <xref linkend="term_service"/> must supply the credentials in the
                         server component field of the <xref linkend="term_content"/>'s <abbrev>URI</abbrev>.
-                        The scheme for the server component as given in
+                        The scheme for the <literal>userinfo</literal> field as given in
                             <xref linkend="bib_RFC2396"/>, section 3.2.2 is:
-                            <replaceable>userinfo</replaceable>@<replaceable>host</replaceable>:<replaceable>port</replaceable>.
+                            <replaceable>userinfo</replaceable>@<replaceable>host</replaceable>:<replaceable>port</replaceable>
                     </para>
                     
                     <para>
-                        If the credentials also require a password, then the server component field must be of the form:
-                        <replaceable>userid</replaceable>:<emphasis><replaceable>password</replaceable></emphasis>@<replaceable>host</replaceable>:<replaceable>port</replaceable>.
+                        If the credentials also require a password, then the <literal>userinfo</literal> field must be of the form:
+                        <replaceable>userid</replaceable>:<emphasis><replaceable>password</replaceable></emphasis>@<replaceable>host</replaceable>:<replaceable>port</replaceable>
                     </para>
                     
                     <note>
-                        <title>Security considerations</title>
-                        <para>RFC 2396 recommends against the use of the
-                            <replaceable>userid</replaceable>:<replaceable>password</replaceable>
-                            scheme for <replaceable>userinfo</replaceable>, due to the possibility
-                            of transmitting passwords in the clear. A <xref linkend="term_service"/> should not use this
-                            scheme except over a secure connection, for resources that are served
-                            via a secure protocol (such as HTTPS).</para>
-                        <para>The requirement that credentials must be supplied by the <xref linkend="term_service"/>
-                            implies that the <xref linkend="term_service"/> must be able to retrieve these credentials.
-                            Best practices for authentication are to store a cryptographic hash of
-                            each password, to prevent decryption if the password database is
-                            accessed by untrusted parties; however, this method prevents retrieval
-                            by the <xref linkend="term_service"/>. <xref linkend="term_service"/>s must use some other method of securely storing
-                            passwords for its resources or for Service Delegates' resources. </para>
+                        <title>Security consideration</title>
+                        <orderedlist>
+                            <listitem>
+                                <para>RFC 2396 recommends against the use of the
+                                    <replaceable>userid</replaceable>:<replaceable>password</replaceable>
+                                    scheme as it may result in the transmission of passwords in the clear and is known
+                                    to be a security risk in all cases. A <xref linkend="term_service"/> should only use this
+                                    scheme over a secure connection such as HTTPS and <xref linkend="term_readingSystem"/>s
+                                    should be developed to avoid the known exploits of this method.
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <remark role="todo">
+                                    TODO: More needed here?
+                                </remark>
+                                <para>
+                                    The current best practice for the storage of passwords is to only store a cryptographic hash of
+                                    each password in case a database is compromised. A <xref linkend="term_service"/>, however,
+                                    must be able to retrieve the unencrypted authentication credentials for a <xref linkend="term_user"/> in order to 
+                                    supply them in the <literal>userinfo</literal> field. <xref linkend="term_service"/>s 
+                                    implementing Basic Authentication using this scheme consequently risk compromising the security of their
+                                    databases unless secure retrieval methods are developed.
+                                </para>
+                            </listitem>
+                        </orderedlist>
                     </note>
                     
                     <para>
-                        The <xref linkend="term_readingSystem"/> must not send basic authentication credentials 
-                        if they were not supplied in the <abbrev>URI</abbrev> for the <xref linkend="term_content"/>.
+                        When retrieving <xref linkend="term_content"/>, the <xref linkend="term_readingSystem"/> must only send 
+                        Basic Authentication credentials when they are supplied in the <abbrev>URI</abbrev> returned by the
+                        <xref linkend="term_service"/>.
                     </para>
                     
                     <para>
@@ -596,7 +614,7 @@
                     
                     <note>
                         <para>
-                            The HTTP Basic Authentication credentials must not be used to log on to the <xref linkend="term_service"/>. For user
+                            The HTTP Basic Authentication credentials must not be used to log on to the <xref linkend="term_service"/>. For 
                             authenticating a SOAP session, see <xref linkend="fundamentals_protocols_authentication"/>.
                         </para>
                     </note>
@@ -606,16 +624,23 @@
                 </section>
 
                 <section xml:id="fundamentals_protocols_http_range">
-                    <title>HTTP range headers</title>
+                    <title>HTTP Range Headers</title>
 
-                    <para>If HTTP or HTTPS is used by the <xref linkend="term_service"/> for serving resources, Range
-                        Retrieval Requests (described in section 14.35 of <link linkend="bib_http11"
-                            >RFC 2616</link>) must be honored by the <xref linkend="term_service"/> where possible.
+                    <para>
+                        When using HTTP or HTTPS for serving resources, Range Retrieval Requests 
+                        (as described in section 14.35 of <link linkend="bib_http11">RFC 2616</link>)
+                        must be honored by the <xref linkend="term_service"/>.
+                    </para>
+                    
+                    <para>
                         <xref linkend="term_service"/>s must use correct status codes and Content-Range and Content-Length
-                        headers when serving partial content (described in section 14.16 of RFC
-                        2616). Since there is no way to enforce this requirement on Service
-                        Delegates, <xref linkend="term_readingSystem"/>s must be able to handle servers that do not
-                        support range headers.</para>
+                        headers when serving partial content (as described in section 14.16 of <link linkend="bib_http11">RFC 2616</link>). 
+                    </para>
+                    
+                    <para>
+                        As it is not possible to require support for range headers on <xref linkend="term_serviceDelegate"/>s, 
+                        <xref linkend="term_readingSystem"/>s must be able to handle servers that do not support range headers.
+                    </para>
                 </section>
             </section>
 
@@ -624,9 +649,9 @@
 
                 <para>
                     This protocol was designed to be compliant with the requirements of 
-                    the <xref linkend="bib_wsibasicprofile11"/>.
-                    All conformant implementations of this protocol must also be compliant
                     <xref linkend="bib_wsibasicprofile11"/>.
+                    All conformant implementations of this protocol must also be compliant
+                    with <xref linkend="bib_wsibasicprofile11"/>.
                 </para>
                 
                 <section xml:id="fundamentals_protocols_wsdlbindingstyle">
@@ -636,51 +661,71 @@
                         The WSDL binding style used in the abstract WSDL document in 
                         <xref linkend="appendixWSDL"/> is <literal>wrapped document-literal</literal>.
                         The <literal>wrapped document-literal</literal> style is a subset of the 
-                        document-literal style, and satisfies normative requirement R2712 of 
+                        document-literal style and satisfies normative requirement R2712 of 
                         <xref linkend="bib_wsibasicprofile11"/>.
                     </para>
                     
                     <para>
-                        Compliant <xref linkend="term_service"/>s must use the <literal>wrapped document-literal</literal>
+                        Conformant  <xref linkend="term_service"/>s must use the <literal>wrapped document-literal</literal>
                         binding style.
                     </para>
                 </section>
             </section>
 
             <section xml:id="fundamentals_protocols_authentication">
-                <title>User Authentication and cookies</title>
-
-                <para>The <xref linkend="term_service"/> must perform the following steps to complete the authentication
-                    process:</para>
-                <itemizedlist>
+                <title>User Authentication and Cookies</title>
+                
+                <para>
+                    The DAISY Online Delivery Protocol uses <xref linkend="term_session"/>s to maintain
+                    state between calls to a <xref linkend="term_service"/>. A <xref linkend="term_session"/> is 
+                    established when a <xref linkend="term_service"/> authenticates a <xref linkend="term_readingSystem"/>
+                    and sets an HTTP Cookie with a unique identifier for the <xref linkend="term_session"/>.
+                </para>
+                
+                <para>
+                    The steps for establishing a <xref linkend="term_session"/> are as follows:
+                </para>
+                
+                <orderedlist>
                     <listitem>
-                        <para>Verify the credentials passed by the <xref linkend="term_readingSystem"/> to the <function>
-                                <xref linkend="op_logOn"/>
-                            </function> operation.</para>
+                        <para>The <xref linkend="term_readingSystem"/> must pass the log in credentials 
+                            to the <xref linkend="term_service"/> by calling the 
+                            <function><xref linkend="op_logOn"/></function> operation.</para>
+                        <note>
+                            <para>
+                                The <xref linkend="term_serviceProvider"/> is responsible for stipulating and supplying 
+                                the credentials required to authenticate a <xref linkend="term_readingSystem"/>.
+                                A non-exhaustive list of ways to provide credentials includes: per <xref linkend="term_user"/>, 
+                                per group or class of <xref linkend="term_user"/>, or per <xref linkend="term_readingSystem"/>.
+                            </para>
+                        </note>
+                        <note>
+                            <para>
+                                The <function><xref linkend="op_logOn"/></function> operation must be called to establish a session 
+                                even if no credentials are required to access the <xref linkend="term_service"/>. 
+                            </para>
+                        </note>
                     </listitem>
                     <listitem>
-                        <para>If the authentication was successful, issue a cookie by embedding it
-                            in the Set-Cookie HTTP header, and send it to the <xref linkend="term_readingSystem"/> along
-                            with the response to the <function>logOn</function> operation.</para>
+                        <para>
+                            The <xref linkend="term_service"/> must verify the provided credentials and, if valid,
+                            issue a cookie with a unique identifier for the session and embed it in the Set-Cookie HTTP response header.
+                        </para>
                     </listitem>
-                    <!--
                     <listitem>
-                        <para>If the authentication was not successful, a cookie must not be sent
-                            along with the response.</para> 
-                            </listitem> -->
-                </itemizedlist>
+                        <para>
+                            The <xref linkend="term_service"/> must send the cookie to the <xref linkend="term_readingSystem"/>
+                            along with the successful response to the <function><xref linkend="op_logOn"/></function> operation.
+                        </para>
+                    </listitem>
+                </orderedlist>
 
-                <para>A Daisy Online <xref linkend="term_service"/> is Session-aware by design. Sessions must be tracked
-                    and managed through the use of cookies. Upon successful authentication, the
-                    <xref linkend="term_readingSystem"/> must be issued a cookie as described above. The <xref linkend="term_readingSystem"/>
-                    must send this cookie by embedding it in the Cookie HTTP header with all
-                    subsequent HTTP requests to the <xref linkend="term_service"/>. A cookie in this context is opaque i.e.
-                    the <xref linkend="term_readingSystem"/> is not required to understand the contents of the
-                    Cookie.</para>
+                <para>
+                    The <xref linkend="term_readingSystem"/> must return the <xref linkend="term_session"/> cookie with each
+                    subsequent call to the <xref linkend="term_service"/>. The <xref linkend="term_readingSystem"/> should not
+                    alter or modify the cookie in any way.
+                </para>
 
-                <para>While Basic Authentication may be used to secure content (see <xref
-                        linkend="fundamentals_protocols_basic_authentication"/>), Basic
-                    Authentication must not be used for the SOAP messages.</para>
             </section>
 
         </section>
