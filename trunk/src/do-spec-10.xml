@@ -332,7 +332,7 @@
         <section xml:id="fundamentals_contentSelectionMethods" conformance="normative"
             xreflabel="Content Selection Methods">
             <title>Content Selection Methods</title>
-            <para>This protocol supports two content selection methods:</para>
+            <para>The DAISY Online Delivery protocol supports two content selection methods:</para>
             <itemizedlist>
                 <listitem xml:id="fundamentals_contentSelectionMethod_outofband"
                     xreflabel="Out-of-band Content Selection Method">
@@ -398,7 +398,7 @@
 
             <section xml:id="fundamentals_protocols_http">
                 <title>HTTP</title>
-                <para>This specification uses <xref linkend="bib_http11"/>:</para>
+                <para>The DAISY Online Delivery protocol uses <xref linkend="bib_http11"/>:</para>
                 <itemizedlist>
                     <listitem>
                         <para>as the transport layer for all SOAP messages sent and received by a <xref linkend="term_service"/>;
@@ -557,7 +557,7 @@
                 <title>WS-I Basic Profile</title>
 
                 <para>
-                    This protocol was designed to be compliant with the requirements of 
+                    The DAISY Online Delivery protocol was designed to be compliant with the requirements of 
                     <xref linkend="bib_wsibasicprofile11"/>.
                     All conformant implementations of this protocol must also be compliant
                     with <xref linkend="bib_wsibasicprofile11"/>.
@@ -747,7 +747,7 @@
                         <xref linkend="op_logOff"/>
                     </function> operation, or it may be terminated by the <xref linkend="term_service"/>.</para>
 
-                <para>This specification does not define any behaviors regarding <xref linkend="term_service"/> termination
+                <para>This protocol does not define any behaviors regarding <xref linkend="term_service"/> termination
                     of Sessions; time out intervals, reasons for forced termination, and related
                     aspects are all defined by the implementation.</para>
 
@@ -890,7 +890,7 @@
 
                 <para>In the <link linkend="fundamentals_contentSelectionMethod_outofband"
                         >Out-of-band model</link> content selection form, content is selected using
-                    a mechanism not defined by this protocol, and not involving the Session itself.
+                    a mechanism not defined by this specification, and not involving the Session itself.
                     Through this mechanism, the <xref linkend="term_service"/>, typically prior to the Session onset, has
                     in its possession a list of Content items to offer to the User. </para>
 
