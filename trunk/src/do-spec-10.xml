@@ -329,6 +329,97 @@
     <chapter xml:id="fundamentals">
         <title>Protocol Fundamentals</title>
 
+        <section xml:id="fundamentals_serviceModels" conformance="normative"
+            xreflabel="Service Models">
+            <title>Service Models</title>
+            <para>The DAISY Online Delivery Protocol supports two basic service models:</para>
+            
+            <itemizedlist>
+                <listitem xml:id="fundamentals_serviceModel_lender" xreflabel="Lender Model">
+                    <para>a <emphasis>lender</emphasis> model, in which <xref linkend="term_content"/> is loaned
+                        or rented by a <xref linkend="term_user"/> for a fixed period of time and must be returned 
+                        to the <xref linkend="term_serviceProvider"/>; and</para>
+                </listitem>
+                <listitem xml:id="fundamentals_serviceModel_acquisition" xreflabel="Acquisition Model">
+                    <para>an <emphasis>acquisition</emphasis> model, in which the <xref linkend="term_user"/>
+                        becomes the owner of the acquired content. This model encompasses both commercial
+                        and free-of-charge <xref linkend="term_content"/>.</para>
+                        <note>
+                            <para>
+                                It is possible for a <xref linkend="term_serviceProvider"/> to use the PDTB2 specification
+                                to expire acquired <xref linkend="term_content"/> without employing a <xref linkend="fundamentals_serviceModel_lender"/>.
+                            </para>
+                        </note>
+                </listitem>
+            </itemizedlist>
+	
+	<note>
+	    <para>
+	        This protocol does not restrict the possible service models to these two definitions. Combinations and variations
+	        on the models should be possible using the <xref linkend="term_operation"/>s defined in the protocol. The
+	        <xref linkend="term_serviceProvider"/>, however, is solely responsible for ensuring that their model
+	        is compatible with the protocol.
+	    </para>
+	</note>
+
+            <section xml:id="fundamentals_serviceModels_reqs_lender">
+                <title>Basic Lender Model</title>
+                <para>A <xref linkend="term_service"/> should meet the following requirements when implementing a basic <xref linkend="fundamentals_serviceModel_lender"/>:</para>
+                <itemizedlist>
+                    <listitem>
+                        <para>
+                            It should be capable of managing the collection of <xref linkend="term_content"/> 
+                            that has been issued to a <xref linkend="term_user"/>, in particular what 
+                            <xref linkend="term_content"/> is still valid and what <xref linkend="term_content"/> has expired.
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            It should respond to the invocation of the <function><xref linkend="op_getContentList"/></function> 
+                            operation by providing a <type><xref linkend="tp_contentList"/></type> of issued or expired content 
+                            when the operation is called with an <parameter>id</parameter> parameter of <literal>issued</literal> 
+                            or <literal>expired</literal>.
+                        </para>
+                        <note>
+                            <para>
+                                All <xref linkend="term_content"/> that must be returned must remain present
+                                in the <literal>issued</literal> list until it is returned and removed the from collection
+                                list by calling the <function><xref linkend="op_returnContent"/></function> operation.
+                            </para>
+                        </note>
+                    </listitem>
+                    <listitem>
+                        <para>It should implement the <function><xref linkend="op_returnContent"/></function>
+                            operation to allow <xref linkend="term_user"/>s to return their issued <xref linkend="term_content"/>.</para>
+                    </listitem>
+                    <listitem>
+                            <remark role="todo">
+                                    TODO: no attribute specified an not clear what reference is to
+                            </remark>
+                            
+                            <para>It should set the the ??? attribute in the <type><xref linkend="tp_contentMetadata"/></type>
+		      of the issued content  to <literal>true</literal>.</para>
+                    </listitem>
+                </itemizedlist>
+            </section>
+            
+            <section xml:id="fundamentals_serviceModels_reqs_acquisition">
+                <title>Basic Acquisition Model</title>
+                <para>
+                    There is only one requirement for a <xref linkend="term_service"/> to implement a basic 
+                    <xref linkend="fundamentals_serviceModel_acquisition"/>: it should respond to calls to the 
+                    <function><xref linkend="op_getContentList"/></function> operation by providing an empty 
+                    <type><xref linkend="tp_contentList"/></type>.
+                </para>
+                <note>
+                    <para>
+                        More complex acquisition models may require the management of issued <xref linkend="term_content"/>
+                        to allow repeat downloads or resumption of failed downloads.
+                    </para>
+                </note>
+            </section>
+        </section>
+
         <section xml:id="fundamentals_contentSelectionMethods" conformance="normative"
             xreflabel="Content Selection Methods">
             <title>Content Selection Methods</title>
