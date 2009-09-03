@@ -329,97 +329,6 @@
     <chapter xml:id="fundamentals">
         <title>Protocol Fundamentals</title>
 
-        <section xml:id="fundamentals_serviceModels" conformance="normative"
-            xreflabel="Service Models">
-            <title>Service Models</title>
-            <para>The DAISY Online Delivery Protocol supports two basic service models:</para>
-            
-            <itemizedlist>
-                <listitem xml:id="fundamentals_serviceModel_lender" xreflabel="Lender Model">
-                    <para>a <emphasis>lender</emphasis> model, in which <xref linkend="term_content"/> is loaned
-                        or rented by a <xref linkend="term_user"/> for a fixed period of time and must be returned 
-                        to the <xref linkend="term_serviceProvider"/>; and</para>
-                </listitem>
-                <listitem xml:id="fundamentals_serviceModel_acquisition" xreflabel="Acquisition Model">
-                    <para>an <emphasis>acquisition</emphasis> model, in which the <xref linkend="term_user"/>
-                        becomes the owner of the acquired content. This model encompasses both commercial
-                        and free-of-charge <xref linkend="term_content"/>.</para>
-                        <note>
-                            <para>
-                                It is possible for a <xref linkend="term_serviceProvider"/> to use the PDTB2 specification
-                                to expire acquired <xref linkend="term_content"/> without employing a <xref linkend="fundamentals_serviceModel_lender"/>.
-                            </para>
-                        </note>
-                </listitem>
-            </itemizedlist>
-	
-	<note>
-	    <para>
-	        This protocol does not restrict the possible service models to these two definitions. Combinations and variations
-	        on the models should be possible using the <xref linkend="term_operation"/>s defined in the protocol. The
-	        <xref linkend="term_serviceProvider"/>, however, is solely responsible for ensuring that their model
-	        is compatible with the protocol.
-	    </para>
-	</note>
-
-            <section xml:id="fundamentals_serviceModels_reqs_lender">
-                <title>Basic Lender Model</title>
-                <para>A <xref linkend="term_service"/> should meet the following requirements when implementing a basic <xref linkend="fundamentals_serviceModel_lender"/>:</para>
-                <itemizedlist>
-                    <listitem>
-                        <para>
-                            It should be capable of managing the collection of <xref linkend="term_content"/> 
-                            that has been issued to a <xref linkend="term_user"/>, in particular what 
-                            <xref linkend="term_content"/> is still valid and what <xref linkend="term_content"/> has expired.
-                        </para>
-                    </listitem>
-                    <listitem>
-                        <para>
-                            It should respond to the invocation of the <function><xref linkend="op_getContentList"/></function> 
-                            operation by providing a <type><xref linkend="tp_contentList"/></type> of issued or expired content 
-                            when the operation is called with an <parameter>id</parameter> parameter of <literal>issued</literal> 
-                            or <literal>expired</literal>.
-                        </para>
-                        <note>
-                            <para>
-                                All <xref linkend="term_content"/> that must be returned must remain present
-                                in the <literal>issued</literal> list until it is returned and removed the from collection
-                                list by calling the <function><xref linkend="op_returnContent"/></function> operation.
-                            </para>
-                        </note>
-                    </listitem>
-                    <listitem>
-                        <para>It should implement the <function><xref linkend="op_returnContent"/></function>
-                            operation to allow <xref linkend="term_user"/>s to return their issued <xref linkend="term_content"/>.</para>
-                    </listitem>
-                    <listitem>
-                            <remark role="todo">
-                                    TODO: no attribute specified an not clear what reference is to
-                            </remark>
-                            
-                            <para>It should set the the ??? attribute in the <type><xref linkend="tp_contentMetadata"/></type>
-		      of the issued content  to <literal>true</literal>.</para>
-                    </listitem>
-                </itemizedlist>
-            </section>
-            
-            <section xml:id="fundamentals_serviceModels_reqs_acquisition">
-                <title>Basic Acquisition Model</title>
-                <para>
-                    There is only one requirement for a <xref linkend="term_service"/> to implement a basic 
-                    <xref linkend="fundamentals_serviceModel_acquisition"/>: it should respond to calls to the 
-                    <function><xref linkend="op_getContentList"/></function> operation by providing an empty 
-                    <type><xref linkend="tp_contentList"/></type>.
-                </para>
-                <note>
-                    <para>
-                        More complex acquisition models may require the management of issued <xref linkend="term_content"/>
-                        to allow repeat downloads or resumption of failed downloads.
-                    </para>
-                </note>
-            </section>
-        </section>
-
         <section xml:id="fundamentals_contentSelectionMethods" conformance="normative"
             xreflabel="Content Selection Methods">
             <title>Content Selection Methods</title>
@@ -439,7 +348,7 @@
                         <xref linkend="term_operation"/>s defined by this protocol.</para>
                 </listitem>
             </itemizedlist>
-
+            
             <para>A <xref linkend="term_serviceProvider"/> must offer <xref linkend="term_user"/>s at least 
                 one content selection method. A <xref linkend="term_service"/> is not required to support both methods.</para>
             
@@ -448,7 +357,7 @@
                 models for maximum interopability, but is only required to support
                 one model for conformance.
             </para>
-
+            
             <section xml:id="fundamentals_contentSelectionModel_reqs_outofband">
                 <title>Out-of-band Content Selection Method Requirements</title>
                 <para>A <xref linkend="term_service"/> offering the <xref linkend="fundamentals_contentSelectionMethod_outofband"/> is
@@ -474,7 +383,7 @@
                     compliant if it:</para>
                 <itemizedlist>
                     <listitem>
-                        <para>provides support for the <link linkend="fundamentals_dynamic_menus">Dynamic Menus</link> protocol feature; and</para>
+                        <para>provides support for the <link linkend="overview_dynamic_menus">Dynamic Menus</link> protocol feature; and</para>
                     </listitem>
                     <listitem>
                         <para>declares support for the <xref linkend="fundamentals_contentSelectionMethod_browse"/> in the
@@ -483,7 +392,7 @@
                 </itemizedlist>
             </section>
         </section>
-
+        
         <section xml:id="fundamentals_protocols" conformance="normative">
             <title>Underlying Protocols</title>
 
@@ -512,7 +421,7 @@
                 
                 <note>
                     <para>An established HTTP session is not a valid indicator that a <xref linkend="term_readingSystem"/> has 
-                        successfully logged on to the <xref linkend="term_service"/> (see <xref linkend="operations_session"/>).</para>
+                        successfully logged on to the <xref linkend="term_service"/> (see <xref linkend="overview_session"/>).</para>
                 </note>
 
                 <para>A <xref linkend="term_service"/> must return the appropriate HTTP status code in the HTTP response (as
@@ -732,13 +641,104 @@
 
     </chapter>
 
-    <chapter xml:id="operations" conformance="normative">
+    <chapter xml:id="overview" conformance="normative">
         <title>Protocol Overview</title>
 
-        <section xml:id="operations_session">
+        <section xml:id="overview_serviceModels" conformance="normative"
+            xreflabel="Service Models">
+            <title>Service Models</title>
+            <para>The DAISY Online Delivery Protocol supports two basic service models:</para>
+            
+            <itemizedlist>
+                <listitem xml:id="overview_serviceModel_lender" xreflabel="Lender Model">
+                    <para>a <emphasis>lender</emphasis> model, in which <xref linkend="term_content"/> is loaned
+                        or rented by a <xref linkend="term_user"/> for a fixed period of time and must be returned 
+                        to the <xref linkend="term_serviceProvider"/>; and</para>
+                </listitem>
+                <listitem xml:id="overview_serviceModel_acquisition" xreflabel="Acquisition Model">
+                    <para>an <emphasis>acquisition</emphasis> model, in which the <xref linkend="term_user"/>
+                        becomes the owner of the acquired content. This model encompasses both commercial
+                        and free-of-charge <xref linkend="term_content"/>.</para>
+                    <note>
+                        <para>
+                            It is possible for a <xref linkend="term_serviceProvider"/> to use the PDTB2 specification
+                            to expire acquired <xref linkend="term_content"/> without employing a <xref linkend="overview_serviceModel_lender"/>.
+                        </para>
+                    </note>
+                </listitem>
+            </itemizedlist>
+            
+            <note>
+                <para>
+                    This protocol does not restrict the possible service models to these two definitions. Combinations and variations
+                    on the models should be possible using the <xref linkend="term_operation"/>s defined in the protocol. The
+                    <xref linkend="term_serviceProvider"/>, however, is solely responsible for ensuring that their model
+                    is compatible with the protocol.
+                </para>
+            </note>
+            
+            <section xml:id="overview_serviceModels_reqs_lender">
+                <title>Basic Lender Model</title>
+                <para>A <xref linkend="term_service"/> should meet the following requirements when implementing a basic <xref linkend="overview_serviceModel_lender"/>:</para>
+                <itemizedlist>
+                    <listitem>
+                        <para>
+                            It should be capable of managing the collection of <xref linkend="term_content"/> 
+                            that has been issued to a <xref linkend="term_user"/>, in particular what 
+                            <xref linkend="term_content"/> is still valid and what <xref linkend="term_content"/> has expired.
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            It should respond to the invocation of the <function><xref linkend="op_getContentList"/></function> 
+                            operation by providing a <type><xref linkend="tp_contentList"/></type> of issued or expired content 
+                            when the operation is called with an <parameter>id</parameter> parameter of <literal>issued</literal> 
+                            or <literal>expired</literal>.
+                        </para>
+                        <note>
+                            <para>
+                                All <xref linkend="term_content"/> that must be returned must remain present
+                                in the <literal>issued</literal> list until it is returned and removed the from collection
+                                list by calling the <function><xref linkend="op_returnContent"/></function> operation.
+                            </para>
+                        </note>
+                    </listitem>
+                    <listitem>
+                        <para>It should implement the <function><xref linkend="op_returnContent"/></function>
+                            operation to allow <xref linkend="term_user"/>s to return their issued <xref linkend="term_content"/>.</para>
+                    </listitem>
+                    <listitem>
+                        <remark role="todo">
+                            TODO: no attribute specified an not clear what reference is to
+                        </remark>
+                        
+                        <para>It should set the the ??? attribute in the <type><xref linkend="tp_contentMetadata"/></type>
+                            of the issued content  to <literal>true</literal>.</para>
+                    </listitem>
+                </itemizedlist>
+            </section>
+            
+            <section xml:id="overview_serviceModels_reqs_acquisition">
+                <title>Basic Acquisition Model</title>
+                <para>
+                    There is only one requirement for a <xref linkend="term_service"/> to implement a basic 
+                    <xref linkend="overview_serviceModel_acquisition"/>: it should respond to calls to the 
+                    <function><xref linkend="op_getContentList"/></function> operation by providing an empty 
+                    <type><xref linkend="tp_contentList"/></type>.
+                </para>
+                <note>
+                    <para>
+                        More complex acquisition models may require the management of issued <xref linkend="term_content"/>
+                        to allow repeat downloads or resumption of failed downloads.
+                    </para>
+                </note>
+            </section>
+        </section>
+        
+         <section xml:id="overview_session">
             <title>Session Management and Authentication</title>
 
-            <section xml:id="operations_session_duration">
+            <section xml:id="overview_session_duration">
                 <title>Session Duration</title>
                 <para role="definiton" xml:id="def_sessionDuration"> A <xref linkend="term_session"
                     /> begins after a successful <function>
@@ -757,7 +757,7 @@
                     experience.</para>
             </section>
 
-            <section xml:id="operations_session_initializationSequence">
+            <section xml:id="overview_session_initializationSequence">
                 <title>Session Initialization Sequence</title>
 
                 <para role="definition" xml:id="def_sessionInitializationSequence"
@@ -810,7 +810,7 @@
                         System, or any other entity specified by a <xref linkend="term_serviceProvider"/>.</para>
                 </note>
 
-                <section xml:id="operations_session_initializationExamples"
+                <section xml:id="overview_session_initializationExamples"
                     conformance="informative">
                     <title>Session Initialization Examples</title>
                     <example>
@@ -854,7 +854,7 @@
                                     </function> operation, retrieving an <type>
                                         <xref linkend="tp_announcements"/>
                                     </type> type in return. See further <xref
-                                        linkend="operations_service_announcements"/>.</para>
+                                        linkend="overview_service_announcements"/>.</para>
                                 <!-- <programlisting><xi:include href="./samples/initialization-serviceAnnouncements.xml" parse="text"/></programlisting> -->
                             </listitem>
                         </orderedlist>
@@ -868,7 +868,7 @@
                 </section>
             </section>
             <!--
-            <section xml:id="operations_session_attributes">
+            <section xml:id="overview_session_attributes">
                 <title>Service and Reading System Attributes</title>
                 <para>
                     <remark role="todo">TODO explain details of serviceAttributes and
@@ -878,14 +878,14 @@
             </section> -->
         </section>
 
-        <section xml:id="operations_content_selection">
+        <section xml:id="overview_content_selection">
             <title>Content Selection</title>
             <para>Depending on the <link linkend="fundamentals_contentSelectionMethods">content
                     provision model</link> employed, Content selection (e.g. the mechanism with
                 which the user selects one or several content items to request issuance and transfer
                 of) is performed using two distinct approaches:</para>
 
-            <section xml:id="operations_content_selection_outofband">
+            <section xml:id="overview_content_selection_outofband">
                 <title>Content Selection using the Out-of-band model</title>
 
                 <para>In the <link linkend="fundamentals_contentSelectionMethod_outofband"
@@ -899,7 +899,7 @@
                         <literal>new</literal> as the value of the <parameter>id</parameter> parameter,
                     retrieving a <xref linkend="tp_contentList"/> in return.</para>
 
-                <section xml:id="operations_content_selection_outofband_examples">
+                <section xml:id="overview_content_selection_outofband_examples">
                     <title>Out-of-band Model Content Selection Example</title>
                     <example>
                         <title>Out-of-band Model Content Selection Example: Daily newspaper
@@ -934,7 +934,7 @@
                                     System may have an option to support automation of this step in
                                     subscription/cyclic delivery contexts), the <xref linkend="term_readingSystem"/>
                                     requests issuance and transfer of the Content. See further <xref
-                                        linkend="operations_content_issuing"/>.</para>
+                                        linkend="overview_content_issuing"/>.</para>
                             </listitem>
                         </orderedlist>
                     </example>
@@ -950,11 +950,11 @@
                     </note>
                 </section>
             </section>
-            <section xml:id="operations_content_selection_browse">
+            <section xml:id="overview_content_selection_browse">
                 <title>Content Selection using the Browse model</title>
                 <para>In the <link linkend="fundamentals_contentSelectionMethod_browse">Browse
                         model</link> content selection model, content is selected dynamically within
-                    the Session using the <link linkend="fundamentals_dynamic_menus">Dynamic
+                    the Session using the <link linkend="overview_dynamic_menus">Dynamic
                         Menu</link> feature of this protocol. Refer to <xref
                         linkend="appendixDynamicMenuExamples_search"/> and <xref
                         linkend="appendixDynamicMenuExamples_retrieve"/> for examples of Content
@@ -973,15 +973,15 @@
             </section>
         </section>
 
-        <section xml:id="operations_content_issuing">
+        <section xml:id="overview_content_issuing">
             <title>Issuing and transfer of content</title>
             <para>Given a <xref linkend="tp_contentList"/>, retrieved using one of the methods
-                described in <xref linkend="operations_content_selection"/>, the <xref linkend="term_readingSystem"/> can
+                described in <xref linkend="overview_content_selection"/>, the <xref linkend="term_readingSystem"/> can
                 proceed to request issuance of selected content items within the
                     <type>contentList</type>, followed by download or streaming of the resources
                 that constitute the content. </para>
 
-            <section xml:id="operations_content_issuing_retrieval_sequence">
+            <section xml:id="overview_content_issuing_retrieval_sequence">
                 <title>Content Retrieval Sequence</title>
                 <para xml:id="def_contentRetrievalSequence" xreflabel="Content Retrieval Sequence">
                     To request issuance of and retrieve the resources of a Content item, a Reading
@@ -1036,7 +1036,7 @@
                     possibly spanning several Sessions.</para>
             </section>
 
-            <section xml:id="operations_content_issuing_retrieval_sequence_example"
+            <section xml:id="overview_content_issuing_retrieval_sequence_example"
                 conformance="informative">
                 <title>Content Retrieval Example</title>
                 <example>
@@ -1080,7 +1080,7 @@
 
                 <note>
                     <para>Content <xref linkend="tp_sample"/>s (see the <type>contentMetaData</type>
-                        in <xref linkend="operations_content_issuing_retrieval_sequence_example"/>)
+                        in <xref linkend="overview_content_issuing_retrieval_sequence_example"/>)
                         are retrieved using the same basic principle as in Content retrieval, with
                         the exception that <xref linkend="term_readingSystem"/>s must not call <xref
                             linkend="op_issueContent"/> when requesting a sample. </para>
@@ -1092,7 +1092,7 @@
             </section>
 
 
-            <section xml:id="operations_content_download">
+            <section xml:id="overview_content_download">
                 <title>Downloading and streaming of content</title>
                 <para>Once the <xref linkend="term_readingSystem"/> has retrieved the list of <type>resources</type> for
                     an item of content, it may begin downloading or streaming the resources using
@@ -1121,7 +1121,7 @@
                     />.</para>
             </section>
 
-            <section xml:id="operations_content_installments">
+            <section xml:id="overview_content_installments">
                 <title>Publishing updates or installments</title>
                 <para><type>contentItems</type> in a <type>contentList</type> have an optional
                     attribute, <code>lastModifiedDate</code>, which indicates that last time the
@@ -1138,7 +1138,7 @@
                     progressively updating the same content item. </para>
             </section>
 
-            <section xml:id="operations_content_issuing_pdtb">
+            <section xml:id="overview_content_issuing_pdtb">
                 <title>Rights management</title>
                 <para>A <xref linkend="term_service"/> may provide all or parts of its content collection in protected
                     form. This version of this specification allows the <xref linkend="bib_pdtb2"/>
@@ -1230,7 +1230,7 @@
                 </example>
             </section>
         </section>
-        <section xml:id="operations_content_return">
+        <section xml:id="overview_content_return">
             <title>Content Return</title>
             <para>Content return is employed in the case where a Reading System has content issued
                 from a Service that employs a library or rental model, and where the given Content item issued from that
@@ -1248,7 +1248,7 @@
 				doesn't have the content? what about streaming? add bit regarding discouraged
 				use of expired.</remark></para>
 
-            <section xml:id="operations_content_return_example" conformance="informative">
+            <section xml:id="overview_content_return_example" conformance="informative">
                 <title>Content Return Example</title>
                 <example>
                     <title>Content Return Example</title>
@@ -1301,7 +1301,7 @@
         </section>
 
 
-        <section xml:id="operations_service_announcements">
+        <section xml:id="overview_service_announcements">
             <title>Service Announcements</title>
             <para><remark role="todo">TODO fix this introduction</remark> Service Announcements are
                 used as a means for the <xref linkend="term_service"/> to provide various types of information to the User.
@@ -1340,7 +1340,7 @@
                     </function>, made during the same Session. </para>
             </note>
 
-            <section xml:id="operations_service_announcements_example" conformance="informative">
+            <section xml:id="overview_service_announcements_example" conformance="informative">
                 <title>Service Announcements Example</title>
                 <example>
                     <title>Service Announcements </title>
@@ -1369,7 +1369,7 @@
 
         </section>
 
-        <section xml:id="operations_bookmarks">
+        <section xml:id="overview_bookmarks">
             <title>Bookmarks and Last Reading Position</title>
 
             <para>If a <xref linkend="term_service"/> supports the <link linkend="op_getServiceAttributes">optional
@@ -1390,7 +1390,7 @@
                     linkend="bib_z3986-2005-bkmk"/> constitutes the normative reference regarding
                 the use and semantics of this type.</para>
 
-            <!--<section xml:id="operations_bookmarks_otherContent" conformance="informative">
+            <!--<section xml:id="overview_bookmarks_otherContent" conformance="informative">
                 <title>Using the Portable Bookmarks and Highlights grammar for content other than
                     ANSI/NISO Z39.86</title> -->
             <note>
@@ -1416,7 +1416,7 @@
                     submitted to the <xref linkend="term_service"/> as part of the <xref linkend="op_setBookmarks"/>
                     operation.</para>
             </note>
-            <section xml:id="operations_bookmarks_example" conformance="informative">
+            <section xml:id="overview_bookmarks_example" conformance="informative">
                 <title>Bookmarks Example</title>
                 <example>
                     <title>Moving Bookmarks across Reading Systems</title>
@@ -1463,7 +1463,7 @@
 
         </section>
  
-        <section xml:id="fundamentals_dynamic_menus" conformance="informative">
+        <section xml:id="overview_dynamic_menus" conformance="informative">
             <title>Dynamic Menus</title>
             
             <para>The Dynamic Menu feature of this protocol enables a <xref linkend="term_service"/>
@@ -1491,10 +1491,10 @@
                 Dynamic Menu feature. For implementation examples of how to employ this feature,
                 refer to <xref linkend="appendixDynamicMenuExamples"/>.</para>
             
-            <section xml:id="fundamentals_dynamic_menus_concepts">
+            <section xml:id="overview_dynamic_menus_concepts">
                 <title>Fundamental Concepts of the Dynamic Menu Feature</title>
                 
-                <section xml:id="fundamentals_dynamic_menus_concept1">
+                <section xml:id="overview_dynamic_menus_concept1">
                     <title>A Menu System is a series of interconnected questions</title>
                     
                     <para>The Dynamic Menu feature requires the implementation of the single
@@ -1567,7 +1567,7 @@
                             linkend="appendixDynamicMenuExamples_profileUpdate"/> for concrete
                         examples on "logical ends".</para>
                 </section>
-                <section xml:id="fundamentals_dynamic_menus_concept2">
+                <section xml:id="overview_dynamic_menus_concept2">
                     <title>A Menu System has a root question</title>
                     
                     <para>A Menu System has a root question - the first question in the series of
@@ -1587,7 +1587,7 @@
                                 linkend="tp_userResponse"/>.</para>
                     </note>
                 </section>
-                <section xml:id="fundamentals_dynamic_menus_concept3">
+                <section xml:id="overview_dynamic_menus_concept3">
                     <title>The response determines the next question</title>
                     
                     <para>In a menu system, a User's response to a question determines what question
@@ -1616,11 +1616,11 @@
         </section>
         
         <!--
-        <section xml:id="operations_diagnostics">
+        <section xml:id="overview_diagnostics">
             <title>Diagnostics and Error Handling</title>
             <para><remark role="todo"></remark></para>
         </section>
-        <section xml:id="operations_complete_session_examples">
+        <section xml:id="overview_complete_session_examples">
             <title>Complete session examples</title>
             <para>
                 <remark role="todo">May be overkill, add last or remove.</remark>

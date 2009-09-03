@@ -1085,7 +1085,7 @@
 					values are used).</db:para>
 				<db:para>The list can also be of a 'dynamic' type, typically being exposed by the
 					Service as the result of a <db:link
-						linkend="operations_content_selection_browse">dynamic menu search</db:link>
+						linkend="overview_content_selection_browse">dynamic menu search</db:link>
 					operation sequence. In this case, the <db:parameter>id</db:parameter> value used
 					to refer to the list is provided in the return type of a previous operation (See
 					for example <db:xref linkend="tp_questions"/>). </db:para>
