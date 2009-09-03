@@ -5,10 +5,6 @@
     <model>BROWSE</model>
     <model>OUT_OF_BAND</model>
   </supportedContentSelectionModels>
-  <supportedServiceTypes>
-    <type>LIBRARY</type>
-    <type>SHOP</type>
-  </supportedServiceTypes>
   <supportsServerSideBack>true</supportsServerSideBack>
   <supportsSearch>true</supportsSearch>
   <supportedUplinkAudioCodecs>

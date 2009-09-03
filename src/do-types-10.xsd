@@ -1257,46 +1257,6 @@
 					</xs:complexType>
 				</xs:element>
 
-				<xs:element name="supportedServiceTypes" minOccurs="1" maxOccurs="1">
-					<xs:annotation>
-						<xs:documentation>
-							<db:para role="desc">Specifies which <db:xref
-									linkend="fundamentals_serviceModels"/> are offered by this
-								Service. A Service must support at least one of the two Services
-								types.</db:para>
-						</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="type" minOccurs="1" maxOccurs="2">
-								<xs:simpleType>
-									<xs:restriction base="xs:string">
-										<xs:enumeration value="LIBRARY">
-											<xs:annotation>
-												<xs:documentation>
-												<db:para role="desc">This service offers the
-												<db:xref
-												linkend="fundamentals_serviceModel_lender"
-												/>.</db:para>
-												</xs:documentation>
-											</xs:annotation>
-										</xs:enumeration>
-										<xs:enumeration value="SHOP">
-											<xs:annotation>
-												<xs:documentation>
-												<db:para role="desc">This service offers the
-												<db:xref linkend="fundamentals_serviceModel_acquisition"
-												/>.</db:para>
-												</xs:documentation>
-											</xs:annotation>
-										</xs:enumeration>
-									</xs:restriction>
-								</xs:simpleType>
-							</xs:element>
-						</xs:sequence>
-					</xs:complexType>
-				</xs:element>
-
 				<xs:element name="supportsServerSideBack" type="xs:boolean" minOccurs="1"
 					maxOccurs="1">
 					<xs:annotation>

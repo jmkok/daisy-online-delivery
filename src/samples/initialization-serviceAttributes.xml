@@ -13,9 +13,6 @@
         <model>OUT_OF_BAND</model>
         <model>BROWSE</model>
     </supportedContentSelectionModels>
-    <supportedServiceTypes>
-        <type>LIBRARY</type>
-    </supportedServiceTypes>
     <supportsServerSideBack>false</supportsServerSideBack>
     <supportsSearch>true</supportsSearch>
     <supportedUplinkAudioCodecs></supportedUplinkAudioCodecs>

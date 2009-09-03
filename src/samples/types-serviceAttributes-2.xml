@@ -4,9 +4,6 @@
   <supportedContentSelectionModels>
     <model>OUT_OF_BAND</model>
   </supportedContentSelectionModels>
-  <supportedServiceTypes>
-    <type>LIBRARY</type>
-  </supportedServiceTypes>
   <supportsServerSideBack>false</supportsServerSideBack>
   <supportsSearch>false</supportsSearch>
   <supportedUplinkAudioCodecs>
