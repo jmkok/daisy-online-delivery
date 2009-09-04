@@ -9,23 +9,6 @@
         <releaseinfo>Working Group Draft</releaseinfo>
         <pubdate>28 August 2009</pubdate>
         
-        <!--
-        <editor>
-            <personname>Kenny Johar</personname>
-            <affiliation>
-                <orgname>Vision Australia</orgname>
-            </affiliation>
-            <email>kenny.johar@visionaustralia.org</email>
-        </editor>
-        <editor>
-            <personname>Markus Gylling</personname>
-            <affiliation>
-                <orgname>DAISY Consortium</orgname>
-            </affiliation>
-            <email>mgylling@daisy.org</email>
-        </editor>
-        -->
-        
         <annotation role="specLinks">
             <para>
                 <remark role="todo">TODO: add the correct links</remark>
@@ -751,8 +734,8 @@
                  </orderedlist>
                  
                  <para> 
-                     After a successful log on response has been returned, the <xref linkend="term_readingSystem"/> must 
-                     next invoke the following operations in the given sequence before invoking any other protocol operations:
+                     After receiving a successful log on response, the <xref linkend="term_readingSystem"/> must 
+                     invoke the following operations in the given sequence:
                  </para>
                  
                  <orderedlist>
@@ -774,94 +757,28 @@
                  
                  <para>
                      If a <xref linkend="term_service"/> returns a <link linkend="apiReferenceFaults">Fault</link> during
-                     any of these initialization steps, or if a required return values is not given, then the <xref linkend="term_readingSystem"/>
-                     must attempt to re-initialize the session or abort the log on process.
+                     any of the initialization steps, or if a required return value is not provided, the <xref linkend="term_readingSystem"/>
+                     must attempt to re-initialize the <xref linkend="term_session"/> or abort the log on process.
                  </para>
                  
                  <note>
                      <para>
-                         How many attempts are made to re-initialize a <xref linkend="term_session"/> before aborting, how long to wait 
-                         between failed log on attempts and how to inform a <xref linkend="term_user"/> of a failed log on are 
-                         <xref linkend="term_readingSystem"/> behaviours and not specified by this protocol.
+                         This protocol does not specify what <xref linkend="term_readingSystem"/> behaviors must occur after a
+                         log on attempt fails. The <xref linkend="term_readingSystem"/> can alert the user, attempt to reconnect
+                         automatically or take whatever action is particular to that device.
                      </para>
                  </note>
                  
                  <para>
-                     A <xref linkend="term_service"/> must throw a <errorname>
-                     <xref linkend="ft_invalidOperationFault"/>
-                 </errorname> if a <xref linkend="term_readingSystem"/> does not honor the above initialization
-                     sequence.
+                     A <xref linkend="term_service"/> must return an <errorname><xref linkend="ft_invalidOperationFault"/></errorname> 
+                     if a <xref linkend="term_readingSystem"/> does not properly execute the initialization sequence outlined in this section.
                  </para>
                  
-                 <note>
-                     <para>This specification does not stipulate the nature of the credentials used
-                         to authenticate a <xref linkend="term_readingSystem"/>. The credentials used in this context may
-                         be credentials associated to a single User, a group of Users, a Reading
-                         System, or any other entity specified by a <xref linkend="term_serviceProvider"/>.
-                     </para>
-                 </note>
-                 
                  <para>
-                     After a successful log on and initialization sequence has been completed, a 
+                     After completing a successful log on and initialization sequence, a 
                      <xref linkend="term_readingSystem"/> can invoke any operations defined by this specification.
                  </para>
-                 
-                 <section xml:id="overview_session_initializationExamples"
-                     conformance="informative">
-                     <title>Session Initialization Examples</title>
-                     <example>
-                         <title>Successful Session Initialization Sequence</title>
-                         <orderedlist>
-                             <listitem>
-                                 <para>[Required] The <xref linkend="term_readingSystem"/> invokes the <function>
-                                     <xref linkend="op_logOn"/>
-                                 </function> operation, passing the following credentials:</para>
-                                 <programlisting><xi:include href="./samples/initialization-logon.xml" parse="text"/></programlisting>
-                                 <para>The <xref linkend="term_service"/> returns <constant>true</constant> to signal that
-                                     the logon was successful.</para>
-                             </listitem>
-                             <listitem>
-                                 <para>[Required] The <xref linkend="term_readingSystem"/> invokes the <function>
-                                     <xref linkend="op_getServiceAttributes"/>
-                                 </function> operation. The <xref linkend="term_service"/> returns a
-                                     <type>serviceAttributes</type> type:</para>
-                                 <programlisting><xi:include href="./samples/initialization-serviceAttributes.xml" parse="text"/></programlisting>
-                             </listitem>
-                             <listitem>
-                                 <para>[Required] The <xref linkend="term_readingSystem"/> invokes the <function>
-                                     <xref linkend="op_setReadingSystemAttributes"/>
-                                 </function> operation, passing a <type>
-                                     <xref linkend="tp_readingSystemAttributes"/>
-                                 </type> type:</para>
-                                 <programlisting><xi:include href="./samples/initialization-readingSystemAttributes.xml" parse="text"/></programlisting>
-                                 <para>The <xref linkend="def_sessionInitializationSequence"/> is now
-                                     complete, and the <xref linkend="term_readingSystem"/> may commence by invoking other
-                                     operations in the protocol. At this point, <xref linkend="term_readingSystem"/>s
-                                     should invoke the <function>
-                                         <xref linkend="op_getServiceAnnouncements"/>
-                                     </function> operation to retrieve any service announcements
-                                     awaiting the User's attention.</para>
-                             </listitem>
-                             <listitem>
-                                 <para>[Optional] Providing that the <xref linkend="term_service"/> supports this <link
-                                     linkend="op_getServiceAttributes">optional operation</link>,
-                                     the <xref linkend="term_readingSystem"/> invokes the <function>
-                                         <xref linkend="op_getServiceAnnouncements"/>
-                                     </function> operation, retrieving an <type>
-                                         <xref linkend="tp_announcements"/>
-                                     </type> type in return. See further <xref
-                                         linkend="overview_service_announcements"/>.</para>
-                                 <!-- <programlisting><xi:include href="./samples/initialization-serviceAnnouncements.xml" parse="text"/></programlisting> -->
-                             </listitem>
-                         </orderedlist>
-                     </example>
-                     <note>
-                         <para>The <xref linkend="op_getServiceAttributes"/> and <xref
-                             linkend="op_setReadingSystemAttributes"/> operations may be called
-                             additional times during a Session to notify changes of properties in the
-                             <xref linkend="term_service"/> or <xref linkend="term_readingSystem"/>.</para>
-                     </note>
-                 </section>
+                              
              </section>
              
              <section xml:id="overview_session_duration">
@@ -882,15 +799,6 @@
                     experience.</para>
             </section>
 
-            <!--
-            <section xml:id="overview_session_attributes">
-                <title>Service and Reading System Attributes</title>
-                <para>
-                    <remark role="todo">TODO explain details of serviceAttributes and
-                        readingSystemAttributes, make clear that they are session-based</remark>
-                </para>
-
-            </section> -->
         </section>
 
         <section xml:id="overview_content_selection">
@@ -914,57 +822,9 @@
                         <literal>new</literal> as the value of the <parameter>id</parameter> parameter,
                     retrieving a <xref linkend="tp_contentList"/> in return.</para>
 
-                <section xml:id="overview_content_selection_outofband_examples">
-                    <title>Out-of-band Model Content Selection Example</title>
-                    <example>
-                        <title>Out-of-band Model Content Selection Example: Daily newspaper
-                            subscription</title>
-                        <orderedlist>
-                            <listitem>
-                                <para>Using an out-of-band mechanism such as a web form or
-                                    telephone, a User has subscribed to a daily newspaper service.
-                                    The service is offered in a "push" style, e.g. the newspaper is
-                                    intended to be available in the Users <xref linkend="term_readingSystem"/> each
-                                    morning, without the User necessarily having to explicitly
-                                    identify and request the issuance and transfer of each
-                                    individual issue.</para>
-                            </listitem>
-                            <listitem>
-                                <para>The Reading Device invokes the <xref
-                                        linkend="op_getContentList"/> operation, passing the value
-                                        <literal>new</literal> as the value of the
-                                        <parameter>id</parameter> parameter. The invocation is
-                                    either triggered by an explicit User interaction with the
-                                    <xref linkend="term_readingSystem"/> user interface, or by a <xref linkend="term_readingSystem"/>-specific
-                                    timer-based feature set to make invocations of this operation
-                                    automatically at some interval.</para>
-                            </listitem>
-                            <listitem>
-                                <para>The <xref linkend="term_service"/> returns a <xref linkend="tp_contentList"/> type
-                                    containing the Content items offered:</para>
-                                <programlisting><xi:include href="./samples/contentSelection-subscr.xml" parse="text"/></programlisting>
-                            </listitem>
-                            <listitem>
-                                <para>Either with or without explicit User interaction (the Reading
-                                    System may have an option to support automation of this step in
-                                    subscription/cyclic delivery contexts), the <xref linkend="term_readingSystem"/>
-                                    requests issuance and transfer of the Content. See further <xref
-                                        linkend="overview_content_issuing"/>.</para>
-                            </listitem>
-                        </orderedlist>
-                    </example>
-                    <note>
-                        <para>A <xref linkend="term_service"/> declares whether it supports Content selection using the
-                            Out-of-band model in the <type>
-                                <xref linkend="tp_supportedContentSelectionModels"/>
-                            </type> element in the <type>
-                                <xref linkend="tp_serviceAttributes"/>
-                            </type> type returned by the <function>
-                                <xref linkend="op_getServiceAttributes"/>
-                            </function> operation.</para>
-                    </note>
-                </section>
             </section>
+            
+            
             <section xml:id="overview_content_selection_browse">
                 <title>Content Selection using the Browse model</title>
                 <para>In the <link linkend="fundamentals_contentSelectionMethod_browse">Browse
@@ -1049,61 +909,6 @@
                     Content item. <xref linkend="term_serviceProvider"/>s may allow multiple subsequent
                         <function>getContentResources</function> invocations for the same content,
                     possibly spanning several Sessions.</para>
-            </section>
-
-            <section xml:id="overview_content_issuing_retrieval_sequence_example"
-                conformance="informative">
-                <title>Content Retrieval Example</title>
-                <example>
-                    <title>Content Retrieval</title>
-                    <para>Given the <xref linkend="term_contentIdentifier"/>
-                        <varname>uk-rnib-001</varname>, initially retrieved from the
-                            <literal>id</literal> attribute on a <type>contentItem</type> in a <xref
-                            linkend="tp_contentList"/>:</para>
-                    <orderedlist>
-                        <listitem>
-                            <para>[Required] The <xref linkend="term_readingSystem"/> invokes the <function>
-                                    <xref linkend="op_getContentMetadata"/>
-                                </function> operation using <literal>uk-rnib-001</literal> as the
-                                value of the <parameter>contentID</parameter> parameter, which
-                                returns a <xref linkend="tp_contentMetadata"/> type, containing
-                                content metadata and a sample.</para>
-                            <programlisting><xi:include href="./samples/retrieval-contentMetadata.xml" parse="text"/></programlisting>
-                        </listitem>
-                        <listitem>
-                            <para>[Required] For content that the User requests issuance of, the
-                                <xref linkend="term_readingSystem"/> invokes the <xref linkend="op_issueContent"/>
-                                operation, using <literal>uk-rnib-001</literal> as the value of the
-                                    <parameter>contentID</parameter>.</para>
-                            <programlisting><xi:include href="./samples/retrieval-issueContent.xml" parse="text"/></programlisting>
-                            <para>To signal that the Content was issued, the <xref linkend="term_service"/> returns
-                                    <constant>true</constant>.</para>
-                        </listitem>
-                        <listitem>
-                            <para>[Optional] At this point the <xref linkend="term_readingSystem"/> may call other
-                                operations. The current Session may be terminated, and a new session
-                                initiated.</para>
-                        </listitem>
-                        <listitem>
-                            <para>[Required] The <xref linkend="term_readingSystem"/> invokes the <xref
-                                    linkend="op_getContentResources"/> operation, which returns a
-                                    <xref linkend="tp_resources"/> type:</para>
-                            <programlisting><xi:include href="./samples/retrieval-resources.xml" parse="text"/></programlisting>
-                        </listitem>
-                    </orderedlist>
-                </example>
-
-                <note>
-                    <para>Content <xref linkend="tp_sample"/>s (see the <type>contentMetaData</type>
-                        in <xref linkend="overview_content_issuing_retrieval_sequence_example"/>)
-                        are retrieved using the same basic principle as in Content retrieval, with
-                        the exception that <xref linkend="term_readingSystem"/>s must not call <xref
-                            linkend="op_issueContent"/> when requesting a sample. </para>
-                    <para>A sample is retrieved by invoking the <xref
-                            linkend="op_getContentResources"/> operation, passing the ID of the
-                        sample, as given in the <type>contentMetadata</type> type.</para>
-                </note>
-
             </section>
 
 
@@ -1263,56 +1068,6 @@
 				doesn't have the content? what about streaming? add bit regarding discouraged
 				use of expired.</remark></para>
 
-            <section xml:id="overview_content_return_example" conformance="informative">
-                <title>Content Return Example</title>
-                <example>
-                    <title>Content Return Example</title>
-                    <orderedlist>
-                        <listitem>
-                            <para>[Required] The <xref linkend="term_readingSystem"/> invokes the <function>
-                                    <xref linkend="op_getContentList"/>
-                                </function> operation with the identifier
-                                <literal>expired</literal>. The <xref linkend="term_service"/> returns a <xref
-                                    linkend="tp_contentList"/> containing the Content items that has
-                                expired.</para>
-                            <programlisting><xi:include href="./samples/return-contentList.xml" parse="text"/></programlisting>
-                            <para>(Note that the <literal>id</literal> value of the
-                                    <type>contentItem</type> elements in the list define the <xref
-                                    linkend="term_contentIdentifier"/> of the Content.)</para>
-                        </listitem>
-                        <listitem>
-                            <para>[Required] For each of the Content items in the returned list, the
-                                <xref linkend="term_readingSystem"/> deletes the corresponding resources from its local
-                                file system. </para>
-                        </listitem>
-                        <listitem>
-                            <para>[Required] For each of the Content items in the returned list, the
-                                <xref linkend="term_readingSystem"/> invokes the <xref linkend="op_returnContent"/>
-                                operation, passing the <xref linkend="term_contentIdentifier"
-                                />.</para>
-                            <!--
-                            <programlisting><xi:include href="./samples/return-return1.xml" parse="text"/></programlisting>
-                            <para> followed by </para>
-                            <programlisting><xi:include href="./samples/return-return2.xml" parse="text"/></programlisting> -->
-                        </listitem>
-                        <listitem>
-                            <para>[Required] For each of the <xref linkend="op_returnContent"/>
-                                invocations, the <xref linkend="term_service"/> returns <literal>true</literal> to signal
-                                that the Content item was successfully returned.</para>
-                        </listitem>
-                    </orderedlist>
-                </example>
-                <note>
-                    <para>A <xref linkend="term_readingSystem"/> may invoke <function>
-                            <xref linkend="op_returnContent"/>
-                        </function> on Content that has not yet expired, e.g. invoke
-                            <function>returnContent</function> without a previous invocation of
-                            <xref linkend="op_getContentList"/> with the <literal>expired</literal>
-                        identifier. The same requirements on resource deletion as specified above
-                        holds in this case.</para>
-                </note>
-            </section>
-
         </section>
 
 
@@ -1354,33 +1109,6 @@
                         <xref linkend="op_getServiceAnnouncements"/>
                     </function>, made during the same Session. </para>
             </note>
-
-            <section xml:id="overview_service_announcements_example" conformance="informative">
-                <title>Service Announcements Example</title>
-                <example>
-                    <title>Service Announcements </title>
-                    <orderedlist>
-                        <listitem>
-                            <para>[Optional] The <xref linkend="term_readingSystem"/> invokes the <function>
-                                    <xref linkend="op_getServiceAnnouncements"/>
-                                </function> operation, retrieving a <xref linkend="tp_announcements"
-                                /> type.</para>
-                            <programlisting><xi:include href="./samples/announcements-retrieval.xml" parse="text"/></programlisting>
-                        </listitem>
-                        <listitem>
-                            <para>The user consumes the first and second of the three
-                                messages.</para>
-                        </listitem>
-                        <listitem>
-                            <para>[Optional] The <xref linkend="term_readingSystem"/> invokes the <function>
-                                    <xref linkend="op_markAnnouncementsAsRead"/>
-                                </function> operation, signaling that the first and second
-                                announcements were consumed.</para>
-                            <programlisting><xi:include href="./samples/announcements-markAsRead.xml" parse="text"/></programlisting>
-                        </listitem>
-                    </orderedlist>
-                </example>
-            </section>
 
         </section>
 
@@ -1431,50 +1159,6 @@
                     submitted to the <xref linkend="term_service"/> as part of the <xref linkend="op_setBookmarks"/>
                     operation.</para>
             </note>
-            <section xml:id="overview_bookmarks_example" conformance="informative">
-                <title>Bookmarks Example</title>
-                <example>
-                    <title>Moving Bookmarks across Reading Systems</title>
-                    <para>In this example a User wishes to transfer the bookmarks of a Content item
-                        between two <xref linkend="term_readingSystem"/>s.</para>
-
-                    <para>The example assumes that the <xref linkend="term_service"/> allows the particular Content to be
-                        issued to multiple <xref linkend="term_readingSystem"/>s. It further assumes that both Reading
-                        Systems and the <xref linkend="term_service"/> support the <xref linkend="op_getBookmarks"/> and
-                            <xref linkend="op_setBookmarks"/> operations. Note that the <xref linkend="term_service"/>
-                        declares whether it supports these operations in the <xref
-                            linkend="tp_serviceAttributes"/> type, retrieved by the <xref
-                            linkend="op_getServiceAttributes"/> operation.</para>
-
-                    <orderedlist>
-                        <listitem>
-                            <para>The User, currently at the office, finishes reading a book with
-                                the <xref linkend="term_contentIdentifier"/>
-                                <literal>us-rfbd-JT065</literal>. The User activates the "save
-                                bookmarks to service" feature of a software-based Reading
-                                System.</para>
-                        </listitem>
-                        <listitem>
-                            <para>The <xref linkend="term_readingSystem"/> creates a <xref linkend="tp_bookmarkSet"/>
-                                type:
-                                <programlisting><xi:include href="./samples/bookmarks.xml" parse="text"/></programlisting>
-                                ... and then invokes the <xref linkend="op_setBookmarks"/>
-                                operation, passing the <xref linkend="term_contentIdentifier"/> and
-                                the <type>bookmarkSet</type> type as parameters.</para>
-                        </listitem>
-                        <listitem>
-                            <para>The user goes home, logs in to the same <xref linkend="term_service"/>, and opens the
-                                Content with Content Identifier <literal>us-rfbd-JT065</literal> on
-                                a portable <xref linkend="term_readingSystem"/>.</para>
-                            <para>The user activates the "load bookmarks from service" feature on
-                                the <xref linkend="term_readingSystem"/>. The <xref linkend="term_readingSystem"/> invokes the <xref
-                                    linkend="op_getBookmarks"/> operation, passing the Content
-                                Identifier as a parameter. The <xref linkend="term_service"/> returns the exact same
-                                    <type>bookmarkSet</type> that was stored previously.</para>
-                        </listitem>
-                    </orderedlist>
-                </example>
-            </section>
 
         </section>
  
