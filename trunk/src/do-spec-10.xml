@@ -763,7 +763,7 @@
                  
                  <note>
                      <para>
-                         This protocol does not specify what <xref linkend="term_readingSystem"/> behaviors must occur after a
+                         This protocol does not define what <xref linkend="term_readingSystem"/> behaviors must occur after a
                          log on attempt fails. The <xref linkend="term_readingSystem"/> can alert the user, attempt to reconnect
                          automatically or take whatever action is particular to that device.
                      </para>
@@ -783,20 +783,27 @@
              
              <section xml:id="overview_session_duration">
                 <title>Session Duration</title>
-                <para role="definiton" xml:id="def_sessionDuration"> A <xref linkend="term_session"/> begins after a successful <function>
-                        <xref linkend="op_logOn"/>
-                    </function> operation. The session ends after the <xref linkend="term_readingSystem"/> has invoked the <function>
-                        <xref linkend="op_logOff"/>
-                    </function> operation, or it may be terminated by the <xref linkend="term_service"/>.</para>
+                <para role="definiton" xml:id="def_sessionDuration">
+                    A <xref linkend="term_session"/> begins after a successful <function><xref linkend="op_logOn"/></function> 
+                    operation. The <xref linkend="term_session"/> must remain active until the <xref linkend="term_readingSystem"/> 
+                    sucessfully invokes the <function><xref linkend="op_logOff"/></function> operation or the 
+                    <xref linkend="term_service"/> terminates it.
+                </para>
+                 
+                 <note>
+                     <para>
+                         This protocol does not define behaviors relating to the termination of <xref linkend="term_session"/>s.
+                         Time out intervals, reasons for forced termination and related aspects are 
+                         defined by the implementation.
+                     </para>
+                 </note>
+                 
+                 <para>
+                     A <xref linkend="term_service"/> should persist <xref linkend="term_session"/>s across multiple 
+                     HTTP connections by a <xref linkend="term_readingSystem"/> so long as the 
+                     <xref linkend="term_session"/> is still valid.
+                 </para>
 
-                <para>This protocol does not define any behaviors regarding <xref linkend="term_service"/> termination
-                    of Sessions; time out intervals, reasons for forced termination, and related
-                    aspects are all defined by the implementation.</para>
-
-                <para>A Session may cover multiple HTTP connections. Since transferring and
-                    rendering of content may be very time-consuming, Sessions should be kept open
-                    for as long as possible, in order to minimize the risk for a negative User
-                    experience.</para>
             </section>
 
         </section>
