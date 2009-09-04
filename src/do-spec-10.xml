@@ -896,7 +896,7 @@
         <section xml:id="overview_content_selection">
             <title>Content Selection</title>
             <para>Depending on the <link linkend="fundamentals_contentSelectionMethods">content
-                    provision model</link> employed, Content selection (e.g. the mechanism with
+                    selection model</link> employed, Content selection (e.g. the mechanism with
                 which the user selects one or several content items to request issuance and transfer
                 of) is performed using two distinct approaches:</para>
 
