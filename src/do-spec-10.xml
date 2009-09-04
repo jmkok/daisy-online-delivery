@@ -129,7 +129,7 @@
                                     linkend="bib_dublinCore"/>
                                 <literal>identifier</literal> field of the <xref
                                     linkend="tp_contentMetadata"/> type. The identifier must be unique
-                                within the scope of the Service and it must not change over
+                                within the scope of the <xref linkend="term_service"/> and it must not change over
                                 time.</para>
                             <note>
                                 <para>The Content Identifier is not required to match any identifiers used in the <xref linkend="term_content"/> (for example, the unique
@@ -143,9 +143,9 @@
                         <listitem>
                             <para> Transfer of <xref linkend="term_content"/> from the <xref
                                 linkend="term_service"/> to the <xref linkend="term_readingSystem"/>,
-                                which the Reading System stores in non-volatile memory. </para>
+                                which the <xref linkend="term_readingSystem"/> stores in non-volatile memory. </para>
                             <note>
-                                <para>Download and <xref linkend="term_streaming"/> are Reading System behaviors, not
+                                <para>Download and <xref linkend="term_streaming"/> are <xref linkend="term_readingSystem"/> behaviors, not
                                     aspects of this protocol.</para>
                             </note>
                         </listitem>
@@ -191,7 +191,7 @@
                         <listitem>
                             <para> A combination of hardware and/or software that accesses a <xref
                                 linkend="term_service"/> and renders <xref linkend="term_content"/> to
-                                the <xref linkend="term_user"/>. A reading system may be implemented
+                                the <xref linkend="term_user"/>. A Reading System may be implemented
                                 entirely on one device or it may be split among several.
                                 Corresponds to a <xref linkend="bib_wsibasicprofile11_conf"/> consumer.
                             </para>
@@ -201,12 +201,12 @@
                     <varlistentry xml:id="term_return">
                         <term>Return content</term>
                         <listitem>
-                            <para>Give up access to <xref linkend="term_content"/>. Content is returned when
+                            <para>Give up access to <xref linkend="term_content"/>. <xref linkend="term_content"/> is returned when
                                 the <xref linkend="term_readingSystem"/> has removed the locally-stored data
                                 and called the <function><xref linkend="op_returnContent"/></function> operation 
                                 to notify the <xref linkend="term_service"/> to revoke access and remove from 
-                                the <xref linkend="term_user"/>'s collection of issued Content. This term applies only
-                                to loaned or rented Content, not free or purchased Content.
+                                the <xref linkend="term_user"/>'s collection of issued <xref linkend="term_content"/>. This term applies only
+                                to loaned or rented <xref linkend="term_content"/>, not free or purchased <xref linkend="term_content"/>.
                             </para>
                         </listitem>
                     </varlistentry>
@@ -235,7 +235,7 @@
                             <para> The person(s) or organization(s) who own a <xref linkend="term_service"/>. </para>
                             <note>
                                 <para>The Service Provider may not be the same entity who owns the servers 
-                                    the Service runs on.</para>
+                                    the <xref linkend="term_service"/> runs on.</para>
                             </note>
                         </listitem>
                     </varlistentry>
@@ -245,9 +245,9 @@
                         <listitem>
                             <para>A sequence of <xref linkend="term_operation"/>s between one <xref
                                 linkend="term_readingSystem"/> and one <xref linkend="term_service"/>
-                                using an identifier defined by the Service. A session
+                                using an identifier defined by the <xref linkend="term_service"/>. A session
                                 may persist across several <link linkend="bib_http11">HTTP</link>
-                                connections. Session identifiers may be reused at the Service's discretion.</para>
+                                connections. Session identifiers may be reused at the <xref linkend="term_service"/>'s discretion.</para>
                         </listitem>
                     </varlistentry>
                     
@@ -259,7 +259,7 @@
                                 which the <xref linkend="term_readingSystem"/> renders immediately and stores only
                                 temporarily.</para>
                             <note>
-                                <para><xref linkend="term_download"/> and streaming are Reading System behaviors, not
+                                <para><xref linkend="term_download"/> and Streaming are <xref linkend="term_readingSystem"/> behaviors, not
                                     aspects of this protocol.</para>
                             </note>
                         </listitem>
