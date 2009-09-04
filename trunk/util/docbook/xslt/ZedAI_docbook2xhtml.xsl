@@ -317,6 +317,15 @@ set       toc,title
         </xsl:if>
     </xsl:template>
 
+    <!-- ============================================================================= -->
+    <!-- remove hyperlinks from terms -->
+    
+    <xsl:template match="db:xref[starts-with(@linkend, 'term_')]" priority="1">
+        <xsl:variable name="id" select="@linkend"/>
+        <xsl:value-of select="//db:varlistentry[@xml:id=$id]/db:term/node()[normalize-space(.)]"/>
+    </xsl:template>
+
+
 <!-- ============================================================================= -->
     <!-- For chapters, preface, sections, and appendices that have @conformance, add a "This section is ..." line -->
     <!-- We match on title so that we can insert the text after the heading -->
