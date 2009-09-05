@@ -73,6 +73,8 @@
         
     </info>
      
+     
+     
     <chapter xml:id="introduction">
         <title>Introduction</title>
         <para>
@@ -84,6 +86,8 @@
         </para>
         
     </chapter>
+    
+    
     
     <chapter xml:id="terminology">
             <title>Terminology</title>
@@ -263,6 +267,7 @@
     </chapter>
     
     
+    
     <chapter xml:id="conformance">
         <title>Conformance Definitions</title>
             <section xml:id="conformance_service">
@@ -281,8 +286,8 @@
                     </listitem>
                     <listitem>
                         <para>It complies with the Content Selection Model-specific requirements defined
-                            in <xref linkend="fundamentals_contentSelectionModel_reqs_outofband"/>
-                            and/or <xref linkend="fundamentals_contentSelectionModel_reqs_browse"
+                            in <xref linkend="overview_contentSelectionModel_reqs_outofband"/>
+                            and/or <xref linkend="overview_contentSelectionModel_reqs_browse"
                             /></para>
                     </listitem>
                     <listitem>
@@ -310,74 +315,8 @@
      </chapter>
 
 
-    <chapter xml:id="fundamentals">
-        <title>Protocol Fundamentals</title>
 
-        <section xml:id="fundamentals_contentSelectionMethods" conformance="normative"
-            xreflabel="Content Selection Methods">
-            <title>Content Selection Methods</title>
-            <para>The DAISY Online Delivery protocol supports two content selection methods:</para>
-            <itemizedlist>
-                <listitem xml:id="fundamentals_contentSelectionMethod_outofband"
-                    xreflabel="Out-of-band Content Selection Method">
-                    <para>an <emphasis>out-of-band</emphasis> method, where the
-                        <xref linkend="term_content"/> for the <xref linkend="term_user"/> is 
-                        automatically selected or assigned through 
-                        an out-of-band mechanism like a web form or content distribution system; and</para>
-                </listitem>
-                <listitem xml:id="fundamentals_contentSelectionMethod_browse"
-                    xreflabel="Browse Content Selection Method">
-                    <para>a <emphasis>browsing</emphasis> method, where the <xref linkend="term_user"/>
-                        browses the <xref linkend="term_serviceProvider"/>'s collection using 
-                        <xref linkend="term_operation"/>s defined by this protocol.</para>
-                </listitem>
-            </itemizedlist>
-            
-            <para>A <xref linkend="term_serviceProvider"/> must offer <xref linkend="term_user"/>s at least 
-                one content selection method. A <xref linkend="term_service"/> is not required to support both methods.</para>
-            
-            <para>
-                A <xref linkend="term_readingSystem"/> should support both content selection
-                models for maximum interopability, but is only required to support
-                one model for conformance.
-            </para>
-            
-            <section xml:id="fundamentals_contentSelectionModel_reqs_outofband">
-                <title>Out-of-band Content Selection Method Requirements</title>
-                <para>A <xref linkend="term_service"/> offering the <xref linkend="fundamentals_contentSelectionMethod_outofband"/> is
-                    compliant if it:</para>
-                <itemizedlist>
-                    <listitem>
-                        <para>provides one or more out-of-band mechanisms for the selection/assignment of <xref linkend="term_content"/>;</para>
-                    </listitem>
-                    <listitem>
-                        <para>declares support for the <xref linkend="fundamentals_contentSelectionMethod_outofband"/> in the
-                            <code role="type"><xref linkend="tp_supportedContentSelectionModels"/></code> service attribute; and</para>
-                    </listitem>
-                    <listitem>
-                        <para>exposes the selected <xref linkend="term_content"/> to the <xref linkend="term_user"/>s'
-                            <xref linkend="term_readingSystem"/>(s) through the <code><xref linkend="op_getContentList"/></code> operation
-                            when the operation is invoked with the <parameter>id</parameter> parameter set to the value <literal>new</literal>.</para>
-                    </listitem>
-                </itemizedlist>
-            </section>
-            <section xml:id="fundamentals_contentSelectionModel_reqs_browse">
-                <title>Browse Content Selection Model Requirements</title>
-                <para>A <xref linkend="term_service"/> offering the <xref linkend="fundamentals_contentSelectionMethod_browse"/> is
-                    compliant if it:</para>
-                <itemizedlist>
-                    <listitem>
-                        <para>provides support for the <link linkend="overview_dynamic_menus">Dynamic Menus</link> protocol feature; and</para>
-                    </listitem>
-                    <listitem>
-                        <para>declares support for the <xref linkend="fundamentals_contentSelectionMethod_browse"/> in the
-                            <code role="type"><xref linkend="tp_supportedContentSelectionModels"/></code> service attribute.</para>
-                    </listitem>
-                </itemizedlist>
-            </section>
-        </section>
-        
-        <section xml:id="fundamentals_protocols" conformance="normative">
+    <chapter xml:id="fundamentals_protocols" conformance="normative">
             <title>Underlying Protocols</title>
 
             <section xml:id="fundamentals_protocols_http">
@@ -393,15 +332,19 @@
                     </listitem>
                 </itemizedlist>
 
-                <para><xref linkend="term_service"/>s and <xref linkend="term_readingSystem"/>s must support <xref linkend="bib_http11"/> and
-                    secure HTTP (HTTPS) through either <xref linkend="bib_ssl3.0"/> or <xref
-                        linkend="bib_tls1.0"/>.</para>
+                <para>
+                    <xref linkend="term_service"/>s and <xref linkend="term_readingSystem"/>s must support <xref linkend="bib_http11"/> and
+                    secure HTTP (HTTPS) through either <xref linkend="bib_ssl3.0"/> or <xref linkend="bib_tls1.0"/>.
+                </para>
 
-                <para>The use of HTTP must conform to <xref linkend="bib_http11"/> and <xref
-                        linkend="bib_RFC2617"/>. </para>
+                <para>
+                    The use of HTTP must conform to <xref linkend="bib_http11"/> and <xref linkend="bib_RFC2617"/>. 
+                </para>
 
-                <para><xref linkend="term_service"/>s and <xref linkend="term_readingSystem"/>s must support HTTP sessions as specified in <xref
-                linkend="bib_rfc2109"/>.</para>
+                <para>
+                    <xref linkend="term_service"/>s and <xref linkend="term_readingSystem"/>s must support HTTP sessions 
+                    as specified in <xref linkend="bib_rfc2109"/>.
+                </para>
                 
                 <note>
                     <para>An established HTTP session is not a valid indicator that a <xref linkend="term_readingSystem"/> has 
@@ -586,9 +529,9 @@
                 </section>
             </section>
             
-        </section>
+        </chapter>
 
-    </chapter>
+
 
     <chapter xml:id="overview" conformance="normative">
         <title>Protocol Overview</title>
@@ -809,53 +752,72 @@
 
         </section>
 
-        <section xml:id="overview_content_selection">
-            <title>Content Selection</title>
-            <para>Depending on the <link linkend="fundamentals_contentSelectionMethods">content
-                    selection model</link> employed, Content selection (e.g. the mechanism with
-                which the user selects one or several content items to request issuance and transfer
-                of) is performed using two distinct approaches:</para>
-
-            <section xml:id="overview_content_selection_outofband">
-                <title>Content Selection using the Out-of-band model</title>
-
-                <para>In the <link linkend="fundamentals_contentSelectionMethod_outofband"
-                        >Out-of-band model</link> content selection form, content is selected using
-                    a mechanism not defined by this specification, and not involving the Session itself.
-                    Through this mechanism, the <xref linkend="term_service"/>, typically prior to the Session onset, has
-                    in its possession a list of Content items to offer to the User. </para>
-
-                <para>To initiate retrieval of these Content items, the <xref linkend="term_readingSystem"/> invokes the
-                        <xref linkend="op_getContentList"/> operation, passing the value
-                        <literal>new</literal> as the value of the <parameter>id</parameter> parameter,
-                    retrieving a <xref linkend="tp_contentList"/> in return.</para>
-
+        <section xml:id="overview_content_selection" conformance="normative" xreflabel="Content Selection Methods">
+            <title>Content Selection Methods</title>
+            <para>The DAISY Online Delivery protocol supports two content selection methods:</para>
+            <itemizedlist>
+                <listitem xml:id="overview_content_selection_outofband" xreflabel="Out-of-band Content Selection Method">
+                    <para>
+                        an <emphasis>out-of-band</emphasis> method, where the
+                        <xref linkend="term_content"/> for the <xref linkend="term_user"/> is 
+                        automatically selected or assigned through 
+                        an out-of-band mechanism like a web form or content distribution system; and
+                    </para>
+                </listitem>
+                <listitem xml:id="overview_content_selection_browse" xreflabel="Browse Content Selection Method">
+                    <para>
+                        a <emphasis>browsing</emphasis> method, where the <xref linkend="term_user"/>
+                        browses the <xref linkend="term_serviceProvider"/>'s collection using 
+                        <xref linkend="term_operation"/>s defined by this protocol.
+                    </para>
+                </listitem>
+            </itemizedlist>
+            
+            <para>A <xref linkend="term_serviceProvider"/> must offer <xref linkend="term_user"/>s at least 
+                one content selection method. A <xref linkend="term_service"/> is not required to support both methods.</para>
+            
+            <para>
+                A <xref linkend="term_readingSystem"/> should support both content selection
+                models for maximum interopability, but is only required to support
+                one model for conformance.
+            </para>
+            
+            <section xml:id="overview_contentSelectionModel_reqs_outofband">
+                <title>Out-of-band Content Selection Method</title>
+                <para>A <xref linkend="term_service"/> offering the <xref linkend="overview_content_selection_outofband"/> is
+                    compliant if it:</para>
+                <itemizedlist>
+                    <listitem>
+                        <para>provides one or more out-of-band mechanisms for the selection/assignment of <xref linkend="term_content"/>;</para>
+                    </listitem>
+                    <listitem>
+                        <para>declares support for the <xref linkend="overview_content_selection_outofband"/> in the
+                            <code role="type"><xref linkend="tp_supportedContentSelectionModels"/></code> service attribute; and</para>
+                    </listitem>
+                    <listitem>
+                        <para>exposes the selected <xref linkend="term_content"/> to the <xref linkend="term_user"/>s'
+                            <xref linkend="term_readingSystem"/>(s) through the <code><xref linkend="op_getContentList"/></code> operation
+                            when the operation is invoked with the <parameter>id</parameter> parameter set to the value <literal>new</literal>.</para>
+                    </listitem>
+                </itemizedlist>
             </section>
-            
-            
-            <section xml:id="overview_content_selection_browse">
-                <title>Content Selection using the Browse model</title>
-                <para>In the <link linkend="fundamentals_contentSelectionMethod_browse">Browse
-                        model</link> content selection model, content is selected dynamically within
-                    the Session using the <link linkend="overview_dynamic_menus">Dynamic
-                        Menu</link> feature of this protocol. Refer to <xref
-                        linkend="appendixDynamicMenuExamples_search"/> and <xref
-                        linkend="appendixDynamicMenuExamples_retrieve"/> for examples of Content
-                    selection using the Dynamic Menu feature.</para>
-
-                <note>
-                    <para>A <xref linkend="term_service"/> declares whether it supports Content selection using the Browse
-                        model in the <xref linkend="tp_supportedContentSelectionModels"/> element in
-                        the <xref linkend="tp_serviceAttributes"/> type returned by the <xref
-                            linkend="op_getServiceAttributes"/> operation. <xref linkend="term_service"/>s may support the
-                        Dynamic Menu feature for other purposes than supporting content selection,
-                        so the value <code>DYNAMIC_MENUS</code> in <xref
-                            linkend="tp_supportedOptionalOperations"/> alone does not imply that
-                        Content Selection using the Browse model is supported.</para>
-                </note>
+            <section xml:id="overview_contentSelectionModel_reqs_browse">
+                <title>Browse Content Selection Model</title>
+                <para>A <xref linkend="term_service"/> offering the <xref linkend="overview_content_selection_browse"/> is
+                    compliant if it:</para>
+                <itemizedlist>
+                    <listitem>
+                        <para>provides support for the <link linkend="overview_dynamic_menus">Dynamic Menus</link> protocol feature; and</para>
+                    </listitem>
+                    <listitem>
+                        <para>declares support for the <xref linkend="overview_content_selection_browse"/> in the
+                            <code role="type"><xref linkend="tp_supportedContentSelectionModels"/></code> service attribute.</para>
+                    </listitem>
+                </itemizedlist>
             </section>
         </section>
-
+        
+        
         <section xml:id="overview_content_issuing">
             <title>Issuing and transfer of content</title>
             <para>Given a <xref linkend="tp_contentList"/>, retrieved using one of the methods
@@ -1181,11 +1143,11 @@
                 system that meets its requirements, and modify such a menu system at any stage
                 without requiring any change on the <xref linkend="term_readingSystem"/>.</para>
             
-            <para>As described in <xref linkend="fundamentals_contentSelectionMethods"/>, a <xref linkend="term_service"/>
-                that supports the <xref linkend="fundamentals_contentSelectionMethod_browse"/> must
+            <para>As described in <xref linkend="overview_content_selection"/>, a <xref linkend="term_service"/>
+                that supports the <xref linkend="overview_content_selection_browse"/> must
                 also support the Dynamic Menu feature in order to allow the user to select Content
                 to request issuance and transfer of. <xref linkend="term_service"/>s that only provide the <xref
-                    linkend="fundamentals_contentSelectionMethod_outofband"/> do not need to support
+                    linkend="overview_content_selection_outofband"/> do not need to support
                 Dynamic Menus. Note however (and as exemplified in <xref
                     linkend="appendixDynamicMenuExamples"/>) that it is perfectly possible to use
                 Dynamic Menus for other purposes than content selection.</para>
@@ -1337,15 +1299,21 @@
 
     </chapter>
 
+
+
     <chapter xml:id="apiReference" conformance="normative">
         <title>API Definition</title>
         <para>Don't edit this chapter here in the docbook source - autogenerated from WSDL</para>
     </chapter>
 
+
+
     <chapter xml:id="typeReference" conformance="normative">
         <title>Type Definition</title>
         <para>Don't edit this chapter here in the docbook source - autogenerated from XSD</para>
     </chapter>
+
+
 
     <bibliography conformance="normative">
         <title>References</title>
@@ -1603,6 +1571,8 @@
 
     </bibliography>
     
+    
+    
     <appendix xml:id="appendixWSDL" conformance="normative">
         <title>WSDL Abstract Definition</title>
         <para>The <xref linkend="bib_wsdl1.1"/> entities defined in the accompanying
@@ -1617,6 +1587,8 @@
         <para>The abstract <link xlink:href="do-wsdl-10.wsdl">do-wsdl-10.wsdl</link> document should be used
             as a template for creating the concrete document.</para>
     </appendix>
+
+
 
     <appendix xml:id="appendixDynamicMenuExamples" conformance="informative">
         <title>Dynamic Menu Usage Examples</title>
@@ -1980,6 +1952,8 @@ You have the following content waiting to be Downloaded/Streamed
             </example>
         </section>
     </appendix>
+    
+    
     
     <appendix  xml:id="acknowledgements" role="acknowledgements">
         <title>Acknowledgments</title>
