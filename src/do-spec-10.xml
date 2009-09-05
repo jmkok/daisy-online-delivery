@@ -502,15 +502,18 @@
             </section>
 
             <section xml:id="technologies_wsi">
-                <title>WS-I Basic Profile</title>
-
-                <para>
-                    The DAISY Online Delivery protocol was designed to be compliant with the requirements of 
-                    <xref linkend="bib_wsibasicprofile11"/>.
-                    All conformant implementations of this protocol must also be compliant
-                    with <xref linkend="bib_wsibasicprofile11"/>.
-                </para>
+                <title>WS-I</title>
                 
+                <section xml:id="technologies_wsi_basic">
+                    <title>Basic Profile 1.1</title>
+                    <para>
+                        The DAISY Online Delivery protocol was designed to be compliant with the requirements of 
+                        <xref linkend="bib_wsibasicprofile11"/>.
+                        All conformant implementations of this protocol must also be compliant
+                        with <xref linkend="bib_wsibasicprofile11"/>.
+                    </para>
+                </section>
+
                 <section xml:id="technologies_wsdlbindingstyle">
                     <title>WSDL Binding Style</title>
                     
@@ -1439,9 +1442,7 @@
         <biblioentry xml:id="bib_httpcookies">
             <abbrev>HTTP Cookies</abbrev>
             <title>
-                <link
-                    xlink:href="http://www.ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html#HTTP_Cookies"
-                    >HTTP cookies in WS-I Basic Profile 1.1</link>
+                <link xlink:href="http://www.ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html#HTTP_Cookies">HTTP cookies in WS-I Basic Profile 1.1</link>
             </title>
         </biblioentry>
 
