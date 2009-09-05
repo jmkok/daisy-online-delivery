@@ -31,7 +31,7 @@
 			<db:section xml:id="apiReferenceOptional">
 				<db:title>Optional Operations</db:title>
 				<db:para>This section documents the protocol operations that a <db:xref linkend="term_service"/> may support. Refer to
-					<db:xref linkend="overview_content_selection"/> for 
+					<db:xref linkend="fundamentals_content_selection"/> for 
 				conditions when certain of these optional operations become required.</db:para>
 				
 				<xsl:call-template name="wsdlOperationsAsDocbook">

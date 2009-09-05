@@ -676,7 +676,7 @@
 								linkend="term_service"/> to the <db:xref
 								linkend="term_readingSystem"/> that the <db:xref
 								linkend="term_readingSystem"/> will at some point <db:link
-								linkend="overview_content_return">return the
+								linkend="fundamentals_content_return">return the
 							content</db:link></db:para>
 						<db:para>Reading Systems should present Users with appropriate prompts if
 							they try to return non-borrowed <db:xref linkend="term_content"
@@ -857,7 +857,7 @@
 						<db:para>If the value of this attribute is not one of the three reserved
 							values above, then this is an arbitrary contentList, typically exposed
 							as an endpoint in a <db:link
-								linkend="overview_content_selection_browse">dynamic menu
+								linkend="fundamentals_content_selection_browse">dynamic menu
 								search</db:link> operation sequence.</db:para>
 						<db:para>Services should persist arbitrary contentList identities for the
 							duration of a Session. Services must not expose multiple arbitrary
@@ -1220,7 +1220,7 @@
 					<xs:annotation>
 						<xs:documentation>
 							<db:para role="desc">Specifies which <db:xref
-									linkend="overview_content_selection"/> are supported by
+									linkend="fundamentals_content_selection"/> are supported by
 								this Service. A Service must support at least one of the two
 								models.</db:para>
 						</xs:documentation>
@@ -1235,7 +1235,7 @@
 												<xs:documentation>
 												<db:para role="desc">This service supports the
 												<db:xref
-												linkend="overview_content_selection_outofband"
+												linkend="fundamentals_content_selection_outofband"
 												/>.</db:para>
 												</xs:documentation>
 											</xs:annotation>
@@ -1245,7 +1245,7 @@
 												<xs:documentation>
 												<db:para role="desc">This service supports the
 												<db:xref
-												linkend="overview_content_selection_browse"
+												linkend="fundamentals_content_selection_browse"
 												/>.</db:para>
 												</xs:documentation>
 											</xs:annotation>
@@ -1273,7 +1273,7 @@
 						<xs:documentation>
 							<db:para role="desc">Specifies whether the Service supports searching of
 								its content collection using the <db:link
-									linkend="overview_dynamic_menus">dynamic menu</db:link>
+									linkend="fundamentals_dynamic_menus">dynamic menu</db:link>
 								feature of this protocol. See also the
 									<db:literal>DYNAMIC_MENUS</db:literal> value in <db:xref
 									linkend="tp_supportedOptionalOperations"/></db:para>
