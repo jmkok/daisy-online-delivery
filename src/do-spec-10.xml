@@ -286,13 +286,13 @@
                     </listitem>
                     <listitem>
                         <para>It complies with the Content Selection Model-specific requirements defined
-                            in <xref linkend="overview_contentSelectionModel_reqs_outofband"/>
-                            and/or <xref linkend="overview_contentSelectionModel_reqs_browse"
+                            in <xref linkend="fundamentals_contentSelectionModel_reqs_outofband"/>
+                            and/or <xref linkend="fundamentals_contentSelectionModel_reqs_browse"
                             /></para>
                     </listitem>
                     <listitem>
                         <para>It supports the protocols defined in <xref
-                            linkend="fundamentals_protocols"/></para>
+                            linkend="technologies"/></para>
                     </listitem>
                     <listitem>
                         <para>
@@ -316,10 +316,10 @@
 
 
 
-    <chapter xml:id="fundamentals_protocols" conformance="normative">
-            <title>Underlying Protocols</title>
+    <chapter xml:id="technologies" conformance="normative">
+            <title>Underlying Technologies</title>
 
-            <section xml:id="fundamentals_protocols_http">
+            <section xml:id="technologies_http">
                 <title>HTTP</title>
                 <para>The DAISY Online Delivery protocol uses <xref linkend="bib_http11"/>:</para>
                 <itemizedlist>
@@ -348,14 +348,14 @@
                 
                 <note>
                     <para>An established HTTP session is not a valid indicator that a <xref linkend="term_readingSystem"/> has 
-                        successfully logged on to the <xref linkend="term_service"/> (see <xref linkend="overview_session"/>).</para>
+                        successfully logged on to the <xref linkend="term_service"/> (see <xref linkend="fundamentals_session"/>).</para>
                 </note>
 
                 <para>A <xref linkend="term_service"/> must return the appropriate HTTP status code in the HTTP response (as
                     specified by <xref linkend="bib_http11"/>, Section 10) to all HTTP and HTTPS requests sent by a 
                     <xref linkend="term_readingSystem"/>.</para>
 
-                <section xml:id="fundamentals_protocols_authentication">
+                <section xml:id="technologies_authentication">
                     <title>HTTP Cookies</title>
                     
                     <para>
@@ -376,7 +376,7 @@
                     
                 </section>
                 
-                <section xml:id="fundamentals_protocols_https">
+                <section xml:id="technologies_https">
                     <title>HTTPS</title>
                     <para>The use of HTTPS for all transactions with a <xref linkend="term_service"/> is recommended
                         as the data being exchanged may contain confidential information.
@@ -403,7 +403,7 @@
                     </para>
                 </section>
 
-                <section xml:id="fundamentals_protocols_basic_authentication">
+                <section xml:id="technologies_basic_authentication">
                     <title>HTTP Basic Authentication</title>
                     <para>The HTTP Basic Authentication Scheme described in <xref linkend="bib_RFC2617"/>
                         may be used to secure <xref linkend="term_content"/> against unauthorized access.</para>
@@ -472,7 +472,7 @@
                     <note>
                         <para>
                             The HTTP Basic Authentication credentials must not be used to log on to the <xref linkend="term_service"/>. For 
-                            authenticating a SOAP session, see <xref linkend="fundamentals_protocols_authentication"/>.
+                            authenticating a SOAP session, see <xref linkend="technologies_authentication"/>.
                         </para>
                     </note>
                     
@@ -480,7 +480,7 @@
                         <xref linkend="term_service"/> support for Basic Authentication is recommended.</para>
                 </section>
 
-                <section xml:id="fundamentals_protocols_http_range">
+                <section xml:id="technologies_http_range">
                     <title>HTTP Range Headers</title>
 
                     <para>
@@ -501,7 +501,7 @@
                 </section>
             </section>
 
-            <section xml:id="fundamentals_protocols_wsi">
+            <section xml:id="technologies_wsi">
                 <title>WS-I Basic Profile</title>
 
                 <para>
@@ -511,7 +511,7 @@
                     with <xref linkend="bib_wsibasicprofile11"/>.
                 </para>
                 
-                <section xml:id="fundamentals_protocols_wsdlbindingstyle">
+                <section xml:id="technologies_wsdlbindingstyle">
                     <title>WSDL Binding Style</title>
                     
                     <para>
@@ -533,28 +533,28 @@
 
 
 
-    <chapter xml:id="overview" conformance="normative">
-        <title>Protocol Overview</title>
+    <chapter xml:id="fundamentals" conformance="normative">
+        <title>Protocol Fundamentals</title>
 
-        <section xml:id="overview_serviceModels" conformance="normative"
+        <section xml:id="fundamentals_serviceModels" conformance="normative"
             xreflabel="Service Models">
             <title>Service Models</title>
             <para>The DAISY Online Delivery Protocol supports two basic service models:</para>
             
             <itemizedlist>
-                <listitem xml:id="overview_serviceModel_lender" xreflabel="Lender Model">
+                <listitem xml:id="fundamentals_serviceModel_lender" xreflabel="Lender Model">
                     <para>a <emphasis>lender</emphasis> model, in which <xref linkend="term_content"/> is loaned
                         or rented by a <xref linkend="term_user"/> for a fixed period of time and must be returned 
                         to the <xref linkend="term_serviceProvider"/>; and</para>
                 </listitem>
-                <listitem xml:id="overview_serviceModel_acquisition" xreflabel="Acquisition Model">
+                <listitem xml:id="fundamentals_serviceModel_acquisition" xreflabel="Acquisition Model">
                     <para>an <emphasis>acquisition</emphasis> model, in which the <xref linkend="term_user"/>
                         becomes the owner of the acquired content. This model encompasses both commercial
                         and free-of-charge <xref linkend="term_content"/>.</para>
                     <note>
                         <para>
                             It is possible for a <xref linkend="term_serviceProvider"/> to use the PDTB2 specification
-                            to expire acquired <xref linkend="term_content"/> without employing a <xref linkend="overview_serviceModel_lender"/>.
+                            to expire acquired <xref linkend="term_content"/> without employing a <xref linkend="fundamentals_serviceModel_lender"/>.
                         </para>
                     </note>
                 </listitem>
@@ -569,9 +569,9 @@
                 </para>
             </note>
             
-            <section xml:id="overview_serviceModels_reqs_lender">
+            <section xml:id="fundamentals_serviceModels_reqs_lender">
                 <title>Basic Lender Model</title>
-                <para>A <xref linkend="term_service"/> should meet the following requirements when implementing a basic <xref linkend="overview_serviceModel_lender"/>:</para>
+                <para>A <xref linkend="term_service"/> should meet the following requirements when implementing a basic <xref linkend="fundamentals_serviceModel_lender"/>:</para>
                 <itemizedlist>
                     <listitem>
                         <para>
@@ -610,11 +610,11 @@
                 </itemizedlist>
             </section>
             
-            <section xml:id="overview_serviceModels_reqs_acquisition">
+            <section xml:id="fundamentals_serviceModels_reqs_acquisition">
                 <title>Basic Acquisition Model</title>
                 <para>
                     There is only one requirement for a <xref linkend="term_service"/> to implement a basic 
-                    <xref linkend="overview_serviceModel_acquisition"/>: it should respond to calls to the 
+                    <xref linkend="fundamentals_serviceModel_acquisition"/>: it should respond to calls to the 
                     <function><xref linkend="op_getContentList"/></function> operation by providing an empty 
                     <type><xref linkend="tp_contentList"/></type>.
                 </para>
@@ -629,10 +629,10 @@
         
         
         
-         <section xml:id="overview_session">
+         <section xml:id="fundamentals_session">
              <title>User Authentication and Session Management</title>
              
-             <section xml:id="overview_session_initializationSequence">
+             <section xml:id="fundamentals_session_initializationSequence">
                  <title>Session Initialization</title>
                  
                  <para role="definition" xml:id="def_sessionInitializationSequence"
@@ -725,7 +725,7 @@
                               
              </section>
              
-             <section xml:id="overview_session_duration">
+             <section xml:id="fundamentals_session_duration">
                 <title>Session Duration</title>
                 <para role="definiton" xml:id="def_sessionDuration">
                     A <xref linkend="term_session"/> begins after a successful <function><xref linkend="op_logOn"/></function> 
@@ -752,11 +752,11 @@
 
         </section>
 
-        <section xml:id="overview_content_selection" conformance="normative" xreflabel="Content Selection Methods">
+        <section xml:id="fundamentals_content_selection" conformance="normative" xreflabel="Content Selection Methods">
             <title>Content Selection Methods</title>
             <para>The DAISY Online Delivery protocol supports two content selection methods:</para>
             <itemizedlist>
-                <listitem xml:id="overview_content_selection_outofband" xreflabel="Out-of-band Content Selection Method">
+                <listitem xml:id="fundamentals_content_selection_outofband" xreflabel="Out-of-band Content Selection Method">
                     <para>
                         an <emphasis>out-of-band</emphasis> method, where the
                         <xref linkend="term_content"/> for the <xref linkend="term_user"/> is 
@@ -764,7 +764,7 @@
                         an out-of-band mechanism like a web form or content distribution system; and
                     </para>
                 </listitem>
-                <listitem xml:id="overview_content_selection_browse" xreflabel="Browse Content Selection Method">
+                <listitem xml:id="fundamentals_content_selection_browse" xreflabel="Browse Content Selection Method">
                     <para>
                         a <emphasis>browsing</emphasis> method, where the <xref linkend="term_user"/>
                         browses the <xref linkend="term_serviceProvider"/>'s collection using 
@@ -782,16 +782,16 @@
                 one model for conformance.
             </para>
             
-            <section xml:id="overview_contentSelectionModel_reqs_outofband">
+            <section xml:id="fundamentals_contentSelectionModel_reqs_outofband">
                 <title>Out-of-band Content Selection Method</title>
-                <para>A <xref linkend="term_service"/> offering the <xref linkend="overview_content_selection_outofband"/> is
+                <para>A <xref linkend="term_service"/> offering the <xref linkend="fundamentals_content_selection_outofband"/> is
                     compliant if it:</para>
                 <itemizedlist>
                     <listitem>
                         <para>provides one or more out-of-band mechanisms for the selection/assignment of <xref linkend="term_content"/>;</para>
                     </listitem>
                     <listitem>
-                        <para>declares support for the <xref linkend="overview_content_selection_outofband"/> in the
+                        <para>declares support for the <xref linkend="fundamentals_content_selection_outofband"/> in the
                             <code role="type"><xref linkend="tp_supportedContentSelectionModels"/></code> service attribute; and</para>
                     </listitem>
                     <listitem>
@@ -801,16 +801,16 @@
                     </listitem>
                 </itemizedlist>
             </section>
-            <section xml:id="overview_contentSelectionModel_reqs_browse">
+            <section xml:id="fundamentals_contentSelectionModel_reqs_browse">
                 <title>Browse Content Selection Model</title>
-                <para>A <xref linkend="term_service"/> offering the <xref linkend="overview_content_selection_browse"/> is
+                <para>A <xref linkend="term_service"/> offering the <xref linkend="fundamentals_content_selection_browse"/> is
                     compliant if it:</para>
                 <itemizedlist>
                     <listitem>
-                        <para>provides support for the <link linkend="overview_dynamic_menus">Dynamic Menus</link> protocol feature; and</para>
+                        <para>provides support for the <link linkend="fundamentals_dynamic_menus">Dynamic Menus</link> protocol feature; and</para>
                     </listitem>
                     <listitem>
-                        <para>declares support for the <xref linkend="overview_content_selection_browse"/> in the
+                        <para>declares support for the <xref linkend="fundamentals_content_selection_browse"/> in the
                             <code role="type"><xref linkend="tp_supportedContentSelectionModels"/></code> service attribute.</para>
                     </listitem>
                 </itemizedlist>
@@ -818,15 +818,15 @@
         </section>
         
         
-        <section xml:id="overview_content_issuing">
+        <section xml:id="fundamentals_content_issuing">
             <title>Issuing and transfer of content</title>
             <para>Given a <xref linkend="tp_contentList"/>, retrieved using one of the methods
-                described in <xref linkend="overview_content_selection"/>, the <xref linkend="term_readingSystem"/> can
+                described in <xref linkend="fundamentals_content_selection"/>, the <xref linkend="term_readingSystem"/> can
                 proceed to request issuance of selected content items within the
                     <type>contentList</type>, followed by download or streaming of the resources
                 that constitute the content. </para>
 
-            <section xml:id="overview_content_issuing_retrieval_sequence">
+            <section xml:id="fundamentals_content_issuing_retrieval_sequence">
                 <title>Content Retrieval Sequence</title>
                 <para xml:id="def_contentRetrievalSequence" xreflabel="Content Retrieval Sequence">
                     To request issuance of and retrieve the resources of a Content item, a Reading
@@ -882,7 +882,7 @@
             </section>
 
 
-            <section xml:id="overview_content_download">
+            <section xml:id="fundamentals_content_download">
                 <title>Downloading and streaming of content</title>
                 <para>Once the <xref linkend="term_readingSystem"/> has retrieved the list of <type>resources</type> for
                     an item of content, it may begin downloading or streaming the resources using
@@ -907,11 +907,11 @@
                     <xref linkend="term_service"/> must provide this information to <xref linkend="term_readingSystem"/>s.</para>
                 <para>Resources from the <xref linkend="term_service"/> or from Service Delegates may be secured with Basic
                     Authentication. The credentials must be specified in the URI of each resource so
-                    secured. See <xref linkend="fundamentals_protocols_basic_authentication"
+                    secured. See <xref linkend="technologies_basic_authentication"
                     />.</para>
             </section>
 
-            <section xml:id="overview_content_installments">
+            <section xml:id="fundamentals_content_installments">
                 <title>Publishing updates or installments</title>
                 <para><type>contentItems</type> in a <type>contentList</type> have an optional
                     attribute, <code>lastModifiedDate</code>, which indicates that last time the
@@ -928,7 +928,7 @@
                     progressively updating the same content item. </para>
             </section>
 
-            <section xml:id="overview_content_issuing_pdtb">
+            <section xml:id="fundamentals_content_issuing_pdtb">
                 <title>Rights management</title>
                 <para>A <xref linkend="term_service"/> may provide all or parts of its content collection in protected
                     form. This version of this specification allows the <xref linkend="bib_pdtb2"/>
@@ -1020,7 +1020,7 @@
                 </example>
             </section>
         </section>
-        <section xml:id="overview_content_return">
+        <section xml:id="fundamentals_content_return">
             <title>Content Return</title>
             <para>Content return is employed in the case where a Reading System has content issued
                 from a Service that employs a library or rental model, and where the given Content item issued from that
@@ -1041,7 +1041,7 @@
         </section>
 
 
-        <section xml:id="overview_service_announcements">
+        <section xml:id="fundamentals_service_announcements">
             <title>Service Announcements</title>
             <para><remark role="todo">TODO fix this introduction</remark> Service Announcements are
                 used as a means for the <xref linkend="term_service"/> to provide various types of information to the User.
@@ -1082,7 +1082,7 @@
 
         </section>
 
-        <section xml:id="overview_bookmarks">
+        <section xml:id="fundamentals_bookmarks">
             <title>Bookmarks and Last Reading Position</title>
 
             <para>If a <xref linkend="term_service"/> supports the <link linkend="op_getServiceAttributes">optional
@@ -1103,7 +1103,7 @@
                     linkend="bib_z3986-2005-bkmk"/> constitutes the normative reference regarding
                 the use and semantics of this type.</para>
 
-            <!--<section xml:id="overview_bookmarks_otherContent" conformance="informative">
+            <!--<section xml:id="fundamentals_bookmarks_otherContent" conformance="informative">
                 <title>Using the Portable Bookmarks and Highlights grammar for content other than
                     ANSI/NISO Z39.86</title> -->
             <note>
@@ -1132,7 +1132,7 @@
 
         </section>
  
-        <section xml:id="overview_dynamic_menus" conformance="informative">
+        <section xml:id="fundamentals_dynamic_menus" conformance="informative">
             <title>Dynamic Menus</title>
             
             <para>The Dynamic Menu feature of this protocol enables a <xref linkend="term_service"/>
@@ -1143,11 +1143,11 @@
                 system that meets its requirements, and modify such a menu system at any stage
                 without requiring any change on the <xref linkend="term_readingSystem"/>.</para>
             
-            <para>As described in <xref linkend="overview_content_selection"/>, a <xref linkend="term_service"/>
-                that supports the <xref linkend="overview_content_selection_browse"/> must
+            <para>As described in <xref linkend="fundamentals_content_selection"/>, a <xref linkend="term_service"/>
+                that supports the <xref linkend="fundamentals_content_selection_browse"/> must
                 also support the Dynamic Menu feature in order to allow the user to select Content
                 to request issuance and transfer of. <xref linkend="term_service"/>s that only provide the <xref
-                    linkend="overview_content_selection_outofband"/> do not need to support
+                    linkend="fundamentals_content_selection_outofband"/> do not need to support
                 Dynamic Menus. Note however (and as exemplified in <xref
                     linkend="appendixDynamicMenuExamples"/>) that it is perfectly possible to use
                 Dynamic Menus for other purposes than content selection.</para>
@@ -1160,10 +1160,10 @@
                 Dynamic Menu feature. For implementation examples of how to employ this feature,
                 refer to <xref linkend="appendixDynamicMenuExamples"/>.</para>
             
-            <section xml:id="overview_dynamic_menus_concepts">
+            <section xml:id="fundamentals_dynamic_menus_concepts">
                 <title>Fundamental Concepts of the Dynamic Menu Feature</title>
                 
-                <section xml:id="overview_dynamic_menus_concept1">
+                <section xml:id="fundamentals_dynamic_menus_concept1">
                     <title>A Menu System is a series of interconnected questions</title>
                     
                     <para>The Dynamic Menu feature requires the implementation of the single
@@ -1236,7 +1236,7 @@
                             linkend="appendixDynamicMenuExamples_profileUpdate"/> for concrete
                         examples on "logical ends".</para>
                 </section>
-                <section xml:id="overview_dynamic_menus_concept2">
+                <section xml:id="fundamentals_dynamic_menus_concept2">
                     <title>A Menu System has a root question</title>
                     
                     <para>A Menu System has a root question - the first question in the series of
@@ -1256,7 +1256,7 @@
                                 linkend="tp_userResponse"/>.</para>
                     </note>
                 </section>
-                <section xml:id="overview_dynamic_menus_concept3">
+                <section xml:id="fundamentals_dynamic_menus_concept3">
                     <title>The response determines the next question</title>
                     
                     <para>In a menu system, a User's response to a question determines what question
@@ -1285,11 +1285,11 @@
         </section>
         
         <!--
-        <section xml:id="overview_diagnostics">
+        <section xml:id="fundamentals_diagnostics">
             <title>Diagnostics and Error Handling</title>
             <para><remark role="todo"></remark></para>
         </section>
-        <section xml:id="overview_complete_session_examples">
+        <section xml:id="fundamentals_complete_session_examples">
             <title>Complete session examples</title>
             <para>
                 <remark role="todo">May be overkill, add last or remove.</remark>

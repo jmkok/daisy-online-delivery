@@ -46,7 +46,7 @@
           Content item provided under a loan programme. Note also how the presence of the
             <db:code>pdtb2:specVersion</db:code> meta element signals that this Content item is
           protected using <db:xref linkend="bib_pdtb2"/> (see further <db:xref
-            linkend="overview_content_issuing_pdtb"/>). </db:para>
+            linkend="fundamentals_content_issuing_pdtb"/>). </db:para>
         <db:para>Additional metadata can be provided using <db:code>dc:</db:code> prefixed elements
           for <db:xref linkend="bib_dublinCore"/> expressions, and the <db:type>meta</db:type>
           element for any expression not relating to Dublin Core.</db:para>
@@ -87,16 +87,16 @@
       title="serviceAttributes type for a typical minimal library service">
       <annotation>
         <db:para>This example shows <db:type>serviceAttributes</db:type> for a Service that only
-          supports the Out-of-band <db:xref linkend="overview_content_selection"/>,
+          supports the Out-of-band <db:xref linkend="fundamentals_content_selection"/>,
 		  and and does not support any aspect of the <db:xref
-            linkend="overview_dynamic_menus"/> feature of this protocol.</db:para>
+            linkend="fundamentals_dynamic_menus"/> feature of this protocol.</db:para>
       </annotation>
     </sample>
     <sample src="./samples/types-serviceAttributes-1.xml"
       title="serviceAttributes type for a typical maximally extended service">
       <annotation>
         <db:para>This example shows <db:type>serviceAttributes</db:type> for a Service that supports
-          both available <db:xref linkend="overview_content_selection"/> (which means that
+          both available <db:xref linkend="fundamentals_content_selection"/> (which means that
           it also must support Dynamic Menus) and provides some or all
           of its Content encrypted using <db:xref linkend="bib_pdtb2"/>.</db:para>
       </annotation>

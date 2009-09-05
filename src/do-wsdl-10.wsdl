@@ -274,7 +274,7 @@
 												content that has <db:xref
 												linkend="contentList_expired"/>.</db:para>
 												<db:para>Services that support the <db:xref
-												linkend="overview_content_selection_outofband"
+												linkend="fundamentals_content_selection_outofband"
 												/> must recognize this identifier.</db:para>
 											</db:listitem>
 										</db:varlistentry>
@@ -1081,11 +1081,11 @@
 				<db:para>The retrieved list can either be of a 'precomposed' type, in which case it
 					is referred to by passing one of the three reserved values defined in the
 						<db:parameter>id</db:parameter> parameter below (Refer to <db:xref
-						linkend="overview"/> for information on in which contexts these reserved
+						linkend="fundamentals"/> for information on in which contexts these reserved
 					values are used).</db:para>
 				<db:para>The list can also be of a 'dynamic' type, typically being exposed by the
 					Service as the result of a <db:link
-						linkend="overview_content_selection_browse">dynamic menu search</db:link>
+						linkend="fundamentals_content_selection_browse">dynamic menu search</db:link>
 					operation sequence. In this case, the <db:parameter>id</db:parameter> value used
 					to refer to the list is provided in the return type of a previous operation (See
 					for example <db:xref linkend="tp_questions"/>). </db:para>
