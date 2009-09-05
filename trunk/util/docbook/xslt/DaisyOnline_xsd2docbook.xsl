@@ -538,8 +538,8 @@
 			<xsl:if test="not(contains($typeList, concat('|',@name,'|')))">
 				<xsl:variable name="name" select="@name"/>
 				
-				<!-- change to simplesect to exclude from toc -->
-				<xsl:element name="db:section">
+				<!-- change to section to include in toc -->
+				<xsl:element name="db:simplesect">
 					<xsl:attribute name="xml:id">
 						<!-- ids to bookmark schema elements include '_bookmark' to differentiate from type schema -->
 						<xsl:choose>
