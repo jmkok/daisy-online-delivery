@@ -385,7 +385,7 @@
                     </para>
                     
                     <note>
-                        <title>Security consideration</title>
+                        <title>Security Consideration</title>
                         <para>
                             It is recommended when implementing HTTPS that all certificates be registered with a 
                             certificate authority and not be self-signed.
@@ -409,7 +409,7 @@
                         may be used to secure <xref linkend="term_content"/> against unauthorized access.</para>
                     
                     <note>
-                        <title>Security consideration</title>
+                        <title>Security Consideration</title>
                         <para>
                             It is reommended that Basic Authentication only be used when a secure connection (HTTPS)
                             can be ensured between the <xref linkend="term_readingSystem"/> and <xref linkend="term_service"/>
@@ -431,7 +431,7 @@
                     </para>
                     
                     <note>
-                        <title>Security consideration</title>
+                        <title>Security Consideration</title>
                         <orderedlist>
                             <listitem>
                                 <para>RFC 2396 recommends against the use of the
@@ -972,49 +972,109 @@
             <section xml:id="fundamentals_content_download">
                 <title>Downloading and Streaming of Content</title>
                 
-                <para>Once the <xref linkend="term_readingSystem"/> has retrieved the list of <type>resources</type> for
-                    an item of content, it may begin downloading or streaming the resources using
-                    the URIs supplied in the <type>resource</type>s attributes.</para>
-                <para><xref linkend="term_service"/>s may publish resources with URIs unrelated to the names in a content
-                    item's fileset. The <code>localFileName</code> attribute specifies the path
-                    (delimited with <literal>/</literal>) of the resource relative to the content's
-                    root directory. This can be used by download <xref linkend="term_readingSystem"/>s to name the local
-                    files. It can be used by streaming <xref linkend="term_readingSystem"/>s to identify the URI of a
-                    resource that is referenced by another resource (such as the link to an audio
-                    resource in a SMIL resource in a DAISY DTB).</para>
-                <para>The <code>mimeType</code> attribute specifies the <xref linkend="bib_mime"/>
-                    type of each resource. <xref linkend="term_readingSystem"/>s may use this information to order the
-                    transfer of resources, e.g. a streaming <xref linkend="term_readingSystem"/> may retrieve the
-                        <abbrev>OPF</abbrev>, <abbrev>NCX</abbrev> and <abbrev>SMIL</abbrev> files
-                    of a DTB all at once to allow for quick navigation.</para>
-                <para>A DAISY Online session does not need to be active in order for a Reading
-                    System to download or stream Content.</para>
-                <para>Resources may be stored on the <xref linkend="term_service"/>'s servers or with Service Delegates,
-                    without restriction. Note that Service Delegates may require different
-                    credentials for access to resources, or may not require credentials at all. The
-                    <xref linkend="term_service"/> must provide this information to <xref linkend="term_readingSystem"/>s.</para>
-                <para>Resources from the <xref linkend="term_service"/> or from Service Delegates may be secured with Basic
-                    Authentication. The credentials must be specified in the URI of each resource so
-                    secured. See <xref linkend="technologies_basic_authentication"
-                    />.</para>
+                <para>
+                    Once the <xref linkend="term_readingSystem"/> has retrieved the list of <type>resources</type> for
+                    a <xref linkend="term_content"/> item, the <xref linkend="term_readingSystem"/> may begin 
+                    downloading or streaming the resources using
+                    the URIs supplied in the <type>resource</type> attributes.
+                </para>
+                
+                <note>
+                    <para>
+                        A <xref linkend="term_readingSystem"/> does not require an active <xref linkend="term_session"/> 
+                        to access <xref linkend="term_content"/>.
+                    </para>
+                </note>
+                
+                <para>
+                    The URI property of the <type>resource</type> attributes must not be used by a <xref linkend="term_readingSystem"/>
+                    to name resources locally, as the URIs may resolve to scripts or other content delivery mechanisms. The
+                    <code>localURI</code> property specifies the path the <xref linkend="term_readingSystem"/> must
+                    use to store/reference the resource locally.
+                </para>
+                
+                <note>
+                    <para>
+                        The <code>localURI</code> property contains a relative path for storing the resource relative
+                        to the root content directory used by the <xref linkend="term_readingSystem"/>.
+                    </para>
+                </note>
+                
+                <para>
+                    The <code>localURI</code> property should be used by <xref linkend="term_streaming"/> <xref linkend="term_readingSystem"/>s
+                    to locate the URI of resources that are referenced within a resource. For example, the URI for an audio
+                    resource in a SMIL file can be determined by checking each resource attribute to find the one with a 
+                    <code>localURI</code> property that matches the given path.
+                </para>
+                
+                <para>
+                    The <code>mimeType</code> property of a <type>resource </type> attribute specifies the <xref linkend="bib_mime"/>
+                    type of each resource in the file set. <xref linkend="term_readingSystem"/>s may use this information to order the
+                    transfer of resources. For example, a <xref linkend="term_streaming"/> <xref linkend="term_readingSystem"/> 
+                    may retrieve the <abbrev>OPF</abbrev>, <abbrev>NCX</abbrev> and <abbrev>SMIL</abbrev> files
+                    of a DAISY Digital Talking Book to provide the <xref linkend="term_user"/> full navigation before 
+                    downloading any audio data.
+                </para>
+                
+                <para>
+                    Resources may be stored on the servers belonging to a <xref linkend="term_serviceDelegate"/>.
+                    A <xref linkend="term_service"/> must provide the <xref linkend="term_readingSystem"/> what credentials, 
+                    if any, are required to access content stored on a <xref linkend="term_serviceDelegate"/>'s servers.
+                </para>
+                
+                <para>
+                    The URI of each resources secured with Basic Authentication must include the credentials required to access
+                    that resource. See <xref linkend="technologies_basic_authentication"/>.
+                </para>
             </section>
+            
 
             <section xml:id="fundamentals_content_installments">
-                <title>Publishing updates or installments</title>
-                <para><type>contentItems</type> in a <type>contentList</type> have an optional
-                    attribute, <code>lastModifiedDate</code>, which indicates that last time the
-                    content was modified. <xref linkend="term_readingSystem"/>s may use this to determine if the content
-                    has been updated since the last time it was accessed. Similarly,
-                        <type>resource</type>s in a <type>resources</type> list have an optional
-                    attribute also named <code>lastModifiedDate</code>, which indicates that last
-                    time that resource was modified. The content modification time should match the
-                    most recent resource modification time. <xref linkend="term_readingSystem"/>s may use this to
-                    determine which resources been updated since the last time it was
-                    accessed.</para>
-                <para>This functionality can be used by the <xref linkend="term_service"/> to, e.g., publish corrections to
-                    the content. The <xref linkend="term_service"/> could also publish content in installments by
-                    progressively updating the same content item. </para>
+                <title>Publishing Updates and Installments</title>
+                
+                <para>
+                    This section explains how <xref linkend="term_serviceProvider"/>s can publish updates to their <xref linkend="term_content"/>
+                    using this protocol.
+                </para>
+                
+                <para>
+                    Each <xref linkend="tp_contentItem"/> in a <type>contentList</type> has an optional
+                    <code>lastModifiedDate</code> property that indicates that last time the
+                    <xref linkend="term_content"/> was modified. A <xref linkend="term_readingSystem"/>s can use this information 
+                    to determine if the <xref linkend="term_content"/> on the <xref linkend="term_readingSystem"/> has been updated 
+                    since the last time it was accessed.
+                </para>
+                
+                <para>
+                    When a <xref linkend="term_readingSystem"/> determines that a <xref linkend="term_content"/>
+                    item has been updated, it should invoke the <function><xref linkend="op_getContentResources"/></function>
+                    operation to get an updated resource list. Each <type>resource</type> also has an optional
+                    <code>lastModifiedDate</code> property that the <xref linkend="term_readingSystem"/> can use to 
+                    determine the specific files that have been updated and need to be downloaded again.
+                </para>
+                
+                <para>
+                    When using the <code>lastModifiedDate</code> property to publish updates,
+                    <xref linkend="term_serviceProvider"/>s must ensure that the last modified date for the
+                    <xref linkend="term_content"/> item matches the last modified date of the most recently
+                    updated resource.
+                </para>
+                
+                <para>
+                    <xref linkend="term_readingSystem"/>s are not required to inspect modification dates or
+                    update <xref linkend="term_content"/> items. <xref linkend="term_service"/>s are not required 
+                    to provide modification dates on <xref linkend="term_content"/> or resource items.
+                </para>
+                
+                <note>
+                    <para>
+                        The functionality detailed in this section can also be used to publish installments by 
+                        progressively updating the same <xref linkend="term_content"/> item.
+                    </para>
+                </note>
+                
             </section>
+            
 
             <section xml:id="fundamentals_content_issuing_pdtb">
                 <title>Rights management</title>
