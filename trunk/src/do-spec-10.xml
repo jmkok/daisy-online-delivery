@@ -542,6 +542,7 @@
         <section xml:id="fundamentals_serviceModels" conformance="normative"
             xreflabel="Service Models">
             <title>Service Models</title>
+            
             <para>The DAISY Online Delivery Protocol supports two basic service models:</para>
             
             <itemizedlist>
@@ -631,15 +632,20 @@
         </section>
         
         
-        
-         <section xml:id="fundamentals_session">
+        <section xml:id="fundamentals_session" conformance="normative">
              <title>User Authentication and Session Management</title>
+             
+             <para>
+                 Before a <xref linkend="term_readingSystem"/> can interact with a <xref linkend="term_service"/>
+                 to obtain <xref linkend="term_content"/>,
+                 it must successfully authenticate itself and establish a valid <xref linkend="term_session"/>.
+                 The following subsections outline the steps in this process.
+             </para>
              
              <section xml:id="fundamentals_session_initializationSequence">
                  <title>Session Initialization</title>
                  
-                 <para role="definition" xml:id="def_sessionInitializationSequence"
-                     xreflabel="Session Initialization Sequence">
+                 <para role="definition" xml:id="def_sessionInitializationSequence" xreflabel="Session Initialization Sequence">
                      The following steps must be followed when starting a <xref linkend="term_session"/>
                      to authenticate the <xref linkend="term_readingSystem"/> to the <xref linkend="term_service"/>:
                  </para>
@@ -755,9 +761,12 @@
 
         </section>
 
+
         <section xml:id="fundamentals_content_selection" conformance="normative" xreflabel="Content Selection Methods">
             <title>Content Selection Methods</title>
+            
             <para>The DAISY Online Delivery protocol supports two content selection methods:</para>
+            
             <itemizedlist>
                 <listitem xml:id="fundamentals_content_selection_outofband" xreflabel="Out-of-band Content Selection Method">
                     <para>
@@ -776,16 +785,27 @@
                 </listitem>
             </itemizedlist>
             
-            <para>A <xref linkend="term_serviceProvider"/> must offer <xref linkend="term_user"/>s at least 
-                one content selection method. A <xref linkend="term_service"/> is not required to support both methods.</para>
+            <para>
+                A <xref linkend="term_serviceProvider"/> must offer <xref linkend="term_user"/>s at least 
+                one content selection method. 
+            </para>
+            
+            <note>
+                <para>
+                    The two methods for selecting <xref linkend="term_content"/> outlined in this section
+                    are not exclusive. <xref linkend="term_serviceProvider"/>s may choose to implement aspects 
+                    of both (for example, to provide an automated newspaper delivery service while allowing 
+                    <xref linkend="term_user"/>s to browse their catalogue).
+                </para>
+            </note>
             
             <para>
                 A <xref linkend="term_readingSystem"/> should support both content selection
-                models for maximum interopability, but is only required to support
+                methods for maximum interopability, but is only required to support
                 one model for conformance.
             </para>
             
-            <section xml:id="fundamentals_contentSelectionModel_reqs_outofband">
+            <section xml:id="fundamentals_contentSelectionModel_reqs_outofband" xreflabel="Out-of-band Content Selection Method">
                 <title>Out-of-band Content Selection Method</title>
                 <para>A <xref linkend="term_service"/> offering the <xref linkend="fundamentals_content_selection_outofband"/> is
                     compliant if it:</para>
@@ -803,9 +823,17 @@
                             when the operation is invoked with the <parameter>id</parameter> parameter set to the value <literal>new</literal>.</para>
                     </listitem>
                 </itemizedlist>
+                
+                <para>
+                    For automated downloading scenarios using the out-of-band selection method, the <xref linkend="term_readingSystem"/>
+                    must also execute the steps outlined in <xref linkend="fundamentals_content_issuing"/> to obtain the new
+                    <xref linkend="term_content"/>.
+                </para>
             </section>
-            <section xml:id="fundamentals_contentSelectionModel_reqs_browse">
-                <title>Browse Content Selection Model</title>
+            
+            
+            <section xml:id="fundamentals_contentSelectionModel_reqs_browse" xreflabel="Browse Content Selection Method">
+                <title>Browse Content Selection Method</title>
                 <para>A <xref linkend="term_service"/> offering the <xref linkend="fundamentals_content_selection_browse"/> is
                     compliant if it:</para>
                 <itemizedlist>
@@ -822,71 +850,128 @@
         
         
         <section xml:id="fundamentals_content_issuing">
-            <title>Issuing and transfer of content</title>
-            <para>Given a <xref linkend="tp_contentList"/>, retrieved using one of the methods
-                described in <xref linkend="fundamentals_content_selection"/>, the <xref linkend="term_readingSystem"/> can
-                proceed to request issuance of selected content items within the
-                    <type>contentList</type>, followed by download or streaming of the resources
-                that constitute the content. </para>
-
+            <title>Issuing and Transfer of Content</title>
+            
+            <para>
+                The steps for a <xref linkend="term_readingSystem"/> to request a <xref linkend="term_service"/> to issue 
+                content and <xref linkend="term_download"/> or <xref linkend="term_streaming" xreflabel="Stream"/> 
+                the <xref linkend="term_content"/> are outlined in the following sections.
+            </para>
+            
             <section xml:id="fundamentals_content_issuing_retrieval_sequence">
                 <title>Content Retrieval Sequence</title>
+                
                 <para xml:id="def_contentRetrievalSequence" xreflabel="Content Retrieval Sequence">
-                    To request issuance of and retrieve the resources of a Content item, a Reading
-                    System must invoke the following operations in the given sequence. Note that all
-                    involved operations take the <xref linkend="term_contentIdentifier"/> as a
-                    parameter.</para>
+                    In order to obtain license to download <xref linkend="term_content"/> from a <xref linkend="term_service"/>,
+                    a <xref linkend="term_readingSystem"/> must first invoke the following operations in the given sequence.
+                </para>
+                
+                <note>
+                    <para>
+                        A <xref linkend="term_readingSystem"/> must retrieve a <type>contentList</type> from a
+                        <xref linkend="term_service"/> using one of the methods described in <xref linkend="fundamentals_content_selection"/>
+                        prior to requesting the <xref linkend="term_service"/> issue any items.
+                    </para>
+                </note>
+                
+                <note>
+                    <para>
+                        All of the operations identified in this section take a <xref linkend="term_contentIdentifier"/> as a
+                        parameter.
+                    </para>
+                </note>
+                
                 <orderedlist>
                     <listitem>
-                        <para>The <function>
-                                <xref linkend="op_getContentMetadata"/>
-                            </function> operation</para>
+                        <para>
+                            The <function><xref linkend="op_getContentMetadata"/></function> operation must be called to obtain
+                            information about the <xref linkend="term_content"/>. The returned metadata includes publication
+                            information, file format and size date and an indicator of whether the <xref linkend="term_content"/>
+                            is borrowed or not.
+                        </para>
                     </listitem>
 
                     <listitem>
-                        <para>The <function>
-                                <xref linkend="op_issueContent"/>
-                            </function> operation, with a return value of <constant>true</constant>
-                                (<xref linkend="bib_xsdDatatypes"/>) </para>
+                        <para>
+                            The <function><xref linkend="op_issueContent"/></function> operation must be called to inform
+                            the <xref linkend="term_service"/> that the <xref linkend="term_readingSystem"/> intends to access
+                            the <xref linkend="term_content"/>. This operation constitutes the formal request for access.
+                            The <xref linkend="term_service"/> must respond to this request
+                            with a <constant>true</constant> (<xref linkend="bib_xsdDatatypes"/>) value in order to proceed
+                            to the next step.
+                        </para>
+                        
+                        <note>
+                            <para>
+                                A <xref linkend="term_readingSystem"/> is not required to immediately proceed to the next step
+                                after successfully being issued <xref linkend="term_content"/>. Other <xref linkend="term_operation"/>s
+                                can be called and/or the <xref linkend="term_readingSystem"/> can resume the next step in another
+                                <xref linkend="term_session"/>.
+                            </para>    
+                        </note>
+                        
+                        <para>
+                            If a <xref linkend="term_service"/> returns a <constant>false</constant> (<xref linkend="bib_xsdDatatypes"/>)
+                            value or a <link linkend="apiReferenceFaults">fault</link>, then the <xref linkend="term_content"/> 
+                            has not been issued. A <xref linkend="term_readingSystem"/> must not proceed to the next step
+                            until the <xref linkend="term_service"/> returns a <constant>true</constant> value.
+                        </para>
+                        
+                        <note>
+                            <para>
+                                This protocol does not specify the <xref linkend="term_readingSystem"/> behaviors that occur
+                                when a <xref linkend="term_service"/> does not return a <constant>true</constant> value.
+                                Actions such as alerting the <xref linkend="term_user"/> and re-invoking the 
+                                <function><xref linkend="op_issueContent"/></function>
+                                operation are defined per <xref linkend="term_readingSystem"/> implementation.
+                            </para>
+                        </note>
+                        
+                        <note>
+                            <para>
+                                The calling of this operation does not require a <xref linkend="term_service"/> to track
+                                any information about the request. 
+                                <xref linkend="term_service"/>s that provide free <xref linkend="term_content"/>
+                                can respond with a <constant>true</constant> value to all requests.
+                            </para>
+                        </note>
                     </listitem>
+                
                     <listitem>
-                        <para>[any other operation]</para>
-                    </listitem>
-                    <listitem>
-                        <para> The <function>
-                                <xref linkend="op_getContentResources"/>
-                            </function> operation</para>
+                        <para> 
+                            The <function><xref linkend="op_getContentResources"/></function> operation must be called 
+                            to obtain the location of all the resources that constitute the <xref linkend="term_content"/>.
+                            A <xref linkend="term_service"/> must allow at least one call to the <function>getContentResources</function> 
+                            operation for each issued <xref linkend="term_content"/> item.
+                        </para>
+                        
+                        <note>
+                            <para>
+                                <xref linkend="term_service"/>s that track the issuing of <xref linkend="term_content"/>
+                                must return a <xref linkend="ft_invalidParameterFault"/> when a <xref linkend="term_readingSystem"/>
+                                invokes <function>getContentResources</function> for <xref linkend="term_content"/> that it has not been issued.
+                            </para>
+                        </note>
+                        
+                        <para>
+                            A <xref linkend="term_service"/> must not
+                            require a <xref linkend="term_readingSystem"/> to call <function>getContentResources</function> in 
+                            the same <xref linkend="term_session"/> that it is issued the <xref linkend="term_content"/>.
+                        </para>
+                        
+                        <para>
+                            A <xref linkend="term_service"/> may allow repeat calls to <function>getContentResources</function>
+                            for the same <xref linkend="term_content"/> over more than one <xref linkend="term_session"/>.
+                        </para>
                     </listitem>
                 </orderedlist>
 
-                <para>The <xref linkend="op_getContentMetadata"/> operation contains publication
-                    metadata, information on the Content format, an optional sample, and information
-                    on whether the content is being borrowed or not. </para>
-
-                <para>The <xref linkend="op_issueContent"/> operation constitutes the formal User
-                    request to get access to the Content. This operation must be invoked prior to
-                    the invocation of <xref linkend="op_getContentResources"/>.</para>
-
-                <para>If a <xref linkend="term_service"/> returns <constant>false</constant> (<xref
-                        linkend="bib_xsdDatatypes"/>) or throws a <link linkend="apiReferenceFaults"
-                        >fault</link> on the <function>
-                        <xref linkend="op_issueContent"/>
-                    </function> operation, then the Content has not been issued. On invocations of <function>
-                        <xref linkend="op_getContentResources"/>
-                    </function> for a content item that has not been issued, a <xref linkend="term_service"/> must throw a
-                        <xref linkend="ft_invalidParameterFault"/>.</para>
-
-                <para>The <xref linkend="op_getContentResources"/> operation exposes all resources
-                    that constitute the content to the <xref linkend="term_readingSystem"/>. <xref linkend="term_serviceProvider"/>s must allow
-                    at least one call to <function>getContentResources</function> for each issued
-                    Content item. <xref linkend="term_serviceProvider"/>s may allow multiple subsequent
-                        <function>getContentResources</function> invocations for the same content,
-                    possibly spanning several Sessions.</para>
             </section>
 
 
             <section xml:id="fundamentals_content_download">
-                <title>Downloading and streaming of content</title>
+                <title>Downloading and Streaming of Content</title>
+                
                 <para>Once the <xref linkend="term_readingSystem"/> has retrieved the list of <type>resources</type> for
                     an item of content, it may begin downloading or streaming the resources using
                     the URIs supplied in the <type>resource</type>s attributes.</para>
