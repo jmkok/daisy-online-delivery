@@ -1078,96 +1078,119 @@
 
             <section xml:id="fundamentals_content_issuing_pdtb">
                 <title>Rights management</title>
-                <para>A <xref linkend="term_service"/> may provide all or parts of its content collection in protected
-                    form. This version of this specification allows the <xref linkend="bib_pdtb2"/>
-                    format to be used for content protection.</para>
-                <para>Neither <xref linkend="term_readingSystem"/>s nor <xref linkend="term_service"/>s are required to support
-                        <abbrev>PDTB2</abbrev>. If a <xref linkend="term_readingSystem"/> supports <abbrev>PDTB2</abbrev>,
-                    it should send the following in its <type>
-                        <xref linkend="tp_readingSystemAttributes"/>
-                    </type>:</para>
-                <programlisting><xi:include href="./samples/pdtb-readingSystemAttributes.xml" parse="text" encoding="UTF-8"/></programlisting>
-                <para>If a <xref linkend="term_readingSystem"/> does not support <abbrev>PDTB2</abbrev>, the <xref linkend="term_service"/>
-                    should not provide content in that format. If a <xref linkend="term_service"/> supports
-                        <abbrev>PDTB2</abbrev> key exchange via the <function>
-                        <xref linkend="op_getKeyExchangeObject"/>
-                    </function> operation, it must send the following in response to a valid <function>
-                        <xref linkend="op_getServiceAttributes"/>
-                    </function> call from the <xref linkend="term_readingSystem"/>:</para>
-                <programlisting><xi:include href="./samples/pdtb-serviceAttributes.xml" parse="text" encoding="UTF-8"/></programlisting>
-                <para>A <xref linkend="term_service"/> may provide Content encrypted with <abbrev>PDTB2</abbrev> even if it
-                    does not support <function>getKeyExchangeObject</function>, if there is a
-                    reasonable assumption that Users' <xref linkend="term_readingSystem"/>s have the keys necessary to
-                    decrypt the Content. </para>
-                <para>If Content is protected using <abbrev>PDTB2</abbrev>, then there will be a
-                    metadata item in the <type>
-                        <xref linkend="tp_contentMetadata"/>
-                    </type> named <literal>pdtb2:specVersion</literal> with a value of
-                        <literal>2005-1</literal> and there will be resources with mimeTypes
-                    beginning with <literal>application/x-pdtb…</literal>. The <xref linkend="term_readingSystem"/> can
-                    access these resources even if it does not support <abbrev>PDTB2</abbrev>, but
-                    it might not be able to decrypt all the Content.</para>
-                <example>
-                    <title>
-                        <abbrev>PDTB</abbrev>
-                        <type>contentMetadata</type> and <type>resources</type>
-                    </title>
-                    <para>The following is an example of the <type>contentMetadata</type> and
-                            <type>resources</type> for an item encrypted using
-                            <abbrev>PDTB2</abbrev>.</para>
-                    <programlisting><xi:include href="./samples/pdtb-contentMetadata.xml" parse="text" encoding="UTF-8"/></programlisting>
-                    <programlisting><xi:include href="./samples/pdtb-resources.xml" parse="text" encoding="UTF-8"/></programlisting>
-                </example>
-                <para>If some Content has an Authorization Object (<abbrev>AO</abbrev>), the Reading
-                    System can inspect it for the name of the key that secures the key to decrypt
-                    the Content.</para>
-                <para>The <xref linkend="term_readingSystem"/> may call <function>
-                        <xref linkend="op_getKeyExchangeObject"/>
-                    </function> with a list of names of keys on its keyring (these can be all or
-                    some of the symmetric keys or public/private keypairs the <xref linkend="term_readingSystem"/>
-                    supports) and the name of the requested key. The <xref linkend="term_service"/> is free to choose any
-                    of the keys in the <parameter>keyRing</parameter> to encrypt the Key Exchange
-                    Object (<abbrev>KXO</abbrev>). If the <xref linkend="term_service"/> does not have any of those keys or
-                    if the User is not authorized to access the Content, then the <xref linkend="term_service"/> will
-                    instead reply with an <errorname>
-                        <xref linkend="ft_invalidOperationFault"/>
-                    </errorname>. The <xref linkend="term_service"/> is responsible for keeping a list of authorized key
-                    names.</para>
-                <example>
-                    <title>An Encrypted DTB</title>
-                    <para>A User wants to read an encrypted <abbrev>PDTB</abbrev> from the Zenith
-                        Library. The <abbrev>AO</abbrev> is itself encrypted with a key named
-                            <literal>DAISY.gy-zlog.afc26219-auth</literal>:</para>
-                    <programlisting><xi:include href="./samples/authorization.xml" parse="text"/></programlisting>
-                    <para>The User has keys for the <xref linkend="term_readingSystem"/> (an Acme Reader Express) as well
-                        as user account keys supplied by Haute-Bibliothèque and Apex Talking Books,
-                        Inc. The <xref linkend="term_readingSystem"/> calls the <function>
-                            <xref linkend="op_getKeyExchangeObject"/>
-                        </function> operation with the first parameter,
-                            <parameter>keyRing</parameter>, as:</para>
-                    <programlisting><xi:include href="./samples/pdtb-keyRing.xml" parse="text"/></programlisting>
-                    <para>and the second parameter,<parameter>requestedKeyName</parameter>, as
-                            <literal>DAISY.gy-zlog.afc26219-auth</literal>.</para>
-                    <para>The <xref linkend="term_service"/> determines that the User is authorized to receive this key.
-                        The <xref linkend="term_serviceProvider"/> has determined that the Acme Reader Express is a
-                        trusted <xref linkend="term_readingSystem"/> model, so the <xref linkend="term_service"/> returns a <abbrev>KXO</abbrev>
-                        encrypted with the model key,
-                        <literal>DAISY.lv-acme.ReaderExpress</literal>:</para>
-                    <programlisting><xi:include href="./samples/kxo.xml" parse="text"/></programlisting>
-                </example>
-                <example>
-                    <title>Rights Management without Encryption</title>
-                    <para>Note that <abbrev>PDTB2</abbrev> can be used for rights expression without
-                        encryption. The following <abbrev>AO</abbrev> describes the permission to
-                        play the audio of a certain book which expires at midnight on 31 October
-                        2010, but has no encrypted parts.</para>
-                    <programlisting><xi:include href="./samples/authorization-unencrypted.xml" parse="text"/></programlisting>
-                    <para>A <abbrev>PDTB2</abbrev>-compliant <xref linkend="term_readingSystem"/> will prevent the user
-                        from playing the audio after that time, even though it is not encrypted. A
-                        non-compliant <xref linkend="term_readingSystem"/>'s behavior is, naturally, undefined.</para>
-                </example>
-            </section>
+                
+                <para>
+                    This protocol does not specify the digital rights management schemes that can be used to protect
+                    <xref linkend="term_content"/>. The protocol does include a key exchange operation to allow 
+                    <xref linkend="term_serviceProvider"/>s to use the <xref linkend="bib_pdtb2"/> format to protect 
+                    their DAISY Digital Talking Books, as outlined in this section.
+                </para>
+                
+                <note>
+                    <para>
+                        The key exchange mechanism detailed in the following sections may work with other protection
+                        mechanisms, but is not required to.
+                    </para>
+                </note>
+                
+                <para>
+                    <xref linkend="term_readingSystem"/>s and <xref linkend="term_service"/>s are not required to support
+                    <abbrev>PDTB2</abbrev>. 
+                </para>
+                
+                
+                <section xml:id="fundamentals_content_issuing_pdtb_declaring">
+                    <title>Declaring PDTB2 Support</title>
+                    
+                    <para>
+                        If a <xref linkend="term_readingSystem"/> supports <abbrev>PDTB2</abbrev>,
+                        it should inform the <xref linkend="term_service"/> by including a 
+                        <type><xref linkend="tp_supportedContentProtectionFormats"/></type> attribute
+                        with the value <constant>PDTB2</constant> when it invokes the 
+                        <function><xref linkend="op_setReadingSystemAttributes"/></function> operation.
+                    </para>
+                    
+                    <para>
+                        To indicate that a <xref linkend="term_serviceProvider"/> supports <abbrev>PDTB2</abbrev> key exchange, 
+                        the <xref linkend="term_service"/> must include the value <constant>PDTB2_KEY_PROVISION</constant>
+                        as a property of the <type><xref linkend="tp_supportedOptionalOperations"/></type> attribute
+                        when the <xref linkend="term_readingSystem"/> invokes the <function><xref linkend="op_getServiceAttributes"/></function>
+                        operation.
+                    </para>
+                    
+                    <note>
+                        <para>
+                            <xref linkend="term_serviceProvider"/>s may provide <abbrev>PDTB2</abbrev>-protected <xref linkend="term_content"/>
+                            without supporting the <function>getKeyExchangeObject</function> operation when alternate means of key
+                            provision have been implemented. For example, when keys are provided with the <xref linkend="term_readingSystem"/>.
+                        </para>
+                    </note>
+                    
+                </section>
+                
+                
+                <section xml:id="fundamentals_content_issuing_pdtb_identifying">
+                    <title>Identifying PDTB2 Content</title>
+                    
+                    <para>
+                        If <xref linkend="term_content"/> is protected using <abbrev>PDTB2</abbrev>, the <xref linkend="term_service"/> must 
+                        include a meta attribute in the  <type><xref linkend="tp_contentMetadata"/></type> named <literal>pdtb2:specVersion</literal>
+                        with the value <literal>2005-1</literal>.
+                    </para>
+                    
+                    <para>
+                        In addition, the <type>mimeTypes</type> for protected resource(s) returned from the 
+                        <function><xref linkend="op_getContentResources"/></function> operation  must begin
+                        with <literal>application/x-pdtb…</literal>.
+                    </para>
+                </section>
+               
+                <section xml:id="fundamentals_content_issuing_pdtb_access">
+                    <title>Accessing PDTB2 Content</title>
+                    
+                    <para>
+                        Any <xref linkend="term_readingSystem"/> may access <xref linkend="term_content"/>
+                        marked as <abbrev>PDTB2</abbrev> protected.
+                        <xref linkend="term_readingSystem"/>s that do not support <abbrev>PDTB2</abbrev> will not be able to 
+                        render any or all of the resources, however.
+                    </para>
+                    
+                    <para>
+                        To obtain a  Key Exchange Object (<abbrev>KXO</abbrev>) to access the protected <xref linkend="term_content"/>, a 
+                        <xref linkend="term_readingSystem"/> must call the <function><xref linkend="op_getKeyExchangeObject"/></function> 
+                        operation with a list of key names in its local keyring together with the name of the requested key. The key names provided can be 
+                        all or some of the symmetric keys or public/private keypairs the <xref linkend="term_readingSystem"/> supports.
+                    </para>
+                    
+                    <para>
+                        The <xref linkend="term_service"/> can choose any of the keys supplied by the <xref linkend="term_readingSystem"/> to encrypt 
+                        the <abbrev>KXO</abbrev>. If the <xref linkend="term_service"/> does not have any of the keys or
+                        if the <xref linkend="term_user"/> is not authorized to access the <xref linkend="term_content"/>, then the 
+                        <xref linkend="term_service"/> must with an <errorname><xref linkend="ft_invalidOperationFault"/></errorname>. 
+                    </para>
+                    
+                    <note>
+                        <para>
+                            The <xref linkend="term_service"/> is responsible for keeping a list of authorized key names.
+                        </para>
+                    </note>
+                    
+                    <para>
+                        If the <xref linkend="term_readingSystem"/> receives a valid <abbrev>KXO</abbrev> from the <xref linkend="term_service"/>,
+                        the <xref linkend="term_readingSystem"/> can then use that <abbrev>KXO</abbrev> to unlock the protected <xref linkend="term_content"/>.
+                    </para>
+                    
+                    <para>
+                        If a <xref linkend="term_content"/> item also has an Authorization Object (<abbrev>AO</abbrev>), the <xref linkend="term_readingSystem"/>
+                        should inspect the <abbrev>AO</abbrev> for the name of the key that secures the key required to decrypt the <xref linkend="term_content"/>.
+                    </para>
+                    
+                </section>
+             </section>
         </section>
+        
+        
+        
         <section xml:id="fundamentals_content_return">
             <title>Content Return</title>
             <para>Content return is employed in the case where a Reading System has content issued
