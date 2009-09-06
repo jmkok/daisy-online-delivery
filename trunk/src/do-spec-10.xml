@@ -1075,6 +1075,88 @@
                 
             </section>
             
+            
+            <section xml:id="fundamentals_content_lending">
+                <title>Lending Content</title>
+                
+                <para>
+                    This section outlines the methods the DAISY Online Delivery protocol supports for the borrowing 
+                    and return of  <xref linkend="term_content"/> for <xref linkend="term_service"/>s that implement 
+                    a <xref linkend="fundamentals_serviceModel_lender"/>.
+                </para>
+                
+                
+                <section xml:id="fundamentals_content_lending_borrowing">
+                    <title>Borrowing Content</title>
+                    
+                    <para>
+                        <remark role="todo">TODO: Write this section</remark>
+                    </para>
+                    
+                    <para>
+                        Borrowed <xref linkend="term_content"/> is defined as <xref linkend="term_content"/> that includes the
+                        <code>requiresReturn</code> attribute in its <xref linkend="tp_contentMetadata"/>.
+                    </para>
+                    
+                </section>
+                
+                <section xml:id="fundamentals_content_lending_returning">
+                    <title>Returning Content</title>
+                    
+                    <remark role="todo">
+                        TODO: when must this happen? what if the reading system
+                        doesn't have the content? what about streaming? add bit regarding discouraged 
+                        use of expired.
+                    </remark>
+                    
+                    <para>
+                        A <xref linkend="term_service"/> that implements a <xref linkend="fundamentals_serviceModel_lender"/> 
+                        must  manage both the issued and expired <xref linkend="term_content"/>
+                        in the <xref linkend="term_user"/>'s <xref linkend="term_content"/> collection. The <xref linkend="term_service"/>
+                        must provide a <xref linkend="term_readingSystem"/> a list of expired content
+                        when requested so that the <xref linkend="term_readingSystem"/> can check the <xref linkend="term_content"/>
+                        back in.
+                    </para>
+                    
+                    <para>
+                        A <xref linkend="term_readingSystem"/> can retrieve the list of expired  <xref linkend="term_content"/> by invoking 
+                        the <function><xref linkend="op_getContentList"/></function> operation with the <parameter>id</parameter> 
+                        parameter value set to <code>expired</code>.
+                    </para>
+                    
+                     <para>
+                        The <xref linkend="term_readingSystem"/> must perform the following actions to check back in a <xref linkend="term_content"/>
+                        item:
+                    </para>
+                    
+                    <orderedlist>
+                        <listitem>
+                            <para>
+                                it must delete the <xref linkend="term_content"/> from its non-volatile memory; and
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                it must invoke the <function><xref linkend="op_returnContent"/></function> operation to inform the <xref linkend="term_service"/>
+                                that the <xref linkend="term_content"/> has been deleted and should be removed from the <xref linkend="term_user"/>'s issued
+                                <xref linkend="term_content"/> list.
+                            </para>
+                        </listitem>
+                    </orderedlist>
+                        
+                    <note>
+                        <para>
+                            The <xref linkend="term_content"/> expiry and revocation process outlined in this section is
+                            designed for library-like models where overdue returns can be forgiven or result in an out-of-band
+                            penalty for the <xref linkend="term_user"/>. If a <xref linkend="term_content"/> item must expire at
+                            a specific time and no longer be accessible, <xref linkend="term_serviceProvider"/>s must also
+                            implement <abbrev>PDTB2</abbrev> protection or a similar digital rights management scheme.
+                        </para>
+                    </note>
+                </section>
+                
+            </section>
+            
 
             <section xml:id="fundamentals_content_issuing_pdtb">
                 <title>Rights management</title>
@@ -1190,48 +1272,38 @@
         </section>
         
         
-        
-        <section xml:id="fundamentals_content_return">
-            <title>Content Return</title>
-            <para>Content return is employed in the case where a Reading System has content issued
-                from a Service that employs a library or rental model, and where the given Content item issued from that
-                Service is explicitly of a borrowed nature (as defined by the value of the
-                    <code>requiresReturn</code> attribute on <xref linkend="tp_contentMetadata"
-                />).</para>
-            <para>A service using a library or rental model will need to
-                manage the User's Content collection in terms of what Content is issued,
-                and what Content has expired. By invoking <xref linkend="op_getContentList"/> with
-                the <parameter>id</parameter> parameter valued <code>expired</code>, a Reading
-                System will retrieve a list of the Content items that has expired, if any. For each
-                of the Content items in this list it must then delete the Content from its local
-                storage media, followed by an invocation of <xref linkend="op_returnContent"
-                />. <remark role="todo">TODO: when must this happen? what if the reading system
-				doesn't have the content? what about streaming? add bit regarding discouraged
-				use of expired.</remark></para>
-
-        </section>
-
 
         <section xml:id="fundamentals_service_announcements">
             <title>Service Announcements</title>
-            <para><remark role="todo">TODO fix this introduction</remark> Service Announcements are
+            
+            <para>
+                <remark role="todo">TODO fix this introduction</remark> Service Announcements are
                 used as a means for the <xref linkend="term_service"/> to provide various types of information to the User.
                 Examples include: information on <xref linkend="term_service"/> up- or downtime, information on additions
-                to the Content collection, and information on due or overdue Content.</para>
-            <para>Note that <xref linkend="op_getServiceAnnouncements"/> is an optional operation -
-                <xref linkend="term_service"/>s may or may not support this protocol feature.</para>
+                to the Content collection, and information on due or overdue Content.
+            </para>
+            
+            <para>
+                Note that <xref linkend="op_getServiceAnnouncements"/> is an optional operation -
+                <xref linkend="term_service"/>s may or may not support this protocol feature.
+            </para>
 
-            <para>Service Announcements are typically retrieved at the onset of each <xref
+            <para>
+                Service Announcements are typically retrieved at the onset of each <xref
                     linkend="term_session"/>, but may be retrieved at any stage of a Session, as
                 long as the <xref linkend="def_sessionInitializationSequence"/> has been
-                successfully completed.</para>
+                successfully completed.
+            </para>
 
-            <para>If a <xref linkend="term_service"/> <link linkend="op_getServiceAttributes">supports this optional
+            <para>
+                If a <xref linkend="term_service"/> <link linkend="op_getServiceAttributes">supports this optional
                     operation</link>, then <xref linkend="term_readingSystem"/>s should invoke the operation at least once
                 per Session. If a <xref linkend="term_service"/> does not support this operation, then invocations of it
-                must result in an <xref linkend="ft_operationNotSupportedFault"/>.</para>
+                must result in an <xref linkend="ft_operationNotSupportedFault"/>.
+            </para>
 
-            <para>A <xref linkend="term_readingSystem"/> should invoke the <function>
+            <para>
+                A <xref linkend="term_readingSystem"/> should invoke the <function>
                     <xref linkend="op_markAnnouncementsAsRead"/>
                 </function> operation to signal to the <xref linkend="term_service"/> which of the provided announcements
                 have been consumed by the User. Consistent use of <function>
@@ -1239,16 +1311,19 @@
                 </function> enables the <xref linkend="term_service"/> to avoid exposing the User to the same announcement
                 multiple times. Note that a <xref linkend="term_service"/> may also on its own accord remove individual
                 announcements from the set of distributed announcements, as the embedded messages
-                become outdated or otherwise obsolete.</para>
+                become outdated or otherwise obsolete.
+            </para>
 
             <note>
-                <para>The identifier values of individual <xref linkend="tp_announcement"/>s in the
+                <para>
+                    The identifier values of individual <xref linkend="tp_announcement"/>s in the
                         <xref linkend="tp_announcements"/> type are only valid for the duration of
                     the current Session. A <xref linkend="term_readingSystem"/> must only invoke <function>
                         <xref linkend="op_markAnnouncementsAsRead"/>
                     </function> using parameter values supplied via a previous invocation of <function>
                         <xref linkend="op_getServiceAnnouncements"/>
-                    </function>, made during the same Session. </para>
+                    </function>, made during the same Session. 
+                </para>
             </note>
 
         </section>
@@ -1256,7 +1331,8 @@
         <section xml:id="fundamentals_bookmarks">
             <title>Bookmarks and Last Reading Position</title>
 
-            <para>If a <xref linkend="term_service"/> supports the <link linkend="op_getServiceAttributes">optional
+            <para>
+                If a <xref linkend="term_service"/> supports the <link linkend="op_getServiceAttributes">optional
                     operations</link>
                 <function>
                     <xref linkend="op_setBookmarks"/>
@@ -1265,14 +1341,17 @@
                 </function>, then a <xref linkend="term_readingSystem"/> may invoke these operations to store and/or
                 retrieve a set of bookmarks for a given Content item. Note that the grammar used
                 also includes a dedicated <code>lastMark</code> element which is used to persist the
-                location where the User most recently ceased reading.</para>
+                location where the User most recently ceased reading.
+            </para>
 
-            <para>The <type>
+            <para>
+                The <type>
                     <xref linkend="tp_bookmarkSet"/>
                 </type> type is a direct derivation of the <token>Portable Bookmarks and
                     Highlights</token> grammar of <xref linkend="bib_z3986-2005"/>. <xref
                     linkend="bib_z3986-2005-bkmk"/> constitutes the normative reference regarding
-                the use and semantics of this type.</para>
+                the use and semantics of this type.
+            </para>
 
             <!--<section xml:id="fundamentals_bookmarks_otherContent" conformance="informative">
                 <title>Using the Portable Bookmarks and Highlights grammar for content other than
@@ -1294,11 +1373,14 @@
                     ANSI/NISO Z39.86.</para>
             </note>
             <!--</section>-->
+            
             <note>
-                <para><xref linkend="bib_z3986-2005-bkmk"/> allows User audio recordings in notes.
+                <para>
+                    <xref linkend="bib_z3986-2005-bkmk"/> allows User audio recordings in notes.
                     This version of this specification does not allow such recordings to be
                     submitted to the <xref linkend="term_service"/> as part of the <xref linkend="op_setBookmarks"/>
-                    operation.</para>
+                    operation.
+                </para>
             </note>
 
         </section>
