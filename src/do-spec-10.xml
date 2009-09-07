@@ -74,7 +74,6 @@
     </info>
      
      
-     
     <chapter xml:id="introduction">
         <title>Introduction</title>
         <para>
@@ -642,7 +641,7 @@
                  The following subsections outline the steps in this process.
              </para>
              
-             <section xml:id="fundamentals_session_initializationSequence">
+             <section xml:id="fundamentals_session_initializationSequence" xreflabel="Session Initialization Sequence">
                  <title>Session Initialization</title>
                  
                  <para role="definition" xml:id="def_sessionInitializationSequence" xreflabel="Session Initialization Sequence">
@@ -1197,7 +1196,7 @@
                         the <xref linkend="term_service"/> must include the value <constant>PDTB2_KEY_PROVISION</constant>
                         as a property of the <type><xref linkend="tp_supportedOptionalOperations"/></type> attribute
                         when the <xref linkend="term_readingSystem"/> invokes the <function><xref linkend="op_getServiceAttributes"/></function>
-                        operation.
+                        operation during the <xref linkend="fundamentals_session_initializationSequence"/>.
                     </para>
                     
                     <note>
@@ -1271,62 +1270,93 @@
              </section>
         </section>
         
-        
-
+  
         <section xml:id="fundamentals_service_announcements">
             <title>Service Announcements</title>
             
             <para>
-                <remark role="todo">TODO fix this introduction</remark> Service Announcements are
-                used as a means for the <xref linkend="term_service"/> to provide various types of information to the User.
-                Examples include: information on <xref linkend="term_service"/> up- or downtime, information on additions
-                to the Content collection, and information on due or overdue Content.
+                The DAISY Online Delivery protocol allows <xref linkend="term_serviceProvider"/>s to deliver service announcements
+                directly to a <xref linkend="term_user"/>'s <xref linkend="term_readingSystem"/>. A service announcement
+                is a message in text and/or audio format that conveys informatiion such as expected <xref linkend="term_service"/> down time
+                and warnings about overdue <xref linkend="term_content"/> to the <xref linkend="term_user"/>.
             </para>
             
             <para>
-                Note that <xref linkend="op_getServiceAnnouncements"/> is an optional operation -
-                <xref linkend="term_service"/>s may or may not support this protocol feature.
+                To indicate that a <xref linkend="term_serviceProvider"/> supports service annoucements, 
+                the <xref linkend="term_service"/> must include the value <constant>SERVICE_ANNOUNCEMENTS</constant>
+                as a property of the <type><xref linkend="tp_supportedOptionalOperations"/></type> attribute
+                when the <xref linkend="term_readingSystem"/> invokes the <function><xref linkend="op_getServiceAttributes"/></function>
+                operation during the <xref linkend="fundamentals_session_initializationSequence"/>.
             </para>
-
+            
             <para>
-                Service Announcements are typically retrieved at the onset of each <xref
-                    linkend="term_session"/>, but may be retrieved at any stage of a Session, as
-                long as the <xref linkend="def_sessionInitializationSequence"/> has been
-                successfully completed.
+                <xref linkend="term_service"/>s are not required to support service annoucements.
+                <xref linkend="term_readingSystem"/>s should be able to retrieve and render text and audio service annoucements
+                for maximum interoperability.
             </para>
-
-            <para>
-                If a <xref linkend="term_service"/> <link linkend="op_getServiceAttributes">supports this optional
-                    operation</link>, then <xref linkend="term_readingSystem"/>s should invoke the operation at least once
-                per Session. If a <xref linkend="term_service"/> does not support this operation, then invocations of it
-                must result in an <xref linkend="ft_operationNotSupportedFault"/>.
-            </para>
-
-            <para>
-                A <xref linkend="term_readingSystem"/> should invoke the <function>
-                    <xref linkend="op_markAnnouncementsAsRead"/>
-                </function> operation to signal to the <xref linkend="term_service"/> which of the provided announcements
-                have been consumed by the User. Consistent use of <function>
-                    <xref linkend="op_markAnnouncementsAsRead"/>
-                </function> enables the <xref linkend="term_service"/> to avoid exposing the User to the same announcement
-                multiple times. Note that a <xref linkend="term_service"/> may also on its own accord remove individual
-                announcements from the set of distributed announcements, as the embedded messages
-                become outdated or otherwise obsolete.
-            </para>
-
-            <note>
+            
+            <section xml:id="fundamentals_service_annoucements_new">
+                <title>New Annoucements</title>
+                
                 <para>
-                    The identifier values of individual <xref linkend="tp_announcement"/>s in the
-                        <xref linkend="tp_announcements"/> type are only valid for the duration of
-                    the current Session. A <xref linkend="term_readingSystem"/> must only invoke <function>
-                        <xref linkend="op_markAnnouncementsAsRead"/>
-                    </function> using parameter values supplied via a previous invocation of <function>
-                        <xref linkend="op_getServiceAnnouncements"/>
-                    </function>, made during the same Session. 
+                    A <xref linkend="term_readingSystem"/> can check for new messages at any time when it is connected to a 
+                    <xref linkend="term_service"/> by invoking the <function><xref linkend="op_getServiceAnnouncements"/></function> operation.
+                    It is recommended that <xref linkend="term_readingSystem"/>s check for annoucements immediately after completing the 
+                    initialization of a new <xref linkend="term_session"/>.
                 </para>
-            </note>
+                
+                <note>
+                    <para>
+                        A <xref linkend="term_readingSystem"/> should check for new annoucements at least once per <xref linkend="term_session"/>.
+                    </para>
+                </note>
+                
+                <para>
+                    The <xref linkend="term_serviceProvider"/> can set the importance level for each annoucement
+                    from a level of 1 (most important) to 3 (least important) and specify the type of announcement as one of <constant>ERROR</constant>, 
+                    <constant>SYSTEM</constant>, <constant>WARNING</constant> or <constant>INFORMATION</constant> to assist
+                    <xref linkend="term_readingSystem"/>s in ordering the announcements for rendering to the <xref linkend="term_user"/>.
+                </para>
+                
+                <note>
+                    <para>
+                        A <xref linkend="term_serviceProvider"/> may remove unread announcements from the <xref linkend="term_service"/> 
+                        at any time and for any reason. To avoid
+                        potential retrieval conflicts, a <xref linkend="term_readingSystem"/> must treat the 
+                        identifier values of individual 
+                        <type><xref linkend="tp_announcement"/></type> attributes as valid for no longer than the duration of the active <xref linkend="term_session"/>.
+                    </para>
+                </note>
+                
+                <para>
+                    If a <xref linkend="term_serviceProvider"/> does not support service annoucements, the <xref linkend="term_service"/> 
+                    must return an <code><xref linkend="ft_operationNotSupportedFault"/></code> if a <xref linkend="term_readingSystem"/> attempts
+                    to invoke the <code>getServiceAnnoucements</code> operation to obtain new announcements.
+                </para>
+                
+            </section>
 
+            <section xml:id="fundamentals_service_annoucements_read">
+                <title>Read Annoucements</title>
+                
+                <para>
+                    After rendering each annoucement to a <xref linkend="term_user"/>, a <xref linkend="term_readingSystem"/> 
+                    should immediately invoke the <function><xref linkend="op_markAnnouncementsAsRead"/></function> operation to inform the 
+                    <xref linkend="term_service"/> not to send the announcement again the next time the
+                    <xref linkend="term_user"/> connects to the <xref linkend="term_service"/>.
+                </para>
+                
+                <para>
+                    To prevent conflicts arising from annoucements that a <xref linkend="term_serviceProvider"/> has removed from the 
+                    <xref linkend="term_service"/>, a <xref linkend="term_readingSystem"/> must only invoke the
+                    <function>markAnnouncementsAsRead</function> operation using the identifier values
+                    obtained from the last invocation of <function><xref linkend="op_getServiceAnnouncements"/></function> operation 
+                    made during the active <xref linkend="term_session"/>. 
+                </para>
+            </section>
+            
         </section>
+
 
         <section xml:id="fundamentals_bookmarks">
             <title>Bookmarks and Last Reading Position</title>
@@ -1384,6 +1414,7 @@
             </note>
 
         </section>
+ 
  
         <section xml:id="fundamentals_dynamic_menus" conformance="informative">
             <title>Dynamic Menus</title>
@@ -1536,19 +1567,6 @@
                 </section>
             </section>
         </section>
-        
-        <!--
-        <section xml:id="fundamentals_diagnostics">
-            <title>Diagnostics and Error Handling</title>
-            <para><remark role="todo"></remark></para>
-        </section>
-        <section xml:id="fundamentals_complete_session_examples">
-            <title>Complete session examples</title>
-            <para>
-                <remark role="todo">May be overkill, add last or remove.</remark>
-            </para>
-        </section>
-        -->
 
     </chapter>
 
