@@ -1543,36 +1543,43 @@
                     The DAISY Online Delivery protocol defines two types of questions for navigating a menu system:
                 </para>
                 
-                <orderedlist>
-                    <listitem>
-                        <para>
-                            <emphasis>Multiple choice questions</emphasis> &#8212; are questions that include a predefined
-                            set of choices that a user is required to pick from in order to
-                            answer the question. A Multiple choice question is represented by
-                            the <xref linkend="tp_multipleChoiceQuestion"/> element, which
-                            appears inside the <xref linkend="tp_questions"/> element.
-                        </para>
-                    </listitem>
-                    <listitem>
-                        <para>
-                            <emphasis>Input questions</emphasis> &#8212; are questions that do not offer such a predefined
-                            set of choices, but require the user to respond to the question
-                            through either numeric, alphanumeric or audio input. An input
-                            question is represented by the <xref linkend="tp_inputQuestion"/>
-                            element which appears inside the <xref linkend="tp_questions"/>
-                            element.
-                        </para>
-                    </listitem>
-                </orderedlist>
+                <variablelist>
+                    <varlistentry>
+                        <term>Multiple Choice Questions</term>
+                        <listitem>
+                            <para>
+                                Multiple choice questions include a predefined
+                                set of options that a <xref linkend="term_service"/> must pick from to
+                                answer the question. A multiple choice question is represented by
+                                the <code><xref linkend="tp_multipleChoiceQuestion"/></code> attribute of the 
+                                <type><xref linkend="tp_questions"/></type> type.
+                            </para>
+                        </listitem>
+                    </varlistentry>
+                    <varlistentry>
+                        <term>Input Questions</term>
+                        <listitem>
+                            <para>
+                                Input questions require the user to respond to the question
+                                with either text or audio input. An input
+                                question is represented by the<code><xref linkend="tp_inputQuestion"/></code> attribute of the 
+                                <type><xref linkend="tp_questions"/></type> type.
+                            </para>
+                            
+                            <note>
+                                <para>
+                                    A <xref linkend="term_service"/> must specify if an input question requires a
+                                    numeric, alphanumeric or audio-based response.
+                                    Combined modalities are also allowed. The required response modality
+                                    for an input question is specified in the <xref
+                                        linkend="tp_inputTypes"/> element which appears inside the <xref
+                                            linkend="tp_inputQuestion"/> element.
+                                </para>
+                            </note>
+                        </listitem>
+                    </varlistentry>
+                </variablelist>
                 
-                <para>
-                    A <xref linkend="term_service"/> can specify whether a given input question requires a
-                    numeric, alphanumeric or audio-based response from the User.
-                    Combined modalities are also allowed. The required response modality
-                    for an input question is specified in the <xref
-                        linkend="tp_inputTypes"/> element which appears inside the <xref
-                            linkend="tp_inputQuestion"/> element.
-                </para>
                 
                 <para>
                     A <xref linkend="term_readingSystem"/> declares which input types it supports in <xref
