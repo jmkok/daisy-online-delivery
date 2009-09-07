@@ -1359,60 +1359,85 @@
 
 
         <section xml:id="fundamentals_bookmarks">
-            <title>Bookmarks and Last Reading Position</title>
-
+            <title>Bookmarks / Last Reading Position</title>
+            
             <para>
-                If a <xref linkend="term_service"/> supports the <link linkend="op_getServiceAttributes">optional
-                    operations</link>
-                <function>
-                    <xref linkend="op_setBookmarks"/>
-                </function> and <function>
-                    <xref linkend="op_getBookmarks"/>
-                </function>, then a <xref linkend="term_readingSystem"/> may invoke these operations to store and/or
-                retrieve a set of bookmarks for a given Content item. Note that the grammar used
-                also includes a dedicated <code>lastMark</code> element which is used to persist the
-                location where the User most recently ceased reading.
+                The DAISY Online Delivery protocol uses the <token>Portable Bookmarks and Highlights</token> grammar from
+                <xref linkend="bib_z3986-2005"/> to record <xref linkend="term_user"/>s' bookmarks. This grammar can also
+                be used by <xref linkend="term_readingSystem"/>s to record the last reading position for each <xref linkend="term_content"/>
+                item. 
             </para>
-
-            <para>
-                The <type>
-                    <xref linkend="tp_bookmarkSet"/>
-                </type> type is a direct derivation of the <token>Portable Bookmarks and
-                    Highlights</token> grammar of <xref linkend="bib_z3986-2005"/>. <xref
-                    linkend="bib_z3986-2005-bkmk"/> constitutes the normative reference regarding
-                the use and semantics of this type.
-            </para>
-
-            <!--<section xml:id="fundamentals_bookmarks_otherContent" conformance="informative">
-                <title>Using the Portable Bookmarks and Highlights grammar for content other than
-                    ANSI/NISO Z39.86</title> -->
-            <note>
-                <para><xref linkend="bib_z3986-2005-bkmk"/> was developed exclusively to support
-                    bookmarks and highlights for <xref linkend="bib_z3986-2005"/> and its
-                    predecessor. Until <xref linkend="bib_z3986-2005-bkmk"/> is revised to be more
-                    agnostic in terms of what content types it supports, there is a possibility that
-                    <xref linkend="term_readingSystem"/>s may attempt to make use of this grammar in content contexts
-                    other than Z39.86. To use this grammar in the context of <xref
-                        linkend="bib_d202"/> content for example, all that is needed is to consider
-                    the <code>ncxRef</code> value valid even if it's URI points to a fragment in a
-                    DAISY 2.02 NCC document instead of a Z39.86 NCX document. </para>
-
-                <para>This specification does not endorse this behavior, but merely suggests that
-                    <xref linkend="term_service"/>s should be designed with the awareness that a <xref linkend="term_readingSystem"/> may post a
-                        <xref linkend="tp_bookmarkSet"/> type even if the given Content type is not
-                    ANSI/NISO Z39.86.</para>
-            </note>
-            <!--</section>-->
             
             <note>
                 <para>
-                    <xref linkend="bib_z3986-2005-bkmk"/> allows User audio recordings in notes.
-                    This version of this specification does not allow such recordings to be
-                    submitted to the <xref linkend="term_service"/> as part of the <xref linkend="op_setBookmarks"/>
-                    operation.
+                    <xref linkend="bib_z3986-2005-bkmk"/> constitutes the normative reference regarding the use and semantics of this type.
                 </para>
             </note>
-
+            
+            <para>
+                To indicate that a <xref linkend="term_serviceProvider"/> supports the retrieval of bookmarks, 
+                the <xref linkend="term_service"/> must include the value <constant>GET_BOOKMARKS</constant>
+                as a property of the <type><xref linkend="tp_supportedOptionalOperations"/></type> attribute
+                when the <xref linkend="term_readingSystem"/> invokes the <function><xref linkend="op_getServiceAttributes"/></function>
+                operation during the <xref linkend="fundamentals_session_initializationSequence"/>.
+            </para>
+            
+            <para>
+                To indicate that a <xref linkend="term_serviceProvider"/> supports the setting of bookmarks, 
+                the <xref linkend="term_service"/> must include the value <constant>SET_BOOKMARKS</constant>
+                as a property of the <type><xref linkend="tp_supportedOptionalOperations"/></type> attribute
+                when the <xref linkend="term_readingSystem"/> invokes the <function><xref linkend="op_getServiceAttributes"/></function>
+                operation during the <xref linkend="fundamentals_session_initializationSequence"/>.
+            </para>
+            
+            <para>
+                If a <xref linkend="term_service"/> supports both the setting and retrieval of bookmarks, a <xref linkend="term_readingSystem"/>
+                may use the <code>lastMark</code> attribute of the <type>bookmarkSet</type> type to store the <xref linkend="term_user"/>'s
+                last reading position. 
+            </para>
+            
+            <note>
+                <para>
+                    If a <xref linkend="term_service"/> supports both operations, a <xref linkend="term_readingSystem"/> should check
+                    for a last reading position before resuming playback.
+                </para>
+            </note>
+            
+            <para>
+                Contrary to <xref linkend="bib_z3986-2005-bkmk"/>, this version of the DAISY Online Delivery protocol does not allow 
+                audio recordings to be submitted to a <xref linkend="term_service"/> as part of the 
+                <function><xref linkend="op_setBookmarks"/></function> operation.
+            </para>
+            
+            <para>
+                A <xref linkend="term_service"/> may support the retrieval of bookmarks or both the setting and retrieval of bookmarks.
+                A <xref linkend="term_readingSystem"/> should support both the operations for maximum interoperability.
+            </para>
+            
+            <note>
+                <title>Note on Z39-86.2005-BOOKMARKS</title>
+                
+                <para>
+                    <xref linkend="bib_z3986-2005-bkmk"/> was developed exclusively to support bookmarks and highlights for 
+                    <xref linkend="bib_z3986-2005"/> and its predecessor. <xref linkend="term_readingSystem"/>s employing
+                    this protocol, however, may attempt to make use of this grammar in more than just Z39.86 contexts.
+                </para>
+                
+                <para>
+                    This specification neither endorses or condemns this behavior. Until <xref linkend="bib_z3986-2005-bkmk"/> 
+                    is revised to be more agnostic in terms of the content types it supports, the specification only notes that
+                    <xref linkend="term_service"/>s should be designed with the awareness that a 
+                    <xref linkend="term_readingSystem"/> may post a <xref linkend="tp_bookmarkSet"/> with a content type 
+                    other than  ANSI/NISO Z39.86.
+                </para>
+                
+                <para>
+                    For example, a <xref linkend="term_readingSystem"/> may re-purpose this grammar to store bookmarks for
+                    <xref linkend="bib_d202"/> content simply by using the <code>ncxRef</code> value to point to a fragment 
+                    in a DAISY 2.02 NCC document instead of a Z39.86 NCX document.
+                </para>
+            </note>
+            
         </section>
  
  
