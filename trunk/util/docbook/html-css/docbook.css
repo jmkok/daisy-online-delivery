@@ -364,18 +364,6 @@ code.function, span.type, span.errorname {
 	font-weight: bold
 }
 
-code.function {
-    color: maroon;
-}
-
-span.type {
-    color: navy;
-}
-
-span.errorname {
-    color: red;
-}
-
 .ednote {
 	color: red; font-size: 80%; font-style: italic; 
 }
