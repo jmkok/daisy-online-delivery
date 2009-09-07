@@ -1,0 +1,22 @@
+<wiki:toc max_depth="5" />
+
+Present: Markus (scribe) 
+
+Regrets: 
+
+== Action Item Summary ==
+ 
+=== New Action Items ===
+
+=== Previous Unfinished Action Items ===
+ * Jelle: propose resolution to Issue 118
+ * Geoff and Markus analyze RequirementsDocument vs current API. {ONGOING}
+
+== Agenda/Minutes ==
+
+=== Faults ===
+ * Add a dedicated fault when invoking an operation when session has expired? 
+  * (Is a fault code embedded in invalidOperationFault an alternative?)
+ * expanding the Fault documentation prose - who?
+
+=== Reading System Conformance Requirements ===
