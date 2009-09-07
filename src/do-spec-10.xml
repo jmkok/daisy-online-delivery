@@ -410,7 +410,7 @@
                     <note>
                         <title>Security Consideration</title>
                         <para>
-                            It is reommended that Basic Authentication only be used when a secure connection (HTTPS)
+                            It is recommended that Basic Authentication only be used when a secure connection (HTTPS)
                             can be ensured between the <xref linkend="term_readingSystem"/> and <xref linkend="term_service"/>
                             to prevent the exposure of the credentials transmitted in HTTP headers. 
                         </para>
@@ -607,7 +607,7 @@
                             TODO: no attribute specified an not clear what reference is to
                         </remark>
                         
-                        <para>It should set the the ??? attribute in the <type><xref linkend="tp_contentMetadata"/></type>
+                        <para>It should set the ??? attribute in the <type><xref linkend="tp_contentMetadata"/></type>
                             of the issued content  to <literal>true</literal>.</para>
                     </listitem>
                 </itemizedlist>
@@ -738,7 +738,7 @@
                 <para role="definiton" xml:id="def_sessionDuration">
                     A <xref linkend="term_session"/> begins after a successful <function><xref linkend="op_logOn"/></function> 
                     operation. The <xref linkend="term_session"/> must remain active until the <xref linkend="term_readingSystem"/> 
-                    sucessfully invokes the <function><xref linkend="op_logOff"/></function> operation or the 
+                    successfully invokes the <function><xref linkend="op_logOff"/></function> operation or the 
                     <xref linkend="term_service"/> terminates it.
                 </para>
                  
@@ -794,13 +794,13 @@
                     The two methods for selecting <xref linkend="term_content"/> outlined in this section
                     are not exclusive. <xref linkend="term_serviceProvider"/>s may choose to implement aspects 
                     of both (for example, to provide an automated newspaper delivery service while allowing 
-                    <xref linkend="term_user"/>s to browse their catalogue).
+                    <xref linkend="term_user"/>s to browse their catalog).
                 </para>
             </note>
             
             <para>
                 A <xref linkend="term_readingSystem"/> should support both content selection
-                methods for maximum interopability, but is only required to support
+                methods for maximum interoperability, but is only required to support
                 one model for conformance.
             </para>
             
@@ -1277,12 +1277,12 @@
             <para>
                 The DAISY Online Delivery protocol allows <xref linkend="term_serviceProvider"/>s to deliver service announcements
                 directly to a <xref linkend="term_user"/>'s <xref linkend="term_readingSystem"/>. A service announcement
-                is a message in text and/or audio format that conveys informatiion such as expected <xref linkend="term_service"/> down time
+                is a message in text and/or audio format that conveys information such as expected <xref linkend="term_service"/> down time
                 and warnings about overdue <xref linkend="term_content"/> to the <xref linkend="term_user"/>.
             </para>
             
             <para>
-                To indicate that a <xref linkend="term_serviceProvider"/> supports service annoucements, 
+                To indicate that a <xref linkend="term_serviceProvider"/> supports service announcements, 
                 the <xref linkend="term_service"/> must include the value <constant>SERVICE_ANNOUNCEMENTS</constant>
                 as a property of the <type><xref linkend="tp_supportedOptionalOperations"/></type> attribute
                 when the <xref linkend="term_readingSystem"/> invokes the <function><xref linkend="op_getServiceAttributes"/></function>
@@ -1290,29 +1290,29 @@
             </para>
             
             <para>
-                <xref linkend="term_service"/>s are not required to support service annoucements.
-                <xref linkend="term_readingSystem"/>s should be able to retrieve and render text and audio service annoucements
+                <xref linkend="term_service"/>s are not required to support service announcements.
+                <xref linkend="term_readingSystem"/>s should be able to retrieve and render text and audio service announcements
                 for maximum interoperability.
             </para>
             
             <section xml:id="fundamentals_service_annoucements_new">
-                <title>New Annoucements</title>
+                <title>New Announcements</title>
                 
                 <para>
                     A <xref linkend="term_readingSystem"/> can check for new messages at any time when it is connected to a 
                     <xref linkend="term_service"/> by invoking the <function><xref linkend="op_getServiceAnnouncements"/></function> operation.
-                    It is recommended that <xref linkend="term_readingSystem"/>s check for annoucements immediately after completing the 
+                    It is recommended that <xref linkend="term_readingSystem"/>s check for announcements immediately after completing the 
                     initialization of a new <xref linkend="term_session"/>.
                 </para>
                 
                 <note>
                     <para>
-                        A <xref linkend="term_readingSystem"/> should check for new annoucements at least once per <xref linkend="term_session"/>.
+                        A <xref linkend="term_readingSystem"/> should check for new announcements at least once per <xref linkend="term_session"/>.
                     </para>
                 </note>
                 
                 <para>
-                    The <xref linkend="term_serviceProvider"/> can set the importance level for each annoucement
+                    The <xref linkend="term_serviceProvider"/> can set the importance level for each announcement
                     from a level of 1 (most important) to 3 (least important) and specify the type of announcement as one of <constant>ERROR</constant>, 
                     <constant>SYSTEM</constant>, <constant>WARNING</constant> or <constant>INFORMATION</constant> to assist
                     <xref linkend="term_readingSystem"/>s in ordering the announcements for rendering to the <xref linkend="term_user"/>.
@@ -1329,25 +1329,25 @@
                 </note>
                 
                 <para>
-                    If a <xref linkend="term_serviceProvider"/> does not support service annoucements, the <xref linkend="term_service"/> 
+                    If a <xref linkend="term_serviceProvider"/> does not support service announcements, the <xref linkend="term_service"/> 
                     must return an <code><xref linkend="ft_operationNotSupportedFault"/></code> if a <xref linkend="term_readingSystem"/> attempts
-                    to invoke the <code>getServiceAnnoucements</code> operation to obtain new announcements.
+                    to invoke the <code>getServiceAnnouncements</code> operation to obtain new announcements.
                 </para>
                 
             </section>
 
             <section xml:id="fundamentals_service_annoucements_read">
-                <title>Read Annoucements</title>
+                <title>Read Announcements</title>
                 
                 <para>
-                    After rendering each annoucement to a <xref linkend="term_user"/>, a <xref linkend="term_readingSystem"/> 
+                    After rendering each announcement to a <xref linkend="term_user"/>, a <xref linkend="term_readingSystem"/> 
                     should immediately invoke the <function><xref linkend="op_markAnnouncementsAsRead"/></function> operation to inform the 
                     <xref linkend="term_service"/> not to send the announcement again the next time the
                     <xref linkend="term_user"/> connects to the <xref linkend="term_service"/>.
                 </para>
                 
                 <para>
-                    To prevent conflicts arising from annoucements that a <xref linkend="term_serviceProvider"/> has removed from the 
+                    To prevent conflicts arising from Announcements that a <xref linkend="term_serviceProvider"/> has removed from the 
                     <xref linkend="term_service"/>, a <xref linkend="term_readingSystem"/> must only invoke the
                     <function>markAnnouncementsAsRead</function> operation using the identifier values
                     obtained from the last invocation of <function><xref linkend="op_getServiceAnnouncements"/></function> operation 
