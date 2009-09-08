@@ -389,10 +389,10 @@
                                 <para>
                                     The current best practice for the storage of passwords is to only store a cryptographic hash of
                                     each password in case a database is compromised. A <xref linkend="term_service"/>, however,
-                                    must be able to retrieve the unencrypted authentication credentials for a <xref linkend="term_user"/> in order to 
+                                    may need to retrieve the unencrypted authentication credentials for a <xref linkend="term_user"/> in order to 
                                     supply them in the <literal>userinfo</literal> field. <xref linkend="term_service"/>s 
                                     implementing Basic Authentication using this scheme consequently risk compromising the security of their
-                                    databases unless secure retrieval methods are developed.
+                                    databases unless secure retrieval methods are implemented.
                                 </para>
                             </listitem>
                         </orderedlist>
