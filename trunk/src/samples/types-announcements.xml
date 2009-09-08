@@ -3,7 +3,7 @@
     <label xml:lang="en">
       <text>The Service will not be available on friday the 11th of September due to
         maintenance.</text>
-      <audio uri="http://rnib.org.uk/content/messages/current.mp3" rangeBegin="0" rangeEnd="65856"
+      <audio uri="http://example.com/content/messages/current.mp3" rangeBegin="0" rangeEnd="65856"
         size="65856"/>
     </label>
   </announcement>
@@ -12,7 +12,7 @@
       <text>A new survey is available, fill it in online at our home page, or use your Daisy Online
         Reading System if it has the required capabilities. Chance to win a Phantom Pocket
         Reader!</text>
-      <audio uri="http://rnib.org.uk/content/messages/current.mp3" rangeBegin="65857" size="92112"/>
+      <audio uri="http://example.com/content/messages/current.mp3" rangeBegin="65857" size="92112"/>
     </label>
   </announcement>
 </announcements>
