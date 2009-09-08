@@ -10,74 +10,60 @@
   <type name="resources">
     <sample src="./samples/types-resources.xml" title="The resources type using script URIs">
       <annotation>
-        <db:para>This example shows a <db:type>resources</db:type> type where the uri attribute
-          refers to a script that does not literally expose the names of the resources. The
-            <db:code>localURI</db:code> attribute is used by the Reading System during download to
-          recreate the correct relational placement of the resources that constitute the Content.
+        <db:para>The following example shows a <db:type>resources</db:type> type where the uri attribute
+          refers to a script that does not expose the names of the resources.
         </db:para>
       </annotation>
     </sample>
   </type>
 
   <type name="contentList">
-    <sample src="./samples/types-contentList-1.xml" title="A complete contentList using bimodal labels">
+    <sample src="./samples/types-contentList-1.xml" title="A complete contentList type using bimodal labels">
       <annotation>
-        <db:para>This example shows a <db:type>contentList</db:type> type. Labels are provided in
-          both text and audio modalities. </db:para>
-        <db:para>Since the <db:code>firstItem</db:code> and <db:code>lastItem</db:code> attributes
-          are missing on the root element, this contentList is not segmented.</db:para>
+        <db:para>The following example shows a <db:type>contentList</db:type> type that is not segmented (the 
+          <db:code>firstItem</db:code> and <db:code>lastItem</db:code> attributes
+          are missing on the root element).</db:para>
       </annotation>
     </sample>
-    <sample src="./samples/types-contentList-2.xml" title="A segmented contentList">
+    <sample src="./samples/types-contentList-2.xml" title="A segmented contentList type">
       <annotation>
-        <db:para>This example shows a segmented <db:type>contentList</db:type> type. The <db:code>totalItems</db:code>
-          attribute specifies the total number of Content items in this contentList. The 
-          <db:code>firstItem</db:code> and <db:code>lastItem</db:code> attributes
-          specifies which of those items are included in this segment.</db:para>
+          <db:para>
+          The following example shows a <db:type>contentList</db:type> type that is segmented (<db:code>firstItem</db:code> and <db:code>lastItem</db:code> attributes
+          specify which of the items are included in this segment).</db:para>
       </annotation>
     </sample>
   </type>
 
   <type name="contentMetadata">
-    <sample src="./samples/types-contentMetadata.xml" title="Typical book Content metadata">
+    <sample src="./samples/types-contentMetadata.xml" title="Typical book contentMetadata type">
       <annotation>
-        <db:para>This example shows Content metadata for a book. Note how the
-            <db:code>requiresReturn</db:code> attribute on the root element signals that this is a
-          Content item provided under a loan programme. Note also how the presence of the
-            <db:code>pdtb2:specVersion</db:code> meta element signals that this Content item is
-          protected using <db:xref linkend="bib_pdtb2"/> (see further <db:xref
-            linkend="fundamentals_content_issuing_pdtb"/>). </db:para>
-        <db:para>Additional metadata can be provided using <db:code>dc:</db:code> prefixed elements
-          for <db:xref linkend="bib_dublinCore"/> expressions, and the <db:type>meta</db:type>
-          element for any expression not relating to Dublin Core.</db:para>
+        <db:para>The following example shows a <db:type>contentMetadata</db:type> type for a borrowed book
+          that is <db:xref linkend="bib_pdtb2"/> protected (see <db:xref linkend="fundamentals_content_issuing_pdtb"/>). </db:para>
       </annotation>
     </sample>
   </type>
 
   <type name="readingSystemAttributes">
     <sample src="./samples/types-readingSystemAttributes-1.xml"
-      title="readingSystemAttributes for a typical 
+      title="readingSystemAttributes type for a typical 
       portable audio-centric Reading System">
       <annotation>
-        <db:para>This example shows <db:type>readingSystemAttributes</db:type> for a typical small
-          portable audio-centric Reading System. The Reading System only supports content in the
-          ANSI/NISO Z39.86-2005 format, it only has a numeric keypad, and, since it has set the
-            <db:code>requiresAudioLabels</db:code> field to true, it likely does not have built-in
-          text display or Text-to-speech capabilities. The Reading System does support Content
-          protected using <db:xref linkend="bib_pdtb2"/>.</db:para>
+        <db:para>The following example shows a <db:type>readingSystemAttributes</db:type> type that contains the
+          properties that would typically be returned by small portabe audio-centric <db:xref linkend="term_readingSystem"/>
+          (single format support, numeric input, no text-to-speech capabilities with <db:abbrev>PDTB2</db:abbrev> support).
+        </db:para>
       </annotation>
     </sample>
+    
     <sample src="./samples/types-readingSystemAttributes-2.xml"
-      title="readingSystemAttributes for a typical software-based
+      title="readingSystemAttributes type for a typical software-based
        Reading System">
       <annotation>
-        <db:para>This example shows <db:type>readingSystemAttributes</db:type> for a typical
-          software-based Reading System (although it could as well be hardware based). The Reading
-          System supports content in two formats, has the capabilities of full keybord input as well
-          as User audio recording. Since it has set the <db:code>requiresAudioLabels</db:code> field
-          to false, it likely does have a built-in text display, or Text-to-speech capabilities. The
-          Reading System does not support Content protected using <db:xref linkend="bib_pdtb2"
-          />.</db:para>
+        <db:para>The following example shows a <db:type>readingSystemAttributes</db:type> type that contains the
+          properties that would typically be returned by a hardware- or software-based <db:xref linkend="term_readingSystem"/>
+          (multi-format support, full keyboard input, built-in text-to-speech capabilities but in this case no 
+          <db:abbrev>PDTB2</db:abbrev> support).
+        </db:para>
       </annotation>
     </sample>
   </type>
@@ -86,19 +72,16 @@
     <sample src="./samples/types-serviceAttributes-2.xml"
       title="serviceAttributes type for a typical minimal library service">
       <annotation>
-        <db:para>This example shows <db:type>serviceAttributes</db:type> for a Service that only
-          supports the Out-of-band <db:xref linkend="fundamentals_content_selection"/>,
-		  and and does not support any aspect of the <db:xref
-            linkend="fundamentals_dynamic_menus"/> feature of this protocol.</db:para>
+        <db:para>The following example shows a <db:type>serviceAttributes</db:type> type for a <db:xref linkend="term_service"/> that only
+          supports the out-of-band <db:xref linkend="fundamentals_content_selection"/>.</db:para>
       </annotation>
     </sample>
     <sample src="./samples/types-serviceAttributes-1.xml"
       title="serviceAttributes type for a typical maximally extended service">
       <annotation>
-        <db:para>This example shows <db:type>serviceAttributes</db:type> for a Service that supports
-          both available <db:xref linkend="fundamentals_content_selection"/> (which means that
-          it also must support Dynamic Menus) and provides some or all
-          of its Content encrypted using <db:xref linkend="bib_pdtb2"/>.</db:para>
+        <db:para>The following example shows a <db:type>serviceAttributes</db:type> type for a <db:xref linkend="term_service"/> that supports
+          both available <db:xref linkend="fundamentals_content_selection"/> and provides some or all
+          of its <db:xref linkend="term_content"></db:xref> encrypted using <db:xref linkend="bib_pdtb2"/>.</db:para>
       </annotation>
     </sample>
   </type>
