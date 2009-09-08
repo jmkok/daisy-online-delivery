@@ -1,17 +1,17 @@
 <resources xmlns="http://www.daisy.org/ns/daisy-online/">
    <resource mimeType="text/xml" size="123456" 
-    uri="http://rnib.org/content/get.php?a123891"
+    uri="https://example.com/content/get.php?a123891"
     localURI="package.opf"/>
   <resource mimeType="application/x-dtbncx+xml" size="123456" 
-    uri="http://rnib.org/content/get.php?a123892"
+    uri="https://example.com/content/get.php?a123892"
     localURI="nav.ncx"/>
   <resource mimeType="application/smil" size="567890" 
-    uri="http://rnib.org/content/get.php?a123893"
+    uri="https://example.com/content/get.php?a123893"
     localURI="chapter_1.smil"/>
   <resource mimeType="audio/mpeg" size="123456789" 
-    uri="http://rnib.org/content/get.php?a123894"
+    uri="https://example.com/content/get.php?a123894"
     localURI="chapter_1.mp3"/>
   <resource mimeType="image/jpeg" size="23456" 
-    uri="https://rnib.org/content/get.php?a123895" 
+    uri="https://example.com/content/get.php?a123895" 
     localURI="./images/sun001.jpg"/> 
 </resources>

@@ -3,7 +3,7 @@
   <sample id="hp_cos-sample"/>
   <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
     <dc:title>Harry Potter and the Chamber of Secrets</dc:title>
-    <dc:identifier>uk-rnib-hp_cos</dc:identifier>
+    <dc:identifier>com-example-hp_cos</dc:identifier>
     <dc:format>Daisy 2.02</dc:format>
     <dc:language>en-GB</dc:language>
     <narrator>Mary Svensson</narrator>

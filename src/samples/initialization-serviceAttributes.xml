@@ -1,12 +1,12 @@
 <serviceAttributes xmlns="http://www.daisy.org/ns/daisy-online/">
-    <serviceProvider id="uk-rnib">
+    <serviceProvider id="gy-zenith">
         <label>
-            <text>Royal National Institute for the Blind (RNIB)</text>
+            <text>Zenith Library of Guyana</text>
         </label>  
     </serviceProvider>
-    <service id="uk-rnib-onlineLibrary">
+    <service id="gy-zenith-onlineLibrary">
         <label>
-            <text>The RNIB Online Library</text>
+            <text>The Zenith Online Library</text>
         </label>     
     </service>
     <supportedContentSelectionModels>

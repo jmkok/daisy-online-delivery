@@ -1,6 +1,6 @@
 <serviceAttributes xmlns="http://www.daisy.org/ns/daisy-online/">
-  <serviceProvider id="uk.org.rnib" />
-  <service id="uk.org.rnib.libraryServiceBasic" />
+  <serviceProvider id="uk.com.example" />
+  <service id="uk.com.example.libraryServiceBasic" />
   <supportedContentSelectionModels>
     <model>OUT_OF_BAND</model>
   </supportedContentSelectionModels>
