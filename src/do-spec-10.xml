@@ -639,7 +639,8 @@
                  
                  <para>
                      A <xref linkend="term_service"/> must return an <errorname><xref linkend="ft_invalidOperationFault"/></errorname> fault 
-                     if a <xref linkend="term_readingSystem"/> does not properly execute the initialization sequence outlined in this section.
+                     if a <xref linkend="term_readingSystem"/> attempts to invoke any operation other than the ones outlined in this
+                     section before successully completing the full initialization sequence.
                  </para>
                  
                  <para>
@@ -1161,7 +1162,7 @@
                         The <xref linkend="term_service"/> may choose any of the keys supplied by the <xref linkend="term_readingSystem"/> to encrypt 
                         the <abbrev>KXO</abbrev>. If the <xref linkend="term_service"/> does not have any of the keys or
                         if the <xref linkend="term_user"/> is not authorized to access the <xref linkend="term_content"/>, then the 
-                        <xref linkend="term_service"/> must reply with an <errorname><xref linkend="ft_invalidOperationFault"/></errorname>. 
+                        <xref linkend="term_service"/> must reply with an <errorname><xref linkend="ft_invalidOperationFault"/></errorname> fault. 
                     </para>
                     
                     <note>
