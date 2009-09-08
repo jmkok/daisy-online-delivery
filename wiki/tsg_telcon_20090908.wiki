@@ -1,6 +1,6 @@
 <wiki:toc max_depth="5" />
 
-Present: Markus (scribe) 
+Present: George, Simon, Jelle, Geoff, Matt, Markus, Nick, Kenny
 
 Regrets: 
 
@@ -16,10 +16,17 @@ Regrets:
 
 Target: solve the below and distribute action items to implement changes
 
+
 === Faults ===
   * Add a dedicated fault when invoking an operation when session has expired? 
     * (Is a fault code embedded in invalidOperationFault an alternative?)
   * expanding the Fault documentation prose - who?
+
+*Resolution*: Markus add: NoActiveSession Fault : cover both expiration and not logged in. Throwable by all except logon.
+
+*Geoff clarify session in terminology*
+
+*Markus: expand prose for all faults
 
 
 === Borrow/Return ===
@@ -35,6 +42,10 @@ Matt:
 === Return date ===
 
   * Do we need an explicit return date in contentMetadata (when @requiresReturn=true)
+
+*Resolution*: Markus add optional attribute *returnBy*, optional even when requiresReturn is set to true, and must not be present when requires return is false. 
+
+*Markus: *Make *requiresReturn* optional, default to false.
 
 
 === Normative/Informative ===
@@ -68,3 +79,5 @@ Matt:
 === Collect and add complete contributor list ===
 
 === Check if we can reintroduce some of the samples into the types section ===
+
+=== AOB ===
