@@ -230,9 +230,13 @@
                         <listitem>
                             <para>A sequence of <xref linkend="term_operation"/>s between one <xref
                                 linkend="term_readingSystem"/> and one <xref linkend="term_service"/>
-                                using an identifier defined by the <xref linkend="term_service"/>. A session
+                                using a unique identifier defined by the <xref linkend="term_service"/>. A session
                                 may persist across several <link linkend="bib_http11">HTTP</link>
-                                connections. Session identifiers may be reused at the <xref linkend="term_service"/>'s discretion.</para>
+                                connections. Session identifiers may be reused at the <xref linkend="term_service"/>'s discretion.
+								Session identifiers are sent to the <xref linkend="term_readingSystem"/> using
+								<xref linkend="bib_httpcookies"/>.
+								</para>
+
                         </listitem>
                     </varlistentry>
                     
