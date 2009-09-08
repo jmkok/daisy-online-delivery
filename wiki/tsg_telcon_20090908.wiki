@@ -46,3 +46,7 @@ Matt:
  to use for them.
 
 === Move Appendix B to separate informative dynamic menus primer ===
+
+=== Service Models ===
+
+Keep/remove? If removed, spec needs to be generalized.
