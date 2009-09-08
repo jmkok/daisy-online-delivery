@@ -61,6 +61,8 @@ Matt:
  elements/attributes in the element reference section will 
  be referred to by their xml types?
 
+=== rules surrounding the issueContent and getContentResources operations ===
+ 
 === Move Appendix B to separate informative dynamic menus primer ===
 
 === Collect and add complete contributor list ===
