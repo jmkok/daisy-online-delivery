@@ -1113,22 +1113,16 @@
                 <title>Rights management</title>
                 
                 <para>
-                    This protocol does not specify the digital rights management schemes that can be used to protect
-                    <xref linkend="term_content"/>. The protocol does include a key exchange operation to allow 
-                    <xref linkend="term_serviceProvider"/>s to use the <xref linkend="bib_pdtb2"/> format to protect 
-                    their DAISY Digital Talking Books, as outlined in this section.
+					The <xref linkend="bib_pdtb2"/> format may be used to protect <xref linkend="term_content"/>.
+					The protocol provides a key exchange mechanism, the
+					<function><xref linkend="op_getKeyExchangeObject"/></function> operation, to allow 
+					<xref linkend="term_readingSystem"/>s to request keys from
+					<xref linkend="term_service"/>s to access encrypted content.
                 </para>
-                
-                <note>
-                    <para>
-                        The key exchange mechanism detailed in the following sections may work with other protection
-                        mechanisms, but is not required to.
-                    </para>
-                </note>
                 
                 <para>
                     <xref linkend="term_readingSystem"/>s and <xref linkend="term_service"/>s are not required to support
-                    <abbrev>PDTB2</abbrev>. 
+                    <abbrev>PDTB2</abbrev>.
                 </para>
                 
                 
