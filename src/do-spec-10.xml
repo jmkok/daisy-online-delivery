@@ -317,10 +317,10 @@
                     </para>
                     
                     <para>
-                        As per the <xref linkend="bib_wsibasicprofile11"/>, a compliant <xref linkend="term_readingSystem"/>
-                        must not process or manipulate the cookies created by a <xref linkend="term_service"/>.
-                        The <xref linkend="term_readingSystem"/> must, however, be able to receive and send the cookies
+                        A <xref linkend="term_readingSystem"/> must be able to receive and send any cookies
                         that are transmitted to it by a <xref linkend="term_service"/>.
+                        As per the <xref linkend="bib_wsibasicprofile11"/>, a compliant <xref linkend="term_readingSystem"/>
+                        must not process or manipulate the cookies.
                     </para>
                     
                     <para>
@@ -333,7 +333,7 @@
                     <title>HTTPS</title>
                     <para>The use of HTTPS for all transactions with a <xref linkend="term_service"/> is recommended
                         as the data being exchanged may contain confidential information.
-                        HTTPS also allows the <xref linkend="term_readingSystem"/> to verify the identity of the 
+                        HTTPS also allows a <xref linkend="term_readingSystem"/> to verify the identity of the 
                         <xref linkend="term_service"/> through the use of certificates.
                     </para>
                     
@@ -362,7 +362,7 @@
                         may be used to secure <xref linkend="term_content"/> against unauthorized access.</para>
                     
                     <para>
-                        When using Basic Authentication, the <xref linkend="term_service"/> must supply the credentials in the
+                        When using Basic Authentication, a <xref linkend="term_service"/> must supply the credentials in the
                         server component field of the <xref linkend="term_content"/>'s <abbrev>URI</abbrev>.
                         The scheme for the <literal>userinfo</literal> field as given in
                             <xref linkend="bib_RFC2396"/>, section 3.2.2 is:
@@ -403,8 +403,8 @@
                     </note>
                     
                     <para>
-                        When retrieving <xref linkend="term_content"/>, the <xref linkend="term_readingSystem"/> must only send 
-                        Basic Authentication credentials when they are supplied in the <abbrev>URI</abbrev> returned by the
+                        When retrieving <xref linkend="term_content"/>, a <xref linkend="term_readingSystem"/> must only send 
+                        Basic Authentication credentials when they are supplied in the <abbrev>URI</abbrev> returned by a
                         <xref linkend="term_service"/>.
                     </para>
                     
@@ -415,7 +415,7 @@
                     
                     <note>
                         <para>
-                            The HTTP Basic Authentication credentials must not be used to log on to the <xref linkend="term_service"/>. For 
+                            HTTP Basic Authentication credentials must not be used to log on to a <xref linkend="term_service"/>. For 
                             authenticating a SOAP session, see <xref linkend="technologies_authentication"/>.
                         </para>
                     </note>
@@ -428,9 +428,8 @@
                     <title>HTTP Range Headers</title>
 
                     <para>
-                        When using HTTP or HTTPS for serving resources, Range Retrieval Requests 
-                        (as described in section 14.35 of <link linkend="bib_http11">RFC 2616</link>)
-                        must be honored by the <xref linkend="term_service"/>.
+                        When using HTTP or HTTPS for serving resources, a <xref linkend="term_service"/> must honor Range Retrieval Requests 
+                        (as described in section 14.35 of <link linkend="bib_http11">RFC 2616</link>).
                     </para>
                     
                     <para>
@@ -451,7 +450,7 @@
                 <section xml:id="technologies_wsi_basic">
                     <title>Basic Profile 1.1</title>
                     <para>
-                        The DAISY Online Delivery protocol was designed to be compliant with the requirements of 
+                        The DAISY Online Delivery protocol is compliant with the requirements of 
                         <xref linkend="bib_wsibasicprofile11"/>.
                         All conformant implementations of this protocol must also be compliant
                         with <xref linkend="bib_wsibasicprofile11"/>.
@@ -487,7 +486,7 @@
             xreflabel="Service Models">
             <title>Service Models</title>
             
-            <para>The DAISY Online Delivery Protocol supports two basic service models:</para>
+            <para>The DAISY Online Delivery protocol supports two basic service models:</para>
             
             <itemizedlist>
                 <listitem xml:id="fundamentals_serviceModel_lender" xreflabel="Lender Model">
@@ -512,7 +511,7 @@
                 <para>
                     This specification does not restrict the possible service models to these two definitions. Combinations and variations
                     on the models should be possible using the <xref linkend="term_operation"/>s defined by the protocol. The
-                    <xref linkend="term_serviceProvider"/>, however, is solely responsible for ensuring that their model
+                    <xref linkend="term_serviceProvider"/> is solely responsible for ensuring that their model
                     is compatible with the protocol.
                 </para>
             </note>
