@@ -62,3 +62,5 @@ Matt:
  be referred to by their xml types?
 
 === Move Appendix B to separate informative dynamic menus primer ===
+
+=== Collect and add complete contributor list ===
