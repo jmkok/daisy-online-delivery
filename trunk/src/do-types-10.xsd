@@ -634,7 +634,8 @@
 							<xs:element name="meta" minOccurs="0" maxOccurs="unbounded">
 								<xs:annotation>
 									<xs:documentation>
-										<db:para role="desc">An arbitrary meta element</db:para>
+										<db:para role="desc">An arbitrary metadata element. Allows custom metadata and/or
+											metadata from expression schemes other than Dublin Core.</db:para>
 									</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
