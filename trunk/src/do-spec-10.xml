@@ -674,7 +674,7 @@
                  </note>
                  
                  <para>
-                     A <xref linkend="term_service"/> must return an <errorname><xref linkend="ft_invalidOperationFault"/></errorname> 
+                     A <xref linkend="term_service"/> must return an <errorname><xref linkend="ft_invalidOperationFault"/></errorname> fault 
                      if a <xref linkend="term_readingSystem"/> does not properly execute the initialization sequence outlined in this section.
                  </para>
                  
@@ -880,10 +880,9 @@
                         
                         <note>
                             <para>
-                                The calling of this operation does not require a <xref linkend="term_service"/> to track
-                                any information about the request. 
-                                <xref linkend="term_service"/>s that provide free <xref linkend="term_content"/>
-                                can respond with a <constant>true</constant> value to all requests.
+                                The calling of the <function>issueContent</function> operation does not require a <xref linkend="term_service"/> to track
+                                any information about the request. <xref linkend="term_service"/>s may respond with 
+                                a <constant>true</constant> value to all requests.
                             </para>
                         </note>
                     </listitem>
@@ -899,7 +898,7 @@
                         <note>
                             <para>
                                 <xref linkend="term_service"/>s that track the issuing of <xref linkend="term_content"/>
-                                must return a <xref linkend="ft_invalidParameterFault"/> when a <xref linkend="term_readingSystem"/>
+                                should return an <errorcode><xref linkend="ft_invalidParameterFault"/></errorcode> fault when a <xref linkend="term_readingSystem"/>
                                 invokes <function>getContentResources</function> for <xref linkend="term_content"/> that it has not been issued.
                             </para>
                         </note>
@@ -1280,7 +1279,7 @@
                 
                 <para>
                     If a <xref linkend="term_serviceProvider"/> does not support service announcements, the <xref linkend="term_service"/> 
-                    must return an <code><xref linkend="ft_operationNotSupportedFault"/></code> if a <xref linkend="term_readingSystem"/> attempts
+                    must return an <errorcode><xref linkend="ft_operationNotSupportedFault"/></errorcode> fault if a <xref linkend="term_readingSystem"/> attempts
                     to invoke the <code>getServiceAnnouncements</code> operation to obtain new announcements.
                 </para>
                 
