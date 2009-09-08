@@ -64,3 +64,5 @@ Matt:
 === Move Appendix B to separate informative dynamic menus primer ===
 
 === Collect and add complete contributor list ===
+
+=== Check if we can reintroduce some of the samples into the types section ===
