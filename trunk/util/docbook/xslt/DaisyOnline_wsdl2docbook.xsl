@@ -44,7 +44,7 @@
 				<db:title>Faults</db:title>
 				<xsl:for-each select="$wsdl/definitions/message[contains(@name, 'Fault')]">
 					<db:section> <xsl:attribute name="xml:id" select="replace(concat('ft_',@name),'_message','')"/>
-						<xsl:attribute name="xreflabel" select="replace(@name,'_message','')"/>
+						<xsl:attribute name="xreflabel" select="replace(@name,'Fault_message','')"/>
 						<xsl:variable name="conc" select="replace(@name,'Fault_message','')" />							
 						<db:title>The <db:errorname><xsl:value-of select="$conc"/></db:errorname> Fault</db:title>
 						<xsl:call-template name="getWSDLDocumentation">
