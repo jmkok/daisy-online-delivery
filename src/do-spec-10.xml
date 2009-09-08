@@ -296,7 +296,7 @@
                 </para>
                 
                 <note>
-                    <para>An established HTTP session is not a valid indicator that a <xref linkend="term_readingSystem"/> has 
+                    <para>An established HTTP session is not in itself a valid indicator that a <xref linkend="term_readingSystem"/> has 
                         successfully logged on to the <xref linkend="term_service"/> (see <xref linkend="fundamentals_session"/>).</para>
                 </note>
 
@@ -343,7 +343,7 @@
                     
                     <para>
                         All URIs that identify resources served over HTTPS must use the 
-                        standard URI prefix <literal>https://</literal>.
+                        standard URI prefix <literal>https:</literal>.
                     </para>
 
                     <para>
@@ -356,15 +356,6 @@
                     <title>HTTP Basic Authentication</title>
                     <para>The HTTP Basic Authentication Scheme described in <xref linkend="bib_RFC2617"/>
                         may be used to secure <xref linkend="term_content"/> against unauthorized access.</para>
-                    
-                    <note>
-                        <title>Security Consideration</title>
-                        <para>
-                            It is recommended that Basic Authentication only be used when a secure connection (HTTPS)
-                            can be ensured between the <xref linkend="term_readingSystem"/> and <xref linkend="term_service"/>
-                            to prevent the exposure of the credentials transmitted in HTTP headers. 
-                        </para>
-                    </note>
                     
                     <para>
                         When using Basic Authentication, the <xref linkend="term_service"/> must supply the credentials in the
