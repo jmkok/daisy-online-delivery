@@ -1125,7 +1125,6 @@
                     <abbrev>PDTB2</abbrev>.
                 </para>
                 
-                
                 <section xml:id="fundamentals_content_issuing_pdtb_declaring">
                     <title>Declaring PDTB2 Support</title>
                     
@@ -1147,7 +1146,7 @@
                     
                     <note>
                         <para>
-                            <xref linkend="term_serviceProvider"/>s may provide <abbrev>PDTB2</abbrev>-protected <xref linkend="term_content"/>
+                            <xref linkend="term_service"/>s may provide <abbrev>PDTB2</abbrev>-protected <xref linkend="term_content"/>
                             without supporting the <function>getKeyExchangeObject</function> operation when alternate means of key
                             provision have been implemented. For example, when keys are provided with the <xref linkend="term_readingSystem"/>.
                         </para>
@@ -1167,33 +1166,42 @@
                     
                     <para>
                         In addition, the <type>mimeTypes</type> for protected resource(s) returned from the 
-                        <function><xref linkend="op_getContentResources"/></function> operation  must begin
+                        <function><xref linkend="op_getContentResources"/></function> operation must be
+						as defined in section 4.1.1, "Package file", of
+						the <xref linkend="bib_pdtb2"/> specification.  Those MIME types begin
                         with <literal>application/x-pdtb…</literal>.
                     </para>
                 </section>
                
                 <section xml:id="fundamentals_content_issuing_pdtb_access">
-                    <title>Accessing PDTB2 Content</title>
+                    <title>Accessing <abbrev>PDTB2</abbrev> Content</title>
                     
                     <para>
                         Any <xref linkend="term_readingSystem"/> may access <xref linkend="term_content"/>
-                        marked as <abbrev>PDTB2</abbrev> protected.
+                        marked as <abbrev>PDTB2</abbrev>-protected.
                         <xref linkend="term_readingSystem"/>s that do not support <abbrev>PDTB2</abbrev> will not be able to 
-                        render any or all of the resources, however.
+                        render some or all of the resources.
                     </para>
                     
                     <para>
-                        To obtain a  Key Exchange Object (<abbrev>KXO</abbrev>) to access the protected <xref linkend="term_content"/>, a 
+                        <abbrev>PDTB2</abbrev>-protected content will have an Authorization Object (<abbrev>AO</abbrev>).  The <xref linkend="term_readingSystem"/>
+                        can inspect the <abbrev>AO</abbrev> for the name of the key that secures the key required to decrypt the <xref linkend="term_content"/>.
+						If the <xref linkend="term_readingSystem"/> does not have the key to access an encrypted section of an <abbrev>AO</abbrev>, it may
+						request a Key Exchange Object (<abbrev>KXO</abbrev>) from the <xref linkend="term_service"/>.
+                    </para>
+                    
+                    <para>
+                        To obtain a <abbrev>KXO</abbrev>, a 
                         <xref linkend="term_readingSystem"/> must call the <function><xref linkend="op_getKeyExchangeObject"/></function> 
-                        operation with a list of key names in its local keyring together with the name of the requested key. The key names provided can be 
-                        all or some of the symmetric keys or public/private keypairs the <xref linkend="term_readingSystem"/> supports.
+                        operation with a list of key names in its local keyring together with the name of the requested key. The key names provided can be
+                        some or all of the symmetric keys or public/private keypairs the <xref linkend="term_readingSystem"/> supports.
                     </para>
                     
                     <para>
-                        The <xref linkend="term_service"/> can choose any of the keys supplied by the <xref linkend="term_readingSystem"/> to encrypt 
+                        The <xref linkend="term_service"/> may choose any of the keys supplied by the <xref linkend="term_readingSystem"/> to encrypt 
                         the <abbrev>KXO</abbrev>. If the <xref linkend="term_service"/> does not have any of the keys or
                         if the <xref linkend="term_user"/> is not authorized to access the <xref linkend="term_content"/>, then the 
-                        <xref linkend="term_service"/> must with an <errorname><xref linkend="ft_invalidOperationFault"/></errorname>. 
+                        <xref linkend="term_service"/> must reply with an <errorname><xref linkend="ft_invalidOperationFault"/></errorname>. 
                     </para>
                     
                     <note>
@@ -1204,12 +1212,8 @@
                     
                     <para>
                         If the <xref linkend="term_readingSystem"/> receives a valid <abbrev>KXO</abbrev> from the <xref linkend="term_service"/>,
-                        the <xref linkend="term_readingSystem"/> can then use that <abbrev>KXO</abbrev> to unlock the protected <xref linkend="term_content"/>.
-                    </para>
-                    
-                    <para>
-                        If a <xref linkend="term_content"/> item also has an Authorization Object (<abbrev>AO</abbrev>), the <xref linkend="term_readingSystem"/>
-                        should inspect the <abbrev>AO</abbrev> for the name of the key that secures the key required to decrypt the <xref linkend="term_content"/>.
+                        the <xref linkend="term_readingSystem"/> can then use that <abbrev>KXO</abbrev> to access the key in the <abbrev>AO</abbrev>
+						that unlocks the protected <xref linkend="term_content"/>.
                     </para>
                     
                 </section>
