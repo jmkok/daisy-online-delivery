@@ -21,8 +21,6 @@ Target: solve the below and distribute action items to implement changes
     * (Is a fault code embedded in invalidOperationFault an alternative?)
   * expanding the Fault documentation prose - who?
 
-=== Reading System Conformance Requirements ===
-  * Section still marked as TODO. How to approach this?
 
 === Borrow/Return ===
 Matt: 
@@ -33,9 +31,11 @@ Matt:
  The section should probably be renamed to "Lending Content" and have 
  subsections for borrowing and returning. And be moved into 5.4.
 
+
 === Return date ===
 
   * Do we need an explicit return date in contentMetadata (when @requiresReturn=true)
+
 
 === Normative/Informative ===
 Matt: 
@@ -45,11 +45,14 @@ Matt:
  re-apply those consistently to whatever scheme the group wants 
  to use for them.
 
-=== Move Appendix B to separate informative dynamic menus primer ===
-
 === Service Models ===
 
 Keep/remove? If removed, spec needs to be generalized.
+
+
+=== Reading System Conformance Requirements ===
+  * Section still marked as TODO. How to approach this?
+
 
 === Terminology ===
 Matt: 
@@ -57,3 +60,5 @@ Matt:
  operations. Primary types are types. Then all the
  elements/attributes in the element reference section will 
  be referred to by their xml types?
+
+=== Move Appendix B to separate informative dynamic menus primer ===
