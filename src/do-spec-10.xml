@@ -267,54 +267,6 @@
     
     
     
-    <chapter xml:id="conformance">
-        <title>Conformance Definitions</title>
-            <section xml:id="conformance_service">
-                <title>Service Conformance</title>
-                <para>A <xref linkend="term_service"/> is conformant with this specification when: </para>
-                <itemizedlist>
-                    <listitem>
-                        <para>It publishes a <xref linkend="bib_wsdl1.1"/> document, at some URI,
-                            whose contents comply with the
-                            requirements defined in <xref linkend="appendixWSDL"/></para>
-                    </listitem>
-                    <listitem>
-                        <para>It provides implementations of all required <xref linkend="term_operation"
-                        />s of this protocol, as defined in <xref linkend="apiReferenceRequired"
-                        /></para>
-                    </listitem>
-                    <listitem>
-                        <para>It complies with the Content Selection Model-specific requirements defined
-                            in <xref linkend="fundamentals_contentSelectionModel_reqs_outofband"/>
-                            and/or <xref linkend="fundamentals_contentSelectionModel_reqs_browse"
-                            /></para>
-                    </listitem>
-                    <listitem>
-                        <para>It supports the protocols defined in <xref
-                            linkend="technologies"/></para>
-                    </listitem>
-                    <listitem>
-                        <para>
-                            <remark role="todo">TODO other service conformance reqs</remark>
-                        </para>
-                    </listitem>
-                </itemizedlist>
-            </section>
-            <section xml:id="conformance_readingSystem">
-                <title>Reading System Conformance</title>
-                <para>A <xref linkend="term_readingSystem"/> is conformant with this specification when: </para>
-                <itemizedlist>
-                    <listitem>
-                        <para>
-                            <remark role="todo">TODO RS conformance reqs</remark>
-                        </para>
-                    </listitem>
-                </itemizedlist>
-            </section>
-     </chapter>
-
-
-
     <chapter xml:id="technologies" conformance="normative">
             <title>Underlying Technologies</title>
 
