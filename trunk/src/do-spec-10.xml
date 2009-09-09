@@ -470,66 +470,74 @@
             <para>The DAISY Online Delivery protocol supports two basic service models:</para>
 
             <itemizedlist>
-                <listitem xml:id="fundamentals_serviceModel_lender" xreflabel="Lender Model">
+                <listitem xml:id="fundamentals_serviceModel_lender" xreflabel="Lending Model">
                     <para>a <emphasis>lending</emphasis> model, in which <xref
                             linkend="term_content"/> is loaned or rented by a <xref
-                            linkend="term_user"/> and must be returned to the <xref
-                            linkend="term_serviceProvider"/>; and</para>
+                            linkend="term_user"/> and must be <link linkend="term_return">returned</link> to the <xref linkend="term_service"/>; and</para>
                 </listitem>
                 <listitem xml:id="fundamentals_serviceModel_acquisition"
                     xreflabel="Acquisition Model">
-                    <para>an <emphasis>acquisition</emphasis> model, which does not require return.
+                    <para>an <emphasis>acquisition</emphasis> model, which does not require <link linkend="term_return">return</link>.
                         This model encompasses both commercial and free-of-charge <xref
                             linkend="term_content"/>, as well as <xref linkend="term_content"/>
                         protected with <xref linkend="bib_pdtb2"/>, which may expire automatically
-                        without being returned. </para>
+                        without being <link linkend="term_return">returned</link>. </para>
                 </listitem>
             </itemizedlist>
 
-            <para>Services may offer <xref linkend="term_content"/> under either or both of these
-                models.</para>
+            <para><xref linkend="term_service"/>s may offer <xref linkend="term_content"/> under either or both of these
+                models; however, each item of <xref linkend="term_content"/> must be offered under one model.
+				The model for an item of <xref linkend="term_content"/> is identified by the <code>requiresReturn</code> attribute
+				of its <type><xref linkend="tp_contentMetadata"/></type>: if <code>requiresReturn</code> is
+				<literal>true</literal>, the <xref linkend="term_content"/> is available under a <xref linkend="fundamentals_serviceModel_lender"/>; if
+				<code>requiresReturn</code> is <literal>false</literal> or absent, the <xref linkend="term_content"/> is available
+				under an <xref linkend="fundamentals_serviceModel_acquisition"/>.</para>
 
             <section xml:id="fundamentals_serviceModels_reqs_lender">
                 <title>Lending Model</title>
 
-                <para>The following apply to any item of <xref linkend="term_content"/> offered under a lending
-                    model.</para>
+                <para>The following apply to any item of <xref linkend="term_content"/> offered under a <xref linkend="fundamentals_serviceModel_lender"/>.</para>
                 <itemizedlist>
                     <listitem>
                         <para> Its <type>
                                 <xref linkend="tp_contentMetadata"/>
-                            </type> must have its requiresReturn attribute set to
+                            </type> must have its <code>requiresReturn</code> attribute set to
                                 <literal>true</literal>. </para>
                     </listitem>
                     <listitem>
-                        <para> If it has been issued, it must be present in either the
-                                <literal>issued</literal> or <literal>expired</literal> content
-                            lists until it is returned. </para>
+                        <para> If it has been <link linkend="term_issue">issued</link>, it must be present in either the
+                                <literal>issued</literal> or <literal>expired</literal>
+								<xref linkend="tp_contentList"/>s until it is <link linkend="term_return">returned</link>. </para>
                     </listitem>
                     <listitem>
-                        <para> If it has been issued and not returned, the <xref
+                        <para> If it has been <link linkend="term_issue">issued</link> and not <link linkend="term_return">returned</link>, the <xref
                                 linkend="term_readingSystem"/> may call <function>
                                 <xref linkend="op_returnContent"/>
-                            </function> at any time to return it. </para>
+                            </function> at any time to <link linkend="term_return">return</link> it.</para>
                     </listitem>
                 </itemizedlist>
+				<para><xref linkend="term_service"/>s offering any <xref linkend="term_content"/> under a <xref linkend="fundamentals_serviceModel_lender"/>
+				must implement the <function><xref linkend="op_returnContent"/></function> operation.</para>
             </section>
 
             <section xml:id="fundamentals_serviceModels_reqs_acquisition">
                 <title>Basic Acquisition Model</title>
-                <para><remark role="todo">TODO: GGT rewrite this</remark> There is only one
-                    requirement for a <xref linkend="term_service"/> to implement a basic <xref
-                        linkend="fundamentals_serviceModel_acquisition"/>: it should respond to
-                    calls to the <function>
-                        <xref linkend="op_getContentList"/>
-                    </function> operation by providing an empty <type>
-                        <xref linkend="tp_contentList"/>
-                    </type>. </para>
-                <note>
-                    <para> More complex acquisition models may require the management of issued
-                            <xref linkend="term_content"/> to allow repeat downloads or resumption
-                        of failed downloads. </para>
-                </note>
+                <para>The following apply to any item of <xref linkend="term_content"/> offered under an <xref linkend="fundamentals_serviceModel_acquisition"/>.</para>
+                <itemizedlist>
+                    <listitem>
+                        <para> Its <type>
+                                <xref linkend="tp_contentMetadata"/>
+                            </type> must have either no <code>requiresReturn</code> attribute or have it set to
+                                <literal>false</literal>. </para>
+                    </listitem>
+                    <listitem>
+                        <para> If it has been <link linkend="term_issue">issued</link>, it may be present in the
+                                <literal>issued</literal> <xref linkend="tp_contentList"/>. It may not be present in the <literal>expired</literal>
+							<xref linkend="tp_contentList"/>.</para>
+                    </listitem>
+                </itemizedlist>
+				<para>It is optional for <xref linkend="term_service"/>s offering all <xref linkend="term_content"/> under an <xref linkend="fundamentals_serviceModel_acquisition"/>
+				to implement the <function><xref linkend="op_returnContent"/></function> operation.</para>
             </section>
         </section>
 
