@@ -2,8 +2,8 @@
 <xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified"
 	targetNamespace="http://www.daisy.org/ns/daisy-online/"
 	xmlns="http://www.daisy.org/ns/daisy-online/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:xlink="http://www.w3.org/1999/xlink"
-	xmlns:db="http://docbook.org/ns/docbook" xmlns:dc="http://purl.org/dc/elements/1.1/">
+	xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:db="http://docbook.org/ns/docbook"
+	xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 	<xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
 
@@ -265,16 +265,18 @@
 					<xs:annotation>
 						<xs:documentation>
 							<db:para role="desc">Specifies whether the Reading System requires audio
-								labels for messages (see <db:xref linkend="tp_label"/>) issued by the
-								Service.
-							</db:para>
-							<db:para role="req"><!-- If a Service does not support audio labels, it must
+								labels for messages (see <db:xref linkend="tp_label"/>) issued by
+								the Service. </db:para>
+							<db:para role="req">
+								<!-- If a Service does not support audio labels, it must
 								throw an OperationNotSupported Fault on subsequent calls to
-								operations that include <db:xref linkend="tp_label"/> types. --> 
-								<db:remark role="todo">TODO specify what a Service should do if
-									it does not support audio labels.</db:remark><!--TODO
+								operations that include <db:xref linkend="tp_label"/> types. -->
+								<db:remark role="todo">TODO specify what a Service should do if it
+									does not support audio labels.</db:remark>
+								<!--TODO
 								this isnt really compatible with the use of label in eg
-								metadata. --> </db:para>
+								metadata. -->
+							</db:para>
 						</xs:documentation>
 					</xs:annotation>
 				</xs:element>
@@ -350,10 +352,12 @@
 	<xs:element name="label">
 		<xs:annotation>
 			<xs:documentation>
-				<db:para role="desc">A multi-purpose label, containing text and optionally audio.</db:para>
-				<db:para>To achieve maximum interoperability, Services should support the provision of audio labels, 
-				as Reading Systems may <db:link linkend="tp_requiresAudioLabels">require</db:link> such to
-				provided in order to function.</db:para>
+				<db:para role="desc">A multi-purpose label, containing text and optionally
+					audio.</db:para>
+				<db:para>To achieve maximum interoperability, Services should support the provision
+					of audio labels, as Reading Systems may <db:link
+						linkend="tp_requiresAudioLabels">require</db:link> such to provided in order
+					to function.</db:para>
 			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -421,8 +425,7 @@
 	<xs:element name="contentMetadata">
 		<xs:annotation>
 			<xs:documentation>
-				<db:para role="desc">Specifies metadata about a singular piece of
-					content.</db:para>
+				<db:para role="desc">Specifies metadata about a singular piece of content.</db:para>
 			</xs:documentation>
 		</xs:annotation>
 
@@ -634,8 +637,9 @@
 							<xs:element name="meta" minOccurs="0" maxOccurs="unbounded">
 								<xs:annotation>
 									<xs:documentation>
-										<db:para role="desc">An arbitrary metadata element. Allows custom metadata and/or
-											metadata from expression schemes other than Dublin Core.</db:para>
+										<db:para role="desc">An arbitrary metadata element. Allows
+											custom metadata and/or metadata from expression schemes
+											other than Dublin Core.</db:para>
 									</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
@@ -668,7 +672,7 @@
 				</xs:annotation>
 			</xs:attribute>
 
-			<xs:attribute name="requiresReturn" type="xs:boolean" use="required">
+			<xs:attribute name="requiresReturn" type="xs:boolean" use="optional" default="false">
 				<xs:annotation>
 					<xs:documentation>
 						<db:para>Specifies whether the <db:xref linkend="term_service"/> requires
@@ -678,10 +682,25 @@
 								linkend="term_readingSystem"/> that the <db:xref
 								linkend="term_readingSystem"/> will at some point <db:link
 								linkend="fundamentals_content_lending_returning">return the
-							content</db:link></db:para>
+								content</db:link></db:para>
 						<db:para>Reading Systems should present Users with appropriate prompts if
 							they try to return non-borrowed <db:xref linkend="term_content"
 							/>.</db:para>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="returnBy" type="xs:dateTime" use="optional">
+				<xs:annotation>
+					<xs:documentation>
+						<db:para>Specifies the instant of time when the <db:xref
+								linkend="term_service"/> requires this <db:xref
+								linkend="term_content"/> to have been returned, i.e. the end of an
+							issuance period.</db:para>
+						<db:para>This attribute may be present when the
+								<db:code>requiresReturn</db:code> attribute is valued
+								<db:literal>true</db:literal>, and must not be present when the
+								<db:code>requiresReturn</db:code> attribute is valued
+								<db:literal>false</db:literal>.</db:para>
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -740,7 +759,8 @@
 						<xs:attribute name="lastModifiedDate" type="xs:dateTime" use="optional">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">The last modified time of the resource.</db:para>
+									<db:para role="desc">The last modified time of the
+										resource.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
@@ -802,8 +822,8 @@
 							<xs:annotation>
 								<xs:documentation>
 									<db:para>The last modified date of this contentItem. Contains
-										the lastModifiedDate of the most recently modified resource in
-										the content's resources list.</db:para>
+										the lastModifiedDate of the most recently modified resource
+										in the content's resources list.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
@@ -1057,13 +1077,18 @@
 										<db:para>Services must accept audio in the <db:xref
 												linkend="bib_wav"/> audio file format. Services may
 											support additional audio file formats to be used when a
-											Reading System posts audio, and must specify if they do so in <db:xref
-												linkend="tp_serviceAttributes"/>.</db:para>
-										<db:para>This specification does not allow <db:xref linkend="bib_mtom"/> encoded 
-										data in this type.</db:para>
-										<db:para><db:remark role="todo">TODO See <db:link 
-											xlink:href="http://code.google.com/p/daisy-online-delivery/issues/detail?id=104"
-											>Issue 104</db:link> </db:remark></db:para>
+											Reading System posts audio, and must specify if they do
+											so in <db:xref linkend="tp_serviceAttributes"
+											/>.</db:para>
+										<db:para>This specification does not allow <db:xref
+												linkend="bib_mtom"/> encoded data in this
+											type.</db:para>
+										<db:para>
+											<db:remark role="todo">TODO See <db:link
+												xlink:href="http://code.google.com/p/daisy-online-delivery/issues/detail?id=104"
+												>Issue 104</db:link>
+											</db:remark>
+										</db:para>
 									</xs:documentation>
 								</xs:annotation>
 								<xs:simpleType>
@@ -1221,8 +1246,8 @@
 					<xs:annotation>
 						<xs:documentation>
 							<db:para role="desc">Specifies which <db:xref
-									linkend="fundamentals_content_selection"/> are supported by
-								this Service. A Service must support at least one of the two
+									linkend="fundamentals_content_selection"/> are supported by this
+								Service. A Service must support at least one of the two
 								models.</db:para>
 						</xs:documentation>
 					</xs:annotation>
