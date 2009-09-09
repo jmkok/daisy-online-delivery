@@ -1484,12 +1484,10 @@
                     </listitem>
                 </itemizedlist>
 
-
-                <para> A <xref linkend="term_readingSystem"/> that supports dynamic menus must
-                    declare which input types it supports in the <type>
-                        <xref linkend="term_readingSystemAttributes"/>
-                    </type> to allow a <xref linkend="term_service"/> to adapt to possible
-                    constraints when returning questions. </para>
+				<para>A <xref linkend="term_readingSystem"/> that supports dynamic menus must declare
+				which input types it supports in the <type><xref linkend="tp_readingSystemAttributes"/></type>.
+				A <xref linkend="term_service"/> should not send any question which requires an input type
+				not supported by the <xref linkend="term_readingSystem"/>.</para>
 
             </section>
 
