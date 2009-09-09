@@ -27,7 +27,7 @@
 
         <abstract>
             <title>Abstract</title>
-            <para> The DAISY Online Delivery Protocol is a web service API that facilitates the
+            <para> The DAISY Online Delivery protocol is a web service API that facilitates the
                 delivery of digital resources from service providers to end users. The protocol
                 features a core set of operations that can be configured to enable a variety of
                 different download models, making it a flexible and lightweight solution to the
@@ -66,11 +66,52 @@
     <chapter xml:id="introduction">
         <title>Introduction</title>
         <para>
-            <remark role="todo">TODO Introduction remains to the written. It will give an overview
-                of target application domains and functionality scope. It will mention that although
-                focused on the DAISY DTB content type, the protocol per se is not limited to DAISY.
-                It will note that service discovery is not in scope, but that a mechanism for that
-                may be produced by DAISY as a separate specification.</remark>
+            The DAISY Online Delivery protocol grew out of the need for DAISY producers to
+            be able to deliver their content to clients and users in a timely and cost-effective way.
+            The challenges associated with distributing content in physical mediums make these solutions 
+            difficult to implement, cumbersome to maintain and environmentally unfriendly.
+        </para>
+        
+        <para>
+            Although DAISY Digital Talking Books are the primary component of the DAISY standard,
+            the standard itself is evolving and the need to distribute various types of accessible media is one
+            that is already faced by many members of the DAISY Consortium. As a result, the service architecture
+            development for this protocol was done with the goal of getting <emphasis>resources</emphasis> from a 
+            provider to a reading system, a design principle that should also make the protocol 
+            useful as a content delivery mechanism beyond the sphere of accessible publishing. 
+        </para>
+        
+        <para>
+            The second main development objective was to ensure that the protocol was flexible enough to allow it to be 
+            customized and tailored to the delivery needs of any individual or organization. The minimal core 
+            functionality facilitates the development of simple services that can, for example, allow users to plug 
+            their reading system in at night and automatically download their new content. The expanded set of
+            functionality allows for richer and more interactive models where users can browse for
+            and download their own content.
+        </para>
+        
+        <para>
+            The procotol was also engineered to facilitate the lending of content, not just its delivery.
+             Libraries and other organizations that require a means to deliver content to users for a limited
+             period of time will find a number of features that facilitate this kind of delivery model. The protocol
+             also enables the use of the PDTB2 content protection scheme where explicit digital rights management
+             issues are a concern.
+        </para>
+        
+        <para>
+            The protocol has been built on a strong foundation of established 
+            technologies to reduce the implentation and maintenance costs for individuals and organizations
+            looking to implement this content delivery model: the messaging between reading systems and 
+            services is carried out by SOAP messages over the HTTP protocol; the service operations are all defined
+            by a normative WSDL document; and the protocol itself is compliant with WS-I Basic Profile 1.1.
+        </para>
+        
+        <para>
+            The one aspect that the working group could not tackle in this version of the protocol is the discovery of services.
+            The DAISY Consortium may develop a protocol and database for discovering services at a later date, but 
+            currently no such functionality exists that could be leveraged for this standard. Implementers of this protocol 
+            will have to establish other mechanisms for locating the services they need to connect to and/or informing 
+            users where and how to access them.
         </para>
 
     </chapter>
@@ -874,12 +915,6 @@
                                 invokes <function>getContentResources</function> for <xref
                                     linkend="term_content"/> that it has not been issued. </para>
                         </note>
-
-                        <para> A <xref linkend="term_service"/> must not require that a <xref
-                                linkend="term_readingSystem"/> call the
-                                <function>getContentResources</function> operation in the same <xref
-                                linkend="term_session"/> that it is issued the <xref
-                                linkend="term_content"/>. </para>
 
                         <para> A <xref linkend="term_service"/> may allow calls to
                                 <function>getContentResources</function> for the same <xref
