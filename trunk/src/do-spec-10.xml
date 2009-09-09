@@ -67,7 +67,7 @@
         <title>Introduction</title>
         <para>
             The DAISY Online Delivery protocol grew out of the need for DAISY producers to
-            be able to deliver their content to clients and users in a timely and cost-effective way.
+            be able to deliver content to clients and users in a timely and cost-effective way.
             The challenges associated with distributing content in physical mediums make these solutions 
             difficult to implement, cumbersome to maintain and environmentally unfriendly.
         </para>
@@ -101,17 +101,15 @@
         <para>
             The protocol has been built on a strong foundation of established 
             technologies to reduce the implementation and maintenance costs for individuals and organizations
-            looking to implement this content delivery model: the messaging between reading systems and 
+            looking to implement this content delivery model: the interaction between reading systems and 
             services is carried out by SOAP messages over the HTTP protocol; the service operations are all defined
             by a normative WSDL document; and the protocol itself is compliant with WS-I Basic Profile 1.1.
         </para>
         
         <para>
-            The one aspect that the working group could not tackle in this version of the protocol is the discovery of services.
-            The DAISY Consortium may develop a protocol and database for discovering services at a later date, but 
-            currently no such functionality exists that could be leveraged for this specification. Implementers of this protocol 
-            will have to establish other mechanisms for locating the services they need to connect to and/or informing 
-            users where and how to access them.
+            The one aspect that could not be tackled in this version of the protocol is the discovery of services.
+            The DAISY Consortium may develop a system and specification for tracking and discovering services at a later date, but 
+            currently no such functionality exists that could be integrated with this protocol.
         </para>
 
     </chapter>
