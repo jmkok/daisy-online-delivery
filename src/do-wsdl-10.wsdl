@@ -598,6 +598,14 @@
 				</xs:sequence>
 			</xs:complexType>
 
+			<xs:element name="noActiveSessionFault" type="tns:noActiveSessionFaultType"/>
+
+			<xs:complexType name="noActiveSessionFaultType">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="reason" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+
 		</xs:schema>
 
 	</types>
@@ -924,8 +932,15 @@
 	<message name="internalServerErrorFault_message">
 		<part name="fault" element="tns:internalServerErrorFault">
 			<documentation>
-				<db:para role="desc">An internal server error occurred on the Service and the
+				<db:para role="desc">Condition: an internal server error occurred on the Service and the
 					execution of the operation was halted.</db:para>
+				<db:para>This fault is issued when errors occur that are not described by the <db:xref
+						linkend="ft_invalidOperationFault"/>, <db:xref
+						linkend="ft_invalidParameterFault"/>, <db:xref
+						linkend="ft_operationNotSupportedFault"/> and <db:xref
+						linkend="ft_noActiveSessionFault"/> faults. At the event of this fault being
+					issued, Reading Systems may attempt to reinvoke the operation that
+					failed.</db:para>
 			</documentation>
 		</part>
 	</message>
@@ -933,8 +948,11 @@
 	<message name="invalidOperationFault_message">
 		<part name="fault" element="tns:invalidOperationFault">
 			<documentation>
-				<db:para role="desc">The current context does not permit a call to this
+				<db:para role="desc">Condition: the current context does not permit a call to this
 					operation.</db:para>
+				<db:para>This fault is issued when a Reading System during an active Session invokes
+					an operation at a stage when the invocation of another operation, or a set of
+					other operations, is required.</db:para>
 			</documentation>
 		</part>
 	</message>
@@ -942,8 +960,11 @@
 	<message name="invalidParameterFault_message">
 		<part name="fault" element="tns:invalidParameterFault">
 			<documentation>
-				<db:para role="desc">An invalid parameter was passed with the operation
+				<db:para role="desc">Condition: an invalid parameter was passed with the operation
 					request.</db:para>
+				<db:para>This fault is issued when a Reading System passes a parameter with an
+					operation invocation that the Service does not recognize, allow, or support.
+				</db:para>
 			</documentation>
 		</part>
 	</message>
@@ -951,10 +972,27 @@
 	<message name="operationNotSupportedFault_message">
 		<part name="fault" element="tns:operationNotSupportedFault">
 			<documentation>
-				<db:para role="desc">This operation is not supported by the Service.</db:para>
+				<db:para role="desc">Condition: this operation is not supported by the Service.</db:para>
+				<db:para>This fault is issued when a Reading System invokes an <db:link
+						linkend="apiReferenceOptional">optional operation</db:link> that the Service
+					does not support.</db:para>
 			</documentation>
 		</part>
 	</message>
+
+	<message name="noActiveSessionFault_message">
+		<part name="fault" element="tns:noActiveSessionFault">
+			<documentation>
+				<db:para role="desc">Condition: this operation is not allowed when there is no active
+					session.</db:para>
+				<db:para>This fault is issued on all operation invocations except those in the
+					operation sequence defined by the <db:xref
+						linkend="def_sessionInitializationSequence"/> when a Session has either
+					expired or not been successfully initialized.</db:para>
+			</documentation>
+		</part>
+	</message>
+
 
 	<portType name="daisy-online">
 
@@ -995,6 +1033,8 @@
 				message="tns:invalidOperationFault_message"/>
 			<fault name="setReadingSystemAttributes_invalidParameterFault"
 				message="tns:invalidParameterFault_message"/>
+			<fault name="setReadingSystemAttributes_noActiveSessionFault"
+				message="tns:noActiveSessionFault_message"/>
 		</operation>
 
 		<operation name="issueContent">
@@ -1009,6 +1049,8 @@
 				message="tns:invalidOperationFault_message"/>
 			<fault name="issueContent_invalidParameterFault"
 				message="tns:invalidParameterFault_message"/>
+			<fault name="issueContent_noActiveSessionFault"
+				message="tns:noActiveSessionFault_message"/>
 		</operation>
 
 
@@ -1032,6 +1074,8 @@
 				message="tns:invalidOperationFault_message"/> -->
 			<fault name="getContentMetadata_invalidParameterFault"
 				message="tns:invalidParameterFault_message"/>
+			<fault name="getContentMetadata_noActiveSessionFault"
+				message="tns:noActiveSessionFault_message"/>
 		</operation>
 
 		<operation name="getContentResources">
@@ -1051,6 +1095,8 @@
 				message="tns:invalidOperationFault_message"/>
 			<fault name="getContentResources_invalidParameterFault"
 				message="tns:invalidParameterFault_message"/>
+			<fault name="getContentResources_noActiveSessionFault"
+				message="tns:noActiveSessionFault_message"/>
 		</operation>
 
 
@@ -1069,6 +1115,8 @@
 				message="tns:internalServerErrorFault_message"/>
 			<fault name="getServiceAttributes_invalidOperationFault"
 				message="tns:invalidOperationFault_message"/>
+			<fault name="getServiceAttributes_noActiveSessionFault"
+				message="tns:noActiveSessionFault_message"/>
 		</operation>
 
 		<!-- ************************************** -->
@@ -1085,10 +1133,11 @@
 					values are used).</db:para>
 				<db:para>The list can also be of a 'dynamic' type, typically being exposed by the
 					Service as the result of a <db:link
-						linkend="fundamentals_content_selection_browse">dynamic menu search</db:link>
-					operation sequence. In this case, the <db:parameter>id</db:parameter> value used
-					to refer to the list is provided in the return type of a previous operation (See
-					for example <db:xref linkend="tp_questions"/>). </db:para>
+						linkend="fundamentals_content_selection_browse">dynamic menu
+						search</db:link> operation sequence. In this case, the
+						<db:parameter>id</db:parameter> value used to refer to the list is provided
+					in the return type of a previous operation (See for example <db:xref
+						linkend="tp_questions"/>). </db:para>
 			</documentation>
 			<input message="tns:getContentList_inputMessage"/>
 			<output message="tns:getContentList_outputMessage"/>
@@ -1098,6 +1147,8 @@
 				message="tns:invalidOperationFault_message"/>
 			<fault name="getContentList_invalidParameterFault"
 				message="tns:invalidParameterFault_message"/>
+			<fault name="getContentList_noActiveSessionFault"
+				message="tns:noActiveSessionFault_message"/>
 		</operation>
 
 		<operation name="getServiceAnnouncements">
@@ -1113,6 +1164,8 @@
 				message="tns:invalidOperationFault_message"/>
 			<fault name="getServiceAnnouncements_operationNotSupportedFault"
 				message="tns:operationNotSupportedFault_message"/>
+			<fault name="getServiceAnnouncements_noActiveSessionFault"
+				message="tns:noActiveSessionFault_message"/>
 		</operation>
 
 		<operation name="markAnnouncementsAsRead">
@@ -1132,6 +1185,8 @@
 				message="tns:invalidParameterFault_message"/>
 			<fault name="markAnnouncementsAsRead_operationNotSupportedFault"
 				message="tns:operationNotSupportedFault_message"/>
+			<fault name="markAnnouncementsAsRead_noActiveSessionFault"
+				message="tns:noActiveSessionFault_message"/>
 		</operation>
 
 		<operation name="returnContent">
@@ -1166,6 +1221,8 @@
 				message="tns:invalidParameterFault_message"/>
 			<fault name="returnContent_operationNotSupportedFault"
 				message="tns:operationNotSupportedFault_message"/>
+			<fault name="returnContent_noActiveSessionFault"
+				message="tns:noActiveSessionFault_message"/>
 		</operation>
 
 		<operation name="setBookmarks">
@@ -1187,6 +1244,8 @@
 				message="tns:invalidParameterFault_message"/>
 			<fault name="setBookmarks_operationNotSupportedFault"
 				message="tns:operationNotSupportedFault_message"/>
+			<fault name="setBookmarks_noActiveSessionFault"
+				message="tns:noActiveSessionFault_message"/>
 		</operation>
 
 		<operation name="getBookmarks">
@@ -1204,6 +1263,8 @@
 				message="tns:invalidParameterFault_message"/>
 			<fault name="getBookmarks_operationNotSupportedFault"
 				message="tns:operationNotSupportedFault_message"/>
+			<fault name="getBookmarks_noActiveSessionFault"
+				message="tns:noActiveSessionFault_message"/>
 		</operation>
 
 		<operation name="getQuestions">
@@ -1221,6 +1282,8 @@
 				message="tns:invalidParameterFault_message"/>
 			<fault name="getQuestions_operationNotSupportedFault"
 				message="tns:operationNotSupportedFault_message"/>
+			<fault name="getQuestions_noActiveSessionFault"
+				message="tns:noActiveSessionFault_message"/>
 		</operation>
 
 		<operation name="getKeyExchangeObject">
@@ -1238,6 +1301,8 @@
 				message="tns:invalidParameterFault_message"/>
 			<fault name="getKeyExchangeObject_operationNotSupportedFault"
 				message="tns:operationNotSupportedFault_message"/>
+			<fault name="getKeyExchangeObject_noActiveSessionFault"
+				message="tns:noActiveSessionFault_message"/>
 		</operation>
 
 	</portType>
