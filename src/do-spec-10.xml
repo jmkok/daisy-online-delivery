@@ -530,53 +530,86 @@
 				of its <type><xref linkend="tp_contentMetadata"/></type>: if <code>requiresReturn</code> is
 				<literal>true</literal>, the <xref linkend="term_content"/> is available under a <xref linkend="fundamentals_serviceModel_lender"/>; if
 				<code>requiresReturn</code> is <literal>false</literal> or absent, the <xref linkend="term_content"/> is available
-				under an <xref linkend="fundamentals_serviceModel_acquisition"/>.</para>
+				under an <xref linkend="fundamentals_serviceModel_acquisition"/>.  Once the <xref linkend="term_content"/> is
+				<link linkend="term_issue">issued</link>, the <code>requiresReturn</code> attribute must not change.</para>
 
             <section xml:id="fundamentals_serviceModels_reqs_lender">
                 <title>Lending Model</title>
-
-                <para>The following apply to any item of <xref linkend="term_content"/> offered under a <xref linkend="fundamentals_serviceModel_lender"/>.</para>
-                <itemizedlist>
-                    <listitem>
-                        <para> Its <type>
-                                <xref linkend="tp_contentMetadata"/>
-                            </type> must have its <code>requiresReturn</code> attribute set to
-                                <literal>true</literal>. </para>
-                    </listitem>
-                    <listitem>
-                        <para> If it has been <link linkend="term_issue">issued</link>, it must be present in either the
-                                <literal>issued</literal> or <literal>expired</literal>
-								<xref linkend="tp_contentList"/>s until it is <link linkend="term_return">returned</link>. </para>
-                    </listitem>
-                    <listitem>
-                        <para> If it has been <link linkend="term_issue">issued</link> and not <link linkend="term_return">returned</link>, the <xref
-                                linkend="term_readingSystem"/> may call <function>
-                                <xref linkend="op_returnContent"/>
-                            </function> at any time to <link linkend="term_return">return</link> it.</para>
-                    </listitem>
-                </itemizedlist>
-				<para><xref linkend="term_service"/>s offering any <xref linkend="term_content"/> under a <xref linkend="fundamentals_serviceModel_lender"/>
-				must implement the <function><xref linkend="op_returnContent"/></function> operation.</para>
+					<para>
+						This protocol does not aid the enforcement of due dates for <xref linkend="term_content"/>. If a <xref linkend="term_content"/> item must expire
+						at a specific time and no longer be accessible, it may be protected with <xref linkend="bib_pdtb2"/> or another <abbrev>DRM</abbrev> scheme.
+					</para>
+				<section xml:id="fundamentals_serviceModels_reqs_lender_service">
+					<title>Service Requirements</title>
+					<para><xref linkend="term_service"/>s offering any <xref linkend="term_content"/> under a <xref linkend="fundamentals_serviceModel_lender"/>
+					must:</para>
+					<itemizedlist>
+						<listitem>
+							<para>implement the <function><xref linkend="op_returnContent"/></function> operation</para>
+						</listitem>
+						<listitem>
+							<para>offer the <literal>issued</literal> and <literal>expired</literal> <xref linkend="tp_contentList"/>s</para>
+						</listitem>
+					</itemizedlist>
+					<para>The following apply to any item of <xref linkend="term_content"/> offered under a <xref linkend="fundamentals_serviceModel_lender"/>.</para>
+					<itemizedlist>
+						<listitem>
+							<para> Its <type>
+									<xref linkend="tp_contentMetadata"/>
+								</type> must have its <code>requiresReturn</code> attribute set to
+									<literal>true</literal>. </para>
+						</listitem>
+						<listitem>
+							<para> If it has been <link linkend="term_issue">issued</link>, it must be present in either the
+									<literal>issued</literal> or <literal>expired</literal>
+									<xref linkend="tp_contentList"/>s until it is <link linkend="term_return">returned</link>. </para>
+						</listitem>
+						<listitem>
+							<para> If it has been <link linkend="term_issue">issued</link> and not <link linkend="term_return">returned</link>, the <xref
+									linkend="term_readingSystem"/> may call <function>
+									<xref linkend="op_returnContent"/>
+								</function> at any time to <link linkend="term_return">return</link> it.</para>
+						</listitem>
+					</itemizedlist>
+				</section>
+				<section xml:id="fundamentals_serviceModels_reqs_lender_rs">
+					<title>Reading System Requirements</title>
+					<para>
+						The <xref linkend="term_readingSystem"/> must not call <function><xref linkend="op_returnContent"/></function>
+						with a <xref linkend="term_contentIdentifier"/> of a <xref linkend="term_content"/> item unless
+						all local copies of that <xref linkend="term_content"/> have been removed.
+					</para>
+				</section>
             </section>
 
             <section xml:id="fundamentals_serviceModels_reqs_acquisition">
                 <title>Basic Acquisition Model</title>
-                <para>The following apply to any item of <xref linkend="term_content"/> offered under an <xref linkend="fundamentals_serviceModel_acquisition"/>.</para>
-                <itemizedlist>
-                    <listitem>
-                        <para> Its <type>
-                                <xref linkend="tp_contentMetadata"/>
-                            </type> must have either no <code>requiresReturn</code> attribute or have it set to
-                                <literal>false</literal>. </para>
-                    </listitem>
-                    <listitem>
-                        <para> If it has been <link linkend="term_issue">issued</link>, it may be present in the
-                                <literal>issued</literal> <xref linkend="tp_contentList"/>. It may not be present in the <literal>expired</literal>
-							<xref linkend="tp_contentList"/>.</para>
-                    </listitem>
-                </itemizedlist>
-				<para>It is optional for <xref linkend="term_service"/>s offering all <xref linkend="term_content"/> under an <xref linkend="fundamentals_serviceModel_acquisition"/>
-				to implement the <function><xref linkend="op_returnContent"/></function> operation.</para>
+				<section xml:id="fundamentals_serviceModels_reqs_acquisition_service">
+					<title>Service Requirements</title>
+					<para>The following apply to any item of <xref linkend="term_content"/> offered under an <xref linkend="fundamentals_serviceModel_acquisition"/>.</para>
+					<itemizedlist>
+						<listitem>
+							<para> Its <type>
+									<xref linkend="tp_contentMetadata"/>
+								</type> must have either no <code>requiresReturn</code> attribute or have it set to
+									<literal>false</literal>. </para>
+						</listitem>
+						<listitem>
+							<para> If it has been <link linkend="term_issue">issued</link>, it may be present in the
+									<literal>issued</literal> <xref linkend="tp_contentList"/>. It may not be present in the <literal>expired</literal>
+								<xref linkend="tp_contentList"/>.</para>
+						</listitem>
+					</itemizedlist>
+				</section>
+				<section xml:id="fundamentals_serviceModels_reqs_acquisition_rs">
+					<title>Reading System Requirements</title>
+					<para>
+						The <xref linkend="term_readingSystem"/> must not call <function><xref linkend="op_returnContent"/></function>
+						with a <xref linkend="term_contentIdentifier"/> of a <xref linkend="term_content"/> item whose
+						<type><xref linkend="tp_contentMetadata"/></type>'s <code>requiresReturn</code> attribute is
+						<literal>false</literal>.
+					</para>
+				</section>
             </section>
         </section>
 
@@ -1019,84 +1052,6 @@
                 </note>
 
             </section>
-
-
-            <section xml:id="fundamentals_content_lending">
-                <title>Lending Content</title>
-
-                <para> This section outlines the methods the DAISY Online Delivery protocol supports
-                    for the borrowing and return of <xref linkend="term_content"/> for <xref
-                        linkend="term_service"/>s that implement a <xref
-                        linkend="fundamentals_serviceModel_lender"/> for some or all of its content. </para>
-
-
-                <section xml:id="fundamentals_content_lending_borrowing">
-                    <title>Borrowing Content</title>
-
-                    <para>
-                        <remark role="todo">TODO: Write this section</remark>
-                    </para>
-
-                    <para> Borrowed <xref linkend="term_content"/> is defined as <xref
-                            linkend="term_content"/> that includes the <code>requiresReturn</code>
-                        attribute in its <xref linkend="tp_contentMetadata"/>. </para>
-
-                </section>
-
-                <section xml:id="fundamentals_content_lending_returning">
-                    <title>Returning Content</title>
-
-                    <remark role="todo"> TODO: when must this happen? what if the reading system
-                        doesn't have the content? what about streaming? add bit regarding
-                        discouraged use of expired. </remark>
-
-                    <para> A <xref linkend="term_service"/> that implements a <xref
-                            linkend="fundamentals_serviceModel_lender"/> must manage both the issued
-                        and expired <xref linkend="term_content"/> in the <xref linkend="term_user"
-                        />'s <xref linkend="term_content"/> collection. The <xref
-                            linkend="term_service"/> must provide a <xref
-                            linkend="term_readingSystem"/> a list of expired content when requested
-                        so that the <xref linkend="term_readingSystem"/> can check the <xref
-                            linkend="term_content"/> back in. </para>
-
-                    <para> A <xref linkend="term_readingSystem"/> can retrieve the list of expired
-                            <xref linkend="term_content"/> by invoking the <function>
-                            <xref linkend="op_getContentList"/>
-                        </function> operation with the <parameter>id</parameter> parameter value set
-                        to <code>expired</code>. </para>
-
-                    <para> The <xref linkend="term_readingSystem"/> must perform the following
-                        actions to check back in a <xref linkend="term_content"/> item: </para>
-
-                    <orderedlist>
-                        <listitem>
-                            <para> it must delete the <xref linkend="term_content"/> from its
-                                non-volatile memory; and </para>
-                        </listitem>
-                        <listitem>
-                            <para> it must invoke the <function>
-                                    <xref linkend="op_returnContent"/>
-                                </function> operation to inform the <xref linkend="term_service"/>
-                                that the <xref linkend="term_content"/> has been deleted and should
-                                be removed from the <xref linkend="term_user"/>'s issued <xref
-                                    linkend="term_content"/> list. </para>
-                        </listitem>
-                    </orderedlist>
-
-                    <note>
-                        <para> The <xref linkend="term_content"/> expiry and revocation process
-                            outlined in this section is designed for library-like models where
-                            overdue returns can be forgiven or result in an out-of-band penalty for
-                            the <xref linkend="term_user"/>. If a <xref linkend="term_content"/>
-                            item must expire at a specific time and no longer be accessible, <xref
-                                linkend="term_service"/>s must also implement
-                                <abbrev>PDTB2</abbrev> protection or a similar digital rights
-                            management scheme. </para>
-                    </note>
-                </section>
-
-            </section>
-
 
             <section xml:id="fundamentals_content_issuing_pdtb">
                 <title>Rights management</title>
