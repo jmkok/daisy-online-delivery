@@ -691,7 +691,7 @@
                 <listitem xml:id="fundamentals_content_selection_browse"
                     xreflabel="Browse Content Selection Method">
                     <para> a <emphasis>browsing</emphasis> method, where a <xref linkend="term_user"
-                        /> can browse a <xref linkend="term_serviceProvider"/>'s collection using
+                        /> can browse a <xref linkend="term_service"/>'s collection using
                             <xref linkend="term_operation"/>s defined by this protocol. </para>
                 </listitem>
             </itemizedlist>
@@ -969,7 +969,7 @@
                     specific resources that have been updated and need to be downloaded again. </para>
 
                 <para> When using the <code>lastModifiedDate</code> attribute to publish updates,
-                        <xref linkend="term_serviceProvider"/>s must ensure that the last modified
+                        the <xref linkend="term_service"/>s must ensure that the last modified
                     date for the <xref linkend="term_content"/> item matches the last modified date
                     of the most recently updated resource. </para>
 
@@ -1056,7 +1056,7 @@
                             overdue returns can be forgiven or result in an out-of-band penalty for
                             the <xref linkend="term_user"/>. If a <xref linkend="term_content"/>
                             item must expire at a specific time and no longer be accessible, <xref
-                                linkend="term_serviceProvider"/>s must also implement
+                                linkend="term_service"/>s must also implement
                                 <abbrev>PDTB2</abbrev> protection or a similar digital rights
                             management scheme. </para>
                     </note>
@@ -1221,7 +1221,7 @@
                         at least once per <xref linkend="term_session"/>. </para>
                 </note>
 
-                <para> The <xref linkend="term_serviceProvider"/> can set the importance level for
+                <para> The <xref linkend="term_service"/> can set the importance level for
                     each announcement from a level of 1 (most important) to 3 (least important) and
                     specify the type of announcement as one of <constant>ERROR</constant>,
                         <constant>SYSTEM</constant>, <constant>WARNING</constant> or
@@ -1230,7 +1230,7 @@
                     to the <xref linkend="term_user"/>. </para>
 
                 <note>
-                    <para> A <xref linkend="term_serviceProvider"/> may remove unread announcements
+                    <para> A <xref linkend="term_service"/> may remove unread announcements
                         from the <xref linkend="term_service"/> at any time and for any reason. To
                         avoid potential retrieval conflicts, a <xref linkend="term_readingSystem"/>
                         must treat the identifier values of individual <type>
@@ -1239,7 +1239,7 @@
                             <xref linkend="term_session"/>. </para>
                 </note>
 
-                <para> If a <xref linkend="term_serviceProvider"/> does not support service
+                <para> If a <xref linkend="term_service"/> does not support service
                     announcements, the <xref linkend="term_service"/> must return an <errorcode>
                         <xref linkend="ft_operationNotSupportedFault"/>
                     </errorcode> fault if a <xref linkend="term_readingSystem"/> attempts to invoke
@@ -1257,8 +1257,8 @@
                     the announcement again the next time the <xref linkend="term_user"/> connects to
                     the <xref linkend="term_service"/>. </para>
 
-                <para> To prevent conflicts arising from Announcements that a <xref
-                        linkend="term_serviceProvider"/> has removed from the <xref
+                <para> To prevent conflicts arising from announcements that 
+						have been removed from the <xref
                         linkend="term_service"/>, a <xref linkend="term_readingSystem"/> must only
                     invoke the <function>markAnnouncementsAsRead</function> operation using the
                     identifier values obtained from the last invocation of <function>
@@ -1354,10 +1354,10 @@
             <title>Dynamic Menus</title>
 
             <para> The DAISY Online Delivery protocol offers the ability for <xref
-                    linkend="term_serviceProvider"/>s to render dynamic menus on compliant <xref
+                    linkend="term_service"/>s to send dynamic menus to compliant <xref
                     linkend="term_readingSystem"/>s. <xref linkend="term_user"/>s can take advantage
                 of the functionality exposed by these menus to manually perform a wide variety of
-                operations, such as browsing the <xref linkend="term_serviceProvider"/>'s catalog,
+                operations, such as browsing the <xref linkend="term_service"/>'s catalog,
                 taking surveys, purchasing items from an online store and downloading service
                 announcements. </para>
 
@@ -1390,7 +1390,7 @@
                 interoperability. </para>
 
             <para> The following sections describe the basic principles that must be adhered to when
-                a <xref linkend="term_serviceProvider"/> implements a dynamic menuing system. </para>
+                a <xref linkend="term_service"/> implements a dynamic menuing system. </para>
 
 
             <section xml:id="fundamentals_dynamic_menus_root">
@@ -1475,7 +1475,7 @@
                             </type> type. </para>
 
                         <note>
-                            <para> A <xref linkend="term_serviceProvider"/> must specify if an input
+                            <para> A <xref linkend="term_service"/> must specify if an input
                                 question requires a numeric, alphanumeric or audio-based response.
                                 The required response modality for an input question is specified in
                                 the <xref linkend="tp_inputTypes"/> element of the <xref
