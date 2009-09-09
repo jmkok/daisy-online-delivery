@@ -356,7 +356,7 @@
 					audio.</db:para>
 				<db:para>To achieve maximum interoperability, Services should support the provision
 					of audio labels, as Reading Systems may <db:link
-						linkend="tp_requiresAudioLabels">require</db:link> such to provided in order
+						linkend="tp_requiresAudioLabels">require</db:link> such to be provided in order
 					to function.</db:para>
 			</xs:documentation>
 		</xs:annotation>
