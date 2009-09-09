@@ -1882,8 +1882,8 @@
             <listitem>
                 <para>
                     <personname>
+                        <surname>Fujimori</surname>                        
                         <firstname>Hiro</firstname>
-                        <surname>Fujimori</surname>
                     </personname>, <!-- <jobtitle></jobtitle>, --><orgname>Plextor</orgname>
                 </para>
             </listitem>
@@ -2061,8 +2061,8 @@
 
             <listitem>
                 <para><personname>
+                        <surname>Nishizawa</surname>                    
                         <firstname>Tatsu</firstname>
-                        <surname>Nishizawa</surname>
                     </personname>, <orgname>Plextor</orgname></para>
             </listitem>
 
@@ -2085,13 +2085,6 @@
                         <firstname>Karel</firstname>
                         <surname>Raven</surname>
                     </personname>, <orgname>Solutions Radio</orgname></para>
-            </listitem>
-
-            <listitem>
-                <para><personname>
-                        <firstname>Simon</firstname>
-                        <surname>Roy</surname>
-                    </personname>, <orgname>HumanWare</orgname></para>
             </listitem>
 
             <listitem>
