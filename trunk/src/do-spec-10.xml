@@ -91,7 +91,7 @@
         </para>
         
         <para>
-            The procotol was also engineered to facilitate the lending of content, not just its delivery.
+            The protocol was also engineered to facilitate the lending of content, not just its delivery.
              Libraries and other organizations that require a means to deliver content to users for a limited
              period of time will find a number of features that facilitate this kind of delivery model. The protocol
              also enables the use of the PDTB2 content protection scheme where explicit digital rights management
@@ -100,7 +100,7 @@
         
         <para>
             The protocol has been built on a strong foundation of established 
-            technologies to reduce the implentation and maintenance costs for individuals and organizations
+            technologies to reduce the implementation and maintenance costs for individuals and organizations
             looking to implement this content delivery model: the messaging between reading systems and 
             services is carried out by SOAP messages over the HTTP protocol; the service operations are all defined
             by a normative WSDL document; and the protocol itself is compliant with WS-I Basic Profile 1.1.
