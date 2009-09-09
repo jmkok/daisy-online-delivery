@@ -974,8 +974,8 @@
 					element, the Reading system is not required to call the getQuestions operation
 					as these child elements signify a logical end to the sequence of questions that
 					comprise a dynamic menu.</db:para>
-				<db:para>For examples on usage of the questions type, refer to <db:xref
-						linkend="appendixDynamicMenuExamples"/>.</db:para>
+				<db:para>For informative examples on the usage of the questions type, refer to <db:xref
+						linkend="bib_dynamicMenusPrimer"/>.</db:para>
 			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -1049,6 +1049,8 @@
 			<xs:documentation>
 				<db:para>Encapsulates a set of User responses to Service provided <db:xref
 						linkend="tp_questions"/>.</db:para>
+				<db:para>For informative examples on the usage of the userResponses type, refer to <db:xref
+						linkend="bib_dynamicMenusPrimer"/>.</db:para>						
 			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
