@@ -10,7 +10,7 @@
   <type name="resources">
     <sample src="./samples/types-resources.xml" title="The resources type using script URIs">
       <annotation>
-        <db:para>The following example shows a <db:type>resources</db:type> type where the uri attribute
+        <db:para>This example shows a <db:type>resources</db:type> type where the uri attribute
           refers to a script that does not expose the names of the resources.
         </db:para>
       </annotation>
@@ -20,7 +20,7 @@
   <type name="contentList">
     <sample src="./samples/types-contentList-1.xml" title="A complete contentList type using bimodal labels">
       <annotation>
-        <db:para>The following example shows a <db:type>contentList</db:type> type that is not segmented (the 
+        <db:para>This example shows a <db:type>contentList</db:type> type that is not segmented (the 
           <db:code>firstItem</db:code> and <db:code>lastItem</db:code> attributes
           are missing on the root element).</db:para>
       </annotation>
@@ -28,7 +28,7 @@
     <sample src="./samples/types-contentList-2.xml" title="A segmented contentList type">
       <annotation>
           <db:para>
-          The following example shows a <db:type>contentList</db:type> type that is segmented (<db:code>firstItem</db:code> and <db:code>lastItem</db:code> attributes
+          This example shows a <db:type>contentList</db:type> type that is segmented (<db:code>firstItem</db:code> and <db:code>lastItem</db:code> attributes
           specify which of the items are included in this segment).</db:para>
       </annotation>
     </sample>
@@ -37,7 +37,7 @@
   <type name="contentMetadata">
     <sample src="./samples/types-contentMetadata.xml" title="Typical book contentMetadata type">
       <annotation>
-        <db:para>The following example shows a <db:type>contentMetadata</db:type> type for a borrowed book
+        <db:para>This example shows a <db:type>contentMetadata</db:type> type for a borrowed book
           that is <db:xref linkend="bib_pdtb2"/> protected (see <db:xref linkend="fundamentals_content_issuing_pdtb"/>). </db:para>
       </annotation>
     </sample>
@@ -48,7 +48,7 @@
       title="readingSystemAttributes type for a typical 
       portable audio-centric Reading System">
       <annotation>
-        <db:para>The following example shows a <db:type>readingSystemAttributes</db:type> type that contains the
+        <db:para>This example shows a <db:type>readingSystemAttributes</db:type> type that contains the
           properties that would typically be returned by small portabe audio-centric <db:xref linkend="term_readingSystem"/>
           (single format support, numeric input, no text-to-speech capabilities with <db:abbrev>PDTB2</db:abbrev> support).
         </db:para>
@@ -59,7 +59,7 @@
       title="readingSystemAttributes type for a typical software-based
        Reading System">
       <annotation>
-        <db:para>The following example shows a <db:type>readingSystemAttributes</db:type> type that contains the
+        <db:para>This example shows a <db:type>readingSystemAttributes</db:type> type that contains the
           properties that would typically be returned by a hardware- or software-based <db:xref linkend="term_readingSystem"/>
           (multi-format support, full keyboard input, built-in text-to-speech capabilities but in this case no 
           <db:abbrev>PDTB2</db:abbrev> support).
@@ -72,14 +72,14 @@
     <sample src="./samples/types-serviceAttributes-2.xml"
       title="serviceAttributes type for a typical minimal library service">
       <annotation>
-        <db:para>The following example shows a <db:type>serviceAttributes</db:type> type for a <db:xref linkend="term_service"/> that only
+        <db:para>This example shows a <db:type>serviceAttributes</db:type> type for a <db:xref linkend="term_service"/> that only
           supports the out-of-band <db:xref linkend="fundamentals_content_selection"/>.</db:para>
       </annotation>
     </sample>
     <sample src="./samples/types-serviceAttributes-1.xml"
       title="serviceAttributes type for a typical maximally extended service">
       <annotation>
-        <db:para>The following example shows a <db:type>serviceAttributes</db:type> type for a <db:xref linkend="term_service"/> that supports
+        <db:para>This example shows a <db:type>serviceAttributes</db:type> type for a <db:xref linkend="term_service"/> that supports
           both available <db:xref linkend="fundamentals_content_selection"/> and provides some or all
           of its <db:xref linkend="term_content"></db:xref> encrypted using <db:xref linkend="bib_pdtb2"/>.</db:para>
       </annotation>
