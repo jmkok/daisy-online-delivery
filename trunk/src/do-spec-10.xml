@@ -109,7 +109,7 @@
         <para>
             The one aspect that the working group could not tackle in this version of the protocol is the discovery of services.
             The DAISY Consortium may develop a protocol and database for discovering services at a later date, but 
-            currently no such functionality exists that could be leveraged for this standard. Implementers of this protocol 
+            currently no such functionality exists that could be leveraged for this specification. Implementers of this protocol 
             will have to establish other mechanisms for locating the services they need to connect to and/or informing 
             users where and how to access them.
         </para>
