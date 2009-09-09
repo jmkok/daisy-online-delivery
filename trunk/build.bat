@@ -13,6 +13,9 @@ java com.emc.documentum.xml.xproc.tool.Cmd xsd-finalize.xpl
 REM java com.xmlcalabash.drivers.Main --with-param section.autolabel=1 --with-param section.label.includes.component.label=1 --with-param html.stylesheet=do.css build.xpl 
 java com.emc.documentum.xml.xproc.tool.Cmd -p section.autolabel=1 -p section.label.includes.component.label=1 -p html.stylesheet=do.css build.xpl 
 
+REM java com.xmlcalabash.drivers.Main --with-param section.autolabel=1 --with-param section.label.includes.component.label=1 --with-param html.stylesheet=do.css build-dm-primer.xpl 
+java com.emc.documentum.xml.xproc.tool.Cmd -p section.autolabel=1 -p section.label.includes.component.label=1 -p html.stylesheet=do.css build-dm-primer.xpl 
+
 copy .\util\docbook\html-css\docbook.css .\build\do.css
 copy .\src\bookmark-2005-1.xsd .\build\bookmark-2005-1.xsd
 copy .\src\dc.xsd .\build\dc.xsd

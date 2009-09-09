@@ -72,8 +72,10 @@ set       toc,title
             
             <xsl:call-template name="book.titlepage"/>
             
-            <xsl:element name="h2" namespace="http://www.w3.org/1999/xhtml">Status of this Document</xsl:element>
-            <xsl:apply-templates select="db:info/db:annotation[@xml:id='status']/*"/>
+            <xsl:if test="db:info/db:annotation[@xml:id='status']">
+            	<xsl:element name="h2" namespace="http://www.w3.org/1999/xhtml">Status of this Document</xsl:element>
+            	<xsl:apply-templates select="db:info/db:annotation[@xml:id='status']/*"/>
+            </xsl:if>
             
             <xsl:variable name="toc.params">
                 <xsl:call-template name="find.path.params">
