@@ -800,7 +800,7 @@
                         <para>declares support for the <xref
                                 linkend="fundamentals_content_selection_outofband"/> in the <code
                                 role="type">
-                                <xref linkend="tp_supportedContentSelectionModels"/>
+                                <xref linkend="tp_supportedContentSelectionMethods"/>
                             </code> service attribute; and</para>
                     </listitem>
                     <listitem>
@@ -835,7 +835,7 @@
                         <para>declares support for the <xref
                                 linkend="fundamentals_content_selection_browse"/> in the <code
                                 role="type">
-                                <xref linkend="tp_supportedContentSelectionModels"/>
+                                <xref linkend="tp_supportedContentSelectionMethods"/>
                             </code> service attribute.</para>
                     </listitem>
                 </itemizedlist>

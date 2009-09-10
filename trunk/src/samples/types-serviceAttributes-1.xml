@@ -1,10 +1,10 @@
 <serviceAttributes xmlns="http://www.daisy.org/ns/daisy-online/">
   <serviceProvider id="gy-zenith" />
   <service id="gy-zenith-libraryServiceDeluxe" />
-  <supportedContentSelectionModels>
-    <model>BROWSE</model>
-    <model>OUT_OF_BAND</model>
-  </supportedContentSelectionModels>
+  <supportedContentSelectionMethods>
+    <method>BROWSE</method>
+    <method>OUT_OF_BAND</method>
+  </supportedContentSelectionMethods>
   <supportsServerSideBack>true</supportsServerSideBack>
   <supportsSearch>true</supportsSearch>
   <supportedUplinkAudioCodecs>
