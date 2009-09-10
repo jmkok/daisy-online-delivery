@@ -76,6 +76,11 @@ set       toc,title
             	<xsl:element name="h2" namespace="http://www.w3.org/1999/xhtml">Status of this Document</xsl:element>
             	<xsl:apply-templates select="db:info/db:annotation[@xml:id='status']/*"/>
             </xsl:if>
+ 
+            <xsl:if test="db:info/db:annotation[@xml:id='editors']">
+                <xsl:element name="h2" namespace="http://www.w3.org/1999/xhtml">Editors</xsl:element>
+                <xsl:apply-templates select="db:info/db:annotation[@xml:id='editors']/*"/>
+            </xsl:if>
             
             <xsl:variable name="toc.params">
                 <xsl:call-template name="find.path.params">

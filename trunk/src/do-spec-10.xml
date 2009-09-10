@@ -12,21 +12,67 @@
         <annotation role="specLinks">
             <para role="specLabel">This version:</para>
             <para role="specLink">
-                <link xlink:href="http://www.daisy.org/projects/daisy-online-delivery/drafts/20090910/"
+                <link
+                    xlink:href="http://www.daisy.org/projects/daisy-online-delivery/drafts/20090910/"
                     >http://www.daisy.org/projects/daisy-online-delivery/drafts/20090910/do-spec-20090910.html</link>
             </para>
             <para role="specLabel">This version as a zip archive:</para>
             <para role="specLink">
-                <link xlink:href="http://www.daisy.org/projects/daisy-online-delivery/drafts/20090910/do-spec-20090910.zip"
+                <link
+                    xlink:href="http://www.daisy.org/projects/daisy-online-delivery/drafts/20090910/do-spec-20090910.zip"
                     >http://www.daisy.org/projects/daisy-online-delivery/drafts/20090910/do-spec-20090910.zip</link>
             </para>
             <para role="specLabel">Previous version:</para>
             <para role="specLink">
-                <link xlink:href="http://daisy-online-delivery.googlecode.com/files/do-draft-20090828.zip"
+                <link
+                    xlink:href="http://daisy-online-delivery.googlecode.com/files/do-draft-20090828.zip"
                     >http://daisy-online-delivery.googlecode.com/files/do-draft-20090828.zip</link>
             </para>
         </annotation>
-
+        <annotation xml:id="editors">
+            <para>
+                <personname>
+                    <firstname>Matt</firstname>
+                    <surname>Garrish</surname>
+                </personname>, <!-- <jobtitle></jobtitle>, -->
+                <orgname>CNIB</orgname>
+            </para>
+            <para>
+                <personname>
+                    <firstname>Geoff</firstname>
+                    <surname>Gilmour-Taylor</surname>
+                </personname>, <!-- <jobtitle></jobtitle>, -->
+                <orgname>CNIB</orgname>
+            </para>
+            <para>
+                <personname>
+                    <firstname>Markus</firstname>
+                    <surname>Gylling</surname>
+                </personname>, <!-- <jobtitle>CTO</jobtitle>, -->
+                <orgname>DAISY Consortium</orgname>
+            </para>
+            <para>
+                <personname>
+                    <firstname>Kenny</firstname>
+                    <surname>Johar</surname>
+                </personname>, <!-- <jobtitle>Enterprise Architect</jobtitle>,-->
+                <orgname>Vision Australia</orgname>
+            </para>
+            <para>
+                <personname>
+                    <firstname>Jelle</firstname>
+                    <surname>Martijn Kok</surname>
+                </personname>, <!-- <jobtitle></jobtitle>, -->
+                <orgname>Solutions Radio</orgname>
+            </para>
+            <para>
+                <personname>
+                    <firstname>Nick</firstname>
+                    <surname>Williamson</surname>
+                </personname>, <!-- <jobtitle></jobtitle>, -->
+                <orgname>RNIB</orgname>
+            </para>
+        </annotation>
         <abstract>
             <title>Abstract</title>
             <para> The DAISY Online Delivery protocol is a web service API that facilitates the
@@ -67,52 +113,44 @@
 
     <chapter xml:id="introduction">
         <title>Introduction</title>
-        <para>
-            The DAISY Online Delivery protocol grew out of the need for DAISY producers to
-            be able to deliver content to clients and users in a timely and cost-effective way.
-            The challenges associated with distributing content in physical mediums make these solutions 
-            difficult to implement, cumbersome to maintain and environmentally unfriendly.
-        </para>
-        
-        <para>
-            Although DAISY Digital Talking Books are the primary component of the DAISY standard,
-            the standard itself is evolving and the need to distribute various types of accessible media is one
-            that is already faced by many members of the DAISY Consortium. As a result, the service architecture
-            development for this protocol was done with the goal of getting <emphasis>resources</emphasis> from a 
-            provider to a reading system, a design principle that should also make the protocol 
-            useful as a content delivery mechanism beyond the sphere of accessible publishing. 
-        </para>
-        
-        <para>
-            The second main development objective was to ensure that the protocol was flexible enough to allow it to be 
-            customized and tailored to the delivery needs of any individual or organization. The minimal core 
-            functionality facilitates the development of simple services that can, for example, allow users to plug 
-            their reading system in at night and automatically download their new content. The expanded set of
-            functionality allows for richer and more interactive models where users can browse for
-            and download their own content.
-        </para>
-        
-        <para>
-            The protocol was also engineered to facilitate the lending of content, not just its delivery.
-             Libraries and other organizations that require a means to deliver content to users for a limited
-             period of time will find a number of features that facilitate this kind of delivery model. The protocol
-             also enables the use of the PDTB2 content protection scheme where explicit digital rights management
-             issues are a concern.
-        </para>
-        
-        <para>
-            The protocol has been built on a strong foundation of established 
-            technologies to reduce the implementation and maintenance costs for individuals and organizations
-            looking to implement this content delivery model: the interaction between reading systems and 
-            services is carried out by SOAP messages over the HTTP protocol; the service operations are all defined
-            by a normative WSDL document; and the protocol itself is compliant with WS-I Basic Profile 1.1.
-        </para>
-        
-        <para>
-            The one aspect that could not be tackled in this version of the protocol is the discovery of services.
-            The DAISY Consortium may develop a system and specification for tracking and discovering services at a later date, but 
-            currently no such functionality exists that could be integrated with this protocol.
-        </para>
+        <para> The DAISY Online Delivery protocol grew out of the need for DAISY producers to be
+            able to deliver content to clients and users in a timely and cost-effective way. The
+            challenges associated with distributing content in physical mediums make these solutions
+            difficult to implement, cumbersome to maintain and environmentally unfriendly. </para>
+
+        <para> Although DAISY Digital Talking Books are the primary component of the DAISY standard,
+            the standard itself is evolving and the need to distribute various types of accessible
+            media is one that is already faced by many members of the DAISY Consortium. As a result,
+            the service architecture development for this protocol was done with the goal of getting
+                <emphasis>resources</emphasis> from a provider to a reading system, a design
+            principle that should also make the protocol useful as a content delivery mechanism
+            beyond the sphere of accessible publishing. </para>
+
+        <para> The second main development objective was to ensure that the protocol was flexible
+            enough to allow it to be customized and tailored to the delivery needs of any individual
+            or organization. The minimal core functionality facilitates the development of simple
+            services that can, for example, allow users to plug their reading system in at night and
+            automatically download their new content. The expanded set of functionality allows for
+            richer and more interactive models where users can browse for and download their own
+            content. </para>
+
+        <para> The protocol was also engineered to facilitate the lending of content, not just its
+            delivery. Libraries and other organizations that require a means to deliver content to
+            users for a limited period of time will find a number of features that facilitate this
+            kind of delivery model. The protocol also enables the use of the PDTB2 content
+            protection scheme where explicit digital rights management issues are a concern. </para>
+
+        <para> The protocol has been built on a strong foundation of established technologies to
+            reduce the implementation and maintenance costs for individuals and organizations
+            looking to implement this content delivery model: the interaction between reading
+            systems and services is carried out by SOAP messages over the HTTP protocol; the service
+            operations are all defined by a normative WSDL document; and the protocol itself is
+            compliant with WS-I Basic Profile 1.1. </para>
+
+        <para> The one aspect that could not be tackled in this version of the protocol is the
+            discovery of services. The DAISY Consortium may develop a system and specification for
+            tracking and discovering services at a later date, but currently no such functionality
+            exists that could be integrated with this protocol. </para>
 
     </chapter>
 
@@ -514,116 +552,129 @@
                 <listitem xml:id="fundamentals_serviceModel_lender" xreflabel="Lending Model">
                     <para>a <emphasis>lending</emphasis> model, in which <xref
                             linkend="term_content"/> is loaned or rented by a <xref
-                            linkend="term_user"/> and must be <link linkend="term_return">returned</link> to the <xref linkend="term_service"/>; and</para>
+                            linkend="term_user"/> and must be <link linkend="term_return"
+                            >returned</link> to the <xref linkend="term_service"/>; and</para>
                 </listitem>
                 <listitem xml:id="fundamentals_serviceModel_acquisition"
                     xreflabel="Acquisition Model">
-                    <para>an <emphasis>acquisition</emphasis> model, which does not require <link linkend="term_return">return</link>.
-                        This model encompasses both commercial and free-of-charge <xref
-                            linkend="term_content"/>, as well as <xref linkend="term_content"/>
-                        protected with <xref linkend="bib_pdtb2"/> which may expire automatically
-                        without being <link linkend="term_return">returned</link>. </para>
+                    <para>an <emphasis>acquisition</emphasis> model, which does not require <link
+                            linkend="term_return">return</link>. This model encompasses both
+                        commercial and free-of-charge <xref linkend="term_content"/>, as well as
+                            <xref linkend="term_content"/> protected with <xref linkend="bib_pdtb2"
+                        /> which may expire automatically without being <link linkend="term_return"
+                            >returned</link>. </para>
                 </listitem>
             </itemizedlist>
 
             <para>
-                <xref linkend="term_serviceProvider"/>s may offer <xref linkend="term_content"/> under one or both of these
-                models. A <xref linkend="term_serviceProvider"/> must assign different <xref linkend="term_contentIdentifier"/>s for each
-                model it offers a <xref linkend="term_content"/> item under.
-            </para>
-            
-            <para>
-                A <xref linkend="term_service"/> must use the <code>requiresReturn</code> attribute of 
-                the <type><xref linkend="tp_contentMetadata"/></type> type to indicate the model it will issue
-                the <xref linkend="term_content"/> item under.
-                If <code>requiresReturn</code> is <literal>true</literal>, the <xref linkend="term_content"/> is available under 
-                a <xref linkend="fundamentals_serviceModel_lender"/>. If <code>requiresReturn</code> is <literal>false</literal> 
-                or absent, the <xref linkend="term_content"/> is available
-                under an <xref linkend="fundamentals_serviceModel_acquisition"/>.
-            </para>
-            
-            <para>
-                A  <xref linkend="term_serviceProvider"/> must not change the value of the <code>requiresReturn</code> attribute 
-                assigned to a uniquely idenfitied <xref linkend="term_content"/> item.
-            </para>
-            
+                <xref linkend="term_serviceProvider"/>s may offer <xref linkend="term_content"/>
+                under one or both of these models. A <xref linkend="term_serviceProvider"/> must
+                assign different <xref linkend="term_contentIdentifier"/>s for each model it offers
+                a <xref linkend="term_content"/> item under. </para>
+
+            <para> A <xref linkend="term_service"/> must use the <code>requiresReturn</code>
+                attribute of the <type>
+                    <xref linkend="tp_contentMetadata"/>
+                </type> type to indicate the model it will issue the <xref linkend="term_content"/>
+                item under. If <code>requiresReturn</code> is <literal>true</literal>, the <xref
+                    linkend="term_content"/> is available under a <xref
+                    linkend="fundamentals_serviceModel_lender"/>. If <code>requiresReturn</code> is
+                    <literal>false</literal> or absent, the <xref linkend="term_content"/> is
+                available under an <xref linkend="fundamentals_serviceModel_acquisition"/>. </para>
+
+            <para> A <xref linkend="term_serviceProvider"/> must not change the value of the
+                    <code>requiresReturn</code> attribute assigned to a uniquely idenfitied <xref
+                    linkend="term_content"/> item. </para>
+
             <section xml:id="fundamentals_serviceModels_reqs_lender">
                 <title>Lending Model</title>
-					<para>
-						This protocol does not aid the enforcement of due dates for <xref linkend="term_content"/>. If a <xref linkend="term_content"/> item must expire
-						at a specific time and no longer be accessible, it may be protected with <xref linkend="bib_pdtb2"/> or another <abbrev>DRM</abbrev> scheme.
-					</para>
-				<section xml:id="fundamentals_serviceModels_reqs_lender_service">
-					<title>Service Requirements</title>
-					<para><xref linkend="term_service"/>s offering any <xref linkend="term_content"/> under a <xref linkend="fundamentals_serviceModel_lender"/>
-					must:</para>
-					<itemizedlist>
-						<listitem>
-							<para>implement the <function><xref linkend="op_returnContent"/></function> operation</para>
-						</listitem>
-						<listitem>
-							<para>offer the <literal>issued</literal> and <literal>expired</literal> <xref linkend="tp_contentList"/>s</para>
-						</listitem>
-					</itemizedlist>
-					<para>The following apply to any item of <xref linkend="term_content"/> offered under a <xref linkend="fundamentals_serviceModel_lender"/>.</para>
-					<itemizedlist>
-						<listitem>
-							<para> Its <type>
-									<xref linkend="tp_contentMetadata"/>
-								</type> must have its <code>requiresReturn</code> attribute set to
-									<literal>true</literal>. </para>
-						</listitem>
-						<listitem>
-							<para> If it has been <link linkend="term_issue">issued</link>, it must be present in either the
-									<literal>issued</literal> or <literal>expired</literal>
-									<xref linkend="tp_contentList"/>s until it is <link linkend="term_return">returned</link>. </para>
-						</listitem>
-						<listitem>
-							<para> If it has been <link linkend="term_issue">issued</link> and not <link linkend="term_return">returned</link>, the <xref
-									linkend="term_readingSystem"/> may call <function>
-									<xref linkend="op_returnContent"/>
-								</function> at any time to <link linkend="term_return">return</link> it.</para>
-						</listitem>
-					</itemizedlist>
-				</section>
-				<section xml:id="fundamentals_serviceModels_reqs_lender_rs">
-					<title>Reading System Requirements</title>
-					<para>
-						The <xref linkend="term_readingSystem"/> must not call <function><xref linkend="op_returnContent"/></function>
-						with a <xref linkend="term_contentIdentifier"/> of a <xref linkend="term_content"/> item unless
-						all local copies of that <xref linkend="term_content"/> have been removed.
-					</para>
-				</section>
+                <para> This protocol does not aid the enforcement of due dates for <xref
+                        linkend="term_content"/>. If a <xref linkend="term_content"/> item must
+                    expire at a specific time and no longer be accessible, it may be protected with
+                        <xref linkend="bib_pdtb2"/> or another <abbrev>DRM</abbrev> scheme. </para>
+                <section xml:id="fundamentals_serviceModels_reqs_lender_service">
+                    <title>Service Requirements</title>
+                    <para><xref linkend="term_service"/>s offering any <xref linkend="term_content"
+                        /> under a <xref linkend="fundamentals_serviceModel_lender"/> must:</para>
+                    <itemizedlist>
+                        <listitem>
+                            <para>implement the <function>
+                                    <xref linkend="op_returnContent"/>
+                                </function> operation</para>
+                        </listitem>
+                        <listitem>
+                            <para>offer the <literal>issued</literal> and <literal>expired</literal>
+                                <xref linkend="tp_contentList"/>s</para>
+                        </listitem>
+                    </itemizedlist>
+                    <para>The following apply to any item of <xref linkend="term_content"/> offered
+                        under a <xref linkend="fundamentals_serviceModel_lender"/>.</para>
+                    <itemizedlist>
+                        <listitem>
+                            <para> Its <type>
+                                    <xref linkend="tp_contentMetadata"/>
+                                </type> must have its <code>requiresReturn</code> attribute set to
+                                    <literal>true</literal>. </para>
+                        </listitem>
+                        <listitem>
+                            <para> If it has been <link linkend="term_issue">issued</link>, it must
+                                be present in either the <literal>issued</literal> or
+                                    <literal>expired</literal>
+                                <xref linkend="tp_contentList"/>s until it is <link
+                                    linkend="term_return">returned</link>. </para>
+                        </listitem>
+                        <listitem>
+                            <para> If it has been <link linkend="term_issue">issued</link> and not
+                                    <link linkend="term_return">returned</link>, the <xref
+                                    linkend="term_readingSystem"/> may call <function>
+                                    <xref linkend="op_returnContent"/>
+                                </function> at any time to <link linkend="term_return">return</link>
+                                it.</para>
+                        </listitem>
+                    </itemizedlist>
+                </section>
+                <section xml:id="fundamentals_serviceModels_reqs_lender_rs">
+                    <title>Reading System Requirements</title>
+                    <para> The <xref linkend="term_readingSystem"/> must not call <function>
+                            <xref linkend="op_returnContent"/>
+                        </function> with a <xref linkend="term_contentIdentifier"/> of a <xref
+                            linkend="term_content"/> item unless all local copies of that <xref
+                            linkend="term_content"/> have been removed. </para>
+                </section>
             </section>
 
             <section xml:id="fundamentals_serviceModels_reqs_acquisition">
                 <title>Basic Acquisition Model</title>
-				<section xml:id="fundamentals_serviceModels_reqs_acquisition_service">
-					<title>Service Requirements</title>
-					<para>The following apply to any item of <xref linkend="term_content"/> offered under an <xref linkend="fundamentals_serviceModel_acquisition"/>.</para>
-					<itemizedlist>
-						<listitem>
-							<para> Its <type>
-									<xref linkend="tp_contentMetadata"/>
-								</type> must have either no <code>requiresReturn</code> attribute or have it set to
-									<literal>false</literal>. </para>
-						</listitem>
-						<listitem>
-							<para> If it has been <link linkend="term_issue">issued</link>, it may be present in the
-									<literal>issued</literal> <xref linkend="tp_contentList"/>. It may not be present in the <literal>expired</literal>
-								<xref linkend="tp_contentList"/>.</para>
-						</listitem>
-					</itemizedlist>
-				</section>
-				<section xml:id="fundamentals_serviceModels_reqs_acquisition_rs">
-					<title>Reading System Requirements</title>
-					<para>
-						The <xref linkend="term_readingSystem"/> must not call <function><xref linkend="op_returnContent"/></function>
-						with a <xref linkend="term_contentIdentifier"/> of a <xref linkend="term_content"/> item whose
-						<type><xref linkend="tp_contentMetadata"/></type>'s <code>requiresReturn</code> attribute is
-						<literal>false</literal>.
-					</para>
-				</section>
+                <section xml:id="fundamentals_serviceModels_reqs_acquisition_service">
+                    <title>Service Requirements</title>
+                    <para>The following apply to any item of <xref linkend="term_content"/> offered
+                        under an <xref linkend="fundamentals_serviceModel_acquisition"/>.</para>
+                    <itemizedlist>
+                        <listitem>
+                            <para> Its <type>
+                                    <xref linkend="tp_contentMetadata"/>
+                                </type> must have either no <code>requiresReturn</code> attribute or
+                                have it set to <literal>false</literal>. </para>
+                        </listitem>
+                        <listitem>
+                            <para> If it has been <link linkend="term_issue">issued</link>, it may
+                                be present in the <literal>issued</literal>
+                                <xref linkend="tp_contentList"/>. It may not be present in the
+                                    <literal>expired</literal>
+                                <xref linkend="tp_contentList"/>.</para>
+                        </listitem>
+                    </itemizedlist>
+                </section>
+                <section xml:id="fundamentals_serviceModels_reqs_acquisition_rs">
+                    <title>Reading System Requirements</title>
+                    <para> The <xref linkend="term_readingSystem"/> must not call <function>
+                            <xref linkend="op_returnContent"/>
+                        </function> with a <xref linkend="term_contentIdentifier"/> of a <xref
+                            linkend="term_content"/> item whose <type>
+                            <xref linkend="tp_contentMetadata"/>
+                        </type>'s <code>requiresReturn</code> attribute is <literal>false</literal>.
+                    </para>
+                </section>
             </section>
         </section>
 
@@ -686,8 +737,8 @@
                 </orderedlist>
 
                 <para> After receiving a successful logon response, the <xref
-                        linkend="term_readingSystem"/> must invoke the following <xref linkend="term_operation"/>s in the
-                    given sequence: </para>
+                        linkend="term_readingSystem"/> must invoke the following <xref
+                        linkend="term_operation"/>s in the given sequence: </para>
 
                 <orderedlist>
                     <listitem>
@@ -724,13 +775,14 @@
                 <para> A <xref linkend="term_service"/> must return an <errorname>
                         <xref linkend="ft_invalidOperationFault"/>
                     </errorname> fault if a <xref linkend="term_readingSystem"/> attempts to invoke
-                    any <xref linkend="term_operation"/> other than the ones outlined in this section before successully
-                    completing the full initialization sequence. </para>
+                    any <xref linkend="term_operation"/> other than the ones outlined in this
+                    section before successully completing the full initialization sequence. </para>
 
                 <para> After completing a successful logon and initialization sequence, a <xref
-                    linkend="term_readingSystem"/> can invoke any <xref linkend="term_operation"/>s defined by this
-                    specification, but must complete the intialization sequence outlined in this section again if calling the 
-                    <function>logOn</function> operation. </para>
+                        linkend="term_readingSystem"/> can invoke any <xref linkend="term_operation"
+                    />s defined by this specification, but must complete the intialization sequence
+                    outlined in this section again if calling the <function>logOn</function>
+                    operation. </para>
 
             </section>
 
@@ -771,14 +823,14 @@
                     xreflabel="Out-of-band Content Selection Method">
                     <para> an <emphasis>out-of-band</emphasis> method, where a <xref
                             linkend="term_user"/>'s <xref linkend="term_content"/> is automatically
-                        selected or assigned through an out-of-band mechanism like a web interface or
-                        content distribution system; and </para>
+                        selected or assigned through an out-of-band mechanism like a web interface
+                        or content distribution system; and </para>
                 </listitem>
                 <listitem xml:id="fundamentals_content_selection_browse"
                     xreflabel="Browse Content Selection Method">
                     <para> a <emphasis>browsing</emphasis> method, where a <xref linkend="term_user"
-                        /> can browse a <xref linkend="term_service"/>'s collection using
-                            <xref linkend="term_operation"/>s defined by this protocol. </para>
+                        /> can browse a <xref linkend="term_service"/>'s collection using <xref
+                            linkend="term_operation"/>s defined by this protocol. </para>
                 </listitem>
             </itemizedlist>
 
@@ -867,9 +919,9 @@
                 <title>Content Retrieval Sequence</title>
 
                 <para xml:id="def_contentRetrievalSequence" xreflabel="Content Retrieval Sequence">
-                    In order to download <xref linkend="term_content"/> from a
-                        <xref linkend="term_service"/>, a <xref linkend="term_readingSystem"/> must
-                    first invoke the following <xref linkend="term_operation"/>s in the given sequence. </para>
+                    In order to download <xref linkend="term_content"/> from a <xref
+                        linkend="term_service"/>, a <xref linkend="term_readingSystem"/> must first
+                    invoke the following <xref linkend="term_operation"/>s in the given sequence. </para>
 
                 <note>
                     <para> A <xref linkend="term_readingSystem"/> must retrieve a
@@ -880,8 +932,8 @@
                 </note>
 
                 <note>
-                    <para> All of the <xref linkend="term_operation"/>s identified in this section take a <xref
-                            linkend="term_contentIdentifier"/> as a parameter. </para>
+                    <para> All of the <xref linkend="term_operation"/>s identified in this section
+                        take a <xref linkend="term_contentIdentifier"/> as a parameter. </para>
                 </note>
 
                 <orderedlist>
@@ -890,7 +942,7 @@
                                 <xref linkend="op_getContentMetadata"/>
                             </function> operation must be called to obtain information about the
                                 <xref linkend="term_content"/>. The returned metadata includes
-                            publication information, file format and size and may include the return 
+                            publication information, file format and size and may include the return
                             status and date. </para>
                     </listitem>
 
@@ -1005,9 +1057,9 @@
                     SMIL file can be determined by checking each resource attribute to find the
                         <code>localURI</code> attribute that matches the given path. </para>
 
-                <para> Reading Systems may use the <xref linkend="bib_mime"/> type information in 
-                    the <code>mimeType</code> attribute of a <type>resource</type> to order 
-                    the transfer of resources. For example, a <xref linkend="term_streaming"/>
+                <para> Reading Systems may use the <xref linkend="bib_mime"/> type information in
+                    the <code>mimeType</code> attribute of a <type>resource</type> to order the
+                    transfer of resources. For example, a <xref linkend="term_streaming"/>
                     <xref linkend="term_readingSystem"/> may retrieve the <abbrev>OPF</abbrev>,
                         <abbrev>NCX</abbrev> and <abbrev>SMIL</abbrev> files of a DAISY Digital
                     Talking Book to provide the <xref linkend="term_user"/> full navigation before
@@ -1015,9 +1067,8 @@
 
                 <para> Resources may be stored on servers belonging to a <xref
                         linkend="term_serviceDelegate"/>. A <xref linkend="term_service"/> must
-                    provide the <xref linkend="term_readingSystem"/> any credentials
-                    required to access content stored on a <xref linkend="term_serviceDelegate"/>'s
-                    servers. </para>
+                    provide the <xref linkend="term_readingSystem"/> any credentials required to
+                    access content stored on a <xref linkend="term_serviceDelegate"/>'s servers. </para>
 
                 <para> The URI of each resources secured with Basic Authentication must include the
                     credentials required to access that resource. See <xref
@@ -1049,9 +1100,9 @@
                     specific resources that have been updated and need to be downloaded again. </para>
 
                 <para> When using the <code>lastModifiedDate</code> attribute to publish updates,
-                        the <xref linkend="term_service"/>s must ensure that the last modified
-                    date for the <xref linkend="term_content"/> item matches the last modified date
-                    of the most recently updated resource. </para>
+                    the <xref linkend="term_service"/>s must ensure that the last modified date for
+                    the <xref linkend="term_content"/> item matches the last modified date of the
+                    most recently updated resource. </para>
 
                 <para>
                     <xref linkend="term_readingSystem"/>s are not required to inspect modification
@@ -1194,8 +1245,8 @@
                     linkend="term_service"/> down time and warnings about overdue <xref
                     linkend="term_content"/> to the <xref linkend="term_user"/>. </para>
 
-            <para> To indicate that a <xref linkend="term_service"/> supports service
-                announcements, the <xref linkend="term_service"/> must include an <code>
+            <para> To indicate that a <xref linkend="term_service"/> supports service announcements,
+                the <xref linkend="term_service"/> must include an <code>
                     <xref linkend="tp_operation"/>
                 </code> element with the value <constant>SERVICE_ANNOUNCEMENTS</constant> when
                 responding to a <xref linkend="term_readingSystem"/>'s invocation of the <function>
@@ -1223,8 +1274,8 @@
                         at least once per <xref linkend="term_session"/>. </para>
                 </note>
 
-                <para> The <xref linkend="term_service"/> can set the importance level for
-                    each announcement from a level of 1 (most important) to 3 (least important) and
+                <para> The <xref linkend="term_service"/> can set the importance level for each
+                    announcement from a level of 1 (most important) to 3 (least important) and
                     specify the type of announcement as one of <constant>ERROR</constant>,
                         <constant>SYSTEM</constant>, <constant>WARNING</constant> or
                         <constant>INFORMATION</constant> to assist <xref
@@ -1232,17 +1283,17 @@
                     to the <xref linkend="term_user"/>. </para>
 
                 <note>
-                    <para> A <xref linkend="term_service"/> may remove unread announcements
-                        from the <xref linkend="term_service"/> at any time and for any reason. To
-                        avoid potential retrieval conflicts, a <xref linkend="term_readingSystem"/>
-                        must treat the identifier values of individual <type>
+                    <para> A <xref linkend="term_service"/> may remove unread announcements from the
+                            <xref linkend="term_service"/> at any time and for any reason. To avoid
+                        potential retrieval conflicts, a <xref linkend="term_readingSystem"/> must
+                        treat the identifier values of individual <type>
                             <xref linkend="tp_announcement"/>
                         </type> attributes as valid for no longer than the duration of the active
                             <xref linkend="term_session"/>. </para>
                 </note>
 
-                <para> If a <xref linkend="term_service"/> does not support service
-                    announcements, the <xref linkend="term_service"/> must return an <errorcode>
+                <para> If a <xref linkend="term_service"/> does not support service announcements,
+                    the <xref linkend="term_service"/> must return an <errorcode>
                         <xref linkend="ft_operationNotSupportedFault"/>
                     </errorcode> fault if a <xref linkend="term_readingSystem"/> attempts to invoke
                     the <code>getServiceAnnouncements</code> operation to obtain new announcements. </para>
@@ -1259,10 +1310,9 @@
                     the announcement again the next time the <xref linkend="term_user"/> connects to
                     the <xref linkend="term_service"/>. </para>
 
-                <para> To prevent conflicts arising from announcements that 
-						have been removed from the <xref
-                        linkend="term_service"/>, a <xref linkend="term_readingSystem"/> must only
-                    invoke the <function>markAnnouncementsAsRead</function> operation using the
+                <para> To prevent conflicts arising from announcements that have been removed from
+                    the <xref linkend="term_service"/>, a <xref linkend="term_readingSystem"/> must
+                    only invoke the <function>markAnnouncementsAsRead</function> operation using the
                     identifier values obtained from the last invocation of <function>
                         <xref linkend="op_getServiceAnnouncements"/>
                     </function> operation made during the active <xref linkend="term_session"/>.
@@ -1287,8 +1337,8 @@
                     regarding the use and semantics of this type. </para>
             </note>
 
-            <para> To indicate that a <xref linkend="term_service"/> supports the retrieval
-                of bookmarks, the <xref linkend="term_service"/> must include an <code>
+            <para> To indicate that a <xref linkend="term_service"/> supports the retrieval of
+                bookmarks, the <xref linkend="term_service"/> must include an <code>
                     <xref linkend="tp_operation"/>
                 </code> element with the value <constant>GET_BOOKMARKS</constant> when responding to
                 a <xref linkend="term_readingSystem"/>'s invocation of the <function>
@@ -1332,9 +1382,9 @@
                 <para>
                     <xref linkend="bib_z3986-2005-bkmk"/> was developed exclusively to support
                     bookmarks and highlights for <xref linkend="bib_z3986-2005"/> and its
-                    predecessor <xref linkend="bib_z3986-2002"/>. <xref linkend="term_readingSystem"/>s employing this protocol,
-                    however, may attempt to make use of this grammar in more than just Z39.86
-                    contexts. </para>
+                    predecessor <xref linkend="bib_z3986-2002"/>. <xref linkend="term_readingSystem"
+                    />s employing this protocol, however, may attempt to make use of this grammar in
+                    more than just Z39.86 contexts. </para>
 
                 <para> This specification neither endorses or condemns this behavior. Until <xref
                         linkend="bib_z3986-2005-bkmk"/> is revised to be more agnostic in terms of
@@ -1359,12 +1409,12 @@
                     linkend="term_service"/>s to send dynamic menus to compliant <xref
                     linkend="term_readingSystem"/>s. <xref linkend="term_user"/>s can take advantage
                 of the functionality exposed by these menus to manually perform a wide variety of
-                operations, such as browsing the <xref linkend="term_service"/>'s catalog,
-                taking surveys, purchasing items from an online store and downloading service
+                operations, such as browsing the <xref linkend="term_service"/>'s catalog, taking
+                surveys, purchasing items from an online store and downloading service
                 announcements. </para>
 
-            <para> To indicate that a <xref linkend="term_service"/> supports dynamic menus,
-                the <xref linkend="term_service"/> must include an <code>
+            <para> To indicate that a <xref linkend="term_service"/> supports dynamic menus, the
+                    <xref linkend="term_service"/> must include an <code>
                     <xref linkend="tp_operation"/>
                 </code> element with the value <constant>DYNAMIC_MENUS</constant> when responding to
                 a <xref linkend="term_readingSystem"/>'s invocation of the <function>
@@ -1486,10 +1536,12 @@
                     </listitem>
                 </itemizedlist>
 
-				<para>A <xref linkend="term_readingSystem"/> that supports dynamic menus must declare
-				which input types it supports in the <type><xref linkend="tp_readingSystemAttributes"/></type>.
-				A <xref linkend="term_service"/> should not send any question which requires an input type
-				not supported by the <xref linkend="term_readingSystem"/>.</para>
+                <para>A <xref linkend="term_readingSystem"/> that supports dynamic menus must
+                    declare which input types it supports in the <type>
+                        <xref linkend="tp_readingSystemAttributes"/>
+                    </type>. A <xref linkend="term_service"/> should not send any question which
+                    requires an input type not supported by the <xref linkend="term_readingSystem"
+                    />.</para>
 
             </section>
 
@@ -1595,64 +1647,64 @@
         <title>References</title>
         <bibliodiv>
             <title>Normative References</title>
-        
-        <biblioentry xml:id="bib_d202">
-            <abbrev>DAISY 2.02</abbrev>
-            <title>
-                <link xlink:href="http://www.daisy.org/z3986/specifications/daisy_202.html">DAISY
-                    2.02 Specification</link>
-            </title>
-            <author>
-                <personname>M Gylling, et al</personname>
-            </author>
-            <date>February 2001</date>
-        </biblioentry>
-        
-        <biblioentry xml:id="bib_dublinCore">
-            <abbrev>Dublin Core</abbrev>
-            <title>
-                <link xlink:href="http://dublincore.org/documents/2008/01/14/dces/">Dublin Core
-                    Metadata Element Set, Version 1.1</link>
-            </title>
-            <date>January 2008</date>
-        </biblioentry>
-        <biblioentry xml:id="bib_infoset">
-            <abbrev>INFOSET</abbrev>
-            <title>
-                <link xlink:href="http://www.w3.org/TR/xml-infoset/">XML Information Set (Second
-                    Edition)</link>
-            </title>
-            <author>
-                <personname>J Cowan, R Tobin</personname>
-            </author>
-            <date>February 2004</date>
-        </biblioentry>
-        <biblioentry xml:id="bib_iso3166">
-            <abbrev>ISO 3166</abbrev>
-            <title>
-                <link
-                    xlink:href="http://www.iso.org/iso/en/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html"
-                    >ISO 3166-1 - Codes for the representation of names of countries and their
-                    subdivisions - Part 1: Country codes</link>
-            </title>
-        </biblioentry>
-        <biblioentry xml:id="bib_RFC2119">
-            <abbrev>RFC 2119</abbrev>
-            <title>
-                <link xlink:href="http://tools.ietf.org/html/rfc2119">Key words for use in RFCs to
-                    Indicate Requirement Levels, RFC 2119</link>
-            </title>
-            <date>March 1997</date>
-        </biblioentry>
-        <biblioentry xml:id="bib_RFC2396">
-            <abbrev>RFC 2396</abbrev>
-            <title>
-                <link xlink:href="http://tools.ietf.org/html/rfc2396">Uniform Resource Identifiers
-                    (URI): Generic Syntax, RFC 2396</link>
-            </title>
-            <date>August 1998</date>
-        </biblioentry>
-        <!--
+
+            <biblioentry xml:id="bib_d202">
+                <abbrev>DAISY 2.02</abbrev>
+                <title>
+                    <link xlink:href="http://www.daisy.org/z3986/specifications/daisy_202.html"
+                        >DAISY 2.02 Specification</link>
+                </title>
+                <author>
+                    <personname>M Gylling, et al</personname>
+                </author>
+                <date>February 2001</date>
+            </biblioentry>
+
+            <biblioentry xml:id="bib_dublinCore">
+                <abbrev>Dublin Core</abbrev>
+                <title>
+                    <link xlink:href="http://dublincore.org/documents/2008/01/14/dces/">Dublin Core
+                        Metadata Element Set, Version 1.1</link>
+                </title>
+                <date>January 2008</date>
+            </biblioentry>
+            <biblioentry xml:id="bib_infoset">
+                <abbrev>INFOSET</abbrev>
+                <title>
+                    <link xlink:href="http://www.w3.org/TR/xml-infoset/">XML Information Set (Second
+                        Edition)</link>
+                </title>
+                <author>
+                    <personname>J Cowan, R Tobin</personname>
+                </author>
+                <date>February 2004</date>
+            </biblioentry>
+            <biblioentry xml:id="bib_iso3166">
+                <abbrev>ISO 3166</abbrev>
+                <title>
+                    <link
+                        xlink:href="http://www.iso.org/iso/en/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html"
+                        >ISO 3166-1 - Codes for the representation of names of countries and their
+                        subdivisions - Part 1: Country codes</link>
+                </title>
+            </biblioentry>
+            <biblioentry xml:id="bib_RFC2119">
+                <abbrev>RFC 2119</abbrev>
+                <title>
+                    <link xlink:href="http://tools.ietf.org/html/rfc2119">Key words for use in RFCs
+                        to Indicate Requirement Levels, RFC 2119</link>
+                </title>
+                <date>March 1997</date>
+            </biblioentry>
+            <biblioentry xml:id="bib_RFC2396">
+                <abbrev>RFC 2396</abbrev>
+                <title>
+                    <link xlink:href="http://tools.ietf.org/html/rfc2396">Uniform Resource
+                        Identifiers (URI): Generic Syntax, RFC 2396</link>
+                </title>
+                <date>August 1998</date>
+            </biblioentry>
+            <!--
         <biblioentry xml:id="bib_RFC2616">
             <abbrev>RFC 2616</abbrev>
             <title>
@@ -1663,37 +1715,37 @@
             <date>June 1999</date>
         </biblioentry>
 -->
-        <biblioentry xml:id="bib_RFC2617">
-            <abbrev>RFC 2617</abbrev>
-            <title>
-                <link xlink:href="http://tools.ietf.org/html/rfc2617">HTTP Authentication: Basic and
-                    Digest Access Authentication, RFC 2617</link>
-            </title>
-            <date>June 1999</date>
-        </biblioentry>
-        <biblioentry xml:id="bib_mime">
-            <abbrev>MIME</abbrev>
-            <title>
-                <link xlink:href="http://tools.ietf.org/html/rfc2046">Multipurpose Internet Mail
-                    Extensions (MIME) Part Two: Media Types, RFC 2046</link>
-            </title>
-            <author>
-                <personname>N.Freed, et al</personname>
-            </author>
-            <date>November 1996</date>
-        </biblioentry>
-        <biblioentry xml:id="bib_xsdDatatypes">
-            <abbrev>XML Schema 2</abbrev>
-            <title>
-                <link xlink:href="http://www.w3.org/TR/xmlschema-2/">XML Schema Part 2: Datatypes
-                    Second Edition</link>
-            </title>
-            <author>
-                <personname>P. V. Biron, et al</personname>
-            </author>
-            <date>28 October 2004</date>
-        </biblioentry>
-        <!--
+            <biblioentry xml:id="bib_RFC2617">
+                <abbrev>RFC 2617</abbrev>
+                <title>
+                    <link xlink:href="http://tools.ietf.org/html/rfc2617">HTTP Authentication: Basic
+                        and Digest Access Authentication, RFC 2617</link>
+                </title>
+                <date>June 1999</date>
+            </biblioentry>
+            <biblioentry xml:id="bib_mime">
+                <abbrev>MIME</abbrev>
+                <title>
+                    <link xlink:href="http://tools.ietf.org/html/rfc2046">Multipurpose Internet Mail
+                        Extensions (MIME) Part Two: Media Types, RFC 2046</link>
+                </title>
+                <author>
+                    <personname>N.Freed, et al</personname>
+                </author>
+                <date>November 1996</date>
+            </biblioentry>
+            <biblioentry xml:id="bib_xsdDatatypes">
+                <abbrev>XML Schema 2</abbrev>
+                <title>
+                    <link xlink:href="http://www.w3.org/TR/xmlschema-2/">XML Schema Part 2:
+                        Datatypes Second Edition</link>
+                </title>
+                <author>
+                    <personname>P. V. Biron, et al</personname>
+                </author>
+                <date>28 October 2004</date>
+            </biblioentry>
+            <!--
         <biblioentry xml:id="refXML">
             <abbrev>XML</abbrev>
             <title>
@@ -1706,156 +1758,155 @@
             <date>November 2008</date>
         </biblioentry>
         -->
-        <biblioentry xml:id="bib_http11">
-            <abbrev>HTTP 1.1</abbrev>
-            <title>
-                <link xlink:href="http://tools.ietf.org/html/rfc2616">HyperText Transfer Protocol
-                    1.1, RFC 2616</link>
-            </title>
-            <date>June 1999</date>
-        </biblioentry>
+            <biblioentry xml:id="bib_http11">
+                <abbrev>HTTP 1.1</abbrev>
+                <title>
+                    <link xlink:href="http://tools.ietf.org/html/rfc2616">HyperText Transfer
+                        Protocol 1.1, RFC 2616</link>
+                </title>
+                <date>June 1999</date>
+            </biblioentry>
 
-        <biblioentry xml:id="bib_httpcookies">
-            <abbrev>HTTP Cookies</abbrev>
-            <title>
-                <link
-                    xlink:href="http://www.ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html#HTTP_Cookies"
-                    >HTTP cookies in WS-I Basic Profile 1.1</link>
-            </title>
-        </biblioentry>
+            <biblioentry xml:id="bib_httpcookies">
+                <abbrev>HTTP Cookies</abbrev>
+                <title>
+                    <link
+                        xlink:href="http://www.ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html#HTTP_Cookies"
+                        >HTTP cookies in WS-I Basic Profile 1.1</link>
+                </title>
+            </biblioentry>
 
-        <biblioentry xml:id="bib_doc-lit-conformance">
-            <abbrev>Document-Literal Conformance</abbrev>
-            <title>
-                <link
-                    xlink:href="http://www.ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html#Child_Element_for_Document-Literal_Bindings"
-                    >Child Element for Document-Literal Bindings</link>
-            </title>
-        </biblioentry>
+            <biblioentry xml:id="bib_doc-lit-conformance">
+                <abbrev>Document-Literal Conformance</abbrev>
+                <title>
+                    <link
+                        xlink:href="http://www.ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html#Child_Element_for_Document-Literal_Bindings"
+                        >Child Element for Document-Literal Bindings</link>
+                </title>
+            </biblioentry>
 
-        <biblioentry xml:id="bib_mtom">
-            <abbrev>MTOM</abbrev>
-            <title>
-                <link xlink:href="http://www.w3.org/TR/soap12-mtom/">SOAP Message Transmission
-                    Optimization Mechanism</link>
-            </title>
-            <author>
-                <personname>M Gudgin, et al</personname>
-            </author>
-            <date>January 2005</date>
-        </biblioentry>
+            <biblioentry xml:id="bib_mtom">
+                <abbrev>MTOM</abbrev>
+                <title>
+                    <link xlink:href="http://www.w3.org/TR/soap12-mtom/">SOAP Message Transmission
+                        Optimization Mechanism</link>
+                </title>
+                <author>
+                    <personname>M Gudgin, et al</personname>
+                </author>
+                <date>January 2005</date>
+            </biblioentry>
 
-        <biblioentry xml:id="bib_soap1.1">
-            <abbrev>SOAP 1.1</abbrev>
-            <title>
-                <link xlink:href="http://www.w3.org/TR/2000/NOTE-SOAP-20000508/">Simple Object
-                    Access Protocol 1.1</link>
-            </title>
-        </biblioentry>
+            <biblioentry xml:id="bib_soap1.1">
+                <abbrev>SOAP 1.1</abbrev>
+                <title>
+                    <link xlink:href="http://www.w3.org/TR/2000/NOTE-SOAP-20000508/">Simple Object
+                        Access Protocol 1.1</link>
+                </title>
+            </biblioentry>
 
-        <biblioentry xml:id="bib_pdtb2">
-            <abbrev>PDTB2</abbrev>
-            <title>
-                <link xlink:href="http://www.daisy.org/projects/pdtb/daisy-pdtb-spec.html">DAISY
-                    Protected Digital Talking Book 2</link>
-            </title>
-        </biblioentry>
+            <biblioentry xml:id="bib_pdtb2">
+                <abbrev>PDTB2</abbrev>
+                <title>
+                    <link xlink:href="http://www.daisy.org/projects/pdtb/daisy-pdtb-spec.html">DAISY
+                        Protected Digital Talking Book 2</link>
+                </title>
+            </biblioentry>
 
-        <biblioentry xml:id="bib_rfc2109">
-            <abbrev>RFC 2109</abbrev>
-            <title>
-                <link xlink:href="http://tools.ietf.org/html/rfc2109">HTTP State Management
-                    Mechanism</link>
-            </title>
-            <author>
-                <personname>D. Kristol</personname>
-            </author>
-            <date>February 1997</date>
+            <biblioentry xml:id="bib_rfc2109">
+                <abbrev>RFC 2109</abbrev>
+                <title>
+                    <link xlink:href="http://tools.ietf.org/html/rfc2109">HTTP State Management
+                        Mechanism</link>
+                </title>
+                <author>
+                    <personname>D. Kristol</personname>
+                </author>
+                <date>February 1997</date>
 
-        </biblioentry>
+            </biblioentry>
 
-        <biblioentry xml:id="bib_ssl3.0">
-            <abbrev>SSL 3.0</abbrev>
-            <title>
-                <link xlink:href="http://tools.ietf.org/html/draft-ietf-tls-ssl-version3">Secure
-                    Sockets Layer 3.0</link>
-            </title>
-        </biblioentry>
+            <biblioentry xml:id="bib_ssl3.0">
+                <abbrev>SSL 3.0</abbrev>
+                <title>
+                    <link xlink:href="http://tools.ietf.org/html/draft-ietf-tls-ssl-version3">Secure
+                        Sockets Layer 3.0</link>
+                </title>
+            </biblioentry>
 
-        <biblioentry xml:id="bib_tls1.0">
-            <abbrev>TLS 1.0</abbrev>
-            <title>
-                <link xlink:href="http://www.ietf.org/rfc/rfc2246">Transport Layer Security
-                    1.0</link>
-            </title>
-        </biblioentry>
+            <biblioentry xml:id="bib_tls1.0">
+                <abbrev>TLS 1.0</abbrev>
+                <title>
+                    <link xlink:href="http://www.ietf.org/rfc/rfc2246">Transport Layer Security
+                        1.0</link>
+                </title>
+            </biblioentry>
 
-        <biblioentry xml:id="bib_wsibasicprofile11">
-            <abbrev>WS-I Basic Profile 1.1</abbrev>
-            <title>
-                <link xlink:href="http://www.ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html"
-                    >WS-I Basic Profile 1.1</link>
-            </title>
-        </biblioentry>
+            <biblioentry xml:id="bib_wsibasicprofile11">
+                <abbrev>WS-I Basic Profile 1.1</abbrev>
+                <title>
+                    <link xlink:href="http://www.ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html"
+                        >WS-I Basic Profile 1.1</link>
+                </title>
+            </biblioentry>
 
-        <biblioentry xml:id="bib_wsibasicprofile11_conf">
-            <abbrev>WS-I Basic Profile 1.1 Conformance Targets</abbrev>
-            <title>
-                <link
-                    xlink:href="http://www.ws-i.org/Profiles/BasicProfile-1.1.html#conformance_targets"
-                    >WS-I Basic Profile 1.1 Conformance Targets</link>
-            </title>
-        </biblioentry>
+            <biblioentry xml:id="bib_wsibasicprofile11_conf">
+                <abbrev>WS-I Basic Profile 1.1 Conformance Targets</abbrev>
+                <title>
+                    <link
+                        xlink:href="http://www.ws-i.org/Profiles/BasicProfile-1.1.html#conformance_targets"
+                        >WS-I Basic Profile 1.1 Conformance Targets</link>
+                </title>
+            </biblioentry>
 
-        <biblioentry xml:id="bib_wsdl1.1">
-            <abbrev>WSDL 1.1</abbrev>
-            <title>
-                <link xlink:href="http://www.w3.org/TR/2001/NOTE-wsdl-20010315">Web Services
-                    Definition Language 1.1</link>
-            </title>
-        </biblioentry>
+            <biblioentry xml:id="bib_wsdl1.1">
+                <abbrev>WSDL 1.1</abbrev>
+                <title>
+                    <link xlink:href="http://www.w3.org/TR/2001/NOTE-wsdl-20010315">Web Services
+                        Definition Language 1.1</link>
+                </title>
+            </biblioentry>
 
-        <biblioentry xml:id="bib_z3986-2005">
-            <abbrev>Z39-86.2005</abbrev>
-            <title>
-                <link xlink:href="http://www.daisy.org/z3986/2005/Z3986-2005.html">ANSI/NISO
-                    Z39-86.2005 - Specifications for the Digital Talking Book </link>
-            </title>
-            <author>
-                <personname>M. Moodie, et al</personname>
-            </author>
-            <date>2005</date>
-        </biblioentry>
+            <biblioentry xml:id="bib_z3986-2005">
+                <abbrev>Z39-86.2005</abbrev>
+                <title>
+                    <link xlink:href="http://www.daisy.org/z3986/2005/Z3986-2005.html">ANSI/NISO
+                        Z39-86.2005 - Specifications for the Digital Talking Book </link>
+                </title>
+                <author>
+                    <personname>M. Moodie, et al</personname>
+                </author>
+                <date>2005</date>
+            </biblioentry>
 
-        <biblioentry xml:id="bib_z3986-2005-bkmk">
-            <abbrev>Z39-86.2005-BOOKMARKS</abbrev>
-            <title>
-                <link xlink:href="http://www.daisy.org/z3986/2005/Z3986-2005.html#Bkmk">Portable
-                    Bookmarks and Highlights</link> (part of <xref linkend="bib_z3986-2005"/>) </title>
-            <author>
-                <personname>M. Moodie, et al</personname>
-            </author>
-            <date>2005</date>
-        </biblioentry>
+            <biblioentry xml:id="bib_z3986-2005-bkmk">
+                <abbrev>Z39-86.2005-BOOKMARKS</abbrev>
+                <title>
+                    <link xlink:href="http://www.daisy.org/z3986/2005/Z3986-2005.html#Bkmk">Portable
+                        Bookmarks and Highlights</link> (part of <xref linkend="bib_z3986-2005"/>) </title>
+                <author>
+                    <personname>M. Moodie, et al</personname>
+                </author>
+                <date>2005</date>
+            </biblioentry>
 
-        <biblioentry xml:id="bib_wav">
-            <abbrev>RIFF WAVE</abbrev>
-            <title>
-                <link
-                    xlink:href="http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html"
-                    >RIFF WAVE PCM soundfile format <remark role="todo">TODO is there a canonical
-                        spec for RIFF WAVE?</remark></link>
-            </title>
-        </biblioentry>
+            <biblioentry xml:id="bib_wav">
+                <abbrev>RIFF WAVE</abbrev>
+                <title>
+                    <link
+                        xlink:href="http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html"
+                        >RIFF WAVE PCM soundfile format <remark role="todo">TODO is there a
+                            canonical spec for RIFF WAVE?</remark></link>
+                </title>
+            </biblioentry>
         </bibliodiv>
         <bibliodiv>
             <title>Informative References</title>
             <biblioentry xml:id="bib_dynamicMenusPrimer">
                 <abbrev>Dynamic Menus Primer</abbrev>
                 <title>
-                    <link
-                        xlink:href="do-dm-primer.html"
-                        >DAISY Online Delivery Protocol - Dynamic Menus Primer</link>
+                    <link xlink:href="do-dm-primer.html">DAISY Online Delivery Protocol - Dynamic
+                        Menus Primer</link>
                 </title>
                 <author>
                     <personname>Kenny Johar</personname>
@@ -1864,8 +1915,8 @@
             <biblioentry xml:id="bib_z3986-2002">
                 <abbrev>Z39-86.2002</abbrev>
                 <title>
-                    <link xlink:href="http://www.niso.org/workrooms/daisy/Z39-86-2002.html">ANSI/NISO
-                        Z39-86.2002 - Specifications for the Digital Talking Book </link>
+                    <link xlink:href="http://www.niso.org/workrooms/daisy/Z39-86-2002.html"
+                        >ANSI/NISO Z39-86.2002 - Specifications for the Digital Talking Book </link>
                 </title>
                 <author>
                     <personname>M. Moodie, et al</personname>
@@ -1894,14 +1945,14 @@
 
     <appendix xml:id="acknowledgements" role="acknowledgements">
         <title>Acknowledgments</title>
-        <para>The following individuals were members of the DAISY Online Technical Sub Working Group
-            (TSG) at the time of the publication of this specification:</para>
+        <para>The following individuals were members in good standing of the DAISY Online Working
+            Group at the time of the publication of this specification:</para>
 
         <itemizedlist>
             <listitem>
                 <para>
                     <personname>
-                        <surname>Fujimori</surname>                        
+                        <surname>Fujimori</surname>
                         <firstname>Hiro</firstname>
                     </personname>, <!-- <jobtitle></jobtitle>, --><orgname>Plextor</orgname>
                 </para>
@@ -1911,7 +1962,7 @@
                     <personname>
                         <firstname>Matt</firstname>
                         <surname>Garrish</surname>
-                    </personname>, <!-- <jobtitle></jobtitle> -->, <orgname>CNIB</orgname> (editor)
+                    </personname>, <!-- <jobtitle></jobtitle>, --> <orgname>CNIB</orgname> (chief editor)
                 </para>
             </listitem>
             <listitem>
@@ -1968,9 +2019,8 @@
             </listitem>
         </itemizedlist>
 
-        <para>The following individuals are acknowledged for their contribution,
-            either as former members of the Technical Sub Working Group, or as individual
-            contributors:</para>
+        <para>The following individuals are acknowledged for their contribution, either as former
+            members of the DAISY Online Working Group, or as individual contributors:</para>
 
         <itemizedlist>
             <listitem>
@@ -2080,7 +2130,7 @@
 
             <listitem>
                 <para><personname>
-                        <surname>Nishizawa</surname>                    
+                        <surname>Nishizawa</surname>
                         <firstname>Tatsu</firstname>
                     </personname>, <orgname>Plextor</orgname></para>
             </listitem>
