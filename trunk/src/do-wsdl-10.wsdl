@@ -2,7 +2,15 @@
 <definitions name="DAISYOnlineService" xmlns="http://schemas.xmlsoap.org/wsdl/"
 	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
 	xmlns:tns="http://www.daisy.org/ns/daisy-online/" xmlns:db="http://docbook.org/ns/docbook"
-	targetNamespace="http://www.daisy.org/ns/daisy-online/">
+	targetNamespace="http://www.daisy.org/ns/daisy-online/"
+	xmlns:do="http://www.daisy.org/ns/daisy-online/">
+
+	<documentation>
+		This WSDL document and the entities referenced from within it are a normative part
+		of the DAISY Online Protocol Specification (http://www.daisy.org/projects/daisy-online-delivery/). 
+	
+		Version: 20090910 (Second Working Group Draft)
+	</documentation>
 
 	<types>
 
@@ -74,7 +82,7 @@
 			<xs:element name="setReadingSystemAttributes">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" ref="readingSystemAttributes">
+						<xs:element minOccurs="1" maxOccurs="1" ref="do:readingSystemAttributes">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">Contains the reading system attributes to
@@ -321,7 +329,7 @@
 			<xs:element name="getContentListResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" ref="contentList">
+						<xs:element minOccurs="1" maxOccurs="1" ref="do:contentList">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">Contains the requested content list, or a
@@ -351,7 +359,7 @@
 			<xs:element name="getServiceAnnouncementsResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" ref="announcements">
+						<xs:element minOccurs="1" maxOccurs="1" ref="do:announcements">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">Contains the announcements from the
@@ -366,7 +374,7 @@
 			<xs:element name="markAnnouncementsAsRead">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" ref="read">
+						<xs:element minOccurs="1" maxOccurs="1" ref="do:read">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">Contains the announcements to mark as read,
@@ -400,7 +408,7 @@
 			<xs:element name="getQuestions">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" ref="userResponses">
+						<xs:element minOccurs="1" maxOccurs="1" ref="do:userResponses">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">Contains the user's response to a previous
@@ -419,7 +427,7 @@
 			<xs:element name="getQuestionsResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" ref="questions">
+						<xs:element minOccurs="1" maxOccurs="1" ref="do:questions">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">Contains one or more multiple choice or
@@ -454,7 +462,7 @@
 			<xs:element name="getContentMetadataResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" ref="contentMetadata">
+						<xs:element minOccurs="1" maxOccurs="1" ref="do:contentMetadata">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">Contains the metadata for the specified
@@ -487,7 +495,7 @@
 			<xs:element name="getContentResourcesResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" ref="resources">
+						<xs:element minOccurs="1" maxOccurs="1" ref="do:resources">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">Contains the resources for the specified
@@ -502,7 +510,7 @@
 			<xs:element name="getKeyExchangeObject">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" ref="keyRing">
+						<xs:element minOccurs="1" maxOccurs="1" ref="do:keyRing">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">The identifiers of the keys on the Reading
@@ -552,7 +560,7 @@
 			<xs:element name="getServiceAttributesResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" ref="serviceAttributes">
+						<xs:element minOccurs="1" maxOccurs="1" ref="do:serviceAttributes">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">Contains the attributes of the
@@ -948,8 +956,7 @@
 	<message name="invalidOperationFault_message">
 		<part name="fault" element="tns:invalidOperationFault">
 			<documentation>
-				<db:para role="desc">Condition: the current context does not permit a call to this
-					operation.</db:para>
+				<db:para role="desc">Condition: the invoked operation is not valid in the current context</db:para>
 				<db:para>This fault is issued when a Reading System during an active Session invokes
 					an operation at a stage when the invocation of another operation, or a set of
 					other operations, is required.</db:para>
@@ -972,7 +979,7 @@
 	<message name="operationNotSupportedFault_message">
 		<part name="fault" element="tns:operationNotSupportedFault">
 			<documentation>
-				<db:para role="desc">Condition: this operation is not supported by the Service.</db:para>
+				<db:para role="desc">Condition: the invoked operation is not supported by the Service.</db:para>
 				<db:para>This fault is issued when a Reading System invokes an <db:link
 						linkend="apiReferenceOptional">optional operation</db:link> that the Service
 					does not support.</db:para>
@@ -983,7 +990,7 @@
 	<message name="noActiveSessionFault_message">
 		<part name="fault" element="tns:noActiveSessionFault">
 			<documentation>
-				<db:para role="desc">Condition: this operation is not allowed when there is no active
+				<db:para role="desc">Condition: the invoked operation is not allowed when there is no active
 					session.</db:para>
 				<db:para>This fault is issued on all operation invocations except those in the
 					operation sequence defined by the <db:xref

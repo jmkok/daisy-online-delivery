@@ -5,6 +5,13 @@
 	xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:db="http://docbook.org/ns/docbook"
 	xmlns:dc="http://purl.org/dc/elements/1.1/">
 
+	<xs:annotation><xs:documentation>
+		This WXS document and the entities referenced from within it are a normative part
+		of the DAISY Online Protocol Specification (http://www.daisy.org/projects/daisy-online-delivery/). 
+		
+		Version: 20090910 (Second Working Group Draft)	
+	</xs:documentation></xs:annotation>
+
 	<xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
 
 	<xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="dc.xsd"/>
@@ -681,7 +688,7 @@
 								linkend="term_service"/> to the <db:xref
 								linkend="term_readingSystem"/> that the <db:xref
 								linkend="term_readingSystem"/> will at some point <db:link
-								linkend="fundamentals_content_lending_returning">return the
+								linkend="op_returnContent">return the
 								content</db:link></db:para>
 						<db:para>Reading Systems should present Users with appropriate prompts if
 							they try to return non-borrowed <db:xref linkend="term_content"

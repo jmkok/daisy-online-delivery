@@ -40,6 +40,6 @@
     
     <p:delete name="cleanup" match="comment()|@xml:space" />
             
-    <p:store href="./build/do-dm-primer-10.html" name="store" />
+    <p:store href="./build/do-dm-primer.html" name="store" />
     
 </p:declare-step>
