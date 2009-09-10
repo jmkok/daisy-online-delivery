@@ -169,12 +169,12 @@
         <variablelist>
 
             <varlistentry xml:id="term_borrow">
-                <term>Borrowable content</term>
+                <term>Borrowable Content</term>
                 <listitem>
                     <para><xref linkend="term_content"/> that may be lent to a <xref linkend="term_user"/>, and must be
 						<link linkend="term_return">returned</link> after being lent.
 						The ownership of the <xref linkend="term_content"/> does not pass to the <xref linkend="term_user"/>.
-						Borrowable content includes <xref linkend="term_content"/> that may be rented for a fee.
+						Borrowable Content includes <xref linkend="term_content"/> that may be rented for a fee.
 					</para>
                 </listitem>
             </varlistentry>
@@ -258,12 +258,12 @@
             </varlistentry>
 
             <varlistentry xml:id="term_purchase">
-                <term>Purchasable content</term>
+                <term>Purchasable Content</term>
                 <listitem>
                     <para><xref linkend="term_content"/> that may be sold to a <xref linkend="term_user"/>, and should not be
 						<link linkend="term_return">returned</link>.
 						The ownership of the <xref linkend="term_content"/> may or may not pass to the <xref linkend="term_user"/>.
-						Purchasable content includes <xref linkend="term_content"/> that is offered for free.  It includes any
+						Purchasable Content includes <xref linkend="term_content"/> that is offered for free.  It includes any
 						<xref linkend="term_content"/> that does not require <link linkend="term_return">return</link>; for example,
 						<xref linkend="term_content"/> protected by DRM which expires without the need for <link linkend="term_return">return</link>.
 					</para>
@@ -606,10 +606,6 @@
 
             <section xml:id="fundamentals_serviceModels_reqs_lender">
                 <title>Lending Model</title>
-                <para> This protocol does not aid in the enforcement of due dates for <xref
-                linkend="term_content"/>. <xref linkend="term_serviceProvider"/>s should use 
-                    <xref linkend="bib_pdtb2"/> or another digital rights management (<abbrev>DRM</abbrev>) scheme to protect 
-                    <xref linkend="term_content"/> that must expire at a specific time and no longer be accessible . </para>
                 <section xml:id="fundamentals_serviceModels_reqs_lender_service">
                     <title>Service Requirements</title>
                     <para><xref linkend="term_service"/>s offering <xref linkend="term_borrow"
@@ -652,6 +648,36 @@
                             linkend="term_content"/> item unless all local copies of that <xref
                             linkend="term_content"/> have been removed. </para>
                 </section>
+				<section xml:id="fundamentals_serviceModels_lender_expiry">
+					<title>Content Expiry</title>
+					<para>There are two methods defined in this protocol to aid in expiring <xref linkend="term_borrow" />,
+						that is, requesting the automatic <link linkend="term_return">return</link> of <xref linkend="term_content" />
+						by the <xref linkend="term_readingSystem"/>.  These are
+						the <code>returnBy</code> attribute of the <type><xref linkend="tp_contentMetadata"/></type> type,
+						and the <literal>expired</literal> <type><xref linkend="tp_contentList"/></type>.</para>
+					<note>
+						<para>This protocol does not require the enforcement of these methods on the <xref linkend="term_readingSystem"/>.
+						If a <xref linkend="term_content"/> item must expire, it may be
+						protected with <xref linkend="bib_pdtb2"/> or another <abbrev>DRM</abbrev> scheme. </para>
+					</note>
+					<para>The <code>returnBy</code> attribute indicates the time before which the <xref linkend="term_content"/>
+						item should be <link linkend="term_return">returned</link>.  <xref linkend="term_readingSystem"/>s should
+						communicate the due date to the <xref linkend="term_user"/>.  <xref linkend="term_readingSystem"/>s may
+						delete the <xref linkend="term_content"/> at the specified time and <link linkend="term_return">return</link>
+						it to the <xref linkend="term_service"/> upon the next <xref linkend="term_session"/>.</para>
+					<para>The <literal>expired</literal> <type><xref linkend="tp_contentList"/></type> may be populated by the
+						<xref linkend="term_service"/> by <xref linkend="term_borrow" /> that has been
+						<link linkend="term_issue">issued</link> to indicate that the <xref linkend="term_serviceProvider"/> wants
+						the <xref linkend="term_content"/> to be <link linkend="term_return">returned</link>.
+						The <xref linkend="term_readingSystem"/> may call <function><xref linkend="op_getContentList"/></function>
+						with an <parameter>id</parameter> parameter of <literal>expired</literal> to retrieve this list, and may
+						<link linkend="term_return">return</link> the <xref linkend="term_content"/> indicated.</para>
+					<note>
+						<para><xref linkend="term_serviceProvider"/>s should use the <literal>expired</literal>
+							<type><xref linkend="tp_contentList"/></type> with caution.  <xref linkend="term_user"/>s
+							should be notified that <xref linkend="term_content"/> has expired and will be deleted.</para>
+					</note>
+				</section>
             </section>
 
             <section xml:id="fundamentals_serviceModels_reqs_acquisition">
@@ -877,9 +903,12 @@
                     </listitem>
                 </itemizedlist>
 
+				<para>A <xref linkend="term_readingSystem"/> may also make use of the <literal>issued</literal>
+					<xref linkend="tp_contentList"/>, if available, to access <xref linkend="term_content"/>
+					that has already been issued.</para>
                 <para> For automated downloading scenarios using the out-of-band selection method,
                     the <xref linkend="term_readingSystem"/> must also execute the steps outlined in
-                        <xref linkend="fundamentals_content_issuing"/>, to obtain the new <xref
+                        <xref linkend="fundamentals_content_issuing"/>, to obtain the <xref
                         linkend="term_content"/>. </para>
             </section>
 

@@ -685,7 +685,7 @@
 								linkend="term_readingSystem"/> will at some point <db:link
 								linkend="op_returnContent">return the content</db:link></db:para>
 						<db:para>Reading Systems should present Users with appropriate prompts if
-							they try to return non-borrowed <db:xref linkend="term_content"
+							they try to return <db:xref linkend="term_purchase"
 							/>.</db:para>
 					</xs:documentation>
 				</xs:annotation>
@@ -693,9 +693,9 @@
 			<xs:attribute name="returnBy" type="xs:dateTime" use="optional">
 				<xs:annotation>
 					<xs:documentation>
-						<db:para>Specifies the instant of time when the <db:xref
+						<db:para>Specifies the time when the <db:xref
 								linkend="term_service"/> requires this <db:xref
-								linkend="term_content"/> to have been returned, i.e. the end of an
+								linkend="term_content"/> to be returned, i.e. the end of an
 							issuance period.</db:para>
 						<db:para>This attribute may be present when the
 								<db:code>requiresReturn</db:code> attribute is valued
