@@ -1320,7 +1320,7 @@
                 <para>
                     <xref linkend="bib_z3986-2005-bkmk"/> was developed exclusively to support
                     bookmarks and highlights for <xref linkend="bib_z3986-2005"/> and its
-                    predecessor. <xref linkend="term_readingSystem"/>s employing this protocol,
+                    predecessor <xref linkend="bib_z3986-2002"/>. <xref linkend="term_readingSystem"/>s employing this protocol,
                     however, may attempt to make use of this grammar in more than just Z39.86
                     contexts. </para>
 
@@ -1848,6 +1848,17 @@
                 <author>
                     <personname>Kenny Johar</personname>
                 </author>
+            </biblioentry>
+            <biblioentry xml:id="bib_z3986-2002">
+                <abbrev>Z39-86.2002</abbrev>
+                <title>
+                    <link xlink:href="http://www.niso.org/workrooms/daisy/Z39-86-2002.html">ANSI/NISO
+                        Z39-86.2002 - Specifications for the Digital Talking Book </link>
+                </title>
+                <author>
+                    <personname>M. Moodie, et al</personname>
+                </author>
+                <date>2002</date>
             </biblioentry>
         </bibliodiv>
 
