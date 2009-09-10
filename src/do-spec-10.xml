@@ -1892,9 +1892,9 @@
                 <abbrev>RIFF WAVE</abbrev>
                 <title>
                     <link
-                        xlink:href="http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html"
-                        >RIFF WAVE PCM soundfile format <remark role="todo">TODO is there a
-                            canonical spec for RIFF WAVE?</remark></link>
+                        xlink:href="ftp://ftp.cwi.nl/pub/audio/RIFF-format"
+                        >Waveform Audio File Format (WAVE)
+                    </link>
                 </title>
             </biblioentry>
         </bibliodiv>
