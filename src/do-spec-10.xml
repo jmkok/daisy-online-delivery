@@ -582,7 +582,7 @@
                 available under an <xref linkend="fundamentals_serviceModel_acquisition"/>. </para>
 
             <para> A <xref linkend="term_serviceProvider"/> must not change the value of the
-                    <code>requiresReturn</code> attribute assigned to a uniquely idenfitied <xref
+                    <code>requiresReturn</code> attribute assigned to a uniquely identified <xref
                     linkend="term_content"/> item. </para>
 
             <section xml:id="fundamentals_serviceModels_reqs_lender">
@@ -775,11 +775,11 @@
                         <xref linkend="ft_invalidOperationFault"/>
                     </errorname> fault if a <xref linkend="term_readingSystem"/> attempts to invoke
                     any <xref linkend="term_operation"/> other than the ones outlined in this
-                    section before successully completing the full initialization sequence. </para>
+                    section before successfully completing the full initialization sequence. </para>
 
                 <para> After completing a successful logon and initialization sequence, a <xref
                         linkend="term_readingSystem"/> can invoke any <xref linkend="term_operation"
-                    />s defined by this specification, but must complete the intialization sequence
+                    />s defined by this specification, but must complete the initialization sequence
                     outlined in this section again if calling the <function>logOn</function>
                     operation. </para>
 
