@@ -270,7 +270,7 @@
 									<db:para role="desc">Specifies the identity of the list to
 										retrieve.</db:para>
 									<db:para role="desc">The following three values are reserved,
-										and must not be used as identities of contentLists except in
+										and must not be used as identifiers of contentLists except in
 										the contexts defined below.</db:para>
 									<db:variablelist>
 										<db:varlistentry xml:id="contentList_issued">
@@ -279,11 +279,19 @@
 												<db:para role="desc">Refers to a list of Content
 												that the Service currently has recorded as issued
 												(see <db:xref linkend="op_issueContent"/>) to the
-												User. The list includes issued Content items
+												User.</db:para>
+												<db:para>The list must include all
+												Borrowable Content items that have been issued
 												regardless of whether they have been downloaded
-												(in part or full) or not. The list excludes
-												content that has <db:xref
-												linkend="contentList_expired"/>.</db:para>
+												(in part or in full) or not.
+												The list may include Purchasable Content items
+												that have been issued.
+												The list excludes
+												Content that has <db:xref
+												linkend="contentList_expired"/>.
+												</db:para>
+												<db:para>Services that provide Borrowable Content
+												must recognize this identifier.</db:para>
 											</db:listitem>
 										</db:varlistentry>
 										<db:varlistentry xml:id="contentList_new">
@@ -292,10 +300,7 @@
 												<db:para role="desc">Refers to a list of Content
 												that the Service offers to issue to the
 												User.</db:para>
-												<db:para>The list excludes content that is <db:xref
-												linkend="contentList_issued"/>, and it excludes
-												content that has <db:xref
-												linkend="contentList_expired"/>.</db:para>
+												<db:para>The list excludes all Content that is issued.</db:para>
 												<db:para>Services that support the <db:xref
 												linkend="fundamentals_content_selection_outofband"
 												/> must recognize this identifier.</db:para>
@@ -304,9 +309,10 @@
 										<db:varlistentry xml:id="contentList_expired">
 											<db:term>expired</db:term>
 											<db:listitem>
-												<db:para>Refers to a list of Content that was
-												initially <db:xref linkend="contentList_issued"/>
-												to the User, but has now expired.</db:para>
+												<db:para>Refers to a list of Content that has been
+												<db:xref linkend="contentList_issued"/>
+												to the User, but has
+												<db:link linkend="fundamentals_serviceModels_lender_expiry">expired</db:link>.</db:para>
 											</db:listitem>
 										</db:varlistentry>
 									</db:variablelist>
