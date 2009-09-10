@@ -662,16 +662,17 @@
 					</note>
 					<para>The <code>returnBy</code> attribute indicates the time before which the <xref linkend="term_content"/>
 						item should be <link linkend="term_return">returned</link>.  <xref linkend="term_readingSystem"/>s should
-						communicate the due date to the <xref linkend="term_user"/>.  <xref linkend="term_readingSystem"/>s may
+						communicate the due date to the <xref linkend="term_user"/>.  <xref linkend="term_readingSystem"/>s should
 						delete the <xref linkend="term_content"/> at the specified time and <link linkend="term_return">return</link>
 						it to the <xref linkend="term_service"/> upon the next <xref linkend="term_session"/>.</para>
 					<para>The <literal>expired</literal> <type><xref linkend="tp_contentList"/></type> may be populated by the
 						<xref linkend="term_service"/> by <xref linkend="term_borrow" /> that has been
 						<link linkend="term_issue">issued</link> to indicate that the <xref linkend="term_serviceProvider"/> wants
 						the <xref linkend="term_content"/> to be <link linkend="term_return">returned</link>.
-						The <xref linkend="term_readingSystem"/> may call <function><xref linkend="op_getContentList"/></function>
-						with an <parameter>id</parameter> parameter of <literal>expired</literal> to retrieve this list, and may
-						<link linkend="term_return">return</link> the <xref linkend="term_content"/> indicated.</para>
+						If the <xref linkend="term_readingSystem"/> has any items of <xref linkend="term_borrow"/>, it should call
+						<function><xref linkend="op_getContentList"/></function> with an <parameter>id</parameter> parameter of
+						<literal>expired</literal> to retrieve this list at some point in each <xref linkend="term_session"/>, and should
+						<link linkend="term_return">return</link> the <xref linkend="term_content"/> items indicated.</para>
 					<note>
 						<para><xref linkend="term_serviceProvider"/>s should use the <literal>expired</literal>
 							<type><xref linkend="tp_contentList"/></type> with caution.  <xref linkend="term_user"/>s
