@@ -111,7 +111,7 @@
     </info>
 
 
-    <chapter xml:id="introduction">
+    <chapter xml:id="introduction" conformance="informative">
         <title>Introduction</title>
         <para> The DAISY Online Delivery protocol grew out of the need for DAISY producers to be
             able to deliver content to clients and users in a timely and cost-effective way. The
@@ -156,7 +156,7 @@
 
 
 
-    <chapter xml:id="terminology">
+    <chapter xml:id="terminology" conformance="normative">
         <title>Terminology</title>
 
         <para>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
@@ -542,8 +542,7 @@
     <chapter xml:id="fundamentals" conformance="normative">
         <title>Protocol Fundamentals</title>
 
-        <section xml:id="fundamentals_serviceModels" conformance="normative"
-            xreflabel="Service Models">
+        <section xml:id="fundamentals_serviceModels" xreflabel="Service Models">
             <title>Service Models</title>
 
             <para>The DAISY Online Delivery protocol supports two basic service models:</para>
@@ -679,7 +678,7 @@
         </section>
 
 
-        <section xml:id="fundamentals_session" conformance="normative">
+        <section xml:id="fundamentals_session">
             <title>User Authentication and Session Management</title>
 
             <para> Before a <xref linkend="term_readingSystem"/> can interact with a <xref
@@ -811,9 +810,7 @@
 
         </section>
 
-
-        <section xml:id="fundamentals_content_selection" conformance="normative"
-            xreflabel="Content Selection Methods">
+        <section xml:id="fundamentals_content_selection" xreflabel="Content Selection Methods">
             <title>Content Selection Methods</title>
 
             <para>The DAISY Online Delivery protocol supports two content selection methods:</para>
@@ -1442,7 +1439,8 @@
                 interoperability. </para>
 
             <para> The following sections describe the basic principles that must be adhered to when
-                a <xref linkend="term_service"/> implements a dynamic menuing system. </para>
+                a <xref linkend="term_service"/> implements a dynamic menuing system. Refer to 
+                <xref linkend="bib_dynamicMenusPrimer"/> for informative usage examples.</para>
 
 
             <section xml:id="fundamentals_dynamic_menus_root">
@@ -1936,14 +1934,14 @@
 
         <para>Service implementors must publish a concrete WSDL document at some URI. The <xref
                 linkend="bib_infoset"/> of the concrete WSDL document must be identical to the <link
-                xlink:href="do-wsdl-10.wsdl">do-wsdl-10.wsdl</link> document and must include a
-            custom WSDL <code>service</code> element to define the locally supported ports.</para>
+                xlink:href="do-wsdl-10.wsdl">do-wsdl-10.wsdl</link> document with the exception of the
+                WSDL <code>service</code> element, which defines the locally supported ports.</para>
 
-        <para>The abstract <link xlink:href="do-wsdl-10.wsdl">do-wsdl-10.wsdl</link> document should
+        <para>The abstract <link xlink:href="do-wsdl-10.wsdl">do-wsdl-10.wsdl</link> document may
             be used as a template for creating the concrete document.</para>
     </appendix>
 
-    <appendix xml:id="acknowledgements" role="acknowledgements">
+    <appendix xml:id="acknowledgements" role="acknowledgements" conformance="informative">
         <title>Acknowledgments</title>
         <para>The following individuals were members in good standing of the DAISY Online Working
             Group at the time of the publication of this specification:</para>
