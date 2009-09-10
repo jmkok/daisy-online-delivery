@@ -18,27 +18,37 @@ Target: solve the below and distribute action items to implement changes
 
 
 === Issue 146 ===
+Resolution: Matt add.
 
 === Issue 148 ===
+Resolution: Geoff write prose.
 
 === Issue 149 ===
+Resolution: Geoff write prose.
 
 === Issue 150 ===
+Resolution: Geoff: append terminology item that note that borrowed also covers rented, and then link back from lending acquisition, 
 
 === Issue 151 ===
+Resolution: Matt: they are standardized now. No action required. Close.
 
 === Issue 152 ===
+Resolution: Matt: Remove the second note in 4.2.1. We dont reserve anonymous.
 
 === Issue 153 ===
 Resolution: Markus: add internalServerError Fault, say that service must throw if logoff fails. 
 
 === Issue 155 ===
+Resolution: Matt: remove second sentence.
 
 === Issue 156 ===
+Resolution: Matt: change to "may allow more than one call"
 
 === Issue 157 ===
 
+
 === Issue 161 ===
+
 
 === Issue 162 ===
 Nick: one option is to declare support for audio labels in serviceAttributes. 
