@@ -5,12 +5,12 @@
 	xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:db="http://docbook.org/ns/docbook"
 	xmlns:dc="http://purl.org/dc/elements/1.1/">
 
-	<xs:annotation><xs:documentation>
-		This WXS document and the entities referenced from within it are a normative part
-		of the DAISY Online Protocol Specification (http://www.daisy.org/projects/daisy-online-delivery/). 
-		
-		Version: 20090910 (Second Working Group Draft)	
-	</xs:documentation></xs:annotation>
+	<xs:annotation>
+		<xs:documentation> This WXS document and the entities referenced from within it are a
+			normative part of the DAISY Online Protocol Specification
+			(http://www.daisy.org/projects/daisy-online-delivery/). Version: 20090910 (Second
+			Working Group Draft) </xs:documentation>
+	</xs:annotation>
 
 	<xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
 
@@ -238,7 +238,22 @@
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
-
+							<xs:element name="requiresAudioLabels" minOccurs="1" maxOccurs="1" type="xs:boolean">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">Specifies whether the Reading System requires audio
+											labels for messages issued by
+											the Service (i.e. whether the <db:xref linkend="tp_audio"/> child element of 
+											<db:xref linkend="tp_label"/> is required).</db:para>
+										<db:para> Refer to the <db:xref linkend="tp_supportsAudioLabels"/>
+											element in <db:xref linkend="tp_serviceAttributes"/> for the
+											Service's declaration of support for audio in labels. </db:para>
+										<db:para>This specification does not specify behaviors related to the
+											case where the Reading System requires audio labels, and a Service does not
+											support audio labels.</db:para>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>							
 							<xs:element name="additionalTransferProtocols" minOccurs="0"
 								maxOccurs="1">
 								<xs:annotation>
@@ -266,26 +281,6 @@
 							</xs:element>
 						</xs:sequence>
 					</xs:complexType>
-				</xs:element>
-
-				<xs:element name="requiresAudioLabels" minOccurs="0" maxOccurs="1" type="xs:boolean">
-					<xs:annotation>
-						<xs:documentation>
-							<db:para role="desc">Specifies whether the Reading System requires audio
-								labels for messages (see <db:xref linkend="tp_label"/>) issued by
-								the Service. </db:para>
-							<db:para role="req">
-								<!-- If a Service does not support audio labels, it must
-								throw an OperationNotSupported Fault on subsequent calls to
-								operations that include <db:xref linkend="tp_label"/> types. -->
-								<db:remark role="todo">TODO specify what a Service should do if it
-									does not support audio labels.</db:remark>
-								<!--TODO
-								this isnt really compatible with the use of label in eg
-								metadata. -->
-							</db:para>
-						</xs:documentation>
-					</xs:annotation>
 				</xs:element>
 			</xs:sequence>
 		</xs:complexType>
@@ -363,8 +358,8 @@
 					audio.</db:para>
 				<db:para>To achieve maximum interoperability, Services should support the provision
 					of audio labels, as Reading Systems may <db:link
-						linkend="tp_requiresAudioLabels">require</db:link> such to be provided in order
-					to function.</db:para>
+						linkend="tp_requiresAudioLabels">require</db:link> such to be provided in
+					order to function.</db:para>
 			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -679,7 +674,7 @@
 				</xs:annotation>
 			</xs:attribute>
 
-			<xs:attribute name="requiresReturn" type="xs:boolean" use="required" default="false">
+			<xs:attribute name="requiresReturn" type="xs:boolean" use="required">
 				<xs:annotation>
 					<xs:documentation>
 						<db:para>Specifies whether the <db:xref linkend="term_service"/> requires
@@ -688,8 +683,7 @@
 								linkend="term_service"/> to the <db:xref
 								linkend="term_readingSystem"/> that the <db:xref
 								linkend="term_readingSystem"/> will at some point <db:link
-								linkend="op_returnContent">return the
-								content</db:link></db:para>
+								linkend="op_returnContent">return the content</db:link></db:para>
 						<db:para>Reading Systems should present Users with appropriate prompts if
 							they try to return non-borrowed <db:xref linkend="term_content"
 							/>.</db:para>
@@ -981,8 +975,8 @@
 					element, the Reading system is not required to call the getQuestions operation
 					as these child elements signify a logical end to the sequence of questions that
 					comprise a dynamic menu.</db:para>
-				<db:para>For informative examples on the usage of the questions type, refer to <db:xref
-						linkend="bib_dynamicMenusPrimer"/>.</db:para>
+				<db:para>For informative examples on the usage of the questions type, refer to
+						<db:xref linkend="bib_dynamicMenusPrimer"/>.</db:para>
 			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -1056,8 +1050,8 @@
 			<xs:documentation>
 				<db:para>Encapsulates a set of User responses to Service provided <db:xref
 						linkend="tp_questions"/>.</db:para>
-				<db:para>For informative examples on the usage of the userResponses type, refer to <db:xref
-						linkend="bib_dynamicMenusPrimer"/>.</db:para>						
+				<db:para>For informative examples on the usage of the userResponses type, refer to
+						<db:xref linkend="bib_dynamicMenusPrimer"/>.</db:para>
 			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -1338,6 +1332,21 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
+				<xs:element name="supportsAudioLabels" minOccurs="1" maxOccurs="1" type="xs:boolean">
+					<xs:annotation>
+						<xs:documentation>
+							<db:para role="desc">Specifies whether this Service supports the
+								inclusion of of audio in <db:xref linkend="tp_label"/>s.</db:para>
+							<db:para>A Service that specifies <db:literal>true</db:literal> in this
+								field must include the <db:xref linkend="tp_audio"/> element in all
+									<db:xref linkend="tp_label"/>s if the Reading System specifies
+									<db:literal>true</db:literal> in the <db:xref
+									linkend="tp_requiresAudioLabels"/> element of <db:xref
+									linkend="tp_readingSystemAttributes"/>.</db:para>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
 				<xs:element name="supportedOptionalOperations" minOccurs="1" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>
