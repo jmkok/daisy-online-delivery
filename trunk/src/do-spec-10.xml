@@ -231,7 +231,7 @@
             <varlistentry xml:id="term_issue">
                 <term>Issue content</term>
                 <listitem>
-                    <para>Grant access to content. A <xref linkend="term_readingSystem"/> uses the <function>
+                    <para>Grant access to <xref linkend="term_content"/>. A <xref linkend="term_readingSystem"/> uses the <function>
                             <xref linkend="op_issueContent"/>
                         </function> operation to request access from the <xref
                             linkend="term_service"/>. </para>
@@ -335,9 +335,9 @@
             <varlistentry xml:id="term_user">
                 <term>User</term>
                 <listitem>
-                    <para> A person who interacts with, or accesses <xref linkend="term_content"/>
-                        from, a <xref linkend="term_service"/> using a <xref
-                            linkend="term_readingSystem"/>. </para>
+                    <para> A person who interacts with a <xref linkend="term_service"/> using a <xref
+                        linkend="term_readingSystem"/> and/or or accesses <xref linkend="term_content"/>
+                        from the <xref linkend="term_service"/>. </para>
                 </listitem>
             </varlistentry>
 
