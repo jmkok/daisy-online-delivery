@@ -47,18 +47,18 @@
 					<xsl:element name="db:itemizedlist">
 						<xsl:element name="db:listitem">
 							<xsl:element name="db:para">
-								Parentheses are used to group sets of elements and/or other groups; 
+								parentheses are used to group sets of elements and/or other groups; 
 							</xsl:element>
 						</xsl:element>
 						<xsl:element name="db:listitem">
 							<xsl:element name="db:para">
-								Within groups, a comma ',' indicates required sequences 
-								and a pipe '|' indicates optional sequences; 
+								within groups, a comma ',' indicates required sequences 
+								and a pipe '|' indicates optional sequences; and 
 							</xsl:element>
 						</xsl:element>
 						<xsl:element name="db:listitem">
 							<xsl:element name="db:para">
-								A question mark '?' after a group or element indicates the item must occur zero or one times,
+								a question mark '?' after a group or element indicates the item must occur zero or one times,
 								a plus sign '+' indicates one or more, an asterisk '*' zero or more and no modifier
 								means the element or group must occur exactly once. 
 							</xsl:element>
