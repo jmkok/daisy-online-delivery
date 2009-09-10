@@ -147,10 +147,10 @@
             operations are all defined by a normative WSDL document; and the protocol itself is
             compliant with WS-I Basic Profile 1.1. </para>
 
-        <para> The one aspect that could not be tackled in this version of the protocol is the
+        <para> The one feature that could not be tackled in this version of the protocol is the
             discovery of services. The DAISY Consortium may develop a system and specification for
-            tracking and discovering services at a later date, but currently no such functionality
-            exists that could be integrated with this protocol. </para>
+            tracking and locating DAISY Online Delivery services at a later date, 
+            but currently no such functionality exists that could be integrated with this protocol. </para>
 
     </chapter>
 
