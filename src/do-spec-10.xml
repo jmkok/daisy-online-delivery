@@ -521,20 +521,32 @@
                     <para>an <emphasis>acquisition</emphasis> model, which does not require <link linkend="term_return">return</link>.
                         This model encompasses both commercial and free-of-charge <xref
                             linkend="term_content"/>, as well as <xref linkend="term_content"/>
-                        protected with <xref linkend="bib_pdtb2"/>, which may expire automatically
+                        protected with <xref linkend="bib_pdtb2"/> which may expire automatically
                         without being <link linkend="term_return">returned</link>. </para>
                 </listitem>
             </itemizedlist>
 
-            <para><xref linkend="term_service"/>s may offer <xref linkend="term_content"/> under either or both of these
-                models; however, each item of <xref linkend="term_content"/> must be offered under one model.
-				The model for an item of <xref linkend="term_content"/> is identified by the <code>requiresReturn</code> attribute
-				of its <type><xref linkend="tp_contentMetadata"/></type>: if <code>requiresReturn</code> is
-				<literal>true</literal>, the <xref linkend="term_content"/> is available under a <xref linkend="fundamentals_serviceModel_lender"/>; if
-				<code>requiresReturn</code> is <literal>false</literal> or absent, the <xref linkend="term_content"/> is available
-				under an <xref linkend="fundamentals_serviceModel_acquisition"/>.  Once the <xref linkend="term_content"/> is
-				<link linkend="term_issue">issued</link>, the <code>requiresReturn</code> attribute must not change.</para>
-
+            <para>
+                <xref linkend="term_serviceProvider"/>s may offer <xref linkend="term_content"/> under one or both of these
+                models. A <xref linkend="term_serviceProvider"/> must assign different <xref linkend="term_contentIdentifier"/>s for each
+                model it offers a <xref linkend="term_content"/> item under.
+            </para>
+            
+            <para>
+                A <xref linkend="term_service"/> must use the <code>requiresReturn</code> attribute of 
+                the <type><xref linkend="tp_contentMetadata"/></type> type to indicate the model it will issue
+                the <xref linkend="term_content"/> item under.
+                If <code>requiresReturn</code> is <literal>true</literal>, the <xref linkend="term_content"/> is available under 
+                a <xref linkend="fundamentals_serviceModel_lender"/>. If <code>requiresReturn</code> is <literal>false</literal> 
+                or absent, the <xref linkend="term_content"/> is available
+                under an <xref linkend="fundamentals_serviceModel_acquisition"/>.
+            </para>
+            
+            <para>
+                A  <xref linkend="term_serviceProvider"/> must not change the value of the <code>requiresReturn</code> attribute 
+                assigned to a uniquely idenfitied <xref linkend="term_content"/> item.
+            </para>
+            
             <section xml:id="fundamentals_serviceModels_reqs_lender">
                 <title>Lending Model</title>
 					<para>
