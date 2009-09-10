@@ -45,12 +45,15 @@ Resolution: Matt: remove second sentence.
 Resolution: Matt: change to "may allow more than one call"
 
 === Issue 157 ===
-
+Resolution: Matt: Remove the word "streaming", "another resource". Markus: look up old prose, send to Matt if found.
 
 === Issue 161 ===
-
+Geoff: find name of paper document. Markus: Use the CWI ftp address as an informal reference.
 
 === Issue 162 ===
 Nick: one option is to declare support for audio labels in serviceAttributes. 
 
 *Resolution:* Markus: add to XSD. supportsAudioLabels: whether the Service supports the rendering of audio labels. If a RS posts that it requires audio, then the Service must provide audio in all labels. Note: RS may decide whether to continue or not.
+
+=== Section on named contentLists ===
+Geoff, write this. Note that they are on the XSD WSDL doc.
