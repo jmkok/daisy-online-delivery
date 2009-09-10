@@ -1050,7 +1050,7 @@
                 <para> The <code>localURI</code> attribute should be used by
                     <xref linkend="term_readingSystem"/>s to locate the URI of resources that are
                     referenced within another resource. For example, the URI for an audio resource in a
-                    SMIL file can be determined by checking each resource attribute to find the
+                    SMIL file can be determined by checking each resource element to find the
                         <code>localURI</code> attribute that matches the given path. </para>
 
                 <para> Reading Systems may use the <xref linkend="bib_mime"/> type information in
