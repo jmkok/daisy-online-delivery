@@ -16,6 +16,7 @@
     <supportsServerSideBack>false</supportsServerSideBack>
     <supportsSearch>true</supportsSearch>
     <supportedUplinkAudioCodecs></supportedUplinkAudioCodecs>
+    <supportsAudioLabels>true</supportsAudioLabels>
     <supportedOptionalOperations>
         <operation>DYNAMIC_MENUS</operation>
         <operation>GET_BOOKMARKS</operation>

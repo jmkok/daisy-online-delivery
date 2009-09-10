@@ -19,6 +19,6 @@
     <supportedInputTypes>
       <input type="TEXT_NUMERIC" xml:lang="en"/>
     </supportedInputTypes>
+    <requiresAudioLabels>true</requiresAudioLabels>
   </config>
-  <requiresAudioLabels>true</requiresAudioLabels>
 </readingSystemAttributes>

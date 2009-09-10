@@ -9,6 +9,7 @@
   <supportedUplinkAudioCodecs>
     <codec>audio/mpeg</codec>
   </supportedUplinkAudioCodecs>
+  <supportsAudioLabels>true</supportsAudioLabels>
   <supportedOptionalOperations>
     <operation>SET_BOOKMARKS</operation>
     <operation>GET_BOOKMARKS</operation>
