@@ -171,7 +171,7 @@
             <varlistentry xml:id="term_content">
                 <term>Content</term>
                 <listitem>
-                    <para>Resource(s) made available by a <xref linkend="term_serviceProvider"/>
+                    <para>A resource made available by a <xref linkend="term_serviceProvider"/>
                         through a <xref linkend="term_service"/>, such as a DAISY Digital Talking
                         Book.</para>
                 </listitem>
