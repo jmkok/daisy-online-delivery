@@ -711,14 +711,8 @@
                                 group or class of <xref linkend="term_user"/>, or per <xref
                                     linkend="term_readingSystem"/>. </para>
                         </note>
-                        <note>
-                            <para> The <function>
-                                    <xref linkend="op_logOn"/>
-                                </function> operation must be called to establish a session even if
-                                no credentials are required to access the <xref
-                                    linkend="term_service"/>. </para>
-                        </note>
                     </listitem>
+                    
                     <listitem>
                         <para> The <xref linkend="term_service"/> must verify the provided
                             credentials and, if valid, issue a Cookie [<xref
@@ -975,11 +969,7 @@
                             <para> This protocol does not specify the <xref
                                     linkend="term_readingSystem"/> behaviors that occur when a <xref
                                     linkend="term_service"/> does not return a
-                                    <constant>true</constant> value. Actions such as alerting the
-                                    <xref linkend="term_user"/> and re-invoking the <function>
-                                    <xref linkend="op_issueContent"/>
-                                </function> operation are defined per <xref
-                                    linkend="term_readingSystem"/> implementation. </para>
+                                    <constant>true</constant> value.</para>
                         </note>
 
                         <note>
@@ -996,7 +986,7 @@
                                 <xref linkend="op_getContentResources"/>
                             </function> operation must be called to obtain the location of all the
                             resources that constitute the <xref linkend="term_content"/>. A <xref
-                                linkend="term_service"/> must allow at least one call to the
+                                linkend="term_service"/> may allow more than one call to the
                                 <function>getContentResources</function> operation for each issued
                                 <xref linkend="term_content"/> item. </para>
 
@@ -1047,8 +1037,7 @@
                             linkend="term_readingSystem"/>. </para>
                 </note>
 
-                <para> The <code>localURI</code> attribute should be used by <xref
-                        linkend="term_streaming"/>
+                <para> The <code>localURI</code> attribute should be used by
                     <xref linkend="term_readingSystem"/>s to locate the URI of resources that are
                     referenced within a resource. For example, the URI for an audio resource in a
                     SMIL file can be determined by checking each resource attribute to find the
@@ -1983,7 +1972,7 @@
                     <personname>
                         <firstname>Markus</firstname>
                         <surname>Gylling</surname>
-                    </personname>, <jobtitle>CTO</jobtitle>, <orgname>DAISY Consortium</orgname>
+                    </personname>,<!-- <jobtitle>CTO</jobtitle> -->, <orgname>DAISY Consortium</orgname>
                     (co-chair) </para>
             </listitem>
             <listitem>
@@ -1991,7 +1980,7 @@
                     <personname>
                         <firstname>Kenny</firstname>
                         <surname>Johar</surname>
-                    </personname>, <jobtitle>Enterprise Architect</jobtitle>, <orgname>Vision
+                    </personname>,<!-- <jobtitle>Enterprise Architect</jobtitle>, --> <orgname>Vision
                         Australia</orgname> (co-chair) </para>
             </listitem>
             <listitem>
