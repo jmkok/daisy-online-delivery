@@ -172,8 +172,8 @@
                 <term>Borrowable content</term>
                 <listitem>
                     <para><xref linkend="term_content"/> that may be lent to a <xref linkend="term_user"/>, and must be
-						<link linkend="term_return">returned</link> after being lent.  If borrowable content has been
-						<link linkend="term_issue">issued</link> to a <xref linkend="term_user"/>, it is <emphasis>borrowed</emphasis>.
+						<link linkend="term_return">returned</link> after being lent.
+						The ownership of the <xref linkend="term_content"/> does not pass to the <xref linkend="term_user"/>.
 						Borrowable content includes <xref linkend="term_content"/> that may be rented for a fee.
 					</para>
                 </listitem>
@@ -257,6 +257,19 @@
                 </listitem>
             </varlistentry>
 
+            <varlistentry xml:id="term_purchase">
+                <term>Purchasable content</term>
+                <listitem>
+                    <para><xref linkend="term_content"/> that may be sold to a <xref linkend="term_user"/>, and should not be
+						<link linkend="term_return">returned</link>.
+						The ownership of the <xref linkend="term_content"/> may or may not pass to the <xref linkend="term_user"/>.
+						Purchasable content includes <xref linkend="term_content"/> that is offered for free.  It includes any
+						<xref linkend="term_content"/> that does not require <link linkend="term_return">return</link>; for example,
+						<xref linkend="term_content"/> protected by DRM which expires without the need for <link linkend="term_return">return</link>.
+					</para>
+                </listitem>
+            </varlistentry>
+
             <varlistentry xml:id="term_readingSystem">
                 <term>Reading System</term>
                 <listitem>
@@ -278,8 +291,9 @@
                             <xref linkend="op_returnContent"/>
                         </function> operation to notify the <xref linkend="term_service"/> to revoke
                         access and remove from the <xref linkend="term_user"/>'s collection of
-                        <link linkend="term_issue">issued</link> <xref linkend="term_content"/>. This term applies only to <xref linkend="term_borrow"/>,
-                        not free or purchased <xref linkend="term_content"/>.</para>
+                        <link linkend="term_issue">issued</link> <xref linkend="term_content"/>.
+						This term applies only to <xref linkend="term_borrow"/>,
+                        not <xref linkend="term_purchase"/>.</para>
                 </listitem>
             </varlistentry>
 
@@ -559,41 +573,36 @@
 
             <itemizedlist>
                 <listitem xml:id="fundamentals_serviceModel_lender" xreflabel="Lending Model">
-                    <para>a <emphasis>lending</emphasis> model, in which <xref
-                            linkend="term_content"/> is loaned or rented by a <xref
-                            linkend="term_user"/> and must be <link linkend="term_return"
-                            >returned</link> to the <xref linkend="term_service"/>; and</para>
+                    <para>a <emphasis>lending</emphasis> model, where the <xref linkend="term_service"/>
+					offers <xref linkend="term_borrow"/>; and</para>
                 </listitem>
                 <listitem xml:id="fundamentals_serviceModel_acquisition"
                     xreflabel="Acquisition Model">
-                    <para>an <emphasis>acquisition</emphasis> model, which does not require <link
-                            linkend="term_return">return</link>. This model encompasses both
-                        commercial and free-of-charge <xref linkend="term_content"/>, as well as
-                            <xref linkend="term_content"/> protected with <xref linkend="bib_pdtb2"
-                        /> which may expire automatically without being <link linkend="term_return"
-                            >returned</link>. </para>
+                    <para>an <emphasis>acquisition</emphasis> model, where the <xref linkend="term_service"/>
+					offers <xref linkend="term_purchase"/>. </para>
                 </listitem>
             </itemizedlist>
 
             <para>
-                <xref linkend="term_serviceProvider"/>s may offer <xref linkend="term_content"/>
-                under one or both of these models. A <xref linkend="term_serviceProvider"/> must
-                assign different <xref linkend="term_contentIdentifier"/>s for each model it offers
-                a <xref linkend="term_content"/> item under. </para>
+                A <xref linkend="term_service"/> may offer <xref linkend="term_borrow"/>,
+				<xref linkend="term_purchase"/> or both.  If a <xref linkend="term_serviceProvider"/>
+				wishes to provide some <xref linkend="term_content"/> under both service models,
+				it must supply two <xref linkend="term_content"/> items with different
+				<xref linkend="term_contentIdentifier"/>s.</para>
 
             <para> A <xref linkend="term_service"/> must use the <code>requiresReturn</code>
                 attribute of the <type>
                     <xref linkend="tp_contentMetadata"/>
                 </type> type to indicate the model it will issue the <xref linkend="term_content"/>
                 item under. If <code>requiresReturn</code> is <literal>true</literal>, the <xref
-                    linkend="term_content"/> is available under a <xref
-                    linkend="fundamentals_serviceModel_lender"/>. If <code>requiresReturn</code> is
+                    linkend="term_content"/> is <link linkend="term_borrow">borrowable</link>
+					If <code>requiresReturn</code> is
                     <literal>false</literal>, the <xref linkend="term_content"/> is
-                available under an <xref linkend="fundamentals_serviceModel_acquisition"/>. </para>
+                <link linkend="term_purchase">purchasable</link>. </para>
 
-            <para> A <xref linkend="term_serviceProvider"/> must not change the value of the
-                    <code>requiresReturn</code> attribute assigned to a uniquely identified <xref
-                    linkend="term_content"/> item. </para>
+            <para> Once a <xref linkend="term_content"/> item is <link linkend="term_issue">issued</link>,
+					the <xref linkend="term_serviceProvider"/> must not change the value of the
+                    <code>requiresReturn</code> attribute. </para>
 
             <section xml:id="fundamentals_serviceModels_reqs_lender">
                 <title>Lending Model</title>
@@ -603,8 +612,8 @@
                         <xref linkend="bib_pdtb2"/> or another <abbrev>DRM</abbrev> scheme. </para>
                 <section xml:id="fundamentals_serviceModels_reqs_lender_service">
                     <title>Service Requirements</title>
-                    <para><xref linkend="term_service"/>s offering any <xref linkend="term_content"
-                        /> under a <xref linkend="fundamentals_serviceModel_lender"/> must:</para>
+                    <para>A <xref linkend="term_service"/> offering any <xref linkend="term_borrow"
+                        />  must:</para>
                     <itemizedlist>
                         <listitem>
                             <para>implement the <function>
@@ -612,12 +621,10 @@
                                 </function> operation</para>
                         </listitem>
                         <listitem>
-                            <para>offer the <literal>issued</literal> and <literal>expired</literal>
-                                <xref linkend="tp_contentList"/>s</para>
+                            <para>offer the <literal>issued</literal> <xref linkend="tp_contentList"/></para>
                         </listitem>
                     </itemizedlist>
-                    <para>The following apply to any item of <xref linkend="term_content"/> offered
-                        under a <xref linkend="fundamentals_serviceModel_lender"/>.</para>
+                    <para>The following apply to any item of <xref linkend="term_borrow"/>.</para>
                     <itemizedlist>
                         <listitem>
                             <para> Its <type>
@@ -656,14 +663,13 @@
                 <title>Basic Acquisition Model</title>
                 <section xml:id="fundamentals_serviceModels_reqs_acquisition_service">
                     <title>Service Requirements</title>
-                    <para>The following apply to any item of <xref linkend="term_content"/> offered
-                        under an <xref linkend="fundamentals_serviceModel_acquisition"/>.</para>
+                    <para>The following apply to any item of <xref linkend="term_purchase"/>.</para>
                     <itemizedlist>
                         <listitem>
                             <para> Its <type>
                                     <xref linkend="tp_contentMetadata"/>
-                                </type> must have either no <code>requiresReturn</code> attribute or
-                                have it set to <literal>false</literal>. </para>
+                                </type> must have its <code>requiresReturn</code> attribute
+                                set to <literal>false</literal>. </para>
                         </listitem>
                         <listitem>
                             <para> If it has been <link linkend="term_issue">issued</link>, it may
