@@ -40,6 +40,9 @@
     
     <p:delete name="cleanup" match="comment()|@xml:space" />
             
-    <p:store href="./build/do-dm-primer.html" name="store" />
+    <p:store href="./build/do-dm-primer.html" name="store" 
+        doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN" 
+        doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" 
+        omit-xml-declaration="false" />
     
 </p:declare-step>
