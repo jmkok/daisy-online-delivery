@@ -38,6 +38,36 @@
 			<xsl:attribute name="conformance">normative</xsl:attribute>
 			<xsl:element name="db:title">Type Reference</xsl:element>
 			
+			<xsl:element name="db:note">
+				<xsl:element name="db:para">
+					<xsl:text>
+						The following simplified set of SGML syntax rules has been used throughout this section to define the content models for each
+						type and element:
+					</xsl:text>
+					<xsl:element name="db:itemizedlist">
+						<xsl:element name="db:listitem">
+							<xsl:element name="db:para">
+								Parentheses are used to group sets of elements and/or other groups; 
+							</xsl:element>
+						</xsl:element>
+						<xsl:element name="db:listitem">
+							<xsl:element name="db:para">
+								Within groups, a comma ',' indicates required sequences 
+								and a pipe '|' indicates optional sequences; 
+							</xsl:element>
+						</xsl:element>
+						<xsl:element name="db:listitem">
+							<xsl:element name="db:para">
+								A question mark '?' after a group or element indicates the item must occur zero or one times,
+								a plus sign '+' indicates one or more, an asterisk '*' zero or more and no modifier
+								means the element or group must occur exactly once. 
+							</xsl:element>
+						</xsl:element>
+					</xsl:element>
+				</xsl:element>
+			</xsl:element>
+			
+			
 			<!-- get the top-level elements in the xsd (aka types) -->
 			<xsl:for-each select="$xsd/xs:schema/xs:element|$bookmark/xs:schema/xs:element|$kxo/xs:schema/xs:element">
 				<xsl:sort select="@name" case-order="lower-first"/>
