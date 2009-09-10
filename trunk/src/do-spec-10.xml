@@ -588,7 +588,7 @@
                 item under. If <code>requiresReturn</code> is <literal>true</literal>, the <xref
                     linkend="term_content"/> is available under a <xref
                     linkend="fundamentals_serviceModel_lender"/>. If <code>requiresReturn</code> is
-                    <literal>false</literal> or absent, the <xref linkend="term_content"/> is
+                    <literal>false</literal>, the <xref linkend="term_content"/> is
                 available under an <xref linkend="fundamentals_serviceModel_acquisition"/>. </para>
 
             <para> A <xref linkend="term_serviceProvider"/> must not change the value of the
