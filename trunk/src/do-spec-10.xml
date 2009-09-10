@@ -168,6 +168,17 @@
 
         <variablelist>
 
+            <varlistentry xml:id="term_borrow">
+                <term>Borrowable content</term>
+                <listitem>
+                    <para><xref linkend="term_content"/> that may be lent to a <xref linkend="term_user"/>, and must be
+						<link linkend="term_return">returned</link> after being lent.  If borrowable content has been
+						<link linkend="term_issue">issued</link> to a <xref linkend="term_user"/>, it is <emphasis>borrowed</emphasis>.
+						Borrowable content includes <xref linkend="term_content"/> that may be rented for a fee.
+					</para>
+                </listitem>
+            </varlistentry>
+
             <varlistentry xml:id="term_content">
                 <term>Content</term>
                 <listitem>
@@ -262,14 +273,13 @@
                 <listitem>
                     <para>Give up access to <xref linkend="term_content"/>. <xref
                             linkend="term_content"/> is returned when the <xref
-                            linkend="term_readingSystem"/> has removed the locally-stored data and
+                            linkend="term_readingSystem"/> has removed any locally-stored data and
                         called the <function>
                             <xref linkend="op_returnContent"/>
                         </function> operation to notify the <xref linkend="term_service"/> to revoke
                         access and remove from the <xref linkend="term_user"/>'s collection of
-                        issued <xref linkend="term_content"/>. This term applies only to loaned or
-                        rented <xref linkend="term_content"/>, not free or purchased <xref
-                            linkend="term_content"/>. </para>
+                        <link linkend="term_issue">issued</link> <xref linkend="term_content"/>. This term applies only to <xref linkend="term_borrow"/>,
+                        not free or purchased <xref linkend="term_content"/>.</para>
                 </listitem>
             </varlistentry>
 
