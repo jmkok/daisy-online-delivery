@@ -77,11 +77,6 @@ set       toc,title
             	<xsl:apply-templates select="db:info/db:annotation[@xml:id='status']/*"/>
             </xsl:if>
  
-            <xsl:if test="db:info/db:annotation[@xml:id='editors']">
-                <xsl:element name="h2" namespace="http://www.w3.org/1999/xhtml">Editors</xsl:element>
-                <xsl:apply-templates select="db:info/db:annotation[@xml:id='editors']/*"/>
-            </xsl:if>
-            
             <xsl:variable name="toc.params">
                 <xsl:call-template name="find.path.params">
                     <xsl:with-param name="table" select="normalize-space($generate.toc)"/>
@@ -394,6 +389,17 @@ set       toc,title
         </xsl:element>
         
         <xsl:apply-templates select="../db:annotation[@role='specLinks']/*"/>
+        
+        <xsl:if test="../db:annotation[@xml:id='editors']">
+            <xsl:element name="p" namespace="http://www.w3.org/1999/xhtml">
+                <xsl:attribute name="class">edLabel</xsl:attribute>
+                <xsl:text>Editors:</xsl:text>
+            </xsl:element>
+            <xsl:element name="div" namespace="http://www.w3.org/1999/xhtml">
+                <xsl:attribute name="class">editors</xsl:attribute>
+                <xsl:apply-templates select="../db:annotation[@xml:id='editors']/*"/>
+            </xsl:element>
+        </xsl:if>
         
         <xsl:element name="hr" namespace="http://www.w3.org/1999/xhtml"/>
     </xsl:template>
