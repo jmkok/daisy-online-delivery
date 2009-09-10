@@ -1092,12 +1092,12 @@
 										<db:para>This specification does not allow <db:xref
 												linkend="bib_mtom"/> encoded data in this
 											type.</db:para>
-										<db:para>
+										<!--  <db:para>
 											<db:remark role="todo">TODO See <db:link
 												xlink:href="http://code.google.com/p/daisy-online-delivery/issues/detail?id=104"
 												>Issue 104</db:link>
 											</db:remark>
-										</db:para>
+										</db:para> -->
 									</xs:documentation>
 								</xs:annotation>
 								<xs:simpleType>
