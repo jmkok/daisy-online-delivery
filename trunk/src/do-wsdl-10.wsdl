@@ -79,6 +79,21 @@
 				</xs:complexType>
 			</xs:element>
 
+			<xs:element name="logOffResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" name="logOffResult" type="xs:boolean">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">Specifies whether the log-off was
+										successful</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
 			<xs:element name="setReadingSystemAttributes">
 				<xs:complexType>
 					<xs:sequence>
@@ -638,7 +653,7 @@
 		</part>
 	</message>
 
-	<!-- request message for the LogOff operation. there is no response message defined here as the LogOff operation is a one-way operation. -->
+	<!-- request message for the LogOff operation. -->
 
 	<message name="logOff_inputMessage">
 		<part name="parameters" element="tns:logOff">
@@ -648,6 +663,16 @@
 			</documentation>
 		</part>
 	</message>
+
+	<message name="logOff_outputMessage">
+		<part name="parameters" element="tns:logOffResponse">
+			<documentation>
+				<db:para role="desc">the element whose structure type represents the content model
+					of the soap body in the response message for the logOff operation.</db:para>
+			</documentation>
+		</part>
+	</message>
+	
 
 	<!-- request and response messages for the SetReadingSystemAttributes operation -->
 
@@ -1019,8 +1044,17 @@
 		</operation>
 
 		<operation name="logOff">
-			<documentation>Logs the Reading System off the Service.</documentation>
+			<documentation>
+				<db:para role="desc">Logs the Reading System off the Service.</db:para>		
+				<db:para>A return value of <db:literal>false</db:literal> or an issued fault both
+				indicate that the operation was not succesful.</db:para>
+			</documentation>
 			<input message="tns:logOff_inputMessage"/>
+			<output message="tns:logOff_outputMessage"/>
+			<fault name="logOff_internalServerErrorFault"
+				message="tns:internalServerErrorFault_message"/>
+			<fault name="logOff_noActiveSessionFault"
+				message="tns:noActiveSessionFault_message"/>		
 		</operation>
 
 		<operation name="setReadingSystemAttributes">
