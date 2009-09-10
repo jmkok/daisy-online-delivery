@@ -1,0 +1,83 @@
+== Session start scenario ==
+
+HTTP session is started.
+*logOn
+*getServiceAttributes
+*setReadingSystemAttributes
+*getServiceAnnouncements
+[Any other operation]
+
+The session may cover multiple HTTP connections.  Since transferring and
+rendering of content may take a very long time (hours), the session should be
+kept open for as long as possible.
+
+getServiceAttributes should be called before setReadingSystemAttributes, so
+that the Reading System can decide which of the optional components provided
+by the Service it wishes to use for this session.
+
+getServiceAnnouncments should be called immedately after
+setReadingSystemAttributes to provide users with priority announcements as
+soon as possible.  markAnnouncementsAsRead, however, may be called at any time.
+
+== Session end scenario ==
+
+[Any other operation]
+*logOff
+HTTP session is ended.
+
+== Noninteractive content transfer ==
+== aka Synchronize content list ==
+
+This is a scenario where content is selected outside of the dynamic menus
+(that is, outside of the protocol).
+
+[Session Start]
+for each content ID where the Reading System has on its returnlist:
+    returnContent(contentID)
+getContentList("expired", 1, Inf)  # 1 is a bad first index, shd be 0
+# should this be a "borrowed" contentList with a flag?
+if there are any books on the device which were borrowed from this service
+and are not on the content list, then remove files and call returnContent for each of them.
+getContentList("default", 1, Inf) again.
+[Issue and get content]
+[Session End]
+
+If the Reading System has removable media, it's up to the RS to figure this all out.
+
+== Issue and Return ==
+
+issueContent is used to request that the content be made available for transfer.
+This may be a request to borrow content in a library context, or it could be
+used for purchased or free content.
+
+returnContent is used only in a borrowing context.
+
+issueContent is required before streaming or downloading any content.
+
+returnContent: the content must be removed prior to this function being called.
+
+# Should be brought to the larger group:
+    # Are there any places that have restrictions on download, but not on streaming.
+    
+== Content transfer ==
+
+*getContentMetadata
+Reading System makes some smart choices about how to download/stream the list of URLs (with potentailly authentication bits) with mimeTypes.  It's up to the player to determine what to download first.
+
+If credntials are needed to access the content, then the Service MUST supply
+the credentials in the URL of the resource.  These credentials MAY be the same
+as the logOn credentaisl, but the Reading System MUST NOT send basic authentication credentials if they were not supplied in the URI.
+
+This may occur after the session has ended.
+
+Range headers MUST be supported by the Service.  If third-party servers are used to serve content, then the Reading System MUST be prepared that those servers do not support Range headers in HHTP.
+
+-----
+
+The content does not have to be issued in order to play the sample.
+
+Do we want to add mtime to resources in the metadata?
+
+== PDTB2 ==
+
+(moved)

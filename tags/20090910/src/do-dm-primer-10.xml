@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="../util/docbook/rng/docbookxi.rng" type="xml"?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xml:base="." version="5.0">
+
+    <title>DAISY Online Delivery Protocol - Dynamic Menus Primer</title>
+
+    <info>
+        <pubdate>10 September 2009</pubdate>
+        <author>
+            <personname>
+                <firstname>Kenny</firstname>
+                <surname>Johar</surname>
+            </personname>
+            <affiliation>
+                <orgname>Vision Australia</orgname>
+            </affiliation>
+        </author>  
+    </info>
+
+    <chapter xml:id="introduction">
+        <title>Introduction</title>
+        <para> This document contains usage examples of how to use the Dynamic Menus feature of the
+            DAISY Online Delivery Protocol. This document is not a normative part of the DAISY
+            Online Delivery Protocol, and may change at any time outside the scope of the revision
+            cycle of the DAISY Online Delivery Protocol specification. </para>
+    </chapter>
+
+
+    <chapter xml:id="mainMenu">
+            <title>Retrieving the Main Menu</title>
+            <para>The Reading System retrieves the Main Menu of the Service by invoking the <function>
+                    <link xlink:href="do-spec-10.html#op_getQuestions">getQuestions</link>
+                </function> operation with the reserved id "default" by passing in the following
+                parameter:
+                <programlisting><xi:include href="./samples/dynamicMenusExamples-mainMenu-0.xml" parse="text"/></programlisting>
+            </para>
+            <para>The operation returns the following questions type, which conceptually corresponds
+                to the Service's "Main Menu":
+                <programlisting xml:id="mainMenuCode" xreflabel="Main Menu"><xi:include href="./samples/dynamicMenusExamples-mainMenu-1.xml" parse="text"/></programlisting>
+            </para>
+            <para role="tip"> Each userResponse element contains the user's response to a particular
+                question. As formally defined in <link xlink:href="do-spec-10.html#tp_userResponse"
+                    >userResponse</link>, there are three reserved ids that have a special meaning: <itemizedlist>
+                    <listitem>
+                        <para><code>default</code> - returns the question that comprises the Main
+                            Menu</para>
+                    </listitem>
+                    <listitem>
+                        <para><code>search</code> - returns the question that comprises the search
+                            menu</para>
+                    </listitem>
+                    <listitem>
+                        <para><code>back</code> - returns the previous question.</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para> A question can be a multiple choice question (see <type>
+                    <link xlink:href="do-spec-10.html#tp_multipleChoiceQuestion"
+                        >multipleChoiceQuestion</link>
+                </type>), or a question that can receive a numeric text, alphanumeric text or audio
+                response from the user (see <type>
+                    <link xlink:href="tp_inputQuestion">inputQuestion</link>
+                </type>).</para>
+            <para>If the <type>
+                    <link xlink:href="do-spec-10.html#tp_userResponse">userResponse</link>
+                </type> element is being used to encapsulate the User's response to a multiple
+                choice question, the <code>questionID</code> attribute of the
+                    <type>userResponse</type> element contains the same value as the <code>id</code>
+                attribute of the corresponding <type>multipleChoiceQuestion</type> element, and the
+                    <code>value</code> attribute of the <type>userResponse</type> element contains
+                the same value as the <code>id</code> attribute of the <type>choice</type> element
+                that the User selected.</para>
+            <para>If the <type>userResponse</type> element is being used to encapsulate the User's
+                response to a question that receives numeric text, alphanumeric text or an audio
+                response (i.e. an <type>
+                    <link xlink:href="do-spec-10.html#tp_inputQuestion">inputQuestion</link>
+                </type>), then the <code>questionID</code> attribute of the
+                    <type>userResponse</type> element contains the same value as the <code>id</code>
+                attribute of the corresponding <type>inputQuestion</type> element, and the
+                    <code>value</code> attribute of the <type>userResponse</type> element contains: <itemizedlist>
+                    <listitem>
+                        <para>The numeric or alphanumeric text that the user entered if the question
+                            receives a numeric or alphanumeric response.</para>
+                    </listitem>
+                    <listitem>
+                        <para>An empty string or omitted altogether if the question receives an
+                            audio response.</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+
+            <para>If the question receives an audio response, the audio response is base 64 encoded
+                and encapsulated in the data child element of the userResponse element. See <type>
+                    <link xlink:href="do-spec-10.html#tp_data">data</link>
+                </type> for file format requirements.</para>
+
+            <para role="tip">The values assigned to the <code>id</code> attributes of the
+                    <type>inputQuestion</type>, <type>multipleChoiceQuestion</type> and
+                    <type>choice</type> elements in all the examples listed in this section are
+                arbitrary. These IDs are defined in <link xlink:href="do-spec-10.html#appendixWSDL"
+                    >WSDL</link> as the XSD ID type (see <link
+                    xlink:href="do-spec-10.html#bib_xsdDatatypes">XSD Datatypes</link>), and thus
+                can take any unique value.</para>
+
+            <para>The Reading system renders this type to the user in the following way:
+                <literallayout>
+What Would you like to do? 
+ * Search the Library 
+ * Update your profile 
+ * Take a Survey. 
+ * Buy a book 
+ * Download or Stream content 
+</literallayout></para>
+    </chapter>
+    <chapter xml:id="search">
+        <title>Performing a Search of the Service's Content Collection</title>
+
+        <para>As Search is envisaged to be a very important part of the Online Distribution of
+            content, and thus the Reading Systems may have specific user interface components to
+            invoke search, a special id is available and can be passed into the <function>
+                <link xlink:href="do-spec-10.html#op_getQuestions">getQuestions</link>
+            </function> operation to retrieve the menu specific to search.
+            <programlisting><xi:include href="./samples/dynamicMenusExamples-search-1.xml" parse="text"/></programlisting>
+        </para>
+
+        <para role="tip">Using the <xref linkend="mainMenuCode"/> from
+                <xref linkend="mainMenu"/>, if the user selects the
+            "Search the Library" option, the following <type>userResponses</type> type could also be
+            used to retrieve the Search menu:
+            <programlisting><xi:include href="./samples/dynamicMenusExamples-search-2.xml" parse="text"/></programlisting>
+        </para>
+
+        <para>The reserved <code>search</code> id thus, is a shortcut provided for those Reading
+            systems that have explicit user interface components for invoking the Search
+            feature.</para>
+
+        <para>The operation returns the following questions type:
+            <programlisting><xi:include href="./samples/dynamicMenusExamples-search-3.xml" parse="text"/></programlisting>
+            The Reading System renders this type to the user as follows:
+            <literallayout>
+      What would you like to search by?
+       * Title
+       * Author
+       * Genre
+     </literallayout>
+        </para>
+
+        <para>Assuming that the user selects "Author," the reading system retrieves the next menu by
+            passing in the following parameter to the getQuestions operation:
+            <programlisting><xi:include href="./samples/dynamicMenusExamples-search-4.xml" parse="text"/></programlisting>
+        </para>
+
+        <para>This operation returns the following type:
+            <programlisting><xi:include href="./samples/dynamicMenusExamples-search-5.xml" parse="text"/></programlisting>
+            The Reading System renders this type to the user as follows:
+            <literallayout>Please enter the name of the author.</literallayout>
+        </para>
+
+        <para>Assuming the user entered the name "J.K. Rowling," the Reading System invokes the
+            getQuestions operation with the following parameter:
+            <programlisting><xi:include href="./samples/dynamicMenusExamples-search-6.xml" parse="text"/></programlisting>
+            This operation returns the following questions type:
+            <programlisting><xi:include href="./samples/dynamicMenusExamples-search-7.xml" parse="text"/></programlisting>
+            The reading system extracts the id of the contentList from the contentListRef element,
+            and invokes the getContentList operation as follows:
+            <programlisting><xi:include href="./samples/dynamicMenusExamples-search-8.xml" parse="text"/></programlisting>
+            thus requesting the contentList type with the id "l100," and specifying that the first
+            contentItem returned should be at index 0 and the last contentItem returned should be at
+            index 20 (i.e. the first 21 contentItem elements) in the contentList type. The firstItem
+            and lastItem parameters exist to enable the reading system to request a contentList type
+            with a specified number of contentItem child elements, in situations where memory or
+            bandwidth constraints may not permit the retrieval of an entire contentList. </para>
+
+        <para>The operation returns the following contentList type:
+            <programlisting><xi:include href="./samples/dynamicMenusExamples-search-9.xml" parse="text"/></programlisting>
+            The Reading System renders this type as follows:
+            <literallayout>
+Your Search for "J.K. Rawling" returned the following results: 
+* harry potter and chamber of secrets
+* harry potter and deathly hallows
+* harry potter and goblet of fire
+</literallayout>
+        </para>
+        <para>When a Service returns a contentListRef child element within a questions type, the
+            Reading system is logically at the end of the Service's dynamic menu. The reading system
+            extracts the id of the contentList from the contentListRef element as illustrated above,
+            and invokes the getContentList operation to retrieve the contentList. </para>
+        <para>The Reading System may then retrieve information about the specific contentItems in
+            the contentList type by invoking the getContentMetadata operation, passing in the id of
+            the particular content item. At this stage, the Reading system may ask the user whether
+            he/she wishes to Download or Stream content. If the user wishes to download/stream
+            content, the Reading system calls the issueContent operation passing in the id of the
+            particular content item, followed by a call to the getContentResources operation, to
+            request issuance and retrieve the uris of the resources that constitute the particular
+            content item respectively. </para>
+    </chapter>
+    <chapter xml:id="profileUpdate">
+        <title>Updating the User Profile</title>
+
+        <para>Using the <xref linkend="mainMenuCode"/> from <xref
+                linkend="mainMenu"/>, if the user selects the "Update
+            your profile" option, the Reading System invokes the getQuestions operation with the
+            following parameter:
+            <programlisting><xi:include href="./samples/dynamicMenusExamples-userprofile-1.xml" parse="text"/></programlisting>
+            This operation returns the following type:
+            <programlisting><xi:include href="./samples/dynamicMenusExamples-userprofile-2.xml" parse="text"/></programlisting>
+            The Reading system renders this type as follows:
+            <literallayout>
+Your name:
+Your Address: 
+Your Gender
+* Male
+* Female
+</literallayout>
+        </para>
+        <para>After the user responds to the questions, the Reading System invokes the getQuestions
+            operation passing in the following parameter:
+            <programlisting><xi:include href="./samples/dynamicMenusExamples-userprofile-3.xml" parse="text"/></programlisting>
+            This operation returns the following type:
+            <programlisting><xi:include href="./samples/dynamicMenusExamples-userprofile-4.xml" parse="text"/></programlisting>
+            The Reading system renders this type to the user as follows:
+            <literallayout>
+Your profile has been updated successfully!
+</literallayout>
+        </para>
+        <para>As in the case of the Service returning a contentListRef child element within a
+            questions type, if the Service returns a label child element in the questions type, the
+            Reading System is logically at the end of the Service's dynamic menu.</para>
+
+        <para role="tip"> If the Service intends to take the user back to a previous menu after a
+            message such as "your profile has been updated successfully," the Service returns a
+            multipleChoiceQuestion element within the questions type as follows:
+            <programlisting><xi:include href="./samples/dynamicMenusExamples-userprofile-5.xml" parse="text"/></programlisting>
+        </para>
+    </chapter>
+    <chapter xml:id="survey">
+        <title>Taking a Survey (with audio responses)</title>
+
+        <para>Using the <xref linkend="mainMenuCode"/> from <xref
+                linkend="mainMenu"/>, if the user selects the "Take a
+            Survey" option, the Reading System invokes the getQuestions operation passing in the
+            following parameter:
+            <programlisting><xi:include href="./samples/dynamicMenusExamples-survey-1.xml" parse="text"/></programlisting>
+            This operation returns the following type:
+            <programlisting><xi:include href="./samples/dynamicMenusExamples-survey-2.xml" parse="text"/></programlisting>
+            The Reading system renders this type as follows:
+            <literallayout>
+What is your favorite feature in the Service?:
+
+On a scale of one to four, where four is very satisfied and 1 is not satisfied, how would you rate the Service?
+* 1
+* 2
+* 3
+* 4
+
+Please provide feedback on the Service.:
+</literallayout>
+        </para>
+
+        <para>After the user responds to the questions, the Reading System invokes the getQuestions
+            operation passing in the following parameter:
+            <programlisting><xi:include href="./samples/dynamicMenusExamples-survey-3.xml" parse="text"/></programlisting>
+            This operation returns the following type:
+            <programlisting><xi:include href="./samples/dynamicMenusExamples-survey-4.xml" parse="text"/></programlisting>
+            The Reading System renders this type as follows:
+            <literallayout>
+Thank you for taking the Survey! What would you like to do next?
+* Take another Survey.
+* Go back to the previous menu. 
+* Go back to the Main Menu
+</literallayout></para>
+    </chapter>
+    <chapter xml:id="purchase">
+        <title>Content purchase</title>
+
+        <para>Using the <xref linkend="mainMenuCode"/> from <xref
+                linkend="mainMenu"/>, if the user selects the "Buy a
+            Book" option, the Reading System invokes the getQuestions operation passing in the
+            following parameter:
+            <programlisting><xi:include href="./samples/dynamicMenusExamples-purchase-1.xml" parse="text"/></programlisting>
+            This operation returns the following type:
+            <programlisting><xi:include href="./samples/dynamicMenusExamples-purchase-2.xml" parse="text"/></programlisting>
+        </para>
+        <para role="tip">The allowMultipleSelections attribute of the multipleChoiceQuestion element
+            tells the Reading System whether a user should be allowed to select multiple answers
+            from the list of choices.</para>
+
+        <para>When the User's answers are encapsulated in a userResponses type by the Reading System
+            for a multiple choice question that allows multiple selections, each userResponse
+            element holds information about a single selection. So if the user selected three
+            choices out of a list of five choices, the userResponses type would contain three
+            distinct userResponse child elements that hold information about the three choices that
+            the user selected. This is illustrated in the userResponses type below. </para>
+
+        <para>The Reading System renders this type as follows:
+            <literallayout>
+Which of the following book(s) would you like to buy? 
+* Harry Potter and the chamber of secrets
+* Harry Potter and the deathly hallows
+* Harry Potter and the goblet of fire
+* Harry Potter and the half-blood Prince
+* Harry Potter and the Order of the Phoenix
+</literallayout>
+            (Assuming that the user selects choices 2, 3 and 5) </para>
+
+        <para>The Reading system invokes the getQuestions operation passing in the following
+            parameter:
+            <programlisting><xi:include href="./samples/dynamicMenusExamples-purchase-3.xml" parse="text"/></programlisting>
+            This operation returns the following type:
+            <programlisting><xi:include href="./samples/dynamicMenusExamples-purchase-4.xml" parse="text"/></programlisting>
+            The Reading system renders this type as follows:
+            <literallayout>
+Thank you for purchasing "Harry Potter and the deathly hallows," "Harry Potter and the goblet of fire" and "Harry Potter and the Order of the Phoenix." These books have been billed to your credit card. What would you like to do next? 
+* Buy more books
+* Add these books to my download/streaming list
+* Download/Stream these books now
+</literallayout>
+        </para>
+        <para role="tip">This example presumes that a user's billing information is supplied to the
+            Service Provider through an out-of-band channel (i.e. website, phone ...). However,
+            extra steps could be added to this example to collect the user's billing information if
+            such out-of-band mechanisms were not an option. </para>
+
+        <para role="tip">If the user selects "Download/Stream these books now, the Service returns a
+            contentListRef child element inside a questions type that contains the id of a
+            contentList, that can be retrieved through a call to the getContentList operation, and
+            that contains the three selected books. </para>
+
+        <para>Assuming that the user selects "Add these books to my downloading/streaming list, the
+            Reading System invokes the getQuestions operation passing in the following parameter:
+            <programlisting><xi:include href="./samples/dynamicMenusExamples-purchase-5.xml" parse="text"/></programlisting>
+            This operation returns the following type:
+            <programlisting><xi:include href="./samples/dynamicMenusExamples-purchase-6.xml" parse="text"/></programlisting>
+            The Reading System renders this type as follows:
+            <literallayout>
+Your books have been added to your downloading/streaming list. Please select the "Download or Stream content" option in the Main menu to download/stream these books.
+</literallayout>
+        </para>
+    </chapter>
+    <chapter xml:id="retrieve">
+        <title>Retrieving a Content list</title>
+
+        <para>Using the <xref linkend="mainMenuCode"/> from <xref
+                linkend="mainMenu"/>, if the user selects the "Download
+            or Stream content" option, the Reading System invokes the getQuestions operation passing
+            in the following parameter:
+            <programlisting><xi:include href="./samples/dynamicMenusExamples-retrieve-1.xml" parse="text"/></programlisting>
+            This operation returns the following type:
+            <programlisting><xi:include href="./samples/dynamicMenusExamples-retrieve-2.xml" parse="text"/></programlisting>
+            The reading system extracts the id of the contentList from the contentListRef element,
+            and invokes the getContentList operation as follows:
+            <programlisting><xi:include href="./samples/dynamicMenusExamples-retrieve-3.xml" parse="text"/></programlisting>
+            the operation returns the following contentList type:
+            <programlisting><xi:include href="./samples/dynamicMenusExamples-retrieve-4.xml" parse="text"/></programlisting>
+            The Reading System renders this type as follows:
+            <literallayout>
+You have the following content waiting to be Downloaded/Streamed
+* Harry Potter and the deathly hallows
+* Harry Potter and the goblet of fire
+* Harry Potter and the Order of the Phoenix
+</literallayout>
+        </para>
+    </chapter>
+</book>

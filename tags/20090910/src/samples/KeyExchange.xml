@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<KeyExchange xmlns="http://www.daisy.org/DRM/2005/KeyExchange"
+          xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+          xmlns:xe="http://www.w3.org/2001/04/xmlenc#">
+
+<!-- This sample shows a symmetric key and a public/private key pair encrypted by the public keys for
+     three different reading system models.
+-->
+ 
+<!-- Issuer = Issuer identification -->
+	<Issuer uid="DAISY.us-acme">Acme Library for the Print-Disabled</Issuer>
+ 
+	<Keys>
+	<!-- The ds:KeyInfo element names the key used to secure everything in this Keys container -->
+		<ds:KeyInfo>
+			<ds:KeyName>DAISY.it-italoCorp.italianPlayer</ds:KeyName>
+		</ds:KeyInfo>
+ 
+	<!-- The symmetric key is contained in an xe:EncryptedKey element -->
+		<xe:EncryptedKey>
+			<xe:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#rsa-1_5" />
+		<!-- CipherData here is AES key, as described in Ole's "Encrypting Keys" document -->
+			<xe:CipherData>
+				<xe:CipherValue>0000</xe:CipherValue>
+			</xe:CipherData>
+			<xe:CarriedKeyName>DAISY.us-acme.c0001</xe:CarriedKeyName>
+		</xe:EncryptedKey>
+ 
+	<!-- KeyPair = A container for a secured public-private key pair -->
+		<KeyPair>
+		<!-- The ds:KeyInfo child is the public key (not secured) -->
+			<ds:KeyInfo>
+				<ds:KeyValue>
+					<ds:RSAKeyValue>
+						<ds:Modulus>0000</ds:Modulus>
+						<ds:Exponent>0000</ds:Exponent>
+					</ds:RSAKeyValue>
+				</ds:KeyValue>
+				<ds:KeyName>DAISY.us-acme.i9876</ds:KeyName>
+			</ds:KeyInfo>
+		<!-- The xe:EncryptedKey child contains the private key, encrypted by the key identified above -->
+			<xe:EncryptedKey>
+			<!-- The CipherData here is private key, as described in Ole's "EncryptingKeys" document -->
+				<xe:CipherData>
+					<xe:CipherValue>0000</xe:CipherValue>
+				</xe:CipherData>
+				<xe:CarriedKeyName>DAISY.us-acme.i9876</xe:CarriedKeyName>
+			</xe:EncryptedKey>
+		</KeyPair>
+	</Keys>
+ 
+<!-- Same keys secured for fi-finniCorp.finnishPlayer -->
+	<Keys>
+		<ds:KeyInfo>
+			<ds:KeyName>DAISY.fi-finniCorp.finnishPlayer</ds:KeyName>
+		</ds:KeyInfo>
+		<xe:EncryptedKey>
+			<xe:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#rsa-1_5" />
+			<xe:CipherData>
+				<xe:CipherValue>0000</xe:CipherValue>
+			</xe:CipherData>
+			<xe:CarriedKeyName>DAISY.us-acme.c0001</xe:CarriedKeyName>
+		</xe:EncryptedKey>
+ 
+		<KeyPair>
+			<ds:KeyInfo>
+				<ds:KeyValue>
+					<ds:RSAKeyValue>
+						<ds:Modulus>0000</ds:Modulus>
+						<ds:Exponent>0000</ds:Exponent>
+					</ds:RSAKeyValue>
+				</ds:KeyValue>
+				<ds:KeyName>DAISY.us-acme.i9876</ds:KeyName>
+			</ds:KeyInfo>
+			<xe:EncryptedKey>
+				<xe:CipherData>
+					<xe:CipherValue>0000</xe:CipherValue>
+				</xe:CipherData>
+				<xe:CarriedKeyName>DAISY.us-acme.i9876</xe:CarriedKeyName>
+			</xe:EncryptedKey>
+		</KeyPair>
+	</Keys>
+ 
+<!-- Same keys secured for th-thaiCorp.thaiPlayer -->
+	<Keys>
+		<ds:KeyInfo>
+			<ds:KeyName>DAISY.th-thaiCorp.thaiPlayer</ds:KeyName>
+		</ds:KeyInfo>
+ 
+		<xe:EncryptedKey>
+			<xe:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#rsa-1_5" />
+			<xe:CipherData>
+				<xe:CipherValue>0000</xe:CipherValue>
+			</xe:CipherData>
+			<xe:CarriedKeyName>DAISY.us-acme.c0001</xe:CarriedKeyName>
+		</xe:EncryptedKey>
+ 
+		<KeyPair>
+			<ds:KeyInfo>
+				<ds:KeyValue>
+					<ds:RSAKeyValue>
+						<ds:Modulus>0000</ds:Modulus>
+						<ds:Exponent>0000</ds:Exponent>
+					</ds:RSAKeyValue>
+				</ds:KeyValue>
+				<ds:KeyName>DAISY.us-acme.i9876</ds:KeyName>
+			</ds:KeyInfo>
+			<xe:EncryptedKey>
+				<xe:CipherData>
+					<xe:CipherValue>0000</xe:CipherValue>
+				</xe:CipherData>
+				<xe:CarriedKeyName>DAISY.us-acme.i9876</xe:CarriedKeyName>
+			</xe:EncryptedKey>
+		</KeyPair>
+	</Keys>
+ 
+</KeyExchange>

@@ -1,0 +1,13 @@
+<contentMetadata xmlns="http://www.daisy.org/ns/daisy-online/"
+  requiresReturn="true" category="BOOK">
+  <sample id="hp_cos-sample"/>
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <dc:title>Harry Potter and the Chamber of Secrets</dc:title>
+    <dc:identifier>com-example-hp_cos</dc:identifier>
+    <dc:format>Daisy 2.02</dc:format>
+    <dc:language>en-GB</dc:language>
+    <narrator>Mary Svensson</narrator>
+    <size>8119213</size>
+    <meta name="pdtb2:specVersion" content="2005-1" />
+  </metadata>
+</contentMetadata>

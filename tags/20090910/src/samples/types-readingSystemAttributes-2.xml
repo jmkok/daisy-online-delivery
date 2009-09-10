@@ -1,0 +1,24 @@
+<readingSystemAttributes xmlns="http://www.daisy.org/ns/daisy-online/">
+  <manufacturer>ACME Corporation</manufacturer>
+  <model>Pro Phantom III</model>
+  <serialNumber>64321</serialNumber>
+  <version>1.23</version>
+  <config>
+    <supportsMultipleSelections>true</supportsMultipleSelections>
+    <preferredUILanguage>en</preferredUILanguage>
+    <supportedContentFormats>
+      <contentFormat>ANSI/NISO Z39.86-2005</contentFormat>
+      <contentFormat>Daisy 2.02</contentFormat>
+    </supportedContentFormats>
+    <supportedContentProtectionFormats />
+    <supportedMimeTypes>
+      <mimeType type="text/plain" xml:lang="en"/>
+      <mimeType type="audio/mpeg"/>
+    </supportedMimeTypes>
+    <supportedInputTypes>
+      <input type="TEXT_ALPHANUMERIC"/>
+      <input type="AUDIO"/>
+    </supportedInputTypes>
+  </config>
+  <requiresAudioLabels>false</requiresAudioLabels>
+</readingSystemAttributes>

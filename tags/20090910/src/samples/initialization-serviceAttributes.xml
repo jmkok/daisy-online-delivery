@@ -1,0 +1,26 @@
+<serviceAttributes xmlns="http://www.daisy.org/ns/daisy-online/">
+    <serviceProvider id="gy-zenith">
+        <label>
+            <text>Zenith Library of Guyana</text>
+        </label>  
+    </serviceProvider>
+    <service id="gy-zenith-onlineLibrary">
+        <label>
+            <text>The Zenith Online Library</text>
+        </label>     
+    </service>
+    <supportedContentSelectionMethods>
+        <method>OUT_OF_BAND</method>
+        <method>BROWSE</method>
+    </supportedContentSelectionMethods>
+    <supportsServerSideBack>false</supportsServerSideBack>
+    <supportsSearch>true</supportsSearch>
+    <supportedUplinkAudioCodecs></supportedUplinkAudioCodecs>
+    <supportsAudioLabels>true</supportsAudioLabels>
+    <supportedOptionalOperations>
+        <operation>DYNAMIC_MENUS</operation>
+        <operation>GET_BOOKMARKS</operation>
+        <operation>SET_BOOKMARKS</operation>
+        <operation>SERVICE_ANNOUNCEMENTS</operation>
+    </supportedOptionalOperations>
+</serviceAttributes>

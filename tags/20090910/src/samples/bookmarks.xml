@@ -1,0 +1,25 @@
+<bookmarkSet xmlns="http://www.daisy.org/z3986/2005/bookmark/">
+    <title>
+        <text>Gone with the Wind</text>
+        <audio src="gwtw_title.mp3"/>
+    </title>
+    <uid>us-rfbd-JT065</uid>
+    <lastmark>
+        <ncxRef>gwtw.ncx#lvl1_5</ncxRef>
+        <URI>gwtw_ch5.smil#para023</URI>
+        <timeOffset>03:52.00</timeOffset>
+    </lastmark>
+    <bookmark>
+        <ncxRef>gwtw.ncx#lvl1_1</ncxRef>
+        <URI>gwtw_ch1.smil#para008</URI>
+        <timeOffset>00:22.00</timeOffset>
+    </bookmark>
+    <bookmark>
+        <ncxRef>gwtw.ncx#lvl1_3</ncxRef>
+        <URI>gwtw_ch3.smil#para012</URI>
+        <timeOffset>01:28.00</timeOffset>
+        <note>
+            <text>Atlanta burns.</text>
+        </note>
+    </bookmark>
+</bookmarkSet>
