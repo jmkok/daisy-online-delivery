@@ -1251,18 +1251,18 @@
 					</xs:complexType>
 				</xs:element>
 
-				<xs:element name="supportedContentSelectionModels" minOccurs="1" maxOccurs="1">
+				<xs:element name="supportedContentSelectionMethods" minOccurs="1" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>
 							<db:para role="desc">Specifies which <db:xref
 									linkend="fundamentals_content_selection"/> are supported by this
 								Service. A Service must support at least one of the two
-								models.</db:para>
+								methods.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="model" minOccurs="1" maxOccurs="2">
+							<xs:element name="method" minOccurs="1" maxOccurs="2">
 								<xs:simpleType>
 									<xs:restriction base="xs:string">
 										<xs:enumeration value="OUT_OF_BAND">
