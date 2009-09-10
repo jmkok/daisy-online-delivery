@@ -1891,11 +1891,17 @@
             <biblioentry xml:id="bib_wav">
                 <abbrev>RIFF WAVE</abbrev>
                 <title>
-                    <link
+                    Multimedia Programming Interface and Data Specifications 1.0    
+                    (<link
                         xlink:href="ftp://ftp.cwi.nl/pub/audio/RIFF-format"
-                        >Waveform Audio File Format (WAVE)
-                    </link>
+                        >Unofficial transcript
+                    </link>)
                 </title>
+                <author>
+                    <personname>IBM, Microsoft</personname>
+                    <!-- <orgname>IBM and Microsoft</orgname> xsl breakage -->
+                </author>
+                <date>August 1991</date>
             </biblioentry>
         </bibliodiv>
         <bibliodiv>
