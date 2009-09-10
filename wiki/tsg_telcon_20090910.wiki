@@ -1,0 +1,32 @@
+<wiki:toc max_depth="5" />
+
+Present: 
+
+Regrets: 
+
+== Action Item Summary ==
+ 
+=== New Action Items ===
+
+=== Previous Unfinished Action Items ===
+  * Jelle: propose resolution to Issue 118 {DONE?}
+  * Geoff and Markus analyze RequirementsDocument vs current API. {ONGOING}
+
+== Agenda/Minutes ==
+
+Target: solve the below and distribute action items to implement changes
+
+
+=== Issue 146 ===
+=== Issue 148 ===
+=== Issue 149 ===
+=== Issue 150 ===
+=== Issue 151 ===
+=== Issue 152 ===
+=== Issue 153 ===
+=== Issue 155 ===
+=== Issue 156 ===
+=== Issue 157 ===
+=== Issue 161 ===
+=== Issue 162 ===
+
