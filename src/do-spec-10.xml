@@ -585,10 +585,15 @@
 
             <para>
                 A <xref linkend="term_service"/> may offer <xref linkend="term_borrow"/>,
-				<xref linkend="term_purchase"/> or both.  If a <xref linkend="term_serviceProvider"/>
-				wishes to provide some <xref linkend="term_content"/> under both service models,
-				it must supply two <xref linkend="term_content"/> items with different
-				<xref linkend="term_contentIdentifier"/>s.</para>
+		<xref linkend="term_purchase"/> or both.
+            </para>
+            
+            <para>
+		To provide <xref linkend="term_content"/> under both service models,
+                a <xref linkend="term_serviceProvider"/> must supply two <xref linkend="term_content"/> items with different
+                <xref linkend="term_contentIdentifier"/>s. The <xref linkend="term_content"/> items may point to the
+                same set of resources.
+            </para>
 
             <para> A <xref linkend="term_service"/> must use the <code>requiresReturn</code>
                 attribute of the <type>
@@ -648,37 +653,51 @@
                             linkend="term_content"/> item unless all local copies of that <xref
                             linkend="term_content"/> have been removed. </para>
                 </section>
-				<section xml:id="fundamentals_serviceModels_lender_expiry">
-					<title>Content Expiry</title>
-					<para>There are two methods defined in this protocol to aid in expiring <xref linkend="term_borrow" />,
-						that is, requesting the automatic <link linkend="term_return">return</link> of <xref linkend="term_content" />
-						by the <xref linkend="term_readingSystem"/>.  These are
-						the <code>returnBy</code> attribute of the <type><xref linkend="tp_contentMetadata"/></type> type,
-						and the <literal>expired</literal> <type><xref linkend="tp_contentList"/></type>.</para>
-					<note>
-						<para>This protocol does not require the enforcement of these methods on the <xref linkend="term_readingSystem"/>.
-						If a <xref linkend="term_content"/> item must expire, it may be
-						protected with <xref linkend="bib_pdtb2"/> or another <abbrev>DRM</abbrev> scheme. </para>
-					</note>
-					<para>The <code>returnBy</code> attribute indicates the time before which the <xref linkend="term_content"/>
-						item should be <link linkend="term_return">returned</link>.  <xref linkend="term_readingSystem"/>s should
-						communicate the due date to the <xref linkend="term_user"/>.  <xref linkend="term_readingSystem"/>s should
-						delete the <xref linkend="term_content"/> at the specified time and <link linkend="term_return">return</link>
-						it to the <xref linkend="term_service"/> upon the next <xref linkend="term_session"/>.</para>
-					<para>The <literal>expired</literal> <type><xref linkend="tp_contentList"/></type> may be populated by the
-						<xref linkend="term_service"/> by <xref linkend="term_borrow" /> that has been
-						<link linkend="term_issue">issued</link> to indicate that the <xref linkend="term_serviceProvider"/> wants
-						the <xref linkend="term_content"/> to be <link linkend="term_return">returned</link>.
-						If the <xref linkend="term_readingSystem"/> has any items of <xref linkend="term_borrow"/>, it should call
-						<function><xref linkend="op_getContentList"/></function> with an <parameter>id</parameter> parameter of
-						<literal>expired</literal> to retrieve this list at some point in each <xref linkend="term_session"/>, and should
-						<link linkend="term_return">return</link> the <xref linkend="term_content"/> items indicated.</para>
-					<note>
-						<para><xref linkend="term_serviceProvider"/>s should use the <literal>expired</literal>
-							<type><xref linkend="tp_contentList"/></type> with caution.  <xref linkend="term_user"/>s
-							should be notified that <xref linkend="term_content"/> has expired and will be deleted.</para>
-					</note>
-				</section>
+                <section xml:id="fundamentals_serviceModels_lender_expiry">
+                    <title>Content Expiry</title>
+                    <para>This protocol defines two methods to assist in the automatic 
+                        <link linkend="term_return">return</link> of <xref linkend="term_content" />
+                        by a <xref linkend="term_readingSystem"/>: 
+                        the <code>returnBy</code> attribute of the <type><xref linkend="tp_contentMetadata"/></type> type,
+                        and the <literal>expired</literal> <type><xref linkend="tp_contentList"/></type>.</para>
+                    <note>
+                        <para>
+                            This protocol does not require the enforcement of these methods on the <xref linkend="term_readingSystem"/>.
+                            <xref linkend="term_serviceProvider"/>s should investigate other methods for protecting 
+                            <xref linkend="term_content"/> that must expire at a specifc time (for example <abbrev>DRM</abbrev> 
+                            schemes like <xref linkend="bib_pdtb2"/>). </para>
+                    </note>
+                    
+                    <para>
+                        The <code>returnBy</code> attribute indicates the time before which the <xref linkend="term_user"/> 
+                        should <link linkend="term_return">return</link> the <xref linkend="term_content"/>.
+                        <xref linkend="term_readingSystem"/>s should
+                        delete the <xref linkend="term_content"/> at the specified time and <link linkend="term_return">return</link>
+                        the <xref linkend="term_content"/> to the <xref linkend="term_service"/> at the next <xref linkend="term_session"/>.</para>
+                    
+                    <note>
+                        <para>
+                            <xref linkend="term_readingSystem"/>s should
+                            be able to communicate the due date provided in the <code>returnBy</code> attribute 
+                            to the <xref linkend="term_user"/>.
+                        </para>
+                    </note>
+                    
+                    <para>The <literal>expired</literal> <type><xref linkend="tp_contentList"/></type> may be populated by a
+                        <xref linkend="term_service"/> with <xref linkend="term_borrow" /> that has been
+                        <link linkend="term_issue">issued</link> to indicate that the <xref linkend="term_serviceProvider"/> wants
+                        the <xref linkend="term_content"/> to be <link linkend="term_return">returned</link>.
+                        If a <xref linkend="term_readingSystem"/> has any items of <xref linkend="term_borrow"/>, it should call
+                        <function><xref linkend="op_getContentList"/></function> with an <parameter>id</parameter> parameter of
+                        <literal>expired</literal> to retrieve this list at least once in each <xref linkend="term_session"/>, and should
+                        <link linkend="term_return">return</link> the <xref linkend="term_content"/> items indicated.</para>
+                    
+                    <note>
+                        <para><xref linkend="term_serviceProvider"/>s should use the <literal>expired</literal>
+                            <type><xref linkend="tp_contentList"/></type> with caution.  <xref linkend="term_user"/>s
+                            should be notified that <xref linkend="term_content"/> has expired and will be deleted.</para>
+                    </note>
+                </section>
             </section>
 
             <section xml:id="fundamentals_serviceModels_reqs_acquisition">
