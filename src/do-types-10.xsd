@@ -679,7 +679,7 @@
 				</xs:annotation>
 			</xs:attribute>
 
-			<xs:attribute name="requiresReturn" type="xs:boolean" use="optional" default="false">
+			<xs:attribute name="requiresReturn" type="xs:boolean" use="required" default="false">
 				<xs:annotation>
 					<xs:documentation>
 						<db:para>Specifies whether the <db:xref linkend="term_service"/> requires
