@@ -81,6 +81,6 @@
     	
     </p:delete>
        	
-    <p:store href="./build/do-spec-10.html" name="store" />
+    <p:store href="./build/do-spec-20090910.html" name="store" />
         
 </p:declare-step>

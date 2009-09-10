@@ -6,7 +6,7 @@
 	-->
 	<xsl:output indent="yes" method="xml"/>
 	
-	<xsl:template match="xs:annotation|xs:annotation/*">
+	<xsl:template match="xs:annotation[not(parent::xs:schema)]|xs:annotation[not(parent::xs:schema)]/*">
 	  	<xsl:text></xsl:text>
 	</xsl:template>
 

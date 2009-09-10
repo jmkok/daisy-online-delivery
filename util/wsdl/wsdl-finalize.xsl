@@ -8,7 +8,7 @@
 		Transform a wsdl instance to a wsdl instance, inserting the bindings section
 		using WrappedDocumentLiteralBinding		
 	-->
-	<xsl:output indent="yes" exclude-result-prefixes="wsdl xs" method="xml"/>
+	<xsl:output indent="yes" exclude-result-prefixes="wsdl xs" method="xml" />
 	
 	<xsl:template match="definitions/node()[last()]">
 		<xsl:apply-templates/>
@@ -41,8 +41,9 @@
 		</xsl:element>
 	</xsl:template>
 
- 	<xsl:template match="xs:annotation|xs:annotation/*|wsdl:documentation|wsdl:documentation/*">
-	  	<xsl:text></xsl:text>
+	<!-- <xsl:template match="xs:annotation|xs:annotation/*|wsdl:documentation[not(parent::wsdl:definitions)]|wsdl:documentation[not(parent::wsdl:definitions)]/*"> -->
+	<xsl:template match="xs:annotation|xs:annotation/*|wsdl:documentation|wsdl:documentation/*">
+	  	<!-- <xsl:text></xsl:text> -->
 	</xsl:template>
 
 	<xsl:template match="*">

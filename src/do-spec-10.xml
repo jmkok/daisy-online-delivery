@@ -7,21 +7,23 @@
 
     <info>
         <releaseinfo>Working Group Draft</releaseinfo>
-        <pubdate>28 August 2009</pubdate>
+        <pubdate>10 September 2009</pubdate>
 
         <annotation role="specLinks">
-            <para>
-                <remark role="todo">TODO: add the correct links</remark>
-            </para>
             <para role="specLabel">This version:</para>
             <para role="specLink">
-                <link xlink:href="http://www.daisy.org/projects/"
-                    >http://www.daisy.org/projects/</link>
+                <link xlink:href="http://www.daisy.org/projects/daisy-online-delivery/drafts/20090910/"
+                    >http://www.daisy.org/projects/daisy-online-delivery/drafts/20090910/do-spec-20090910.html</link>
             </para>
-            <para role="specLabel">First Public Draft:</para>
+            <para role="specLabel">This version as a zip archive:</para>
             <para role="specLink">
-                <link xlink:href="http://www.daisy.org/projects/"
-                    >http://www.daisy.org/projects/</link>
+                <link xlink:href="http://www.daisy.org/projects/daisy-online-delivery/drafts/20090910/do-spec-20090910.zip"
+                    >http://www.daisy.org/projects/daisy-online-delivery/drafts/20090910/do-spec-20090910.zip</link>
+            </para>
+            <para role="specLabel">Previous version:</para>
+            <para role="specLink">
+                <link xlink:href="http://daisy-online-delivery.googlecode.com/files/do-draft-20090828.zip"
+                    >http://daisy-online-delivery.googlecode.com/files/do-draft-20090828.zip</link>
             </para>
         </annotation>
 
@@ -1840,7 +1842,7 @@
                 <abbrev>Dynamic Menus Primer</abbrev>
                 <title>
                     <link
-                        xlink:href="do-dm-primer-10.html"
+                        xlink:href="do-dm-primer.html"
                         >DAISY Online Delivery Protocol - Dynamic Menus Primer</link>
                 </title>
                 <author>
