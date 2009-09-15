@@ -664,7 +664,7 @@
                         <para>
                             This protocol does not require the enforcement of these methods on the <xref linkend="term_readingSystem"/>.
                             <xref linkend="term_serviceProvider"/>s should investigate other methods for protecting 
-                            <xref linkend="term_content"/> that must expire at a specifc time (for example <abbrev>DRM</abbrev> 
+                            <xref linkend="term_content"/> that must expire at a specific time (for example <abbrev>DRM</abbrev> 
                             schemes like <xref linkend="bib_pdtb2"/>). </para>
                     </note>
                     
@@ -1182,7 +1182,7 @@
                         <abbrev>PDTB2</abbrev>, it should inform a <xref linkend="term_service"/> by
                         including a <type>
                             <xref linkend="tp_supportedContentProtectionFormats"/>
-                        </type> attribute with the value <constant>PDTB2</constant> when it invokes
+                        </type> element with the value <constant>PDTB2</constant> when it invokes
                         the <function>
                             <xref linkend="op_setReadingSystemAttributes"/>
                         </function> operation. </para>
