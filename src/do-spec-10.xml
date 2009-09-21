@@ -147,7 +147,7 @@
             operations are all defined by a normative WSDL document; and the protocol itself is
             compliant with WS-I Basic Profile 1.1. </para>
 
-        <para> The one feature that could not be tackled in this version of the protocol is the
+        <para> One feature that could not be tackled in this version of the protocol is the
             discovery of DAISY Online Delivery services. The DAISY Consortium may develop a system 
             and specification for tracking and locating online services at a later date, 
             but currently no such functionality exists that could be integrated with this protocol. </para>
@@ -1696,9 +1696,7 @@
     		<para>
     			The following sections describe the elements defined in the <biblioref linkend="bib_xsd"/> schema
     			<link xlink:href="do-types-10.xsd">do-types-10.xsd</link>, which is a normative part of the abstract WSDL
-    			document (see <xref linkend="appendixWSDL"/>). Types are the 
-    			XML fragments used by the <xref linkend="term_operation"/>s defined in the <link linkend="apiReference">API Reference</link> to 
-    			carry parameters in the SOAP messages sent between <xref linkend="term_readingSystem"/>s and <xref linkend="term_service"/>s.
+    			document (see <xref linkend="appendixWSDL"/>).
     		</para>
     		<note>
     			<para>
