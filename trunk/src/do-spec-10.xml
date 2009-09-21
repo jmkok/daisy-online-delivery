@@ -356,6 +356,13 @@
                 </listitem>
             </varlistentry>
 
+            <varlistentry xml:id="term_type">
+                <term>Type</term>
+                <listitem>
+                    <para>An <xref linkend="bib_xsdDatatypes"/> datatype.</para>
+                </listitem>
+            </varlistentry>
+
             <varlistentry xml:id="term_user">
                 <term>User</term>
                 <listitem>
