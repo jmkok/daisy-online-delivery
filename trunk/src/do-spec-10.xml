@@ -1464,6 +1464,12 @@
                 surveys, purchasing items from an online store and downloading service
                 announcements. </para>
 
+            <para> The following sections describe the basic principles that must be adhered to when
+                a <xref linkend="term_service"/> implements a dynamic menuing system. Refer to 
+                <xref linkend="bib_dynamicMenusPrimer"/> for informative usage examples.</para>
+
+				<section xml:id="fundamentals_dynamic_menus_support" conformance="normative">
+                <title>Support</title>
             <para> To indicate that a <xref linkend="term_service"/> supports dynamic menus, the
                     <xref linkend="term_service"/> must include an <code>
                     <xref linkend="tp_operation"/>
@@ -1492,12 +1498,10 @@
                 <xref linkend="term_readingSystem"/>s should support dynamic menus for maximum
                 interoperability. </para>
 
-            <para> The following sections describe the basic principles that must be adhered to when
-                a <xref linkend="term_service"/> implements a dynamic menuing system. Refer to 
-                <xref linkend="bib_dynamicMenusPrimer"/> for informative usage examples.</para>
+            </section>
 
 
-            <section xml:id="fundamentals_dynamic_menus_root">
+            <section xml:id="fundamentals_dynamic_menus_root" conformance="normative">
                 <title>Root Question</title>
 
                 <para> Every dynamic menu system must have a root question. The root question
@@ -1515,7 +1519,7 @@
             </section>
 
 
-            <section xml:id="fundamentals_dynamic_menus_navigation">
+            <section xml:id="fundamentals_dynamic_menus_navigation" conformance="normative">
                 <title>Navigation</title>
 
                 <para> A question is the basic unit of navigation in the dynamic menu system, as
@@ -1550,7 +1554,7 @@
             </section>
 
 
-            <section xml:id="fundamentals_dynamic_menus_qtypes">
+            <section xml:id="fundamentals_dynamic_menus_qtypes" conformance="normative">
                 <title>Question Types</title>
 
                 <para> The DAISY Online Delivery protocol defines two types of questions for
@@ -1599,7 +1603,7 @@
 
 
 
-            <section xml:id="fundamentals_dynamic_menus_endpoints">
+            <section xml:id="fundamentals_dynamic_menus_endpoints" conformance="normative">
                 <title>End Points</title>
 
                 <para> To indicate to a <xref linkend="term_readingSystem"/> that the <xref
@@ -1639,7 +1643,7 @@
             </section>
 
 
-            <section xml:id="fundamentals_dynamic_menus_reservedID">
+            <section xml:id="fundamentals_dynamic_menus_reservedID" conformance="normative">
                 <title>Reserved IDs</title>
 
                 <para> There are three reserved values for use as the <code>questionID</code>
