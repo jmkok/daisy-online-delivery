@@ -806,8 +806,8 @@
                                 <xref linkend="op_setReadingSystemAttributes"/>
                             </function> operation must be called to provide information about the
                                 <xref linkend="term_readingSystem"/>'s capabilities to the <xref
-                                linkend="term_service"/>. The <xref linkend="term_service"/> must
-                            respond to this operation call with a return value of
+                                linkend="term_service"/>. If this call is successful, the <xref linkend="term_service"/> shall
+                            return
                                 <constant>true</constant> (<xref linkend="bib_xsdDatatypes"/>).
                         </para>
                     </listitem>
