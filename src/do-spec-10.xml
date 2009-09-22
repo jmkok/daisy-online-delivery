@@ -395,30 +395,31 @@
             </itemizedlist>
 
             <para>
-                <xref linkend="term_service"/>s and <xref linkend="term_readingSystem"/>s must
-                support <xref linkend="bib_http11"/> and secure HTTP (HTTPS) through either <xref
-                    linkend="bib_ssl3.0"/> or <xref linkend="bib_tls1.0"/>. </para>
+                <xref linkend="term_readingSystem"/>s must
+                support <xref linkend="bib_http11"/> and secure <abbrev>HTTP</abbrev> (<abbrev>HTTPS</abbrev>) through either <xref
+                    linkend="bib_ssl3.0"/> or <xref linkend="bib_tls1.0"/>.
+					</para>
 
-            <para> The use of HTTP must conform to <xref linkend="bib_http11"/> and <xref
+            <para> The use of <abbrev>HTTP</abbrev> must conform to <xref linkend="bib_http11"/> and <xref
                     linkend="bib_RFC2617"/>. </para>
 
             <para>
                 <xref linkend="term_service"/>s and <xref linkend="term_readingSystem"/>s must
-                support HTTP sessions as specified in <xref linkend="bib_rfc2109"/>. </para>
+                support <abbrev>HTTP</abbrev> sessions as specified in <xref linkend="bib_rfc2109"/>. </para>
 
             <note>
-                <para>An established HTTP session is not in itself a valid indicator that a <xref
+                <para>An established <abbrev>HTTP</abbrev> session is not in itself a valid indicator that a <xref
                         linkend="term_readingSystem"/> has successfully logged on to the <xref
                         linkend="term_service"/> (see <xref linkend="fundamentals_session"
                     />).</para>
             </note>
 
-            <para>A <xref linkend="term_service"/> must return the appropriate HTTP status code in
-                the HTTP response (as specified by <xref linkend="bib_http11"/>, Section 10) to all
-                HTTP and HTTPS requests sent by a <xref linkend="term_readingSystem"/>.</para>
+            <para>A <xref linkend="term_service"/> must return the appropriate <abbrev>HTTP</abbrev> status code in
+                the <abbrev>HTTP</abbrev> response (as specified by <xref linkend="bib_http11"/>, Section 10) to all
+                <abbrev>HTTP</abbrev> and <abbrev>HTTPS</abbrev> requests sent by a <xref linkend="term_readingSystem"/>.</para>
 
             <section xml:id="technologies_authentication">
-                <title>HTTP Cookies</title>
+                <title><abbrev>HTTP</abbrev> Cookies</title>
 
                 <para> The DAISY Online Delivery protocol requires the use of <xref
                         linkend="bib_httpcookies"/> (as defined in <xref
