@@ -21,7 +21,7 @@
 			<db:title>API Reference</db:title>
 			<db:section xml:id="apiReferenceRequired">
 				<db:title>Required Operations</db:title>
-				<db:para>This section documents the protocol operations that a <db:xref linkend="term_service"/> unconditionally must support.</db:para>
+				<db:para>This section documents the protocol operations that all <db:xref linkend="term_service"/>s must support.</db:para>
 				<xsl:call-template name="wsdlOperationsAsDocbook">
 					<xsl:with-param name="operations" 
 						select="$wsdl/definitions/portType/operation[count(descendant::fault[@message='tns:operationNotSupportedFault_message'])=0]"/>
@@ -30,7 +30,7 @@
 			
 			<db:section xml:id="apiReferenceOptional">
 				<db:title>Optional Operations</db:title>
-				<db:para>This section documents the protocol operations that a <db:xref linkend="term_service"/> may support. Refer to
+				<db:para>This section documents additional protocol operations that a <db:xref linkend="term_service"/> may support. Refer to
 					<db:xref linkend="fundamentals_content_selection"/> for 
 				conditions when certain of these optional operations become required.</db:para>
 				
