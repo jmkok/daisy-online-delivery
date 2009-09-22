@@ -790,7 +790,7 @@
 				<xs:element name="contentItem" minOccurs="0" maxOccurs="unbounded">
 					<xs:annotation>
 						<xs:documentation>
-							<db:para>A singular content item.</db:para>
+							<db:para>A single content item.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
@@ -835,19 +835,19 @@
 			<xs:attribute name="totalItems" type="xs:integer" use="required">
 				<xs:annotation>
 					<xs:documentation>
-						<db:para>The total number of content items exposed by the Service at this
-							stage of the session. This instance of <db:type>contentList</db:type>
-							may only contain a subset of the total number of items, e.g. it may be
-							segmented. If the contentList is not segmented, the value of this
+						<db:para>The total number of <db:type>contentItem</db:type>s in the list.
+							This instance of <db:type>contentList</db:type>
+							may contain a subset of the total number of items, i.e. it may be
+							segmented. If the <db:type>contentList</db:type> is not segmented, the value of this
 							attribute is equal to the number of <db:type>contentItem</db:type>
-							children of this <db:type>contentList</db:type> element.</db:para>
+							children of this element.</db:para>
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="firstItem" type="xs:integer" use="optional">
 				<xs:annotation>
 					<xs:documentation>
-						<db:para>The first content item provided in this instance of contentList.
+						<db:para>The 0-based index of the first content item provided in this instance of contentList.
 							This attribute must be provided when a contentList is segmented. If this
 							attribute is present, the <db:code>lastItem</db:code> attribute must
 							also be present.</db:para>
@@ -857,7 +857,7 @@
 			<xs:attribute name="lastItem" type="xs:integer" use="optional">
 				<xs:annotation>
 					<xs:documentation>
-						<db:para>The last content item provided in this instance of contentList.
+						<db:para>The 0-based index of last content item provided in this instance of contentList.
 							This attribute must be provided when a contentList is segmented. If this
 							attribute is present, the <db:code>firstItem</db:code> attribute must
 							also be present.</db:para>
@@ -881,7 +881,7 @@
 							as an endpoint in a <db:link
 								linkend="fundamentals_content_selection_browse">dynamic menu
 								search</db:link> operation sequence.</db:para>
-						<db:para>Services should persist arbitrary contentList identities for the
+						<db:para>Services should persist contentList identitifiers for the
 							duration of a Session. Services must not expose multiple arbitrary
 							contentLists with same id during the same session.</db:para>
 					</xs:documentation>
