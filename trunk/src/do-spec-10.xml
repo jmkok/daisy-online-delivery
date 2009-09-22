@@ -859,7 +859,8 @@
                 <para> A <xref linkend="term_service"/> should persist a <xref
                         linkend="term_session"/> across multiple HTTP connections by a <xref
                         linkend="term_readingSystem"/> so long as the <xref linkend="term_session"/>
-                    is still valid. </para>
+                    is still active. A <xref linkend="term_service"/> may allow multiple
+					concurrent connections with the same session ID.</para>
 
             </section>
 
