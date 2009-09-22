@@ -596,10 +596,9 @@
 		<xref linkend="term_purchase"/> or both.
             </para>
             
-            <para>
-		To provide <xref linkend="term_content"/> under both service models,
-                a <xref linkend="term_serviceProvider"/> must supply two <xref linkend="term_content"/> items with different
-                <xref linkend="term_contentIdentifier"/>s. The <xref linkend="term_content"/> items may point to the
+            <para>To provide identical <xref linkend="term_content"/> under both service models,
+                a <xref linkend="term_service"/> must supply two <xref linkend="term_content"/> items with different
+                <xref linkend="term_contentIdentifier"/>s. The <xref linkend="term_content"/> items may have the
                 same set of resources.
             </para>
 
@@ -614,7 +613,7 @@
                 <link linkend="term_purchase">purchasable</link>. </para>
 
             <para> Once a <xref linkend="term_content"/> item is <link linkend="term_issue">issued</link>,
-					the <xref linkend="term_serviceProvider"/> must not change the value of the
+					the <xref linkend="term_service"/> must not change the value of the
                     <code>requiresReturn</code> attribute. </para>
 
             <section xml:id="fundamentals_serviceModels_reqs_lender">
