@@ -870,11 +870,11 @@
 						<db:para role="desc">The identifier of this contentList.</db:para>
 						<db:para>If this contentList is being returned on an invocation of <db:xref
 								linkend="op_getContentList"/> where one of the reserved values
-								<db:code>new</db:code>, <db:code>issued</db:code> or
-								<db:code>expired</db:code> is passed as the value of that operations
+								<db:literal>new</db:literal>, <db:literal>issued</db:literal> or
+								<db:literal>expired</db:literal> is passed as the value of that operations
 								<db:parameter>id</db:parameter> parameter, then the value of this id
-							attribute must echo the passed value, e.g. be <db:code>new</db:code>,
-								<db:code>issued</db:code> or <db:code>expired</db:code>
+							attribute must echo the passed value, i.e. be <db:literal>new</db:literal>,
+								<db:literal>issued</db:literal> or <db:literal>expired</db:literal>
 							respectively.</db:para>
 						<db:para>If the value of this attribute is not one of the three reserved
 							values above, then this is an arbitrary contentList, typically exposed
