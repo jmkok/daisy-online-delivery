@@ -1081,7 +1081,7 @@
                 <para> Once the <xref linkend="term_readingSystem"/> has retrieved the list of
                         <type>resources</type> for a <xref linkend="term_content"/> item, the <xref
                         linkend="term_readingSystem"/> may begin downloading or streaming the
-                    resources using the URIs supplied in the <type>resource</type> elements. </para>
+                    resources using the <abbrev>URI</abbrev>s supplied in the <type>resource</type> elements. </para>
 
                 <note>
                     <para> A <xref linkend="term_readingSystem"/> does not require an active <xref
@@ -1089,7 +1089,7 @@
                     </para>
                 </note>
 
-                <para> A <xref linkend="term_readingSystem"/> must not use the URI attribute of the
+                <para>A <xref linkend="term_readingSystem"/> must not use the <code>uri</code> attribute of the
                         <type>resource</type> element to name resources locally, as the URIs may
                     resolve to scripts or other content delivery mechanisms. The
                         <code>localURI</code> attribute specifies the path the <xref
