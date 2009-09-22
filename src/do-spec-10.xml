@@ -33,43 +33,37 @@
             <para>
                 <personname>
                     <firstname>Matt</firstname>
-                    <surname>Garrish</surname>
-                </personname>, <!-- <jobtitle></jobtitle>, -->
+                    <surname>Garrish</surname></personname>, 
                 <orgname>CNIB</orgname>
             </para>
             <para>
                 <personname>
                     <firstname>Geoff</firstname>
-                    <surname>Gilmour-Taylor</surname>
-                </personname>, <!-- <jobtitle></jobtitle>, -->
+                    <surname>Gilmour-Taylor</surname></personname>, 
                 <orgname>CNIB</orgname>
             </para>
             <para>
                 <personname>
                     <firstname>Markus</firstname>
-                    <surname>Gylling</surname>
-                </personname>, <!-- <jobtitle>CTO</jobtitle>, -->
+                    <surname>Gylling</surname></personname>, 
                 <orgname>DAISY Consortium</orgname>
             </para>
             <para>
                 <personname>
                     <firstname>Kenny</firstname>
-                    <surname>Johar</surname>
-                </personname>, <!-- <jobtitle>Enterprise Architect</jobtitle>,-->
+                    <surname>Johar</surname></personname>, 
                 <orgname>Vision Australia</orgname>
             </para>
             <para>
                 <personname>
                     <firstname>Jelle</firstname>
-                    <surname>Martijn Kok</surname>
-                </personname>, <!-- <jobtitle></jobtitle>, -->
+                    <surname>Martijn Kok</surname></personname>, 
                 <orgname>Solutions Radio</orgname>
             </para>
             <para>
                 <personname>
                     <firstname>Nick</firstname>
-                    <surname>Williamson</surname>
-                </personname>, <!-- <jobtitle></jobtitle>, -->
+                    <surname>Williamson</surname></personname>, 
                 <orgname>RNIB</orgname>
             </para>
         </annotation>
@@ -2067,24 +2061,21 @@
                 <para>
                     <personname>
                         <surname>Fujimori</surname>
-                        <firstname>Hiro</firstname>
-                    </personname>, <!-- <jobtitle></jobtitle>, --><orgname>Plextor</orgname>
+                        <firstname>Hiro</firstname></personname>, <orgname>Plextor</orgname>
                 </para>
             </listitem>
             <listitem>
                 <para>
                     <personname>
                         <firstname>Matt</firstname>
-                        <surname>Garrish</surname>
-                    </personname>, <!-- <jobtitle></jobtitle>, --> <orgname>CNIB</orgname> (chief editor)
+                        <surname>Garrish</surname></personname>, <orgname>CNIB</orgname> (chief editor)
                 </para>
             </listitem>
             <listitem>
                 <para>
                     <personname>
                         <firstname>Geoff</firstname>
-                        <surname>Gilmour-Taylor</surname>
-                    </personname>, <!-- <jobtitle></jobtitle>, -->
+                        <surname>Gilmour-Taylor</surname></personname>, 
                     <orgname>CNIB</orgname>
                 </para>
             </listitem>
@@ -2092,24 +2083,21 @@
                 <para>
                     <personname>
                         <firstname>Markus</firstname>
-                        <surname>Gylling</surname>
-                    </personname>,<!-- <jobtitle>CTO</jobtitle>, --> <orgname>DAISY Consortium</orgname>
+                        <surname>Gylling</surname></personname>, <orgname>DAISY Consortium</orgname>
                     (co-chair) </para>
             </listitem>
             <listitem>
                 <para>
                     <personname>
                         <firstname>Kenny</firstname>
-                        <surname>Johar</surname>
-                    </personname>,<!-- <jobtitle>Enterprise Architect</jobtitle>, --> <orgname>Vision
+                        <surname>Johar</surname></personname>, <orgname>Vision
                         Australia</orgname> (co-chair) </para>
             </listitem>
             <listitem>
                 <para>
                     <personname>
                         <firstname>Jelle</firstname>
-                        <surname>Martijn Kok</surname>
-                    </personname>, <!-- <jobtitle></jobtitle>, -->
+                        <surname>Martijn Kok</surname></personname>, 
                     <orgname>Solutions Radio</orgname>
                 </para>
             </listitem>
@@ -2117,8 +2105,7 @@
                 <para>
                     <personname>
                         <firstname>Simon</firstname>
-                        <surname>Roy</surname>
-                    </personname>, <!-- <jobtitle></jobtitle>, -->
+                        <surname>Roy</surname></personname>, 
                     <orgname>Humanware</orgname>
                 </para>
             </listitem>
@@ -2126,8 +2113,7 @@
                 <para>
                     <personname>
                         <firstname>Nick</firstname>
-                        <surname>Williamson</surname>
-                    </personname>, <!-- <jobtitle></jobtitle>, -->
+                        <surname>Williamson</surname></personname>, 
                     <orgname>RNIB</orgname>
                 </para>
             </listitem>
@@ -2140,155 +2126,133 @@
             <listitem>
                 <para><personname>
                         <firstname>David</firstname>
-                        <surname>Andrews</surname>
-                    </personname>, <orgname>Minnesota State Services for the Blind</orgname></para>
+                        <surname>Andrews</surname></personname>, <orgname>Minnesota State Services for the Blind</orgname></para>
             </listitem>
 
             <listitem>
                 <para><personname>
                         <firstname>Neil</firstname>
-                        <surname>Bernstein</surname>
-                    </personname>, <orgname>NLS</orgname></para>
+                        <surname>Bernstein</surname></personname>, <orgname>NLS</orgname></para>
             </listitem>
 
             <listitem>
                 <para><personname>
                         <firstname>Sean</firstname>
-                        <surname>Brooks</surname>
-                    </personname>, <orgname>CNIB</orgname></para>
+                        <surname>Brooks</surname></personname>, <orgname>CNIB</orgname></para>
             </listitem>
 
             <listitem>
                 <para><personname>
                         <firstname>Ed</firstname>
-                        <surname>Chandler</surname>
-                    </personname>, <orgname>RNIB</orgname></para>
+                        <surname>Chandler</surname></personname>, <orgname>RNIB</orgname></para>
             </listitem>
 
             <listitem>
                 <para><personname>
                         <firstname>Gerry</firstname>
-                        <surname>Chevalier</surname>
-                    </personname>, <orgname>HumanWare</orgname></para>
+                        <surname>Chevalier</surname></personname>, <orgname>HumanWare</orgname></para>
             </listitem>
 
             <listitem>
                 <para><personname>
                         <firstname>Andrew</firstname>
-                        <surname>Furlong</surname>
-                    </personname>, <orgname>Vision Australia</orgname></para>
+                        <surname>Furlong</surname></personname>, <orgname>Vision Australia</orgname></para>
             </listitem>
 
             <listitem>
                 <para><personname>
                         <firstname>Leon</firstname>
-                        <surname>Gulikers</surname>
-                    </personname>, <orgname>Dedicon</orgname></para>
+                        <surname>Gulikers</surname></personname>, <orgname>Dedicon</orgname></para>
             </listitem>
 
             <listitem>
                 <para><personname>
                         <firstname>Kathy</firstname>
-                        <surname>Kahl</surname>
-                    </personname>, <orgname>DAISY</orgname></para>
+                        <surname>Kahl</surname></personname>, <orgname>DAISY</orgname></para>
             </listitem>
 
             <listitem>
                 <para><personname>
                         <firstname>Dinesh</firstname>
-                        <surname>Kaushal</surname>
-                    </personname>, <orgname>Code Factory</orgname></para>
+                        <surname>Kaushal</surname></personname>, <orgname>Code Factory</orgname></para>
             </listitem>
 
             <listitem>
                 <para><personname>
                         <firstname>Mattias</firstname>
-                        <surname>Karlsson</surname>
-                    </personname>, <orgname>Dolphin</orgname></para>
+                        <surname>Karlsson</surname></personname>, <orgname>Dolphin</orgname></para>
             </listitem>
 
             <listitem>
                 <para><personname>
                         <firstname>Greg</firstname>
-                        <surname>Kearney</surname>
-                    </personname>, <orgname>Individual Supporter</orgname></para>
+                        <surname>Kearney</surname></personname>, <orgname>Individual Supporter</orgname></para>
             </listitem>
 
             <listitem>
                 <para><personname>
                         <firstname>George</firstname>
-                        <surname>Kerscher</surname>
-                    </personname>, <orgname>DAISY</orgname></para>
+                        <surname>Kerscher</surname></personname>, <orgname>DAISY</orgname></para>
             </listitem>
 
             <listitem>
                 <para><personname>
                         <firstname>Dominic</firstname>
-                        <surname>Labbé</surname>
-                    </personname>, <orgname>HumanWare</orgname></para>
+                        <surname>Labbé</surname></personname>, <orgname>HumanWare</orgname></para>
             </listitem>
 
             <listitem>
                 <para><personname>
                         <firstname>Clive</firstname>
-                        <surname>Lansink</surname>
-                    </personname>, <orgname>RNZFB</orgname></para>
+                        <surname>Lansink</surname></personname>, <orgname>RNZFB</orgname></para>
             </listitem>
 
             <listitem>
                 <para><personname>
                         <firstname>Lynn</firstname>
-                        <surname>Leith</surname>
-                    </personname>, <orgname>DAISY</orgname></para>
+                        <surname>Leith</surname></personname>, <orgname>DAISY</orgname></para>
             </listitem>
 
             <listitem>
                 <para><personname>
                         <surname>Nishizawa</surname>
-                        <firstname>Tatsu</firstname>
-                    </personname>, <orgname>Plextor</orgname></para>
+                        <firstname>Tatsu</firstname></personname>, <orgname>Plextor</orgname></para>
             </listitem>
 
             <listitem>
                 <para><personname>
                         <firstname>Peter</firstname>
-                        <surname>Osborne</surname>
-                    </personname>, <orgname>RNIB</orgname></para>
+                        <surname>Osborne</surname></personname>, <orgname>RNIB</orgname></para>
             </listitem>
 
             <listitem>
                 <para><personname>
                         <firstname>James</firstname>
-                        <surname>Pritchett</surname>
-                    </personname>, <orgname>RFB&#47;D</orgname></para>
+                        <surname>Pritchett</surname></personname>, <orgname>RFB&#47;D</orgname></para>
             </listitem>
 
             <listitem>
                 <para><personname>
                         <firstname>Karel</firstname>
-                        <surname>Raven</surname>
-                    </personname>, <orgname>Solutions Radio</orgname></para>
+                        <surname>Raven</surname></personname>, <orgname>Solutions Radio</orgname></para>
             </listitem>
 
             <listitem>
                 <para><personname>
                         <firstname>Ron</firstname>
-                        <surname>Stewart</surname>
-                    </personname>, <orgname>Dolphin US</orgname></para>
+                        <surname>Stewart</surname></personname>, <orgname>Dolphin US</orgname></para>
             </listitem>
 
             <listitem>
                 <para><personname>
                         <firstname>Marc</firstname>
-                        <surname>Van der Aa</surname>
-                    </personname>, <orgname>Plextor Europe</orgname></para>
+                        <surname>Van der Aa</surname></personname>, <orgname>Plextor Europe</orgname></para>
             </listitem>
 
             <listitem>
                 <para><personname>
                         <firstname>Markus</firstname>
-                        <surname>Wildi</surname>
-                    </personname>, <orgname>Swiss Library for the Blind</orgname></para>
+                        <surname>Wildi</surname></personname>, <orgname>Swiss Library for the Blind</orgname></para>
             </listitem>
         </itemizedlist>
     </appendix>
