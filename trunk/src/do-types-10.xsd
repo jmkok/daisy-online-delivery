@@ -698,10 +698,12 @@
 								linkend="term_content"/> to be returned, i.e. the end of an
 							issuance period.</db:para>
 						<db:para>This attribute may be present when the
-								<db:code>requiresReturn</db:code> attribute is valued
+								<db:code>requiresReturn</db:code> attribute is
 								<db:literal>true</db:literal>, and must not be present when the
-								<db:code>requiresReturn</db:code> attribute is valued
+								<db:code>requiresReturn</db:code> attribute is
 								<db:literal>false</db:literal>.</db:para>
+						<db:para>This attribute may change value between calls, even after the <db:xref
+								linkend="term_content"/> is issued.</db:para>
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
