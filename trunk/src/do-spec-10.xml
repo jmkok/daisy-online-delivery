@@ -1744,7 +1744,7 @@
                         >DAISY 2.02 Specification</link>
                 </title>
                 <author>
-                    <personname>M Gylling, et al</personname>
+                    <personname>M. Gylling, et al.</personname>
                 </author>
                 <date>February 2001</date>
             </biblioentry>
@@ -1819,7 +1819,7 @@
                         Extensions (MIME) Part Two: Media Types, RFC 2046</link>
                 </title>
                 <author>
-                    <personname>N.Freed, et al</personname>
+                    <personname>N. Freed, et al.</personname>
                 </author>
                 <date>November 1996</date>
             </biblioentry>
@@ -1831,7 +1831,7 @@
         				Structures Second Edition</link>
         		</title>
         		<author>
-        			<personname>Henry S. Thompson, et al</personname>
+        			<personname>Henry S. Thompson, et al.</personname>
         		</author>
         		<date>28 October 2004</date>
         	</biblioentry>
@@ -1843,7 +1843,7 @@
                         Datatypes Second Edition</link>
                 </title>
                 <author>
-                    <personname>P. V. Biron, et al</personname>
+                    <personname>P. V. Biron, et al.</personname>
                 </author>
                 <date>28 October 2004</date>
             </biblioentry>
@@ -1855,7 +1855,7 @@
                     Language (XML) 1.0 (Fourth Edition)</link>
             </title>
             <author>
-                <personname>T. Bray, et al</personname>
+                <personname>T. Bray, et al.</personname>
             </author>
             <date>November 2008</date>
         </biblioentry>
@@ -1894,7 +1894,7 @@
                         Optimization Mechanism</link>
                 </title>
                 <author>
-                    <personname>M Gudgin, et al</personname>
+                    <personname>M. Gudgin, et al.</personname>
                 </author>
                 <date>January 2005</date>
             </biblioentry>
@@ -1976,7 +1976,7 @@
                         Z39-86.2005 - Specifications for the Digital Talking Book </link>
                 </title>
                 <author>
-                    <personname>M. Moodie, et al</personname>
+                    <personname>M. Moodie, et al.</personname>
                 </author>
                 <date>2005</date>
             </biblioentry>
@@ -1987,7 +1987,7 @@
                     <link xlink:href="http://www.daisy.org/z3986/2005/Z3986-2005.html#Bkmk">Portable
                         Bookmarks and Highlights</link> (part of <xref linkend="bib_z3986-2005"/>) </title>
                 <author>
-                    <personname>M. Moodie, et al</personname>
+                    <personname>M. Moodie, et al.</personname>
                 </author>
                 <date>2005</date>
             </biblioentry>
@@ -2027,7 +2027,7 @@
                         >ANSI/NISO Z39-86.2002 - Specifications for the Digital Talking Book </link>
                 </title>
                 <author>
-                    <personname>M. Moodie, et al</personname>
+                    <personname>M. Moodie, et al.</personname>
                 </author>
                 <date>2002</date>
             </biblioentry>
