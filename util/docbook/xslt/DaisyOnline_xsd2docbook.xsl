@@ -752,94 +752,98 @@
 		</xsl:element>
 		
 			<xsl:for-each select="xs:complexType/xs:attribute">
-				<xsl:element name="db:itemizedlist">
-					<xsl:element name="db:listitem">
-						<xsl:element name="db:para">
-							<xsl:attribute name="role">attrName</xsl:attribute>
-							<xsl:value-of select="@name|@ref"/>
-						</xsl:element>
-						
-						<xsl:copy-of select="./xs:annotation/xs:documentation/db:*"/>
-						
-						<xsl:element name="db:para">
-							<xsl:attribute name="role">typeProperty</xsl:attribute>
-							<xsl:element name="db:emphasis">Use: </xsl:element>
-							<xsl:choose>
-								<xsl:when test="@use">
-									<xsl:value-of select="@use"/>
-								</xsl:when>
-								<xsl:otherwise>
-									<xsl:text>optional</xsl:text>
-								</xsl:otherwise>
-							</xsl:choose>
-						</xsl:element>
-						<xsl:element name="db:para">
-							<xsl:attribute name="role">typeProperty</xsl:attribute>
-							<xsl:choose>
-								<xsl:when test="child::xs:simpleType">
-									<xsl:call-template name="generateCM">
-										<xsl:with-param name="thisType" select="."/>
-									</xsl:call-template>
-								</xsl:when>
-								<xsl:when test="@type">
+				<xsl:element name="db:variablelist">
+					<xsl:element name="db:varlistentry">
+							<xsl:element name="db:term">
+								<xsl:element name="db:code">
+									<xsl:attribute name="role">attrName</xsl:attribute>
+									<xsl:value-of select="@name|@ref"/>
+								</xsl:element>
+							</xsl:element>
+							
+						<xsl:element name="db:listitem">
+							<xsl:copy-of select="./xs:annotation/xs:documentation/db:*"/>
+							
+							<xsl:element name="db:para">
+								<xsl:attribute name="role">typeProperty</xsl:attribute>
+								<xsl:element name="db:emphasis">Use: </xsl:element>
+								<xsl:choose>
+									<xsl:when test="@use">
+										<xsl:value-of select="@use"/>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:text>optional</xsl:text>
+									</xsl:otherwise>
+								</xsl:choose>
+							</xsl:element>
+							<xsl:element name="db:para">
+								<xsl:attribute name="role">typeProperty</xsl:attribute>
+								<xsl:choose>
+									<xsl:when test="child::xs:simpleType">
+										<xsl:call-template name="generateCM">
+											<xsl:with-param name="thisType" select="."/>
+										</xsl:call-template>
+									</xsl:when>
+									<xsl:when test="@type">
+										<xsl:element name="db:emphasis">
+											<xsl:text>Data type: </xsl:text>
+										</xsl:element>
+										<xsl:element name="db:type">
+											<xsl:value-of select="@type"/>
+										</xsl:element>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:text>&#160;</xsl:text>
+									</xsl:otherwise>
+								</xsl:choose>
+							</xsl:element>
+							
+							<xsl:if test="@fixed">
+								<xsl:element name="db:para">
+									<xsl:attribute name="role">typeProperty</xsl:attribute>
 									<xsl:element name="db:emphasis">
-										<xsl:text>Data type: </xsl:text>
+										<xsl:text>Fixed value: </xsl:text>
 									</xsl:element>
-									<xsl:element name="db:type">
-										<xsl:value-of select="@type"/>
+									<xsl:element name="db:literal">
+										<xsl:value-of select="@fixed"/>
 									</xsl:element>
-								</xsl:when>
-								<xsl:otherwise>
-									<xsl:text>&#160;</xsl:text>
-								</xsl:otherwise>
-							</xsl:choose>
+								</xsl:element>
+							</xsl:if>
+							
+							<xsl:if test="@form">
+								<xsl:element name="db:para">
+									<xsl:attribute name="role">typeProperty</xsl:attribute>
+									<xsl:text>Form: </xsl:text>
+									<xsl:value-of select="@form"/>
+								</xsl:element>
+							</xsl:if>
+							
+							<xsl:if test="@default">
+								<xsl:element name="db:para">
+									<xsl:attribute name="role">typeProperty</xsl:attribute>
+									<xsl:element name="db:emphasis">
+										<xsl:text>Default Value: </xsl:text>
+									</xsl:element>
+									<xsl:element name="db:literal">
+										<xsl:value-of select="@default"/>
+									</xsl:element>
+								</xsl:element>
+							</xsl:if>
+							
+							<!-- display any problems -->
+							<xsl:for-each select="@*">
+								<xsl:choose>
+									<xsl:when test="contains('form|fixed|name|use|default|type|ref', local-name())"/>
+									<xsl:otherwise>
+										<xsl:element name="db:para">
+											<xsl:value-of select="local-name()"/>
+											<xsl:text> = </xsl:text>
+											<xsl:value-of select="."/>
+										</xsl:element>
+									</xsl:otherwise>
+								</xsl:choose>
+							</xsl:for-each>
 						</xsl:element>
-						
-						<xsl:if test="@fixed">
-							<xsl:element name="db:para">
-								<xsl:attribute name="role">typeProperty</xsl:attribute>
-								<xsl:element name="db:emphasis">
-									<xsl:text>Fixed value: </xsl:text>
-								</xsl:element>
-								<xsl:element name="db:literal">
-									<xsl:value-of select="@fixed"/>
-								</xsl:element>
-							</xsl:element>
-						</xsl:if>
-						
-						<xsl:if test="@form">
-							<xsl:element name="db:para">
-								<xsl:attribute name="role">typeProperty</xsl:attribute>
-								<xsl:text>Form: </xsl:text>
-								<xsl:value-of select="@form"/>
-							</xsl:element>
-						</xsl:if>
-						
-						<xsl:if test="@default">
-							<xsl:element name="db:para">
-								<xsl:attribute name="role">typeProperty</xsl:attribute>
-								<xsl:element name="db:emphasis">
-									<xsl:text>Default Value: </xsl:text>
-								</xsl:element>
-								<xsl:element name="db:literal">
-									<xsl:value-of select="@default"/>
-								</xsl:element>
-							</xsl:element>
-						</xsl:if>
-						
-						<!-- display any problems -->
-						<xsl:for-each select="@*">
-							<xsl:choose>
-								<xsl:when test="contains('form|fixed|name|use|default|type|ref', local-name())"/>
-								<xsl:otherwise>
-									<xsl:element name="db:para">
-										<xsl:value-of select="local-name()"/>
-										<xsl:text> = </xsl:text>
-										<xsl:value-of select="."/>
-									</xsl:element>
-								</xsl:otherwise>
-							</xsl:choose>
-						</xsl:for-each>
 					</xsl:element>
 				</xsl:element>
 			</xsl:for-each>
