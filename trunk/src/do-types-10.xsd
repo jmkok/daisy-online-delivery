@@ -1092,10 +1092,9 @@
 									<db:para>The identifier of a question being answered.</db:para>
 									<db:para>The following three values of this attribute are
 										reserved for use as defined below:</db:para>
-									<db:variablelist>
-										<db:varlistentry>
-										<db:term><db:literal>default</db:literal></db:term>
+									<db:itemizedlist>
 										<db:listitem>
+											<db:para><db:literal>default</db:literal></db:para>
 											<db:para>The root question (main menu) from the
 												Service. (This value is used to initiate a dynamic
 												menu operation sequence, and does not
@@ -1103,10 +1102,8 @@
 											<db:para>A Service that supports Dynamic Menus must
 												support this reserved identifier.</db:para>
 										</db:listitem>
-										</db:varlistentry>
-										<db:varlistentry>
-										<db:term><db:literal>search</db:literal></db:term>
 										<db:listitem>
+											<db:para><db:literal>search</db:literal></db:para>
 											<db:para>The Search menu from the
 												Service.</db:para>
 											<db:para>A Service is not required to support the
@@ -1115,10 +1112,8 @@
 												this identifier in <db:xref linkend="tp_serviceAttributes"
 												/>.</db:para>
 										</db:listitem>
-										</db:varlistentry>
-										<db:varlistentry>
-										<db:term><db:literal>back</db:literal></db:term>
 										<db:listitem>
+											<db:para><db:literal>back</db:literal></db:para>
 											<db:para>The previous question from the Service
 												during a dynamic menu operation sequence.</db:para>
 											<db:para>A Service is not required to support the
@@ -1127,8 +1122,7 @@
 												<db:xref linkend="tp_serviceAttributes"
 												/>.</db:para>
 										</db:listitem>
-										</db:varlistentry>
-									</db:variablelist>
+									</db:itemizedlist>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
