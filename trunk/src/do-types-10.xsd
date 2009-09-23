@@ -964,7 +964,7 @@
 					</db:itemizedlist>
 				<db:para role="desc">If the questions element contains a
 						<db:type>contentListRef</db:type> or a <db:type>label</db:type> child
-					element, the Reading system is not required to call the <db:function><db:xref linkend="op_getQuestions/"></db:function> operation
+					element, the Reading system is not required to call the <db:function><db:xref linkend="op_getQuestions"/></db:function> operation
 					as these child elements indicate that this is an endpoint to the sequence of questions that
 					comprise a dynamic menu.</db:para>
 				<db:para>For informative examples on the usage of the <db:type>questions</db:type> type, refer to the
@@ -1050,12 +1050,12 @@
 							<db:para>A response to a question. Either the <db:code>value</db:code> attribute
 								(for <db:type>inputQuestion</db:type> or <db:type>multipleChoiceQuestion</db:type> responses) or the <db:code>data</db:code>
 								element (for audio-based responses) must be present.</db:para>
-							<db:note>If a <db:type>userResponses</db:type> element is a response to a
+							<db:note><db:para>If a <db:type>userResponses</db:type> element is a response to a
 									<db:xref linkend="tp_multipleChoiceQuestion"/> where multiple
 								selections are allowed, then multiple <db:type>userResponse</db:type> elements must be
 								used to represent each selection (where each userResponse refers to
 								the same question via the <db:code>questionID</db:code>
-								attribute).</db:note>
+								attribute).</db:para></db:note>
 						</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
