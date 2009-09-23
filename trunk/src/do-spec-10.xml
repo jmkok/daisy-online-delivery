@@ -1551,10 +1551,12 @@
                 <para> The DAISY Online Delivery protocol defines two types of questions for
                     navigating a menu system: </para>
 
-                <itemizedlist>
+                <variablelist>
+					<varlistentry>
+					<term>Multiple Choice Questions</term>
                     <listitem>
                         <para>
-                            <emphasis>Multiple Choice Questions</emphasis> &#8212; Multiple
+                            Multiple
                             choice questions include a predefined set of options that a <xref
                                 linkend="term_user"/> must pick from to answer the question. A
                             multiple choice question is represented by the <type>
@@ -1563,9 +1565,12 @@
                                 <xref linkend="tp_questions"/>
                             </type> type. </para>
                     </listitem>
+					</varlistentry>
+					<varlistentry>
+					<term>Input Questions</term>
                     <listitem>
                         <para>
-                            <emphasis>Input Questions</emphasis> &#8212; Input questions require
+                            Input questions require
                             the user to respond to the question with text and/or audio input. An
                             input question is represented by the <type>
                                 <xref linkend="tp_inputQuestion"/>
@@ -1581,7 +1586,8 @@
                                     linkend="tp_inputQuestion"/> type. </para>
                         </note>
                     </listitem>
-                </itemizedlist>
+					</varlistentry>
+                </variablelist>
 
                 <para>A <xref linkend="term_readingSystem"/> that supports dynamic menus must
                     declare which input types it supports in the <type>
@@ -1642,26 +1648,35 @@
                         <xref linkend="tp_userResponses"/>
                     </type> element: </para>
 
-                <itemizedlist>
+                <variablelist>
+					<varlistentry>
+					<term><literal>default</literal></term>
                     <listitem>
                         <para>
-                            <literal>default</literal> &#8212; indicates that the <xref
-                                linkend="term_readingSystem"/> is requesting the root question. refer to
+                            Indicates that the <xref
+                                linkend="term_readingSystem"/> is requesting the root question. Refer to
                                 <xref linkend="fundamentals_dynamic_menus_root"/>. </para>
                     </listitem>
+					</varlistentry>
+					<varlistentry>
+					<term><literal>search</literal></term>
                     <listitem>
                         <para>
-                            <literal>search</literal> &#8212; indicates that the <xref
+                            Indicates that the <xref
                                 linkend="term_readingSystem"/> is requesting the search menu.
                         </para>
                     </listitem>
+					</varlistentry>
+					<varlistentry>
+					<term><literal>back</literal></term>
                     <listitem>
                         <para>
-                            <literal>back</literal> &#8212; indicates that the <xref
+                            Indicates that the <xref
                                 linkend="term_readingSystem"/> has requested to step back one menu
                             sequence. </para>
                     </listitem>
-                </itemizedlist>
+					</varlistentry>
+                </variablelist>
 
                 <para>
                     <xref linkend="term_readingSystem"/>s that support dynamic menus must support
@@ -1761,7 +1776,7 @@
                         Edition)</link>
                 </title>
                 <author>
-                    <personname>J Cowan, R Tobin</personname>
+                    <personname>J. Cowan, R. Tobin</personname>
                 </author>
                 <date>February 2004</date>
             </biblioentry>
