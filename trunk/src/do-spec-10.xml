@@ -404,7 +404,7 @@
             <note>
                 <para>An established <abbrev>HTTP</abbrev> session is not in itself a valid indicator that a <xref
                         linkend="term_readingSystem"/> has successfully logged on to the <xref
-                        linkend="term_service"/> (see <xref linkend="fundamentals_session"
+                        linkend="term_service"/> (refer to <xref linkend="fundamentals_session"
                     />).</para>
             </note>
 
@@ -509,7 +509,7 @@
 
                 <note>
                     <para> HTTP Basic Authentication credentials must not be used to log on to a
-                            <xref linkend="term_service"/>. For authenticating a SOAP session, see
+                            <xref linkend="term_service"/>. For authenticating a SOAP session, refer to
                             <xref linkend="technologies_authentication"/>. </para>
                 </note>
 
@@ -802,7 +802,7 @@
                                 <xref linkend="term_readingSystem"/>'s capabilities to the <xref
                                 linkend="term_service"/>. If this call is successful, the <xref linkend="term_service"/> shall
                             return
-                                <constant>true</constant> (<xref linkend="bib_xsdDatatypes"/>).
+                                <literal>true</literal> (<xref linkend="bib_xsdDatatypes"/>).
                         </para>
                     </listitem>
                 </orderedlist>
@@ -909,17 +909,15 @@
                     </listitem>
                     <listitem>
                         <para>declares support for the <xref
-                                linkend="fundamentals_content_selection_outofband"/> in the <code
-                                role="type">
+                                linkend="fundamentals_content_selection_outofband"/> in the <type>
                                 <xref linkend="tp_supportedContentSelectionMethods"/>
-                            </code> service attribute; and</para>
+                            </type> element of its <type><xref linkend="tp_serviceAttributes"/></type>; and</para>
                     </listitem>
                     <listitem>
-                        <para>exposes the selected <xref linkend="term_content"/> to the <xref
-                                linkend="term_user"/>s' <xref linkend="term_readingSystem"/>(s)
-                            through the <code>
+                        <para>exposes the selected <xref linkend="term_content"/> to the <xref linkend="term_readingSystem"/>
+                            through the <function>
                                 <xref linkend="op_getContentList"/>
-                            </code> operation when the operation is invoked with the
+                            </function> operation when the operation is invoked with the
                                 <parameter>id</parameter> parameter set to the value
                                 <literal>new</literal>.</para>
                     </listitem>
@@ -947,10 +945,9 @@
                     </listitem>
                     <listitem>
                         <para>declares support for the <xref
-                                linkend="fundamentals_content_selection_browse"/> in the <code
-                                role="type">
+                                linkend="fundamentals_content_selection_browse"/> in the <type>
                                 <xref linkend="tp_supportedContentSelectionMethods"/>
-                            </code> service attribute.</para>
+                            </type> service attribute.</para>
                     </listitem>
                 </itemizedlist>
             </section>
@@ -1004,7 +1001,7 @@
                             /> intends to access the <xref linkend="term_content"/>. This operation
                             constitutes the formal request for access. The <xref
                                 linkend="term_service"/> must respond to this request with a
-                                <constant>true</constant> (<xref linkend="bib_xsdDatatypes"/>) value
+                                <literal>true</literal> (<xref linkend="bib_xsdDatatypes"/>) value
                             in order to proceed to the next step. </para>
 
                         <note>
@@ -1017,25 +1014,25 @@
                         </note>
 
                         <para> If a <xref linkend="term_service"/> returns a
-                                <constant>false</constant> (<xref linkend="bib_xsdDatatypes"/>)
+                                <literal>false</literal> (<xref linkend="bib_xsdDatatypes"/>)
                             value or a <link linkend="apiReferenceFaults">fault</link>, then the
                                 <xref linkend="term_content"/> has not been issued. A <xref
                                 linkend="term_readingSystem"/> must not proceed to the next step
                             until the <xref linkend="term_service"/> returns a
-                                <constant>true</constant> value. </para>
+                                <literal>true</literal> value. </para>
 
                         <note>
                             <para> This protocol does not specify the <xref
                                     linkend="term_readingSystem"/> behaviors that occur when a <xref
                                     linkend="term_service"/> does not return a
-                                    <constant>true</constant> value.</para>
+                                    <literal>true</literal> value.</para>
                         </note>
 
                         <note>
                             <para> The calling of the <function>issueContent</function> operation
                                 does not require a <xref linkend="term_service"/> to track any
                                 information about the request. <xref linkend="term_service"/>s may
-                                respond with a <constant>true</constant> value to all requests.
+                                respond with a <literal>true</literal> value to all requests.
                             </para>
                         </note>
                     </listitem>
@@ -1116,7 +1113,7 @@
                     access content stored on a <xref linkend="term_serviceDelegate"/>'s servers. </para>
 
                 <para> The URI of each resources secured with Basic Authentication must include the
-                    credentials required to access that resource. See <xref
+                    credentials required to access that resource. refer to <xref
                         linkend="technologies_basic_authentication"/>. </para>
             </section>
 
@@ -1127,9 +1124,9 @@
                 <para> This section explains how <xref linkend="term_serviceProvider"/>s can publish
                     updates to their <xref linkend="term_content"/> using this protocol. </para>
 
-                <para> Each <code>
+                <para> Each <type>
                         <xref linkend="tp_contentItem"/>
-                    </code> in a <type>contentList</type> has an optional
+                    </type> in a <type>contentList</type> has an optional
                         <code>lastModifiedDate</code> attribute that indicates that last time the
                         <xref linkend="term_content"/> was modified. A <xref
                         linkend="term_readingSystem"/>s can use this information to determine if the
@@ -1184,16 +1181,16 @@
                         <abbrev>PDTB2</abbrev>, it should inform a <xref linkend="term_service"/> by
                         including a <type>
                             <xref linkend="tp_supportedContentProtectionFormats"/>
-                        </type> element with the value <constant>PDTB2</constant> when it invokes
+                        </type> element with the value <literal>PDTB2</literal> when it invokes
                         the <function>
                             <xref linkend="op_setReadingSystemAttributes"/>
                         </function> operation. </para>
 
                     <para> To indicate that a <xref linkend="term_service"/> supports
                             <abbrev>PDTB2</abbrev> key exchange, the <xref linkend="term_service"/>
-                        must include an <code>
+                        must include an <type>
                             <xref linkend="tp_operation"/>
-                        </code> element with the value <constant>PDTB2_KEY_PROVISION</constant> when
+                        </type> element with the value <literal>PDTB2_KEY_PROVISION</literal> when
                         responding to a <xref linkend="term_readingSystem"/>'s invocation of the <function>
                             <xref linkend="op_getServiceAttributes"/>
                         </function> operation. </para>
@@ -1291,9 +1288,9 @@
                     linkend="term_content"/> to the <xref linkend="term_user"/>. </para>
 
             <para> To indicate that a <xref linkend="term_service"/> supports service announcements,
-                the <xref linkend="term_service"/> must include an <code>
+                the <xref linkend="term_service"/> must include an <type>
                     <xref linkend="tp_operation"/>
-                </code> element with the value <constant>SERVICE_ANNOUNCEMENTS</constant> when
+                </type> element with the value <literal>SERVICE_ANNOUNCEMENTS</literal> when
                 responding to a <xref linkend="term_readingSystem"/>'s invocation of the <function>
                     <xref linkend="op_getServiceAttributes"/>
                 </function> operation. </para>
@@ -1321,9 +1318,9 @@
 
                 <para> The <xref linkend="term_service"/> can set the importance level for each
                     announcement from a level of 1 (most important) to 3 (least important) and
-                    specify the type of announcement as one of <constant>ERROR</constant>,
-                        <constant>SYSTEM</constant>, <constant>WARNING</constant> or
-                        <constant>INFORMATION</constant> to assist <xref
+                    specify the type of announcement as one of <literal>ERROR</literal>,
+                        <literal>SYSTEM</literal>, <literal>WARNING</literal> or
+                        <literal>INFORMATION</literal> to assist <xref
                         linkend="term_readingSystem"/>s in ordering the announcements for rendering
                     to the <xref linkend="term_user"/>. </para>
 
@@ -1341,7 +1338,7 @@
                     the <xref linkend="term_service"/> must return an <errorcode>
                         <xref linkend="ft_operationNotSupportedFault"/>
                     </errorcode> fault if a <xref linkend="term_readingSystem"/> attempts to invoke
-                    the <code>getServiceAnnouncements</code> operation to obtain new announcements. </para>
+                    the <function>getServiceAnnouncements</function> operation to obtain new announcements. </para>
 
             </section>
 
@@ -1370,8 +1367,8 @@
         <section xml:id="fundamentals_bookmarks">
             <title>Bookmarks / Last Reading Position</title>
 
-            <para> The DAISY Online Delivery protocol uses the <token>Portable Bookmarks and
-                    Highlights</token> grammar from <xref linkend="bib_z3986-2005"/> to record <xref
+            <para> The DAISY Online Delivery protocol uses the Portable Bookmarks and
+                    Highlights grammar from <xref linkend="bib_z3986-2005"/> to record <xref
                     linkend="term_user"/>s' bookmarks. This grammar can also be used by <xref
                     linkend="term_readingSystem"/>s to record the last reading position for each
                     <xref linkend="term_content"/> item. </para>
@@ -1383,18 +1380,18 @@
             </note>
 
             <para> To indicate that a <xref linkend="term_service"/> supports the retrieval of
-                bookmarks, the <xref linkend="term_service"/> must include an <code>
+                bookmarks, the <xref linkend="term_service"/> must include an <type>
                     <xref linkend="tp_operation"/>
-                </code> element with the value <constant>GET_BOOKMARKS</constant> when responding to
+                </type> element with the value <literal>GET_BOOKMARKS</literal> when responding to
                 a <xref linkend="term_readingSystem"/>'s invocation of the <function>
                     <xref linkend="op_getServiceAttributes"/>
                 </function> operation. </para>
 
 
             <para> To indicate that a <xref linkend="term_service"/> supports the setting of
-                bookmarks, the <xref linkend="term_service"/> must include an <code>
+                bookmarks, the <xref linkend="term_service"/> must include an <type>
                     <xref linkend="tp_operation"/>
-                </code> element with the value <constant>SET_BOOKMARKS</constant> when responding to
+                </type> element with the value <literal>SET_BOOKMARKS</literal> when responding to
                 a <xref linkend="term_readingSystem"/>'s invocation of the <function>
                     <xref linkend="op_getServiceAttributes"/>
                 </function> operation. </para>
@@ -1465,9 +1462,9 @@
 				<section xml:id="fundamentals_dynamic_menus_support" conformance="normative">
                 <title>Support</title>
             <para> To indicate that a <xref linkend="term_service"/> supports dynamic menus, the
-                    <xref linkend="term_service"/> must include an <code>
+                    <xref linkend="term_service"/> must include an <type>
                     <xref linkend="tp_operation"/>
-                </code> element with the value <constant>DYNAMIC_MENUS</constant> when responding to
+                </type> element with the value <literal>DYNAMIC_MENUS</literal> when responding to
                 a <xref linkend="term_readingSystem"/>'s invocation of the <function>
                     <xref linkend="op_getServiceAttributes"/>
                 </function> operation. </para>
@@ -1560,9 +1557,9 @@
                             <emphasis>Multiple Choice Questions</emphasis> &#8212; Multiple
                             choice questions include a predefined set of options that a <xref
                                 linkend="term_user"/> must pick from to answer the question. A
-                            multiple choice question is represented by the <code>
+                            multiple choice question is represented by the <type>
                                 <xref linkend="tp_multipleChoiceQuestion"/>
-                            </code> element of the <type>
+                            </type> element of the <type>
                                 <xref linkend="tp_questions"/>
                             </type> type. </para>
                     </listitem>
@@ -1570,9 +1567,9 @@
                         <para>
                             <emphasis>Input Questions</emphasis> &#8212; Input questions require
                             the user to respond to the question with text and/or audio input. An
-                            input question is represented by the <code>
+                            input question is represented by the <type>
                                 <xref linkend="tp_inputQuestion"/>
-                            </code> element of the <type>
+                            </type> element of the <type>
                                 <xref linkend="tp_questions"/>
                             </type> type. </para>
 
@@ -1648,19 +1645,19 @@
                 <itemizedlist>
                     <listitem>
                         <para>
-                            <constant>default</constant> &#8212; indicates that the <xref
-                                linkend="term_readingSystem"/> is requesting the root question. See
+                            <literal>default</literal> &#8212; indicates that the <xref
+                                linkend="term_readingSystem"/> is requesting the root question. refer to
                                 <xref linkend="fundamentals_dynamic_menus_root"/>. </para>
                     </listitem>
                     <listitem>
                         <para>
-                            <constant>search</constant> &#8212; indicates that the <xref
+                            <literal>search</literal> &#8212; indicates that the <xref
                                 linkend="term_readingSystem"/> is requesting the search menu.
                         </para>
                     </listitem>
                     <listitem>
                         <para>
-                            <constant>back</constant> &#8212; indicates that the <xref
+                            <literal>back</literal> &#8212; indicates that the <xref
                                 linkend="term_readingSystem"/> has requested to step back one menu
                             sequence. </para>
                     </listitem>
@@ -1668,9 +1665,9 @@
 
                 <para>
                     <xref linkend="term_readingSystem"/>s that support dynamic menus must support
-                    the <constant>default</constant> value. <xref linkend="term_readingSystem"/>s
-                    that support dynamic menus may support the <constant>search</constant> and
-                        <constant>back</constant> values. </para>
+                    the <literal>default</literal> value. <xref linkend="term_readingSystem"/>s
+                    that support dynamic menus may support the <literal>search</literal> and
+                        <literal>back</literal> values. </para>
             </section>
 
         </section>
@@ -1695,7 +1692,7 @@
     		<para>
     			The following sections describe the elements defined in the <biblioref linkend="bib_xsd"/> schema
     			<link xlink:href="do-types-10.xsd">do-types-10.xsd</link>, which is a normative part of the abstract WSDL
-    			document (see <xref linkend="appendixWSDL"/>).
+    			document (refer to <xref linkend="appendixWSDL"/>).
     		</para>
     		<note>
     			<para>
@@ -2045,7 +2042,7 @@
         <para>Service implementors must publish a concrete WSDL document at some URI. The <xref
                 linkend="bib_infoset"/> of the concrete WSDL document must be identical to the <link
                 xlink:href="do-wsdl-10.wsdl">do-wsdl-10.wsdl</link> document with the exception of the
-                WSDL <code>service</code> element, which defines the locally supported ports.</para>
+                WSDL <type>service</type> element, which defines the locally supported ports.</para>
 
         <para>The abstract <link xlink:href="do-wsdl-10.wsdl">do-wsdl-10.wsdl</link> document may
             be used as a template for creating the concrete document.</para>

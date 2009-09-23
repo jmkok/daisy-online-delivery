@@ -127,11 +127,9 @@
 								maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>
-										<db:para>Specifies which kinds of Content protection
+										<db:para>Specifies which Content protection
 											(Digital Rights Management) standards the Reading System
-											supports.</db:para>
-										<db:para>Currently, the only value allowed is <db:literal>PDTB2</db:literal>,
-											which indicates DAISY Protected Digital Talking Book 2.</db:para>
+											supports, if any.</db:para>
 									</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
@@ -140,7 +138,15 @@
 											maxOccurs="unbounded">
 											<xs:simpleType>
 												<xs:restriction base="xs:string">
-												<xs:enumeration value="PDTB2"/>
+												<xs:enumeration value="PDTB2">
+													<xs:annotation>
+														<xs:documentation>
+														<db:para role="desc">This Reading System
+														supports <db:link linkend="bib_pdtb2">DAISY
+														Protected Digital Talking Book 2</db:link>.</db:para>
+														</xs:documentation>
+													</xs:annotation>
+												</xs:enumeration>
 												</xs:restriction>
 											</xs:simpleType>
 										</xs:element>
@@ -155,10 +161,10 @@
 											supports.</db:para>
 										<db:para>This applies to
 											both Content and Service messages
-												(<db:xref linkend="tp_label"/>).</db:para>
+												(<db:xref linkend="tp_label"/>s).</db:para>
 										<db:para>A Service may use this information to choose which content
 											types to offer to the Reading System as labels and
-											content.</db:para>
+											Content.</db:para>
 										<db:para>Content types for which support is implied by the
 											Content formats in <db:xref
 												linkend="tp_supportedContentFormats"/> need not be
@@ -206,27 +212,22 @@
 												<xs:enumeration value="TEXT_NUMERIC">
 												<xs:annotation>
 												<xs:documentation>
-												<db:para>The Reading System supports User input
-												using a numeric keypad.</db:para>
+												<db:para>The Reading System supports numeric input.</db:para>
 												</xs:documentation>
 												</xs:annotation>
 												</xs:enumeration>
 												<xs:enumeration value="TEXT_ALPHANUMERIC">
 												<xs:annotation>
 												<xs:documentation>
-												<db:para role="desc">The Reading System supports
-												User input using an alphanumeric
-												keyboard.</db:para>
-												<db:para role="note">Note: this value is a
-												superset of
-												<db:literal>TEXT_NUMERIC</db:literal>.</db:para>
+												<db:para>The Reading System supports
+												text and numeric input.</db:para>
 												</xs:documentation>
 												</xs:annotation>
 												</xs:enumeration>
 												<xs:enumeration value="AUDIO">
 												<xs:annotation>
 												<xs:documentation>
-												<db:para>The Reading System supports audio User input.</db:para>
+												<db:para>The Reading System supports audio input.</db:para>
 												</xs:documentation>
 												</xs:annotation>
 												</xs:enumeration>
@@ -259,8 +260,8 @@
 								maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>
-										<db:para>Specifies any additional Content transfer protocols
-											that are supported by the reading system, beyond
+										<db:para>Specifies any additional transfer protocols
+											that are supported by the Reading System, beyond
 											HTTP and HTTPS.</db:para>
 									</xs:documentation>
 								</xs:annotation>
@@ -270,9 +271,8 @@
 											maxOccurs="unbounded" type="xs:string">
 											<xs:annotation>
 												<xs:documentation>
-												<db:para>A content transfer protocol,
-												specified using a canonical identifier string as
-												dictated by the referenced protocol.</db:para>
+												<db:para>The identifier of a transfer protocol.
+												Identifiers are as given in the protocol's specification.</db:para>
 												</xs:documentation>
 											</xs:annotation>
 										</xs:element>
@@ -406,7 +406,7 @@
 						<xs:attribute name="size" type="xs:int" use="required">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">The size, in bytes, of the label
+									<db:para role="desc">The size, in bytes, of the label's
 										audio data.</db:para>
 								</xs:documentation>
 							</xs:annotation>
@@ -444,11 +444,11 @@
 						<xs:attribute name="id" use="required" type="xs:string">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">The Content identifier of the sample.</db:para>
+									<db:para role="desc">The Content Identifier of the sample.</db:para>
 									<db:para>Reading Systems may retrieve the sample's resource list by calling
 											<db:xref linkend="op_getContentResources"/> with this
 										identifier as the parameter. Reading Systems must not invoke
-											<db:xref linkend="op_issueContent"/> using the ID of a
+											<db:xref linkend="op_issueContent"/> using the identifier of a
 										sample.</db:para>
 								</xs:documentation>
 							</xs:annotation>
@@ -463,15 +463,15 @@
 								the Content.</db:para>
 							<db:para>Elements in the Dublin Core namespace are normatively defined
 								by <db:xref linkend="bib_dublinCore"/>. The value of the
-								Dublin Core <db:literal>identifier</db:literal> must match
+								Dublin Core <db:literal>identifier</db:literal> element must match
 								the <db:xref linkend="term_contentIdentifier"/> of the Content item.</db:para>
-							<db:para>Additional, non-Dublin Core, metadata may be provided using the generic
+							<db:para>Additional, non-Dublin Core metadata may be provided using the generic
 									<db:type>meta</db:type> element.</db:para>
-							<db:para>The prefix <db:literal>pdtb2</db:literal> in the name attribute
-								of a meta element is reserved to refer to properties of <db:xref
+							<db:para>The prefix <db:literal>pdtb2</db:literal> in the <db:code>name</db:code> attribute
+								of a <db:type>meta</db:type> element is reserved to refer to properties of <db:xref
 									linkend="bib_pdtb2"/>.</db:para>
 							<db:para>The value <db:literal>pdtb2:specVersion</db:literal> in the
-								name attribute of a meta element means that the Content item
+								<db:code>name</db:code> attribute of a <db:type>meta</db:type> element means that the Content item
 								is protected using <db:xref linkend="bib_pdtb2"/></db:para>
 						</xs:documentation>
 					</xs:annotation>
@@ -481,7 +481,7 @@
 								<xs:annotation>
 									<xs:documentation>
 										<db:para role="desc">The Dublin Core
-												<db:token>title</db:token> element, as defined in
+												<db:literal>title</db:literal> element, as defined in
 												<db:xref linkend="bib_dublinCore"/></db:para>
 									</xs:documentation>
 								</xs:annotation>
@@ -490,7 +490,7 @@
 								<xs:annotation>
 									<xs:documentation>
 										<db:para role="desc">The Dublin Core
-												<db:token>identifier</db:token> element, as defined
+												<db:literal>identifier</db:literal> element, as defined
 											in <db:xref linkend="bib_dublinCore"/></db:para>
 									</xs:documentation>
 								</xs:annotation>
@@ -499,7 +499,7 @@
 								<xs:annotation>
 									<xs:documentation>
 										<db:para role="desc">The Dublin Core
-												<db:token>publisher</db:token> element, as defined
+												<db:literal>publisher</db:literal> element, as defined
 											in <db:xref linkend="bib_dublinCore"/></db:para>
 									</xs:documentation>
 								</xs:annotation>
@@ -508,7 +508,7 @@
 								<xs:annotation>
 									<xs:documentation>
 										<db:para role="desc">The Dublin Core
-												<db:token>format</db:token> element, as defined in
+												<db:literal>format</db:literal> element, as defined in
 												<db:xref linkend="bib_dublinCore"/></db:para>
 									</xs:documentation>
 								</xs:annotation>
@@ -517,7 +517,7 @@
 								<xs:annotation>
 									<xs:documentation>
 										<db:para role="desc">The Dublin Core
-												<db:token>date</db:token> element, as defined in
+												<db:literal>date</db:literal> element, as defined in
 												<db:xref linkend="bib_dublinCore"/></db:para>
 									</xs:documentation>
 								</xs:annotation>
@@ -526,7 +526,7 @@
 								<xs:annotation>
 									<xs:documentation>
 										<db:para role="desc">The Dublin Core
-												<db:token>source</db:token> element, as defined in
+												<db:literal>source</db:literal> element, as defined in
 												<db:xref linkend="bib_dublinCore"/></db:para>
 									</xs:documentation>
 								</xs:annotation>
@@ -535,7 +535,7 @@
 								<xs:annotation>
 									<xs:documentation>
 										<db:para role="desc">The Dublin Core
-												<db:token>type</db:token> element, as defined in
+												<db:literal>type</db:literal> element, as defined in
 												<db:xref linkend="bib_dublinCore"/></db:para>
 									</xs:documentation>
 								</xs:annotation>
@@ -544,7 +544,7 @@
 								<xs:annotation>
 									<xs:documentation>
 										<db:para role="desc">The Dublin Core
-												<db:token>subject</db:token> element, as defined in
+												<db:literal>subject</db:literal> element, as defined in
 												<db:xref linkend="bib_dublinCore"/></db:para>
 									</xs:documentation>
 								</xs:annotation>
@@ -553,7 +553,7 @@
 								<xs:annotation>
 									<xs:documentation>
 										<db:para role="desc">The Dublin Core
-												<db:token>rights</db:token> element, as defined in
+												<db:literal>rights</db:literal> element, as defined in
 												<db:xref linkend="bib_dublinCore"/></db:para>
 									</xs:documentation>
 								</xs:annotation>
@@ -562,7 +562,7 @@
 								<xs:annotation>
 									<xs:documentation>
 										<db:para role="desc">The Dublin Core
-												<db:token>relation</db:token> element, as defined
+												<db:literal>relation</db:literal> element, as defined
 											in <db:xref linkend="bib_dublinCore"/></db:para>
 									</xs:documentation>
 								</xs:annotation>
@@ -571,7 +571,7 @@
 								<xs:annotation>
 									<xs:documentation>
 										<db:para role="desc">The Dublin Core
-												<db:token>language</db:token> element, as defined
+												<db:literal>language</db:literal> element, as defined
 											in <db:xref linkend="bib_dublinCore"/></db:para>
 									</xs:documentation>
 								</xs:annotation>
@@ -580,7 +580,7 @@
 								<xs:annotation>
 									<xs:documentation>
 										<db:para role="desc">The Dublin Core
-												<db:token>description</db:token> element, as
+												<db:literal>description</db:literal> element, as
 											defined in <db:xref linkend="bib_dublinCore"/></db:para>
 									</xs:documentation>
 								</xs:annotation>
@@ -589,7 +589,7 @@
 								<xs:annotation>
 									<xs:documentation>
 										<db:para role="desc">The Dublin Core
-												<db:token>creator</db:token> element, as defined in
+												<db:literal>creator</db:literal> element, as defined in
 												<db:xref linkend="bib_dublinCore"/></db:para>
 									</xs:documentation>
 								</xs:annotation>
@@ -598,7 +598,7 @@
 								<xs:annotation>
 									<xs:documentation>
 										<db:para role="desc">The Dublin Core
-												<db:token>coverage</db:token> element, as defined
+												<db:literal>coverage</db:literal> element, as defined
 											in <db:xref linkend="bib_dublinCore"/></db:para>
 									</xs:documentation>
 								</xs:annotation>
@@ -607,7 +607,7 @@
 								<xs:annotation>
 									<xs:documentation>
 										<db:para role="desc">The Dublin Core
-												<db:token>contributor</db:token> element, as
+												<db:literal>contributor</db:literal> element, as
 											defined in <db:xref linkend="bib_dublinCore"/></db:para>
 									</xs:documentation>
 								</xs:annotation>
@@ -628,8 +628,8 @@
 							<xs:element name="size" type="xs:int" minOccurs="1" maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>
-										<db:para role="desc">The size of the content being
-											described, in bytes.</db:para>
+										<db:para role="desc">The total size of the resources making up the Content,
+											in bytes.</db:para>
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
@@ -660,7 +660,7 @@
 						<db:para role="desc">The publication category for the
 							Content.</db:para>
 						<db:para>Reading Systems may use the value provided here to categorize or
-							sort Content items on behalf of the User.</db:para>
+							sort Content items.</db:para>
 						<db:para>Any value is allowed. The values <db:literal>BOOK</db:literal>,
 								<db:literal>MAGAZINE</db:literal>,
 								<db:literal>NEWSPAPER</db:literal> and
@@ -675,11 +675,11 @@
 					<xs:documentation>
 						<db:para>Specifies whether the <db:xref linkend="term_service"/> requires
 							this <db:xref linkend="term_content"/> to be returned.</db:para>
-						<db:para>If this attribute is true and the Content is issued, it is a contract from the <db:xref
+						<db:para>If this attribute is <db:literal>true</db:literal> and the Content is issued, it is a contract from the <db:xref
 								linkend="term_service"/> to the <db:xref
 								linkend="term_readingSystem"/> that the <db:xref
 								linkend="term_readingSystem"/> will at some point <db:link
-								linkend="op_returnContent">return the content</db:link></db:para>
+								linkend="op_returnContent">return the Content</db:link>.</db:para>
 						<db:para>Reading Systems should present Users with appropriate prompts if
 							they try to return <db:xref linkend="term_purchase"
 							/>.</db:para>
@@ -796,7 +796,7 @@
 								<xs:annotation>
 									<xs:documentation>
 										<db:para>The label of this
-												<db:type>contentItem</db:type>.</db:para>
+												Content item.</db:para>
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
@@ -805,8 +805,7 @@
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">The <db:xref
-											linkend="term_contentIdentifier"/> of the Content that
-										this <db:type>contentItem</db:type> represents.</db:para>
+											linkend="term_contentIdentifier"/> for this Content item.</db:para>
 									<db:para>Note that this value must be identical to the value of
 										the <db:literal>dc:identifier</db:literal> element in the <db:xref
 											linkend="tp_contentMetadata"/> of this Content
@@ -820,7 +819,7 @@
 								<xs:documentation>
 									<db:para>The last modified time of this contentItem. This is
 										the last modified time of the most recently modified resource
-										in the Content's resources list.</db:para>
+										in the Content's <db:type><db:xref linkend="tp_resources"/></db:type> list.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
@@ -843,8 +842,8 @@
 			<xs:attribute name="firstItem" type="xs:integer" use="optional">
 				<xs:annotation>
 					<xs:documentation>
-						<db:para>The 0-based index of the first content item provided in this instance of contentList.
-							This attribute must be provided when a contentList is segmented. If this
+						<db:para>The 0-based index of the first content item provided in this instance of <db:type>contentList</db:type>.
+							This attribute must be provided when a <db:type>contentList</db:type> is segmented. If this
 							attribute is present, the <db:code>lastItem</db:code> attribute must
 							also be present.</db:para>
 					</xs:documentation>
@@ -853,8 +852,8 @@
 			<xs:attribute name="lastItem" type="xs:integer" use="optional">
 				<xs:annotation>
 					<xs:documentation>
-						<db:para>The 0-based index of last content item provided in this instance of contentList.
-							This attribute must be provided when a contentList is segmented. If this
+						<db:para>The 0-based index of last content item provided in this instance of <db:type>contentList</db:type>.
+							This attribute must be provided when a <db:type>contentList</db:type> is segmented. If this
 							attribute is present, the <db:code>firstItem</db:code> attribute must
 							also be present.</db:para>
 					</xs:documentation>
@@ -863,23 +862,23 @@
 			<xs:attribute name="id" type="xs:ID" use="required">
 				<xs:annotation>
 					<xs:documentation>
-						<db:para role="desc">The identifier of this contentList.</db:para>
-						<db:para>If this contentList is being returned on a call of <db:xref
+						<db:para role="desc">The identifier of the <db:type>contentList</db:type>.</db:para>
+						<db:para>If this <db:type>contentList</db:type> is being returned on a call of <db:xref
 								linkend="op_getContentList"/> where one of the reserved values
 								<db:literal>new</db:literal>, <db:literal>issued</db:literal> or
 								<db:literal>expired</db:literal> is passed as the value of that operations
-								<db:parameter>id</db:parameter> parameter, then the value of this id
+								<db:parameter>id</db:parameter> parameter, then the value of this
 							attribute must equal the passed value, i.e. be <db:literal>new</db:literal>,
 								<db:literal>issued</db:literal> or <db:literal>expired</db:literal>
 							respectively.</db:para>
 						<db:para>If the value of this attribute is not one of the three reserved
-							values above, then this is an arbitrary contentList, typically exposed
+							values above, then this is an arbitrary <db:type>contentList</db:type>, typically exposed
 							as an endpoint in a <db:link
 								linkend="fundamentals_content_selection_browse">dynamic menu
 								search</db:link> operation sequence.</db:para>
-						<db:para>Services should persist contentList identitifiers for the
+						<db:para>Services should persist <db:type>contentList</db:type> identitifiers for the
 							duration of a Session. Services must not expose multiple arbitrary
-							contentLists with the same identifier during the same session.</db:para>
+							<db:type>contentList</db:type>s with the same identifier during the same session.</db:para>
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -911,27 +910,24 @@
 												<xs:enumeration value="TEXT_NUMERIC">
 												<xs:annotation>
 												<xs:documentation>
-												<db:para>The Reading System supports User input
-												using a numeric keypad. This value is a subset of
-												<db:varname>TEXT_ALPHANUMERIC</db:varname>.</db:para>
+												<db:para>The Service allows numeric-only responses
+												to the question.</db:para>
 												</xs:documentation>
 												</xs:annotation>
 												</xs:enumeration>
 												<xs:enumeration value="TEXT_ALPHANUMERIC">
 												<xs:annotation>
 												<xs:documentation>
-												<db:para role="desc">The Reading System supports
-												User input using an alphanumeric
-												keyboard. This value is a superset of
-												<db:varname>TEXT_NUMERIC</db:varname>.</db:para>
+												<db:para>The Service allows text and numeric responses
+												to the question.</db:para>
 												</xs:documentation>
 												</xs:annotation>
 												</xs:enumeration>
 												<xs:enumeration value="AUDIO">
 												<xs:annotation>
 												<xs:documentation>
-												<db:para>The Reading System supports User input
-												in an audio format.</db:para>
+												<db:para>The Service allows audio responses
+												to the question.</db:para>
 												</xs:documentation>
 												</xs:annotation>
 												</xs:enumeration>
@@ -953,7 +949,7 @@
 		<xs:annotation>
 			<xs:documentation>
 				<db:para role="desc">A sequence of questions.</db:para>
-				<db:para role="req">The questions element must contain either</db:para>
+				<db:para role="req">The questions element must contain either:</db:para>
 					<db:itemizedlist>
 						<db:listitem>
 							<db:para>exactly one <db:type>contentListRef</db:type>; or</db:para>
@@ -968,10 +964,10 @@
 					</db:itemizedlist>
 				<db:para role="desc">If the questions element contains a
 						<db:type>contentListRef</db:type> or a <db:type>label</db:type> child
-					element, the Reading system is not required to call the getQuestions operation
-					as these child elements indicate a endpoint to the sequence of questions that
+					element, the Reading system is not required to call the <db:function><db:xref linkend="op_getQuestions/"></db:function> operation
+					as these child elements indicate that this is an endpoint to the sequence of questions that
 					comprise a dynamic menu.</db:para>
-				<db:para>For informative examples on the usage of the questions type, refer to
+				<db:para>For informative examples on the usage of the <db:type>questions</db:type> type, refer to the
 						<db:xref linkend="bib_dynamicMenusPrimer"/>.</db:para>
 			</xs:documentation>
 		</xs:annotation>
@@ -984,12 +980,8 @@
 				<xs:element name="contentListRef" type="xs:ID">
 					<xs:annotation>
 						<xs:documentation>
-							<db:para>The identifier of a <db:xref linkend="tp_contentList"/>. The
-								referenced <db:type>contentList</db:type> is retrieved by calling <db:function>
-									<db:xref linkend="op_getContentList"/>
-								</db:function> with the <db:xref linkend="tp_contentList"/> identifier as that
-								operation's <db:parameter>id</db:parameter> parameter.</db:para>
-							<db:para>A contentListRef as a child of the questions element indicates
+							<db:para>The identifier of a <db:xref linkend="tp_contentList"/>.</db:para>
+							<db:para>A contentListRef as a child of the <db:type>questions</db:type> element indicates
 								an endpoint of the sequence of questions that comprise a dynamic
 								menu. </db:para>
 						</xs:documentation>
@@ -999,7 +991,7 @@
 					<xs:annotation>
 						<xs:documentation>
 							<db:para>A label representing a message to the User. A label as
-								a child of the questions element indicates and endpoint of the
+								a child of the <db:type>questions</db:type> element indicates an endpoint of the
 								sequence of questions that comprise a dynamic menu.</db:para>
 						</xs:documentation>
 					</xs:annotation>
@@ -1034,7 +1026,7 @@
 					<xs:documentation>
 						<db:para role="desc">Specifies whether multiple selections are allowed in
 							the User response to this question. The default value is
-								<db:varname>false</db:varname>.</db:para>
+								<db:literal>false</db:literal>.</db:para>
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -1046,7 +1038,7 @@
 			<xs:documentation>
 				<db:para>A set of User responses to <db:xref
 						linkend="tp_questions"/> provided by the Service.</db:para>
-				<db:para>For informative examples on the usage of the userResponses type, refer to
+				<db:para>For informative examples of the <db:type>userResponses</db:type> type, refer to the
 						<db:xref linkend="bib_dynamicMenusPrimer"/>.</db:para>
 			</xs:documentation>
 		</xs:annotation>
@@ -1055,15 +1047,15 @@
 				<xs:element name="userResponse" minOccurs="1" maxOccurs="unbounded">
 					<xs:annotation>
 						<xs:documentation>
-							<db:para>A response to a question. Either the value attribute
-								(for inputQuestion or multipleChoiceQuestion responses) or the data
+							<db:para>A response to a question. Either the <db:code>value</db:code> attribute
+								(for <db:type>inputQuestion</db:type> or <db:type>multipleChoiceQuestion</db:type> responses) or the <db:code>data</db:code>
 								element (for audio-based responses) must be present.</db:para>
-							<db:para role="note">Note: If a userResponses element is a response to a
+							<db:note>If a <db:type>userResponses</db:type> element is a response to a
 									<db:xref linkend="tp_multipleChoiceQuestion"/> where multiple
-								selections are allowed, then multiple userResponse elements must be
+								selections are allowed, then multiple <db:type>userResponse</db:type> elements must be
 								used to represent each selection (where each userResponse refers to
-								the same question via the <db:varname>questionID</db:varname>
-								attribute).</db:para>
+								the same question via the <db:code>questionID</db:code>
+								attribute).</db:note>
 						</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
@@ -1075,8 +1067,7 @@
 											response.</db:para>
 										<db:para>Services must accept audio in the <db:xref
 												linkend="bib_wav"/> format. Services may
-											support additional audio formats to be used when a
-											Reading System posts audio, and must specify those formats
+											support additional audio formats, and must specify those formats
 											in <db:xref linkend="tp_serviceAttributes"
 											/>.</db:para>
 									</xs:documentation>
@@ -1089,7 +1080,7 @@
 						<xs:attribute name="questionID" type="xs:NMTOKEN" use="required">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para>The identifier of a question being answered.</db:para>
+									<db:para>The identifier of the question being answered.</db:para>
 									<db:para>The following three values of this attribute are
 										reserved for use as defined below:</db:para>
 									<db:itemizedlist>
@@ -1104,8 +1095,7 @@
 										</db:listitem>
 										<db:listitem>
 											<db:para><db:literal>search</db:literal></db:para>
-											<db:para>The Search menu from the
-												Service.</db:para>
+											<db:para>The Service's search menu.</db:para>
 											<db:para>A Service is not required to support the
 												<db:literal>search</db:literal> reserved identifier. A
 												Service must explicitly declare whether it supports
@@ -1129,9 +1119,9 @@
 						<xs:attribute name="value" type="xs:string" use="optional">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para>In the case of an inputQuestion, this attribute
+									<db:para>In the case of an <db:type>inputQuestion</db:type>, this attribute
 										contains the textual response. In the case of a
-										multipleChoiceQuestion, it contains the ID of the
+										<db:type>multipleChoiceQuestion</db:type>, it contains the ID of the
 										choice.</db:para>
 								</xs:documentation>
 							</xs:annotation>
@@ -1285,11 +1275,9 @@
 				<xs:element name="supportsSearch" type="xs:boolean" minOccurs="1" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>
-							<db:para role="desc">Specifies whether the Service supports searching of
-								its Content using <db:link
-									linkend="fundamentals_dynamic_menus">dynamic menus</db:link>. See also the
-									<db:literal>DYNAMIC_MENUS</db:literal> value in <db:xref
-									linkend="tp_supportedOptionalOperations"/></db:para>
+							<db:para role="desc">Specifies whether <db:xref linkend="op_getQuestions"/>
+								with the reserved parameter <db:literal>search</db:literal> is
+								supported by the Service.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 				</xs:element>
@@ -1320,14 +1308,14 @@
 						<xs:documentation>
 							<db:para role="desc">Specifies whether this Service supports the
 								inclusion of audio in <db:xref linkend="tp_label"/>s.</db:para>
-							<db:para>If this field is <db:literal>true</db:literal> and 
+							<db:para>If the value of this element is <db:literal>true</db:literal> and 
 									the <db:xref
 									linkend="tp_requiresAudioLabels"/> element of <db:xref
 									linkend="tp_readingSystemAttributes"/> is <db:literal>true</db:literal>
 								in the Reading System's most recent call to <db:xref
 									linkend="op_setReadingSystemAttributes"/>, then
-								the Service must include the <db:xref linkend="tp_audio"/> element in all
-									<db:xref linkend="tp_label"/>s it provides.</db:para>
+								the Service must include the <db:xref linkend="tp_audio"/> element in each
+									<db:xref linkend="tp_label"/> it provides.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 				</xs:element>
