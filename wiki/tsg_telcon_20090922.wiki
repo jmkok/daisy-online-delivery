@@ -1,4 +1,3 @@
-
 Present: Matt, Geoff, Nick, Jelle, Simon and Kenny. 
 
 Regrets: Markus and George. 
@@ -7,7 +6,7 @@ Regrets: Markus and George.
  
 === New Action Items ===
 
-* Markus fix the &pos; entity problem.
+* Markus fix the &apos; entity problem.
   * Geoff post the External Consultants comments to the issue tracker (done)
 
 === Previous Unfinished Action Items ===
@@ -20,13 +19,13 @@ Regrets: Markus and George.
 
 geoff: CNIB submitted the draft to an external consultant. There are three pages of technical comments. Consultant is suggesting a reorganisation of the spec. 
 
-matt: I am not convinced that the spec requires reorganisation. I think the issue is more clarification.
+matt: I am not convinced that the spec requires reorganisation at this time. I think the issue is more clarification.
 
 geoff: There are assumptions that have been made about the spec that are not true.  
 
 Geoff: I will post the issues to the issue tracker.
 
-matt: There is an &apos; entity in the spec that causes issues in IE. Firefox seems to be fine with this. Markus will need to fix this as a post processing step (perhaps globally replace &pos;)
+matt: There is an &apos; entity in the spec that causes issues in IE. Firefox seems to be fine with this. Markus will need to fix this as a post processing step (perhaps globally replace &apos;)
 
 kenny: The same issue exists in the zed AI spec documentation. 
 
@@ -63,5 +62,3 @@ geoff: Its not broken; it just goes to a private mailing list.
 matt: Are there any official reviews going on of the spec?
 
 nick: The bigger group knows that we are on the way to getting endorsement from the board so we should hopefully not get any last minute comments.   
-
-
