@@ -278,7 +278,7 @@
 												<db:para role="desc">Refers to a list of Content
 												that the Service currently has recorded as issued
 												to the
-												User (see <db:xref linkend="op_issueContent"/>).</db:para>
+												User (see <db:function><db:xref linkend="op_issueContent"/></db:function>).</db:para>
 												<db:para>The list must include all
 												Borrowable Content items that have been issued
 												regardless of whether they have been downloaded
@@ -356,7 +356,7 @@
 									<db:para>The value of the <db:code>id</db:code> attribute on the
 										returned <db:type>contentList</db:type> must match the value
 										of the <db:parameter>id</db:parameter> parameter passed to
-										the <db:xref linkend="op_getContentList"/>
+										the <db:function><db:xref linkend="op_getContentList"/></db:function>
 										operation.</db:para>
 								</xs:documentation>
 							</xs:annotation>
@@ -398,7 +398,7 @@
 								<xs:documentation>
 									<db:para role="desc">Contains the announcements to mark as read
 										(expressed as references to the ID values
-										specified in the <db:xref linkend="tp_announcements"/>
+										specified in the <db:type><db:xref linkend="tp_announcements"/></db:type>
 										type).</db:para>
 								</xs:documentation>
 							</xs:annotation>
@@ -431,8 +431,8 @@
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">Contains the response to a
-										question, or, as defined in <db:xref
-											linkend="tp_userResponse"/>, one of the three reserved
+										question, or, as defined in <db:type><db:xref
+											linkend="tp_userResponse"/></db:type>, one of the three reserved
 										IDs: <db:literal>default</db:literal>,
 											<db:literal>search</db:literal> or
 											<db:literal>back</db:literal>.</db:para>
@@ -469,8 +469,8 @@
 									linkend="term_contentIdentifier"/> of the Content
 										item for which the metadata is being requested (defined by the
 											<db:varname>id</db:varname> attribute of the relevant
-											<db:varname>contentItem</db:varname> in the <db:xref
-											linkend="tp_contentList"/> type).</db:para>
+											<db:varname>contentItem</db:varname> in the <db:type><db:xref
+											linkend="tp_contentList"/></db:type> type).</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -503,7 +503,7 @@
 										linkend="term_contentIdentifier"/> of the
 										Content item for which resources are being requested (as defined
 										in the <db:xref linkend="bib_dublinCore"/> identifier field
-										of the <db:xref linkend="tp_contentMetadata"/> type).
+										of the <db:type><db:xref linkend="tp_contentMetadata"/></db:type> type).
 									</db:para>
 								</xs:documentation>
 							</xs:annotation>
@@ -1103,7 +1103,7 @@
 
 		<operation name="getContentMetadata">
 			<documentation>
-				<db:para role="desc">Retrieves <db:xref linkend="tp_contentMetadata"/> for the
+				<db:para role="desc">Retrieves <db:type><db:xref linkend="tp_contentMetadata"/></db:type> for the
 					specified Content.</db:para>
 				<db:para>This operation must be called as part of the 
 					<db:xref linkend="def_contentRetrievalSequence"/>.</db:para>
@@ -1112,9 +1112,6 @@
 			<output message="tns:getContentMetadata_outputMessage"/>
 			<fault name="getContentMetadata_internalServerErrorFault"
 				message="tns:internalServerErrorFault_message"/>
-			<!--
-			<fault name="getContentMetadata_invalidOperationFault"
-				message="tns:invalidOperationFault_message"/> -->
 			<fault name="getContentMetadata_invalidParameterFault"
 				message="tns:invalidParameterFault_message"/>
 			<fault name="getContentMetadata_noActiveSessionFault"
@@ -1123,10 +1120,10 @@
 
 		<operation name="getContentResources">
 			<documentation>
-				<db:para role="desc">Retrieves <db:xref linkend="tp_resources"/> for the specified
+				<db:para role="desc">Retrieves <db:type><db:xref linkend="tp_resources"/></db:type> for the specified
 					Content.</db:para>
-				<db:para role="prereq">This operation is only valid if a call to <db:xref
-						linkend="op_issueContent"/> with a result of <db:literal>true</db:literal>
+				<db:para role="prereq">This operation is only valid if a call to <db:function><db:xref
+						linkend="op_issueContent"/></db:function> with a result of <db:literal>true</db:literal>
 					has been made for the given Content during the current or a previous
 					Session.</db:para>
 			</documentation>
@@ -1178,8 +1175,8 @@
 					<db:link linkend="fundamentals_content_selection_browse">dynamic menu search</db:link> 
 					operation sequence). In this case, the
 						<db:parameter>id</db:parameter> value used to refer to the list is provided
-					in the return type of a previous operation. (Refer to the <db:xref
-						linkend="tp_questions"/> type for more information.) </db:para>
+					in the return type of a previous operation. (Refer to the <db:type><db:xref
+						linkend="tp_questions"/></db:type> type for more information.) </db:para>
 			</documentation>
 			<input message="tns:getContentList_inputMessage"/>
 			<output message="tns:getContentList_outputMessage"/>
@@ -1213,8 +1210,8 @@
 		<operation name="markAnnouncementsAsRead">
 			<documentation>
 				<db:para role="desc">Marks the specified announcement(s) as read.</db:para>
-				<db:para role="prereq">This operation is only valid if a previous call to <db:xref
-						linkend="op_getServiceAnnouncements"/> has been made during the
+				<db:para role="prereq">This operation is only valid if a previous call to <db:function><db:xref
+						linkend="op_getServiceAnnouncements"/></db:function> has been made during the
 					Session.</db:para>
 			</documentation>
 			<input message="tns:markAnnouncementsAsRead_inputMessage"/>
@@ -1274,10 +1271,8 @@
 			<documentation>
 				<db:para role="desc">Requests that a Service store the supplied bookmarks for a 
 					Content item.</db:para>
-				<!-- <db:para role="note">Note that the publication identifier is embedded in the
-						<db:xref linkend="tp_bookmarkSet"/> type.</db:para> -->
-				<db:para role="note">This operation only supports the storage of bookmarks
-					for one Content item at a time.</db:para>
+				<db:note><db:para>This operation only supports the storage of bookmarks
+					for one Content item at a time.</db:para></db:note>
 			</documentation>
 			<input message="tns:setBookmarks_inputMessage"/>
 			<output message="tns:setBookmarks_outputMessage"/>
