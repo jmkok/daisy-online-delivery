@@ -1115,7 +1115,7 @@
                     access content stored on a <xref linkend="term_serviceDelegate"/>'s servers. </para>
 
                 <para> The URI of each resources secured with Basic Authentication must include the
-                    credentials required to access that resource. refer to <xref
+                    credentials required to access that resource. Refer to <xref
                         linkend="technologies_basic_authentication"/>. </para>
             </section>
 
