@@ -116,7 +116,7 @@
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">Specifies whether the Service
-										succesfully received the ReadingSystemAttributes.</db:para>
+										successfully received the ReadingSystemAttributes.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -977,7 +977,7 @@
 						linkend="ft_invalidParameterFault"/>, <db:xref
 						linkend="ft_operationNotSupportedFault"/> and <db:xref
 						linkend="ft_noActiveSessionFault"/> faults. At the event of this fault being
-					issued, Reading Systems may attempt to reinvoke the operation that
+					issued, Reading Systems may attempt to re-invoke the operation that
 					failed.</db:para>
 			</documentation>
 		</part>
@@ -1052,7 +1052,7 @@
 			<documentation>
 				<db:para role="desc">Logs a Reading System off a Service.</db:para>		
 				<db:para>A return value of <db:literal>false</db:literal> or an issued fault both
-				indicate that the operation was not succesful.</db:para>
+				indicate that the operation was not successful.</db:para>
 			</documentation>
 			<input message="tns:logOff_inputMessage"/>
 			<output message="tns:logOff_outputMessage"/>
@@ -1169,7 +1169,7 @@
 		<operation name="getContentList">
 			<documentation>
 				<db:para role="desc">Retrieves a list of Content items.</db:para>
-				<db:para>The list returned by the Service can be a precomposed type, in which case it
+				<db:para>The list returned by the Service can be a pre-composed type, in which case it
 					is retrieved by passing one of the three reserved values defined in the
 						<db:parameter>id</db:parameter> parameter below. (Refer to <db:xref
 						linkend="fundamentals"/>, for information on the contexts in which these reserved
