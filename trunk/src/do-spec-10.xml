@@ -188,8 +188,8 @@
                     <para>The unique identifier assigned to a <xref linkend="term_content"/> item.
                         This identifier is defined by the <xref linkend="term_service"/> and is
                         exposed in the <xref linkend="bib_dublinCore"/>
-                        <literal>identifier</literal> field of the <xref
-                            linkend="tp_contentMetadata"/> type. The identifier must be unique
+                        <literal>identifier</literal> field of the <type><xref
+                            linkend="tp_contentMetadata"/></type> type. The identifier must be unique
                         within the scope of the <xref linkend="term_service"/> and it must not
                         change over time.</para>
                     <note>
@@ -1807,17 +1807,6 @@
                 </title>
                 <date>August 1998</date>
             </biblioentry>
-            <!--
-        <biblioentry xml:id="bib_RFC2616">
-            <abbrev>RFC 2616</abbrev>
-            <title>
-            <link xlink:href="http://tools.ietf.org/html/rfc2616">Hypertext Transfer Protocol - HTTP/1.1
-            
-            </link>
-            </title>
-            <date>June 1999</date>
-        </biblioentry>
--->
             <biblioentry xml:id="bib_RFC2617">
                 <abbrev>RFC 2617</abbrev>
                 <title>
@@ -1861,19 +1850,6 @@
                 </author>
                 <date>28 October 2004</date>
             </biblioentry>
-            <!--
-        <biblioentry xml:id="refXML">
-            <abbrev>XML</abbrev>
-            <title>
-                <link xlink:href="http://www.w3.org/TR/2006/REC-xml-20060816/">Extensible Markup
-                    Language (XML) 1.0 (Fourth Edition)</link>
-            </title>
-            <author>
-                <personname>T. Bray, et al.</personname>
-            </author>
-            <date>November 2008</date>
-        </biblioentry>
-        -->
             <biblioentry xml:id="bib_http11">
                 <abbrev>HTTP 1.1</abbrev>
                 <title>
