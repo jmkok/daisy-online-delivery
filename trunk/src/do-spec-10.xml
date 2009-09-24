@@ -510,7 +510,7 @@
                 <note>
                     <para> HTTP Basic Authentication credentials must not be used to log on to a
                             <xref linkend="term_service"/>. For authenticating a SOAP session, refer to
-                            <xref linkend="technologies_authentication"/>. </para>
+                            <xref linkend="fundamentals_session_initializationSequence"/>. </para>
                 </note>
 
                 <para>A compliant <xref linkend="term_readingSystem"/> must support Basic
