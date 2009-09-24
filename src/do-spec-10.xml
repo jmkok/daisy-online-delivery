@@ -708,14 +708,16 @@
                     <para>The following conditions apply to any item of <xref linkend="term_purchase"/>:</para>
                     <itemizedlist>
                         <listitem>
-                            <para> the <code>requiresReturn</code> attribute of the <xref linkend="term_content"/>'s
+                            <para>The <code>requiresReturn</code> attribute of the <xref linkend="term_content"/>'s
                                 <type><xref linkend="tp_contentMetadata"/></type> type must be set to
-                                <literal>false</literal>; </para>
+                                <literal>false</literal>.</para>
                         </listitem>
                         <listitem>
-                            <para> if <link linkend="term_issue">issued</link>, the <xref linkend="term_content"/> item
-                                may be listed in the <xref linkend="term_user"/>'s <literal>issued</literal> <xref linkend="tp_contentList"/>
-                                but should not be listed in the <literal>expired</literal> <xref linkend="tp_contentList"/>.</para>
+                            <para>If <link linkend="term_issue">issued</link>, the <xref linkend="term_content"/> item
+                                may be listed in the <xref linkend="term_user"/>'s <literal>issued</literal> <type><xref linkend="tp_contentList"/></type>
+                                but must not be listed in the <literal>expired</literal> <type><xref linkend="tp_contentList"/></type>.
+								This specification does not specify the lifetime of <xref linkend="term_purchase"/>'s availability
+								in the <literal>issued</literal> <type><xref linkend="tp_contentList"/></type>.</para>
                         </listitem>
                     </itemizedlist>
                 </section>
