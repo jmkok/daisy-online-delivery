@@ -244,7 +244,7 @@
 								<xs:annotation>
 									<xs:documentation>
 										<db:para role="desc">Specifies whether the Reading System requires audio
-											labels for messages issued by
+											labels for messages provided by
 											the Service (i.e. whether the <db:type><db:xref linkend="tp_audio"/></db:type> child element of 
 											<db:type><db:xref linkend="tp_label"/></db:type> is required).</db:para>
 										<db:para> Refer to the <db:type><db:xref linkend="tp_supportsAudioLabels"/></db:type>

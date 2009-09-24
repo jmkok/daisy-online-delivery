@@ -276,9 +276,9 @@
 											<db:term>issued</db:term>
 											<db:listitem>
 												<db:para role="desc">Refers to a list of Content
-												that the Service currently has recorded as issued
+												that the Service currently has recorded as <db:link linkend="term_issue"/>issued</db:link>
 												to the
-												User (see <db:function><db:xref linkend="op_issueContent"/></db:function>).</db:para>
+												User (refer to <db:function><db:xref linkend="op_issueContent"/></db:function>).</db:para>
 												<db:para>The list must include all
 												Borrowable Content items that have been issued
 												regardless of whether they have been downloaded
@@ -287,7 +287,7 @@
 												that have been issued.
 												The list excludes
 												Content that has <db:xref
-												linkend="contentList_expired"/>.
+												linkend="fundamentals_serviceModels_lender_expiry"/>.
 												</db:para>
 												<db:para>Services that provide Borrowable Content
 												must recognize this identifier.</db:para>
@@ -308,7 +308,7 @@
 											<db:term>expired</db:term>
 											<db:listitem>
 												<db:para>Refers to a list of Content that has been
-												<db:xref linkend="contentList_issued"/>
+												<db:link linkend="term_issue"/>issued</db:link>
 												to the User but has
 												<db:link linkend="fundamentals_serviceModels_lender_expiry">expired</db:link>.</db:para>
 											</db:listitem>
