@@ -623,7 +623,7 @@
                             </function> operation; and</para>
                         </listitem>
                         <listitem>
-                            <para>offer the <literal>issued</literal> <xref linkend="tp_contentList"/></para>
+                            <para>offer the <literal>issued</literal> <type><xref linkend="tp_contentList"/></type></para>
                         </listitem>
                     </itemizedlist>
                     <para>The following conditions apply to any item of <xref linkend="term_borrow"/>:</para>
@@ -636,7 +636,7 @@
                         <listitem>
                             <para> if <link linkend="term_issue">issued</link>, the <xref linkend="term_content"/> item
                                 must be listed in either the <xref linkend="term_user"/>'s <literal>issued</literal> or <literal>expired</literal>
-                                <xref linkend="tp_contentList"/> until it is <link linkend="term_return">returned</link>; and </para>
+                                <type><xref linkend="tp_contentList"/></type> until it is <link linkend="term_return">returned</link>; and </para>
                         </listitem>
                         <listitem>
                             <para> the <xref linkend="term_service"/> must allow the <xref linkend="term_readingSystem"/> to call 
@@ -926,7 +926,7 @@
                 </itemizedlist>
 
 				<para>A <xref linkend="term_readingSystem"/> may also make use of the <literal>issued</literal>
-					<xref linkend="tp_contentList"/>, if available, to access <xref linkend="term_content"/>
+					<type><xref linkend="tp_contentList"/></type>, if available, to access <xref linkend="term_content"/>
 					that has already been issued.</para>
                 <para> For automated downloading scenarios using the out-of-band selection method,
                     the <xref linkend="term_readingSystem"/> must also execute the steps outlined in
@@ -1434,7 +1434,7 @@
                         linkend="bib_z3986-2005-bkmk"/> is revised to be more agnostic in terms of
                     the content types it supports, the specification only notes that <xref
                         linkend="term_service"/>s should be designed with the awareness that a <xref
-                        linkend="term_readingSystem"/> may post a <xref linkend="tp_bookmarkSet"/>
+                        linkend="term_readingSystem"/> may post a <type><xref linkend="tp_bookmarkSet"/></type>
                     with a content type other than ANSI/NISO Z39.86. </para>
 
                 <para> For example, a <xref linkend="term_readingSystem"/> may re-purpose this
@@ -1584,8 +1584,8 @@
                             <para> A <xref linkend="term_service"/> must specify if an input
                                 question requires a numeric, alphanumeric or audio-based response.
                                 The required response modality for an input question is specified in
-                                the <xref linkend="tp_inputTypes"/> element of the <xref
-                                    linkend="tp_inputQuestion"/> type. </para>
+                                the <type><xref linkend="tp_inputTypes"/></type> element of the <type><xref
+                                    linkend="tp_inputQuestion"/></type> type. </para>
                         </note>
                     </listitem>
 					</varlistentry>
