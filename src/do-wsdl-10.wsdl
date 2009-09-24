@@ -276,7 +276,7 @@
 											<db:term>issued</db:term>
 											<db:listitem>
 												<db:para role="desc">Refers to a list of Content
-												that the Service currently has recorded as <db:link linkend="term_issue"/>issued</db:link>
+												that the Service currently has recorded as <db:link linkend="term_issue">issued</db:link>
 												to the
 												User (refer to <db:function><db:xref linkend="op_issueContent"/></db:function>).</db:para>
 												<db:para>The list must include all
@@ -308,7 +308,7 @@
 											<db:term>expired</db:term>
 											<db:listitem>
 												<db:para>Refers to a list of Content that has been
-												<db:link linkend="term_issue"/>issued</db:link>
+												<db:link linkend="term_issue">issued</db:link>
 												to the User but has
 												<db:link linkend="fundamentals_serviceModels_lender_expiry">expired</db:link>.</db:para>
 											</db:listitem>

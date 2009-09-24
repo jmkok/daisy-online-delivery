@@ -403,7 +403,7 @@
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
-						<xs:attribute name="size" type="xs:int" use="required">
+						<xs:attribute name="size" type="xs:int" use="optional">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">The size, in bytes, of the label's
