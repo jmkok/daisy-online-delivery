@@ -6,27 +6,27 @@
     <title>Specification for the DAISY Online Delivery Protocol</title>
 
     <info>
-        <releaseinfo>Working Group Draft</releaseinfo>
-        <pubdate>10 September 2009</pubdate>
+        <releaseinfo>Draft Specification for Trial Use</releaseinfo>
+        <pubdate>27 September 2009</pubdate>
 
         <annotation role="specLinks">
             <para role="specLabel">This version:</para>
             <para role="specLink">
                 <link
-                    xlink:href="http://www.daisy.org/projects/daisy-online-delivery/drafts/20090910/"
-                    >http://www.daisy.org/projects/daisy-online-delivery/drafts/20090910/do-spec-20090910.html</link>
+                    xlink:href="http://www.daisy.org/projects/daisy-online-delivery/drafts/20090927/do-spec-20090927.html"
+                    >http://www.daisy.org/projects/daisy-online-delivery/drafts/20090927/do-spec-20090927.html</link>
             </para>
             <para role="specLabel">This version as a zip archive:</para>
             <para role="specLink">
                 <link
-                    xlink:href="http://www.daisy.org/projects/daisy-online-delivery/drafts/20090910/do-spec-20090910.zip"
-                    >http://www.daisy.org/projects/daisy-online-delivery/drafts/20090910/do-spec-20090910.zip</link>
+                    xlink:href="http://www.daisy.org/projects/daisy-online-delivery/drafts/20090927/do-spec-20090927.zip"
+                    >http://www.daisy.org/projects/daisy-online-delivery/drafts/20090927/do-spec-20090927.zip</link>
             </para>
             <para role="specLabel">Previous version:</para>
             <para role="specLink">
                 <link
-                    xlink:href="http://daisy-online-delivery.googlecode.com/files/do-draft-20090828.zip"
-                    >http://daisy-online-delivery.googlecode.com/files/do-draft-20090828.zip</link>
+                    xlink:href="http://www.daisy.org/projects/daisy-online-delivery/drafts/20090910/do-spec-20090910.html"
+                    >http://www.daisy.org/projects/daisy-online-delivery/drafts/20090910/do-spec-20090910.html</link>
             </para>
         </annotation>
         <annotation xml:id="editors">
