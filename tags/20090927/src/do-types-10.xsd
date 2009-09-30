@@ -1,0 +1,1443 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified"
+	targetNamespace="http://www.daisy.org/ns/daisy-online/"
+	xmlns="http://www.daisy.org/ns/daisy-online/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:db="http://docbook.org/ns/docbook"
+	xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+	<xs:annotation>
+		<xs:documentation> This WXS document and the entities referenced from within it are a
+			normative part of the DAISY Online Protocol Specification
+			(http://www.daisy.org/projects/daisy-online-delivery/). Version: 20090910 (Second
+			Working Group Draft) </xs:documentation>
+	</xs:annotation>
+
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+
+	<xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="dc.xsd"/>
+
+	<xs:import namespace="http://www.daisy.org/z3986/2005/bookmark/"
+		schemaLocation="bookmark-2005-1.xsd"/>
+
+	<xs:import namespace="http://www.daisy.org/DRM/2005/KeyExchange" schemaLocation="kxo.xsd"/>
+
+	<xs:element name="readingSystemAttributes">
+		<xs:annotation>
+			<xs:documentation>
+				<db:para role="desc">Specifies Reading System properties.</db:para>
+				<db:para>The properties specified are valid until the end of the
+					Session.</db:para>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:any namespace="##other" processContents="skip"/>
+				</xs:choice>
+
+				<xs:element name="manufacturer" type="xs:string" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							<db:para>The manufacturer of the Reading System.</db:para>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="model" type="xs:string" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							<db:para>The model name or designation of the Reading System.</db:para>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<xs:element name="serialNumber" type="xs:string" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							<db:para>The serial number of the Reading System, if such is
+								available.</db:para>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<xs:element name="version" type="xs:string" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							<db:para>The version of the Reading System.</db:para>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<xs:element name="config" minOccurs="1" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="supportsMultipleSelections" type="xs:boolean"
+								minOccurs="1" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">Specifies whether the Reading System
+											supports multiple selections for a <db:type><db:xref
+												linkend="tp_multipleChoiceQuestion"/></db:type>. </db:para>
+										<db:para role="req">If this element is set to false, the
+											Service must not present a <db:type><db:xref
+												linkend="tp_multipleChoiceQuestion"/></db:type> with its
+											<db:code>allowMultipleSelections</db:code>
+											attribute set to <db:literal>true</db:literal> to the
+											Reading System.</db:para>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="preferredUILanguage" minOccurs="1" maxOccurs="1"
+								type="xs:language">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para>The user's preferred language of
+											communication with the Service.</db:para>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="bandwidth" type="xs:int" minOccurs="0" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para>An estimate of the bandwidth that the Reading
+											System allocates for the Session, in kilobits
+											per second.</db:para>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+
+							<xs:element name="supportedContentFormats" minOccurs="1" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">Specifies which Content formats the
+											Reading System supports.</db:para>
+										<db:para>The content of this element follows the convention
+											of the <db:xref linkend="bib_dublinCore"/>
+											<db:literal>Format</db:literal> element.</db:para>
+									</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="contentFormat" type="xs:string"
+											minOccurs="1" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+
+							<xs:element name="supportedContentProtectionFormats" minOccurs="1"
+								maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para>Specifies which Content protection
+											(Digital Rights Management) standards the Reading System
+											supports, if any.</db:para>
+									</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="protectionFormat" minOccurs="0"
+											maxOccurs="unbounded">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:enumeration value="PDTB2">
+													<xs:annotation>
+														<xs:documentation>
+														<db:para role="desc">This Reading System
+														supports <db:link linkend="bib_pdtb2">DAISY
+														Protected Digital Talking Book 2</db:link>.</db:para>
+														</xs:documentation>
+													</xs:annotation>
+												</xs:enumeration>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+
+							<xs:element name="supportedMimeTypes" minOccurs="1" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para>Specifies which content types the Reading System
+											supports.</db:para>
+										<db:para>This applies to
+											both Content and Service messages
+												(<db:type><db:xref linkend="tp_label"/></db:type>s).</db:para>
+										<db:para>A Service may use this information to choose which content
+											types to offer to the Reading System as labels and
+											Content.</db:para>
+										<db:para>Content types for which support is implied by the
+											Content formats in <db:type><db:xref
+												linkend="tp_supportedContentFormats"/></db:type> need not be
+											included here.</db:para>
+									</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="mimeType" minOccurs="0"
+											maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:attribute name="type" type="xs:string"
+												use="required">
+												<xs:annotation>
+												<xs:documentation>
+												<db:para>A <db:xref linkend="bib_mime"/>
+												type.</db:para>
+												</xs:documentation>
+												</xs:annotation>
+												</xs:attribute>
+												<!--  TODO what does lang do on mimeType? -->
+												<xs:attribute ref="xml:lang" use="optional"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+
+							<xs:element name="supportedInputTypes" minOccurs="1" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para>The means of User input to the Service that the Reading
+											System supports.</db:para>
+										<db:para>If the Reading System does not support any means of
+											input, the inputTypes element must be empty.</db:para>
+									</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="input" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:attribute name="type" use="required">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:enumeration value="TEXT_NUMERIC">
+												<xs:annotation>
+												<xs:documentation>
+												<db:para>The Reading System supports numeric input.</db:para>
+												</xs:documentation>
+												</xs:annotation>
+												</xs:enumeration>
+												<xs:enumeration value="TEXT_ALPHANUMERIC">
+												<xs:annotation>
+												<xs:documentation>
+												<db:para>The Reading System supports
+												text and numeric input.</db:para>
+												</xs:documentation>
+												</xs:annotation>
+												</xs:enumeration>
+												<xs:enumeration value="AUDIO">
+												<xs:annotation>
+												<xs:documentation>
+												<db:para>The Reading System supports audio input.</db:para>
+												</xs:documentation>
+												</xs:annotation>
+												</xs:enumeration>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:attribute>
+												<xs:attribute ref="xml:lang" use="optional"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="requiresAudioLabels" minOccurs="1" maxOccurs="1" type="xs:boolean">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">Specifies whether the Reading System requires audio
+											labels for messages provided by
+											the Service (i.e. whether the <db:type><db:xref linkend="tp_audio"/></db:type> child element of 
+											<db:type><db:xref linkend="tp_label"/></db:type> is required).</db:para>
+										<db:para> Refer to the <db:type><db:xref linkend="tp_supportsAudioLabels"/></db:type>
+											element in <db:type><db:xref linkend="tp_serviceAttributes"/></db:type> for the
+											Service's declaration of support for audio in labels. </db:para>
+										<db:para>This specification does not specify behaviors in the
+											case where the Reading System requires audio labels, and a Service does not
+											support audio labels.</db:para>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>							
+							<xs:element name="additionalTransferProtocols" minOccurs="0"
+								maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para>Specifies any additional transfer protocols
+											that are supported by the Reading System, beyond
+											HTTP and HTTPS.</db:para>
+									</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="protocol" minOccurs="1"
+											maxOccurs="unbounded" type="xs:string">
+											<xs:annotation>
+												<xs:documentation>
+												<db:para>The identifier of a transfer protocol.
+												Identifiers are as given in the protocol's specification.</db:para>
+												</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="announcements">
+		<xs:annotation>
+			<xs:documentation>
+				<db:para>A list of Service announcements.</db:para>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="announcement" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>
+							<db:para>A Service announcement.</db:para>
+						</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element ref="label" minOccurs="1" maxOccurs="1"/>
+						</xs:sequence>
+						<xs:attribute name="id" type="xs:ID" use="required">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para>The identifier of this announcement. This identifier is
+										only valid for the duration of a <db:xref
+											linkend="term_session"/>.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="type" use="optional" default="INFORMATION">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para>A value that indicates the nature of this
+										announcement.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="WARNING"/>
+									<xs:enumeration value="ERROR"/>
+									<xs:enumeration value="INFORMATION"/>
+									<xs:enumeration value="SYSTEM"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="priority" use="optional" default="3">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para>The priority of this
+										announcement. <db:literal>1</db:literal> is
+										the highest priority and
+											<db:literal>3</db:literal> is the lowest. </db:para>
+								</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:int">
+									<xs:minInclusive value="1"/>
+									<xs:maxInclusive value="3"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="label">
+		<xs:annotation>
+			<xs:documentation>
+				<db:para role="desc">A multi-purpose label, containing text and optionally
+					audio.</db:para>
+				<db:para>To achieve maximum interoperability, Services should support the provision
+					of audio labels, as Reading Systems may <db:link
+						linkend="tp_requiresAudioLabels">require</db:link> them in
+					order to render Service messages to the user.</db:para>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="text" type="xs:string" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							<db:para>The text component of the label.</db:para>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="audio" minOccurs="0" maxOccurs="1">
+					<xs:complexType>
+						<xs:attribute name="uri" type="xs:anyURI" use="required">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">The URI of the audio component
+										of the label.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="rangeBegin" type="xs:integer" use="optional">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">The byte offset of the start of the audio label
+										in the resource named in
+										the <db:code>uri</db:code> attribute. If the
+										<db:code>rangeBegin</db:code> attribute is not present, the start offset
+										is <db:literal>0</db:literal>.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="rangeEnd" type="xs:integer" use="optional">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">The byte offset of the end of the audio label
+										in the resource named in
+										the <db:code>uri</db:code> attribute. If the
+										<db:code>rangeEnd</db:code> attribute is not present, the end
+										is the last byte of the resource.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="size" type="xs:int" use="optional">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">The size, in bytes, of the label's
+										audio data.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute ref="xml:lang">
+				<xs:annotation>
+					<xs:documentation>
+						<db:para role="desc">The language of the label.</db:para>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="contentMetadata">
+		<xs:annotation>
+			<xs:documentation>
+				<db:para role="desc">The metadata of a Content item.</db:para>
+			</xs:documentation>
+		</xs:annotation>
+
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="sample" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							<db:para>A sample of the Content that the User may retrieve
+								without the Content being issued.</db:para>
+						</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="id" use="required" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">The Content Identifier of the sample.</db:para>
+									<db:para>Reading Systems may retrieve the sample's resource list by calling
+											<db:function><db:xref linkend="op_getContentResources"/></db:function> with this
+										identifier as the parameter. Reading Systems must not invoke
+											<db:function><db:xref linkend="op_issueContent"/></db:function> using the identifier of a
+										sample.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+
+				<xs:element name="metadata" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							<db:para role="desc">Bibliographic and other metadata of
+								the Content.</db:para>
+							<db:para>Elements in the Dublin Core namespace are normatively defined
+								by <db:xref linkend="bib_dublinCore"/>. The value of the
+								Dublin Core <db:literal>identifier</db:literal> element must match
+								the <db:xref linkend="term_contentIdentifier"/> of the Content item.</db:para>
+							<db:para>Additional, non-Dublin Core metadata may be provided using the generic
+									<db:type>meta</db:type> element.</db:para>
+							<db:para>The prefix <db:literal>pdtb2</db:literal> in the <db:code>name</db:code> attribute
+								of a <db:type>meta</db:type> element is reserved to refer to properties of <db:xref
+									linkend="bib_pdtb2"/>.</db:para>
+							<db:para>The value <db:literal>pdtb2:specVersion</db:literal> in the
+								<db:code>name</db:code> attribute of a <db:type>meta</db:type> element means that the Content item
+								is protected using <db:xref linkend="bib_pdtb2"/></db:para>
+						</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element ref="dc:title" minOccurs="1" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">The Dublin Core
+												<db:literal>title</db:literal> element, as defined in
+												<db:xref linkend="bib_dublinCore"/></db:para>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element ref="dc:identifier" minOccurs="1" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">The Dublin Core
+												<db:literal>identifier</db:literal> element, as defined
+											in <db:xref linkend="bib_dublinCore"/></db:para>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element ref="dc:publisher" minOccurs="0" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">The Dublin Core
+												<db:literal>publisher</db:literal> element, as defined
+											in <db:xref linkend="bib_dublinCore"/></db:para>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element ref="dc:format" minOccurs="1" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">The Dublin Core
+												<db:literal>format</db:literal> element, as defined in
+												<db:xref linkend="bib_dublinCore"/></db:para>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element ref="dc:date" minOccurs="0" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">The Dublin Core
+												<db:literal>date</db:literal> element, as defined in
+												<db:xref linkend="bib_dublinCore"/></db:para>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element ref="dc:source" minOccurs="0" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">The Dublin Core
+												<db:literal>source</db:literal> element, as defined in
+												<db:xref linkend="bib_dublinCore"/></db:para>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element ref="dc:type" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">The Dublin Core
+												<db:literal>type</db:literal> element, as defined in
+												<db:xref linkend="bib_dublinCore"/></db:para>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element ref="dc:subject" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">The Dublin Core
+												<db:literal>subject</db:literal> element, as defined in
+												<db:xref linkend="bib_dublinCore"/></db:para>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element ref="dc:rights" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">The Dublin Core
+												<db:literal>rights</db:literal> element, as defined in
+												<db:xref linkend="bib_dublinCore"/></db:para>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element ref="dc:relation" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">The Dublin Core
+												<db:literal>relation</db:literal> element, as defined
+											in <db:xref linkend="bib_dublinCore"/></db:para>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element ref="dc:language" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">The Dublin Core
+												<db:literal>language</db:literal> element, as defined
+											in <db:xref linkend="bib_dublinCore"/></db:para>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element ref="dc:description" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">The Dublin Core
+												<db:literal>description</db:literal> element, as
+											defined in <db:xref linkend="bib_dublinCore"/></db:para>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element ref="dc:creator" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">The Dublin Core
+												<db:literal>creator</db:literal> element, as defined in
+												<db:xref linkend="bib_dublinCore"/></db:para>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element ref="dc:coverage" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">The Dublin Core
+												<db:literal>coverage</db:literal> element, as defined
+											in <db:xref linkend="bib_dublinCore"/></db:para>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element ref="dc:contributor" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">The Dublin Core
+												<db:literal>contributor</db:literal> element, as
+											defined in <db:xref linkend="bib_dublinCore"/></db:para>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+
+							<xs:element name="narrator" type="xs:string" minOccurs="0" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">In the case of audio Content
+											narrated by a human, the name of the
+											narrator.</db:para>
+										<db:para>Service providers may use the string <db:literal>TTS</db:literal> in this
+											field to indicate that audio Content has been
+											rendered using text-to-speech processors.</db:para>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="size" type="xs:int" minOccurs="1" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">The total size of the resources making up the Content,
+											in bytes.</db:para>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="meta" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">An arbitrary metadata element. Allows
+											custom metadata fields from schemes
+											other than Dublin Core.</db:para>
+									</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:attribute name="name" use="required"/>
+									<xs:attribute name="content" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:choice minOccurs="0" maxOccurs="unbounded">
+								<xs:any namespace="##other" processContents="lax"/>
+							</xs:choice>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+
+			<xs:attribute name="category" use="optional">
+				<xs:annotation>
+					<xs:documentation>
+						<db:para role="desc">The publication category for the
+							Content.</db:para>
+						<db:para>Reading Systems may use the value provided here to categorize or
+							sort Content items.</db:para>
+						<db:para>Any value is allowed. The values <db:literal>BOOK</db:literal>,
+								<db:literal>MAGAZINE</db:literal>,
+								<db:literal>NEWSPAPER</db:literal> and
+								<db:literal>OTHER</db:literal> are recommended for those
+							Content items which match any of these terms.</db:para>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+
+			<xs:attribute name="requiresReturn" type="xs:boolean" use="required">
+				<xs:annotation>
+					<xs:documentation>
+						<db:para>Specifies whether the <db:xref linkend="term_service"/> requires
+							this <db:xref linkend="term_content"/> to be returned.</db:para>
+						<db:para>If this attribute is <db:literal>true</db:literal> and the Content is issued, it is a contract from the <db:xref
+								linkend="term_service"/> to the <db:xref
+								linkend="term_readingSystem"/> that the <db:xref
+								linkend="term_readingSystem"/> will at some point <db:link
+								linkend="term_return">return the Content</db:link>.</db:para>
+						<db:para>Reading Systems should present Users with appropriate prompts if
+							they try to return <db:xref linkend="term_purchase"
+							/>.</db:para>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="returnBy" type="xs:dateTime" use="optional">
+				<xs:annotation>
+					<xs:documentation>
+						<db:para>Specifies the time when the <db:xref
+								linkend="term_service"/> requires this <db:xref
+								linkend="term_content"/> to be returned, i.e. the end of an
+							issuance period.</db:para>
+						<db:para>This attribute may be present when the
+								<db:code>requiresReturn</db:code> attribute is
+								<db:literal>true</db:literal>, and must not be present when the
+								<db:code>requiresReturn</db:code> attribute is
+								<db:literal>false</db:literal>.</db:para>
+						<db:para>This attribute may change value between calls, even after the <db:xref
+								linkend="term_content"/> is issued.</db:para>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="resources">
+		<xs:annotation>
+			<xs:documentation>
+				<db:para>A list of all the resources that constitute the <db:xref linkend="term_content"
+					/>.</db:para>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="resource" minOccurs="1" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="uri" type="xs:anyURI" use="required">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para>The URI of the resource.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="mimeType" type="xs:string" use="required">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para>The <db:xref linkend="bib_mime"/> type of the
+										resource.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="size" type="xs:int" use="required">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para>The size of the resource in bytes.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="localURI" type="xs:anyURI" use="required">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">The local relative path of the
+										resource.</db:para>
+									<db:para>The value of this attribute must be a URI relative to
+										the Content's root directory. The value must contain the
+										literal filename of the resource.</db:para>
+									<db:para>This attribute is used to aid Reading Systems in
+										retrieving resources in the case where the
+											<db:code>uri</db:code> attribute does not specify a
+										direct literal URI (such as when the URI resolves to a
+										script, or any other indirection).</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="lastModifiedDate" type="xs:dateTime" use="optional">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">The last modified time of the
+										resource.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="contentList">
+		<xs:annotation>
+			<xs:documentation>
+				<db:para>A list of Content items.</db:para>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="label" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							<db:para role="desc">The label of this Content list.</db:para>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="contentItem" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>
+							<db:para>A single Content item.</db:para>
+						</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element ref="label" minOccurs="1" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para>The label of this
+												Content item.</db:para>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="id" type="xs:ID" use="required">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">The <db:xref
+											linkend="term_contentIdentifier"/> for this Content item.</db:para>
+									<db:para>This value must be identical to the value of
+										the <db:literal>dc:identifier</db:literal> element in the <db:type><db:xref
+											linkend="tp_contentMetadata"/></db:type> of this Content
+										item.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+
+						<xs:attribute name="lastModifiedDate" type="xs:dateTime" use="optional">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para>The last modified time of this contentItem. This is
+										the last modified time of the most recently modified resource
+										in the Content's <db:type><db:xref linkend="tp_resources"/></db:type> list.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+
+			<xs:attribute name="totalItems" type="xs:integer" use="required">
+				<xs:annotation>
+					<xs:documentation>
+						<db:para>The total number of <db:type>contentItem</db:type>s in the list.
+							This instance of <db:type>contentList</db:type>
+							may contain a subset of the total number of items, i.e. it may be
+							segmented. If and only if the <db:type>contentList</db:type> is not segmented, the value of this
+							attribute is equal to the number of <db:type>contentItem</db:type>
+							children of this element.</db:para>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="firstItem" type="xs:integer" use="optional">
+				<xs:annotation>
+					<xs:documentation>
+						<db:para>The 0-based index of the first content item provided in this instance of <db:type>contentList</db:type>.
+							This attribute must be provided when a <db:type>contentList</db:type> is segmented. If this
+							attribute is present, the <db:code>lastItem</db:code> attribute must
+							also be present.</db:para>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="lastItem" type="xs:integer" use="optional">
+				<xs:annotation>
+					<xs:documentation>
+						<db:para>The 0-based index of last content item provided in this instance of <db:type>contentList</db:type>.
+							This attribute must be provided when a <db:type>contentList</db:type> is segmented. If this
+							attribute is present, the <db:code>firstItem</db:code> attribute must
+							also be present.</db:para>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="id" type="xs:ID" use="required">
+				<xs:annotation>
+					<xs:documentation>
+						<db:para role="desc">The identifier of the <db:type>contentList</db:type>.</db:para>
+						<db:para>If this <db:type>contentList</db:type> is being returned on a call of <db:function><db:xref
+								linkend="op_getContentList"/></db:function> where one of the reserved values
+								<db:literal>new</db:literal>, <db:literal>issued</db:literal> or
+								<db:literal>expired</db:literal> is passed as the value of that operations
+								<db:parameter>id</db:parameter> parameter, then the value of this
+							attribute must equal the passed value, i.e. be <db:literal>new</db:literal>,
+								<db:literal>issued</db:literal> or <db:literal>expired</db:literal>
+							respectively.</db:para>
+						<db:para>If the value of this attribute is not one of the three reserved
+							values above, then this is an arbitrary <db:type>contentList</db:type>, typically exposed
+							as an endpoint in a <db:link
+								linkend="fundamentals_content_selection_browse">dynamic menu
+								search</db:link> operation sequence.</db:para>
+						<db:para>Services should persist <db:type>contentList</db:type> identitifiers for the
+							duration of a Session. Services must not expose multiple arbitrary
+							<db:type>contentList</db:type>s with the same identifier during the same session.</db:para>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="inputQuestion">
+		<xs:annotation>
+			<xs:documentation>
+				<db:para role="desc">An input field that accepts a text or audio response.</db:para>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="inputTypes" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							<db:para>Specifies which input types the Service will accept
+								in response to the question.</db:para>
+						</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="input" minOccurs="1" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attribute name="type" use="required">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="TEXT_NUMERIC">
+												<xs:annotation>
+												<xs:documentation>
+												<db:para>The Service allows numeric-only responses
+												to the question.</db:para>
+												</xs:documentation>
+												</xs:annotation>
+												</xs:enumeration>
+												<xs:enumeration value="TEXT_ALPHANUMERIC">
+												<xs:annotation>
+												<xs:documentation>
+												<db:para>The Service allows text and numeric responses
+												to the question.</db:para>
+												</xs:documentation>
+												</xs:annotation>
+												</xs:enumeration>
+												<xs:enumeration value="AUDIO">
+												<xs:annotation>
+												<xs:documentation>
+												<db:para>The Service allows audio responses
+												to the question.</db:para>
+												</xs:documentation>
+												</xs:annotation>
+												</xs:enumeration>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element ref="label" minOccurs="1" maxOccurs="1"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:ID" use="required"/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="questions">
+		<xs:annotation>
+			<xs:documentation>
+				<db:para role="desc">A sequence of questions.</db:para>
+				<db:para role="req">The questions element must contain either:</db:para>
+					<db:itemizedlist>
+						<db:listitem>
+							<db:para>exactly one <db:type>contentListRef</db:type>; or</db:para>
+						</db:listitem>
+						<db:listitem>
+							<db:para>exactly one <db:type>label</db:type>; or</db:para>
+						</db:listitem>
+						<db:listitem>
+							<db:para>any number of <db:type>multipleChoiceQuestion</db:type>s and/or
+							<db:type>inputQuestion</db:type>s, in any order.</db:para>
+						</db:listitem>
+					</db:itemizedlist>
+				<db:para role="desc">If the questions element contains a
+						<db:type>contentListRef</db:type> or a <db:type>label</db:type> child
+					element, the Reading system is not required to call the <db:function><db:xref linkend="op_getQuestions"/></db:function> operation
+					as these child elements indicate that this is an endpoint to the sequence of questions that
+					comprise a dynamic menu.</db:para>
+				<db:para>For informative examples on the usage of the <db:type>questions</db:type> type, refer to the
+						<db:xref linkend="bib_dynamicMenusPrimer"/>.</db:para>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:choice minOccurs="1" maxOccurs="unbounded">
+					<xs:element ref="multipleChoiceQuestion"/>
+					<xs:element ref="inputQuestion"/>
+				</xs:choice>
+				<xs:element name="contentListRef" type="xs:ID">
+					<xs:annotation>
+						<xs:documentation>
+							<db:para>The identifier of a <db:type><db:xref linkend="tp_contentList"/></db:type>.</db:para>
+							<db:para>A contentListRef as a child of the <db:type>questions</db:type> element indicates
+								an endpoint of the sequence of questions that comprise a dynamic
+								menu. </db:para>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="label">
+					<xs:annotation>
+						<xs:documentation>
+							<db:para>A label representing a message to the User. A label as
+								a child of the <db:type>questions</db:type> element indicates an endpoint of the
+								sequence of questions that comprise a dynamic menu.</db:para>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="multipleChoiceQuestion">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="label" minOccurs="1" maxOccurs="1"/>
+				<xs:element name="choices" minOccurs="1" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="choice" minOccurs="1" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element ref="label" minOccurs="1" maxOccurs="1"/>
+									</xs:sequence>
+									<xs:attribute name="id" type="xs:ID" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:ID" use="required"/>
+			<xs:attribute name="allowMultipleSelections" type="xs:boolean" use="optional"
+				default="false">
+				<xs:annotation>
+					<xs:documentation>
+						<db:para role="desc">Specifies whether multiple selections are allowed in
+							the User response to this question. The default value is
+								<db:literal>false</db:literal>.</db:para>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="userResponses">
+		<xs:annotation>
+			<xs:documentation>
+				<db:para>A set of User responses to <db:type><db:xref
+						linkend="tp_questions"/></db:type> provided by the Service.</db:para>
+				<db:para>For informative examples of the <db:type>userResponses</db:type> type, refer to the
+						<db:xref linkend="bib_dynamicMenusPrimer"/>.</db:para>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="userResponse" minOccurs="1" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>
+							<db:para>A response to a question. Either the <db:code>value</db:code> attribute
+								(for <db:type>inputQuestion</db:type> or <db:type>multipleChoiceQuestion</db:type> responses) or the <db:code>data</db:code>
+								element (for audio-based responses) must be present.</db:para>
+							<db:note><db:para>If a <db:type>userResponses</db:type> element is a response to a
+									<db:type><db:xref linkend="tp_multipleChoiceQuestion"/></db:type> where multiple
+								selections are allowed, then multiple <db:type>userResponse</db:type> elements must be
+								used to represent each selection (where each userResponse refers to
+								the same question via the <db:code>questionID</db:code>
+								attribute).</db:para></db:note>
+						</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="data" minOccurs="0" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">The base64-encoded data of an audio User
+											response.</db:para>
+										<db:para>Services must accept audio in the <db:xref
+												linkend="bib_wav"/> format. Services may
+											support additional audio formats, and must specify those formats
+											in <db:type><db:xref linkend="tp_serviceAttributes"
+											/></db:type>.</db:para>
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:base64Binary"/>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="questionID" type="xs:NMTOKEN" use="required">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para>The identifier of the question being answered.</db:para>
+									<db:para>The following three values of this attribute are
+										reserved for use as defined below:</db:para>
+									<db:itemizedlist>
+										<db:listitem>
+											<db:para><db:literal>default</db:literal></db:para>
+											<db:para>The root question (main menu) from the
+												Service. (This value is used to initiate a dynamic
+												menu operation sequence, and does not
+												reflect an answered question.)</db:para>
+											<db:para>A Service that supports Dynamic Menus must
+												support this reserved identifier.</db:para>
+										</db:listitem>
+										<db:listitem>
+											<db:para><db:literal>search</db:literal></db:para>
+											<db:para>The Service's search menu.</db:para>
+											<db:para>A Service is not required to support the
+												<db:literal>search</db:literal> reserved identifier. A
+												Service must explicitly declare whether it supports
+												this identifier in <db:type><db:xref linkend="tp_serviceAttributes"
+												/></db:type>.</db:para>
+										</db:listitem>
+										<db:listitem>
+											<db:para><db:literal>back</db:literal></db:para>
+											<db:para>The previous question from the Service
+												during a dynamic menu operation sequence.</db:para>
+											<db:para>A Service is not required to support the
+												<db:literal>back</db:literal> reserved identifier. A Service must
+												explicitly declare whether it supports this identifier in
+												<db:type><db:xref linkend="tp_serviceAttributes"
+												/></db:type>.</db:para>
+										</db:listitem>
+									</db:itemizedlist>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="value" type="xs:string" use="optional">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para>In the case of an <db:type>inputQuestion</db:type>, this attribute
+										contains the textual response. In the case of a
+										<db:type>multipleChoiceQuestion</db:type>, it contains the ID of the
+										choice.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="serviceAttributes">
+		<xs:annotation>
+			<xs:documentation>
+				<db:para role="desc">Properties of the Service.</db:para>
+				<db:para>The properties specified must be constant for the duration of the
+					Session.</db:para>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="serviceProvider" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							<db:para role="desc">The identity of the <db:xref
+									linkend="term_serviceProvider"/>.</db:para>
+						</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element ref="label" minOccurs="0" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">The name of the Service Provider in
+											human-readable form.</db:para>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="id" type="xs:string" use="required">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para role="desc">The identifier of the Service
+										Provider.</db:para>
+									<db:para>This specification does not require a specific scheme
+										to be used for this identifier. The identifier
+										should not change while the Service
+										provider remains active, and it should be universally
+										unique.</db:para>
+									<db:para>A recommended expression form is a hyphen-separated
+										string consisting of a country code from
+											<db:xref linkend="bib_iso3166"/>, followed by an agency
+										code unique within its country. For example,
+											<db:literal>us-afb</db:literal>.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+
+				<xs:element name="service" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							<db:para>The identity of the <db:xref linkend="term_service"
+								/>.</db:para>
+						</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element ref="label" minOccurs="0" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">The name of the Service in human-readable form.</db:para>
+									</xs:documentation>
+								</xs:annotation>
+
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="id" type="xs:string" use="required">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para>The identifier of the Service.</db:para>
+									<db:para>This specification does not require a specific scheme
+										to be used for this identifier. The identifier
+										should not change while the Service
+										remains active, and it should be universally
+										unique.</db:para>
+									<db:para>A recommended expression form is a hyphen-separated
+										string consisting of a country code from
+											<db:xref linkend="bib_iso3166"/>, followed by an agency
+										code unique within its country, followed by a Service code
+										unique among the Services offered by the provider. For
+										example,
+										<db:literal>us-afb-onlineLibrary</db:literal>.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+
+				<xs:element name="supportedContentSelectionMethods" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							<db:para role="desc">A list of <db:xref
+									linkend="fundamentals_content_selection"/> supported by this
+								Service. A Service must support at least one of the two
+								methods.</db:para>
+						</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="method" minOccurs="1" maxOccurs="2">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="OUT_OF_BAND">
+											<xs:annotation>
+												<xs:documentation>
+												<db:para role="desc">This service supports the
+												<db:xref
+												linkend="fundamentals_content_selection_outofband"
+												/>.</db:para>
+												</xs:documentation>
+											</xs:annotation>
+										</xs:enumeration>
+										<xs:enumeration value="BROWSE">
+											<xs:annotation>
+												<xs:documentation>
+												<db:para role="desc">This service supports the
+												<db:xref
+												linkend="fundamentals_content_selection_browse"
+												/>.</db:para>
+												</xs:documentation>
+											</xs:annotation>
+										</xs:enumeration>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
+				<xs:element name="supportsServerSideBack" type="xs:boolean" minOccurs="1"
+					maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							<db:para role="desc">Specifies whether <db:function><db:xref linkend="op_getQuestions"/></db:function>
+								with the reserved parameter <db:literal>back</db:literal> is
+								supported by the Service.</db:para>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="supportsSearch" type="xs:boolean" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							<db:para role="desc">Specifies whether <db:function><db:xref linkend="op_getQuestions"/></db:function>
+								with the reserved parameter <db:literal>search</db:literal> is
+								supported by the Service.</db:para>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="supportedUplinkAudioCodecs" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							<db:para role="desc">A list of the audio codecs (if any) supported
+								in <db:type><db:xref linkend="tp_userResponses"/></db:type> in addition to <db:xref
+								linkend="bib_wav"/>.</db:para>
+						</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="codec" minOccurs="0" type="xs:string"
+								maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">The codec's canonical identifier string
+											as dictated by its specification.</db:para>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="supportsAudioLabels" minOccurs="1" maxOccurs="1" type="xs:boolean">
+					<xs:annotation>
+						<xs:documentation>
+							<db:para role="desc">Specifies whether this Service supports the
+								inclusion of audio in <db:type><db:xref linkend="tp_label"/></db:type>s.</db:para>
+							<db:para>If the value of this element is <db:literal>true</db:literal> and 
+									the <db:type><db:xref
+									linkend="tp_requiresAudioLabels"/></db:type> element of <db:type><db:xref
+									linkend="tp_readingSystemAttributes"/></db:type> is <db:literal>true</db:literal>
+								in the Reading System's most recent call to <db:function><db:xref
+									linkend="op_setReadingSystemAttributes"/></db:function>, then
+								the Service must include the <db:type><db:xref linkend="tp_audio"/></db:type> element in each
+									<db:type><db:xref linkend="tp_label"/></db:type> it provides.</db:para>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<xs:element name="supportedOptionalOperations" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							<db:para role="desc">Specifies which (if any) of the <db:link linkend="apiReferenceOptional">optional</db:link>
+								operations are supported by the Service.</db:para>
+						</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="operation" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">One of the optional
+											operations or groups of optional operations defined below.
+										</db:para>
+									</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="SET_BOOKMARKS">
+											<xs:annotation>
+												<xs:documentation>
+												<db:para role="desc">This Service
+												supports the <db:function><db:xref linkend="op_setBookmarks"/></db:function>
+												operation.</db:para>
+												</xs:documentation>
+											</xs:annotation>
+										</xs:enumeration>
+										<xs:enumeration value="GET_BOOKMARKS">
+											<xs:annotation>
+												<xs:documentation>
+												<db:para role="desc">This Service
+												supports the <db:function><db:xref linkend="op_getBookmarks"/></db:function>
+												operation.</db:para>
+												</xs:documentation>
+											</xs:annotation>
+										</xs:enumeration>
+										<xs:enumeration value="DYNAMIC_MENUS">
+											<xs:annotation>
+												<xs:documentation>
+												<db:para role="desc">This Service
+												supports the <db:function><db:xref linkend="op_getQuestions"/></db:function>
+												operation.</db:para>
+												</xs:documentation>
+											</xs:annotation>
+										</xs:enumeration>
+										<xs:enumeration value="SERVICE_ANNOUNCEMENTS">
+											<xs:annotation>
+												<xs:documentation>
+												<db:para role="desc">This Service
+												supports the <db:function><db:xref
+												linkend="op_getServiceAnnouncements"/></db:function> and
+												<db:function><db:xref linkend="op_markAnnouncementsAsRead"/></db:function>
+												operations.</db:para>
+												</xs:documentation>
+											</xs:annotation>
+										</xs:enumeration>
+										<xs:enumeration value="PDTB2_KEY_PROVISION">
+											<xs:annotation>
+												<xs:documentation>
+												<db:para role="desc">This Service
+												supports the <db:function><db:xref
+												linkend="op_getKeyExchangeObject"/></db:function>
+												operation.</db:para>
+												</xs:documentation>
+											</xs:annotation>
+										</xs:enumeration>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!--
+	<xs:complexType name="itemList">
+		<xs:annotation>
+			<xs:documentation>
+				<db:para>A generic list of string items, functionally equal to a string
+					array.</db:para>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="item" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	-->
+
+	<xs:element name="item" type="xs:string"/>
+
+	<xs:element name="read">
+		<xs:annotation>
+			<xs:documentation>
+				<db:para>A list of <db:type><db:xref linkend="tp_announcement"
+					/></db:type> identifiers.</db:para>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="item" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="keyRing">
+		<xs:annotation>
+			<xs:documentation>
+				<db:para>A list of key names.</db:para>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="item" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

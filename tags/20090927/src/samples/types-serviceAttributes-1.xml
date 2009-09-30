@@ -1,0 +1,21 @@
+<serviceAttributes xmlns="http://www.daisy.org/ns/daisy-online/">
+  <serviceProvider id="gy-zenith" />
+  <service id="gy-zenith-libraryServiceDeluxe" />
+  <supportedContentSelectionMethods>
+    <method>BROWSE</method>
+    <method>OUT_OF_BAND</method>
+  </supportedContentSelectionMethods>
+  <supportsServerSideBack>true</supportsServerSideBack>
+  <supportsSearch>true</supportsSearch>
+  <supportedUplinkAudioCodecs>
+    <codec>audio/mpeg</codec>
+  </supportedUplinkAudioCodecs>
+  <supportsAudioLabels>true</supportsAudioLabels>
+  <supportedOptionalOperations>
+    <operation>DYNAMIC_MENUS</operation>
+    <operation>SET_BOOKMARKS</operation>
+    <operation>GET_BOOKMARKS</operation>
+    <operation>SERVICE_ANNOUNCEMENTS</operation>
+    <operation>PDTB2_KEY_PROVISION</operation>
+  </supportedOptionalOperations>
+</serviceAttributes>

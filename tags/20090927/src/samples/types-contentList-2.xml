@@ -1,0 +1,16 @@
+<contentList xmlns="http://www.daisy.org/ns/daisy-online/" 
+    id="cl125" firstItem="0" lastItem="1" totalItems="25">
+    <label xml:lang="en">
+        <text>Please select from these publications.</text>
+    </label>
+    <contentItem id="com-example-001">
+        <label xml:lang="en">
+            <text>Harry Potter and the Chamber of Secrets</text>
+        </label>
+    </contentItem>
+    <contentItem id="com-example-002">
+        <label xml:lang="en">
+            <text>Harry Potter and the Goblets of Fire</text>
+        </label>
+    </contentItem>
+</contentList>

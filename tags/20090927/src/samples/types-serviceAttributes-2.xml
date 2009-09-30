@@ -1,0 +1,18 @@
+<serviceAttributes xmlns="http://www.daisy.org/ns/daisy-online/">
+  <serviceProvider id="uk.com.example" />
+  <service id="uk.com.example.libraryServiceBasic" />
+  <supportedContentSelectionMethods>
+    <method>OUT_OF_BAND</method>
+  </supportedContentSelectionMethods>
+  <supportsServerSideBack>false</supportsServerSideBack>
+  <supportsSearch>false</supportsSearch>
+  <supportedUplinkAudioCodecs>
+    <codec>audio/mpeg</codec>
+  </supportedUplinkAudioCodecs>
+  <supportsAudioLabels>true</supportsAudioLabels>
+  <supportedOptionalOperations>
+    <operation>SET_BOOKMARKS</operation>
+    <operation>GET_BOOKMARKS</operation>
+    <operation>SERVICE_ANNOUNCEMENTS</operation>
+  </supportedOptionalOperations>
+</serviceAttributes>

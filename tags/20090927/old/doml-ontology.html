@@ -1,0 +1,1102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HTML Tidy for Linux (vers 6 November 2007), see www.w3.org">
+<title>DAISY Online Delivery Specification Markup Language Ontology Version 1.0</title>
+
+<style type="text/css">
+/* CSS last edit kk 20070125, mg 20030905 */
+body {font-style: normal; font-weight: normal; font-family: arial, verdana, sans-serif; margin-right: 15%; margin-left: 10%;}
+h6 {font-weight: bold; font-size:  75%; color: #000099; margin-top: 1.2em; margin-bottom: 0.2em;}
+h5 {font-weight: bold; font-size:  80%; color: #000099; margin-top: 1.2em; margin-bottom: 0.2em;}
+h4 {font-weight: bold; font-size:  88%; color: #000099; margin-top: 2.0em; margin-bottom: 0.4em;}
+h3 {font-weight: bold; font-size: 100%; color: #000099; margin-top: 2.0em; margin-bottom: 0.5em; letter-spacing: 0.04em;}
+h2 {font-weight: bold; font-size: 115%; color: #000099; margin-top: 2.5em; margin-bottom: 0.5em; letter-spacing: 0.15em;}
+h1 {font-weight: bold; font-size: 130%; color: #000099; margin-top: 3.0em; margin-bottom: 0.5em; letter-spacing: 0.20em;}
+ul.linklist {list-style: none; margin-left: 0em;}
+ul.linklist ul {list-style: none; margin-left: 2em;}
+.top {font-size: 80%; display: block;}
+img {border:inherit none; float: right}
+*.box {font-size:95%; border: 1px solid rgb(100,100,100); padding:0.3em}
+*.author {color:#000099; font-size:80%;}
+/*
+*.comment {color:#000099; font-size:80%;} 
+*/
+*.comment {color:#000099; font-size:80%; display: none;}
+*.alert {border: 1px solid red; padding: 0.2em; font-size:95%; font-weight:bold;}
+*.action {color: rgb(0,0,153); font-size:90%; border: 1px solid rgb(0,0,50); padding: 0.2em; background-color: rgb(240,240,240); font-weight:bold;}
+span.bullet {font-family:"Courier New", sans-serif;}
+span.padding {font:.3em "Courier New", sans-serif;}
+code {font: 80% "Courier New", sans-serif;}
+span.indent {margin-left:1em;text-indent:-1em;}
+span.indent2 {text-indent:1.5em;}
+ol.indent3 {margin-top:0em;}
+dt {font-weight:bold;}
+pre {margin-left:10px;}
+span.bg-yellow {background:white;}
+.edit-delete {text-decoration: line-through; background: #CCCCCC; }
+</style>
+
+<style type="text/css">
+ li.c1 {list-style: none; display: inline}
+</style>
+</head><body>
+<div><a href="http://www.daisy.org/"><img src="doml-ontology.htm_files/daisylogo-w.gif" alt="DAISY Consortium Logo - Link to Home Page" border="0" height="110" width="150"></a>
+<h1>DAISY Online Delivery Specification Markup Language Ontology Version 1.0</h1>
+<h2>DAISY Consortium Last Call Draft - May 6, 2009</h2>
+<dl>
+<dt>This version:</dt>
+<dd><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm">http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm</a></dd>
+<dt>Latest version:</dt>
+<dd><a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm">http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm</a></dd>
+<dt>Editor:</dt>
+<dd><a href="mailto:kenny.johar@visionaustralia.org">Kenny Johar</a>, <a href="http://www.visionaustralia.org/">Vision Australia</a></dd>
+</dl>
+<hr></div>
+<div><a id="abstract" name="abstract"></a>
+<h2>Abstract</h2>
+<p>To keep the DAISY Online Delivery Specification platform agnostic,
+all simple (aka primitive) and complex (aka custom) types mentioned in
+the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm">DAISY Online Delivery Specification Web Service API</a> document are described using the <a href="http://www.w3.org/XML/Schema">W3C XML Schema Language</a>. Two of the three documents that comprise the normative part of the DAISY Online Delivery Specification i.e. <a href="http://www.daisy.org/projects/daisy-online-delivery/doml.xsd">DAISY Online Delivery Specification Markup Language Schema</a> and <a href="http://www.daisy.org/projects/daisy-online-delivery/doml-ontology.htm">DAISY Online Delivery Specification Markup Language Ontology</a> (this document) describe all these types in a machine readable (xsd) and a human readable (plain english) form respectively.</p>
+<p>This document is normative. It lays out all stipulations pertaining
+to the Lexical and Value spaces of all the types in the DAISY Online
+Delivery Specification Markup Language.</p>
+<p>This document is a part of a suite of three documents that together
+compose the normative part of the DAISY Online Delivery Specification.
+All these documents are detailed in the <a href="http://www.daisy.org/projects/daisy-online-delivery/index.php">DAISY Online Delivery Specification Overview</a>.</p>
+<a id="sod" name="sod"></a>
+<h2>Status of this Document</h2>
+<p>This section describes the status of this document at the time of its publication.</p>
+<p>This document is the Last Call working draft by the DAISY Online Delivery Specification Working Group of the DAISY Consortium.</p>
+<p>The DAISY Online Delivery Specification Working Group believes that
+the development of this document is mostly complete. This draft is
+being published to allow for review by other members and friends of the
+DAISY Consortium.</p>
+<p>For further clarification on any content in this document, please refer to the <a href="http://www.daisy.org/projects/daisy-online-delivery/doprimer.htm">DAISY Online Delivery Specification Primer</a>.</p>
+<p>Please do not cite this document as anything other than a work in progress.</p>
+</div>
+<div><a id="toc" name="toc"></a>
+<h2>Table of Contents</h2>
+<ul>
+<li><a href="#intro">1. Introduction</a></li>
+<li class="c1">
+<ul>
+<li><a href="#namespaces">1.1. Namespaces and the DAISY Online Delivery Specification Markup Language</a></li>
+</ul>
+</li>
+<li><a href="#generaltypes">2. General types</a></li>
+<li class="c1">
+<ul>
+<li><a href="#settings">2.1. The settings type.</a></li>
+<li><a href="#readingsystemattributes">2.2. The readingSystemAttributes type.</a></li>
+<li><a href="#mimetypes">2.3. The mimeTypes type</a></li>
+<li><a href="#announcements">2.4. The announcements type</a></li>
+<li><a href="#announcementsmetadata">2.5. The announcementsMetadata type.</a></li>
+<li><a href="#message">2.6. The message type</a></li>
+</ul>
+</li>
+<li><a href="#contenttypes">3. Content types</a></li>
+<li class="c1">
+<ul>
+<li><a href="#searchcriteria">3.1. The searchCriteria type.</a></li>
+<li><a href="#contentstatus">3.2. The contentStatus type.</a></li>
+<li><a href="#contentmetadata">3.3. The contentMetadata type.</a></li>
+<li><a href="#contentlist">3.4. The contentList type.</a></li>
+<li><a href="#contentlistmetadata">3.5. The contentListMetadata type.</a></li>
+</ul>
+</li>
+<li><a href="#bookmarktypes">4. Bookmark types</a></li>
+<li class="c1">
+<ul>
+<li><a href="#bookmarkset">4.1. The bookmarkSet type.</a></li>
+</ul>
+</li>
+<li><a href="#dynamicmenutypes">5. Dynamic Menu Generation types</a></li>
+<li class="c1">
+<ul>
+<li><a href="#userinput">5.1. The userInput type.</a></li>
+<li><a href="#UserChoices">5.2. The userChoices type</a></li>
+<li><a href="#userchoicesmetadata">5.3. The userChoicesMetadata type.</a></li>
+<li><a href="#groupedquestions">5.4. The groupedQuestions type.</a></li>
+<li><a href="#groupedquestionsmetadata">5.5. The groupedQuestionsMetadata type.</a></li>
+<li><a href="#userresponses">5.6. The userResponses type.</a></li>
+</ul>
+</li>
+<li><a href="#exceptiontypes">6. Exception types.</a></li>
+<li class="c1">
+<ul>
+<li><a href="#notauthorised">6.1. The notAuthorised type.</a></li>
+<li><a href="#internalservererror">6.2. The internalServerError type.</a></li>
+<li><a href="#invalidparameter">6.3. The invalidParameter type.</a></li>
+<li><a href="#notissued">6.4. The notIssued type.</a></li>
+<li><a href="#servicebusy">6.5. The serviceBusy type.</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div><a id="intro" name="intro"></a>
+<h2>1. Introduction</h2>
+<p>This section is informative.</p>
+<p>The DAISY Online Delivery Specification Markup Language is an <a href="http://www.w3.org/XML">XML</a>
+vocabulary. The namespace for this vocabulary is
+http://www.daisy.org/ns/doml#. All types detailed in this document
+together form this vocabulary. Henceforth, the DAISY Online Delivery
+Specification Markup Language is referred to as DOML in this document.</p>
+<p>To aid understanding, the types in doml are categorised into five
+distinct categories that roughly resemble the Functional categories in
+the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm">DAISY Online Delivery Specification Web Service API</a> document.</p>
+<p>Please note, a type in the context of this document is also an <a href="http://www.w3.org/XML">XML</a> element. Therefore, the word type and element are used interchangeably throughout this document.</p>
+<p>It is envisaged that native programming constructs will be generated
+from the types detailed in this document. These native programming
+constructs can also be directly infered by an inferring engine through
+the <a href="http://www.daisy.org/projects/daisy-online-delivery/doml.xsd">DOML Schema</a> document.</p>
+<p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+"SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119.</a></p>
+<p>The ensuing sections are an ontological elaboration of all types in DOML.</p>
+<a id="namespaces" name="namespaces"></a>
+<h2>1.1. Namespaces and the DAISY Online Delivery Specification Markup Language</h2>
+<p>This section is normative.</p>
+<p>All types in the DAISY Online Delivery Specification Markup Language MUST incorporate support for the <a href="http://www.w3.org/TR/XML-names">Namespaces in XML 1.0</a> W3C standard by adhering to the following rules:</p>
+<ol>
+<li>An xmlns attribute MUST be present on all permitted root elements.</li>
+<li>The value of the xmlns attribute MUST be http://www.daisy.org/ns/doml#.</li>
+<li>All elements that are not a part of http://www.daisy.org/ns/doml#,
+declared as the default namespace through the xmlns attribute, MUST be
+prefixed with a prefix bound to the particular namespace e.g.
+xmlns:foo="...." and then &lt;foo:element1&gt;&lt;/foo:element1&gt;</li>
+<li>A compliant Service or Reading System MUST ignore any prefixed elements or attributes that it does not understand.</li>
+</ol>
+<a id="generaltypes" name="generaltypes"></a>
+<h2>2. General types</h2>
+<p>This section is informative.</p>
+<p>The General category contains types that can be used to deliver the following semantic information:</p>
+<ul>
+<li>Information pertaining to a user's settings on a Reading System.</li>
+<li>Information pertaining to the specific characteristics of a Reading System.</li>
+<li>Information pertaining to the nature of content that MUST be rendered on a Reading System.</li>
+<li>Information pertaining to an Announcement.</li>
+<li>Metadata information pertaining to an Announcement.</li>
+</ul>
+<p>A detailed description of each of these general purpose types follows.</p>
+<a id="settings" name="settings"></a>
+<h3>2.1. The settings type</h3>
+<p>This section is normative.</p>
+<p>The settings type is used by the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getsettings">getSettings</a> and <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#setsettings">setSettings</a> functions in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm">DAISY Online Delivery Specification Web Service API</a>.</p>
+<h4>Attributes of the settings type (aka element)</h4>
+<p>This element has no attributes.</p>
+<h4>Content options for the settings type (aka element)</h4>
+<p>The settings element MAY contain the following elements:</p>
+<ul>
+<li>Skippability - This element contains the settings specific to
+skippability. To find out more about skippability in ANSI/NISO
+Z39.86-2005, please visit <a href="http://www.daisy.org/z3986/2005/Z3986-2005.html#custtest">http://www.daisy.org/z3986/2005/Z3986-2005.html#custtest</a>
+This is an OPTIONAL element that MAY occur once inside a settings
+element. It has no attributes. It MUST contain the following elements:
+<ul>
+<li>bookStruct - This element is an OPTIONAL element that MAY occur one
+or more times inside the skippability element. It MUST contain the
+following attributes:
+<ul>
+<li>type - The data type of this attribute is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>.
+The allowed values for this attribute are: PAGE_NUMBER | NOTE |
+NOTE_REFERENCE | ANNOTATION | LINE_NUMBER | OPTIONAL_SIDEBAR |
+OPTIONAL_PRODUCER_NOTE.</li>
+<li>skippable - The value of this attribute indicates whether the
+element specified by the type attribute is skippable. The data type of
+this element is <a href="http://www.w3.org/TR/XMLschema-2/#boolean">Boolean</a>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>uiVolume - This element contains a value that represents the volume
+setting for the User Interface of the Reading System. The data type of
+this element is <a href="http://www.w3.org/TR/XMLschema-2/#int">Int</a>.
+The allowed values are from 1 to 100. This element is an OPTIONAL
+element that MAY only occur once inside the settings element.</li>
+<li>contentVolume - This element contains a value that represents the
+volume setting for the Content reading mode of the Reading System. The
+data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#int">Int</a>.
+The allowed values are from 1 to 100. This element is an OPTIONAL
+element that MAY only occur once inside the settings element.</li>
+<li>uiTone - This element contains a value that represents the tone
+setting for the User Interface of the Reading System. The data type of
+this element is <a href="http://www.w3.org/TR/XMLschema-2/#int">Int</a>.
+The allowed values are from 1 to 100. This element is an OPTIONAL
+element that MAY only occur once inside the settings element.</li>
+<li>contentTone - This element contains a value that represents the
+tone setting for the Content reading mode of the Reading System. The
+data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#int">Int</a>.
+The allowed values are from 1 to 100. This element is an OPTIONAL
+element that MAY only occur once inside the settings element.</li>
+<li>uiSpeed - This element contains a value that represents the speed
+setting for the User Interface of the Reading System. The data type of
+this element is <a href="http://www.w3.org/TR/XMLschema-2/#int">Int</a>.
+The allowed values are from 1 to 100. This element is an OPTIONAL
+element that MAY only occur once inside the settings element.</li>
+<li>contentSpeed - This element contains a value that represents the
+speed setting for the Content reading mode of the Reading System. The
+data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#int">Int</a>.
+The allowed values are from 1 to 100. This element is an OPTIONAL
+element that MAY only occur once inside the settings element.</li>
+<li>uiPreferredLanguage - This element contains a value that represents
+the preferred language setting for the User Interface of the Reading
+System. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#language">Language</a>. This element is an OPTIONAL element that MAY only occur once inside the settings element.</li>
+<li>contentPreferredLanguage - This element contains a value that
+represents the preferred language setting for the Content reading mode
+of the Reading System. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#language">Language</a>. This element is an OPTIONAL element that MAY only occur once inside the settings element.</li>
+<li>One or more elements from any other namespace. Please note, no
+other elements from the doml namespace (http://www.daisy.org/ns/doml#)
+are permitted here.</li>
+</ul>
+<a id="readingsystemattributes" name="readingsystemattributes"></a>
+<h3>2.2. The readingSystemAttributes type</h3>
+<p>This section is normative.</p>
+<p>The readingSystemAttributes type is used by the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#setreadingsystemattributes">setReadingSystemAttributes</a> function in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm">DAISY Online Delivery Specification Web Service API</a>.</p>
+<p>This type MUST be used to deliver the specific characteristics (aka attributes) of the Reading System to the Service.</p>
+<h4>Attributes of the readingSystemAttributes type (aka element)</h4>
+<p>This element has no attributes.</p>
+<h4>Content options for the readingSystemAttributes type (aka element)</h4>
+<p>The readingSystemAttributes type MAY contain the following elements:</p>
+<ul>
+<li>One or more elements from any other namespace. Please note, no
+other elements from the doml namespace (http://www.daisy.org/ns/doml#)
+are permitted here.</li>
+<li>manufacturer - This element holds the information about the
+manufacturer of the Reading System. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. This element MUST occur only once inside the <a href="#readingsystemattributes">readingSystemAttributes</a> element. It is a REQUIRED element. There are no restrictions placed in <a href="http://www.daisy.org/projects/daisy-online-delivery/doml.xsd">DOML Schema</a>
+on the value space of this element. To find more information about the
+pattern that the value of this element might adhere to, refer to the <a href="http://www.daisy.org/">DAISY Consortium Website</a>.</li>
+<li>model - This element holds the information about the model of the
+Reading System. It is a REQUIRED element. The data type of this element
+is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. It MUST occur only once inside the <a href="#readingsystemattributes">readingSystemAttributes element</a>.</li>
+<li>serialNumber - This element holds the information about the
+serialNumber of the Reading System. It is a REQUIRED element. The data
+type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. It MUST occur only once inside the <a href="#readingsystemattributes">readingSystemAttributes element</a>.</li>
+<li>firmwareVersion - This element holds the information about the
+firmware version of the Reading System. It is a REQUIRED element. The
+data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. It MUST occur only once inside the <a href="#readingsystemattributes">readingSystemAttributes element</a>.</li>
+<li>config - This element holds various pieces of configuration
+information about the Reading System. It is a REQUIRED element. The
+data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. It MUST occur only once inside the <a href="#readingsystemattributes">readingSystemAttributes element</a>. This element MUST have the following elements:
+<ul>
+<li>supportsEmbeddedAudio - This element indicates whether the Reading System supports embedded audio in the <a href="#message">message</a>
+element. This element is a REQUIRED element that MUST occur only once
+inside the config element. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#boolean">Boolean</a>.</li>
+<li>supportsMultipleSelections - This element indicates whether the
+Reading System supports multiple selections for a choices type
+question. This is a REQUIRED element that MUST occur only once inside
+the config element. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#boolean">Boolean</a>.
+If this element is set to false, the Service MUST not present the
+allowMultipleSelections and multipleSelectionsCallbackFunction
+attributes on the <a href="#userchoices">userChoices</a> element to the Reading System.</li>
+<li>supportsGroupedQuestions - This element indicates whether the
+Reading System supports the rendering of a grouped set of questions.
+This element is a REQUIRED element that MUST occur only once inside a
+config element. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#boolean">Boolean</a>.
+If this element is set to false, the Service MUST not specify the value
+getGroupedQuestions for any callbackFunction or
+multipleSelectionsCallbackFunction elements inside any type.</li>
+<li>protocolVersion - This element contains the latest supported
+version of the DAISY Online Delivery Specification on the Reading
+System. This is a REQUIRED element that MUST only occur once inside the
+config element. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>.</li>
+<li>supportedContentStandards - This element contains information about
+the supported content standards on the Reading System. It is a REQUIRED
+element that MUST occur once inside a config element. This element MUST
+contain the following element:
+<ul>
+<li>supportedContentStandard - This element contains information about
+a single supported content standard on the Reading System. This element
+is a REQUIRED element that MUST occur one or more times inside the
+supportedContentStandards element. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>.
+It is important to note that the DAISY Online Delivery Specification
+does not place any restrictions on the value space of this element.</li>
+</ul>
+</li>
+<li>The config element MUST contain a single instance of a <a href="#mimetypes">mimeTypes</a> element.</li>
+<li>inputTypes - This element is a REQUIRED element that MUST occur
+only once inside the config element. It has no attributes. It MUST
+contain the following element:
+<ul>
+<li>input - This element is an empty element. It is a REQUIRED element
+that MUST occur one or more times inside the inputTypes element. It
+MUST have the following attributes:
+<ul>
+<li>type - This attribute contains information about the mode of input
+being represented by the input element. the data type of this attribute
+is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. The allowed values for this attribute are: audio, text, braille, video and image. This attribute is a REQUIRED attribute.</li>
+<li>brailleCode - This attribute contains the braille code that MUST be
+used for the braille input to the question. the data type of this
+attribute is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>.
+This attribute MUST have unicode as its value; no other value is
+allowed. The unicode braille characters are in position u2800 to u28ff
+and are described at <a href="http://unicode.org/charts/PDF/U2800.pdf">http://unicode.org/charts/PDF/U2800.pdf</a>.</li>
+<li>xml:lang - This attribute holds the value of the language in which
+the input will be received. This attribute is a part of the XML
+namespace. This is an OPTIONAL attribute. If omitted, the Service
+Provider MUST make their best choice of language to be used.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>availableMemory - This element contains the information in bytes
+about the memory available on a Reading System. This element is a
+REQUIRED element that MUST occur only once inside a config element. The
+data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#int">Int</a>.
+It is important to note that available memory in this context is the
+size in bytes of the largest piece of content that MUST be downloaded
+and stored on the Reading System.</li>
+<li>modes - This element contains information about the content access
+modes supported on a Reading System. It is a REQUIRED element that MUST
+occur only once inside a config element. It MUST contain the following
+element:
+<ul>
+<li>mode - This element contains information about a single supported
+mode on the Reading System. This element is a REQUIRED element that
+MUST occur one or more times inside a modes element. The data type of
+this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. The allowed values for this element are: download and stream.</li>
+</ul>
+</li>
+<li>supportedProtocols - This element contains information about the
+protocols supported on a Reading System for content access. It is a
+REQUIRED element that MUST occur only once inside a config element. It
+MUST contain the following element:
+<ul>
+<li>supportedProtocol - This element contains information about a
+single supported protocol on a Reading System. This element is a
+REQUIRED element that MUST occur one or more times inside a
+supportedProtocols element. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>.
+The DAISY Online Delivery Specification does not place any restriction
+on the value space of this element. It is important to note that http
+and https do not need to be explicitly declared as supported protocols
+through this element; both http and https MUST be supported by all
+Reading Systems to claim <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#compliance">Compliance</a> to the DAISY Online Delivery Specification.</li>
+</ul>
+</li>
+<li>preferredLanguage - This element contains information about the
+preferred language on the Reading System. This element is a REQUIRED
+element that MUST occur only once inside a config element. The data
+type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#language">Language</a>.</li>
+<li>bandwidth - This element contains information in kilobits per
+second about the bandwidth available to the Reading System. This
+element is a REQUIRED element that MUST only occur once inside a config
+element. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#int">Int</a>.</li>
+</ul>
+</li>
+</ul>
+<a id="mimetypes" name="mimetypes"></a>
+<h3>2.3. The mimeTypes type</h3>
+<p>This section is normative.</p>
+<p>The mimeTypes type is used by the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#setmessagemimetypes">setMessageMimeTypes</a> function in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm">DAISY Online Delivery Specification Web Service API</a>.</p>
+<p>This type is also a child type of the <a href="#readingsystemattributes">readingSystemAttributes</a> type. This type MUST be used when information about the Mime types supported in a <a href="#message">message type</a> needs to be delivered to the Service.</p>
+<h4>Attributes of the mimeTypes type (aka element)</h4>
+<p>This element has no attributes.</p>
+<h4>Content options for the mimeTypes type (aka element)</h4>
+<p>The mimeTypes type MAY contain the following elements:</p>
+<ul>
+<li>mimeType - This element is an empty element. It is a REQUIRED element that MUST occur one or more times inside the <a href="#mimetypes">mimeTypes</a> element. It MUST have the following attributes:
+<ul>
+<li>type - This attribute contains information about a single MIME type
+being represented by the mimeType element. the data type of this
+attribute is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>.
+It is important to note that the DAISY Online Delivery Specification
+does not place any restrictions on the value space of this attribute.
+For more information about the MIME types that MAY be used as a value
+of this attribute, please visit <a href="http://www.iana.org/assignments/media-types">IANA MIME Media Types</a>. This attribute is a REQUIRED attribute.</li>
+<li>brailleCode - This attribute contains the braille code that MUST be
+used for rendering braille. The data type of this attribute is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>.
+This attribute MUST have unicode as its value; no other value is
+allowed. The unicode braille characters are in position u2800 to u28ff
+and are described at <a href="http://unicode.org/charts/PDF/U2800.pdf">http://unicode.org/charts/PDF/U2800.pdf</a>.</li>
+<li>xml:lang - This attribute holds the value of the language in which
+the content will be rendered. This attribute is a part of the XML
+namespace. This is an OPTIONAL attribute. If omitted, the Service
+Provider MUST make their best choice of language to be used.</li>
+</ul>
+</li>
+</ul>
+<a id="announcements" name="announcements"></a>
+<h3>2.4. The announcements type</h3>
+<p>This section is normative.</p>
+<p>The announcements type is used by the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getServiceAnnouncements">getServiceAnnouncements</a> and <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getuserannouncement">getUserAnnouncement</a> functions in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm">DAISY Online Delivery Specification Web Service API</a>.</p>
+<p>This type MUST be used to deliver announcements from a Service to a Reading System.</p>
+<h4>Attributes of the announcements type (aka element)</h4>
+<p>This element has no attributes.</p>
+<h4>Content options for the announcements type (aka element)</h4>
+<p>The announcements type MAY contain the following elements:</p>
+<ul>
+<li>announcement - This element is an OPTIONAL element that MAY occur one or more times inside the <a href="#announcements">announcements</a> element. It MUST contain one or more <a href="#message">message</a> elements. It MUST have the following atributes:
+<ul>
+<li>id - This attribute contains a unique identifier for this announcement element. The data type of this atribute is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. This attribute is a REQUIRED attribute.</li>
+<li>sequenceNumber - The value of this attribute is the ordinal of This
+element in the encapsulating fragment. The data type of this atribute
+is <a href="http://www.w3.org/TR/XMLschema-2/#int">int</a>. This attribute is a REQUIRED attribute.</li>
+<li>type - This attribute holds a value that indicates the nature of this announcement element. The data type of this attribute is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>.
+The allowed values for this attribute are: warning, error, information
+and system. It is an OPTIONAL attribute. It defaults to information.</li>
+<li>priority - This attribute holds a value that indicates the priority
+of this announcement element. The data type of this attribute is <a href="http://www.w3.org/TR/XMLschema-2/#int">Int</a>.
+The allowed values are 1 to 3, where 1 denotes the highest priority and
+3 the lowest. It is an OPTIONAL attribute. It defaults to 3.</li>
+</ul>
+</li>
+</ul>
+<a id="announcementsmetadata" name="announcementsmetadata"></a>
+<h3>2.5. The announcementsMetadata type</h3>
+<p>This section is normative.</p>
+<p>The announcementsMetadata type is used by the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getserviceannouncementsmetadata">getServiceAnnouncementsMetadata</a> function in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm">DAISY Online Delivery Specification Web Service API</a>.</p>
+<p>This type MUST be used to deliver metadata information about Service announcements. It is anticipated that the <a href="#announcements">announcements</a>
+type MAY be quite large if audio files are encapsulated in it, and thus
+the size information available in this type will enable a Reading
+System to request individual or a series of announcement elements in an
+<a href="#announcements">announcements</a> element.</p>
+<h4>Attributes of the announcementsMetadata type (aka element)</h4>
+<p>This element has no attributes.</p>
+<h4>Content options for the announcementsMetadata type (aka element)</h4>
+<p>The announcementsMetadata type MAY contain the following elements:</p>
+<ul>
+<li>announcementMetadata - This element contains metadata information about an announcement element inside an <a href="#announcements">announcements</a>
+element. It is an empty element. It is an OPTIONAL element that MAY
+occur one or more times inside the announcementsMetadata element. It
+MUST have the following attributes:
+<ul>
+<li>size - This attribute holds the size in bytes of the announcement element inside an <a href="#announcements">announcements</a> element. The data type of this attribute is <a href="http://www.w3.org/TR/XMLschema-2/#int">Int</a>. It is a REQUIRED attribute.</li>
+<li>sequenceNumber - The value of this attribute is the ordinal of This
+element in the encapsulating fragment. This value corresponds to the
+value contained in the sequenceNumber attribute of the
+announcement.announcements element. The data type of this atribute is <a href="http://www.w3.org/TR/XMLschema-2/#int">int</a>. This attribute is a REQUIRED attribute.</li>
+</ul>
+</li>
+</ul>
+<a id="message" name="message"></a>
+<h3>2.6. The message type</h3>
+<p>This section is normative.</p>
+<p>The message type is not used directly by any functions in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm">DAISY Online Delivery Specification Web Service API</a>. This type is a child type of other types in DOML.</p>
+<p>The DAISY Online Delivery Specification provides three options to
+the Service for delivering audio files to a Reading System through this
+element:</p>
+<ul>
+<li>Option 1: The audio file MAY be delivered over http or https - to
+use this option, a Service MUST set the useWebService attribute to
+false, and src attribute to the uri of the audio file on the audio
+element of this element.</li>
+<li>Option 2: The audio file MAY be delivered via the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getresource">getResource</a>
+web service function - To use this option, a Service MUST set the
+useWebService attribute to true, and the src attribute to the uri of
+the audio file on the audio element of this element.</li>
+<li>Option 3: The audio file MAY be delivered by encapsulating it in
+this type - To use this option, a Service MUST set the useWebService
+attribute to false, the src attribute to an empty string or omit the
+src attribute altogether, and embed the audio file in the data element
+of the audio element of this element. It SHOULD be noted that the
+reading system will not be able to start rendering the audio file
+embedded in the data element of the audio element of this element,
+until the entire SOAP message has been received and disassembled.
+Therefore it is recommended that this option be used only to embed
+small audio files into the data element of the audio element of this
+element. on the other hand, when determining whether or not to use this
+option, the Service designer SHOULD balance the benefit of compressing
+the audio files before embedding them into a single SOAP message
+against the total number of audio files to be accessed, and the
+cumulative delay caused by network latency when the reading system MUST
+access each audio file in turn.</li>
+</ul>
+<h4>Attributes of the message type (aka element)</h4>
+<p>This element MAY have the following attribute:</p>
+<ul>
+<li>xml:lang - This attribute holds a value that indicates the language
+of this element. This attribute is a part of the XML namespace. This is
+an OPTIONAL attribute. If omitted, the Service Provider MUST make their
+best choice of language to be used.</li>
+</ul>
+<h4>Content options for the message type (aka element)</h4>
+<p>The message type MAY contain the following elements:</p>
+<ul>
+<li>text - This element contains the text portion of the <a href="#message">message</a> element. It is an OPTIONAL element that MAY occur once inside the <a href="#message">message</a> element. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. This element has no attributes.</li>
+<li>audio - This element contains the audio portion of the <a href="#message">message</a>
+element. This element MUST contain one instance of a data element that
+holds the embedded audio file if the third option detailed in the
+introduction to the <a href="#message">message</a> type for delivering audio files is used. The data type of the data element is <a href="http://www.w3.org/TR/XMLschema-2/#base64Binary">Base64Binary</a>. The data element MUST have one REQUIRED attribute: codec. The data type of the codec attribute is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>.
+There are no explicit restrictions on the values that the codec
+attribute MUST contain. to find more information about what values MUST
+be used with this attribute, please refer to the <a href="http://tools.ietf.org/html/rfc4281">RFC 4281</a> document. This element is an OPTIONAL element and MAY occur only once inside the <a href="#message">message</a> element. This element MUST have the following attributes:
+<ul>
+<li>size - This attribute contains the size in bytes of the audio file. The data type of this attribute is <a href="http://www.w3.org/TR/XMLschema-2/#int">Int</a>. It is a REQUIRED attribute.</li>
+<li>src - This attribute contains the uri to the audio file. If this
+attribute contains an empty string value or is omitted altogether, the
+audio file MUST be embedded in the data element of the audio element.
+The data type of this attribute is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. It is an OPTIONAL attribute.</li>
+<li>useWebService - This attribute indicates whether the audio file is to be retrieved via the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getresource">getResource</a> function in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm">DAISY Online Delivery Specification Web Service API</a> (see option 2 in the introduction to the <a href="#message">message</a> type). The data type of this attribute is <a href="http://www.w3.org/TR/XMLschema-2/#boolean">Boolean</a>. It is a REQUIRED attribute.</li>
+<li>rangeBegin - This attribute holds the value in bytes of the start byte of the byte range that is the audio portion of the <a href="#message">message</a> element. The data type of this attribute is <a href="http://www.w3.org/TR/XMLschema-2/#int">Int</a>. It is an OPTIONAL attribute.</li>
+<li>rangeEnd - This attribute holds the value in bytes of the end byte of the byte range that is the audio portion of the <a href="#message">message</a> element. The data type of this attribute is <a href="http://www.w3.org/TR/XMLschema-2/#int">Int</a>. It is an OPTIONAL attribute.</li>
+</ul>
+</li>
+</ul>
+<a id="contenttypes" name="contenttypes"></a>
+<h2>3. Content types</h2>
+<p>This section is informative.</p>
+<p>The content category contains types that can be used to deliver the following semantic information:</p>
+<ul>
+<li>Information pertaining to a search criteria.</li>
+<li>Information pertaining to the status of the specified content on the Reading System.</li>
+<li>Information pertaining to the metadata for the specified content.</li>
+<li>Information pertaining to a list of content.</li>
+<li>Metadata information pertaining to a list of content.</li>
+</ul>
+<p>A detailed description of each of these content types follows.</p>
+<a id="searchcriteria" name="searchcriteria"></a>
+<h3>3.1. The SearchCriteria type</h3>
+<p>This section is normative.</p>
+<p>The searchCriteria type is used by the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#searchContent">searchContent</a> function in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm">DAISY Online Delivery Specification Web Service API</a>.</p>
+<p>This type MUST be used when a Reading System needs to specify a search criteria for a search.</p>
+<h4>Attributes of the searchCriteria type (aka element)</h4>
+<p>This element has no attributes.</p>
+<h4>Content options for the searchCriteria type (aka element)</h4>
+<p>The searchCriteria type MAY contain the following elements:</p>
+<ul>
+<li>title - the value of this element is the title of the publication. the data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. It is an OPTIONAL element and MAY occur only once inside the <a href="#searchcriteria">searchCriteria</a> element. It has no attributes.</li>
+<li>size - The value of this element is the size of the publication in bytes. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#int">Int</a>. It is an OPTIONAL element and MAY occur only once inside the <a href="#searchcriteria">searchCriteria</a> element. It has no attributes.</li>
+<li>author - The value of this element is the author of the publication. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. It is an OPTIONAL element and MAY occur only once inside the <a href="#searchcriteria">searchCriteria</a> element. It has no attributes.</li>
+<li>genre - The value of this element is the genre of the publication. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. It is an OPTIONAL element and MAY occur only once inside the <a href="#searchcriteria">searchCriteria</a> element. It has no attributes.</li>
+<li>publisher - The value of this element is the publisher of the publication. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. It is an OPTIONAL element and MAY occur only once inside the <a href="#searchcriteria">searchCriteria</a> element. It has no attributes.</li>
+<li>narrator - The value of this element is the narrator of the publication. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. It is an OPTIONAL element and MAY occur only once inside the <a href="#searchcriteria">searchCriteria</a> element. It has no attributes.</li>
+<li>language - The value of this element is the language of the publication. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. It is an OPTIONAL element and MAY occur only once inside the <a href="#searchcriteria">searchCriteria</a> element. It has no attributes.</li>
+<li>issueDate - The value of this element is the issue date of the
+publication. The issue date is the date when the publication was added
+to the catalog for the client. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. The constraint on the value set for this element is the <a href="http://www.iso.org/iso/en/CatalogueDetailPage.CatalogueDetail?CSNUMBER=40874&amp;ICS1=1&amp;ICS2=140&amp;ICS3=30">ISO 8601</a> date pattern. It is an OPTIONAL element and MAY occur only once inside the <a href="#searchcriteria">searchCriteria</a> element. It has no attributes.</li>
+<li>sortBy - The value of this element is the filter by which the
+matching publications will be sorted as a result of the search. The
+data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>.
+The allowed values for this element are: title, size, author, genre,
+publisher, narrator, language and issueDate i.e. all other child
+elements of the <a href="#searchcriteria">searchCriteria</a> element. It is an OPTIONAL element and MAY occur only once inside the <a href="#searchcriteria">searchCriteria</a> element. It MUST have the following attribute:
+<ul>
+<li>type - This attribute holds a value that indicates whether the
+filter is to be applied in an ascending or descending order. The data
+type of this attribute is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. the only two allowed values are ascending or descending. It is a REQUIRED attribute.</li>
+</ul>
+</li>
+</ul>
+<a id="contentstatus" name="contentstatus"></a>
+<h3>3.2. The contentStatus type</h3>
+<p>This section is normative.</p>
+<p>The contentStatus type is used by the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getcontentstatus">getContentStatus</a> and <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#setcontentstatus">setContentStatus</a> functions in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm">DAISY Online Delivery Specification Web Service API</a>.</p>
+<h4>Attributes of the contentStatus type (aka element)</h4>
+<p>This element has no attributes.</p>
+<h4>Content options for the contentStatus type (aka element)</h4>
+<p>The contentStatus type MAY contain the following elements:</p>
+<ul>
+<li>publication - This element MUST occur one or more times inside the <a href="#contentstatus">contentStatus</a> element. This element MUST have the following attribute:
+<ul>
+<li>id - This attribute contains the unique id of the publication
+represented by the publication element. The data type of this attribute
+is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. It is a REQUIRED attribute.</li>
+</ul>
+The publication element MUST contain the following elements:
+<ul>
+<li>status - the value of this element is the status of the publication on the Reading System. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>.
+The allowed values for this element are: downloading, downloaded,
+pending and streaming. It is a REQUIRED element that MUST occur only
+once inside a publication element. It has no attributes.</li>
+<li>downloadedBytes - the value of this element is the total downloaded
+size in bytes of the publication on the Reading System. The data type
+of this element is <a href="http://www.w3.org/TR/XMLschema-2/#int">Int</a>. It is an OPTIONAL element that MUST occur only once inside a publication element. It has no attributes.</li>
+<li>storageType - the value of this element is the location of the
+publication on the Reading System. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>.
+The allowed values for this element are: internal, removable and
+network. It is a REQUIRED element that MUST occur only once inside a
+publication element. It has no attributes.</li>
+</ul>
+</li>
+</ul>
+<a id="contentmetadata" name="contentmetadata"></a>
+<h3>3.3. The contentMetadata type</h3>
+<p>This section is normative.</p>
+<p>The contentMetadata type is used by the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getContentMetadata">getContentMetadata</a> function in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm">DAISY Online Delivery Specification Web Service API</a>.</p>
+<p>This type MUST be used when the Service needs to deliver metadata information about the specified content to the Reading System.</p>
+<h4>Attributes of the contentMetadata type (aka element)</h4>
+<p>This element MAY have the following attributes:</p>
+<ul>
+<li>id - This attribute holds the unique identifier of the content that the metadata is for. The data type of the id attribute is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. It is a REQUIRED attribute.</li>
+<li>type - This attribute holds the information about the type of
+content that the metadata is for. The data type of the type attribute
+is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. the allowed values for this attribute are: book, magazine, newspaper and other. It is an OPTIONAL attribute.</li>
+<li>accessMode - This attribute holds the information about the modes
+of access for the content that the metadata is for. The data type of
+the accessMode attribute is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>.
+The allowed values for this attribute are: stream, download and
+unrestricted. If this attribute contains an empty string value, the
+Reading System MUST infer the value to be unrestricted. It is a
+REQUIRED attribute.</li>
+<li>useWebService - This attribute indicates whether the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getresource">getResource</a> function in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm">DAISY Online Delivery Specification Web Service API</a> SHOULD be used to access the content that the metadata is for. The data type of the useWebService attribute is <a href="http://www.w3.org/TR/XMLschema-2/#boolean">Boolean</a>. It is a REQUIRED attribute.</li>
+</ul>
+<h4>Content options for the contentMetadata type (aka element)</h4>
+<p>The contentMetadata type MAY contain the following elements:</p>
+<ul>
+<li>sample - This element is an OPTIONAL element that MAY occur only once inside the <a href="#contentMetadata">contentMetadata</a> element. it MUST contain one <a href="#message">message</a> element.</li>
+<li>contentStandard - This element is a REQUIRED element that MUST occur only once inside the <a href="#contentMetadata">contentMetadata</a> element. The value contained in this element is the specific standard that the content being described by the <a href="#contentmetadata">contentMetadata</a>
+fragment adheres to e.g. DAISY/NISO 2002. The value contained in this
+element MUST be a value specified by the Reading System as a supported
+content standard through the
+supportedContentStandard.supportedContentStandards.config.readingSystemAttributes
+element.</li>
+<li>provider - This element is an empty element. It is an OPTIONAL element that MAY occur only once inside the <a href="#contentmetadata">contentMetadata</a> element. It MUST have the following attribute:
+<ul>
+<li>id - This attribute holds a unique identifier for the provider
+represented by the provider element. The data type of this attribute is
+<a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. To find more information about the possible unique identifier values for a provider, refer to the <a href="http://www.daisy.org/">DAISY Consortium Website</a>. this is a REQUIRED attribute.</li>
+</ul>
+</li>
+<li>service - This element is an empty element. It is an OPTIONAL element that MAY occur only once inside the <a href="#contentmetadata">contentMetadata</a> element. It MUST have the following attribute:
+<ul>
+<li>id - This attribute holds a unique identifier for the service
+represented by the service element. The data type of this attribute is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. To find more information about the possible unique identifier values for a service, refer to the <a href="http://www.daisy.org/">DAISY Consortium Website</a>. this is a REQUIRED attribute.</li>
+</ul>
+</li>
+<li>metadata - This element is an OPTIONAL element that MAY only occur once inside the <a href="#contentmetadata">contentMetadata</a> element. It has no attributes. It MUST have the following elements:
+<ul>
+<li>title - the value of this element is the title of the content. the data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. It is a REQUIRED element and MUST occur only once inside the metadata element. It has no attributes.</li>
+<li>size - The value of this element is the size of the content in bytes. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#int">Int</a>. It is a REQUIRED element and MUST occur only once inside the metadata element. It has no attributes.</li>
+<li>author - The value of this element is the author of the content. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. It is an OPTIONAL element and MAY occur only once inside the metadata element. It has no attributes.</li>
+<li>genre - The value of this element is the genre of the content. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. It is an OPTIONAL element and MAY occur only once inside the metadata element. It has no attributes.</li>
+<li>publisher - The value of this element is the publisher of the content. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. It is an OPTIONAL element and MAY occur only once inside the metadata element. It has no attributes.</li>
+<li>narrator - The value of this element is the narrator of the content. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. It is an OPTIONAL element and MAY occur only once inside the metadata element. It has no attributes.</li>
+<li>language - The value of this element is the language of the content. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. It is an OPTIONAL element and MAY occur only once inside the metadata element. It has no attributes.</li>
+<li>description - The value of this element is the description of the content. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. It is an OPTIONAL element and MAY occur only once inside the metadata element. It has no attributes.</li>
+<li>One or more elements from any other namespace. Please note, no
+other elements from the doml namespace (http://www.daisy.org/ns/doml#)
+are permitted here.</li>
+</ul>
+</li>
+<li>resources - This element is a REQUIRED element and MUST occur only once inside the <a href="#contentmetadata">contentMetadata</a> element. It has no attributes. It MUST contain the following elements:
+<ul>
+<li>resource - This element is a REQUIRED element that MUST occur one
+or more times inside the resources element. It is an empty element. It
+MUST have the following attributes:
+<ul>
+<li>uri - This attribute contains the path to the resource. The data type of this attribute is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. It is a REQUIRED attribute.</li>
+<li>mimeType - This attribute contains the MIME type of the resource. The data type of this attribute is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>.
+It is a REQUIRED attribute. It is important to note that the DAISY
+Online Delivery Specification does not place any restrictions on the
+value space of this attribute. For more information about the MIME
+types that MAY be used as a value of this attribute, please visit <a href="http://www.iana.org/assignments/media-types">IANA MIME Media Types</a>.</li>
+<li>size - This attribute contains the size in bytes of the resource. The data type of this attribute is <a href="http://www.w3.org/TR/XMLschema-2/#int">Int</a>. It is a REQUIRED attribute.</li>
+<li>localFileName - This attribute contains the local file name of the resource. The data type of this attribute is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>.
+It is a REQUIRED attribute. The value of this attribute is the physical
+name of the file that this resource element represents.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<a id="contentlist" name="contentlist"></a>
+<h3>3.4. The contentList type</h3>
+<p>This section is normative.</p>
+<p>The contentList type is used by the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getcontentlist">getContentList</a> function in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm">DAISY Online Delivery Specification Web Service API</a>.</p>
+<h4>Attributes of the contentList type (aka element)</h4>
+<p>This element has no attributes.</p>
+<h4>Content options for the contentList type (aka element)</h4>
+<p>The contentList type MAY contain the following elements:</p>
+<ul>
+<li>contentItem - This element is an OPTIONAL element and MAY occur one or more times inside the <a href="#contentlist">contentList</a> element. It MUST have the following attribute:
+<ul>
+<li>id - This attribute contains the unique identifier of the content
+that is being represented by the contentItem element. The data type of
+this attribute is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. It is a REQUIRED attribute.</li>
+<li>sequenceNumber - The value of this attribute is the ordinal of This
+element in the encapsulating fragment. The data type of this atribute
+is <a href="http://www.w3.org/TR/XMLschema-2/#int">int</a>. This attribute is a REQUIRED attribute.</li>
+</ul>
+The contentItem MUST have only one instance of the <a href="#message">message</a> element.</li>
+</ul>
+<a id="contentlistmetadata" name="contentlistmetadata"></a>
+<h3>3.5. The contentListMetadata type</h3>
+<p>This section is normative.</p>
+<p>The contentListMetadata type is used by the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getcontentlistmetadata">getContentListMetadata</a> function in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm">DAISY Online Delivery Specification Web Service API</a>.</p>
+<p>This type MUST be used to deliver metadata information about the <a href="#contentlist">contentList</a> type. It is envisaged that due to embedded audio (see option 2 in the introduction to the <a href="#message">message</a> type) the <a href="#contentlist">contentList</a>
+type could get rather large, and thus this type is provided to enable
+the reading system to choose how many contentItem elements it deems
+appropriate to receive in the corresponding <a href="#contentlist">contentList</a> type.</p>
+<h4>Attributes of the contentListMetadata type (aka element)</h4>
+<p>This element has no attributes.</p>
+<h4>Content options for the contentListMetadata type (aka element)</h4>
+<p>The contentListMetadatatype MAY contain the following elements:</p>
+<ul>
+<li>contentItemMetadata - This is an empty element. It is an OPTIONAL element that MAY occur one or more times inside the <a href="#contentlistmetadata">contentListMetadata</a> element. It MUST have the following attributes:
+<ul>
+<li>sequenceNumber - This attribute contains a value that corresponds
+to the value contained in the sequenceNumber attribute of the
+contentItem element inside the <a href="#contentlist">contentList</a>
+element. The contentItemMetadata element represents metadata
+information about this contentItem element. The data type of this
+attribute is <a href="http://www.w3.org/TR/XMLschema-2/#int">Int</a>. this is a REQUIRED attribute.</li>
+<li>size - This attribute contains the size in bytes of a corresponding contentItem element inside a <a href="#contentlist">contentList</a> element. The data type of this attribute is <a href="http://www.w3.org/TR/XMLschema-2/#int">Int</a>. This is a REQUIRED attribute.</li>
+</ul>
+</li>
+</ul>
+<a id="bookmarktypes" name="bookmarktypes"></a>
+<h2>4. Bookmark types</h2>
+<p>This section is informative.</p>
+<p>The bookmark category contains a type that can be used to deliver the following semantic information:</p>
+<ul>
+<li>Bookmark information about the specified publication.</li>
+</ul>
+<p>A detailed description of the bookmarkSet type follows.</p>
+<a id="bookmarkset" name="bookmarkset"></a>
+<h3>4.1. The bookmarkSet type</h3>
+<p>This section is normative.</p>
+<p>The bookmarkSet type is a direct derivation of the <a href="http://www.daisy.org/z3986/2005/Z3986-2005.html#Bkmk">Portable Bookmark specification</a> by the <a href="http://www.daisy.org/">DAISY Consortium</a>. The <a href="http://www.daisy.org/z3986/2005/bookmark-2005-1.dtd">dtd</a> for the <a href="http://www.daisy.org/z3986/2005/Z3986-2005.html#Bkmk">Portable Bookmark specification</a> has been translated into the <a href="http://www.w3.org/XML/schema">W3C XML Schema Language</a>, has been included in the <a href="http://www.daisy.org/projects/daisy-online-delivery/doml.xsd">DOML Schema</a> and is available in the DAISY Online Delivery Specification namespace.</p>
+<p>Refer to the <a href="http://www.daisy.org/z3986/2005/Z3986-2005.html#Bkmk">Portable Bookmark specification</a> for further details on this type.</p>
+<a id="dynamicmenutypes" name="dynamicmenutypes"></a>
+<h2>5. Dynamic Menu Generation types</h2>
+<p>This section is informative.</p>
+<p>The Dynamic Menu Generation category contains types that can be used to deliver the following semantic information:</p>
+<ul>
+<li>Information pertaining to a input type question.</li>
+<li>Information pertaining to a choices type question.</li>
+<li>Metadata information pertaining to a choices type question.</li>
+<li>Information pertaining to a grouped set of questions.</li>
+<li>Metadata information pertaining to a grouped set of questions.</li>
+</ul>
+<p>A detailed description of each of these Dynamic Menu Generation types follows.</p>
+<a id="userinput" name="userinput"></a>
+<h3>5.1. The userInput type</h3>
+<p>This section is normative.</p>
+<p>The userInput type is used by the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getuserinput">getUserInput</a> function in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm">DAISY Online Delivery Specification Web Service API</a>.</p>
+<p>This type MUST be used when a Service needs to deliver a text type question to the Reading System.</p>
+<h4>Attributes of the userInput type (aka element)</h4>
+<p>This element MAY have the following attribute:</p>
+<ul>
+<li>id - This attribute contains the unique identifier of the text type
+question represented by this element. The data type of this attribute
+is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. This is a REQUIRED attribute.</li>
+</ul>
+<h4>Content options for the userInput type (aka element)</h4>
+<p>The userInput element MAY contain the following elements:</p>
+<ul>
+<li>inputTypes - This element is an OPTIONAL element that MAY occur only once inside the <a href="#userinput">userInput</a> element. It has no attributes. It MUST contain the following element:
+<ul>
+<li>input - This element is an empty element. It is a REQUIRED element
+that MUST occur one or more times inside the inputTypes element. It
+MUST have the following attributes:
+<ul>
+<li>type - This attribute contains information about the mode of input
+being represented by the input element. the data type of this attribute
+is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. The allowed values for this attribute are: audio, text, braille, video and image. This attribute is a REQUIRED attribute.</li>
+<li>brailleCode - This attribute contains the braille code that MUST be
+used for the braille input to the question. the data type of this
+attribute is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>.
+This attribute MUST have unicode as its value; no other value is
+allowed. The unicode braille characters are in position u2800 to u28ff
+and are described at <a href="http://unicode.org/charts/PDF/U2800.pdf">http://unicode.org/charts/PDF/U2800.pdf</a>.</li>
+<li>xml:lang - This attribute holds the value of the language that the text type question, represented by the encapsulating <a href="#userInput">userInput</a>
+element MUST be delivered to the Reading System in. This attribute is a
+part of the XML namespace. This is an OPTIONAL attribute. If omitted,
+the Service Provider MUST make their best choice of language to be used.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>The userInput element MUST contain one or more <a href="#message">message</a> elements.</li>
+<li>callbackFunction - this element contains the name of the next function to call in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm">DAISY Online Delivery Specification Web Service API</a>. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>.
+The allowed values for this element are: getUserChoices,
+getUserAnnouncement, getUserInput, getGroupedQuestions,
+postUserResponses and getContentList. This element is a REQUIRED
+element.</li>
+</ul>
+<a id="userchoices" name="userchoices"></a>
+<h3>5.2. The userChoices type</h3>
+<p>This section is normative.</p>
+<p>The userChoices type is used by the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getuserchoices">getUserChoices</a> function in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm">DAISY Online Delivery Specification Web Service API</a>.</p>
+<p>This type MUST be used when the Service needs to deliver a choices type question to the Reading System.</p>
+<h4>Attributes of the userChoices type (aka element)</h4>
+<p>This element MAY have the following attributes:</p>
+<ul>
+<li>id - This attribute contains the unique identifier for the multiple choice question represented by the <a href="#userchoices">userChoices</a> fragment. The data type of this attribute is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. This is a REQUIRED attribute.</li>
+<li>allowMultipleSelections - This attribute indicates whether the
+choices type question being presented to the Reading System MUST have
+multiple answers. The data type of this attribute is <a href="http://www.w3.org/TR/XMLschema-2/#boolean">Boolean</a>.
+This is an OPTIONAL attribute. This attribute MUST only be presented to
+the Reading System if the Reading System set the
+supportsMultipleSelections element to true in the <a href="#readingsystemattributes">readingSystemAttributes</a> element before passing it to the Service by a call to the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#setreadingsystemattributes">setReadingSystemAttributes</a> function in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm">DAISY Online Delivery Specification Web Service API</a>.</li>
+<li>multipleSelectionsCallbackFunction - This attribute holds the name of the next function to call in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm">DAISY Online Delivery Specification Web Service API</a>. The data type of this attribute is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>.
+If the allowMultipleSelections attribute is set to true, the value of
+this attribute MUST override the value of all other callbackFunction
+elements in the <a href="#userchoices">userChoices</a> element.
+Furthermore, if the allowMultipleSelections attribute is true, this
+attribute MUST be present and contain an allowed value. the allowed
+values for this attribute are: getUserChoices, getUserInput,
+getUserAnnouncement, getGroupedQuestions, postUserResponses and
+getContentList. This attribute is an OPTIONAL attribute.</li>
+</ul>
+<h4>Content options for the userChoices type (aka element)</h4>
+<p>The userChoices type MAY contain the following elements:</p>
+<ul>
+<li>A single instance of a <a href="#message">message</a> element. message is a REQUIRED element.</li>
+<li>choices - This element is a REQUIRED element. It has no attributes. It MUST only occur once inside the <a href="#userchoices">userChoices</a> element. It MUST contain the following elements:
+<ul>
+<li>choice - this element is a REQUIRED element. It MUST have the following attributes:</li>
+<li>id - this attribute contains the unique identifier of the choice
+being presented to the Reading System. The data type of this attribute
+is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. This is a REQUIRED attribute.</li>
+<li>sequenceNumber - The value of this attribute is the ordinal of This
+element in the encapsulating fragment. The data type of this atribute
+is <a href="http://www.w3.org/TR/XMLschema-2/#int">int</a>. This attribute is a REQUIRED attribute.</li>
+</ul>
+The choice element MUST contain the following elements:
+<ul>
+<li>A single instance of a REQUIRED <a href="#message">message</a> element.</li>
+<li>callbackFunction - this element contains the name of the next function to call in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm">DAISY Online Delivery Specification Web Service API</a>. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>
+The allowed values for this element are: getUserChoices,
+getUserAnnouncement, getUserInput, getGroupedQuestions,
+postUserResponses and getContentList. This element is a REQUIRED
+element. If the allowMultipleSelections attribute is set to true on the
+<a href="#userchoices">userChoices</a> element and there is a valid
+value in the multipleSelectionsCallbackFunction attribute, the Service
+MUST choose to not specify any value for this attribute.</li>
+</ul>
+</li>
+</ul>
+<a id="userchoicesmetadata" name="userchoicesmetadata"></a>
+<h3>5.3. The userChoicesMetadata type</h3>
+<p>This section is normative.</p>
+<p>The userChoicesMetadata type is used by the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getuserchoicesmetadata">getUserChoicesMetadata</a> function in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm">DAISY Online Delivery Specification Web Service API</a>.</p>
+<p>This type MUST be used by the Service to deliver metadata information about a <a href="#userchoices">userChoices</a> type to the Reading System.</p>
+<h4>Attributes of the userChoicesMetadata type (aka element)</h4>
+<p>This element has no attributes.</p>
+<h4>Content options for the userChoicesMetadata type (aka element)</h4>
+<p>The userChoicesMetadata type MAY contain the following elements:</p>
+<ul>
+<li>userChoiceMetadata - This element is an empty element. It is a REQUIRED element that MUST occur one or more times inside the <a href="#userchoicesmetadata">userChoicesMetadata</a> element. It MUST have the following attributes:
+<ul>
+<li>sequenceNumber - This attribute contains a value that corresponds
+to the value contained in the sequenceNumber attribute of the choice
+element in the choices element contained inside the <a href="#userchoices">userChoices</a>
+element. The userChoiceMetadata element provides metadata information
+about this choice element. The data type of this attribute is <a href="http://www.w3.org/TR/XMLschema-2/#int">Int</a>. It is a REQUIRED attribute.</li>
+<li>size - This attribute holds the size in bytes of the choice element in the choices element of the <a href="#userchoices">userChoices</a> element. The data type of this attribute is <a href="http://www.w3.org/TR/XMLschema-2/#int">Int</a>. It is a REQUIRED attribute.</li>
+</ul>
+</li>
+</ul>
+<a id="groupedquestions" name="groupedquestions"></a>
+<h3>5.4. The groupedQuestions type</h3>
+<p>This section is normative.</p>
+<p>The groupedQuestions type is used by the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getgroupedquestions">getGroupedQuestions</a>function in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm">DAISY Online Delivery Specification Web Service API</a>.</p>
+<p>This type MUST be used when the Service needs to deliver a grouped set of questions to the Reading System.</p>
+<h4>Attributes of the groupedQuestions type (aka element)</h4>
+<p>This element MAY have the following attribute:</p>
+<ul>
+<li>groupedQuestionsCallbackFunction - this attribute contains the name of the next function to call in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm">DAISY Online Delivery Specification Web Service API</a>. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>
+The allowed values for this element are: getUserChoices,
+getUserAnnouncement, getUserInput, getGroupedQuestions,
+postUserResponses and getContentList. The value of this attribute MUST
+in all cases override the value of all callbackFunction elements inside
+a <a href="#groupedquestions">groupedQuestions</a> element. The Service MAY choose to specify an empty value for all callbackFunction elements in the <a href="#groupedquestions">groupedQuestions</a> element. This attribute is a REQUIRED attribute.</li>
+</ul>
+<h4>Content options for the groupedQuestions type (aka element)</h4>
+<p>The groupedQuestions type MAY contain the following element:</p>
+<ul>
+<li>question - This element is a REQUIRED element that MUST occur one or more times inside a <a href="#groupedquestions">groupedQuestions</a> element. This element MUST contain the following attribute:
+<ul>
+<li>sequenceNumber - The value of this attribute is the ordinal of This
+element in the encapsulating fragment. The data type of this atribute
+is <a href="http://www.w3.org/TR/XMLschema-2/#int">int</a>. This attribute is a REQUIRED attribute.</li>
+</ul>
+This element MUST contain the following elements:
+<ul>
+<li>A single instance of a <a href="#userchoices">userChoices</a> element.</li>
+<li>Or a single instance of a <a href="#userinput">userInput</a> element.</li>
+<li>Or a single instance of a <a href="#announcements">announcements</a> element.</li>
+</ul>
+</li>
+</ul>
+<a id="groupedquestionsmetadata" name="groupedquestionsmetadata"></a>
+<h3>5.5. The groupedQuestionsMetadata type</h3>
+<p>This section is normative.</p>
+<p>The groupedQuestionsMetadata type is used by the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getgroupedquestionsmetadata">getGroupedQuestionsMetadata</a> function in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm">DAISY Online Delivery Specification Web Service API</a>.</p>
+<p>this type MUST be used when the Service needs to deliver metadata information about a <a href="#groupedquestions">groupedQuestions</a> type to the Reading System.</p>
+<h4>Attributes of the groupedQuestionsMetadata type (aka element)</h4>
+<p>This element has no attributes.</p>
+<h4>Content options for the groupedQuestionsMetadata type (aka element)</h4>
+<p>The groupedQuestionsMetadata type MAY contain the following elements:</p>
+<ul>
+<li>questionMetadata - This element is an empty element. It is a REQUIRED element that MUST occur one or more times inside the <a href="#groupedquestionsmetadata">groupedQuestionsMetadata</a>
+element. This element provides metadata information about a
+question.groupedQuestions element. This element MUST have the following
+attributes:
+<ul>
+<li>sequenceNumber - The value of this attribute corresponds to the
+value contained in the sequenceNumber attribute of the
+question.groupedQuestions element. The data type of this attribute is <a href="http://www.w3.org/TR/XMLschema-2/#int">Int</a>. It is a REQUIRED attribute.</li>
+<li>size - This attribute contains the size in bytes of either a
+userChoices.question.groupedQuestions element,
+announcements.question.groupedQuestions element or a
+userInput.question.groupedQuestions element. The data type of this
+attribute is <a href="http://www.w3.org/TR/XMLschema-2/#int">Int</a>. This attribute is a REQUIRED attribute.</li>
+</ul>
+</li>
+</ul>
+<h3><a id="userresponses" name="userresponses">5.6. The userResponses type</a></h3>
+<p>This section is normative.</p>
+<p>The userResponses type is used by the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getuserchoices">getUserChoices</a>, <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getuserchoicesMetadata">getUserChoicesMetadata</a>, <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getuserInput">getUserInput</a>, <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getuserAnnouncement">getUserAnnouncement</a>, <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getuserGroupedQuestions">getGroupedQuestions</a>, <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getuserGroupedQuestionsMetadata">getGroupedQuestionsMetadata</a>, <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getContentList">getContentList</a> and <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#getContentListMetadata">getContentListMetadata</a> functions in the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm">DAISY Online Delivery Specification Web Service API</a>.</p>
+<p>This type MUST be used to deliver a User's response(s) to the Service.</p>
+<h4>Attributes of the userResponses type (aka element)</h4>
+<p>This element has no attributes.</p>
+<h4>Content options for the userResponses type (aka element)</h4>
+<p>The userResponses element MAY contain the following element:</p>
+<ul>
+<li>userResponse - This element represents a single response from the
+user. It is an empty element. It is a REQUIRED element that MUST occur
+one or more times inside the <a href="#userresponses">userResponses</a> element. This element MUST have the following attributes:
+<ul>
+<li>id - This attribute contains the unique identifier of the question
+that this response is for. The data type of this attribute is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>.
+It is a REQUIRED attribute. Please note, there are two special values
+"home" and "back" which when specified as a value of this attribute,
+require the type attribute to have the value "choice". These two values
+are special purpose values that signify a request for the first
+question and previous question respectively, in the series of questions
+issued to the Reading System by the Service via the <a href="http://www.daisy.org/projects/daisy-online-delivery/dowsapi.htm#dynamicmenufunctions">Dynamic Menu Generation Functions.</a></li>
+<li>type - This attribute holds the type of question that this response is for. The data type of this attribute is <a href="http://www.w3.org/TR/XMLschema-2/#String">String</a>. The allowed values for this attribute are: choice, text and audio. It is a REQUIRED attribute.</li>
+<li>value - This attribute holds the value of the response to the
+question represented by the userResponse element. The data type of this
+value is <a href="http://www.w3.org/TR/XMLschema-2/#String">String</a>.
+It is a REQUIRED attribute. This attribute MUST be set to the value
+contained in the id attribute of the choice.choices.userChoices
+element, if the type attribute has the value choice. If the type
+attribute has the value text, the value attribute MUST contain the text
+of the response.</li>
+<li>data - This attribute contains the base 64 encoded string
+representation of the audio response, if the type attribute is set to
+audio. The data type of this value is <a href="http://www.w3.org/TR/XMLschema-2/#base64Binary">Base64Binary</a>. This is an OPTIONAL attribute that MUST occur if the type attribute is set to audio.</li>
+</ul>
+</li>
+</ul>
+<a id="exceptiontypes" name="exceptiontypes"></a>
+<h2>6. Exception types</h2>
+<p>This section is informative.</p>
+<p>The Exceptions category contains types that can be used to deliver the following semantic information:</p>
+<ul>
+<li>Information pertaining to a Not Authorised exception.</li>
+<li>Information pertaining to an Internal Server Error exception.</li>
+<li>Information pertaining to an Invalid Parameter exception.</li>
+<li>Information pertaining to a Not Issued exception.</li>
+<li>Information pertaining to a Service Busy exception.</li>
+</ul>
+<p>It is envisaged that each of these exception types will be
+incorporated in the details element of the fault element in the SOAP
+message. The faultcode element of the fault element of the SOAP message
+SHOULD always be set to SOAP:server when incorporating any of these
+exception types in the aforementioned details element. There are no
+further restrictions on the other elements of the fault element in the
+SOAP message.</p>
+<p>A detailed description of each of these exception types follows.</p>
+<a id="notauthorised" name="notauthorised"></a>
+<h3>6.1. The notAuthorised type</h3>
+<p>This section is normative.</p>
+<p>This type MUST be incorporated in the details element of the fault
+element in the SOAP message when the Service deems that the Reading
+System is not authorised to make the particular function call.</p>
+<h4>Attributes of the notAuthorised type (aka element)</h4>
+<p>This element has no attributes.</p>
+<h4>Content options for the notAuthorised type (aka element)</h4>
+<p>The notAuthorised element MAY contain the following elements:</p>
+<ul>
+<li>exceptionMessage - This element contains the specific message
+associated to this exception type. This element is a REQUIRED element
+that MUST only occur once inside the <a href="#notauthorised">notAuthorised</a> element. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. The only allowed value for this element is: This function call is not authorised.</li>
+<li>exceptionTrace - This element contains the specific stack trace
+associated to this exception type. This element is a REQUIRED element
+that MUST only occur once inside the <a href="#notauthorised">notAuthorised</a> element. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>.
+There are no restrictions on the lexical or value spaces of this
+element. The Service MUST however incorporate the specific stack trace
+in the value of this element.</li>
+</ul>
+<a id="internalservererror" name="internalservererror"></a>
+<h3>6.2. The internalServerError type</h3>
+<p>This section is normative.</p>
+<p>This type MUST be incorporated in the details element of the fault
+element in the SOAP message when the Service encounters an internal
+error when processing a particular function call.</p>
+<h4>Attributes of the internalServerError type (aka element)</h4>
+<p>This element has no attributes.</p>
+<h4>Content options for the internalServerError type (aka element)</h4>
+<p>The internalServerError element MAY contain the following elements:</p>
+<ul>
+<li>exceptionMessage - This element contains the specific message
+associated to this exception type. This element is a REQUIRED element
+that MUST only occur once inside the <a href="#internalservererror">internalServerError</a> element. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>.
+The only allowed value for this element is: The Service encountered an
+internal server error when processing this function call.</li>
+<li>exceptionTrace - This element contains the specific stack trace
+associated to this exception type. This element is a REQUIRED element
+that MUST only occur once inside the <a href="#internalservererror">internalServerError</a> element. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>.
+There are no restrictions on the lexical or value spaces of this
+element. The Service MUST however incorporate the specific stack trace
+in the value of this element.</li>
+</ul>
+<a id="invalidparameter" name="invalidparameter"></a>
+<h3>6.3. The invalidParameter type</h3>
+<p>This section is normative.</p>
+<p>This type MUST be incorporated in the details element of the fault
+element in the SOAP message when the Service deems that an invalid
+parameter was passed into the particular function call.</p>
+<h4>Attributes of the invalidParameter type (aka element)</h4>
+<p>This element has no attributes.</p>
+<h4>Content options for the invalidParameter type (aka element)</h4>
+<p>The invalidParameter element MUST contain the following elements:</p>
+<ul>
+<li>exceptionMessage - This element contains the specific message
+associated to this exception type. This element is a REQUIRED element
+that MUST only occur once inside the <a href="#invalidparameter">invalidParameter</a> element. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. The only allowed value for this element is: An invalid parameter was passed into the function call.</li>
+<li>exceptionTrace - This element contains the specific stack trace
+associated to this exception type. This element is a REQUIRED element
+that MUST only occur once inside the <a href="#invalidparameter">invalidParameter</a> element. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>.
+There are no restrictions on the lexical or value spaces of this
+element. The Service MUST however incorporate the specific stack trace
+in the value of this element.</li>
+</ul>
+<a id="notissued" name="notissued"></a>
+<h3>6.4. The notIssued type</h3>
+<p>This section is normative.</p>
+<p>This type MUST be incorporated in the details element of the fault
+element in the SOAP message when the Reading System requests content
+that has not been issued.</p>
+<h4>Attributes of the notIssued type (aka element)</h4>
+<p>This element has no attributes.</p>
+<h4>Content options for the notIssued type (aka element)</h4>
+<p>The notIssued element MAY contain the following elements:</p>
+<ul>
+<li>exceptionMessage - This element contains the specific message
+associated to this exception type. This element is a REQUIRED element
+that MUST only occur once inside the <a href="#notissued">notIssued</a> element. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. The only allowed value for this element is: The content that was requested has not been issued.</li>
+<li>exceptionTrace - This element contains the specific stack trace
+associated to this exception type. This element is a REQUIRED element
+that MUST only occur once inside the <a href="#notissued">notIssued</a> element. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>.
+There are no restrictions on the lexical or value spaces of this
+element. The Service MUST however incorporate the specific stack trace
+in the value of this element.</li>
+</ul>
+<a id="servicebusy" name="servicebusy"></a>
+<h3>6.5. The serviceBusy type</h3>
+<p>This section is normative.</p>
+<p>This type MUST be incorporated in the details element of the fault element in the SOAP message when the Service is busy.</p>
+<h4>Attributes of the serviceBusy type (aka element)</h4>
+<p>This element has no attributes.</p>
+<h4>Content options for the serviceBusy type (aka element)</h4>
+<p>The serviceBusy element MAY contain the following elements:</p>
+<ul>
+<li>exceptionMessage - This element contains the specific message
+associated to this exception type. This element is a REQUIRED element
+that MUST only occur once inside the <a href="#servicebusy">serviceBusy</a> element. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>. The only allowed value for this element is: The Service is busy.</li>
+<li>exceptionTrace - This element contains the specific stack trace
+associated to this exception type. This element is a REQUIRED element
+that MUST only occur once inside the <a href="#servicebusy">serviceBusy</a> element. The data type of this element is <a href="http://www.w3.org/TR/XMLschema-2/#string">String</a>.
+There are no restrictions on the lexical or value spaces of this
+element. The Service MUST however incorporate the specific stack trace
+in the value of this element.</li>
+</ul>
+</div>
+</body></html>
