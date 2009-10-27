@@ -318,7 +318,7 @@
 							</xs:annotation>
 						</xs:element>
 
-						<xs:element minOccurs="1" maxOccurs="1" name="firstItem" type="xs:integer">
+						<xs:element minOccurs="1" maxOccurs="1" name="firstItem" type="xs:int">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">When retrieving a subset of a
@@ -329,7 +329,7 @@
 							</xs:annotation>
 						</xs:element>
 
-						<xs:element minOccurs="1" maxOccurs="1" name="lastItem" type="xs:integer">
+						<xs:element minOccurs="1" maxOccurs="1" name="lastItem" type="xs:int">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">When retrieving a subset of a
