@@ -381,7 +381,7 @@
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
-						<xs:attribute name="rangeBegin" type="xs:integer" use="optional">
+						<xs:attribute name="rangeBegin" type="xs:int" use="optional">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">The byte offset of the start of the audio label
@@ -392,7 +392,7 @@
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
-						<xs:attribute name="rangeEnd" type="xs:integer" use="optional">
+						<xs:attribute name="rangeEnd" type="xs:int" use="optional">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">The byte offset of the end of the audio label
@@ -827,7 +827,7 @@
 				</xs:element>
 			</xs:sequence>
 
-			<xs:attribute name="totalItems" type="xs:integer" use="required">
+			<xs:attribute name="totalItems" type="xs:int" use="required">
 				<xs:annotation>
 					<xs:documentation>
 						<db:para>The total number of <db:type>contentItem</db:type>s in the list.
@@ -839,7 +839,7 @@
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="firstItem" type="xs:integer" use="optional">
+			<xs:attribute name="firstItem" type="xs:int" use="optional">
 				<xs:annotation>
 					<xs:documentation>
 						<db:para>The 0-based index of the first content item provided in this instance of <db:type>contentList</db:type>.
@@ -849,7 +849,7 @@
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="lastItem" type="xs:integer" use="optional">
+			<xs:attribute name="lastItem" type="xs:int" use="optional">
 				<xs:annotation>
 					<xs:documentation>
 						<db:para>The 0-based index of last content item provided in this instance of <db:type>contentList</db:type>.
