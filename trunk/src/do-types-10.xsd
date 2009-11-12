@@ -863,22 +863,17 @@
 				<xs:annotation>
 					<xs:documentation>
 						<db:para role="desc">The identifier of the <db:type>contentList</db:type>.</db:para>
-						<db:para>If this <db:type>contentList</db:type> is being returned on a call of <db:function><db:xref
-								linkend="op_getContentList"/></db:function> where one of the reserved values
-								<db:literal>new</db:literal>, <db:literal>issued</db:literal> or
-								<db:literal>expired</db:literal> is passed as the value of that operations
-								<db:parameter>id</db:parameter> parameter, then the value of this
-							attribute must equal the passed value, i.e. be <db:literal>new</db:literal>,
-								<db:literal>issued</db:literal> or <db:literal>expired</db:literal>
-							respectively.</db:para>
-						<db:para>If the value of this attribute is not one of the three reserved
-							values above, then this is an arbitrary <db:type>contentList</db:type>, typically exposed
-							as an endpoint in a <db:link
-								linkend="fundamentals_content_selection_browse">dynamic menu
-								search</db:link> operation sequence.</db:para>
+						<db:para>The identifier can be one of three reserved values,
+							<db:literal>new</db:literal>, <db:literal>issued</db:literal> or
+							<db:literal>expired</db:literal>, or can be an arbitrary value,
+							typically exposed in a <db:type><db:xref linkend="tp_contentListRef"/></db:type> at an <db:link
+								linkend="fundamentals_dynamic_menus_endpoints">end point</db:link> in a
+								<db:link linkend="fundamentals_dynamic_menus">dynamic menu
+								</db:link> operation sequence.</db:para>
 						<db:para>Services should persist <db:type>contentList</db:type> identitifiers for the
-							duration of a Session. Services must not expose multiple arbitrary
-							<db:type>contentList</db:type>s with the same identifier during the same session.</db:para>
+							duration of a Session. Services must not expose multiple
+							<db:type>contentList</db:type>s with the same arbitrary identifier during the same
+							session.</db:para>
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>

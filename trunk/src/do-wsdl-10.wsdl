@@ -353,7 +353,7 @@
 								<xs:documentation>
 									<db:para role="desc">Contains the requested Content list (or a
 										segment of the list).</db:para>
-									<db:para>The value of the <db:code>id</db:code> attribute on the
+									<db:para>The value of the <db:code>id</db:code> attribute of the
 										returned <db:type>contentList</db:type> must match the value
 										of the <db:parameter>id</db:parameter> parameter passed to
 										the <db:function><db:xref linkend="op_getContentList"/></db:function>
