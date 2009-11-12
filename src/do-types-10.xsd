@@ -381,7 +381,7 @@
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
-						<xs:attribute name="rangeBegin" type="xs:int" use="optional">
+						<xs:attribute name="rangeBegin" type="xs:long" use="optional">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">The byte offset of the start of the audio label
@@ -392,7 +392,7 @@
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
-						<xs:attribute name="rangeEnd" type="xs:int" use="optional">
+						<xs:attribute name="rangeEnd" type="xs:long" use="optional">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">The byte offset of the end of the audio label
@@ -403,7 +403,7 @@
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
-						<xs:attribute name="size" type="xs:int" use="optional">
+						<xs:attribute name="size" type="xs:long" use="optional">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">The size, in bytes, of the label's
@@ -625,7 +625,7 @@
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
-							<xs:element name="size" type="xs:int" minOccurs="1" maxOccurs="1">
+							<xs:element name="size" type="xs:long" minOccurs="1" maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>
 										<db:para role="desc">The total size of the resources making up the Content,
@@ -732,7 +732,7 @@
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
-						<xs:attribute name="size" type="xs:int" use="required">
+						<xs:attribute name="size" type="xs:long" use="required">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para>The size of the resource in bytes.</db:para>
