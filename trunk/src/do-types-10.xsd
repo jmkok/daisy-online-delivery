@@ -613,7 +613,7 @@
 								</xs:annotation>
 							</xs:element>
 
-							<xs:element name="narrator" type="xs:string" minOccurs="0" maxOccurs="1">
+							<xs:element name="narrator" type="xs:string" minOccurs="0" maxOccurs="unbounded">
 								<xs:annotation>
 									<xs:documentation>
 										<db:para role="desc">In the case of audio Content
