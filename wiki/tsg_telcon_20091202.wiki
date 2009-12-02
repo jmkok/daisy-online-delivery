@@ -50,4 +50,8 @@ Potential testable items to kick off the discussion:
    * All fault stipulations in the normative WSDL are adhered to by a published Service.
    * All required operations are implemented as specified in the normative wsdl.
    * Range headers are always honoured in http requests by a published service.  
-      * A published service complies to WS-I basic  Profile 1.1
+   * A published service complies to WS-I basic  Profile 1.1
+
+=====Volunteers to work on the test cases=====
+
+=====Volunteers to work on the implementation of the test cases in a test agent=====
