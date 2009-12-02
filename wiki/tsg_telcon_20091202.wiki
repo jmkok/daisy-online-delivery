@@ -1,5 +1,6 @@
 Present: 
 
+
 Regrets: 
 
 scribe: Kenny
@@ -21,7 +22,7 @@ scribe: Kenny
 
 ===Issues===
 
-* Issue 39.
+  * Issue 39.
 * Issue 94
 * Issue 101
 * Issue 103
