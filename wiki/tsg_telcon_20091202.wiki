@@ -33,6 +33,7 @@ scribe: Kenny
 ====Issue 191====
 
 Potential testable items to kick off the discussion:
+
 *The wsdl published by a service is canonically equivalent to the normative wsdl provided in this spec.   
 *All programming constructs generated conform to the published WSDL.      
 *A published Service is available over http/https.
