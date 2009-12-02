@@ -1,0 +1,51 @@
+Present: 
+
+Regrets: 
+
+scribe: Kenny
+
+== Action Item Summary ==
+ 
+=== New Action Items ===
+
+* Markus fix the &apos; entity problem.
+
+=== Previous Unfinished Action Items ===
+
+  * Jelle: propose resolution to Issue 118 {DONE?}
+  * Geoff and Markus analyze RequirementsDocument vs current API. {ONGOING}
+
+== Agenda/Minutes ==
+
+===Timelines going forward===
+
+===Issues===
+
+*Issue 39.
+*Issue 94
+*Issue 101
+*Issue 103
+*Issue 104
+*Issue 157
+*Issue 165
+*Issue 181
+
+====Issue 191====
+
+Potential testable items to kick off the discussion:
+*The wsdl published by a service is canonically equivalent to the normative wsdl provided in this spec.   
+*All programming constructs generated conform to the published WSDL.      
+*A published Service is available over http/https.
+*the Session innitialisation sequence is followed to commence a session with a published service.   
+*Service model conformance.
+*Content selection mode conformance.
+*Content retrieval sequence conformance.
+*downloading and Streaming conformance.
+*Publishing updates and instalments conformance. 
+*rights management conformance. 
+*Service Announcements conformance.
+*dynamic menus conformance.
+*All fault stipulations in the normative WSDL are adhered to by a published Service.
+*All required operations are implemented as specified in the normative wsdl.
+*Range headers are always honoured in http requests by a published service.  
+*A published service complies to WS-I basic  Profile 1.1
