@@ -36,7 +36,7 @@ scribe: Kenny
    * Deliver Final version of the spec.  
    * Provide Information on comments Received, and how they were addressed.  
    * Make available the Test Implementations Conformance Report.
-  * Make a formal Recommendation to the board for approval.  
+   * Make a formal Recommendation to the board for approval.  
 
 == Agenda/Minutes ==
 
