@@ -18,7 +18,7 @@ scribe: Kenny
 
   * Jelle: propose resolution to Issue 118 {DONE?}
   * Geoff and Markus analyze RequirementsDocument vs current API. {ONGOING}
-* Markus fix the &apos; entity problem.
+  * Markus fix the &apos; entity problem.
 
 === Group Action Items ===
 
