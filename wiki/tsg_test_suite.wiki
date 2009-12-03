@@ -1,27 +1,72 @@
-== Purpose of this document ==
+#summary Lists of conformance test cases for both Reading Systems and Services.
+#labels Phase-QA
 
-== Test Categories ==
+= Introduction =
 
-   * General Conformance 
-   * Authentication and Session Management Conformance
-   * Service model conformance.
-   * Content selection mode conformance.
-   * Content retrieval sequence conformance.
-   * downloading and Streaming conformance.
-   * Publishing updates and instalments conformance. 
-   * rights management conformance. 
-   * Service Announcements conformance.
-   * dynamic menus conformance.
+The test suite consists of two lists of test cases to verify that a Reading System or Service conforms to the DAISY Online specification.  These test cases are not comprehensive, but represent both normal cases and edge cases.
 
-== Assertions for each Test category ==
+The test cases in each list are grouped by category, and what assertion they test.
 
-   * The wsdl published by a service is canonically equivalent to the normative wsdl provided in this spec.    
-   * All programming constructs generated conform to the published WSDL.      
-   * A published Service is available over http/https.
-   * The Session innitialisation sequence is followed to commence a session with a published service.   
-   * All fault stipulations in the normative WSDL are adhered to by a published Service.
-   * All required operations are implemented as specified in the normative wsdl.
-   * Range headers are always honoured in http requests by a published service.  
-   * A published service complies to WS-I basic  Profile 1.1
+= Reading System conformance =
 
-== Test cases for each assertion ==
+== 1. General ==
+
+  # All programming constructs generated conform to the published WSDL.      
+  # All required operations are implemented as specified in the normative WSDL.
+  # The Reading System complies with WS-i Basic Profile 1.1.
+
+== 2. Authentication and session management ==
+
+  # The session initialization sequence is followed to commence a session with a Service.
+    # Verify that the first operation called in a session is logOn.
+    # After a successful log on, verify the the second operation called in a session is getServiceAttributes.
+    # After a successful getServiceAttributes, verify that the third operation called in a session is setReadingSystemAttributes.
+
+== 3. Service models ==
+
+== 4. Content selection models ==
+
+== 5. Content retrieval sequence ==
+
+== 6. Content transfer ==
+
+== 7. Publishing updates and instalments ==
+
+== 8. Rights management ==
+
+== 9. Service announcements ==
+
+== 10. Dynamic menus ==
+
+= Service conformance =
+
+== 1. General ==
+
+  # The WSDL published by the Service is canonically equivalent to the normative WSDL provided in the specification.
+  # All programming constructs generated conform to the published WSDL.      
+  # The Service is available over HTTP or HTTPS.
+  # All fault stipulations in the normative WSDL are adhered to by the Service.
+  # All required operations are implemented as specified in the normative WSDL.
+  # The Service complies with WS-i Basic Profile 1.1
+
+== 2. Authentication and session management ==
+
+  # The session initialization sequence is followed to commence a session.   
+
+== 3. Service models ==
+
+== 4. Content selection models ==
+
+== 5. Content retrieval sequence ==
+
+== 6. Content transfer ==
+
+  # Range headers are always honoured in HTTP requests.
+
+== 7. Publishing updates and instalments ==
+
+== 8. Rights management ==
+
+== 9. Service announcements ==
+
+== 10. Dynamic menus ==
