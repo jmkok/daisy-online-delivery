@@ -8,7 +8,7 @@ scribe: Kenny
  
 === New Action Items ===
 
-  *George contact Dedicon to source PDTB2 content and confirm whether Dedicon will have a test implementation ready by February 15, 2010.  
+  * George contact Dedicon to source PDTB2 content and confirm whether Dedicon will have a test implementation ready by February 15, 2010.  
   * Simon check with Dominik on making sample PDTB2 content available to the spec implementers. 
   * Kenny post to the list asking for volunteers for the formulation of the test suite.
   * kenny create wiki page for the test suite and post the Testable items identified thus far to it. 
