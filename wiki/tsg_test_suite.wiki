@@ -2,8 +2,8 @@
 
 == Test Categories ==
 
-  * General Conformance 
-  * Authentication and Session Management Conformance
+   * General Conformance 
+   * Authentication and Session Management Conformance
    * Service model conformance.
    * Content selection mode conformance.
    * Content retrieval sequence conformance.
