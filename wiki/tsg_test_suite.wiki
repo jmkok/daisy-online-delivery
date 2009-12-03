@@ -1,0 +1,27 @@
+== Purpose of this document ==
+
+== Test Categories ==
+
+  * General Conformance 
+  * Authentication and Session Management Conformance
+   * Service model conformance.
+   * Content selection mode conformance.
+   * Content retrieval sequence conformance.
+   * downloading and Streaming conformance.
+   * Publishing updates and instalments conformance. 
+   * rights management conformance. 
+   * Service Announcements conformance.
+   * dynamic menus conformance.
+
+== Assertions for each Test category ==
+
+   * The wsdl published by a service is canonically equivalent to the normative wsdl provided in this spec.    
+   * All programming constructs generated conform to the published WSDL.      
+   * A published Service is available over http/https.
+   * The Session innitialisation sequence is followed to commence a session with a published service.   
+   * All fault stipulations in the normative WSDL are adhered to by a published Service.
+   * All required operations are implemented as specified in the normative wsdl.
+   * Range headers are always honoured in http requests by a published service.  
+   * A published service complies to WS-I basic  Profile 1.1
+
+== Test cases for each assertion ==
