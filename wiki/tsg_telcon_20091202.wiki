@@ -57,6 +57,7 @@ Kenny: George, can we source sample PDTB2 content from somewhere?
 George: RFB&D and Library of Congress do protected content. RFB&D support PDTB1 content only. 
 
 George: Simon, do you have any PDTB2 content?
+
  
 Simon: I will get back to the group after running it past Dominik.
 
