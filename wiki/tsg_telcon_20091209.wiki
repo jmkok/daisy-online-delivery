@@ -28,7 +28,6 @@ scribe: Kenny
   * Any updates to the spec need to be completed and proof read. 
   * The primer should be proof read.
   * The Test suite, and the Test Implementations Conformance report should be made available. 
-  * A report needs to be made available that illustrates the conformance of the spec to the requirements, with examples from field testing that demonstrate the requirements and user stories.
   * Create an area where implementers can post information about the additional features that they have implemented on top of the spec, and that the community at large may be interested in.  
 
 ==== Action items for formal recommendation to the Board on April 5, 2010 ====  
@@ -36,6 +35,7 @@ scribe: Kenny
    * Deliver Final version of the spec.  
    * Provide Information on comments Received, and how they were addressed.  
    * Make available the Test Implementations Conformance Report.
+   * A report needs to be made available that illustrates the conformance of the spec to the requirements, with examples from field testing that demonstrate the requirements and user stories.
    * Make a formal Recommendation to the board for approval.  
 
 == Agenda/Minutes ==
