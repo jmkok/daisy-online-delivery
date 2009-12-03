@@ -120,3 +120,5 @@ Consensus: The test suite will be a document available on our wiki that will con
 =====Volunteers to work on the test cases=====
 
 Geoff and Kenny to commence the work. Another volunteer required.  
+
+(Next telecon Wednesday, 9 December at 2100 UTC)
