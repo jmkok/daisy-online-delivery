@@ -29,7 +29,7 @@ scribe: Kenny
   * The primer should be proof read.
   * The Test suite, and the Test Implementations Conformance report should be made available. 
   * A report needs to be made available that illustrates the conformance of the spec to the requirements. 
- * Create an area where implementers can post information about the additional features that they have implemented on top of the spec, and that the community at large may be interested in.  
+  * Create an area where implementers can post information about the additional features that they have implemented on top of the spec, and that the community at large may be interested in.  
 
 ==== Action items for formal recommendation to the Board on April 5, 2010 ====  
 
