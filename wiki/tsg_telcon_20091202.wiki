@@ -84,7 +84,7 @@ Agreed timelines:
    * Final version of the spec.  
    * Information on comments Received, and how they were addressed.  
    * Test Implementations Conformance Report.
-  * A formal Recommendation by the working group for approval. 
+   * A formal Recommendation by the working group for approval. 
 
 ===Issues===
 
