@@ -1,4 +1,5 @@
 #summary The test cases used for the protocol system testing.
+#labels Phase-QA
 
 = Introduction =
 
@@ -7,6 +8,7 @@ These are the test cases for system testing of the protocol.  Some of these may 
 = Requirements =
 
 == Efficient use of bandwidth ==
+[RequirementsDocument#Efficient_use_of_bandwidth Requirement]
 
 === Download content ===
 
@@ -21,154 +23,180 @@ In a typical session, measure the ratio of bytes transferred for messages (i.e.,
 Send an audio response to a dynamic menu item that supports it.  Ensure that the audio is uploaded in a reasonable amount of time.
 
 == Key authorization ==
+[RequirementsDocument#Key_authorization Requirement]
 
 === Test case name ===
 
 Test case description
 
 == Transmit bookmarks ==
+[RequirementsDocument#Transmit_bookmarks Requirement]
 
 === Test case name ===
 
 Test case description
 
 == Return book ==
+[RequirementsDocument#Return_book Requirement]
 
 === Test case name ===
 
 Test case description
 
 == Transmit capabilities ==
+[RequirementsDocument#Transmit_capabilities Requirement]
 
 === Test case name ===
 
 Test case description
 
 == Universal protocol ==
+[RequirementsDocument#Universal_protocol Requirement]
 
 === Test case name ===
 
 Test case description
 
 == Player stores contact information ==
+[RequirementsDocument#Player_stores_contact_information Requirement]
 
 === Test case name ===
 
 Test case description
 
 == Content at different location ==
+[RequirementsDocument#Content_at_different_location Requirement]
 
 === Test case name ===
 
 Test case description
 
 == Time interrogation ==
+[RequirementsDocument#Time_interrogation Requirement]
 
 This was not implemented, so there are no test cases for this requirement.
 
 == Download and streaming ==
+[RequirementsDocument#Download_and_streaming Requirement]
 
 === Test case name ===
 
 Test case description
 
 == Key delivery ==
+[RequirementsDocument#Key_delivery Requirement]
 
 === Test case name ===
 
 Test case description
 
 == Same book, different player ==
+[RequirementsDocument#Same_book,_different_player Requirement]
 
 === Test case name ===
 
 Test case description
 
 == Bookmark stored on server ==
+[RequirementsDocument#Bookmark_stored_on_server Requirement]
 
 === Test case name ===
 
 Test case description
 
 == Issue content ==
+[RequirementsDocument#Issue_content Requirement]
 
 === Test case name ===
 
 Test case description
 
 == Audio and text annotation ==
+[RequirementsDocument#Audio_and_text_annotation Requirement]
 
 === Test case name ===
 
 Test case description
 
 == Stop and resume download ==
+[RequirementsDocument#Stop_and_resume_download Requirement]
 
 === Test case name ===
 
 Test case description
 
 == Dynamic menus ==
+[RequirementsDocument#Dynamic_menus Requirement]
 
 === Test case name ===
 
 Test case description
 
 == Noninteractive session ==
+[RequirementsDocument#Noninteractive_session Requirement]
 
 === Test case name ===
 
 Test case description
 
 == Prioritize order of files ==
+[RequirementsDocument#Prioritize_order_of_files Requirement]
 
 === Test case name ===
 
 Test case description
 
 == Interact with content ==
+[RequirementsDocument#Interact_with_content Requirement]
 
 === Test case name ===
 
 Test case description
 
 == Report firmware version ==
+[RequirementsDocument#Report_firmware_version Requirement]
 
 === Test case name ===
 
 Test case description
 
 == Report download activity ==
+[RequirementsDocument#Report_download_activity Requirement]
 
 === Test case name ===
 
 Test case description
 
 == Report player errors ==
+[RequirementsDocument#Report_player_errors Requirement]
 
 === Test case name ===
 
 Test case description
 
 == Report which server is in control ==
+[RequirementsDocument#Report_which_server_is_in_control Requirement]
 
 === Test case name ===
 
 Test case description
 
 == Protect user privacy ==
+[RequirementsDocument#Protect_user_privacy Requirement]
 
 === Test case name ===
 
 Test case description
 
 == Localized, plain language error messages ==
+[RequirementsDocument#Localized,_plain_language_error_messages Requirement]
 
 === Test case name ===
 
 Test case description
 
-== Requires some player functionality (Give feedback) (Out-of-scope) ==
+== Give feedback (Out-of-scope) ==
+[RequirementsDocument#Requires_some_player_functionality Requirement]
 
 === Test case name ===
 
