@@ -1,0 +1,54 @@
+Present:
+
+Regrets: 
+
+scribe: Kenny
+
+== Action Item Summary ==
+ 
+=== New Action Items ===
+
+  * George contact Dedicon to source PDTB2 content and confirm whether Dedicon will have a test implementation ready by February 15, 2010.  
+  * Simon check with Dominik on making sample PDTB2 content available to the spec implementers. 
+  * Kenny post to the list asking for volunteers for the formulation of the test suite.
+  * kenny create wiki page for the test suite and post the Testable items identified thus far to it. 
+  * Geoff and Kenny start work on the Test document.  
+
+=== Previous Unfinished Action Items ===
+
+  * Jelle: propose resolution to Issue 118 {DONE?}
+  * Geoff and Markus analyze RequirementsDocument vs current API. {ONGOING}
+  * Markus fix the &apos; entity problem.
+
+=== Group Action Items ===
+
+==== Action items for the public review period commencing February 15, 2010 ==== 
+
+  * All issues should be resolved or formally deferred.
+  * Any updates to the spec need to be completed and proof read. 
+  * The primer should be proof read.
+  * The Test suite, and the Test Implementations Conformance report should be made available. 
+  * A report needs to be made available that illustrates the conformance of the spec to the requirements. 
+  * Create an area where implementers can post information about the additional features that they have implemented on top of the spec, and that the community at large may be interested in.  
+
+==== Action items for formal recommendation to the Board on April 5, 2010 ====  
+
+   * Deliver Final version of the spec.  
+   * Provide Information on comments Received, and how they were addressed.  
+   * Make available the Test Implementations Conformance Report.
+   * Make a formal Recommendation to the board for approval.  
+
+== Agenda/Minutes ==
+
+=== Issues ===
+
+  * Issue 39.
+  * Issue 94
+  * Issue 101
+  * Issue 103
+  * Issue 104
+  * Issue 157
+  * Issue 165
+  * Issue 181
+
+=== Test suite Progress ===
