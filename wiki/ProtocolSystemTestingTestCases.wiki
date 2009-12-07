@@ -189,19 +189,14 @@ Test case description
 
 Test case description
 
-== Give feedback (Out-of-scope) ==
-[RequirementsDocument#Requires_some_player_functionality Requirement]
-
-=== Test case name ===
-
-Test case description
-
 = Expectations =
 
-== Name ==
+== Audio feedback ==
+[RequirementsDocument#Requires_some_player_functionality Requirement] (never formally moved back in scope)
 
 === Test case name ===
 
 Test case description
+
 
 <wiki:toc />
