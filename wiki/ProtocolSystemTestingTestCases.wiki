@@ -25,16 +25,32 @@ Send an audio response to a dynamic menu item that supports it.  Ensure that the
 == Key authorization ==
 [RequirementsDocument#Key_authorization Requirement]
 
-=== Test case name ===
+=== Connect with authorization ===
 
-Test case description
+Initialize a session with a Service using correct user credentials.
+
+=== Deny incorrect authorization ===
+
+Attempt to initialize a session with a Service using a valid user name, but an incorrect password.  The Service must respond "false" to the logOn operation.
+
+=== Allow content download with correct credentials ===
+
+Download a resource with basic authentication credentials provided by the Service.
+
+=== Deny content download with incorrect credentials ===
+
+Attempt to download a resource with incorrect basic authentication credentials.  The file server must respond with an HTTP status of 403.
 
 == Transmit bookmarks ==
 [RequirementsDocument#Transmit_bookmarks Requirement]
 
-=== Test case name ===
+=== Store and retrieve a user-created bookmark ===
 
-Test case description
+Create a bookmark for a Content item.  Use setBookmarks to transmit the bookmark to a Service.  Use getBookmarks to retrieve the bookmark from the Service.
+
+=== Retrieve a service provider-created bookmark ===
+
+Use getBookmarks to retrieve a list of predefined bookmarks from a Service.
 
 == Return book ==
 [RequirementsDocument#Return_book Requirement]
@@ -46,9 +62,13 @@ Test case description
 == Transmit capabilities ==
 [RequirementsDocument#Transmit_capabilities Requirement]
 
-=== Test case name ===
+=== Set Reading System attributes ===
 
-Test case description
+Initialize a session with a Service.  Verify that the Reading System's attributes were sent to the Service.
+
+=== Adapt Service to the Reading System's capabilities ===
+
+Initialize a session with a Service that provides different Content based on the capabilities of the Reading System.  Ensure that the Content and resources offered by the Service are only in the formats given in the readingSystemAttributes provided to the Service.
 
 == Universal protocol ==
 [RequirementsDocument#Universal_protocol Requirement]
