@@ -7,66 +7,73 @@ The test suite consists of two lists of test cases to verify that a Reading Syst
 
 The test cases in each list are grouped by category, and what assertion they test.
 
+At a minimum, a conformant Reading System or Service must pass all tests in category 1, "Core functionality".
+
 = Reading System conformance =
 
-== 1. General ==
+== 1. Core functionality ==
 
   # All programming constructs generated conform to the published WSDL.      
   # All required operations are implemented as specified in the normative WSDL.
-  # The Reading System complies with WS-i Basic Profile 1.1.
-
-== 2. Authentication and session management ==
-
+  # The Reading System complies with WS-I Basic Profile 1.1.
   # The session initialization sequence is followed to commence a session with a Service.
     # Verify that the first operation called in a session is logOn.
     # After a successful log on, verify the the second operation called in a session is getServiceAttributes.
     # After a successful getServiceAttributes, verify that the third operation called in a session is setReadingSystemAttributes.
+  # The Reading System supports one of the service models.
+    # The Reading System passes all tests in either category 2 or category 3.
+  # The Reading System supports one of the content selection models.
+    # The Reading System passes all tests in either category 4 or category 5.
 
-== 3. Service models ==
+== 2. Lending service model ==
 
-== 4. Content selection models ==
+== 3. Acquisition service model ==
 
-== 5. Content retrieval sequence ==
+== 4. Out-of-band selection model ==
 
-== 6. Content transfer ==
+== 5. Browse selection model ==
 
-== 7. Publishing updates and instalments ==
+== 6. Publishing updates and instalments ==
 
-== 8. Rights management ==
+== 7. Rights management ==
 
-== 9. Service announcements ==
+== 8. Service announcements ==
 
-== 10. Dynamic menus ==
+== 9. Dynamic menus ==
+
+== 10. Get bookmarks ==
+
+== 11. Set bookmarks ==
 
 = Service conformance =
 
-== 1. General ==
+== 1. Core functionality ==
 
   # The WSDL published by the Service is canonically equivalent to the normative WSDL provided in the specification.
   # All programming constructs generated conform to the published WSDL.      
   # The Service is available over HTTP or HTTPS.
   # All fault stipulations in the normative WSDL are adhered to by the Service.
   # All required operations are implemented as specified in the normative WSDL.
-  # The Service complies with WS-i Basic Profile 1.1
-
-== 2. Authentication and session management ==
-
+  # The Service complies with WS-I Basic Profile 1.1
   # The session initialization sequence is followed to commence a session.   
+  # Range headers are always honored in HTTP requests.
 
-== 3. Service models ==
+== 2. Lending service model ==
 
-== 4. Content selection models ==
+== 3. Acquisition service model ==
 
-== 5. Content retrieval sequence ==
+== 4. Out-of-band selection model ==
 
-== 6. Content transfer ==
+== 5. Browse selection model ==
 
-  # Range headers are always honoured in HTTP requests.
+== 6. Publishing updates and instalments ==
 
-== 7. Publishing updates and instalments ==
+== 7. Rights management ==
 
-== 8. Rights management ==
+== 8. Service announcements ==
 
-== 9. Service announcements ==
+== 9. Dynamic menus ==
 
-== 10. Dynamic menus ==
+== 10. Get bookmarks ==
+
+== 11. Set bookmarks ==
