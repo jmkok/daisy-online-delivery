@@ -177,15 +177,11 @@ The capability to report which server is in control was not included in the prot
 
 || Test case || Client || Server || Result || Details ||
 
-== Requires some player functionality (Give feedback) (Out-of-scope) ==
-
-*Untested*
-
-|| Test case || Client || Server || Result || Details ||
-
 = Expectations =
 
-== Name ==
+== Audio feedback ==
+
+Sending audio from the Reading System to the Service was originally in scope, then declared out of scope, then was brought back into the specification.
 
 || Test case || Client || Server || Result || Details ||
 
