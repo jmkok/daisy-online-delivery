@@ -15,13 +15,17 @@ _Example of how this should be filled out_
 
 *Partially fulfilled*
 
+Content transfer usually takes place over HTTP, which is sufficient for transfer of data over the World Wide Web.  The Service creates minimal overhead.
+
+Transfer of audio from the Reading System to the Service takes place over SOAP without MTOM, which adds roughly 37% more to transmission time.
+
 || Test case || Client || Server || Result || Details ||
 || [ProtocolSystemTestingTestCases#Download_content Download content] || CNIB || !PratSam || *Success* || Transfer of data was at expected rates for binary transfer over the Internet.  A 119 MB book was downloaded in 26 minutes. ||
 || [ProtocolSystemTestingTestCases#Audio_response Audio response] || XXX || YYY || *Failure* || Transfer of data was at X% efficiency compared to binary transfer.  Audio of Y MB was uploaded in Z minutes. ||
 
 == Key authorization ==
 
-*Not fulfilled*
+*Partially fulfilled*
 
 Authorization occurs by User, not by Reading System. Service Providers intending to authorize Content by individual Reading System will need to use some other mechanism, such as PDTB2.
 
@@ -56,6 +60,8 @@ Authorization occurs by User, not by Reading System. Service Providers intending
 *N/A*
 
 The requirement states that the Reading System must store the Service's contact information.  This is not a requirement as much as it is a declaration that Service Discovery is out of scope.
+
+|| Test case || Client || Server || Result || Details ||
 
 == Content at different location ==
 
