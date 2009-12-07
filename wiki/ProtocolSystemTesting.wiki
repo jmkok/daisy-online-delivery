@@ -21,7 +21,9 @@ _Example of how this should be filled out_
 
 == Key authorization ==
 
-*Untested*
+*Not fulfilled*
+
+Authorization occurs by User, not by Reading System. Service Providers intending to authorize Content by individual Reading System will need to use some other mechanism, such as PDTB2.
 
 || Test case || Client || Server || Result || Details ||
 
@@ -51,9 +53,9 @@ _Example of how this should be filled out_
 
 == Player stores contact information ==
 
-*Untested*
+*N/A*
 
-|| Test case || Client || Server || Result || Details ||
+The requirement states that the Reading System must store the Service's contact information.  This is not a requirement as much as it is a declaration that Service Discovery is out of scope.
 
 == Content at different location ==
 
@@ -141,21 +143,21 @@ The ability for Reading Systems to query the Service for the current time was no
 
 == Report download activity ==
 
-*Untested*
+*Not fulfilled*
 
-|| Test case || Client || Server || Result || Details ||
+The capability for a Reading System to report its own download activity to the Service was not included in the protocol.  Service Providers may track this information for local Content by monitoring their own file servers.
 
 == Report player errors ==
 
-*Untested*
+*Not fulfilled*
 
-|| Test case || Client || Server || Result || Details ||
+The capability for a Reading System to report errors to the Service was not included in the protocol.
 
 == Report which server is in control ==
 
-*Untested*
+*Not fulfilled*
 
-|| Test case || Client || Server || Result || Details ||
+The capability to report which server is in control was not included in the protocol.
 
 == Protect user privacy ==
 
