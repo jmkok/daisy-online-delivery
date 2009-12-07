@@ -73,16 +73,16 @@ Initialize a session with a Service that provides different Content based on the
 == Universal protocol ==
 [RequirementsDocument#Universal_protocol Requirement]
 
-=== Test case name ===
+=== Full session ===
 
-Test case description
+Perform a full session, from logOn to logOff.  (This test must be performed with as many combinations of clients and servers as possible.)
 
 == Player stores contact information ==
 [RequirementsDocument#Player_stores_contact_information Requirement]
 
-=== Test case name ===
+=== Connect to a new Service ===
 
-Test case description
+Add a new Service location and credentials to a Reading System, then connect to the Service with it.  (This is to demonstrate that Service Discovery is not a necessary part of the protocol.)
 
 == Content at different location ==
 [RequirementsDocument#Content_at_different_location Requirement]
