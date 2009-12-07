@@ -1,4 +1,4 @@
-#summary Lists of conformance test cases for both Reading Systems and Services.
+#summary Conformance test cases for both Reading Systems and Services.
 #labels Phase-QA
 
 = Introduction =
@@ -33,17 +33,19 @@ At a minimum, a conformant Reading System or Service must pass all tests in cate
 
 == 5. Browse selection model ==
 
-== 6. Publishing updates and instalments ==
+== 6. Updates and instalments ==
 
 == 7. Rights management ==
 
-== 8. Service announcements ==
+== 8. Set bookmarks ==
 
-== 9. Dynamic menus ==
+== 9. Get bookmarks ==
 
-== 10. Get bookmarks ==
+== 10. Dynamic menus ==
 
-== 11. Set bookmarks ==
+== 11. Service announcements ==
+
+== 12. Key provision ==
 
 = Service conformance =
 
@@ -66,14 +68,16 @@ At a minimum, a conformant Reading System or Service must pass all tests in cate
 
 == 5. Browse selection model ==
 
-== 6. Publishing updates and instalments ==
+== 6. Updates and instalments ==
 
 == 7. Rights management ==
 
-== 8. Service announcements ==
+== 8. Set bookmarks ==
 
-== 9. Dynamic menus ==
+== 9. Get bookmarks ==
 
-== 10. Get bookmarks ==
+== 10. Dynamic menus ==
 
-== 11. Set bookmarks ==
+== 11. Service announcements ==
+
+== 12. Key provision ==
