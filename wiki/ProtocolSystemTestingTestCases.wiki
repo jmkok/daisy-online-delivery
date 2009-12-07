@@ -163,23 +163,17 @@ Test case description
 == Report download activity ==
 [RequirementsDocument#Report_download_activity Requirement]
 
-=== Test case name ===
-
-Test case description
+This was not implemented, so there are no test cases for this requirement.
 
 == Report player errors ==
 [RequirementsDocument#Report_player_errors Requirement]
 
-=== Test case name ===
-
-Test case description
+This was not implemented, so there are no test cases for this requirement.
 
 == Report which server is in control ==
 [RequirementsDocument#Report_which_server_is_in_control Requirement]
 
-=== Test case name ===
-
-Test case description
+This was not implemented, so there are no test cases for this requirement.
 
 == Protect user privacy ==
 [RequirementsDocument#Protect_user_privacy Requirement]
