@@ -9,7 +9,7 @@ This report summarizes the system testing of the protocol, that is, the demonstr
 
 = Requirements =
 
-== Efficient use of bandwidth ==
+== 1. Efficient use of bandwidth ==
 
 _Example of how this should be filled out_
 
@@ -21,24 +21,16 @@ Content transfer usually takes place over HTTP, which is sufficient for transfer
 
 Transfer of audio from the Reading System to the Service takes place over SOAP without MTOM, which adds roughly 37% more to transmission time.
 
-=== Download content ===
-
-Use a Service to find and download an entire Content item.  Ensure that the Content is downloaded in a reasonable amount of time.
-
-=== Protocol overhead ===
-
-In a typical session, measure the ratio of bytes transferred for messages (i.e., over SOAP) vs. bytes transferred for Content(i.e., over plain HTTP/HTTPS).
-
-=== Audio response ===
-
-Send an audio response to a dynamic menu item that supports it.  Ensure that the audio is uploaded in a reasonable amount of time.
+  # *Download content*: Use a Service to find and download an entire Content item.  Ensure that the Content is downloaded in a reasonable amount of time.
+  # *Protocol overhead*: In a typical session, measure the ratio of bytes transferred for messages (i.e., over SOAP) vs. bytes transferred for Content(i.e., over plain HTTP/HTTPS).
+  # *Audio response*: Send an audio response to a dynamic menu item that supports it.  Ensure that the audio is uploaded in a reasonable amount of time.
 
 || Test case || Client || Server || Result || Details ||
-|| Download content || CNIB || !PratSam || *Success* || Transfer of data was at expected rates for binary transfer over the Internet.  A 119 MB book was downloaded in 26 minutes. ||
-|| Download content || Plextor || VA || *Success* || Transfer of data was at expected rates for binary transfer over the Internet.  An X MB book was downloaded in Y minutes. ||
-|| Audio response || XXX || YYY || *Failure* || Transfer of data was at X% efficiency compared to binary transfer.  Audio of Y MB was uploaded in Z minutes. ||
+|| 1.1 || CNIB || !PratSam || *Success* || Transfer of data was at expected rates for binary transfer over the Internet.  A 119 MB book was downloaded in 26 minutes. ||
+|| 1.1 || Plextor || VA || *Success* || Transfer of data was at expected rates for binary transfer over the Internet.  An X MB book was downloaded in Y minutes. ||
+|| 1.3 || XXX || YYY || *Failure* || Transfer of data was at X% efficiency compared to binary transfer.  Audio of Y MB was uploaded in Z minutes. ||
 
-== Key authorization ==
+== 2. Key authorization ==
 
 *Partially fulfilled*
 
@@ -46,41 +38,25 @@ Send an audio response to a dynamic menu item that supports it.  Ensure that the
 
 Authorization occurs by User, not by Reading System. Service Providers intending to authorize Content by individual Reading System will need to use some other mechanism, such as PDTB2.
 
-=== Connect with authorization ===
-
-Initialize a session with a Service using correct user credentials.
-
-=== Deny incorrect authorization ===
-
-Attempt to initialize a session with a Service using a valid user name, but an incorrect password.  The Service must respond "false" to the logOn operation, and return a NoActiveSession fault to subsequent operation calls.
-
-=== Allow content download with correct credentials ===
-
-Download a resource with basic authentication credentials provided by the Service.
-
-=== Deny content download with incorrect credentials ===
-
-Attempt to download a resource with incorrect basic authentication credentials.  The file server must respond with an HTTP status of 403.
+  # *Connect with authorization*: Initialize a session with a Service using correct user credentials.
+  # *Deny incorrect authorization*: Attempt to initialize a session with a Service using a valid user name, but an incorrect password.  The Service must respond "false" to the logOn operation, and return a NoActiveSession fault to subsequent operation calls.
+  # *Allow content download with correct credentials*: Download a resource with basic authentication credentials provided by the Service.
+  # *Deny content download with incorrect credentials*: Attempt to download a resource with incorrect basic authentication credentials.  The file server must respond with an HTTP status of 403.
 
 || Test case || Client || Server || Result || Details ||
 
-== Transmit bookmarks ==
+== 3. Transmit bookmarks ==
 
 *Untested*
 
 [RequirementsDocument#Transmit_bookmarks Requirement]
 
-=== Store and retrieve a user-created bookmark ===
-
-Create a bookmark for a Content item.  Use setBookmarks to transmit the bookmark to a Service.  Use getBookmarks to retrieve the bookmark from the Service.
-
-=== Retrieve a service provider-created bookmark ===
-
-Use getBookmarks to retrieve a list of predefined bookmarks from a Service.
+  # *Store and retrieve a user-created bookmark*: Create a bookmark for a Content item.  Use setBookmarks to transmit the bookmark to a Service.  Use getBookmarks to retrieve the bookmark from the Service.
+  # *Retrieve a service provider-created bookmark*: Use getBookmarks to retrieve a list of predefined bookmarks from a Service.
 
 || Test case || Client || Server || Result || Details ||
 
-== Return book ==
+== 4. Return book ==
 
 *Untested*
 
@@ -88,49 +64,40 @@ Use getBookmarks to retrieve a list of predefined bookmarks from a Service.
 
 || Test case || Client || Server || Result || Details ||
 
-== Transmit capabilities ==
+== 5. Transmit capabilities ==
 
 *Untested*
 
 [RequirementsDocument#Transmit_capabilities Requirement]
 
-=== Set Reading System attributes ===
-
-Initialize a session with a Service.  Verify that the Reading System's attributes were sent to the Service.
-
-=== Adapt Service to the Reading System's capabilities ===
-
-Initialize a session with a Service that provides different Content based on the capabilities of the Reading System.  Ensure that the Content and resources offered by the Service are only in the formats given in the readingSystemAttributes provided to the Service.
+  # *Set Reading System attributes*: Initialize a session with a Service.  Verify that the Reading System's attributes were sent to the Service.
+  # *Adapt Service to the Reading System's capabilities*: Initialize a session with a Service that provides different Content based on the capabilities of the Reading System.  Ensure that the Content and resources offered by the Service are only in the formats given in the readingSystemAttributes provided to the Service.
 
 || Test case || Client || Server || Result || Details ||
 
-== Universal protocol ==
+== 6. Universal protocol ==
 
 *Untested*
 
 [RequirementsDocument#Universal_protocol Requirement]
 
-=== Full session ===
-
-Perform a full session, from logOn to logOff.  (This test must be performed with as many combinations of clients and servers as possible.)
+  # *Full session*: Perform a full session, from logOn to logOff.  (This test must be performed with as many combinations of clients and servers as possible.)
 
 || Test case || Client || Server || Result || Details ||
 
-== Player stores contact information ==
+== 7. Player stores contact information ==
 
 *N/A*
 
+The requirement states that the Reading System must store the Service's contact information.  This is not a requirement as much as it is a declaration that Service Discovery is out of scope.
+
 [RequirementsDocument#Player_stores_contact_information Requirement]
 
-=== Connect to a new Service ===
-
-Add a new Service location and credentials to a Reading System, then connect to the Service with it.  (This is to demonstrate that Service Discovery is not a necessary part of the protocol.)
-
-The requirement states that the Reading System must store the Service's contact information.  This is not a requirement as much as it is a declaration that Service Discovery is out of scope.
+  # *Connect to a new Service*: Add a new Service location and credentials to a Reading System, then connect to the Service with it.  (This is to demonstrate that Service Discovery is not a necessary part of the protocol.)
 
 || Test case || Client || Server || Result || Details ||
 
-== Content at different location ==
+== 8. Content at different location ==
 
 *Untested*
 
@@ -138,7 +105,7 @@ The requirement states that the Reading System must store the Service's contact 
 
 || Test case || Client || Server || Result || Details ||
 
-== Time interrogation ==
+== 9. Time interrogation ==
 
 *Not fulfilled*
 
@@ -146,7 +113,7 @@ The requirement states that the Reading System must store the Service's contact 
 
 The ability for Reading Systems to query the Service for the current time was not included in the protocol.
 
-== Download and streaming ==
+== 10. Download and streaming ==
 
 *Untested*
 
@@ -154,7 +121,7 @@ The ability for Reading Systems to query the Service for the current time was no
 
 || Test case || Client || Server || Result || Details ||
 
-== Key delivery ==
+== 11. Key delivery ==
 
 *Untested*
 
@@ -162,7 +129,7 @@ The ability for Reading Systems to query the Service for the current time was no
 
 || Test case || Client || Server || Result || Details ||
 
-== Same book, different player ==
+== 12. Same book, different player ==
 
 *Untested*
 
@@ -170,7 +137,7 @@ The ability for Reading Systems to query the Service for the current time was no
 
 || Test case || Client || Server || Result || Details ||
 
-== Bookmark stored on server ==
+== 13. Bookmark stored on server ==
 
 *Untested*
 
@@ -178,7 +145,7 @@ The ability for Reading Systems to query the Service for the current time was no
 
 || Test case || Client || Server || Result || Details ||
 
-== Issue content ==
+== 14. Issue content ==
 
 *Untested*
 
@@ -186,7 +153,7 @@ The ability for Reading Systems to query the Service for the current time was no
 
 || Test case || Client || Server || Result || Details ||
 
-== Audio and text annotation ==
+== 15. Audio and text annotation ==
 
 *Untested*
 
@@ -194,7 +161,7 @@ The ability for Reading Systems to query the Service for the current time was no
 
 || Test case || Client || Server || Result || Details ||
 
-== Stop and resume download ==
+== 16. Stop and resume download ==
 
 *Untested*
 
@@ -202,7 +169,7 @@ The ability for Reading Systems to query the Service for the current time was no
 
 || Test case || Client || Server || Result || Details ||
 
-== Dynamic menus ==
+== 17. Dynamic menus ==
 
 *Untested*
 
@@ -210,7 +177,7 @@ The ability for Reading Systems to query the Service for the current time was no
 
 || Test case || Client || Server || Result || Details ||
 
-== Noninteractive session ==
+== 18. Noninteractive session ==
 
 *Untested*
 
@@ -218,7 +185,7 @@ The ability for Reading Systems to query the Service for the current time was no
 
 || Test case || Client || Server || Result || Details ||
 
-== Prioritize order of files ==
+== 19. Prioritize order of files ==
 
 *Untested*
 
@@ -226,7 +193,7 @@ The ability for Reading Systems to query the Service for the current time was no
 
 || Test case || Client || Server || Result || Details ||
 
-== Interact with content ==
+== 20. Interact with content ==
 
 *Untested*
 
@@ -234,7 +201,7 @@ The ability for Reading Systems to query the Service for the current time was no
 
 || Test case || Client || Server || Result || Details ||
 
-== Report firmware version ==
+== 21. Report firmware version ==
 
 *Untested*
 
@@ -242,7 +209,7 @@ The ability for Reading Systems to query the Service for the current time was no
 
 || Test case || Client || Server || Result || Details ||
 
-== Report download activity ==
+== 22. Report download activity ==
 
 *Not fulfilled*
 
@@ -250,7 +217,7 @@ The ability for Reading Systems to query the Service for the current time was no
 
 The capability for a Reading System to report its own download activity to the Service was not included in the protocol.  Service Providers may track this information for local Content by monitoring their own file servers.
 
-== Report player errors ==
+== 23. Report player errors ==
 
 *Not fulfilled*
 
@@ -258,7 +225,7 @@ The capability for a Reading System to report its own download activity to the S
 
 The capability for a Reading System to report errors to the Service was not included in the protocol.
 
-== Report which server is in control ==
+== 24. Report which server is in control ==
 
 *Not fulfilled*
 
@@ -266,7 +233,7 @@ The capability for a Reading System to report errors to the Service was not incl
 
 The capability to report which server is in control was not included in the protocol.
 
-== Protect user privacy ==
+== 25. Protect user privacy ==
 
 *Untested*
 
@@ -274,7 +241,7 @@ The capability to report which server is in control was not included in the prot
 
 || Test case || Client || Server || Result || Details ||
 
-== Localized, plain language error messages ==
+== 26. Localized, plain language error messages ==
 
 *Untested*
 
@@ -284,7 +251,7 @@ The capability to report which server is in control was not included in the prot
 
 = Expectations =
 
-== Audio feedback ==
+== 27. Audio feedback ==
 
 *Untested*
 
