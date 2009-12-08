@@ -15,19 +15,52 @@ _Example of how this should be filled out_
 
 *Partially fulfilled*
 
+[RequirementsDocument#Efficient_use_of_bandwidth Requirement]
+
 Content transfer usually takes place over HTTP, which is sufficient for transfer of data over the World Wide Web.  The Service creates minimal overhead.
 
 Transfer of audio from the Reading System to the Service takes place over SOAP without MTOM, which adds roughly 37% more to transmission time.
 
+=== Download content ===
+
+Use a Service to find and download an entire Content item.  Ensure that the Content is downloaded in a reasonable amount of time.
+
+=== Protocol overhead ===
+
+In a typical session, measure the ratio of bytes transferred for messages (i.e., over SOAP) vs. bytes transferred for Content(i.e., over plain HTTP/HTTPS).
+
+=== Audio response ===
+
+Send an audio response to a dynamic menu item that supports it.  Ensure that the audio is uploaded in a reasonable amount of time.
+
 || Test case || Client || Server || Result || Details ||
-|| [ProtocolSystemTestingTestCases#Download_content Download content] || CNIB || !PratSam || *Success* || Transfer of data was at expected rates for binary transfer over the Internet.  A 119 MB book was downloaded in 26 minutes. ||
-|| [ProtocolSystemTestingTestCases#Audio_response Audio response] || XXX || YYY || *Failure* || Transfer of data was at X% efficiency compared to binary transfer.  Audio of Y MB was uploaded in Z minutes. ||
+|| Download content || CNIB || !PratSam || *Success* || Transfer of data was at expected rates for binary transfer over the Internet.  A 119 MB book was downloaded in 26 minutes. ||
+|| Download content || Plextor || VA || *Success* || Transfer of data was at expected rates for binary transfer over the Internet.  An X MB book was downloaded in Y minutes. ||
+|| Audio response || XXX || YYY || *Failure* || Transfer of data was at X% efficiency compared to binary transfer.  Audio of Y MB was uploaded in Z minutes. ||
 
 == Key authorization ==
 
 *Partially fulfilled*
 
+[RequirementsDocument#Key_authorization Requirement]
+
 Authorization occurs by User, not by Reading System. Service Providers intending to authorize Content by individual Reading System will need to use some other mechanism, such as PDTB2.
+
+=== Connect with authorization ===
+
+Initialize a session with a Service using correct user credentials.
+
+=== Deny incorrect authorization ===
+
+Attempt to initialize a session with a Service using a valid user name, but an incorrect password.  The Service must respond "false" to the logOn operation.
+
+=== Allow content download with correct credentials ===
+
+Download a resource with basic authentication credentials provided by the Service.
+
+=== Deny content download with incorrect credentials ===
+
+Attempt to download a resource with incorrect basic authentication credentials.  The file server must respond with an HTTP status of 403.
 
 || Test case || Client || Server || Result || Details ||
 
@@ -35,11 +68,23 @@ Authorization occurs by User, not by Reading System. Service Providers intending
 
 *Untested*
 
+[RequirementsDocument#Transmit_bookmarks Requirement]
+
+=== Store and retrieve a user-created bookmark ===
+
+Create a bookmark for a Content item.  Use setBookmarks to transmit the bookmark to a Service.  Use getBookmarks to retrieve the bookmark from the Service.
+
+=== Retrieve a service provider-created bookmark ===
+
+Use getBookmarks to retrieve a list of predefined bookmarks from a Service.
+
 || Test case || Client || Server || Result || Details ||
 
 == Return book ==
 
 *Untested*
+
+[RequirementsDocument#Return_book Requirement]
 
 || Test case || Client || Server || Result || Details ||
 
@@ -47,17 +92,39 @@ Authorization occurs by User, not by Reading System. Service Providers intending
 
 *Untested*
 
+[RequirementsDocument#Transmit_capabilities Requirement]
+
+=== Set Reading System attributes ===
+
+Initialize a session with a Service.  Verify that the Reading System's attributes were sent to the Service.
+
+=== Adapt Service to the Reading System's capabilities ===
+
+Initialize a session with a Service that provides different Content based on the capabilities of the Reading System.  Ensure that the Content and resources offered by the Service are only in the formats given in the readingSystemAttributes provided to the Service.
+
 || Test case || Client || Server || Result || Details ||
 
 == Universal protocol ==
 
 *Untested*
 
+[RequirementsDocument#Universal_protocol Requirement]
+
+=== Full session ===
+
+Perform a full session, from logOn to logOff.  (This test must be performed with as many combinations of clients and servers as possible.)
+
 || Test case || Client || Server || Result || Details ||
 
 == Player stores contact information ==
 
 *N/A*
+
+[RequirementsDocument#Player_stores_contact_information Requirement]
+
+=== Connect to a new Service ===
+
+Add a new Service location and credentials to a Reading System, then connect to the Service with it.  (This is to demonstrate that Service Discovery is not a necessary part of the protocol.)
 
 The requirement states that the Reading System must store the Service's contact information.  This is not a requirement as much as it is a declaration that Service Discovery is out of scope.
 
@@ -67,11 +134,15 @@ The requirement states that the Reading System must store the Service's contact 
 
 *Untested*
 
+[RequirementsDocument#Content_at_different_location Requirement]
+
 || Test case || Client || Server || Result || Details ||
 
 == Time interrogation ==
 
 *Not fulfilled*
+
+[RequirementsDocument#Time_interrogation Requirement]
 
 The ability for Reading Systems to query the Service for the current time was not included in the protocol.
 
@@ -79,11 +150,15 @@ The ability for Reading Systems to query the Service for the current time was no
 
 *Untested*
 
+[RequirementsDocument#Download_and_streaming Requirement]
+
 || Test case || Client || Server || Result || Details ||
 
 == Key delivery ==
 
 *Untested*
+
+[RequirementsDocument#Key_delivery Requirement]
 
 || Test case || Client || Server || Result || Details ||
 
@@ -91,11 +166,15 @@ The ability for Reading Systems to query the Service for the current time was no
 
 *Untested*
 
+[RequirementsDocument#Same_book,_different_player Requirement]
+
 || Test case || Client || Server || Result || Details ||
 
 == Bookmark stored on server ==
 
 *Untested*
+
+[RequirementsDocument#Bookmark_stored_on_server Requirement]
 
 || Test case || Client || Server || Result || Details ||
 
@@ -103,11 +182,15 @@ The ability for Reading Systems to query the Service for the current time was no
 
 *Untested*
 
+[RequirementsDocument#Issue_content Requirement]
+
 || Test case || Client || Server || Result || Details ||
 
 == Audio and text annotation ==
 
 *Untested*
+
+[RequirementsDocument#Audio_and_text_annotation Requirement]
 
 || Test case || Client || Server || Result || Details ||
 
@@ -115,11 +198,15 @@ The ability for Reading Systems to query the Service for the current time was no
 
 *Untested*
 
+[RequirementsDocument#Stop_and_resume_download Requirement]
+
 || Test case || Client || Server || Result || Details ||
 
 == Dynamic menus ==
 
 *Untested*
+
+[RequirementsDocument#Dynamic_menus Requirement]
 
 || Test case || Client || Server || Result || Details ||
 
@@ -127,11 +214,15 @@ The ability for Reading Systems to query the Service for the current time was no
 
 *Untested*
 
+[RequirementsDocument#Noninteractive_session Requirement]
+
 || Test case || Client || Server || Result || Details ||
 
 == Prioritize order of files ==
 
 *Untested*
+
+[RequirementsDocument#Prioritize_order_of_files Requirement]
 
 || Test case || Client || Server || Result || Details ||
 
@@ -139,11 +230,15 @@ The ability for Reading Systems to query the Service for the current time was no
 
 *Untested*
 
+[RequirementsDocument#Interact_with_content Requirement]
+
 || Test case || Client || Server || Result || Details ||
 
 == Report firmware version ==
 
 *Untested*
+
+[RequirementsDocument#Report_firmware_version Requirement]
 
 || Test case || Client || Server || Result || Details ||
 
@@ -151,11 +246,15 @@ The ability for Reading Systems to query the Service for the current time was no
 
 *Not fulfilled*
 
+[RequirementsDocument#Report_download_activity Requirement]
+
 The capability for a Reading System to report its own download activity to the Service was not included in the protocol.  Service Providers may track this information for local Content by monitoring their own file servers.
 
 == Report player errors ==
 
 *Not fulfilled*
+
+[RequirementsDocument#Report_player_errors Requirement]
 
 The capability for a Reading System to report errors to the Service was not included in the protocol.
 
@@ -163,11 +262,15 @@ The capability for a Reading System to report errors to the Service was not incl
 
 *Not fulfilled*
 
+[RequirementsDocument#Report_which_server_is_in_control Requirement]
+
 The capability to report which server is in control was not included in the protocol.
 
 == Protect user privacy ==
 
 *Untested*
+
+[RequirementsDocument#Protect_user_privacy Requirement]
 
 || Test case || Client || Server || Result || Details ||
 
@@ -175,11 +278,17 @@ The capability to report which server is in control was not included in the prot
 
 *Untested*
 
+[RequirementsDocument#Localized,_plain_language_error_messages Requirement]
+
 || Test case || Client || Server || Result || Details ||
 
 = Expectations =
 
 == Audio feedback ==
+
+*Untested*
+
+[RequirementsDocument#Requires_some_player_functionality Requirement] (never formally moved back in scope)
 
 Sending audio from the Reading System to the Service was originally in scope, then declared out of scope, then was brought back into the specification.
 
