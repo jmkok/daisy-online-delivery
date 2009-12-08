@@ -49,6 +49,12 @@ scribe: Kenny
   * Issue 104
   * Issue 157
   * Issue 165
+  * Issue 173
+  * Issue 174
   * Issue 181
 
 === Test suite Progress ===
+
+==== [http://code.google.com/p/daisy-online-delivery/wiki/tsg_test_suite Test Suite] ====
+
+==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolSystemTestingTestCases Systems Testing] ====
