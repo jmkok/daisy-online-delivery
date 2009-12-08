@@ -52,7 +52,7 @@ Initialize a session with a Service using correct user credentials.
 
 === Deny incorrect authorization ===
 
-Attempt to initialize a session with a Service using a valid user name, but an incorrect password.  The Service must respond "false" to the logOn operation.
+Attempt to initialize a session with a Service using a valid user name, but an incorrect password.  The Service must respond "false" to the logOn operation, and return a NoActiveSession fault to subsequent operation calls.
 
 === Allow content download with correct credentials ===
 
