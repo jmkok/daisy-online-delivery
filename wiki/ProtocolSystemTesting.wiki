@@ -36,7 +36,7 @@ Transfer of audio from the Reading System to the Service takes place over SOAP w
 
 [RequirementsDocument#Key_authorization Requirement]
 
-Authorization occurs by User, not by Reading System. Service Providers intending to authorize Content by individual Reading System will need to use some other mechanism, such as PDTB2.
+Authorization occurs by User, not by Reading System; credentials are user names and passwords, not encryption keys. Service Providers intending to authorize Content by individual Reading System will need to use some other mechanism, such as PDTB2.
 
   # *Connect with authorization*: Initialize a session with a Service using correct user credentials.
   # *Deny incorrect authorization*: Attempt to initialize a session with a Service using a valid user name, but an incorrect password.  The Service must respond "false" to the logOn operation, and return a NoActiveSession fault to subsequent operation calls.
