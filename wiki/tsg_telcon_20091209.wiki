@@ -8,14 +8,13 @@ scribe: Kenny
  
 === New Action Items ===
 
-  * George contact Dedicon to source PDTB2 content and confirm whether Dedicon will have a test implementation ready by February 15, 2010.  
-  * Simon check with Dominic on making sample PDTB2 content available to the spec implementers. 
-  * Kenny post to the list asking for volunteers for the formulation of the test suite.
-  * Kenny create wiki page for the test suite and post the Testable items identified thus far to it. 
-  * Geoff and Kenny start work on the Test document.  
-
 === Previous Unfinished Action Items ===
 
+  * George contact Dedicon to source PDTB2 content and confirm whether Dedicon will have a test implementation ready by February 15, 2010.  
+  * Simon check with Dominic on making sample PDTB2 content available to the spec implementers. (done) 
+  * Kenny post to the list asking for volunteers for the formulation of the test suite. (done)
+  * Kenny create wiki page for the test suite and post the Testable items identified thus far to it. (done) 
+  * Geoff and Kenny start work on the Test document. (In progress)  
   * Jelle: propose resolution to Issue 118 {DONE?}
   * Geoff and Markus analyze RequirementsDocument vs current API. {ONGOING}
   * Markus fix the &apos; entity problem.
