@@ -136,6 +136,10 @@ The ability for Reading Systems to query the Service for the current time was no
 
 [RequirementsDocument#Key_delivery Requirement]
 
+  # *Identify protected Content*: Find a Protected DTB on the Service.  Get the DTB's metadata.  There must be a meta element with a name attribute of "pdtb2:specVersion" and a content attribute of "2005-1".
+  # *Get a key*: Issue and download a Protected DTB.  Request a Key Exchange Object (KXO) for the decryption key from the Service using getKeyExchangeObject.  Render the DTB.
+  # *Deny a key*: Issue and download a Protected DTB.  Request a Key Exchange Object (KXO) for the decryption key from the Service using getKeyExchangeObject, but do not provide an authorized key in the keyRing argument.  The Service must reply with an invalidOperation fault.
+
 || Test case || Client || Server || Result || Details ||
 
 == 12. Same book, different player ==
