@@ -49,9 +49,10 @@ Authorization occurs by User, not by Reading System; credentials are user names 
 
 *Untested*
 
+Note: Storing user-created bookmarks is covered under requirement #13, Bookmark stored on server.
+
 [RequirementsDocument#Transmit_bookmarks Requirement]
 
-  # *Store and retrieve a user-created bookmark*: Create a bookmark for a Content item.  Use setBookmarks to transmit the bookmark to a Service.  Use getBookmarks to retrieve the bookmark from the Service.
   # *Retrieve a service provider-created bookmark*: Use getBookmarks to retrieve a list of predefined bookmarks from a Service.
 
 || Test case || Client || Server || Result || Details ||
@@ -158,6 +159,8 @@ The ability for Reading Systems to query the Service for the current time was no
 *Untested*
 
 [RequirementsDocument#Bookmark_stored_on_server Requirement]
+
+  # *Store and retrieve a user-created bookmark*: Create a bookmark for a Content item.  Use setBookmarks to transmit the bookmark to a Service.  Use getBookmarks to retrieve the bookmark from the Service.
 
 || Test case || Client || Server || Result || Details ||
 
