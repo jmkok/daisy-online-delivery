@@ -113,11 +113,11 @@ The requirement states that the Reading System must store the Service's contact 
 
 == 9. Time interrogation ==
 
-*Not fulfilled*
+*Partially fulfilled*
 
 [RequirementsDocument#Time_interrogation Requirement]
 
-The ability for Reading Systems to query the Service for the current time was not included in the protocol.
+The ability for Reading Systems to query the Service for the current time was not included in the protocol.  The protocol can provide a due date for Content, and can provide a list of expired Content.
 
 == 10. Download and streaming ==
 
