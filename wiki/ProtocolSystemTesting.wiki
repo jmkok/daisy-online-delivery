@@ -22,7 +22,7 @@ Content transfer usually takes place over HTTP, which is sufficient for transfer
 Transfer of audio from the Reading System to the Service takes place over SOAP without MTOM, which adds roughly 37% more to transmission time.
 
   # *Download content*: Use a Service to find and download an entire Content item.  Ensure that the Content is downloaded in a reasonable amount of time.
-  # *Protocol overhead*: In a typical session, measure the ratio of bytes transferred for messages (i.e., over SOAP) vs. bytes transferred for Content(i.e., over plain HTTP/HTTPS).
+  # *Protocol overhead*: In a typical session, measure the ratio of bytes transferred for messages (i.e., over SOAP) vs. bytes transferred for Content (i.e., over plain HTTP/HTTPS).
   # *Audio response*: Send an audio response to a dynamic menu item that supports it.  Ensure that the audio is uploaded in a reasonable amount of time.
 
 || Test case || Client || Server || Result || Details ||
@@ -62,6 +62,9 @@ Authorization occurs by User, not by Reading System; credentials are user names 
 
 [RequirementsDocument#Return_book Requirement]
 
+  # *Return a downloaded book*: Issue and download a lending-model Content item (i.e. one that requires return) then perform the Reading System's return function.  The Service must return true.  Verify that the Content's resources have been removed from the Reading System.
+  # *Return a streamed book*: Issue a lending-model Content item and stream some part of it, then perform the Reading System's return function.  The Service must return true.  Verify that the Content's resources are not present on the Reading System.
+
 || Test case || Client || Server || Result || Details ||
 
 == 5. Transmit capabilities ==
@@ -100,6 +103,9 @@ The requirement states that the Reading System must store the Service's contact 
 == 8. Content at different location ==
 
 *Untested*
+
+  # *Public remote content*: Issue a Content item which is hosted on a public server that is not affiliated with the Service Provider and does not require authentication.  Download the Content.
+  # *Private remote content*: Issue a Content item which is hosted on a public server that is not  at the same host as the Service and requires basic authentication.  Download the Content.
 
 [RequirementsDocument#Content_at_different_location Requirement]
 
