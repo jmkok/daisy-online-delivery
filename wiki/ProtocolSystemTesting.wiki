@@ -148,6 +148,9 @@ The ability for Reading Systems to query the Service for the current time was no
 
 [RequirementsDocument#Same_book,_different_player Requirement]
 
+  # *Multiple downloads*: Issue and download a Content item from a Service that allows multiple downloads of the same Content.  Download the same Content item onto another Reading System.
+  # *Pick up where you left off*: Issue and download a Content item.  Render the Content up to some point, create a bookmark there and transmit it to the Service.  Return the Content item.  Download the same Content item onto another Reading System.  Get the bookmarks for the Content item.  Start rendering the Content at the point where the bookmark was set earlier.
+
 || Test case || Client || Server || Result || Details ||
 
 == 13. Bookmark stored on server ==
