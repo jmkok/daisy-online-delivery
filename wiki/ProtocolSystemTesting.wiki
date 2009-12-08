@@ -125,6 +125,9 @@ The ability for Reading Systems to query the Service for the current time was no
 
 [RequirementsDocument#Download_and_streaming Requirement]
 
+  # *Download content*: Issue and download a Content item.
+  # *Stream content*: Issue a Content item and stream some part of it.
+
 || Test case || Client || Server || Result || Details ||
 
 == 11. Key delivery ==
