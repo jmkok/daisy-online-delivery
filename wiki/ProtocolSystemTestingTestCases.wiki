@@ -1,4 +1,4 @@
-#summary The test cases used for the protocol system testing. (integrated into ProtocolSystemTesting
+#summary The test cases used for the protocol system testing. (integrated into ProtocolSystemTesting)
 #labels Phase-QA,Deprecated
 
 The test cases were integrated into the ProtocolSystemTesting document.
