@@ -242,7 +242,9 @@ The ability for Reading Systems to query the Service for the current time was no
 
 [RequirementsDocument#Report_download_activity Requirement]
 
-The capability for a Reading System to report its own download activity to the Service was not included in the protocol.  Service Providers may track this information for local Content by monitoring their own file servers.
+The capability for a Reading System to report its own download activity to the Service was not included in the protocol.  Service Providers may track this information for local Content by monitoring their own file servers, and may need to require Service Delegates to report download activity.
+
+  # *Track downloads*: Connect to a Service, then issue and download a Content item.  Verify that file downloads were logged by the Content Provider.
 
 == 23. Report player errors ==
 
