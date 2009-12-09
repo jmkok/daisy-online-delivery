@@ -28,7 +28,7 @@ At a minimum, a conformant Reading System or Service must pass all tests in cate
 == 2. Lending service model ==
 
   # Implement the returnContent operation.
-  # Support the Issued and Expired ContentList(s).
+  # Support the Issued and Expired ContentList types.
   # Support the requiresReturn attribute of the ContentMetadata type.   
   # Support the returnBY attribute of the ContentMetadata type.     
   # must not call returnContent for a particular piece of content until all local copies of the content have been removed off its storage.
