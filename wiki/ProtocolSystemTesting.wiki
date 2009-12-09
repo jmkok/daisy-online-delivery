@@ -170,6 +170,9 @@ The ability for Reading Systems to query the Service for the current time was no
 
 [RequirementsDocument#Issue_content Requirement]
 
+  # *Issue a book*: Request a Content item from a Service using issueContent.  The Service must return true.  Get the list of resources using getContentResources.
+  # *Deny a book*: Request a Content item from a Service using issueContent.  The Service must return false.  Try to get the list of resources using getContentResources.  The Service must return an invalidOperation fault.
+
 || Test case || Client || Server || Result || Details ||
 
 == 15. Audio and text annotation ==
