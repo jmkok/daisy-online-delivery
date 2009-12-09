@@ -39,9 +39,9 @@ Transfer of audio from the Reading System to the Service takes place over SOAP w
 Authorization occurs by User, not by Reading System; credentials are user names and passwords, not encryption keys. Service Providers intending to authorize Content by individual Reading System will need to use some other mechanism, such as PDTB2.
 
   # *Connect with authorization*: Initialize a session with a Service using correct user credentials.
-  # *Deny incorrect authorization*: Attempt to initialize a session with a Service using a valid user name, but an incorrect password.  The Service must respond "false" to the logOn operation, and return a NoActiveSession fault to subsequent operation calls.
+  # *Deny incorrect authorization*: Attempt to initialize a session with a Service using a valid user name, but an incorrect password.  The Service must respond `false` to the `logOn` operation, and return a `NoActiveSession` fault to subsequent operation calls.
   # *Allow content download with correct credentials*: Download a resource with basic authentication credentials provided by the Service.
-  # *Deny content download with incorrect credentials*: Attempt to download a resource with incorrect basic authentication credentials.  The file server must respond with an HTTP status of 403.
+  # *Deny content download with incorrect credentials*: Attempt to download a resource with incorrect basic authentication credentials.  The file server must respond with an HTTP status of "403 Forbidden".
 
 || Test case || Client || Server || Result || Details ||
 
@@ -53,7 +53,7 @@ Note: Storing user-created bookmarks is covered under requirement #13, Bookmark 
 
 [RequirementsDocument#Transmit_bookmarks Requirement]
 
-  # *Retrieve a service provider-created bookmark*: Use getBookmarks to retrieve a list of predefined bookmarks from a Service.
+  # *Retrieve a service provider-created bookmark*: Use `getBookmarks` to retrieve a list of predefined bookmarks from a Service.
 
 || Test case || Client || Server || Result || Details ||
 
@@ -63,8 +63,8 @@ Note: Storing user-created bookmarks is covered under requirement #13, Bookmark 
 
 [RequirementsDocument#Return_book Requirement]
 
-  # *Return a downloaded book*: Issue and download a lending-model Content item (i.e. one that requires return) then perform the Reading System's return function.  The Service must return true.  Verify that the Content's resources have been removed from the Reading System.
-  # *Return a streamed book*: Issue a lending-model Content item and stream some part of it, then perform the Reading System's return function.  The Service must return true.  Verify that the Content's resources are not present on the Reading System.
+  # *Return a downloaded book*: Issue and download a lending-model Content item (i.e. one that requires return) then perform the Reading System's return function.  The Service must return `true`.  Verify that the Content's resources have been removed from the Reading System.
+  # *Return a streamed book*: Issue a lending-model Content item and stream some part of it, then perform the Reading System's return function.  The Service must return `true`.  Verify that the Content's resources are not present on the Reading System.
 
 || Test case || Client || Server || Result || Details ||
 
@@ -75,7 +75,7 @@ Note: Storing user-created bookmarks is covered under requirement #13, Bookmark 
 [RequirementsDocument#Transmit_capabilities Requirement]
 
   # *Set Reading System attributes*: Initialize a session with a Service.  Verify that the Reading System's attributes were sent to the Service.
-  # *Adapt Service to the Reading System's capabilities*: Initialize a session with a Service that provides different Content based on the capabilities of the Reading System.  Ensure that the Content and resources offered by the Service are only in the formats given in the readingSystemAttributes provided to the Service.
+  # *Adapt Service to the Reading System's capabilities*: Initialize a session with a Service that provides different Content based on the capabilities of the Reading System.  Ensure that the Content and resources offered by the Service are only in the formats given in the `readingSystemAttributes` provided to the Service.
 
 || Test case || Client || Server || Result || Details ||
 
@@ -85,7 +85,7 @@ Note: Storing user-created bookmarks is covered under requirement #13, Bookmark 
 
 [RequirementsDocument#Universal_protocol Requirement]
 
-  # *Full session*: Perform a full session, from logOn to logOff.  (This test must be performed with as many combinations of clients and servers as possible.)
+  # *Full session*: Perform a full session, from `logOn` to `logOff`.  (This test should be performed with as many combinations of clients and servers as possible.)
 
 || Test case || Client || Server || Result || Details ||
 
@@ -137,9 +137,9 @@ The ability for Reading Systems to query the Service for the current time was no
 
 [RequirementsDocument#Key_delivery Requirement]
 
-  # *Identify protected Content*: Find a Protected DTB on the Service.  Get the DTB's metadata.  There must be a meta element with a name attribute of "pdtb2:specVersion" and a content attribute of "2005-1".
-  # *Get a key*: Issue and download a Protected DTB.  Request a Key Exchange Object (KXO) for the decryption key from the Service using getKeyExchangeObject.  Render the DTB.
-  # *Deny a key*: Issue and download a Protected DTB.  Request a Key Exchange Object (KXO) for the decryption key from the Service using getKeyExchangeObject, but do not provide an authorized key in the keyRing argument.  The Service must reply with an invalidOperation fault.
+  # *Identify protected Content*: Find a Protected DTB on the Service.  Get the DTB's metadata.  There must be a meta element with a name attribute of "`pdtb2:specVersion`" and a content attribute of "`2005-1`".
+  # *Get a key*: Issue and download a Protected DTB.  Request a Key Exchange Object (KXO) for the decryption key from the Service using `getKeyExchangeObject`.  Render the DTB.
+  # *Deny a key*: Issue and download a Protected DTB.  Request a KXO for the decryption key from the Service using `getKeyExchangeObject`, but do not provide an authorized key in the `keyRing` argument.  The Service must reply with an `invalidOperation` fault.
 
 || Test case || Client || Server || Result || Details ||
 
@@ -160,7 +160,7 @@ The ability for Reading Systems to query the Service for the current time was no
 
 [RequirementsDocument#Bookmark_stored_on_server Requirement]
 
-  # *Store and retrieve a user-created bookmark*: Create a bookmark for a Content item.  Use setBookmarks to transmit the bookmark to a Service.  Use getBookmarks to retrieve the bookmark from the Service.
+  # *Store and retrieve a user-created bookmark*: Create a bookmark for a Content item.  Use `setBookmarks` to transmit the bookmark to a Service.  Use `getBookmarks` to retrieve the bookmark from the Service.
 
 || Test case || Client || Server || Result || Details ||
 
@@ -170,8 +170,9 @@ The ability for Reading Systems to query the Service for the current time was no
 
 [RequirementsDocument#Issue_content Requirement]
 
-  # *Issue a book*: Request a Content item from a Service using issueContent.  The Service must return true.  Get the list of resources using getContentResources.
-  # *Deny a book*: Request a Content item from a Service using issueContent.  The Service must return false.  Try to get the list of resources using getContentResources.  The Service must return an invalidOperation fault.
+  # *Issue a book*: Request a Content item from a Service using `issueContent`.  The Service must return `true`.  Get the list of resources using `getContentResources`.
+  # *Deny a book*: Request a Content item from a Service using `issueContent`.  The Service must return `false`.  Try to get the list of resources using `getContentResources`.  The Service must return an `invalidOperation` fault.
+  # *Pre-requisite book*: _TODO: This needs a test case._
 
 || Test case || Client || Server || Result || Details ||
 
@@ -181,6 +182,8 @@ The ability for Reading Systems to query the Service for the current time was no
 
 [RequirementsDocument#Audio_and_text_annotation Requirement]
 
+  # *Annotated Content list*: Retrieve a Content list with several items from a Service using `getContentList`.  Each item must have a label with both text and audio.
+
 || Test case || Client || Server || Result || Details ||
 
 == 16. Stop and resume download ==
@@ -188,6 +191,8 @@ The ability for Reading Systems to query the Service for the current time was no
 *Untested*
 
 [RequirementsDocument#Stop_and_resume_download Requirement]
+
+  # *Stop and resume*: Issue a Content item from a Service and get its resource list.  Download part of one file, then stop.  Drop the HTTP connection, then reconnect.  Resume the download, using the HTTP Range header to download only the remaining part of the file.  Download the same file in its entirety and verify that they match.
 
 || Test case || Client || Server || Result || Details ||
 
