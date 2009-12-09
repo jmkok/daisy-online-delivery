@@ -28,18 +28,18 @@ At a minimum, a conformant Reading System or Service must pass all tests in cate
 == 2. Lending service model ==
 
   # Implement the returnContent operation.
-  # Support the Issued and Expired ContentList types.
-  # Support the requiresReturn attribute of the ContentMetadata type.   
-  # Support the returnBY attribute of the ContentMetadata type.     
+  # Support the Issued and Expired contentList types.
+  # Support the requiresReturn attribute of the contentMetadata type.   
+  # Support the returnBY attribute of the contentMetadata type.     
   # must not call returnContent for a particular piece of content until all local copies of the content have been removed off its storage.
-  # Should retrieve the Expired ContentList at least once in a session if any borrowed Content exists.      
+  # Should retrieve the Expired contentList at least once in a session if any borrowed Content exists.      
   # Should return any borrowed Content listed in the expired list after notifying the user.
 
 == 3. Acquisition service model ==
 
-  # Support the requiresReturn attribute of the ContentMetadata type.
-  # Support the Issued ContentList.
-  # If returnContent is implemented, it must not be called for any content that has @requiresReturn=false in its ContentMetadata type. 
+  # Support the requiresReturn attribute of the contentMetadata type.
+  # Support the Issued contentList.
+  # If returnContent is implemented, it must not be called for any content that has @requiresReturn=false in its contentMetadata type. 
 
 == 4. Out-of-band selection model ==
 
