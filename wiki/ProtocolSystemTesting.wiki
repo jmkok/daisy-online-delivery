@@ -63,8 +63,8 @@ Note: Storing user-created bookmarks is covered under requirement #13, Bookmark 
 
 [RequirementsDocument#Return_book Requirement]
 
-  # *Return a downloaded book*: Issue and download a lending-model Content item (i.e. one that requires return) then perform the Reading System's return function.  The Service must return `true`.  Verify that the Content's resources have been removed from the Reading System.
-  # *Return a streamed book*: Issue a lending-model Content item and stream some part of it, then perform the Reading System's return function.  The Service must return `true`.  Verify that the Content's resources are not present on the Reading System.
+  # *Return a downloaded book*: Issue and download a Borrowable Content item (i.e. one that requires return) then perform the Reading System's return function.  The Service must return `true`.  Verify that the Content's resources have been removed from the Reading System.
+  # *Return a streamed book*: Issue a Borrowable Content item and stream some part of it, then perform the Reading System's return function.  The Service must return `true`.  Verify that the Content's resources are not present on the Reading System.
 
 || Test case || Client || Server || Result || Details ||
 
