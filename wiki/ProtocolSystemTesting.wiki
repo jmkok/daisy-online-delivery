@@ -47,7 +47,9 @@ Authorization occurs by User, not by Reading System; credentials are user names 
 
 == 3. Transmit bookmarks ==
 
-*Untested*
+*Partially fulfilled*
+
+The protocol does not support bookmarks with audio notes.
 
 Note: Storing user-created bookmarks is covered under requirement #13, Bookmark stored on server.
 
@@ -156,7 +158,9 @@ The ability for Reading Systems to query the Service for the current time was no
 
 == 13. Bookmark stored on server ==
 
-*Untested*
+*Partially fulfilled*
+
+The protocol does not support bookmarks with audio notes.
 
 [RequirementsDocument#Bookmark_stored_on_server Requirement]
 
