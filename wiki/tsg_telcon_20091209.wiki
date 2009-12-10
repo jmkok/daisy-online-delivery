@@ -10,7 +10,7 @@ scribe: Kenny
 
   * Kenny check in the implementer's call for test suite volunteers.
   * Kenny add a recommendation in the spec documentation pertaining to state information being held for the duration of a session and close Issue 39.   
- * Kenny close Issue 101
+  * Kenny close Issue 101
   * Kenny close Issue 103
   * Geoff record in the Systems Testing document that the requirement for Diagnostic Information has not been met.
   * Kenny to make a note in the documentation and the test suite that audio notes are specifically not supported. An http based put scheme may be introduced in a future version but not in this version, and close Issue 104.  
