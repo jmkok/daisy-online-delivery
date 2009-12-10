@@ -236,11 +236,16 @@ The protocol does not support bookmarks with audio notes.
 
 [RequirementsDocument#Prioritize_order_of_files Requirement]
 
+  # *Play a book while downloading*: Issue a DAISY 2.02 or Z39.86 book that includes audio from the Service.  Identify and download the XML files, then identify and download the audio in play order.  Begin playback of audio before it has fully downloaded.
+
 || Test case || Client || Server || Result || Details ||
 
 == 20. Interact with content ==
 
 *Untested*
+
+  # *TODO* Streaming.
+  # *TODO* Sample.
 
 [RequirementsDocument#Interact_with_content Requirement]
 
