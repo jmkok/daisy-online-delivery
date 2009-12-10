@@ -206,6 +206,10 @@ The protocol does not support bookmarks with audio notes.
 
 [RequirementsDocument#Dynamic_menus Requirement]
 
+  # *Search for content*: Use the dynamic menus to search for a Content item by title.
+  # *Browse for content*: Use the dynamic menus to browse the Service's collection by categories provided by the Service.
+  # *Survey*: Use the dynamic menus to answer a survey form provided by the Service.
+
 || Test case || Client || Server || Result || Details ||
 
 == 18. Noninteractive session ==
@@ -213,6 +217,16 @@ The protocol does not support bookmarks with audio notes.
 *Untested*
 
 [RequirementsDocument#Noninteractive_session Requirement]
+
+  # *Synchronize downloaded content*: Verify the following can be done as a single Reading System function without user interaction between steps:
+    # Return a list of Content items selected by the User, then
+    # Return the Content items in the "expired" Content list, then
+    # Issue all the items in the "new" Content list, then
+    # Download all Content in the "issued" Content list that is not already on the Reading System.
+  # *Synchronize streaming content*: Verify the following can be done as a single Reading System function without user interaction between steps:
+    # Return a list of Content items selected by the User, then
+    # Return the Content items in the "expired" Content list, then
+    # Issue all the items in the "new" Content list.
 
 || Test case || Client || Server || Result || Details ||
 
