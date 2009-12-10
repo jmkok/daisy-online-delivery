@@ -33,7 +33,7 @@ scribe: Kenny
   * All issues should be resolved or formally deferred.
   * Any updates to the spec need to be completed and proof read. 
   * The primer should be proof read.
-  * The Test suite, and the Test Implementations Conformance report should be made available. 
+  * The Test suite, The Systems testing document and the Test Implementations Conformance report should be made available. 
   * Create an area where implementers can post information about the additional features that they have implemented on top of the spec, and that the community at large may be interested in.  
 
 ==== Action items for formal recommendation to the Board on April 5, 2010 ====  
@@ -41,52 +41,52 @@ scribe: Kenny
    * Deliver Final version of the spec.  
    * Provide Information on comments Received, and how they were addressed.  
    * Make available the Test Implementations Conformance Report.
-   * A report needs to be made available that illustrates the conformance of the spec to the requirements, with examples from field testing that demonstrate the requirements and user stories.
+   * make available the systems testing  document. 
    * Make a formal Recommendation to the board for approval.  
 
 == Agenda/Minutes ==
 
 === Issues ===
 
-  * Issue 39
+==== Issue 39 ====
 
 Kenny to add recommendation that state information should be held for the duration of the session and close Issue 39.
 
-  * Issue 94
+==== Issue 94 ====
 
 The group believes that this issue should be kept open until the end of the public review period in March 2010. if no requests are received to draw a distinction between the issuance of content for downloading or streaming, this issue will be closed then.   
 
-  * Issue 101
+==== Issue 101 ====
 
 Kenny to close this Issue. This is out of scope for this version of the spec.  
 
-  * Issue 103
+==== Issue 103 ====
 
 Kenny to close this issue. This is out of scope for this version of the spec. No decision has been reached thus far on the nature of the diagnostic information. As this issue is related to a requirement, Geoff to explicitly record this in the Systems Testing document.  
 
-  * Issue 104
+==== Issue 104 ====
 
 Kenny to make a note in the documentation and the test suite that audio notes are specifically not supported. An http based put scheme may be introduced in a future version but not in this version, and close Issue 104.
 
-  * Issue 157
+==== Issue 157 ==== 
 
 Geoff to modify the verbiage of the paragraph after the second Note in Section 4.4.2 of the documentation and close Issue 157.   
 
-  * Issue 165
+==== Issue 165 ====
 
 The group decided that the returnBy attribute should be moved to the resources type. 
 
 Geoff to add the normative assertion that Services must not change the value of the returnBy attrribute once the getContentResources operation has been called once to the documentation and the test suite and close Issue 165.  
 
-  * Issue 173
+==== Issue 173 ==== 
 
 Geoff remove the paragraph on TTS in Section 6 (Type Reference) under Narrator of the spec and close Issue 173. 
 
-  * Issue 174
+==== Issue 174 ====
 
 Geoff to clarify the verbiage for segmented ContentList(s) and close Issue 174. 
 
-  * Issue 181
+==== Issue 181 ====
 
 Kenny to document that ReturnContent should never return false in the documentation and test suite, and close Issue 181.
 
