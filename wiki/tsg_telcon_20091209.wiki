@@ -1,7 +1,6 @@
+Present: Geoff, Simon and Kenny.   
 
-Present:
-
-Regrets: George 
+Regrets: George and Dominik.  
 
 scribe: Kenny
 
@@ -9,16 +8,23 @@ scribe: Kenny
  
 === New Action Items ===
 
+  * Kenny check in the implementer's call for test suite volunteers.
+  * Kenny add a recommendation in the spec documentation pertaining to state information being held for the duration of a session and close Issue 39.   
+ * Kenny close Issue 101
+  * Kenny close Issue 103
+  * Geoff record in the Systems Testing document that the requirement for Diagnostic Information has not been met.
+  * Kenny to make a note in the documentation and the test suite that audio notes are specifically not supported. An http based put scheme may be introduced in a future version but not in this version, and close Issue 104.  
+  * Geoff to modify the verbiage of the paragraph after the second Note in Section 4.4.2 of the documentation and close Issue 157.   
+  * Geoff to add the normative assertion that Services must not change the value of the returnBy attrribute once the getContentResources operation has been called once to the documentation and the test suite, and close Issue 165.  
+  * Geoff remove the paragraph on TTS in Section 6 (Type Reference) under Narrator of the spec, and close Issue 173. 
+  * Geoff to clarify the verbiage for segmented ContentList(s) and close Issue 174. 
+  * Kenny to document that ReturnContent should never return false in the documentation and test suite, and close Issue 181.
+
 === Previous Unfinished Action Items ===
 
-  * George contact Dedicon to source PDTB2 content and confirm whether Dedicon will have a test implementation ready by February 15, 2010.  
-  * Simon check with Dominic on making sample PDTB2 content available to the spec implementers. (done) 
-  * Kenny post to the list asking for volunteers for the formulation of the test suite. (done)
-  * Kenny create wiki page for the test suite and post the Testable items identified thus far to it. (done) 
-  * Geoff and Kenny start work on the Test document. (In progress)  
-  * Jelle: propose resolution to Issue 118 {DONE?}
-  * Geoff and Markus analyze RequirementsDocument vs current API. {ONGOING}
-  * Markus fix the &apos; entity problem.
+  * Geoff and Kenny start work on the Test suite. (In progress)  
+  * Geoff and Kenny start work on the Systems Testing document (in progress) 
+  * Markus fix the &apos; entity problem. (outstanding; bug in IE.) 
 
 === Group Action Items ===
 
@@ -43,18 +49,52 @@ scribe: Kenny
 === Issues ===
 
   * Issue 39
+
+Kenny to add recommendation that state information should be held for the duration of the session and close Issue 39.
+
   * Issue 94
+
+The group believes that this issue should be kept open until the end of the public review period in March 2010. if no requests are received to draw a distinction between the issuance of content for downloading or streaming, this issue will be closed then.   
+
   * Issue 101
+
+Kenny to close this Issue. This is out of scope for this version of the spec.  
+
   * Issue 103
+
+Kenny to close this issue. This is out of scope for this version of the spec. No decision has been reached thus far on the nature of the diagnostic information. As this issue is related to a requirement, Geoff to explicitly record this in the Systems Testing document.  
+
   * Issue 104
+
+Kenny to make a note in the documentation and the test suite that audio notes are specifically not supported. An http based put scheme may be introduced in a future version but not in this version, and close Issue 104.
+
   * Issue 157
+
+Geoff to modify the verbiage of the paragraph after the second Note in Section 4.4.2 of the documentation and close Issue 157.   
+
   * Issue 165
+
+The group decided that the returnBy attribute should be moved to the resources type. 
+
+Geoff to add the normative assertion that Services must not change the value of the returnBy attrribute once the getContentResources operation has been called once to the documentation and the test suite and close Issue 165.  
+
   * Issue 173
+
+Geoff remove the paragraph on TTS in Section 6 (Type Reference) under Narrator of the spec and close Issue 173. 
+
   * Issue 174
+
+Geoff to clarify the verbiage for segmented ContentList(s) and close Issue 174. 
+
   * Issue 181
+
+Kenny to document that ReturnContent should never return false in the documentation and test suite, and close Issue 181.
+
 
 === Test suite Progress ===
 
 ==== [http://code.google.com/p/daisy-online-delivery/wiki/tsg_test_suite Test Suite] ====
 
 ==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolSystemTestingTestCases Systems Testing] ====
+
+next meeting on Wednesday, 16 December at 2100 UTC.  
