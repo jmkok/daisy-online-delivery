@@ -84,11 +84,11 @@ Geoff remove the paragraph on TTS in Section 6 (Type Reference) under Narrator o
 
 ==== Issue 174 ====
 
-Geoff to clarify the verbiage for segmented ContentList(s) and close Issue 174. 
+Geoff to clarify the verbiage for segmented contentList(s) and close Issue 174. 
 
 ==== Issue 181 ====
 
-Kenny to document that ReturnContent should never return false in the documentation and test suite, and close Issue 181.
+Kenny to document that returnContent should never return false in the documentation and test suite, and close Issue 181.
 
 
 === Test suite Progress ===
