@@ -17,7 +17,7 @@ scribe: Kenny
   * Geoff to modify the verbiage of the paragraph after the second Note in Section 4.4.2 of the documentation and close Issue 157.   
   * Geoff to add the normative assertion that Services must not change the value of the returnBy attrribute once the getContentResources operation has been called once to the documentation and the test suite, and close Issue 165.  
   * Geoff remove the paragraph on TTS in Section 6 (Type Reference) under Narrator of the spec, and close Issue 173. 
-  * Geoff to clarify the verbiage for segmented ContentList(s) and close Issue 174. 
+  * Geoff to clarify the verbiage for segmented contentList(s) and close Issue 174. 
   * Kenny to document that ReturnContent should never return false in the documentation and test suite, and close Issue 181.
 
 === Previous Unfinished Action Items ===
