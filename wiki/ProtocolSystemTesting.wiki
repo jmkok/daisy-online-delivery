@@ -122,6 +122,11 @@ The requirement states that the Reading System must store the Service's contact 
 
 The ability for Reading Systems to query the Service for the current time was not included in the protocol.  The protocol can provide a due date for Content, and can provide a list of expired Content.
 
+ # *Due date*: Retrieve a Content item with a "return by" attribute.  Ensure the date is rendered to the User.
+ # *Expired content*: Let some borrowed Content expire.  Ensure that it is present on the `expired` Content list.
+
+|| Test case || Client || Server || Result || Details ||
+
 == 10. Download and streaming ==
 
 *Untested*
