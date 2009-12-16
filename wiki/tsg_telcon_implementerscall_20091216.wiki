@@ -25,7 +25,7 @@ scribe: Kenny
 
 ==== test Implementation update ====
 
-  * What has been implemented by?
+  * What has been implemented?
   * What will be implemented by feb 15, 2010?
   * PDTB2 support in scope or out of scope?
   * Will you be contributing to the Test Implementation compliance report?   
