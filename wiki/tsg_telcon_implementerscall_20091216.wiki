@@ -9,7 +9,7 @@ scribe: Kenny
 == Agenda/Minutes ==
 
 === Call for volunteers for the Test suite ===
- 
+
 === RNIB ===
 
 ==== test Implementation update ====
@@ -42,6 +42,17 @@ scribe: Kenny
   * Will you be contributing to the Test Implementation compliance report?   
   * Challenges?
   * learnings?
+
+=== Solutions Radio ===
+
+==== test Implementation update ====
+
+  * What has been implemented?
+  * What will be implemented by Feb 15, 2010?
+  * PDTB2 support in scope or out of scope?
+  * Will you be contributing to the Test Implementation compliance report?   
+  * Challenges?
+  * learnings? 
 
 === Humanware ===
 
