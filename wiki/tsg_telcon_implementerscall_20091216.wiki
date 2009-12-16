@@ -1,0 +1,77 @@
+Present: 
+
+Regrets: 
+
+scribe: Kenny
+
+== Action Item Summary ==
+
+== Agenda/Minutes ==
+
+=== Call for volunteers for the Test suite ===
+ 
+=== RNIB ===
+
+==== test Implementation update ====
+
+  * What has been implemented?
+  * What will be implemented by Feb 15, 2010?
+  * PDTB2 support in scope or out of scope?
+  * Will you be contributing to the Test Implementation compliance report?   
+  * Challenges?
+  * learnings?
+
+=== CNIB ===
+
+==== test Implementation update ====
+
+  * What has been implemented by?
+  * What will be implemented by feb 15, 2010?
+  * PDTB2 support in scope or out of scope?
+  * Will you be contributing to the Test Implementation compliance report?   
+  * Challenges?
+  * learnings?
+
+=== vision australia ===
+
+==== test Implementation update ====
+
+  * What has been implemented?
+  * What will be implemented by Feb 15, 2010?
+  * PDTB2 support in scope or out of scope?
+  * Will you be contributing to the Test Implementation compliance report?   
+  * Challenges?
+  * learnings?
+
+=== Humanware ===
+
+==== test Implementation update ====
+
+  * What has been implemented?
+  * What will be implemented by feb 15, 2010?
+  * PDTB2 support in scope or out of scope?
+  * Will you be contributing to the Test Implementation compliance report?   
+  * Challenges?
+  * learnings?
+
+=== Plextor ===
+
+==== test Implementation update ====
+
+  * What has been implemented?
+  * What will be implemented by feb 15, 2010?
+  * PDTB2 support in scope or out of scope?
+  * Will you be contributing to the Test Implementation compliance report?   
+  * Challenges?
+  * learnings?
+
+=== Prattsam ===
+
+==== test Implementation update ====
+
+  * What has been implemented?
+  * What will be implemented by Feb 15, 2010?
+  * PDTB2 support in scope or out of scope?
+  * Will you be contributing to the Test Implementation compliance report?   
+  * Challenges?
+  * learnings?
