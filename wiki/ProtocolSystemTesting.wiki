@@ -309,6 +309,8 @@ TODO: Plain HTTP.
 
 [RequirementsDocument#Localized,_plain_language_error_messages Requirement]
 
+ # *Localized error messages*: Deliberately cause a fault (such as trying to get resources for a Content item that is not issued).  Ensure that the error rendered by the Reading System is localized to the User's language and is plainly explained.  (Note: This test should be repeated by causing the same fault, but with different localizations.)
+
 || Test case || Client || Server || Result || Details ||
 
 = Expectations =
@@ -320,6 +322,8 @@ TODO: Plain HTTP.
 [RequirementsDocument#Requires_some_player_functionality Requirement] (never formally moved back in scope)
 
 Sending audio from the Reading System to the Service was originally in scope, then declared out of scope, then was brought back into the specification.
+
+ # *Audio feedback*: Transmit audio as a response to a dynamic menu item that accepts it.  Verify that the audio was received by the Service.
 
 || Test case || Client || Server || Result || Details ||
 
