@@ -257,6 +257,8 @@ The protocol does not support bookmarks with audio notes.
 
 [RequirementsDocument#Report_firmware_version Requirement]
 
+  # *Report firmware version*: Initialize a session with a Service.  Verify that the Reading System's firmware version was sent to the Service.  (Note: this is a subset of test 5.1 Set Reading System attributes.)
+
 || Test case || Client || Server || Result || Details ||
 
 == 22. Report download activity ==
@@ -290,6 +292,14 @@ The capability to report which server is in control was not included in the prot
 *Untested*
 
 [RequirementsDocument#Protect_user_privacy Requirement]
+
+The main risk to user privacy invasion in the protocol is if the session ID cookie is not secure.  Session IDs should not be guessable, otherwise an attacker could hijack a user's session by using a probable session cookie, and then potentially gain access to confidential information.  Services should also make session IDs invalid after the Reading System calls `logOff`.
+
+TODO: Plain HTTP.
+
+ # *Unguessable session IDs*: Attempt to attack a Service by examining legitimate session IDs and detecting a pattern.  The test is a failure if the attack is successful.
+ # *Invalidate session IDs on logOff*: Initialize a session, then log off.  Call some operations (other than `logOn`); the Service must response with a `NoActiveSession` fault.
+ # *TODO*: Some HTTPS test.
 
 || Test case || Client || Server || Result || Details ||
 
