@@ -181,7 +181,7 @@ The protocol does not support bookmarks with audio notes.
 
   # *Issue a book*: Request a Content item from a Service using `issueContent`.  The Service must return `true`.  Get the list of resources using `getContentResources`.
   # *Deny a book*: Request a Content item from a Service using `issueContent`.  The Service must return `false`.  Try to get the list of resources using `getContentResources`.  The Service must return an `invalidOperation` fault.
-  # *Pre-requisite book*: _TODO: This needs a test case._
+  # *Pre-requisite book*: Search for the second or third book of a series, where the previous book was never issued.  The Service should, in the dynamic menus, inform the user of the previous book.
 
 || Test case || Client || Server || Result || Details ||
 
