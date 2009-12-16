@@ -7,6 +7,12 @@
 
 This report summarizes the system testing of the protocol, that is, the demonstration of how well the specification fulfils the requirements and expectations.  The requirements come from the modified RequirementsDocument.
 
+Note that this is not conformance testing.  Some of these test will not be met even by some conformant Reading Systems and Services.  Rather, they are proofs-of-concept, demonstrations that the protocol can support a particular function.  For example, test 14.3 "Pre-requisite book" states:
+
+  Search for the second or third book of a series, where the previous book was never issued. The Service should, in the dynamic menus, inform the user of the previous book.
+
+This only applies to Services that support dynamic menus, searching and have the optional function of tracking a User's previous selections and making suggestions.  Not all Services are expected to do this.
+
 = Requirements =
 
 == 1. Efficient use of bandwidth ==
@@ -122,8 +128,8 @@ The requirement states that the Reading System must store the Service's contact 
 
 The ability for Reading Systems to query the Service for the current time was not included in the protocol.  The protocol can provide a due date for Content, and can provide a list of expired Content.
 
- # *Due date*: Retrieve a Content item with a "return by" attribute.  Ensure the date is rendered to the User.
- # *Expired content*: Let some borrowed Content expire.  Ensure that it is present on the `expired` Content list.
+  # *Due date*: Retrieve a Content item with a "return by" attribute.  Ensure the date is rendered to the User.
+  # *Expired content*: Let some borrowed Content expire.  Ensure that it is present on the `expired` Content list.
 
 || Test case || Client || Server || Result || Details ||
 
@@ -303,10 +309,10 @@ The main risk to user privacy invasion in the protocol is if the session ID cook
 
 A secondary risk is that unencrypted sessions may be snooped upon by an attacker.  Services should use HTTPS (or some other secure transport protocol) for all SOAP messages and Content delivery, except in the case of public Services or public Service Delegates.
 
- # *Unguessable session IDs*: Attempt to attack a Service by examining legitimate session IDs and detecting a pattern.  The test is a failure if the attack is successful.
- # *Invalidate session IDs on logOff*: Initialize a session, then log off.  Call some operations (other than `logOn`); the Service must respond with a `NoActiveSession` fault.
- # *Secure Service*: Initialize a session with a Service over HTTPS.
- # *Secure Content*: Retrieve Content resources over HTTPS.
+  # *Unguessable session IDs*: Attempt to attack a Service by examining legitimate session IDs and detecting a pattern.  The test is a failure if the attack is successful.
+  # *Invalidate session IDs on logOff*: Initialize a session, then log off.  Call some operations (other than `logOn`); the Service must respond with a `NoActiveSession` fault.
+  # *Secure Service*: Initialize a session with a Service over HTTPS.
+  # *Secure Content*: Retrieve Content resources over HTTPS.
 
 || Test case || Client || Server || Result || Details ||
 
@@ -316,7 +322,7 @@ A secondary risk is that unencrypted sessions may be snooped upon by an attacker
 
 [RequirementsDocument#Localized,_plain_language_error_messages Requirement]
 
- # *Localized error messages*: Deliberately cause a fault (such as trying to get resources for a Content item that is not issued).  Ensure that the error rendered by the Reading System is localized to the User's language and is plainly explained.  (Note: This test should be repeated by causing the same fault, but with different localizations.)
+  # *Localized error messages*: Deliberately cause a fault (such as trying to get resources for a Content item that is not issued).  Ensure that the error rendered by the Reading System is localized to the User's language and is plainly explained.  (Note: This test should be repeated by causing the same fault, but with different localizations.)
 
 || Test case || Client || Server || Result || Details ||
 
@@ -330,7 +336,7 @@ A secondary risk is that unencrypted sessions may be snooped upon by an attacker
 
 Sending audio from the Reading System to the Service was originally in scope, then declared out of scope, then was brought back into the specification.
 
- # *Audio feedback*: Transmit audio as a response to a dynamic menu item that accepts it.  Verify that the audio was received by the Service.
+  # *Audio feedback*: Transmit audio as a response to a dynamic menu item that accepts it.  Verify that the audio was received by the Service.
 
 || Test case || Client || Server || Result || Details ||
 
