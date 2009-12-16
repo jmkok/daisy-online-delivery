@@ -130,7 +130,7 @@ keys, unauthorized keys).
 ==== Issue 195 ====
 
 geoff: What fault should getContentResources return if it is called for Content
-that is not issued?  InvalidOperation or InvalidParameter?  The docs say
+that is not issued?  invalidOperation or invalidParameter?  The docs say
 the call is invalid if the Content is not issued.  However, the operation
 itself could be valid, but the wrong Content ID was used.
 
