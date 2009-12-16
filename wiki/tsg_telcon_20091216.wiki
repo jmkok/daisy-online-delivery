@@ -23,7 +23,7 @@ scribe: Kenny
   * Kenny to document that returnContent should never return false in the documentation and test suite, and close Issue 181.
   * Geoff and Kenny start work on the Test suite. (In progress)  
   * Geoff and Kenny start work on the Systems Testing document (in progress) 
-  * Markus fix the &apos; entity problem. (outstanding; bug in IE.) 
+  * Markus fix the &apos; entity problem. (outstanding; bug in IE.) (Markus will fix this when ready to publish.)
 
 === Group Action Items ===
 
