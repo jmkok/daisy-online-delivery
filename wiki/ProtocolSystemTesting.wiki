@@ -303,7 +303,7 @@ The main risk to user privacy invasion in the protocol is if the session ID cook
 TODO: Plain HTTP.
 
  # *Unguessable session IDs*: Attempt to attack a Service by examining legitimate session IDs and detecting a pattern.  The test is a failure if the attack is successful.
- # *Invalidate session IDs on logOff*: Initialize a session, then log off.  Call some operations (other than `logOn`); the Service must response with a `NoActiveSession` fault.
+ # *Invalidate session IDs on logOff*: Initialize a session, then log off.  Call some operations (other than `logOn`); the Service must respond with a `NoActiveSession` fault.
  # *TODO*: Some HTTPS test.
 
 || Test case || Client || Server || Result || Details ||
