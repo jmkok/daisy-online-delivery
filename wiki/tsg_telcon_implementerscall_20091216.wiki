@@ -65,7 +65,7 @@ scribe: Kenny
   * Challenges?
   * learnings?
 
-=== Prattsam ===
+=== PratSam ===
 
 ==== test Implementation update ====
 
