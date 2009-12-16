@@ -54,6 +54,8 @@ at least inline markup for xml:lang, directionality, bdo, and optimally
 also ruby. One solution is to allow a subset of XHTML1.1 inline in this
 context.
 
+Markus: Out of scope?  Need at least xml:lang, dir attributes on label element.
+
 ==== Issue 142 ====
 
 Markus: We have 
