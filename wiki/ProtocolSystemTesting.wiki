@@ -1,5 +1,5 @@
 #summary A report on the testing of the DAISY Online protocol against the requirements and expectations.
-#labels Phase-Requirements,Phase-QA,Report,In-Progress
+#labels Phase-Requirements,Phase-QA,Report
 
 <wiki:toc max_depth="1" />
 
