@@ -78,6 +78,8 @@ scribe: Kenny
 
 === !PratSam ===
 
+Johan is testing write access... seems to work
+
 ==== test Implementation update ====
 
   * What has been implemented?
