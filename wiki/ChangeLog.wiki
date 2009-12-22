@@ -1,0 +1,14 @@
+#summary The change log.
+
+= From Draft to 1.0 =
+
+== do-wsdl-10.wsdl ==
+
+  * The `firstItem` and `lastItem` arguments to `getContentList` were changed from unbounded `integer`s to 32-bit `int`s.
+
+== do-types-10.xsd ==
+
+  * `label/audio@rangeBegin`, `@rangeEnd` and `@size` were changed from unbounded `integer`s to 64-bit `long`s.
+  * `contentMetadata/metadata/size` was changed from an unbounded `integer` to a 64-bit `long`.
+  * `resource@size` was changed from an unbounded `integer` to a 64-bit `long`.
+  * `contentList@totalItems`, `firstItem` and `lastItem` were changed from unbounded `integer`s to 32-bit `int`s.
