@@ -1,4 +1,4 @@
-Present: 
+Present: Geoff, Dominik, Jelle, Simon, George, Markus, Kenny, Nick and Johan. 
 
 Regrets: 
 
@@ -7,6 +7,17 @@ scribe: Kenny
 == Action Item Summary ==
  
 === New Action Items ===
+
+  * Markus ensure that @xml:lang is required on the label type and @dir is optional on label/text in the svn, and close Issue 93. 
+  * Markus close Issue 142.
+  * Geoff make a note in the spec that the fault types defined in the wsdl must be child elements of the details element of the soap:fault element, and close Issue 184.  
+  * Geoff close Issue 186.
+  * Geoff close Issue 187.
+  * Kenny modify the bookmark xsd to eliminate empty complex types. The issue should be kept open until the group has reviewed the xsd.   
+  * Kenny add relative values as per proposal 2 to the wsdl. This issue should be kept open until the compatibility with Microsoft tools is confirmed.    
+  * Geoff mark Issue 191 as started in the tracker. 
+  * Geoff change invalidOperation to invalidParameter in Section 4.4.4.3, and close Issue 194.  
+  * Geoff record in the spec that the getContentResources operation returns an invalidParameter fault for content that has not been issued, and close Issue 195.
 
 === Previous Unfinished Action Items ===
 
@@ -56,6 +67,8 @@ context.
 
 Markus: Out of scope?  Need at least xml:lang, dir attributes on label element.
 
+Resolution: @xml:lang to be required on the label type, and @dir to be optional on label/text. Markus to make the necessary change in the svn, and close issue 93.   
+
 ==== Issue 142 ====
 
 Markus: We have 
@@ -71,6 +84,8 @@ contentLists through the menus)
 Although I cant see that the above is broken per se, it could be expressed
 in a more easy to grok form.
 
+Resolution: The group decided to defer any design changes to ServiceAttributes to the next version of the spec. The group will only entertain a bug-fix from hereon in. Markus to close Issue 142.    
+
 ==== Issue 184 ====
 
 Matt: Clarify fault documentation re email inquiry:
@@ -80,6 +95,8 @@ should the invalidOperation be integrated in the SOAP fault? Should it
 appear as a child element in the detail element of the fault element or
 should it be a string representing the faultcode of the fault element or
 what?
+
+Resolution: Geoff make a note in the spec that the fault types defined in the wsdl must be child elements of the details element of the soap:fault element, and close Issue 184.  
  
 ==== Issue 186 ====
 
@@ -89,16 +106,20 @@ allowed values for <operation>.
 
 http://www.daisy.org/projects/daisy-online-delivery/drafts/20090927/do-spec-20090927.html#tp_operation
 
+Resolution: No change required. Geoff to close Issue 186.
+
 ==== Issue 187 ====
 
 Geoff: The localized, plain language error messages requirement says that error
 messages should be localized.
- 
+ 
 http://code.google.com/p/daisy-online-delivery/wiki/RequirementsDocument#Localized,_plain_language_error_messages
- 
+ 
 If we're going to localize them, then we should probably have an optional
 xml:lang attribute on the <reason> subelement (<faultstrings> already have
 this, via WS-i).
+
+Resolution: No change to be made in this version of the spec. The group agreed that meaningful error messages are best left to the Reading Systems at this stage. Geoff close Issue 187. 
 
 ==== Issue 188 ==== 
 
@@ -106,19 +127,25 @@ Matt: Using empty complexType definitions for ncxRef, etc. is causing problems
 with some tools. There appears to be no reason why the using @type to 
 specify a simpler type wouldn't work instead.
 
+Resolution: Kenny to modify the bookmark xsd to eliminate empty complex types. This issue should be kept open until the group has reviewed the xsd.   
+
 ==== Issue 190 ====
 
 kenny: Do we need to specify a value for soap actions in the wsdl to cater for 
 development tools that do not accept empty soap action values?
- 
+ 
 Proposal 1: Do not specify a value. (no change required)
- 
+ 
 Proposal 2: Specify a relative value i.e. "/getServiceAttributes"
+
+Resolution: Kenny add relative values as per proposal 2 to the wsdl. This issue should be kept open until the compatibility with Microsoft tools is confirmed.    
 
 ==== Issue 191 ==== 
 
 Kenny: Currently, the spec  does not provide a test suite. Lack of a test suite 
 may lead to interoperability issues.
+
+Action: As the Test Suite is in progress, Geoff to mark this issue as started in the tracker.
 
 ==== Issue 194 ====
 
@@ -129,6 +156,8 @@ invalidParameter instead, to be consistent with other operations.  The
 problem is that the User did not supply the correct parameters (missing
 keys, unauthorized keys).
 
+Resolution: Geoff change invalidOperation to invalidParameter in Section 4.4.4.3, and close Issue 194.  
+
 ==== Issue 195 ====
 
 geoff: What fault should getContentResources return if it is called for Content
@@ -136,8 +165,12 @@ that is not issued?  invalidOperation or invalidParameter?  The docs say
 the call is invalid if the Content is not issued.  However, the operation
 itself could be valid, but the wrong Content ID was used.
 
+Resolution: Geoff record in the spec that the getContentResources operation returns an invalidParameter fault for content that has not been issued, and close Issue 195.
+
 === Test suite Progress ===
 
 ==== [http://code.google.com/p/daisy-online-delivery/wiki/tsg_test_suite Test Suite] ====
 
 ==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolSystemTestingTestCases Systems Testing] ====
+
+Next telecon on January 6, 2010 at 2100UTC.
