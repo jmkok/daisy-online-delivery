@@ -6,11 +6,9 @@
 
   # A recommendation to be added to the spec that state information should only be held for the duration of a session. (Action: Kenny)
   # The fact that the requirement pertaining to diagnostic information has not been met in the spec to be recorded in the Systems Testing Document. (Action: Geoff)     
-  # A note to be made in the documentation and the test suite that audio notes are specifically not supported. An http based put scheme may be introduced in a future 
-version but not in this version of the spec. (Action: kenny)
+  # A note to be made in the documentation and the test suite that audio notes are specifically not supported. An http based put scheme may be introduced in a future version but not in this version of the spec. (Action: kenny)
   # The verbiage of the paragraph after the second Note in Section 4.4.2 of the documentation to be modified. (Action: Geoff)
-  # Add the normative assertion that Services must not change the value of the returnBy attrribute once the getContentResources operation has been called once to the 
-documentation and the test suite. (Action: Geoff)
+  # Add the normative assertion that Services must not change the value of the returnBy attrribute once the getContentResources operation has been called once to the documentation and the test suite. (Action: Geoff)
   # Remove the paragraph on TTS in Section 6 (Type Reference) under Narrator of the spec. (Action: Geoff)
   # Clarify the verbiage for segmented contentList(s). (Action: Geoff)
   # Document that returnContent should never return false in the documentation and test suite. (Action: Kenny)
@@ -21,16 +19,16 @@ documentation and the test suite. (Action: Geoff)
   # Change invalidOperation to invalidParameter in Section 4.4.4.3. (Action: Geoff)
   # Record in the spec that the getContentResources operation returns an invalidParameter fault for content that has not been issued. (Action: Geoff)
 
-== Changes made == 
+== Completed Changes ==
 
 This is an aggregation of all the changes made since the Draft for Trial Use (r566) was released 27 September 2009.  The current revision as of this writing is r665.
 
-== do-wsdl-10.wsdl ==
+=== do-wsdl-10.wsdl ===
 
   * Changed the `firstItem` and `lastItem` arguments to `getContentList` from unbounded `integer`s to 32-bit `int`s.
   * Added the `invalidOperation` fault to the signatures of `logOff` and `getContentMetadata`.
 
-== do-types-10.xsd ==
+=== do-types-10.xsd ===
 
   * Changed `label/audio@rangeBegin`, `@rangeEnd` and `@size` from unbounded `integer`s to 64-bit `long`s.
   * Changed `contentMetadata/metadata/size` from an unbounded `integer` to a 64-bit `long`.
