@@ -619,9 +619,6 @@
 										<db:para role="desc">In the case of audio Content
 											narrated by a human, the name of the
 											narrator.</db:para>
-										<db:para>Service providers may use the string <db:literal>TTS</db:literal> in this
-											field to indicate that audio Content has been
-											rendered using text-to-speech processors.</db:para>
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
