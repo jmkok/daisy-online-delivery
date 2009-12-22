@@ -23,14 +23,29 @@ scribe: Kenny
 
 === CNIB ===
 
-==== test Implementation update ====
+==== Test Implementation update ====
 
   * What has been implemented?
-  * What will be implemented by feb 15, 2010?
+    * A basic client library in Python.  The interface code is written, and downloading is implemented.  No optional operations besides `returnContent` have been implemented.  `requiresReturn` and `returnBy` currently do nothing.
+    * A diagnostic tool in Python.  This library contains SOAP messages for the core operations as strings.  You send the messages using just an ordinary HTTP interface, and it will print the response headers and body.
+
+  * What will be implemented by Feb 15, 2010?
+    * A basic service, also written in Python.  This is nearly done; I just need to set up hosting and get some test content.  All core operations + `returnContent` are implemented.  The back end handles very basic library-style functionality; I hope to have it somewhat automated by February.
+
   * PDTB2 support in scope or out of scope?
-  * Will you be contributing to the Test Implementation compliance report?   
+    * Most likely out of scope.  We may be able to help do testing on the server end if content and keys are provided to us.
+
+  * Will you be contributing to the Test Implementation compliance report? 
+    * We plan to show core compliance to demonstrate another interoperable client and server.
+  
   * Challenges?
-  * learnings?
+    * I was unable to implement bookmarks.  The code generator failed to generate types until I had commented out the bookmark import from the input XSD and the bookmark operations in the input WSDL.  The code generator did not give sufficient information to determine the cause of failure.
+    * The web service library I chose, ZSI 2.0, is buggy and incomplete (although it seems to be the best server available for Python), and not has not seen a release since February 2007.  I had to debug some of the parsing code and the request handler myself.  I also had to add some functionality to the request handler to handle cookies properly and to generate `internalServerError` faults instead of the built-in fault.  The stub code generated for the Service was misleading and had to be rewritten.
+    * More work has been done on WSDL stub code generators for clients rather than servers.  I think the expectation is that servers will more often be designed first, then the WSDL interface generated from that, rather than the server built to a common interface.  This creates challenges for server developers, since the stub code generation tools are more likely to be buggy and rudimentary.
+    * Most developers on dynamic language platforms (such Perl, Python, Ruby, etc.) seem to range from uninterested to derisive of SOAP, and are more concerned with REST.  This leads to only a small group of people working on SOAP libraries which are in turn less developed.  I think this means that the world is moving towards REST for web services.  We may be interested in producing a RESTful protocol in the next version.
+
+  * Learnings?
+    * You don't have to publish the same WSDL you used to create your stub code.  I had to comment out the bookmark operations and type in order for ZSI's `wsdl2py` to generate any code.  I then added `get`- and `setBookmark` operations that did nothing but return an `invalidOperation` fault.  The WSDL I publish will include those operations, though, since the interface is still compliant.
 
 === vision australia ===
 
