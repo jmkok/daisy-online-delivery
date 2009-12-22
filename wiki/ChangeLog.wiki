@@ -1,6 +1,6 @@
 #summary List of changes to the specification.
 
-= From the Trial Use Draft (r566) to r665 =
+= From the Trial Use Draft (r566) to Current (r665) =
 
 == do-wsdl-10.wsdl ==
 
