@@ -2,6 +2,27 @@
 
 = From the Trial Use Draft to Current =
 
+== Pending Changes ==
+
+  # A recommendation to be added to the spec that state information should only be held for the duration of a session. (Action: Kenny)
+  # The fact that the requirement pertaining to diagnostic information has not been met in the spec to be recorded in the Systems Testing Document. (Action: Geoff)     
+  # A note to be made in the documentation and the test suite that audio notes are specifically not supported. An http based put scheme may be introduced in a future 
+version but not in this version of the spec. (Action: kenny)
+  # The verbiage of the paragraph after the second Note in Section 4.4.2 of the documentation to be modified. (Action: Geoff)
+  # Add the normative assertion that Services must not change the value of the returnBy attrribute once the getContentResources operation has been called once to the 
+documentation and the test suite. (Action: Geoff)
+  # Remove the paragraph on TTS in Section 6 (Type Reference) under Narrator of the spec. (Action: Geoff)
+  # Clarify the verbiage for segmented contentList(s). (Action: Geoff)
+  # Document that returnContent should never return false in the documentation and test suite. (Action: Kenny)
+  # Record that @xml:lang is required on the label type and @dir is optional on label/text. (Action: Markus)
+  # Make a note in the spec that the fault types defined in the wsdl must be child elements of the details element of the soap:fault element. (Action: Geoff)
+  # Modify the bookmark xsd to eliminate empty complex types. (Action: kenny)
+  # Add relative values for soap actions as per proposal 2 to the wsdl. (Action: kenny)
+  # Change invalidOperation to invalidParameter in Section 4.4.4.3. (Action: Geoff)
+  # Record in the spec that the getContentResources operation returns an invalidParameter fault for content that has not been issued. (Action: Geoff)
+
+== Changes made == 
+
 This is an aggregation of all the changes made since the Draft for Trial Use (r566) was released 27 September 2009.  The current revision as of this writing is r665.
 
 == do-wsdl-10.wsdl ==
