@@ -1,4 +1,4 @@
-#summary The change log.
+#summary List of changes to the specification.
 
 = From the Trial Use Draft to r665 =
 
