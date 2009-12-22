@@ -1,6 +1,8 @@
 #summary List of changes to the specification.
 
-= From the Trial Use Draft (r566) to Current (r665) =
+= From the Trial Use Draft to Current =
+
+This is an aggregation of all the changes made since the Draft for Trial Use (r566) was released 27 September 2009.  The current revision as of this writing is r665.
 
 == do-wsdl-10.wsdl ==
 
