@@ -1,14 +1,16 @@
 #summary The change log.
 
-= From Draft to 1.0 =
+= From the Trial Use Draft to r665 =
 
 == do-wsdl-10.wsdl ==
 
-  * The `firstItem` and `lastItem` arguments to `getContentList` were changed from unbounded `integer`s to 32-bit `int`s.
+  * Changed the `firstItem` and `lastItem` arguments to `getContentList` from unbounded `integer`s to 32-bit `int`s.
+  * Added the `invalidOperation` fault to the signatures of `logOff` and `getContentMetadata`.
 
 == do-types-10.xsd ==
 
-  * `label/audio@rangeBegin`, `@rangeEnd` and `@size` were changed from unbounded `integer`s to 64-bit `long`s.
-  * `contentMetadata/metadata/size` was changed from an unbounded `integer` to a 64-bit `long`.
-  * `resource@size` was changed from an unbounded `integer` to a 64-bit `long`.
-  * `contentList@totalItems`, `firstItem` and `lastItem` were changed from unbounded `integer`s to 32-bit `int`s.
+  * Changed `label/audio@rangeBegin`, `@rangeEnd` and `@size` from unbounded `integer`s to 64-bit `long`s.
+  * Changed `contentMetadata/metadata/size` from an unbounded `integer` to a 64-bit `long`.
+  * Changed `resource@size` from an unbounded `integer` to a 64-bit `long`.
+  * Changed `contentList@totalItems`, `firstItem` and `lastItem` from unbounded `integer`s to 32-bit `int`s.
+  * Allowed unlimited `contentMetadata/metadata/narrator`s, not just one.
