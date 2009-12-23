@@ -7,7 +7,6 @@ scribe: Kenny
 == Action Item Summary ==
 
   * Nick get back to the group on his availability for the Test suite work.
-  * Jelle and Johan to help out with the Test suite.
 
 == Agenda/Minutes ==
 
@@ -21,29 +20,23 @@ scribe: Kenny
 ==== test Implementation update ====
 
   * What has been implemented?
-
    * A test server and test client in c#.
    * The server implements out-of-band content selection and all operations, including dynamic menus  -  except ReturnContent, getBookmarks, setBookmarks  Search, ServerSideBack and PDTB2 key delivery . 
  
   * What will be implemented by Feb 15, 2010?
-
    * Update to the latest published wsdl.
    * ReturnContent, ServerSideBack, getBookmark / setBookmark (if the issues with the bookmark structure are fixed). Not PDTB2 support.  I could do Search but probably not actually make the returned content available. 
  
   * PDTB2 support in scope or out of scope?
-
    * No. Unless a usable "test" key can be generated in which case the test implementation can serve it (or not).
 
   * Will you be contributing to the Test Implementation compliance report?   
-
     * Yes.
 
   * Challenges?
-
    * Learning about SOAP, webservices, WSDL and Microsofts WCF framework.
 
   * learnings?
-
    * That developing an international technical standard is not as quick or easy as it may at first appear.
 
 === CNIB ===
@@ -77,29 +70,24 @@ scribe: Kenny
 ==== test Implementation update ====
 
   * What has been implemented?
-
    * All operations with the exception of getKeyExchangeObject.
   * Both lending and acquisition Service Models.
    * Both the out-of-band and browse content selection methods.   
    * Our test implementation is built using Microsoft's WCF 3.5 web services stack. It is being hosted on a windows server 2003 box with a sql server 2005 back-end.
    
   * What will be implemented by Feb 15, 2010?
-
    * The latest version of the spec.
 
   * PDTB2 support in scope or out of scope?
-
    * Subject to our time constraints, we may be able to implement the getKeyExchangeObject operation if we had sample PDTB2 content.    
 
   * Will you be contributing to the Test Implementation compliance report?   
-
    * Yes.
 
   * Challenges?
-
    * To generate code from the normative wsdl file without any manual tweaking.
-  * learnings?
 
+  * learnings?
    * The svcutil.exe tool does not handle xsd imports or includes.
    * If the code generated from the svcutil tool is manually tweaked, it is very dificult to make a wsdl based on this code available that is equivalent to the normative wsdl at an Infoset level excluding the concrete information.  
 
