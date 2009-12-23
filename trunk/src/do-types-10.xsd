@@ -741,14 +741,8 @@
 								<xs:documentation>
 									<db:para role="desc">The local relative path of the
 										resource.</db:para>
-									<db:para>The value of this attribute must be a URI relative to
-										the Content's root directory. The value must contain the
-										literal filename of the resource.</db:para>
-									<db:para>This attribute is used to aid Reading Systems in
-										retrieving resources in the case where the
-											<db:code>uri</db:code> attribute does not specify a
-										direct literal URI (such as when the URI resolves to a
-										script, or any other indirection).</db:para>
+									<db:para>The value of this attribute is a URI relative to
+										the Content's root directory.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
