@@ -1076,36 +1076,27 @@
                         linkend="term_readingSystem"/> may begin downloading or streaming the
                     resources using the <abbrev>URI</abbrev>s supplied in the <type>resource</type> elements. </para>
 
-                <note>
-                    <para> A <xref linkend="term_readingSystem"/> does not require an active <xref
-                            linkend="term_session"/> to access <xref linkend="term_content"/>.
-                    </para>
-                </note>
+				<para>The <type>resource</type> type has both a <code>uri</code> attribute and a
+				<code>localURI</code> attribute.  <code>localURI</code> is a local name for the
+				<xref linkend="term_readingSystem"/> to use to reference the resource, while <code>uri</code>
+				is the location of the resource's data.  This system lets a <xref linkend="term_service"/> provide
+				resources with arbitrary <abbrev>URI</abbrev>s (such as those served by a script), while allowing
+				<xref linkend="term_readingSystem"/>s to follow internal links in a Content item,
+				such as in a <abbrev>DAISY</abbrev> <abbrev>DTB</abbrev>.
+				The <code>localURI</code> path is relative to the root path of the Content.
+				</para>
+				
+                <para>A <xref linkend="term_readingSystem"/> should not use the <code>uri</code> attribute
+				to name resources locally, as the <abbrev>URI</abbrev>s may
+                    resolve to scripts or other content delivery mechanisms.</para>
 
-                <para>A <xref linkend="term_readingSystem"/> must not use the <code>uri</code> attribute of the
-                        <type>resource</type> element to name resources locally, as the URIs may
-                    resolve to scripts or other content delivery mechanisms. The
-                        <code>localURI</code> attribute specifies the path the <xref
-                        linkend="term_readingSystem"/> must use to store/reference the resource
-                    locally. </para>
-
-                <note>
-                    <para> The <code>localURI</code> attribute contains a relative path for storing
-                        the resource relative to the root content directory used by the <xref
-                            linkend="term_readingSystem"/>. </para>
-                </note>
-
-                <para> The <code>localURI</code> attribute should be used by
-                    <xref linkend="term_readingSystem"/>s to locate the URI of resources that are
-                    referenced within another resource. For example, the URI for an audio resource in a
-                    SMIL file can be determined by checking each resource element to find the
-                        <code>localURI</code> attribute that matches the given path. </para>
+                    
 
                 <para> Reading Systems may use the <xref linkend="bib_mime"/> type information in
                     the <code>mimeType</code> attribute of a <type>resource</type> to order the
                     transfer of resources. For example, a <xref linkend="term_streaming"/>
                     <xref linkend="term_readingSystem"/> may retrieve the <abbrev>OPF</abbrev>,
-                        <abbrev>NCX</abbrev> and <abbrev>SMIL</abbrev> files of a DAISY Digital
+                        <abbrev>NCX</abbrev> and <abbrev>SMIL</abbrev> files of a <abbrev>DAISY</abbrev> Digital
                     Talking Book to provide the <xref linkend="term_user"/> full navigation before
                     downloading any audio data. </para>
 
@@ -1117,6 +1108,13 @@
                 <para> The URI of each resources secured with Basic Authentication must include the
                     credentials required to access that resource. Refer to <xref
                         linkend="technologies_basic_authentication"/>. </para>
+
+						<note>
+                    <para> A <xref linkend="term_readingSystem"/> does not require an active <xref
+                            linkend="term_session"/> to access <xref linkend="term_content"/>.
+                    </para>
+                </note>
+
             </section>
 
 
