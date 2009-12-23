@@ -154,5 +154,5 @@ scribe: Kenny
    * make sure that the framework support choices with maxOccurs > 1
    * choose a framework with a rich documentation, where samples are provided, where support is available, that has been around for a while, and that seems to evolve
    * the generated code is not always correct
-   * elements in XML schemas, complex or simple, can be expressed in various ways. the code generator may not be able to understand everything whereas it may be necessary to describe elements in such a way that it can be understood by you code generator and framework
-   * there are several [http://www.w3.org/TR/xmlschema-2/#built-in-datatypes built-in datatypes] in xsd schemas, check how these types are mapped in your programming language if you use a weakly typed language like PHP, Python, Ruby, etc
+   * elements in XML schemas, complex or simple, can be expressed in various ways. the code generator may not be able to understand everything whereas it may be necessary to describe elements in such a way that it can be understood by your code generator and your framework
+   * there are several [http://www.w3.org/TR/xmlschema-2/#built-in-datatypes built-in datatypes] in XML schemas, check how these types are mapped in your programming language if you use a weakly typed language like PHP, Python, Ruby, etc
