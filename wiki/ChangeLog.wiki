@@ -10,6 +10,7 @@ Changes to `do-wsdl-10.wsdl`.
 
   * Changed the `firstItem` and `lastItem` arguments to `getContentList` from unbounded `integer`s to 32-bit `int`s.
   * Added the `invalidOperation` fault to the signatures of `logOff` and `getContentMetadata`.
+  * Calling `getKeyExchangeObject` with unauthorized keys in the `keyRing` results in an `invalidParameter` fault, not `invalidOperation`.
 
 == Types ==
 
@@ -36,5 +37,3 @@ These changes are due to be made before the release of the final version.
   # Make a note in the spec that the fault types defined in the wsdl must be child elements of the details element of the soap:fault element. (Action: Geoff)
   # Modify the bookmark xsd to eliminate empty complex types. (Action: kenny)
   # Add relative values for soap actions as per proposal 2 to the wsdl. (Action: kenny)
-  # Change invalidOperation to invalidParameter in Section 4.4.4.3. (Action: Geoff)
-  # Record in the spec that the getContentResources operation returns an invalidParameter fault for content that has not been issued. (Action: Geoff)
