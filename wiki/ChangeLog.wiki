@@ -9,7 +9,6 @@
   # A note to be made in the documentation and the test suite that audio notes are specifically not supported. An http based put scheme may be introduced in a future version but not in this version of the spec. (Action: kenny)
   # The verbiage of the paragraph after the second Note in Section 4.4.2 of the documentation to be modified. (Action: Geoff)
   # Add the normative assertion that Services must not change the value of the returnBy attrribute once the getContentResources operation has been called once to the documentation and the test suite. (Action: Geoff)
-  # Remove the paragraph on TTS in Section 6 (Type Reference) under Narrator of the spec. (Action: Geoff)
   # Clarify the verbiage for segmented contentList(s). (Action: Geoff)
   # Document that returnContent should never return false in the documentation and test suite. (Action: Kenny)
   # Record that @xml:lang is required on the label type and @dir is optional on label/text. (Action: Markus)
