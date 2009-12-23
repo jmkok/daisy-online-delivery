@@ -501,7 +501,7 @@
 								<xs:documentation>
 									<db:para role="desc">Contains the <db:xref
 										linkend="term_contentIdentifier"/> of the
-										Content item for which resources are being requested (as defined
+										Content item for which the resources list is being requested (as defined
 										in the <db:xref linkend="bib_dublinCore"/> identifier field
 										of the <db:type><db:xref linkend="tp_contentMetadata"/></db:type> type).
 									</db:para>
@@ -518,7 +518,7 @@
 						<xs:element minOccurs="1" maxOccurs="1" ref="do:resources">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Contains the resources for the specified
+									<db:para role="desc">Contains the resources list for the specified
 										Content item.</db:para>
 								</xs:documentation>
 							</xs:annotation>
@@ -1122,12 +1122,11 @@
 
 		<operation name="getContentResources">
 			<documentation>
-				<db:para role="desc">Retrieves <db:type><db:xref linkend="tp_resources"/></db:type> for the specified
+				<db:para role="desc">Retrieves the <db:type><db:xref linkend="tp_resources"/></db:type> list for the specified
 					Content.</db:para>
-				<db:para role="prereq">This operation is only valid if a call to <db:function><db:xref
-						linkend="op_issueContent"/></db:function> with a result of <db:literal>true</db:literal>
-					has been made for the given Content during the current or a previous
-					Session.</db:para>
+				<db:para role="prereq">The Content must be <db:link linkend="term_issue">issued</db:link>
+				before this operation is called.  If not, the Service shall respond with
+				an <db:xref linkend="ft_invalidParameterFault" /> fault.</db:para>
 			</documentation>
 			<input message="tns:getContentResources_inputMessage"/>
 			<output message="tns:getContentResources_outputMessage"/>

@@ -1260,7 +1260,7 @@
                         any of the keys or if the <xref linkend="term_user"/> is not authorized to
                         access the <xref linkend="term_content"/>, then the <xref
                             linkend="term_service"/> must reply with an <errorname>
-                            <xref linkend="ft_invalidOperationFault"/>
+                            <xref linkend="ft_invalidParameterFault"/>
                         </errorname> fault. </para>
 
                     <note>
