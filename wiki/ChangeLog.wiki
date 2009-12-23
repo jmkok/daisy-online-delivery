@@ -28,7 +28,6 @@ These changes are due to be made before the release of the final version:
 
   # A recommendation to be added to the spec that state information should only be held for the duration of a session. (Action: Kenny)
   # A note to be made in the documentation and the test suite that audio notes are specifically not supported. An http based put scheme may be introduced in a future version but not in this version of the spec. (Action: kenny)
-  # The verbiage of the paragraph after the second Note in Section 4.4.2 of the documentation to be modified. (Action: Geoff)
   # Add the normative assertion that Services must not change the value of the returnBy attribute once the getContentResources operation has been called once to the documentation and the test suite. (Action: Geoff)
   # Clarify the verbiage for segmented contentList(s). (Action: Geoff)
   # Document that returnContent should never return false in the documentation and test suite. (Action: Kenny)
