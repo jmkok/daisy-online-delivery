@@ -1282,7 +1282,7 @@
 
             <para> The DAISY Online Delivery protocol allows <xref linkend="term_serviceProvider"/>s
                 to deliver service announcements directly to a <xref linkend="term_user"/>'s <xref
-                    linkend="term_readingSystem"/>. A service announcement is a message in text
+                    linkend="term_readingSystem"/>. A service announcement is a short message in text
                 and/or audio format that conveys information such as expected <xref
                     linkend="term_service"/> down time and warnings about overdue <xref
                     linkend="term_content"/> to the <xref linkend="term_user"/>. </para>
