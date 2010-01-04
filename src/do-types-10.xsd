@@ -674,29 +674,12 @@
 							this <db:xref linkend="term_content"/> to be returned.</db:para>
 						<db:para>If this attribute is <db:literal>true</db:literal> and the Content is issued, it is a contract from the <db:xref
 								linkend="term_service"/> to the <db:xref
-								linkend="term_readingSystem"/> that the <db:xref
+								linkend="term_readingSystem"/> that, if the Content is issued, the <db:xref
 								linkend="term_readingSystem"/> will at some point <db:link
 								linkend="term_return">return the Content</db:link>.</db:para>
 						<db:para>Reading Systems should present Users with appropriate prompts if
 							they try to return <db:xref linkend="term_purchase"
 							/>.</db:para>
-					</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-			<xs:attribute name="returnBy" type="xs:dateTime" use="optional">
-				<xs:annotation>
-					<xs:documentation>
-						<db:para>Specifies the time when the <db:xref
-								linkend="term_service"/> requires this <db:xref
-								linkend="term_content"/> to be returned, i.e. the end of an
-							issuance period.</db:para>
-						<db:para>This attribute may be present when the
-								<db:code>requiresReturn</db:code> attribute is
-								<db:literal>true</db:literal>, and must not be present when the
-								<db:code>requiresReturn</db:code> attribute is
-								<db:literal>false</db:literal>.</db:para>
-						<db:para>This attribute may change value between calls, even after the <db:xref
-								linkend="term_content"/> is issued.</db:para>
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -757,6 +740,23 @@
 					</xs:complexType>
 				</xs:element>
 			</xs:sequence>
+			<xs:attribute name="returnBy" type="xs:dateTime" use="optional">
+				<xs:annotation>
+					<xs:documentation>
+						<db:para>Specifies the time when the <db:xref
+								linkend="term_service"/> requires this <db:xref
+								linkend="term_content"/> to be returned, i.e. the end of an
+							issuance period.</db:para>
+						<db:para>This attribute may be present when the
+								<db:code>requiresReturn</db:code> attribute of this Content's <db:type><db:xref linkend="tp_contentMetadata"/></db:type> is
+								<db:literal>true</db:literal>, and must not be present when that attribute is
+								<db:literal>false</db:literal>.</db:para>
+						<db:para>This attribute may not change value while the Content is issued.</db:para>
+						<db:para>Unlike <db:code>requiresReturn</db:code>, this attribute does not
+						constitute a contract.</db:para>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 
