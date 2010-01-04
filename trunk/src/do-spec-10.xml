@@ -659,7 +659,7 @@
                     <para>This protocol defines two methods to assist in the automatic 
                         <link linkend="term_return">return</link> of <xref linkend="term_content" />
                         by a <xref linkend="term_readingSystem"/>: 
-                        the <code>returnBy</code> attribute of the <type><xref linkend="tp_contentMetadata"/></type> type,
+                        the <code>returnBy</code> attribute of the <type><xref linkend="tp_resources"/></type> type,
                         and the <literal>expired</literal> <type><xref linkend="tp_contentList"/></type>.</para>
                     <note>
                         <para>
