@@ -96,22 +96,60 @@ scribe: Kenny
 ==== test Implementation update ====
 
   * What has been implemented?
+   * Currently we have a test-client and a service.
+   * The test-client can be accessed over the internet.
+   * Its primary goal is to fire SOAP queries and show the results, this might hopefully be very helpful for any party who wishes to get started using this protocol.
+   * Currently the test-client can call all functions in order and see if all succeeds.
+   * It will not be playing content.
+   * "Bookmarks" are not being sent correctly as we have a problem with the complex type definitions (issue 188) The service has implemented all functions and returns responses to these functions.
+   * The "getKeyExchangeObject" functions return just a load of strings
+   * Changes will not be stored at this moment (so you can call issueContent, but it won't be issued)
+
   * What will be implemented by Feb 15, 2010?
+   * The service will store bookmarks and keep track of issued content
+   *The dynamic menu structure will be enlarged (currently only a single top level menu is implemented) - focus will be on "multipleChoiceQuestion"
+   * The test-client is already very usable (but still might contain bugs), but we can extent the tests further.
+
   * PDTB2 support in scope or out of scope?
+   *Due to the knowledge required for implementing PDTB2 support, it is out of scope for our test implementation.  
+
   * Will you be contributing to the Test Implementation compliance report?   
+   * I am not sure what is required to contribute to this report.  
+
   * Challenges?
+
   * learnings? 
+   * I think the WSDL should be in such shape that even simple clients and services should be able to use them.
+   * A "wild" idea. It sprung to mind that a "setBlob" and "getBlob" might replace the bookmark functions. This way a client might send a bookmark as a "blob" to the service which keeps this blob attached to a specific book. This makes the service extremely easy to build, as it won't have to have any notion of "bookmarks" itself. This function could be called with a "contentID", a type (eg. "BOOKMARK") and the data (eg. the bookmark itself). The same could be done for getBlob eg. 
+getBlob("contentID","BOOKMARK"). This would actually enable:
+    * Future kind of data being stored on the service, without creating additional commands and/or making modifications on the service
+    * Clients being able to store proprietary information on the server/service, which needs to be attached to a book.
 
 === Humanware ===
 
 ==== test Implementation update ====
 
   * What has been implemented?
+   * Humanware Companion (PC transfer tool) is being modified to support access to library service using Microsoft WCF .
+
   * What will be implemented by feb 15, 2010?
+   * Downloading and returning of content. 
+   * Support for dynamic menu.
+   * Test generating client code using different soap client.
+
   * PDTB2 support in scope or out of scope?
+   * If content can be found, test could be made to acquire and transfer to a Stream a PDTBT2 Key Exchange Object.
+   * If no organisation intend to publish protected content or to use this functionality at first, we don’t mind leaving this out of scope for now.
+ 
   * Will you be contributing to the Test Implementation compliance report?   
+    * Yes.
+
   * Challenges?
+
   * learnings?
+   * I haven’t been able to generate valid client code from the WSDL available in svn. This is using svcutil from Microsoft. 
+   * My understanding is that this WSDL will be the starting point for all service and client. Effort should be made to have it work with all major tools. Not that I pretend to know who’s major ... 
+   * About the bookmark issue, we don’t intend to support bookmark exchange for now. I agree that Jelle suggestion would make it work. But it also open a door for storing unknown content on the service side.
 
 === Plextor ===
 
