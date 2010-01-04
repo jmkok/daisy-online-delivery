@@ -16,6 +16,7 @@ Changes to `do-wsdl-10.wsdl`:
 
 Changes to `do-types-10.xsd`:
 
+  * Moved `contentMetadata@returnBy` to `resources@returnBy`. This means the Reading System does not need to check getContentMetadata both before and after issuance, and that `@returnBy` is not displayed before issuance. Added note that the attribute may not change while the Content is issued.
   * Changed `label/audio@rangeBegin`, `@rangeEnd` and `@size` from unbounded `integer`s to 64-bit `long`s.
   * Changed `contentMetadata/metadata/size` from an unbounded `integer` to a 64-bit `long`.
   * Changed `resource@size` from an unbounded `integer` to a 64-bit `long`.
@@ -28,7 +29,6 @@ These changes are due to be made before the release of the final version:
 
   # A recommendation to be added to the spec that state information should only be held for the duration of a session. (Action: Kenny)
   # A note to be made in the documentation and the test suite that audio notes are specifically not supported. An http based put scheme may be introduced in a future version but not in this version of the spec. (Action: kenny)
-  # Move @returnBy from contentMetadata to resources. Add the normative assertion that Services must not change the value of the returnBy attribute once the getContentResources operation has been called once to the documentation and the test suite. (Action: Geoff)
   # Clarify the verbiage for segmented contentList(s). (Action: Geoff)
   # Document that returnContent should never return false in the documentation and test suite. (Action: Kenny)
   # Record that @xml:lang is required on the label type and @dir is optional on label/text. (Action: Markus)
