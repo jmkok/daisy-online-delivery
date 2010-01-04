@@ -71,7 +71,7 @@ scribe: Kenny
 
   * What has been implemented?
    * All operations with the exception of getKeyExchangeObject.
-  * Both lending and acquisition Service Models.
+   * Both lending and acquisition Service Models.
    * Both the out-of-band and browse content selection methods.   
    * Our test implementation is built using Microsoft's WCF 3.5 web services stack. It is being hosted on a windows server 2003 box with a sql server 2005 back-end.
    
@@ -107,11 +107,11 @@ scribe: Kenny
 
   * What will be implemented by Feb 15, 2010?
    * The service will store bookmarks and keep track of issued content
-   *The dynamic menu structure will be enlarged (currently only a single top level menu is implemented) - focus will be on "multipleChoiceQuestion"
+   * The dynamic menu structure will be enlarged (currently only a single top level menu is implemented) - focus will be on "multipleChoiceQuestion"
    * The test-client is already very usable (but still might contain bugs), but we can extent the tests further.
 
   * PDTB2 support in scope or out of scope?
-   *Due to the knowledge required for implementing PDTB2 support, it is out of scope for our test implementation.  
+   * Due to the knowledge required for implementing PDTB2 support, it is out of scope for our test implementation.  
 
   * Will you be contributing to the Test Implementation compliance report?   
    * I am not sure what is required to contribute to this report.  
@@ -142,7 +142,7 @@ getBlob("contentID","BOOKMARK"). This would actually enable:
    * If no organisation intend to publish protected content or to use this functionality at first, we don’t mind leaving this out of scope for now.
  
   * Will you be contributing to the Test Implementation compliance report?   
-    * Yes.
+   * Yes.
 
   * Challenges?
 
