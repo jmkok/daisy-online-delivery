@@ -105,10 +105,6 @@ Note: Storing user-created bookmarks is covered under requirement #13, Bookmark 
 
 The requirement states that the Reading System must store the Service's contact information.  This is not a requirement as much as it is a declaration that Service Discovery is out of scope.
 
-  # *Connect to a new Service*: Add a new Service location and credentials to a Reading System, then connect to the Service with it.  (This is to demonstrate that Service Discovery is not a necessary part of the protocol.)
-
-|| Test case || Client || Server || Result || Details ||
-
 == 8. Content at different location ==
 
 *Untested*
@@ -281,8 +277,6 @@ Note that actually interacting with the Content without downloading all of its r
 
 The capability for a Reading System to report its own download activity to the Service was not included in the protocol.  Service Providers may track this information for local Content by monitoring their own file servers, and may need to require Service Delegates to report download activity.
 
-  # *Track downloads*: Connect to a Service, then issue and download a Content item.  Verify that file downloads were logged by the Service Provider.
-
 == 23. Report player errors ==
 
 *Not fulfilled*
@@ -337,6 +331,14 @@ A secondary risk is that unencrypted sessions may be snooped upon by an attacker
 Sending audio from the Reading System to the Service was originally in scope, then declared out of scope, then was brought back into the specification.
 
   # *Audio feedback*: Transmit audio as a response to a dynamic menu item that accepts it.  Verify that the audio was received by the Service.
+
+|| Test case || Client || Server || Result || Details ||
+
+== 28. Download tracking ==
+
+Although reporting download activity is not part of the protocol, certain organizations still need to track it.  This can usually be done on the file server, using standard logging tools.
+
+  # *Track downloads*: Connect to a Service, then issue and download a Content item.  Verify that file downloads were logged by the Service Provider.
 
 || Test case || Client || Server || Result || Details ||
 
