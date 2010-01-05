@@ -42,6 +42,11 @@
 			
 			<db:section xml:id="apiReferenceFaults">
 				<db:title>Faults</db:title>
+				<db:para>When a Service responds to an operation with a SOAP fault, an instance of one of the following
+				types must be the child of the <db:type>details</db:type> element.</db:para>
+				<db:para>Each of these fault types has a <db:type>reason</db:type> child element, a
+				<db:type>string</db:type> which can be used to send debugging information to the Reading System.
+				This information should not be rendered to the User in most circumstances.</db:para>
 				<xsl:for-each select="$wsdl/definitions/message[contains(@name, 'Fault')]">
 					<db:section> <xsl:attribute name="xml:id" select="replace(concat('ft_',@name),'_message','')"/>
 						<xsl:attribute name="xreflabel" select="replace(@name,'Fault_message','')"/>
