@@ -114,7 +114,7 @@ nearly-identical document to serve as a Service's concrete WSDL, that the
 concrete WSDL imports do-wsdl-10.wsdl.  For example:
 
 example.wsdl:
-
+{{{
 <?xml version="1.0" encoding="utf-8"?>
 <definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
 xmlns:tns="http://www.daisy.org/ns/daisy-online/"
@@ -134,7 +134,7 @@ location="http://www.daisy.org/projects/daisy-online-delivery/do-wsdl-10.wsdl"/>
     </port>
   </service>
 </definitions>
-
+}}}
 ==== Issue 192 ====
 
 geoff: We currently have the lastModifiedDate for a Content item displayed only in
