@@ -8,7 +8,7 @@ This is an aggregation of all the changes to the protocol made since the Draft f
 
 Changes to `do-wsdl-10.wsdl`:
 
-  * All `soap:operation`s now have the `soapAction` attribute set to "/operationName".
+  * All `soap:operation`s now have the `soapAction` attribute set to `"/operationName"`.
   * Changed the `firstItem` and `lastItem` arguments to `getContentList` from unbounded `integer`s to 32-bit `int`s.
   * Added the `invalidOperation` fault to the signatures of `logOff` and `getContentMetadata`.
   * Calling `getKeyExchangeObject` with unauthorized keys in the `keyRing` results in an `invalidParameter` fault, not `invalidOperation`.
