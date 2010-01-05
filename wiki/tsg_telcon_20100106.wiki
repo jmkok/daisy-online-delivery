@@ -16,7 +16,7 @@ scribe: Kenny
   * Geoff close Issue 186. *Done*
   * Geoff close Issue 187. *Done*
   * Kenny modify the bookmark xsd to eliminate empty complex types. The issue should be kept open until the group has reviewed the xsd.   
-  * Kenny add relative values as per proposal 2 to the wsdl. This issue should be kept open until the compatibility with Microsoft tools is confirmed.    
+  * Kenny add relative values as per proposal 2 to the wsdl to resolve Issue 190. *Done* This issue should be kept open until the compatibility with Microsoft tools is confirmed.    
   * Geoff mark Issue 191 as started in the tracker. *Done*
   * Geoff change invalidOperation to invalidParameter in Section 4.4.4.3, and close Issue 194.   *Done*
   * Geoff record in the spec that the getContentResources operation returns an invalidParameter fault for content that has not been issued, and close Issue 195. *Done*
