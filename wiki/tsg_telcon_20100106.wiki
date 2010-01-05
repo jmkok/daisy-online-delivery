@@ -57,8 +57,118 @@ scribe: Kenny
 
 === Issues ===
 
+==== Issue 128 ====
 
+markus: IBMs WS-I Validator says:
 
+The errors below were detected when validating the file "kxo.xsd" via the
+file "do-wsdl-10.wsdl".  In most cases these errors can be detected by
+validating "kxo.xsd" directly.  However it is possible that errors will
+only occur when kxo.xsd is validated in the context of do-wsdl-10.wsdl.
+
+Line 63: InvalidRegex: Pattern value
+'([A-Za-z0-9-_:])+(\.([A-Za-z0-9-_:])+)*' is not a valid regular
+expression. The reported error was: ''-' is an invalid character range.
+Write '\-'.'.
+
+markus: Matt fixed this in the local version. Need to report to PDTB2 folks.
+ 
+markus on behalf of Matt:  That aside, there's a bad regex in the schema:
+ 
+<xs:pattern value="([A-Za-z0-9-_:])+(\.([A-Za-z0-9-_:])+)*" />
+ 
+As I'm sure you know, dashes delimit character ranges in character sets unless they
+are the first character, so the above should be:
+ 
+<xs:pattern value="([-A-Za-z0-9_:])+(\.([-A-Za-z0-9_:])+)*" />
+
+markus: The PDTB folks have been informed. We want to reference kxo.xsd in its canonical
+location in the final release, but depend on this to be fixed there first.
+
+==== Issue 144 ====
+
+Markus: xml.xsd, dc.xsd, kxo.xsd are all examples of schemas that have canonical
+URIs associated with them. Once development is done, we should revert to
+using those URIs instead of local copies.
+
+==== Issue 177 ====
+
+Geoff: In the supportedUplinkAudioCodecs part of the serviceAttributes, the
+individual codecs are identified by "The codec's canonical identifier
+string as dictated by its specification."
+
+http://www.daisy.org/projects/daisy-online-delivery/drafts/20090910/do-spec-20090910.html#tp_codec
+
+This is problematic, since many specs don't dictate a "canonical identifier
+string".  Perhaps MIME type would be better, or else dc:Format.
+ 
+ ==== Issue 189 ====
+
+Geoff: Appendix A states, "Service implementors must publish a concrete WSDL
+document at some URI. The [INFOSET] of the concrete WSDL document must be
+identical to the do-wsdl-10.wsdl document with the exception of the WSDL
+service element, which defines the locally supported ports."
+
+It should either be allowed or required that, rather than creating a
+nearly-identical document to serve as a Service's concrete WSDL, that the
+concrete WSDL imports do-wsdl-10.wsdl.  For example:
+
+example.wsdl:
+
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+xmlns:tns="http://www.daisy.org/ns/daisy-online/"
+targetNamespace="http://www.daisy.org/ns/daisy-online/"
+xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+  <import namespace="http://www.daisy.org/ns/daisy-online/"
+location="http://www.daisy.org/projects/daisy-online-delivery/do-wsdl-10.wsdl"/>
+  
+  <service name="example">
+    <document>
+      Example DAISY Online Service
+    </document>
+
+    <port name="examplePort" binding="tns:DaisyOnlineService">
+      <soap:address location="http://example.com/daisy-online/"/>
+    </port>
+  </service>
+</definitions>
+
+==== Issue 192 ====
+
+geoff: We currently have the lastModifiedDate for a Content item displayed only in
+the <contentItem> element within a contentList.  Suppose you already have
+some Content and want to check whether it has been updated.  Do you have to
+find a contentList that the contentItem might be in to check it?  This
+isn't a big problem for out-of-band selection, since there are only a few
+lists to choose from, but what about browse selection?
+
+Geoff: I'm thinking we should add lastModifiedDate to the contentMetadata.  Another place
+might be the contentResources, except we've already decided that Services can limit
+the number of calls to getContentResources.
+
+Geoff: Also, the documentation for contentList/contentItem@lastModifiedDate says that this
+should equal the last modified time of the most recently modified resource of the
+Content.  However, there is the edge case where a resource has been removed, so even
+though the Content has been updated, the lastModifiedDate is no later than it was
+before the resource was deleted, when it should reflect the last change to the Content.
+
+==== Issue 193 ====
+
+Geoff: How does a Reading System notify a Service that it supports all Content
+formats and MIME types?  For instance, say it's a proxy downloader that
+doesn't actually know what formats are supported on the playback device,
+and the Service shouldn't filter by format.
+ 
+==== Issue 197 ====
+
+Kenny on behalf of Jelle: If the getBookmark and setBookmark operations were to be replaced by 
+getBlob and setBlob operations, and instead of posting and retrieving a 
+bookmarkset type, a Reading System could post any string or perhaps a 
+binary blob, would this be a more expedient approach to handling bookmarks 
+in the spec?      
+ 
 === Test suite Progress ===
 
 ==== [http://code.google.com/p/daisy-online-delivery/wiki/tsg_test_suite Test Suite] ====
