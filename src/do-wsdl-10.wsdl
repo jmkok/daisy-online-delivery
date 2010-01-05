@@ -253,6 +253,8 @@
 								<xs:documentation>
 									<db:para role="desc">Specifies whether the Content was returned
 										successfully.</db:para>
+									<db:para><db:function>returnContent</db:function> must either return <db:literal>true</db:literal>
+									or a fault; it cannot return <db:literal>false</db:literal>.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
