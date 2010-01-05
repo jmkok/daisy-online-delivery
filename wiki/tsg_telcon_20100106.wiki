@@ -175,4 +175,4 @@ in the spec?
 
 ==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolSystemTestingTestCases Systems Testing] ====
 
-== [http://code.google.com/p/daisy-online-delivery/wiki/ChangeLog Change Log] ==
+== [http://code.google.com/p/daisy-online-delivery/wiki/ChangeLog Change Log] progress ==
