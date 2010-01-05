@@ -2,12 +2,13 @@
 
 = From the Trial Use Draft to Current =
 
-This is an aggregation of all the changes to the protocol made since the Draft for Trial Use (r566) was released 27 September 2009.  The current revision as of this writing is r710.
+This is an aggregation of all the changes to the protocol made since the Draft for Trial Use (r566) was released 27 September 2009.  The current revision as of this writing is r713.
 
 == API ==
 
 Changes to `do-wsdl-10.wsdl`:
 
+  * All `soap:operation`s now have the `soapAction` attribute set to "/operationName".
   * Changed the `firstItem` and `lastItem` arguments to `getContentList` from unbounded `integer`s to 32-bit `int`s.
   * Added the `invalidOperation` fault to the signatures of `logOff` and `getContentMetadata`.
   * Calling `getKeyExchangeObject` with unauthorized keys in the `keyRing` results in an `invalidParameter` fault, not `invalidOperation`.
@@ -32,4 +33,3 @@ These changes are due to be made before the release of the final version:
   # Document that returnContent should never return false in the documentation and test suite. (Action: Kenny)
   # Record that @xml:lang is required on the label type and @dir is optional on label/text. (Action: Markus)
   # Modify the bookmark xsd to eliminate empty complex types. (Action: kenny)
-  # Add relative values for soap actions as per proposal 2 to the wsdl. (Action: kenny)
