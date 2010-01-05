@@ -2,7 +2,7 @@
 
 = From the Trial Use Draft to Current =
 
-This is an aggregation of all the changes to the protocol made since the Draft for Trial Use (r566) was released 27 September 2009.  The current revision as of this writing is r704.
+This is an aggregation of all the changes to the protocol made since the Draft for Trial Use (r566) was released 27 September 2009.  The current revision as of this writing is r710.
 
 == API ==
 
@@ -29,7 +29,6 @@ These changes are due to be made before the release of the final version:
 
   # A recommendation to be added to the spec that state information should only be held for the duration of a session. (Action: Kenny)
   # A note to be made in the documentation and the test suite that audio notes are specifically not supported. An http based put scheme may be introduced in a future version but not in this version of the spec. (Action: kenny)
-  # Clarify the verbiage for segmented contentList(s). (Action: Geoff)
   # Document that returnContent should never return false in the documentation and test suite. (Action: Kenny)
   # Record that @xml:lang is required on the label type and @dir is optional on label/text. (Action: Markus)
   # Modify the bookmark xsd to eliminate empty complex types. (Action: kenny)
