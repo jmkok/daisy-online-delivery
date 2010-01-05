@@ -74,14 +74,14 @@ Write '\-'.'.
 markus: Matt fixed this in the local version. Need to report to PDTB2 folks.
  
 markus on behalf of Matt:  That aside, there's a bad regex in the schema:
- 
+{{{ 
 <xs:pattern value="([A-Za-z0-9-_:])+(\.([A-Za-z0-9-_:])+)*" />
- 
+}}}
 As I'm sure you know, dashes delimit character ranges in character sets unless they
 are the first character, so the above should be:
- 
+{{{
 <xs:pattern value="([-A-Za-z0-9_:])+(\.([-A-Za-z0-9_:])+)*" />
-
+}}}
 markus: The PDTB folks have been informed. We want to reference kxo.xsd in its canonical
 location in the final release, but depend on this to be fixed there first.
 
@@ -138,7 +138,7 @@ location="http://www.daisy.org/projects/daisy-online-delivery/do-wsdl-10.wsdl"/>
 ==== Issue 192 ====
 
 geoff: We currently have the lastModifiedDate for a Content item displayed only in
-the <contentItem> element within a contentList.  Suppose you already have
+the `<contentItem>` element within a contentList.  Suppose you already have
 some Content and want to check whether it has been updated.  Do you have to
 find a contentList that the contentItem might be in to check it?  This
 isn't a big problem for out-of-band selection, since there are only a few
