@@ -174,3 +174,5 @@ in the spec?
 ==== [http://code.google.com/p/daisy-online-delivery/wiki/tsg_test_suite Test Suite] ====
 
 ==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolSystemTestingTestCases Systems Testing] ====
+
+== [http://code.google.com/p/daisy-online-delivery/wiki/ChangeLog Change Log]
