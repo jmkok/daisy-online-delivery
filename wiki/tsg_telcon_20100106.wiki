@@ -30,7 +30,7 @@ scribe: Kenny
   * Geoff to add the normative assertion that Services must not change the value of the returnBy attrribute once the getContentResources operation has been called once to the documentation and the test suite, and close Issue 165. *Done*  
   * Geoff remove the paragraph on TTS in Section 6 (Type Reference) under Narrator of the spec, and close Issue 173.  *Done*
   * Geoff to clarify the verbiage for segmented contentList(s) and close Issue 174.   *Done*
-  * Kenny to document that returnContent should never return false in the documentation and test suite, and close Issue 181.
+  * Kenny to document that returnContent should never return false in the documentation (*Done*) and test suite, and close Issue 181.
   * Geoff and Kenny start work on the Test suite. (In progress)  
   * Geoff and Kenny start work on the Systems Testing document (in progress) 
   * Markus fix the &apos; entity problem. (outstanding; bug in IE.) (Markus will fix this when ready to publish.)
