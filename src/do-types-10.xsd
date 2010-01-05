@@ -763,7 +763,7 @@
 	<xs:element name="contentList">
 		<xs:annotation>
 			<xs:documentation>
-				<db:para>A list of Content items.</db:para>
+				<db:para>A full or partial list of Content items.</db:para>
 			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -821,20 +821,20 @@
 			<xs:attribute name="totalItems" type="xs:int" use="required">
 				<xs:annotation>
 					<xs:documentation>
-						<db:para>The total number of <db:type>contentItem</db:type>s in the list.
-							This instance of <db:type>contentList</db:type>
-							may contain a subset of the total number of items, i.e. it may be
-							segmented. If and only if the <db:type>contentList</db:type> is not segmented, the value of this
-							attribute is equal to the number of <db:type>contentItem</db:type>
-							children of this element.</db:para>
+						<db:para>The total number of <db:type>contentItem</db:type>s in the whole list.
+							If this is just a part of the list, then <db:code>totalItems</db:code> will
+							be greater than the number of <db:type>contentItem</db:type>s returned; otherwise,
+							they will be equal.
+							</db:para>
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="firstItem" type="xs:int" use="optional">
 				<xs:annotation>
 					<xs:documentation>
-						<db:para>The 0-based index of the first content item provided in this instance of <db:type>contentList</db:type>.
-							This attribute must be provided when a <db:type>contentList</db:type> is segmented. If this
+						<db:para>The 0-based index of the first <db:type>contentItem</db:type>
+							in this <db:type>contentList</db:type> within the whole list.
+							This attribute must be provided if this is a partial list. If this
 							attribute is present, the <db:code>lastItem</db:code> attribute must
 							also be present.</db:para>
 					</xs:documentation>
@@ -843,8 +843,9 @@
 			<xs:attribute name="lastItem" type="xs:int" use="optional">
 				<xs:annotation>
 					<xs:documentation>
-						<db:para>The 0-based index of last content item provided in this instance of <db:type>contentList</db:type>.
-							This attribute must be provided when a <db:type>contentList</db:type> is segmented. If this
+						<db:para>The 0-based index of the last <db:type>contentItem</db:type>
+							in this <db:type>contentList</db:type> within the whole list.
+							This attribute must be provided if this is a partial list. If this
 							attribute is present, the <db:code>firstItem</db:code> attribute must
 							also be present.</db:para>
 					</xs:documentation>
