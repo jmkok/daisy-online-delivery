@@ -33,7 +33,8 @@ Transfer of audio from the Reading System to the Service takes place over SOAP w
 
 || Test case || Client || Server || Result || Details ||
 || 1.1 || CNIB || !PratSam || *Success* || Transfer of data was at expected rates for binary transfer over the Internet.  A 119 MB book was downloaded in 26 minutes. ||
-|| 1.1 || Plextor || VA || *Success* || Transfer of data was at expected rates for binary transfer over the Internet.  An X MB book was downloaded in Y minutes. ||
+|| 1.1 || XXX || YYY || *Success* || Transfer of data was at expected rates for binary transfer over the Internet.  An X MB book was downloaded in Y minutes. ||
+|| 1.2 ||  ||  ||  ||  ||
 || 1.3 || XXX || YYY || *Failure* || Transfer of data was at X% efficiency compared to binary transfer.  Audio of Y MB was uploaded in Z minutes. ||
 
 == 2. Key authorization ==
@@ -50,6 +51,10 @@ Authorization occurs by User, not by Reading System; credentials are user names 
   # *Deny content download with incorrect credentials*: Attempt to download a resource with incorrect basic authentication credentials.  The file server must respond with an HTTP status of "403 Forbidden".
 
 || Test case || Client || Server || Result || Details ||
+|| 2.1 ||  ||  ||  ||  ||
+|| 2.2 ||  ||  ||  ||  ||
+|| 2.3 ||  ||  ||  ||  ||
+|| 2.4 ||  ||  ||  ||  ||
 
 == 3. Transmit bookmarks ==
 
@@ -64,6 +69,7 @@ Note: Storing user-created bookmarks is covered under requirement #13, Bookmark 
   # *Retrieve a service provider-created bookmark*: Use `getBookmarks` to retrieve a list of predefined bookmarks from a Service.
 
 || Test case || Client || Server || Result || Details ||
+|| 3.1 ||  ||  ||  ||  ||
 
 == 4. Return book ==
 
@@ -75,6 +81,8 @@ Note: Storing user-created bookmarks is covered under requirement #13, Bookmark 
   # *Return a streamed book*: Issue a Borrowable Content item and stream some part of it, then perform the Reading System's return function.  The Service must return `true`.  Verify that the Content's resources are not present on the Reading System.
 
 || Test case || Client || Server || Result || Details ||
+|| 4.1 ||  ||  ||  ||  ||
+|| 4.2 ||  ||  ||  ||  ||
 
 == 5. Transmit capabilities ==
 
@@ -86,6 +94,8 @@ Note: Storing user-created bookmarks is covered under requirement #13, Bookmark 
   # *Adapt Service to the Reading System's capabilities*: Initialize a session with a Service that provides different Content based on the capabilities of the Reading System.  Ensure that the Content and resources offered by the Service are only in the formats given in the `readingSystemAttributes` provided to the Service.
 
 || Test case || Client || Server || Result || Details ||
+|| 5.1 ||  ||  ||  ||  ||
+|| 5.2 ||  ||  ||  ||  ||
 
 == 6. Universal protocol ==
 
@@ -96,6 +106,7 @@ Note: Storing user-created bookmarks is covered under requirement #13, Bookmark 
   # *Full session*: Perform a full session, from `logOn` to `logOff`.  (This test should be performed with as many combinations of clients and servers as possible.)
 
 || Test case || Client || Server || Result || Details ||
+|| 6.1 ||  ||  ||  ||  ||
 
 == 7. Player stores contact information ==
 
@@ -115,6 +126,8 @@ The requirement states that the Reading System must store the Service's contact 
   # *Private remote content*: Issue a Content item which is hosted on a public server that is not  at the same host as the Service and requires basic authentication.  Download the Content.
 
 || Test case || Client || Server || Result || Details ||
+|| 8.1 ||  ||  ||  ||  ||
+|| 8.2 ||  ||  ||  ||  ||
 
 == 9. Time interrogation ==
 
@@ -128,6 +141,8 @@ The ability for Reading Systems to query the Service for the current time was no
   # *Expired content*: Let some borrowed Content expire.  Ensure that it is present on the `expired` Content list.
 
 || Test case || Client || Server || Result || Details ||
+|| 9.1 ||  ||  ||  ||  ||
+|| 9.2 ||  ||  ||  ||  ||
 
 == 10. Download and streaming ==
 
@@ -139,6 +154,8 @@ The ability for Reading Systems to query the Service for the current time was no
   # *Stream content*: Issue a Content item and stream some part of it.
 
 || Test case || Client || Server || Result || Details ||
+|| 10.1 ||  ||  ||  ||  ||
+|| 10.2 ||  ||  ||  ||  ||
 
 == 11. Key delivery ==
 
@@ -151,6 +168,9 @@ The ability for Reading Systems to query the Service for the current time was no
   # *Deny a key*: Issue and download a Protected DTB.  Request a KXO for the decryption key from the Service using `getKeyExchangeObject`, but do not provide an authorized key in the `keyRing` argument.  The Service must reply with an `invalidOperation` fault.
 
 || Test case || Client || Server || Result || Details ||
+|| 11.1 ||  ||  ||  ||  ||
+|| 11.2 ||  ||  ||  ||  ||
+|| 11.3 ||  ||  ||  ||  ||
 
 == 12. Same book, different player ==
 
@@ -162,6 +182,8 @@ The ability for Reading Systems to query the Service for the current time was no
   # *Pick up where you left off*: Issue and download a Content item.  Render the Content up to some point, create a bookmark there and transmit it to the Service.  Return the Content item.  Download the same Content item onto another Reading System.  Get the bookmarks for the Content item.  Start rendering the Content at the point where the bookmark was set earlier.
 
 || Test case || Client || Server || Result || Details ||
+|| 12.1 ||  ||  ||  ||  ||
+|| 12.2 ||  ||  ||  ||  ||
 
 == 13. Bookmark stored on server ==
 
@@ -174,6 +196,7 @@ The protocol does not support bookmarks with audio notes.
   # *Store and retrieve a user-created bookmark*: Create a bookmark for a Content item.  Use `setBookmarks` to transmit the bookmark to a Service.  Use `getBookmarks` to retrieve the bookmark from the Service.
 
 || Test case || Client || Server || Result || Details ||
+|| 13.1 ||  ||  ||  ||  ||
 
 == 14. Issue content ==
 
@@ -186,6 +209,9 @@ The protocol does not support bookmarks with audio notes.
   # *Pre-requisite book*: Search for the second or third book of a series, where the previous book was never issued.  The Service should, in the dynamic menus, inform the user of the previous book.
 
 || Test case || Client || Server || Result || Details ||
+|| 14.1 ||  ||  ||  ||  ||
+|| 14.2 ||  ||  ||  ||  ||
+|| 14.3 ||  ||  ||  ||  ||
 
 == 15. Audio and text annotation ==
 
@@ -196,6 +222,7 @@ The protocol does not support bookmarks with audio notes.
   # *Annotated Content list*: Retrieve a Content list with several items from a Service using `getContentList`.  Each item must have a label with both text and audio.
 
 || Test case || Client || Server || Result || Details ||
+|| 15.1 ||  ||  ||  ||  ||
 
 == 16. Stop and resume download ==
 
@@ -206,6 +233,7 @@ The protocol does not support bookmarks with audio notes.
   # *Stop and resume*: Issue a Content item from a Service and get its resource list.  Download part of one file, then stop.  Drop the HTTP connection, then reconnect.  Resume the download, using the HTTP Range header to download only the remaining part of the file.  Download the same file in its entirety and verify that they match.
 
 || Test case || Client || Server || Result || Details ||
+|| 16.1 ||  ||  ||  ||  ||
 
 == 17. Dynamic menus ==
 
@@ -218,6 +246,9 @@ The protocol does not support bookmarks with audio notes.
   # *Survey*: Use the dynamic menus to answer a survey form provided by the Service.
 
 || Test case || Client || Server || Result || Details ||
+|| 17.1 ||  ||  ||  ||  ||
+|| 17.2 ||  ||  ||  ||  ||
+|| 17.3 ||  ||  ||  ||  ||
 
 == 18. Noninteractive session ==
 
@@ -236,6 +267,8 @@ The protocol does not support bookmarks with audio notes.
     # Issue all the items in the "new" Content list.
 
 || Test case || Client || Server || Result || Details ||
+|| 18.1 ||  ||  ||  ||  ||
+|| 18.2 ||  ||  ||  ||  ||
 
 == 19. Prioritize order of files ==
 
@@ -246,6 +279,7 @@ The protocol does not support bookmarks with audio notes.
   # *Play a book while downloading*: Issue a DAISY 2.02 or Z39.86 book that includes audio from the Service.  Identify and download the XML files, then identify and download the audio in play order.  Begin playback of audio before it has fully downloaded.
 
 || Test case || Client || Server || Result || Details ||
+|| 19.1 ||  ||  ||  ||  ||
 
 == 20. Interact with content ==
 
@@ -258,6 +292,7 @@ Note that actually interacting with the Content without downloading all of its r
   # *Sample content*: Download the sample of a Content item without issuing the Content.
 
 || Test case || Client || Server || Result || Details ||
+|| 20.1 ||  ||  ||  ||  ||
 
 == 21. Report firmware version ==
 
@@ -268,6 +303,7 @@ Note that actually interacting with the Content without downloading all of its r
   # *Report firmware version*: Initialize a session with a Service.  Verify that the Reading System's firmware version was sent to the Service.  (Note: this is a subset of test 5.1 Set Reading System attributes.)
 
 || Test case || Client || Server || Result || Details ||
+|| 21.1 ||  ||  ||  ||  ||
 
 == 22. Report download activity ==
 
@@ -309,6 +345,10 @@ A secondary risk is that unencrypted sessions may be snooped upon by an attacker
   # *Secure Content*: Retrieve Content resources over HTTPS.
 
 || Test case || Client || Server || Result || Details ||
+|| 25.1 ||  ||  ||  ||  ||
+|| 25.2 ||  ||  ||  ||  ||
+|| 25.3 ||  ||  ||  ||  ||
+|| 25.4 ||  ||  ||  ||  ||
 
 == 26. Localized, plain language error messages ==
 
@@ -319,6 +359,7 @@ A secondary risk is that unencrypted sessions may be snooped upon by an attacker
   # *Localized error messages*: Deliberately cause a fault (such as trying to get resources for a Content item that is not issued).  Ensure that the error rendered by the Reading System is localized to the User's language and is plainly explained.  (Note: This test should be repeated by causing the same fault, but with different localizations.)
 
 || Test case || Client || Server || Result || Details ||
+|| 26.1 ||  ||  ||  ||  ||
 
 = Expectations =
 
@@ -333,6 +374,7 @@ Sending audio from the Reading System to the Service was originally in scope, th
   # *Audio feedback*: Transmit audio as a response to a dynamic menu item that accepts it.  Verify that the audio was received by the Service.
 
 || Test case || Client || Server || Result || Details ||
+|| 27.1 ||  ||  ||  ||  ||
 
 == 28. Download tracking ==
 
@@ -341,6 +383,7 @@ Although reporting download activity is not part of the protocol, certain organi
   # *Track downloads*: Connect to a Service, then issue and download a Content item.  Verify that file downloads were logged by the Service Provider.
 
 || Test case || Client || Server || Result || Details ||
+|| 28.1 ||  ||  ||  ||  ||
 
 = Conclusion =
 
