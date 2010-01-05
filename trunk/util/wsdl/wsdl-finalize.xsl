@@ -21,7 +21,7 @@
 				<xsl:text>    &#10;</xsl:text>
 				<xsl:element name="operation" namespace="http://schemas.xmlsoap.org/wsdl/">
 					<xsl:attribute name="name" select="./@name"/>					
-					<soap:operation soapAction="" style="document"/>					
+					<soap:operation soapAction="/{./@name}" style="document"/>
 					<xsl:element name="input" namespace="http://schemas.xmlsoap.org/wsdl/">
 						<soap:body use="literal"/>
 					</xsl:element>					
