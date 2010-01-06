@@ -66,10 +66,12 @@ file "do-wsdl-10.wsdl".  In most cases these errors can be detected by
 validating "kxo.xsd" directly.  However it is possible that errors will
 only occur when kxo.xsd is validated in the context of do-wsdl-10.wsdl.
 
+{{{
 Line 63: InvalidRegex: Pattern value
 '([A-Za-z0-9-_:])+(\.([A-Za-z0-9-_:])+)*' is not a valid regular
 expression. The reported error was: ''-' is an invalid character range.
 Write '\-'.'.
+}}}
 
 markus: Matt fixed this in the local version. Need to report to PDTB2 folks.
  
