@@ -691,7 +691,9 @@
                         If a <xref linkend="term_readingSystem"/> has any items of <xref linkend="term_borrow"/>, it should call
                         <function><xref linkend="op_getContentList"/></function> with an <parameter>id</parameter> parameter of
                         <literal>expired</literal> to retrieve this list at least once in each <xref linkend="term_session"/>, and should
-                        <link linkend="term_return">return</link> the <xref linkend="term_content"/> items indicated.</para>
+                        <link linkend="term_return">return</link> the <xref linkend="term_content"/> items indicated.
+						<xref linkend="term_content"/> on the <literal>expired</literal> <type>contentList</type>
+						is still issued.</para>
                     
                     <note>
                         <para><xref linkend="term_serviceProvider"/>s should use the <literal>expired</literal>
