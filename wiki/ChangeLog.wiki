@@ -28,11 +28,11 @@ Changes to `do-types-10.xsd`:
 == Documentation ==
 
   * Added recommendation that menu state be retained for the duration of the session.
+  * Added note that says that audio notes are not supported at all.  (Previously it had only mentioned it in setting bookmarks.)
 
 == Pending ==
 
 These changes are due to be made before the release of the final version:
 
-  # A note to be made that audio notes are specifically not supported. (Action: kenny)
   # Record that @xml:lang is required on the label type and @dir is optional on label/text. (Action: Markus)
   # Modify the bookmark xsd to eliminate empty complex types. (Action: kenny)
