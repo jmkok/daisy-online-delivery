@@ -1450,65 +1450,55 @@
             <title>Dynamic Menus</title>
 
             <para> The DAISY Online Delivery protocol offers the ability for <xref
-                    linkend="term_service"/>s to send dynamic menus to compliant <xref
-                    linkend="term_readingSystem"/>s. <xref linkend="term_user"/>s can take advantage
-                of the functionality exposed by these menus to manually perform a wide variety of
-                operations, such as browsing the <xref linkend="term_service"/>'s catalog, taking
-                surveys, purchasing items from an online store and downloading service
-                announcements. </para>
+                    linkend="term_service"/>s to provide dynamic menus to compliant <xref
+                    linkend="term_readingSystem"/>s. <xref linkend="term_user"/>s can use
+                these menus to perform a wide variety of activities that may be offered by the
+				<xref linkend="term_service"/>, such as browsing the <xref linkend="term_service"/>'s catalog, answering
+                surveys, or purchasing items from an online store. </para>
 
-            <para> The following sections describe the basic principles that must be adhered to when
-                a <xref linkend="term_service"/> implements a dynamic menuing system. Refer to 
+            <para> These sections describe the basic principles of dynamic menu systems. Refer to 
                 <xref linkend="bib_dynamicMenusPrimer"/> for informative usage examples.</para>
 
 				<section xml:id="fundamentals_dynamic_menus_support" conformance="normative">
                 <title>Support</title>
+				
+				<para>To support dynamic menus, a <xref linkend="term_readingSystem"/> or <xref linkend="term_service"/> must
+				implement, in addition to the <link linkend="apiReferenceRequired">required
+				operations</link>, the <function><xref linkend="op_getQuestions"/></function> operation.</para>
             <para> To indicate that a <xref linkend="term_service"/> supports dynamic menus, the
                     <xref linkend="term_service"/> must include an <type>
                     <xref linkend="tp_operation"/>
-                </type> element with the value <literal>DYNAMIC_MENUS</literal> when responding to
-                a <xref linkend="term_readingSystem"/>'s invocation of the <function>
-                    <xref linkend="op_getServiceAttributes"/>
-                </function> operation. </para>
+                </type> element with the value <literal>DYNAMIC_MENUS</literal> in its
+				<type><xref linkend="tp_serviceAttributes"/></type>.</para>
 
+                <para>A <xref linkend="term_readingSystem"/> that supports dynamic menus must
+                    declare which <link linkend="tp_inputTypes">input types</link> it supports in its
+					<type><xref linkend="tp_readingSystemAttributes"/></type>. A <xref linkend="term_service"/> should not send any question which
+                    requires an input type not supported by the <xref linkend="term_readingSystem"
+                    />.</para>
 
             <para>
                 <xref linkend="term_service"/>s that support the <xref
                     linkend="fundamentals_content_selection_browse"/> must also support dynamic
                 menus to allow a <xref linkend="term_user"/> to select <xref linkend="term_content"
                 />. <xref linkend="term_service"/>s that only support the <xref
-                    linkend="fundamentals_content_selection_outofband"/> are not required to support
-                dynamic menus. </para>
-
-            <note>
-                <para>
-                    <xref linkend="term_service"/>s that only support the <xref
-                        linkend="fundamentals_content_selection_outofband"/> may still support
-                    dynamic menus for other user interaction purposes. </para>
-            </note>
-
-            <para>
-                <xref linkend="term_readingSystem"/>s should support dynamic menus for maximum
-                interoperability. </para>
-
-            </section>
+                    linkend="fundamentals_content_selection_outofband"/> may support
+                dynamic menus for other interaction purposes, but are not required to. </para>
+            
+			</section>
 
 
             <section xml:id="fundamentals_dynamic_menus_root" conformance="normative">
                 <title>Root Question</title>
 
-                <para> Every dynamic menu system must have a root question. The root question
-                    corresponds to a main menu in that it is the base starting point for rendering
-                    menu options to a <xref linkend="term_user"/>. </para>
+                <para>Every dynamic menu system must have a root question. The root question
+                    is the base starting menu. It has an <code>id</code> of <literal>default</literal>.</para>
 
-                <para> A <xref linkend="term_readingSystem"/> must use the reserved value
-                        <literal>default</literal> as the <type>
-                        <xref linkend="tp_userResponse"/>
-                    </type>
-                    <code>questionID</code> the first time that it invokes the <function>
-                        <xref linkend="op_getQuestions"/>
-                    </function> operation. The <literal>default</literal> value alerts the <xref
-                        linkend="term_service"/> that the root question is being requested. </para>
+                <para>The first call to <function><xref linkend="op_getQuestions"/></function> in a
+				<xref linkend="term_session"/> must be with a single
+				<type><xref linkend="tp_userResponse"/></type> whose <code>questionID</code>
+				is <literal>default</literal>, to retrieve the root question.
+				</para>
             </section>
 
 
@@ -1521,28 +1511,21 @@
 
                 <para> The <function>getQuestions</function> operation takes one parameter: the <type>
                         <xref linkend="tp_userResponses"/>
-                    </type> type. The <type>userResponses</type> type must contain the response to
-                    the last question(s) or have a <code>questionID</code> set to one of the three
+                    </type> type. The <type>userResponses</type> type either contains a response to
+                    a previous question(s) or has a <code>questionID</code> set to one of the three
                     reserved keywords defined in <xref
                         linkend="fundamentals_dynamic_menus_reservedID"/>. </para>
 
                 <para> A <xref linkend="term_user"/> navigates a menu system by repeatedly selecting
-                    answers to the questions returned from invocations of the <function>
-                        <xref linkend="op_getQuestions"/>
-                    </function> operation until one of the end points outlined in <xref
+                    answers to the questions returned from invocations of the
+					<function><xref linkend="op_getQuestions"/></function> operation until one of the end points outlined in <xref
                         linkend="fundamentals_dynamic_menus_endpoints"/>, is reached. </para>
 
                 <para> A <xref linkend="term_service"/> may send more than one question in response
                     to each call to <function>getQuestions</function>. A <xref
                         linkend="term_readingSystem"/> should collect the responses to each question
                     before invoking the <function>getQuestions</function> operation again and each
-                    response must be contained in a separate <type>userResponse</type> property. </para>
-
-                <note>
-                    <para> Except at menu end points, a <xref linkend="term_readingSystem"/> must
-                        invoke the <function>getQuestions</function> operation to get the next set
-                        of questions to display. </para>
-                </note>
+                    response must be contained in a separate <type>userResponse</type> element. </para>
 
             </section>
 
@@ -1559,11 +1542,10 @@
                     <listitem>
                         <para>
                             Multiple
-                            choice questions include a predefined set of options that a <xref
-                                linkend="term_user"/> must pick from to answer the question. A
-                            multiple choice question is represented by the <type>
+                            choice questions are a set of options to pick from. A
+                            multiple choice question is represented by a <type>
                                 <xref linkend="tp_multipleChoiceQuestion"/>
-                            </type> element of the <type>
+                            </type> child element of the <type>
                                 <xref linkend="tp_questions"/>
                             </type> type. </para>
                     </listitem>
@@ -1572,31 +1554,22 @@
 					<term>Input Questions</term>
                     <listitem>
                         <para>
-                            Input questions require
-                            the user to respond to the question with text and/or audio input. An
+                            Input questions allow
+                            the User to respond with text and/or audio input. An
                             input question is represented by the <type>
                                 <xref linkend="tp_inputQuestion"/>
                             </type> element of the <type>
                                 <xref linkend="tp_questions"/>
                             </type> type. </para>
 
-                        <note>
-                            <para> A <xref linkend="term_service"/> must specify if an input
-                                question requires a numeric, alphanumeric or audio-based response.
-                                The required response modality for an input question is specified in
-                                the <type><xref linkend="tp_inputTypes"/></type> element of the <type><xref
-                                    linkend="tp_inputQuestion"/></type> type. </para>
-                        </note>
+						<para> A <xref linkend="term_service"/> must specify if an input
+							question requires a numeric, alphanumeric or audio-based response in
+							the <type><xref linkend="tp_inputTypes"/></type> child element of the <type><xref
+								linkend="tp_inputQuestion"/></type> type. </para>
                     </listitem>
 					</varlistentry>
                 </variablelist>
 
-                <para>A <xref linkend="term_readingSystem"/> that supports dynamic menus must
-                    declare which input types it supports in the <type>
-                        <xref linkend="tp_readingSystemAttributes"/>
-                    </type>. A <xref linkend="term_service"/> should not send any question which
-                    requires an input type not supported by the <xref linkend="term_readingSystem"
-                    />.</para>
 
             </section>
 
@@ -1605,39 +1578,25 @@
             <section xml:id="fundamentals_dynamic_menus_endpoints" conformance="normative">
                 <title>End Points</title>
 
-                <para> To indicate to a <xref linkend="term_readingSystem"/> that the <xref
-                        linkend="term_user"/> has reached the end point of a menu sequence, a <xref
-                        linkend="term_service"/> must return a <type>
-                        <xref linkend="tp_questions"/>
-                    </type> type containing one of: </para>
+                <para>A response to a call of <function><xref linkend="op_getQuestions"/></function>
+				of a <type><xref linkend="tp_questions"/></type> element containing one of the following
+				as its child indicates an end point of the menu sequence:</para>
 
                 <itemizedlist>
                     <listitem>
-                        <para> a <type>
-                                <xref linkend="tp_label"/>
-                            </type>; or </para>
+                        <para> a <type><xref linkend="tp_label"/></type>, which can provide an informative or concluding statement for the <xref
+                        linkend="term_user"/>, such as confirmation of a purchase or thanks for
+                    completing a survey; or </para>
                     </listitem>
                     <listitem>
-                        <para> a <type>
-                                <xref linkend="tp_contentListRef"/>
-                            </type> containing the ID of a <type>
-                                <xref linkend="tp_contentList"/>
-                            </type>. </para>
+                        <para> a <type><xref linkend="tp_contentListRef"/></type> containing the ID of a <type><xref linkend="tp_contentList"/></type>, when
+                    the menu sequence has resulted in the generation of a list of Content items that
+                        <xref linkend="term_user"/> can then access. </para>
                     </listitem>
                 </itemizedlist>
 
-                <para> A <xref linkend="term_service"/> must send a <type>label</type> when it is
-                    providing an informative or concluding statement for the <xref
-                        linkend="term_user"/>, such as confirmation of a purchase or thanks for
-                    completing a survey. </para>
-
-                <para> A <xref linkend="term_service"/> must send a <type>contentListRef</type> when
-                    the menu sequence has resulted in the generation of a list of Content items that
-                        <xref linkend="term_user"/> can then access. </para>
-
                 <note>
-                    <para> A response containing an input or multiple choice question never
-                        represents an end point. </para>
+                    <para> A response containing an input or multiple choice question is not an end point. </para>
                 </note>
             </section>
 
@@ -1645,10 +1604,7 @@
             <section xml:id="fundamentals_dynamic_menus_reservedID" conformance="normative">
                 <title>Reserved IDs</title>
 
-                <para> There are three reserved values for use as the <code>questionID</code>
-                    attribute of a <type>
-                        <xref linkend="tp_userResponses"/>
-                    </type> element: </para>
+                <para> There are three reserved question identifier values: </para>
 
                 <variablelist>
 					<varlistentry>
@@ -1675,7 +1631,7 @@
                         <para>
                             Indicates that the <xref
                                 linkend="term_readingSystem"/> has requested to step back one menu
-                            sequence. </para>
+                            in the sequence. </para>
                     </listitem>
 					</varlistentry>
                 </variablelist>
