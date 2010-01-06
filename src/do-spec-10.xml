@@ -1367,18 +1367,24 @@
 
 
         <section xml:id="fundamentals_bookmarks">
-            <title>Bookmarks / Last Reading Position</title>
+            <title>Bookmarks</title>
 
             <para> The DAISY Online Delivery protocol uses the Portable Bookmarks and
                     Highlights grammar from <xref linkend="bib_z3986-2005"/> to record <xref
-                    linkend="term_user"/>s' bookmarks. This grammar can also be used by <xref
-                    linkend="term_readingSystem"/>s to record the last reading position for each
-                    <xref linkend="term_content"/> item. </para>
+                    linkend="term_user"/>s' bookmarks with the <function><xref linkend="op_setBookmarks"/></function>
+					operation. This operation can also be used by <xref
+                    linkend="term_readingSystem"/>s to record the last reading position for a
+                    <xref linkend="term_content"/> item. <xref linkend="term_readingSystem"/>s can
+					retrieve stored bookmarks with the <function><xref linkend="op_getBookmarks"/></function> operation.
+					<xref linkend="term_service"/>s can
+					also predefine bookmarks for the <xref linkend="term_user"/> to access.</para>
 
             <note>
                 <para>
                     <xref linkend="bib_z3986-2005-bkmk"/> constitutes the normative reference
-                    regarding the use and semantics of this type. </para>
+                    regarding the use and semantics of this type. However, audio notes are
+					<emphasis>not supported</emphasis> in the <function><xref linkend="op_setBookmarks"/></function>
+					and <function><xref linkend="op_getBookmarks"/></function> operations in this version of the protocol.</para>
             </note>
 
             <para> To indicate that a <xref linkend="term_service"/> supports the retrieval of
@@ -1410,38 +1416,9 @@
                     before resuming playback. </para>
             </note>
 
-            <para> Contrary to <xref linkend="bib_z3986-2005-bkmk"/>, this version of the DAISY
-                Online Delivery protocol does not allow audio recordings to be submitted to a <xref
-                    linkend="term_service"/> as part of the <function>
-                    <xref linkend="op_setBookmarks"/>
-                </function> operation. </para>
-
             <para> A <xref linkend="term_service"/> may support the retrieval of bookmarks or both
                 the setting and retrieval of bookmarks. A <xref linkend="term_readingSystem"/>
                 should support both operations for maximum interoperability. </para>
-
-            <note>
-                <title>Note on Z39-86.2005-BOOKMARKS</title>
-
-                <para>
-                    <xref linkend="bib_z3986-2005-bkmk"/> was developed exclusively to support
-                    bookmarks and highlights for <xref linkend="bib_z3986-2005"/> and its
-                    predecessor <xref linkend="bib_z3986-2002"/>. <xref linkend="term_readingSystem"
-                    />s employing this protocol, however, may attempt to make use of this grammar in
-                    more than just Z39.86 contexts. </para>
-
-                <para> This specification neither endorses or condemns this behavior. Until <xref
-                        linkend="bib_z3986-2005-bkmk"/> is revised to be more agnostic in terms of
-                    the content types it supports, the specification only notes that <xref
-                        linkend="term_service"/>s should be designed with the awareness that a <xref
-                        linkend="term_readingSystem"/> may post a <type><xref linkend="tp_bookmarkSet"/></type>
-                    with a content type other than ANSI/NISO Z39.86. </para>
-
-                <para> For example, a <xref linkend="term_readingSystem"/> may re-purpose this
-                    grammar to store bookmarks for <xref linkend="bib_d202"/> content by using the
-                        <code>ncxRef</code> value to point to a fragment in a DAISY 2.02 NCC
-                    document instead of a Z39.86 NCX document. </para>
-            </note>
 
         </section>
 
