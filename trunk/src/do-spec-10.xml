@@ -1964,14 +1964,17 @@
                 xlink:href="do-wsdl-10.wsdl">do-wsdl-10.wsdl</link> document constitute the abstract
             Web Service contract that all compliant <xref linkend="term_service"/>s must adhere
             to.</para>
-
-        <para>Service implementors must publish a concrete WSDL document at some URI. The <xref
-                linkend="bib_infoset"/> of the concrete WSDL document must be identical to the <link
-                xlink:href="do-wsdl-10.wsdl">do-wsdl-10.wsdl</link> document with the exception of the
-                WSDL <type>service</type> element, which defines the locally supported ports.</para>
-
-        <para>The abstract <link xlink:href="do-wsdl-10.wsdl">do-wsdl-10.wsdl</link> document may
-            be used as a template for creating the concrete document.</para>
+		
+		<para>The <xref linkend="term_serviceProvider"/> must publish a <abbrev>WSDL</abbrev> document
+		at some <abbrev>URI</abbrev>.  The <abbrev>WSDL</abbrev> document must import
+		<code>http://www.daisy.org/projects/daisy-online-delivery/do-wsdl-10.wsdl</code> into the namespace
+		<code>http://www.daisy.org/ns/daisy-online/</code>.
+		It must define a <code>service</code> with one <code>port</code>
+		bound to <code>DaisyOnlineService</code> in the <code>http://www.daisy.org/ns/daisy-online/</code> namespace.</para>
+		<example><title>An example published WSDL document</title>
+		<programlisting><xi:include href="./samples/example.wsdl" parse="text"/></programlisting>
+		</example>
+		
     </appendix>
 
     <appendix xml:id="acknowledgements" role="acknowledgements" conformance="informative">
