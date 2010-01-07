@@ -2,7 +2,7 @@
 
 = From the Trial Use Draft to Current =
 
-This is an aggregation of all the changes to the protocol made since the Draft for Trial Use (r566) was released 27 September 2009.  The current revision as of this writing is r740.
+This is an aggregation of all the changes to the protocol made since the Draft for Trial Use (r566) was released 27 September 2009.  The current revision as of this writing is r742.
 
 == API ==
 
@@ -19,7 +19,8 @@ Changes to `do-wsdl-10.wsdl`:
 Changes to `do-types-10.xsd`:
 
   * Moved `contentMetadata@returnBy` to `resources@returnBy`. This means the Reading System does not need to check getContentMetadata both before and after issuance, and that `@returnBy` is not displayed before issuance. Added note that the attribute may not change while the Content is issued.
-  * `label@xml:lang` is now required.  Added `label@dir` to indicate direction of text, optional.
+  * `label@xml:lang` is now required.  Added optional `label@dir` to indicate direction of text.
+  * Added optional `contentMetadata@lastModifiedDate`.  Changed the definition of `contentItem@lastModifiedDate` to remove reference to most recent resource.
   * Allowed unlimited `contentMetadata/metadata/narrator`s, not just one.
   * Allowed empty `readingSystemAttributes/config/supportedContentFormats`.
   * `serviceAttributes/supportedUplinkAudioCodecs/codec` now refers to MIME types, not "canonical identifier strings".
