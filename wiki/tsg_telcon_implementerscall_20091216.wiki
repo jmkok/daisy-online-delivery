@@ -156,11 +156,27 @@ getBlob("contentID","BOOKMARK"). This would actually enable:
 ==== test Implementation update ====
 
   * What has been implemented?
+   * We are implementing client functions.
+   * Dynamic menu is partially supported. It is available from player's menu.
+   * Streaming/Download contents.
+
   * What will be implemented by feb 15, 2010?
+   * Remaining dynamic menu functions (inputQuestions)
+   * Loaning book management. (Issue/Return contents)
+   * Out-of-band contents selection.
+
   * PDTB2 support in scope or out of scope?
+   * In scope. But it is depending on availability at service provider side.
+Function may not be implemented by Feb 15.
+
   * Will you be contributing to the Test Implementation compliance report?   
+  * Yes
+
   * Challenges?
+
   * learnings?
+   * Compatibility improvements for various server applications. When we connect to new service provider, we always need some adjustments depending on which technology each organization is using such as WCF.
+   * Generating code from normative WSDL without manual adjustment.
 
 === !PratSam ===
 
