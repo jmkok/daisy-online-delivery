@@ -2,7 +2,7 @@
 
 = From the Trial Use Draft to Current =
 
-This is an aggregation of all the changes to the protocol made since the Draft for Trial Use (r566) was released 27 September 2009.  The current revision as of this writing is r727.
+This is an aggregation of all the changes to the protocol made since the Draft for Trial Use (r566) was released 27 September 2009.  The current revision as of this writing is r733.
 
 == API ==
 
@@ -19,6 +19,7 @@ Changes to `do-wsdl-10.wsdl`:
 Changes to `do-types-10.xsd`:
 
   * Moved `contentMetadata@returnBy` to `resources@returnBy`. This means the Reading System does not need to check getContentMetadata both before and after issuance, and that `@returnBy` is not displayed before issuance. Added note that the attribute may not change while the Content is issued.
+  * `label@xml:lang` is now required.  Added `label@dir` to indicate direction of text, optional.
   * Changed `label/audio@rangeBegin`, `@rangeEnd` and `@size` from unbounded `integer`s to 64-bit `long`s.
   * Changed `contentMetadata/metadata/size` from an unbounded `integer` to a 64-bit `long`.
   * Changed `resource@size` from an unbounded `integer` to a 64-bit `long`.
@@ -34,5 +35,4 @@ Changes to `do-types-10.xsd`:
 
 These changes are due to be made before the release of the final version:
 
-  # Record that @xml:lang is required on the label type and @dir is optional on label/text. (Action: Markus)
   # Modify the bookmark xsd to eliminate empty complex types. (Action: kenny)
