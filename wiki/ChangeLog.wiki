@@ -2,7 +2,7 @@
 
 = From the Trial Use Draft to Current =
 
-This is an aggregation of all the changes to the protocol made since the Draft for Trial Use (r566) was released 27 September 2009.  The current revision as of this writing is r736.
+This is an aggregation of all the changes to the protocol made since the Draft for Trial Use (r566) was released 27 September 2009.  The current revision as of this writing is r738.
 
 == API ==
 
@@ -29,6 +29,7 @@ Changes to `do-types-10.xsd`:
 
 == Documentation ==
 
+  * Changed WSDL publishing requirements in Appendix A to have the published WSDL import the provided WSDL, rather than be a modified copy.
   * Added recommendation that menu state be retained for the duration of the session.
   * Added note that says that audio notes are not supported at all.  (Previously it had only mentioned it in setting bookmarks.)
 
