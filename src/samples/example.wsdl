@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://www.daisy.org/ns/daisy-online/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             targetNamespace="http://www.daisy.org/ns/daisy-online/">
+
+  <import namespace="http://www.daisy.org/ns/daisy-online/"
+          location="http://www.daisy.org/projects/daisy-online-delivery/do-wsdl-10.wsdl"/>
+  
+  <service name="example">
+    <documentation>
+      Example DAISY Online Service
+    </documentation>
+
+    <port name="examplePort" binding="tns:DaisyOnlineService">
+      <soap:address location="http://example.org/daisy-online/"/>
+    </port>
+  </service>
+</definitions>
