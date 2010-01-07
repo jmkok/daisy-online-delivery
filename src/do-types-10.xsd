@@ -414,13 +414,38 @@
 					</xs:complexType>
 				</xs:element>
 			</xs:sequence>
-			<xs:attribute ref="xml:lang">
+			<xs:attribute ref="xml:lang" use="required">
 				<xs:annotation>
 					<xs:documentation>
 						<db:para role="desc">The language of the label.</db:para>
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
+			<xs:attribute name="dir" use="optional">
+				<xs:annotation>
+					<xs:documentation>
+						<db:para>The direction of the text.</db:para>
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="ltr">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para>Left-to-right.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="rtl">
+							<xs:annotation>
+								<xs:documentation>
+									<db:para>Right-to-left.</db:para>
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>						
 		</xs:complexType>
 	</xs:element>
 
