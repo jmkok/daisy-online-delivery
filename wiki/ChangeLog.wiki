@@ -2,7 +2,7 @@
 
 = From the Trial Use Draft to Current =
 
-This is an aggregation of all the changes to the protocol made since the Draft for Trial Use (r566) was released 27 September 2009.  The current revision as of this writing is r733.
+This is an aggregation of all the changes to the protocol made since the Draft for Trial Use (r566) was released 27 September 2009.  The current revision as of this writing is r736.
 
 == API ==
 
@@ -20,11 +20,12 @@ Changes to `do-types-10.xsd`:
 
   * Moved `contentMetadata@returnBy` to `resources@returnBy`. This means the Reading System does not need to check getContentMetadata both before and after issuance, and that `@returnBy` is not displayed before issuance. Added note that the attribute may not change while the Content is issued.
   * `label@xml:lang` is now required.  Added `label@dir` to indicate direction of text, optional.
+  * Allowed unlimited `contentMetadata/metadata/narrator`s, not just one.
+  * Allowed empty `readingSystemAttributes/config/supportedContentFormats`.
   * Changed `label/audio@rangeBegin`, `@rangeEnd` and `@size` from unbounded `integer`s to 64-bit `long`s.
   * Changed `contentMetadata/metadata/size` from an unbounded `integer` to a 64-bit `long`.
   * Changed `resource@size` from an unbounded `integer` to a 64-bit `long`.
   * Changed `contentList@totalItems`, `firstItem` and `lastItem` from unbounded `integer`s to 32-bit `int`s.
-  * Allowed unlimited `contentMetadata/metadata/narrator`s, not just one.
 
 == Documentation ==
 
