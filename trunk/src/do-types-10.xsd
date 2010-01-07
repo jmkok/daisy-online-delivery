@@ -110,15 +110,20 @@
 									<xs:documentation>
 										<db:para role="desc">Specifies which Content formats the
 											Reading System supports.</db:para>
-										<db:para>The content of this element follows the convention
-											of the <db:xref linkend="bib_dublinCore"/>
-											<db:literal>Format</db:literal> element.</db:para>
 									</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
 									<xs:sequence>
 										<xs:element name="contentFormat" type="xs:string"
-											minOccurs="1" maxOccurs="unbounded"/>
+											minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>
+													<db:para>The content of this element follows the convention
+													of the <db:xref linkend="bib_dublinCore"/>
+													<db:literal>Format</db:literal> element.</db:para>
+												</xs:documentation>
+											</xs:annotation>
+										</xs:element>
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
