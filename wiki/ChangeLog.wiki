@@ -2,7 +2,7 @@
 
 = From the Trial Use Draft to Current =
 
-This is an aggregation of all the changes to the protocol made since the Draft for Trial Use (r566) was released 27 September 2009.  The current revision as of this writing is r738.
+This is an aggregation of all the changes to the protocol made since the Draft for Trial Use (r566) was released 27 September 2009.  The current revision as of this writing is r740.
 
 == API ==
 
@@ -22,6 +22,7 @@ Changes to `do-types-10.xsd`:
   * `label@xml:lang` is now required.  Added `label@dir` to indicate direction of text, optional.
   * Allowed unlimited `contentMetadata/metadata/narrator`s, not just one.
   * Allowed empty `readingSystemAttributes/config/supportedContentFormats`.
+  * `serviceAttributes/supportedUplinkAudioCodecs/codec` now refers to MIME types, not "canonical identifier strings".
   * Changed `label/audio@rangeBegin`, `@rangeEnd` and `@size` from unbounded `integer`s to 64-bit `long`s.
   * Changed `contentMetadata/metadata/size` from an unbounded `integer` to a 64-bit `long`.
   * Changed `resource@size` from an unbounded `integer` to a 64-bit `long`.
