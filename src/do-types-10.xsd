@@ -713,6 +713,15 @@
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
+			
+			<xs:attribute name="lastModifiedDate" type="xs:dateTime" use="optional">
+				<xs:annotation>
+					<xs:documentation>
+						<db:para>The last modified time of the Content.</db:para>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+
 		</xs:complexType>
 	</xs:element>
 
@@ -838,9 +847,7 @@
 						<xs:attribute name="lastModifiedDate" type="xs:dateTime" use="optional">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para>The last modified time of this contentItem. This is
-										the last modified time of the most recently modified resource
-										in the Content's <db:type><db:xref linkend="tp_resources"/></db:type> list.</db:para>
+									<db:para>The last modified time of the Content.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
