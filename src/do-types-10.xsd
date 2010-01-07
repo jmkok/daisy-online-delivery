@@ -1312,8 +1312,7 @@
 								maxOccurs="unbounded">
 								<xs:annotation>
 									<xs:documentation>
-										<db:para role="desc">The codec's canonical identifier string
-											as dictated by its specification.</db:para>
+										<db:para role="desc">The codec's <db:xref linkend="bib_mime"/> type.</db:para>
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
