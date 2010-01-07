@@ -1409,20 +1409,6 @@
 		</xs:complexType>
 	</xs:element>
 
-	<!--
-	<xs:complexType name="itemList">
-		<xs:annotation>
-			<xs:documentation>
-				<db:para>A generic list of string items, functionally equal to a string
-					array.</db:para>
-			</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="item" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:sequence>
-	</xs:complexType>
-	-->
-
 	<xs:element name="item" type="xs:string"/>
 
 	<xs:element name="read">
