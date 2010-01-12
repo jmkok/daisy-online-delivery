@@ -1,0 +1,76 @@
+Present: 
+Regrets: 
+scribe: Kenny
+
+== Action Item Summary ==
+ 
+=== New Action Items ===
+
+=== Previous Unfinished Action Items ===
+
+  * Kenny, Nick and Simon to verify that the relative values specified for soap action in the wsdl (in the svn) eliminates the particular issue in the Microsoft platform, and close Issue 190.  
+  * Geoff ensure that @xml:lang and @dir are both defined for Label, and close Issue 93. {done} 
+  * George talk to pdtb2 folks about modifying their version of kxo.xsd.
+  * After the pdtb2 folks have fixed their version of kxo.xsd, kenny to change xsds to their canonical uris, and close issue 128 and Issue 144.   
+  * Geoff change "canonical identifier..." in the supportedUplinkAudioCodecs portion of serviceAttributes to mime type in the documentation, and close issue 177. {done}
+  * Geoff implement the importing normative wsdl into a published concrete wsdl suggestion, and close issue 189. {done} 
+  * Geoff to add @lastModifiedDate to resources, and close Issue 192.  
+  * Geoff to allow empty supportedContentFormats and supportedMimeTypes elements, add the verbiage to the documentation suggesting the implication, and close Issue 193.  
+  * kenny close Issue 197. {done}
+  * kenny contact Nick to find out if RNIB will support the test cases defined in the Systems Testing document. {done}
+  * All to review the Systems Testing document and determine if the test cases are sufficient for their organisation. We will visit the sufficiency of the test cases and what organisations will participate in these tests on the next telecon.   
+  * Kenny modify the bookmark xsd to eliminate empty complex types. Issue 188 should be kept open until the group has reviewed the xsd.   
+  * Geoff and Kenny start work on the Test suite. (In progress)  
+  * Geoff and Kenny start work on the Systems Testing document (in progress) 
+  * Markus fix the &apos; entity problem. (outstanding; bug in IE.) (Markus will fix this when ready to publish.)
+
+=== Group Action Items ===
+
+==== Action items for the public review period commencing February 15, 2010 ==== 
+
+  * All issues should be resolved or formally deferred.
+  * Any updates to the spec need to be completed and proof read. 
+  * The primer should be proof read.
+  * The Test suite, The Systems testing document and the Test Implementations Conformance report should be made available. 
+  * Create an area where implementers can post information about the additional features that they have implemented on top of the spec, and that the community at large may be interested in.  
+
+==== Action items for formal recommendation to the Board on April 5, 2010 ====  
+
+   * Deliver Final version of the spec.  
+   * Provide Information on comments Received, and how they were addressed.  
+   * Make available the Test Implementations Conformance Report.
+   * make available the systems testing  document. 
+   * Make a formal Recommendation to the board for approval.  
+
+== Agenda/Minutes ==
+
+=== Welcome PDTB2 folks ===
+
+  # PDTB2 support in the Daisy Online spec.
+   # Modifying kxo.xsd
+
+=== Should the ID data type be changed to the String or NMTOKEN data type in the xsds ===
+
+=== Spec update progress ===
+
+  # documentation including the wsdl and xsd files.
+  # systems testing document.
+  # conformance report.
+
+=== Test implementation update ===
+
+Where are we at?
+
+=== Timelines going forward ===
+
+=== Test suite Progress ===
+
+==== [http://code.google.com/p/daisy-online-delivery/wiki/tsg_test_suite Test Suite] ====
+
+==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolSystemTestingTestCases Systems Testing] ====
+
+geoff: two things I wannt to find out:
+  # Are the test cases in the systems testing document sufficient for the organisations?
+  # What organisations will participate in these tests?
+
+== [http://code.google.com/p/daisy-online-delivery/wiki/ChangeLog Change Log] ==
