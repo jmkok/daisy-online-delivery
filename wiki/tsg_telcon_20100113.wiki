@@ -47,14 +47,14 @@ scribe: Kenny
 === Welcome PDTB2 folks ===
 
   # PDTB2 support in the Daisy Online spec.
-   # Modifying kxo.xsd
+  # Modifying kxo.xsd
 
 === Should the ID data type be changed to the String or NMTOKEN data type in the xsds ===
 
 === Spec update progress ===
 
   # documentation including the wsdl and xsd files.
-  # systems testing document.
+  # systems testing and test suite documents.
   # conformance report.
 
 === Test implementation update ===
