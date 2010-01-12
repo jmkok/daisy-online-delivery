@@ -16,8 +16,8 @@ scribe: Kenny
   * Geoff implement the importing normative wsdl into a published concrete wsdl suggestion, and close issue 189. {done} 
   * Geoff to add @lastModifiedDate to resources, and close Issue 192.  
   * Geoff to allow empty supportedContentFormats and supportedMimeTypes elements, add the verbiage to the documentation suggesting the implication, and close Issue 193.  
-  * kenny close Issue 197.
-  * kenny contact Nick to find out if RNIB will support the test cases defined in the Systems Testing document.
+  * kenny close Issue 197. {done}
+  * kenny contact Nick to find out if RNIB will support the test cases defined in the Systems Testing document. {done}
   * All to review the Systems Testing document and determine if the test cases are sufficient for their organisation. We will visit the sufficiency of the test cases and what organisations will participate in these tests on the next telecon.   
 
 === Previous Unfinished Action Items ===
