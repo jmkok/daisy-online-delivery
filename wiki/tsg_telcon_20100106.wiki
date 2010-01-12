@@ -9,11 +9,11 @@ scribe: Kenny
 === New Action Items ===
 
   * Kenny, Nick and Simon to verify that the relative values specified for soap action in the wsdl (in the svn) eliminates the particular issue in the Microsoft platform, and close Issue 190.  
-  * Geoff ensure that @xml:lang and @dir are both defined for Label, and close Issue 93.
+  * Geoff ensure that @xml:lang and @dir are both defined for Label, and close Issue 93. {done} 
   * George talk to pdtb2 folks about modifying their version of kxo.xsd.
   * After the pdtb2 folks have fixed their version of kxo.xsd, kenny to change xsds to their canonical uris, and close issue 128 and Issue 144.   
-  * Geoff change "canonical identifier..." in the supportedUplinkAudioCodecs portion of serviceAttributes to mime type in the documentation, and close issue 177.
-  * Geoff implement the importing normative wsdl into a published concrete wsdl suggestion, and close issue 189. 
+  * Geoff change "canonical identifier..." in the supportedUplinkAudioCodecs portion of serviceAttributes to mime type in the documentation, and close issue 177. {done}
+  * Geoff implement the importing normative wsdl into a published concrete wsdl suggestion, and close issue 189. {done} 
   * Geoff to add @lastModifiedDate to resources, and close Issue 192.  
   * Geoff to allow empty supportedContentFormats and supportedMimeTypes elements, add the verbiage to the documentation suggesting the implication, and close Issue 193.  
   * kenny close Issue 197.
