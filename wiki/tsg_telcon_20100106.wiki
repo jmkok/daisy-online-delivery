@@ -1,6 +1,6 @@
-Present: 
+Present: George, Simon, Geoff, Johan, Hiro, Markus and Kenny   
 
-Regrets: 
+Regrets: Nick 
 
 scribe: Kenny
 
@@ -8,29 +8,21 @@ scribe: Kenny
  
 === New Action Items ===
 
+  * Kenny, Nick and Simon to verify that the relative values specified for soap action in the wsdl (in the svn) eliminates the particular issue in the Microsoft platform, and close Issue 190.  
+  * Geoff ensure that @xml:lang and @dir are both defined for Label, and close Issue 93.
+  * George talk to pdtb2 folks about modifying their version of kxo.xsd.
+  * After the pdtb2 folks have fixed their version of kxo.xsd, kenny to change xsds to their canonical uris, and close issue 128 and 144.   
+  * Geoff change "canonical identifier..." in the supportedUplinkAudioCodecs portion of serviceAttributes to mime type in the documentation, and close issue 177.
+  * Geoff implement the importing normative wsdl into a published concrete wsdl suggestion, and close issue 189. 
+  * Geoff to add @lastModifiedDate to resources, and close Issue 192.  
+  * Geoff to allow empty supportedContentFormats and supportedMimeTypes elements, add the verbiage to the documentation suggesting the implication, and close Issue 193.  
+  * kenny close Issue 197.
+  * kenny contact Nick to find out if RNIB will support the test cases defined in the Systems Testing document.
+  * All to review the Systems Testing document and determine if the test cases are sufficient for their organisation. We will visit the sufficiency of the test cases and what organisations will participate in these tests on the next telecon.   
+
 === Previous Unfinished Action Items ===
 
-  * Markus ensure that @xml:lang is required on the label type and @dir is optional on label/text in the svn, and close Issue 93. 
-  * Markus close Issue 142. *Done*
-  * Geoff make a note in the spec that the fault types defined in the wsdl must be child elements of the details element of the soap:fault element, and close Issue 184. *Done*
-  * Geoff close Issue 186. *Done*
-  * Geoff close Issue 187. *Done*
   * Kenny modify the bookmark xsd to eliminate empty complex types. Issue 188 should be kept open until the group has reviewed the xsd.   
-  * Kenny add relative values as per proposal 2 to the wsdl. *Done* Issue 190 should be kept open until the compatibility with Microsoft tools is confirmed.    
-  * Geoff mark Issue 191 as started in the tracker. *Done*
-  * Geoff change invalidOperation to invalidParameter in Section 4.4.4.3, and close Issue 194.   *Done*
-  * Geoff record in the spec that the getContentResources operation returns an invalidParameter fault for content that has not been issued, and close Issue 195. *Done*
-  * Kenny check in the implementer's call for test suite volunteers. *Done*
-  * Kenny add a recommendation in the spec documentation pertaining to state information being held for the duration of a session and close Issue 39. *Done*   
-  * Kenny close Issue 101. *Done*
-  * Kenny close Issue 103. *Done*
-  * Geoff record in the Systems Testing document that the requirement for Diagnostic Information has not been met. *Done*
-  * Kenny to make a note in the documentation and the test suite that audio notes are specifically not supported. An http based put scheme may be introduced in a future version but not in this version, and close Issue 104. *Done* 
-  * Geoff to modify the verbiage of the paragraph after the second Note in Section 4.4.2 of the documentation and close Issue 157. *Done* 
-  * Geoff to add the normative assertion that Services must not change the value of the returnBy attrribute once the getContentResources operation has been called once to the documentation and the test suite, and close Issue 165. *Done*  
-  * Geoff remove the paragraph on TTS in Section 6 (Type Reference) under Narrator of the spec, and close Issue 173.  *Done*
-  * Geoff to clarify the verbiage for segmented contentList(s) and close Issue 174.   *Done*
-  * Kenny to document that returnContent should never return false in the documentation (*Done*) and test suite, and close Issue 181.
   * Geoff and Kenny start work on the Test suite. (In progress)  
   * Geoff and Kenny start work on the Systems Testing document (in progress) 
   * Markus fix the &apos; entity problem. (outstanding; bug in IE.) (Markus will fix this when ready to publish.)
@@ -87,11 +79,15 @@ are the first character, so the above should be:
 markus: The PDTB folks have been informed. We want to reference kxo.xsd in its canonical
 location in the final release, but depend on this to be fixed there first.
 
+Resolution: Keep this issue open until the PDTB2 folks resolve the issue in their version of kxo.xsd. George will have a word with the PDTb2 folks to affect this change.
+
 ==== Issue 144 ====
 
 Markus: xml.xsd, dc.xsd, kxo.xsd are all examples of schemas that have canonical
 URIs associated with them. Once development is done, we should revert to
 using those URIs instead of local copies.
+
+Resolution: Keep this issue open until the pdtb2 folks have fixed their version of kxo.xsd (i.e. Issue 128) 
 
 ==== Issue 177 ====
 
@@ -103,7 +99,23 @@ http://www.daisy.org/projects/daisy-online-delivery/drafts/20090910/do-spec-2009
 
 This is problematic, since many specs don't dictate a "canonical identifier
 string".  Perhaps MIME type would be better, or else dc:Format.
- 
+
+jelle: Should we enumerate mime types? Mime types if not enumerated may be quite open.
+
+geoff: Services can already say what they support.
+
+jelle: Not enumerating mime types may cause interoperability issues. 
+
+Kenny: Although a more full-proof idea, we don't have a lot of time left before the public review period. Could we perhaps look at enumerating mime types in the next version of the spec?
+
+Geoff: I suggest we keep mime types open as is the case right now because they are going to be defined by the Service.
+
+Markus: Can a Service require a particular mime type?
+
+Geoff: There is a default wav mime type. userResponse.data specifies this value.            
+
+Resolution: Geoff to change "canonical identifier" to mime type in the documentation. 
+
  ==== Issue 189 ====
 
 Geoff: Appendix A states, "Service implementors must publish a concrete WSDL
@@ -137,6 +149,9 @@ location="http://www.daisy.org/projects/daisy-online-delivery/do-wsdl-10.wsdl"/>
   </service>
 </definitions>
 }}}
+
+Resolution: Geoff's suggestion is the most well-engineered solution available, so it should be adopted. Geoff to make the necessary change to the spec.  
+
 ==== Issue 192 ====
 
 geoff: We currently have the lastModifiedDate for a Content item displayed only in
@@ -156,13 +171,17 @@ Content.  However, there is the edge case where a resource has been removed, so 
 though the Content has been updated, the lastModifiedDate is no later than it was
 before the resource was deleted, when it should reflect the last change to the Content.
 
+Resolution: @lastModifiedDate to be added to resources. Geoff to make the change.
+ 
 ==== Issue 193 ====
 
 Geoff: How does a Reading System notify a Service that it supports all Content
 formats and MIME types?  For instance, say it's a proxy downloader that
 doesn't actually know what formats are supported on the playback device,
 and the Service shouldn't filter by format.
- 
+
+Resolution: Allow empty supportedContentFormats and supportedMimeTypes. If these elements are empty, they will imply that the Reading System is not saying anything about the supported content formats or mime types, and thus can accept any value. 
+
 ==== Issue 197 ====
 
 Kenny on behalf of Jelle: If the getBookmark and setBookmark operations were to be replaced by 
@@ -170,6 +189,8 @@ getBlob and setBlob operations, and instead of posting and retrieving a
 bookmarkset type, a Reading System could post any string or perhaps a 
 binary blob, would this be a more expedient approach to handling bookmarks 
 in the spec?      
+
+Resolution: This is out of scope for this version of the spec.
  
 === Test suite Progress ===
 
@@ -177,4 +198,18 @@ in the spec?
 
 ==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolSystemTestingTestCases Systems Testing] ====
 
+geoff: two things I wannt to find out:
+  # Are the test cases in the systems testing document sufficient for the organisations?
+  # What organisations will participate in these tests?
+
+Simon: I will look at the Systems Testing document this week. 
+
+Kenny: We will participate in Humanware and Plextor's endeavours to run these test cases from our Service's perspective. I will also look at both the documents this week.  
+
+Johan: We will make our Service Available for these tests. Our Service is already available. 
+
+Geoff: Most of the Services are already available.
+  
 == [http://code.google.com/p/daisy-online-delivery/wiki/ChangeLog Change Log] progress ==
+
+Next telecon at 1900 UTC on 13 January 2010.  
