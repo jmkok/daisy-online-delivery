@@ -14,8 +14,8 @@ scribe: Kenny
   * After the pdtb2 folks have fixed their version of kxo.xsd, kenny to change xsds to their canonical uris, and close issue 128 and Issue 144.   
   * Geoff change "canonical identifier..." in the supportedUplinkAudioCodecs portion of serviceAttributes to mime type in the documentation, and close issue 177. {done}
   * Geoff implement the importing normative wsdl into a published concrete wsdl suggestion, and close issue 189. {done} 
-  * Geoff to add @lastModifiedDate to resources, and close Issue 192.  
-  * Geoff to allow empty supportedContentFormats and supportedMimeTypes elements, add the verbiage to the documentation suggesting the implication, and close Issue 193.  
+  * Geoff to add @lastModifiedDate to resources, and close Issue 192. *Done*
+  * Geoff to allow empty supportedContentFormats and supportedMimeTypes elements, add the verbiage to the documentation suggesting the implication, and close Issue 193. *Done* 
   * kenny close Issue 197. {done}
   * kenny contact Nick to find out if RNIB will support the test cases defined in the Systems Testing document. {done}
   * All to review the Systems Testing document and determine if the test cases are sufficient for their organisation. We will visit the sufficiency of the test cases and what organisations will participate in these tests on the next telecon.   
