@@ -40,3 +40,5 @@ Changes to `do-types-10.xsd`:
 These changes are due to be made before the release of the final version:
 
   # Modify the bookmark xsd to eliminate empty complex types. (Action: kenny)
+  # Add @lastModifiedDate to resources. (Action: Geoff)
+  # Allow empty readingSystemAttributes/config/supportedMimetypes.
