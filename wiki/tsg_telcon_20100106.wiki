@@ -210,6 +210,6 @@ Johan: We will make our Service Available for these tests. Our Service is alread
 
 Geoff: Most of the Services are already available.
   
-== [http://code.google.com/p/daisy-online-delivery/wiki/ChangeLog Change Log progress] ==
+== [http://code.google.com/p/daisy-online-delivery/wiki/ChangeLog Change Log] ==
 
 Next telecon at 1900 UTC on 13 January 2010.  
