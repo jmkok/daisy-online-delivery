@@ -19,13 +19,16 @@ It is not thread-safe.
 import httplib
 
 # Uncomment one of the following.
-service = 'rnib'
+service = 'cnib'
+## service = 'rnib'
 ## service = 'vails'
 ## service = 'solrad'
 ## service = 'pratsam'
 
 # Set the credentials for logging on.
-if service == 'rnib' or service == 'solrad':
+if service == 'cnib':
+    creds = ('test', 'bogos')
+elif service == 'rnib' or service == 'solrad':
     creds = ('daisy', 'ysiad')
 elif service == 'vails':
     creds = ('test', 'test')
@@ -165,7 +168,9 @@ returnCon = """\
 #------------------------ end of SOAP message strings ------------------------
 
 # Set up an HTTP or HTTPS connection.
-if service == 'rnib':
+if service == 'cnib':
+    c = httplib.HTTPSConnection('76.10.166.135')
+elif service == 'rnib':
     c = httplib.HTTPSConnection('innovation.rnib.org.uk')
 elif service == 'vails':
     c = httplib.HTTPConnection('test.i-access.visionaustralia.org')
@@ -179,7 +184,9 @@ soapheader = {'Content-Type': 'text/xml; charset=utf-8'}
 
 def sendMessage(body):
     """Send a SOAP message to the service."""
-    if service == 'rnib':
+    if service == 'cnib':
+        c.request('POST', '/do/', body, soapheader)
+    elif service == 'rnib':
         c.request('POST', '/daisyonlinetest/daisyonlineservice.svc', body, soapheader)
     elif service == 'vails':
         c.request('POST', '/daisyonline/service.svc', body, soapheader)
@@ -310,3 +317,4 @@ if __name__ == '__main__':
     for id in ['new', 'issued', 'expired']:
         getContentList(id)  # firstItem and lastItem default to 0 and -1.
     logOff()
+    

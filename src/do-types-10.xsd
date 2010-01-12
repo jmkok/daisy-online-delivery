@@ -714,14 +714,6 @@
 				</xs:annotation>
 			</xs:attribute>
 			
-			<xs:attribute name="lastModifiedDate" type="xs:dateTime" use="optional">
-				<xs:annotation>
-					<xs:documentation>
-						<db:para>The last modified time of the Content.</db:para>
-					</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-
 		</xs:complexType>
 	</xs:element>
 
@@ -796,6 +788,13 @@
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
+			<xs:attribute name="lastModifiedDate" type="xs:dateTime" use="optional">
+				<xs:annotation>
+					<xs:documentation>
+						<db:para>The last modified time of the Content item.</db:para>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 
@@ -835,7 +834,7 @@
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">The <db:xref
-											linkend="term_contentIdentifier"/> for this Content item.</db:para>
+											linkend="term_contentIdentifier"/> of this Content item.</db:para>
 									<db:para>This value must be identical to the value of
 										the <db:literal>dc:identifier</db:literal> element in the <db:type><db:xref
 											linkend="tp_contentMetadata"/></db:type> of this Content
