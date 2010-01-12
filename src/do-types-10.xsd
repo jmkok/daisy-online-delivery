@@ -109,7 +109,10 @@
 								<xs:annotation>
 									<xs:documentation>
 										<db:para role="desc">Specifies which Content formats the
-											Reading System supports.</db:para>
+											Reading System supports.  A Service may use this information to
+											choose which formats to offer to the Reading System as
+											Content.  This specification does not specify the behavior of
+											the Service if this list is empty.</db:para>
 									</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
@@ -167,13 +170,15 @@
 										<db:para>This applies to
 											both Content and Service messages
 												(<db:type><db:xref linkend="tp_label"/></db:type>s).</db:para>
-										<db:para>A Service may use this information to choose which content
+										<db:para>A Service may use this information to choose which resource
 											types to offer to the Reading System as labels and
-											Content.</db:para>
-										<db:para>Content types for which support is implied by the
+											Content.  Content types for which support is implied by the
 											Content formats in <db:type><db:xref
 												linkend="tp_supportedContentFormats"/></db:type> need not be
-											included here.</db:para>
+											included here.  This specification does not specify the behavior of
+											the Service if both this and the <db:type>supportedContentFormats</db:type>
+											lists are empty.
+											</db:para>
 									</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
