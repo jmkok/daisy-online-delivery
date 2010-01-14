@@ -2,7 +2,7 @@
 
 = From the Trial Use Draft to Current =
 
-This is an aggregation of all the changes to the protocol made since the Draft for Trial Use (r566) was released 27 September 2009.  The current revision as of this writing is r754.
+This is an aggregation of all the changes to the protocol made since the Draft for Trial Use (r566) was released 27 September 2009.  The current revision as of this writing is r764.
 
 == API ==
 
@@ -10,9 +10,12 @@ Changes to `do-wsdl-10.wsdl`:
 
   * All `soap:operation`s now have the `soapAction` attribute set to `"/operationName"`.
   * Added note that `returnContent` must never return `false`, only `true` or a fault.
-  * Changed the `firstItem` and `lastItem` arguments to `getContentList` from unbounded `integer`s to 32-bit `int`s.
   * Added the `invalidOperation` fault to the signatures of `logOff` and `getContentMetadata`.
   * Calling `getKeyExchangeObject` with unauthorized keys in the `keyRing` results in an `invalidParameter` fault, not `invalidOperation`.
+  * Datatype changes:
+    * `getContentList/firstItem` changed from `xs:integer` to `xs:int`.
+    * `getContentList/id` changed from `xs:ID` to `xs:NMTOKEN`.
+    * `getContentList/lastItem` changed from `xs:integer` to `xs:int`.
 
 == Types ==
 
@@ -24,10 +27,24 @@ Changes to `do-types-10.xsd`:
   * Allowed unlimited `contentMetadata/metadata/narrator`s, not just one.
   * Allowed empty `readingSystemAttributes/config/supportedContentFormats`.
   * `serviceAttributes/supportedUplinkAudioCodecs/codec` now refers to MIME types, not "canonical identifier strings".
-  * Changed `label/audio@rangeBegin`, `@rangeEnd` and `@size` from unbounded `integer`s to 64-bit `long`s.
-  * Changed `contentMetadata/metadata/size` from an unbounded `integer` to a 64-bit `long`.
-  * Changed `resource@size` from an unbounded `integer` to a 64-bit `long`.
-  * Changed `contentList@totalItems`, `firstItem` and `lastItem` from unbounded `integer`s to 32-bit `int`s.
+  * Datatype changes:
+    * `announcements/announcements/id` changed from `xs:ID` to `xs:NMTOKEN`.
+    * `contentList@firstItem` changed from `xs:integer` to `xs:int`.
+    * `contentList@id` changed from `xs:ID` to `xs:NMTOKEN`.
+    * `contentList@lastItem` changed from `xs:integer` to `xs:int`.
+    * `contentList@totalItems` changed from `xs:integer` to `xs:int`.
+    * `contentList/contentItem/id` changed from `xs:ID` to `xs:string`.
+    * `contentMetadata/metadata/size` changed from `xs:integer` to `xs:long`.
+    * `inputQuestion@id` changed from `xs:ID` to `xs:NMTOKEN`.
+    * `label/audio@rangeBegin` changed from `xs:integer` to `xs:long`.
+    * `label/audio@rangeEnd` changed from `xs:integer` to `xs:long`.
+    * `label/audio@size` changed from `xs:integer` to `xs:long`.
+    * `multipleChoiceQuestion@id` changed from `xs:ID` to `xs:NMTOKEN`.
+    * `multipleChoiceQuestion/choices/choice@id` changed from `xs:ID` to `xs:NMTOKEN`.
+    * `questions/contentListRef` changed from `xs:ID` to `xs:NMTOKEN`.
+    * `resource@size` changed from `xs:integer` to `xs:long`.
+    * `serviceAttributes/service@id` changed from `xs:string` to `xs:NMTOKEN`.
+    * `serviceAttributes/serviceProvider@id` changed from `xs:string` to `xs:NMTOKEN`.
 
 == Documentation ==
 
