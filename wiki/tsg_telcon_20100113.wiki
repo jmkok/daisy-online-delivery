@@ -8,6 +8,13 @@ scribe: Kenny
  
 === New Action Items ===
 
+  * Neale provide sample content with the public/private key pair by 22 January.
+  * Geoff, Johan, Simon, Hiro and Kenny to build PDTB2 support in their test implementations by Feb 15 using the sample content provided by Neale.
+  * Kenny ask Nick about support for PDTB2 in his test implementation.    
+  * James post to the PDTB2 list proposing Ole's suggestion, and asking for any other issues with the spec.
+  * James and Neale fix the kxo.xsd issue in the PDTB2 spec by 5 Feb.
+  * Geoff change xs:id to xs:nmTOKEN for the getContentList operation xml serialisation definition in the types section of the wsdl file.
+     
 === Previous Unfinished Action Items ===
 
   * Kenny, Nick and Simon to verify that the relative values specified for soap action in the wsdl (in the svn) eliminates the particular issue in the Microsoft platform, and close Issue 190.  
@@ -48,12 +55,81 @@ scribe: Kenny
 
 === Welcome PDTB2 folks ===
 
-  # PDTB2 support in the Daisy Online spec.
+==== # PDTB2 support in the Daisy Online spec ==== 
 
+George: We want to have at least two Daisy Online test implementations with PDTB2 support.
 
-  # Modifying kxo.xsd
+Geoff: We need to answer the question whether the getKeyExchangeObject operation is required in the spec.
+
+Neale: We have an expansive implementation of the PDTB2 spec in NLS.
+
+Kenny: When the PDTB2 spec was designed, were web services considered as a distribution mechanism for the key exchange object? I remember reading in the spec that web services were one of the distribution mechanisms envisaged. Is my understanding correct?
+
+James: Yes. We looked at what such a web service could look like.
+
+James: In terms of the way we currently distribute the key exchange object in RFB&D, our clients log on to our E-Commerce site, choose the model of the Reading System being used by specifying the serial number of their Reading System, and our servers then generate the key exchange object, offering it as a downloadable file. This file then has to be manually downloaded and transfered on to the Reading system by a client.       
+
+Kenny: My understanding of the PDTb2 spec is that a public and private key pair is used to secure the transmission of the key exchange object. The key exchange object contains the key to unlock the authorisation object. The authorisation object contains the key to unlock the actual Daisy file set. We do not have a mechanism in the Daisy Online spec to authorise Reading Systems (i.e. A Reading System cannot pass its public key to the Service for securing the transmission of the key exchange object). The authorisation of a Reading System has to happen through an out-of-band mechanism. This deals with the Rogue Reading System scenario, as a Service has to trust a reading System out-of-band before the key exchange object and the actual daisy file set with the authorisation object is transfered. 
+
+George: The exchange of the Reading System's public key with NLS is out-of-band with your Service too, James?
+
+James: Currently, we get the public keys for the Reading Systems directly from the manufacturers. Ideally, we would like a Web Service to transfer these public keys, but this is out of scope for now.
+
+James: Does the Working group require some sample and keys?
+
+Geoff: Yes.
+
+Neale: Send us a public/private key pair. We will encrypt some public content and send it across.
+
+Kenny: If we were to send you a public/private key pair, how long would it take you to give us some encrypted content?
+
+Neale: I need to find out what kind of content we can lend without copyright implications.
+
+George: You could pick up some Daisy content from the Daisy Consortium website. This would eliminate the copyright issue.
+
+Kenny: Would it be possible then for you to generate the public and private key pair too along with encrypting the sample content, Neale? I think this may be the most expedient approach.
+
+Neale: (graciously agrees to generate the public/private key pair, encrypt the sample content with it, and give us the lot in a week's time.)
+
+(Thank you Neale.)   
+     
+Kenny: Who intends to build pdtb2 support in their test implementation using this sample content from Neale?
+
+(Geoff, Johan, Hiro, Simon and kenny will all endeavour to build this support in their test implementations before Feb 15)    
+
+==== Modifying kxo.xsd ====
+
+James: We currently have the xso.xsd schema like other schemas inline in the spec. Ole suggested that we move all the schemas out of the spec into separate files, and reference them from the spec. We will do this, make the change, and record the change in the errata.
+
+Neale: Michael from NLS has pointed out a few additional things that need fixing in the PDTB2 spec.
+
+James: I will post to the PDTB2 list proposing that Ole's suggestion be implementted, and that group members come forth with any issues that they would like fixed with the spec.
+
+Kenny: We need kxo.xsd fixed in the PDTB2 spec before Feb 15 to meet our timelines.
+
+Geoff: If kxo.xsd is not fixed in the PDTB2 spec, we cannot close Issue 144 that requires schemas to be refered to using their canonical identifiers.
+
+Kenny: James and Neale, would you be able to fix the issue with kxo.xsd by the first week of February?        
+
+James and Neale: Yes.
 
 === Should the ID data type be changed to the String or NMTOKEN data type in the xsds ===
+
+Simon: Should we change all instances of xs:id in the xsds and wsdl to nmTOKEN?
+
+Geoff: I think the IDs used in the Question type may be a good candidate for this change.
+
+Kenny: We spotted a case sensitivity issue with the nmTOKEN type when consumed by svcutil. Did it work for you Simon?
+
+Simon: No it did not. When I got the case right, svcutil created the construct as a String, which is the same as changing xs:nmTOKEN to xs:string.
+
+Kenny: This issue with svcutil and xs:id only happens with the getContentList operation definition in the types section of the wsdl file, right? 
+
+Simon: Yes.
+
+Kenny: Given that svcutil only has an issue with this instance of the xs:id type declaration, should we change just this instance to xs:nmTOKEN?
+
+Resolution: Only change the instance of xs:id in the getContentList operation xml serialisation definition to xs:nmTOKEN. Leave all other instances as is.
 
 === Spec update progress ===
 
