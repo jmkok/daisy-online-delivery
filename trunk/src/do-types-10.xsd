@@ -314,7 +314,7 @@
 						<xs:sequence>
 							<xs:element ref="label" minOccurs="1" maxOccurs="1"/>
 						</xs:sequence>
-						<xs:attribute name="id" type="xs:ID" use="required">
+						<xs:attribute name="id" type="xs:NMTOKEN" use="required">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para>The identifier of this announcement. This identifier is
@@ -835,7 +835,7 @@
 								</xs:annotation>
 							</xs:element>
 						</xs:sequence>
-						<xs:attribute name="id" type="xs:ID" use="required">
+						<xs:attribute name="id" type="xs:string" use="required">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">The <db:xref
@@ -892,7 +892,7 @@
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="id" type="xs:ID" use="required">
+			<xs:attribute name="id" type="xs:NMTOKEN" use="required">
 				<xs:annotation>
 					<xs:documentation>
 						<db:para role="desc">The identifier of the <db:type>contentList</db:type>.</db:para>
@@ -969,7 +969,7 @@
 				</xs:element>
 				<xs:element ref="label" minOccurs="1" maxOccurs="1"/>
 			</xs:sequence>
-			<xs:attribute name="id" type="xs:ID" use="required"/>
+			<xs:attribute name="id" type="xs:NMTOKEN" use="required"/>
 		</xs:complexType>
 	</xs:element>
 
@@ -1005,7 +1005,7 @@
 					<xs:element ref="multipleChoiceQuestion"/>
 					<xs:element ref="inputQuestion"/>
 				</xs:choice>
-				<xs:element name="contentListRef" type="xs:ID">
+				<xs:element name="contentListRef" type="xs:NMTOKEN">
 					<xs:annotation>
 						<xs:documentation>
 							<db:para>The identifier of a <db:type><db:xref linkend="tp_contentList"/></db:type>.</db:para>
@@ -1040,14 +1040,14 @@
 									<xs:sequence>
 										<xs:element ref="label" minOccurs="1" maxOccurs="1"/>
 									</xs:sequence>
-									<xs:attribute name="id" type="xs:ID" use="required"/>
+									<xs:attribute name="id" type="xs:NMTOKEN" use="required"/>
 								</xs:complexType>
 							</xs:element>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
 			</xs:sequence>
-			<xs:attribute name="id" type="xs:ID" use="required"/>
+			<xs:attribute name="id" type="xs:NMTOKEN" use="required"/>
 			<xs:attribute name="allowMultipleSelections" type="xs:boolean" use="optional"
 				default="false">
 				<xs:annotation>
@@ -1188,7 +1188,7 @@
 								</xs:annotation>
 							</xs:element>
 						</xs:sequence>
-						<xs:attribute name="id" type="xs:string" use="required">
+						<xs:attribute name="id" type="xs:NMTOKEN" use="required">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">The identifier of the Service
@@ -1227,7 +1227,7 @@
 
 							</xs:element>
 						</xs:sequence>
-						<xs:attribute name="id" type="xs:string" use="required">
+						<xs:attribute name="id" type="xs:NMTOKEN" use="required">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para>The identifier of the Service.</db:para>

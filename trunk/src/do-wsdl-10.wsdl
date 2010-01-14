@@ -265,7 +265,7 @@
 			<xs:element name="getContentList">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element minOccurs="1" maxOccurs="1" name="id" type="xs:ID">
+						<xs:element minOccurs="1" maxOccurs="1" name="id" type="xs:NMTOKEN">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">The identifier for the content list to
@@ -542,7 +542,7 @@
 						</xs:element>
 
 						<xs:element minOccurs="1" maxOccurs="1" name="requestedKeyName"
-							type="xs:string">
+							type="xs:string"> <!-- Key names are strings, from Schema for XML Signatures -->
 							<xs:annotation>
 								<xs:documentation>The identifier of the requested
 									key.</xs:documentation>
