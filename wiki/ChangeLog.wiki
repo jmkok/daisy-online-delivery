@@ -40,3 +40,4 @@ Changes to `do-types-10.xsd`:
 These changes are due to be made before the release of the final version:
 
   # Modify the bookmark xsd to eliminate empty complex types. (Action: kenny)
+  # Change xs:id to xs:nmTOKEN for the getContentList operation xml serialisation definition in the types section of the wsdl file. (Action: Geoff) 
