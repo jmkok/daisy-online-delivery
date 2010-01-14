@@ -1,6 +1,6 @@
-Present: 
+Present: George, James, Neale, Geoff, Simon, Hiro, Johan and Kenny.  
 
-Regrets: Jelle 
+Regrets: Jelle, Markus and Nick. 
 
 scribe: Kenny
 
@@ -49,6 +49,8 @@ scribe: Kenny
 === Welcome PDTB2 folks ===
 
   # PDTB2 support in the Daisy Online spec.
+
+
   # Modifying kxo.xsd
 
 === Should the ID data type be changed to the String or NMTOKEN data type in the xsds ===
