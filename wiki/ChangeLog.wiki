@@ -46,6 +46,12 @@ Changes to `do-types-10.xsd`:
     * `serviceAttributes/service@id` changed from `xs:string` to `xs:NMTOKEN`.
     * `serviceAttributes/serviceProvider@id` changed from `xs:string` to `xs:NMTOKEN`.
 
+== Bookmarks ==
+
+Changes to `bookmark-2005-1.xsd`  
+
+  * Modified the bookmark xsd to eliminate empty complex types. 
+
 == Documentation ==
 
   * Changed WSDL publishing requirements in Appendix A to have the published WSDL import the provided WSDL, rather than be a modified copy.
@@ -55,5 +61,3 @@ Changes to `do-types-10.xsd`:
 == Pending ==
 
 These changes are due to be made before the release of the final version:
-
-  # Modify the bookmark xsd to eliminate empty complex types. (Action: kenny)
