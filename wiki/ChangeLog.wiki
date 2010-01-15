@@ -48,7 +48,7 @@ Changes to `do-types-10.xsd`:
 
 == Bookmarks ==
 
-Changes to `bookmark-2005-1.xsd`  
+Changes to `bookmark-2005-1.xsd`:  
 
   * Modified the bookmark xsd to eliminate empty complex types. 
 
