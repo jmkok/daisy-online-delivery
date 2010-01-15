@@ -50,7 +50,13 @@ Changes to `do-types-10.xsd`:
 
 Changes to `bookmark-2005-1.xsd`:  
 
-  * Modified the bookmark xsd to eliminate empty complex types. 
+  * Modified the bookmark xsd to eliminate empty complex types in the following element definitions:
+   * uid
+   * timeOffset
+   * charOffset
+   * ncxRef
+   * text
+ 
 
 == Documentation ==
 
