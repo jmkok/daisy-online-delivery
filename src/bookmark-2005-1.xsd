@@ -62,13 +62,12 @@
         </xs:element>
         
         
-        <xs:element name="uid">
+        <xs:element name="uid" type="xs:string">
                 <xs:annotation>
                         <xs:documentation>
                                 <db:para>A globally unique identifier for the book.</db:para>
                         </xs:documentation>
                 </xs:annotation>
-                <xs:complexType mixed="true"/>
         </xs:element>
         
         
@@ -142,7 +141,7 @@
         </xs:element>
         
         
-        <xs:element name="timeOffset">
+        <xs:element name="timeOffset" type="xs:string">
                 <xs:annotation>
                         <xs:documentation>
                                 <db:para>
@@ -152,11 +151,9 @@
                                 </db:para>
                         </xs:documentation>
                 </xs:annotation>
-                <xs:complexType mixed="true"/>
         </xs:element>
         
-        
-        <xs:element name="charOffset">
+                <xs:element name="charOffset" type="xs:long">
                 <xs:annotation>
                         <xs:documentation>
                                 <db:para>
@@ -166,11 +163,9 @@
                                 </db:para>
                         </xs:documentation>
                 </xs:annotation>
-                <xs:complexType mixed="true"/>
         </xs:element>
-        
-        
-        <xs:element name="ncxRef">
+                
+        <xs:element name="ncxRef" type="anyURI">
                 <xs:annotation>
                         <xs:documentation>
                                 <db:para>
@@ -181,11 +176,9 @@
                                 </db:para>
                         </xs:documentation>
                 </xs:annotation>
-                <xs:complexType mixed="true"/>
         </xs:element>
         
-        
-        <xs:element name="URI" type="xs:anyURI">
+                <xs:element name="URI" type="xs:anyURI">
                 <xs:annotation>
                         <xs:documentation>
                                 <db:para>pointer to id of &lt;par&gt; or &lt;seq&gt; in SMIL that contains the bookmark.</db:para>
@@ -194,13 +187,12 @@
         </xs:element>
         
         
-        <xs:element name="text">
+        <xs:element name="text" type="xs:string">
                 <xs:annotation>
                         <xs:documentation>
                                 <db:para>Text of title or note.</db:para>
                         </xs:documentation>
                 </xs:annotation>
-                <xs:complexType mixed="true"/>
         </xs:element>
         
         
