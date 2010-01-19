@@ -1,0 +1,11 @@
+= Intro =
+
+This page serves the following two purposes:
+  # Lists key concepts of the PDTB2 spec to aid the understanding of Daisy Online implementers wishing to provide support for pdtb2 in their implementations.
+  # Describes the Daisy Online support for PDTB2.
+
+== Key Concepts of the PDTB2 spec ==
+
+== Daisy Online support for PDTB2 ==
+
+     
