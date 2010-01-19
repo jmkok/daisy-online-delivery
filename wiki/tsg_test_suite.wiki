@@ -94,7 +94,7 @@ At a minimum, a conformant Reading System or Service must pass all tests in cate
 
   # provide one or more out-of-band mechanisms for the selection/assignment of Content.
   # declare support for the Out-of-band content selection method in the supportedContentSelectionMethods element of its serviceAttributes.     
-   # expose the selected Content to the Reading System through the getContentList operation when the operation is invoked with the id parameter set to the value new. 
+  # expose the selected Content to the Reading System through the getContentList operation when the operation is invoked with the id parameter set to the value new. 
  
 == 5. Browse selection model ==
 
