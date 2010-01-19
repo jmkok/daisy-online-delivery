@@ -165,7 +165,7 @@
                 </xs:annotation>
         </xs:element>
                 
-        <xs:element name="ncxRef" type="anyURI">
+        <xs:element name="ncxRef" type="xs:anyURI">
                 <xs:annotation>
                         <xs:documentation>
                                 <db:para>
