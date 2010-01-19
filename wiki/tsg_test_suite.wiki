@@ -17,13 +17,13 @@ At a minimum, a conformant Reading System or Service must pass all tests in cate
   # All required operations are implemented as specified in the normative WSDL.
   # The Reading System complies with WS-I Basic Profile 1.1.
   # The session initialization sequence is followed to commence a session with a Service.
-    # Verify that the first operation called in a session is `logOn`.
-    # After a successful log on, verify the the second operation called in a session is `getServiceAttributes`.
-    # After a successful `getServiceAttributes`, verify that the third operation called in a session is `setReadingSystemAttributes`.
+   # Verify that the first operation called in a session is `logOn`.
+   # After a successful log on, verify the the second operation called in a session is `getServiceAttributes`.
+   # After a successful `getServiceAttributes`, verify that the third operation called in a session is `setReadingSystemAttributes`.
   # The Reading System supports one of the service models.
-    # The Reading System passes all tests in either category 2 or category 3.
+   # The Reading System passes all tests in either category 2 or category 3.
   # The Reading System supports one of the content selection models.
-    # The Reading System passes all tests in either category 4 or category 5.
+   # The Reading System passes all tests in either category 4 or category 5.
 
 == 2. Lending service model ==
 
@@ -44,8 +44,8 @@ At a minimum, a conformant Reading System or Service must pass all tests in cate
 == 4. Out-of-band selection model ==
 
   # Support the invoking of the getContentList operation with the "new" id parameter.
-  # Support the invoking of the getContentList operation with the "issued" id parameter if supported by the Service.
-  # Support the invoking of the following operations in the sequence listed below for each content item in the retrieved Content List:
+  # Support the invoking of the getContentList operation with the "issued" id parameter. (kj: this is listed as a may in the spec. Need to decide if this assertion should be met.)   
+# Support the invoking of the following operations in the sequence listed below for each content item in the retrieved Content List:
    # getContentMetadata     
    # issueContent
    # getContentResources
