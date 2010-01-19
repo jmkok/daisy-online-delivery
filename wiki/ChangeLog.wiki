@@ -2,7 +2,7 @@
 
 = From the Trial Use Draft to Current =
 
-This is an aggregation of all the changes to the protocol made since the Draft for Trial Use (r566) was released 27 September 2009.  The current revision as of this writing is r764.
+This is an aggregation of all the changes to the protocol made since the Draft for Trial Use (r566) was released 27 September 2009.  The current revision as of this writing is r778.
 
 == API ==
 
@@ -46,17 +46,14 @@ Changes to `do-types-10.xsd`:
     * `serviceAttributes/service@id` changed from `xs:string` to `xs:NMTOKEN`.
     * `serviceAttributes/serviceProvider@id` changed from `xs:string` to `xs:NMTOKEN`.
 
-== Bookmarks ==
-
 Changes to `bookmark-2005-1.xsd`:  
 
   * Modified the bookmark xsd to eliminate empty complex types in the following element definitions:
-   * uid
-   * timeOffset
-   * charOffset
-   * ncxRef
-   * text
- 
+    * `uid`
+    * `timeOffset`
+    * `charOffset`
+    * `ncxRef`
+    * `text`
 
 == Documentation ==
 
