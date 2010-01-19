@@ -44,8 +44,8 @@ At a minimum, a conformant Reading System or Service must pass all tests in cate
 == 4. Out-of-band selection model ==
 
   # Support the invoking of the getContentList operation with the "new" id parameter.
-  # Support the invoking of the getContentList operation with the "issued" id parameter. (kj: this is listed as a may in the spec. Need to decide if this assertion should be met.)   
-# Support the invoking of the following operations in the sequence listed below for each content item in the retrieved Content List:
+  # Support the invoking of the getContentList operation with the "issued" id parameter.(kj: this is listed as a may in the spec. Need to decide if this assertion should be met for compliance.)   
+  # Support the invoking of the following operations in the sequence listed below for each content item in the retrieved Content List:
    # getContentMetadata     
    # issueContent
    # getContentResources
