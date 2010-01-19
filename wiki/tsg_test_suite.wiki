@@ -43,8 +43,22 @@ At a minimum, a conformant Reading System or Service must pass all tests in cate
 
 == 4. Out-of-band selection model ==
 
+  # Support the invoking of the getContentList operation with the "new" id parameter.
+  # Support the invoking of the getContentList operation with the "issued" id parameter if supported by the Service.
+  # Support the invoking of the following operations in the sequence listed below for each content item in the retrieved Content List:
+   # getContentMetadata     
+   # issueContent
+   # getContentResources
+ 
 == 5. Browse selection model ==
 
+  # Support the Dynamic Menus protocol feature.
+  # Support the getContentList operation.
+  # Support the invoking of the following operations in the sequence listed below for each content item in the retrieved Content List:
+   # getContentMetadata     
+   # issueContent
+   # getContentResources
+ 
 == 6. Updates and instalments ==
 
 == 7. Rights management ==
@@ -78,8 +92,15 @@ At a minimum, a conformant Reading System or Service must pass all tests in cate
 
 == 4. Out-of-band selection model ==
 
+  # provide one or more out-of-band mechanisms for the selection/assignment of Content.
+  # declare support for the Out-of-band content selection method in the supportedContentSelectionMethods element of its serviceAttributes.     
+   # expose the selected Content to the Reading System through the getContentList operation when the operation is invoked with the id parameter set to the value new. 
+ 
 == 5. Browse selection model ==
 
+  # provide support for the Dynamic Menus protocol feature. 
+  # declare support for the Browse Content Selection Method in the supportedContentSelectionMethods element of its serviceAttributes.     
+ 
 == 6. Updates and instalments ==
 
 == 7. Rights management ==
