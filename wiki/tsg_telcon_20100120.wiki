@@ -79,5 +79,3 @@ geoff: two things I wannt to find out:
   # What organisations will participate in these tests?
 
 == [http://code.google.com/p/daisy-online-delivery/wiki/ChangeLog Change Log] ==
-
-== A helper page for PDTB2 implementers ==   
