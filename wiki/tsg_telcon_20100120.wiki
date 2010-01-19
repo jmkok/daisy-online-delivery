@@ -55,6 +55,8 @@ and Section 4.3.1 (Out-of-band selection method) reads:
 "...declares support for the Out-of-band Content Selection Method in the supportedContentSelectionMethods element of its serviceAttributes..." 
 
 Although cosmetic, I propose we make the verbiage consistent across both sections.
+
+=== Timelines going forward ===
   
 === Spec update progress ===
 
@@ -65,8 +67,6 @@ Although cosmetic, I propose we make the verbiage consistent across both section
 === Test implementation update ===
 
 Where are we at?
-
-=== Timelines going forward ===
 
 === Test suite Progress ===
 
