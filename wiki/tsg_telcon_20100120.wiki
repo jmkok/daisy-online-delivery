@@ -1,0 +1,84 @@
+Present: 
+
+Regrets: 
+
+scribe: Kenny
+
+== Action Item Summary ==
+ 
+=== New Action Items ===
+
+=== Previous Unfinished Action Items ===
+
+  * Neale provide sample content with the public/private key pair by 22 January. *done* (kenny to check this content into the svn)
+  * Geoff, Johan, Simon, Hiro and Kenny to build PDTB2 support in their test implementations by Feb 15 using the sample content provided by Neale.
+  * Kenny ask Nick about support for PDTB2 in his test implementation. *done*    
+  * James post to the PDTB2 list proposing Ole's suggestion, and asking for any other issues with the spec.
+  * James and Neale fix the kxo.xsd issue in the PDTB2 spec by 5 Feb.
+  * After the pdtb2 folks have fixed their version of kxo.xsd, kenny to change xsds to their canonical uris, and close issue 128 and Issue 144.   
+  * All review the bookmark xsd and confirm whether the empty complex type problem has been resolved. If yes, close Issue 188.
+  * Kenny, Nick and Simon to verify that the relative values specified for soap action in the wsdl (in the svn) eliminates the particular issue in the Microsoft platform, and close Issue 190.  
+  * All to review the Systems Testing document and determine if the test cases are sufficient for their organisation. We will visit the sufficiency of the test cases and what organisations will participate in these tests on the next telecon.   
+  * Geoff and Kenny start work on the Test suite. (In progress)  
+  * Geoff and Kenny start work on the Systems Testing document (in progress) 
+  * Markus fix the &apos; entity problem. (outstanding; bug in IE.) (Markus will fix this when ready to publish.)
+
+=== Group Action Items ===
+
+==== Action items for the public review period commencing February 15, 2010 ==== 
+
+  * All issues should be resolved or formally deferred.
+  * Any updates to the spec need to be completed and proof read. 
+  * The primer should be proof read.
+  * The Test suite, The Systems testing document and the Test Implementations Conformance report should be made available. 
+  * Create an area where implementers can post information about the additional features that they have implemented on top of the spec, and that the community at large may be interested in.  
+
+==== Action items for formal recommendation to the Board on April 5, 2010 ====  
+
+   * Deliver Final version of the spec.  
+   * Provide Information on comments Received, and how they were addressed.  
+   * Make available the Test Implementations Conformance Report.
+   * make available the systems testing  document. 
+   * Make a formal Recommendation to the board for approval.  
+
+== Agenda/Minutes ==
+
+=== Suggestion for an addition of a note to Section 4.7.6 ===
+
+Nick: Should we add a note to section 4.7.6 explaining that support for the three reserved question ids should be declared in serviceAttributes - supportsServerSideBack, supportsSearch and supportedOptionalOperations | operation | DYNAMIC_MENUS
+
+	=== Suggestion for a cosmetic change to section 4.3.2 ====
+
+Kenny: Section 4.3.2 (Browse content selection method) reads:
+"...declares support for the Browse Content Selection Method in the supportedContentSelectionMethods service attribute..."
+
+and Section 4.3.1 (Out-of-band selection method) reads:
+"...declares support for the Out-of-band Content Selection Method in the supportedContentSelectionMethods element of its serviceAttributes..." 
+
+Although cosmetic, I propose we make the verbiage consistent across both sections.
+  
+=== Spec update progress ===
+
+  # documentation including the wsdl and xsd files.
+  # systems testing and test suite documents.
+  # conformance report.
+
+=== Test implementation update ===
+
+Where are we at?
+
+=== Timelines going forward ===
+
+=== Test suite Progress ===
+
+==== [http://code.google.com/p/daisy-online-delivery/wiki/tsg_test_suite Test Suite] ====
+
+==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolSystemTestingTestCases Systems Testing] ====
+
+geoff: two things I wannt to find out:
+  # Are the test cases in the systems testing document sufficient for the organisations?
+  # What organisations will participate in these tests?
+
+== [http://code.google.com/p/daisy-online-delivery/wiki/ChangeLog Change Log] ==
+
+== A helper page for PDTB2 implementers ==   
