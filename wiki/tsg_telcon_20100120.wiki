@@ -83,7 +83,7 @@ Simon:
 
   </questions>
 
-- Same thing in "5. Taking a Survey (with audio responses)"
+   * Same thing in "5. Taking a Survey (with audio responses)"
 
     <inputQuestion id="q4-1">
 
