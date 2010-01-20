@@ -56,6 +56,53 @@ and Section 4.3.1 (Out-of-band selection method) reads:
 
 Although cosmetic, I propose we make the verbiage consistent across both sections.
 
+=== Proposed changes to the Dynamic Menus Primer ===
+
+Simon:
+   * At the end of "2. Retrieving the Main Menu", change XSD ID to NMTOKEN in "These IDs are defined in WSDL as the XSD ID type (see XSD Datatypes), and ..." 
+
+   * In section "3. Performing a Search of the Service&apos;s Content Collection", input type should be TEXT_ALPHANUMERIC
+
+  <questions xmlns="http://www.daisy.org/ns/daisy-online/">
+
+      <inputQuestion id="q2-1">
+
+          <inputTypes>
+
+              <input type="TEXT_NUMERIC"/>
+
+          </inputTypes>
+
+          <label xml:lang="en">
+
+              <text>Please enter the name of the Author.</text>
+
+          </label>
+
+      </inputQuestion>
+
+  </questions>
+
+- Same thing in "5. Taking a Survey (with audio responses)"
+
+    <inputQuestion id="q4-1">
+
+        <inputTypes>
+
+            <input type="TEXT_NUMERIC"/>
+
+        </inputTypes>
+
+        <label xml:lang="en">
+
+            <text>What is your favourite feature in the Service?</text>
+
+        </label>
+
+    </inputQuestion>
+
+   * Fix &apos;
+
 === Timelines going forward ===
   
 === Spec update progress ===
