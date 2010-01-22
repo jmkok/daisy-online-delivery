@@ -96,7 +96,7 @@ Simon:
    * At the end of "2. Retrieving the Main Menu", change XSD ID to NMTOKEN in "These IDs are defined in WSDL as the XSD ID type (see XSD Datatypes), and ..." 
 
    * In section "3. Performing a Search of the Service&apos;s Content Collection", input type should be TEXT_ALPHANUMERIC
-
+{{{
   <questions xmlns="http://www.daisy.org/ns/daisy-online/">
 
       <inputQuestion id="q2-1">
@@ -116,9 +116,9 @@ Simon:
       </inputQuestion>
 
   </questions>
-
+}}}
    * Same thing in "5. Taking a Survey (with audio responses)"
-
+{{{
     <inputQuestion id="q4-1">
 
         <inputTypes>
@@ -134,8 +134,8 @@ Simon:
         </label>
 
     </inputQuestion>
-
-   * Fix &apos;
+}}}
+   * Fix `&apos;`
 
 (The group decided that all the pertinent changes recorded in the change log needed to be reflected in the Dynamic Menus Primer. Kenny to reflect all these changes in the Primer. The &apos; entity problem will be fixed as a part of Markus's action item to fix this problem across the spec.)    
 
