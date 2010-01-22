@@ -379,6 +379,25 @@ Although reporting download activity is not part of the protocol, certain organi
 || Test case || Client || Server || Result || Details ||
 || 28.1 ||  ||  ||  ||  ||
 
+== 29. Service announcements ==
+
+The ability to retrieve short announcements for such things as service interruptions and overdue reminders was dropped from the formal requirements, but is still part of the specification.
+
+  # *Get announcements*: Connect to a Service, then get a list of announcements using the `getServiceAnnouncements` operation and render them.
+  # *Mark as read*: Call the `markAnnouncementsAsRead` operation with the IDs of active announcements.  Call the `getServiceAnnouncements` operation and ensure that the Service has removed them from the list.
+
+|| Test case || Client || Server || Result || Details ||
+|| 29.1 ||  ||  ||  ||  ||
+|| 29.2 ||  ||  ||  ||  ||
+
+== 30. Internationalization ==
+
+This expands on requirement 26, "Localized, plain language error messages".
+
+  # *Localized service*: Connect to a multilingual Service.  Specify in `readingSystemAttributes/config/preferredUILanguage` one of the languages supported by the Service.  Check that all `label`s have the same language in their `xml:lang" attributes and that the text and audio are in that language.
+
+|| 30.1 ||  ||  ||  ||  ||
+
 = Conclusion =
 
 Of the 26 in-scope requirements, X were fulfilled and Y were partially fulfilled.  Z requirements were left unfulfilled, largely due to time constraints.
