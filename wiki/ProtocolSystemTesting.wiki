@@ -394,8 +394,9 @@ The ability to retrieve short announcements for such things as service interrupt
 
 This expands on requirement 26, "Localized, plain language error messages".
 
-  # *Localized service*: Connect to a multilingual Service.  Specify in `readingSystemAttributes/config/preferredUILanguage` one of the languages supported by the Service.  Check that all `label`s have the same language in their `xml:lang" attributes and that the text and audio are in that language.
+  # *Localized service*: Connect to a multilingual Service.  Specify in `readingSystemAttributes/config/preferredUILanguage` one of the languages supported by the Service.  Perform a session.  Check that all `label`s have the same language in their `xml:lang" attributes and that the text and audio are in that language.
 
+|| Test case || Client || Server || Result || Details ||
 || 30.1 ||  ||  ||  ||  ||
 
 = Conclusion =
