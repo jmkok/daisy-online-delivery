@@ -1,6 +1,6 @@
-Present: 
+Present: Simon, Geoff, Nick, Markus, Kenny, Jelle and Johan.   
 
-Regrets: george 
+Regrets: George and Dominik. 
 
 scribe: Kenny
 
@@ -8,15 +8,27 @@ scribe: Kenny
  
 === New Action Items ===
 
+  * Kenny to remove the Sample PDTB2 content from the SVN, and pass an alternative url to the group members. *done*
+  * Kenny to verify sample pdtb2 package content with Neale. 
+  * Kenny inform hiro about the public key requirement.
+  * Simon, Jelle and hiro to supply the service implementers their public key.    
+  * Geoff, Kenny and Johan to create the RS specific kxos and share them with all service implementers.
+  * Simon, Geoff and Johan to post their observations on running the latest version of the bookmark xsd against their tools.      
+  * kenny and Simon to verify that the issue that svcutil had with empty soap action values is now resolved with the implemented solution. If yes, close Issue 190. 
+  * Johan to ad Announcements specific test cases to the Conformance Testing document.  
+  * Geoff to add test cases for Announcements and Internationalisation to the Systems Testing document.
+  * Geoff to add a note to section 4.7.6 as per Nick's suggestion.
+  * Geoff to make the verbiage consistent across Section 4.3.1 and 4.3.2 as per Kenny's suggestion. 
+  * Kenny to reflect all the changes recorded in the change log in the Dynamic Menus Primer. 
+  * Geoff to make the Systems Testing document ready for sign off by the next telecon.
+  * Kenny to make sure that the Conformance Testing document has all the assertions defined by the next telecon.  
+
 === Previous Unfinished Action Items ===
 
-  * Neale provide sample content with the public/private key pair by 22 January. *done*   
   * Geoff, Johan, Simon, Hiro and Kenny to build PDTB2 support in their test implementations by Feb 15 using the sample content provided by Neale.
-  * James post to the PDTB2 list proposing Ole's suggestion, and asking for any other issues with the spec. *done*
   * James and Neale fix the kxo.xsd issue in the PDTB2 spec by 5 Feb.
   * After the pdtb2 folks have fixed their version of kxo.xsd, kenny to change xsds to their canonical uris, and close issue 128 and Issue 144.   
   * All review the bookmark xsd and confirm whether the empty complex type problem has been resolved. If yes, close Issue 188.
-  * Kenny, Nick and Simon to verify that the relative values specified for soap action in the wsdl (in the svn) eliminates the particular issue in the Microsoft platform, and close Issue 190.  
   * All to review the Systems Testing document and determine if the test cases are sufficient for their organisation. We will visit the sufficiency of the test cases and what organisations will participate in these tests on the next telecon.   
   * Geoff and Kenny start work on the Test suite. (In progress)  
   * Geoff and Kenny start work on the Systems Testing document (in progress) 
@@ -42,10 +54,30 @@ scribe: Kenny
 
 == Agenda/Minutes ==
 
+=== Sample PDTB2 Content ===
+
+Nick: What keys are included with the package?
+
+Kenny: My understanding is that Neale has included a public/private key pair with the package to unlock the authorisation object. The authorisation object contains the symetric keys to unlock the audio and text media types in the daisy fileset. The kxo has been skipped in this package as a kxo is used to transfer the public/private key pair used to lock the authorisation object, a pair that Neale has provided us with the package. For the test implementations, we will need a kxo for the getKeyExchangeObject operation which would contain the public/private key pair that Neale provided, encrypted/locked with the public key of the Reading System. Should we generate a public/private key pair to be used to lock the kxo across all the implementations?    
+
+Geoff: I would be more comfortable if we used public keys supplied by manufacturers.   
+
+Kenny: I am concerned that this may create more work for service implementers.
+
+Geoff: If we do it this way, we can share the kxos for each RS implementer.
+
+(The group agreed to create a kxo for each RS implementer. Jelle, Simon and Hiro will supply the service implementers with their public keys that will then be used to secure the kxo. This kxo will be shared among service implementers to reduce redundancy of effort) 
+
+Johan: For the Test Implementation phase, are RS implementers required to be able to render pdtb2 content to prove pdtb2 support in their implementation?  
+
+Geoff: As per the Systems testing document, Yes.
+ 
 === Suggestion for an addition of a note to Section 4.7.6 ===
 
 Nick: Should we add a note to section 4.7.6 explaining that support for the three reserved question ids should be declared in serviceAttributes - supportsServerSideBack, supportsSearch and supportedOptionalOperations | operation | DYNAMIC_MENUS
 
+(the group accepted Nick's suggestion. Geoff to fix this in the spec.)
+  
 	=== Suggestion for a cosmetic change to section 4.3.2 ====
 
 Kenny: Section 4.3.2 (Browse content selection method) reads:
@@ -56,6 +88,8 @@ and Section 4.3.1 (Out-of-band selection method) reads:
 
 Although cosmetic, I propose we make the verbiage consistent across both sections.
 
+(The group accepted kenny's suggestion. Geoff to fix this in the spec.)
+ 
 === Proposed changes to the Dynamic Menus Primer ===
 
 Simon:
@@ -103,18 +137,34 @@ Simon:
 
    * Fix &apos;
 
+(The group decided that all the pertinent changes recorded in the change log needed to be reflected in the Dynamic Menus Primer. Kenny to reflect all these changes in the Primer. The &apos; entity problem will be fixed as a part of Markus's action item to fix this problem across the spec.)    
+
 === Timelines going forward ===
-  
-=== Spec update progress ===
 
-  # documentation including the wsdl and xsd files.
-  # systems testing and test suite documents.
-  # conformance report.
+Geoff: The Systems Testing document should be made available before the spec is submitted for approval by the board.
 
-=== Test implementation update ===
+Kenny: We should have the Conformance Testing and conformance report documents ready before the formal submission too. I don't think these documents need to be made available before the public review period commencing on Feb 15.
 
-Where are we at?
+Nick: I am not very clear about the purpose of the conformance and systems testing documents.
 
+Kenny: The conformance testing document (called tsg_test_suite in the wiki) lists the test cases for Services and Reading Systems to claim conformance to the spec. The Systems Testing document (called ProtocolSystemTesting in the wiki) is a report on how well the spec satisfies the requirements and expectations gathered in the requirements gathering phase.
+
+Nick: Who will run the test cases in the Systems Testing document?
+
+Geoff: Some test cases in the Systems Testing document will need to be run by Service implementers. The rest will need to be run by RS implementers.
+
+Markus: We need two independent implementations that prove conformance to the spec.
+
+Kenny: In terms of the test cases, we need two implementations per test case.
+
+Geoff: George indicated that it would be possible for certain features to get away with one implementation. Ideally, we should have two server, and two client implementations.
+
+Kenny: Lets define the time frames for the two documents.
+
+Geoff: The systems Testing document should be ready for sign off by the next telecon.
+
+Kenny: All the assertions in the Conformance Testing document should be ready by next telecon.  
+            
 === Test suite Progress ===
 
 ==== [http://code.google.com/p/daisy-online-delivery/wiki/tsg_test_suite Test Suite] ====
@@ -125,4 +175,13 @@ geoff: two things I wannt to find out:
   # Are the test cases in the systems testing document sufficient for the organisations?
   # What organisations will participate in these tests?
 
+johan: We don't mention anything about announcements in the Systems Testing document.
+
+Geoff: Good point.
+
+Johan: We also need more tests for sessions e.g. what happens if an operation is called after a session has ended ...   
+
 == [http://code.google.com/p/daisy-online-delivery/wiki/ChangeLog Change Log] ==
+
+Next telecon at 2100 UTC on Wednesday, 27 January 2010.
+ 
