@@ -92,7 +92,6 @@ At a minimum, a conformant Reading System or Service must pass all tests in cate
     # If a successful `logOn` is performed in the middle of a session, calling any other operation except `logOn` or `getServiceAttributes` should return an `InvalidOperation` fault.
     # After a session has been initialized, calling `logOff` should return `true`.
     # If a `logOff` was successful, calling any other operation except `logOn` should return `NoActiveSessionFault`.
-
   # Range headers are always honored in HTTP requests.
 
 == 2. Lending service model ==
