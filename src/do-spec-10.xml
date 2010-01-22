@@ -1711,7 +1711,7 @@
                 </title>
                 <date>January 2008</date>
             </biblioentry>
-            <biblioentry xml:id="bib_infoset">
+			<!--<biblioentry xml:id="bib_infoset">
                 <abbrev>INFOSET</abbrev>
                 <title>
                     <link xlink:href="http://www.w3.org/TR/xml-infoset/">XML Information Set (Second
@@ -1721,7 +1721,7 @@
                     <personname>J. Cowan, R. Tobin</personname>
                 </author>
                 <date>February 2004</date>
-            </biblioentry>
+            </biblioentry>-->
             <biblioentry xml:id="bib_iso3166">
                 <abbrev>ISO 3166</abbrev>
                 <title>
