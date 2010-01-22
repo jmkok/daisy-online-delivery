@@ -335,11 +335,6 @@ The capability to report which server is in control was not included in the prot
 
 [RequirementsDocument#Protect_user_privacy Requirement]
 
-The main risk to user privacy invasion in the protocol is if the session ID cookie is not secure.  Session IDs should not be guessable, otherwise an attacker could hijack a user's session by using a probable session cookie, and then potentially gain access to confidential information.  Services should also make session IDs invalid after the Reading System calls `logOff`.
-
-A secondary risk is that unencrypted sessions may be snooped upon by an attacker.  Services should use HTTPS (or some other secure transport protocol) for all SOAP messages and Content delivery, except in the case of public Services or public Service Delegates.
-
-  # *Unguessable session IDs*: Attempt to attack a Service by examining legitimate session IDs and detecting a pattern.  The test is a failure if the attack is successful.
   # *Invalidate session IDs on logOff*: Initialize a session, then log off.  Call some operations (other than `logOn`); the Service must respond with a `NoActiveSession` fault.
   # *Secure Service*: Initialize a session with a Service over HTTPS.
   # *Secure Content*: Retrieve Content resources over HTTPS.
@@ -348,7 +343,6 @@ A secondary risk is that unencrypted sessions may be snooped upon by an attacker
 || 25.1 ||  ||  ||  ||  ||
 || 25.2 ||  ||  ||  ||  ||
 || 25.3 ||  ||  ||  ||  ||
-|| 25.4 ||  ||  ||  ||  ||
 
 == 26. Localized, plain language error messages ==
 
