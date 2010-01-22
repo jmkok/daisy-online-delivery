@@ -10,15 +10,15 @@ scribe: Kenny
 
   * Kenny to remove the Sample PDTB2 content from the SVN, and pass an alternative url to the group members. *done*
   * Kenny to verify sample pdtb2 package content with Neale. 
-  * Kenny inform hiro about the public key requirement.
-  * Simon, Jelle and hiro to supply the service implementers their public key.    
-  * Geoff, Kenny and Johan to create the RS specific kxos and share them with all service implementers.
-  * Simon, Geoff and Johan to post their observations on running the latest version of the bookmark xsd against their tools.      
+  * Kenny inform Hiro about the public key requirement.
+  * Simon, Jelle and Hiro to supply the service implementers their public key.    
+  * Geoff, Kenny and Johan to create the RS specific KXOs and share them with all service implementers.
+  * Simon, Geoff and Johan to post their observations on running the latest version of the bookmark XSD against their tools.      
   * kenny and Simon to verify that the issue that svcutil had with empty soap action values is now resolved with the implemented solution. If yes, close Issue 190. 
   * Johan to ad Announcements specific test cases to the Conformance Testing document.  
-  * Geoff to add test cases for Announcements and Internationalisation to the Systems Testing document.
-  * Geoff to add a note to section 4.7.6 as per Nick's suggestion.
-  * Geoff to make the verbiage consistent across Section 4.3.1 and 4.3.2 as per Kenny's suggestion. 
+  * Geoff to add test cases for announcements and i18n to the Systems Testing document.
+  * Geoff to add a note to section 4.7.6 as per Issue 200.
+  * Geoff to make the verbiage consistent across Section 4.3.1 and 4.3.2 as per Kenny's suggestion. *Done*
   * Kenny to reflect all the changes recorded in the change log in the Dynamic Menus Primer. 
   * Geoff to make the Systems Testing document ready for sign off by the next telecon.
   * Kenny to make sure that the Conformance Testing document has all the assertions defined by the next telecon.  
@@ -27,9 +27,9 @@ scribe: Kenny
 
   * Geoff, Johan, Simon, Hiro and Kenny to build PDTB2 support in their test implementations by Feb 15 using the sample content provided by Neale.
   * James and Neale fix the kxo.xsd issue in the PDTB2 spec by 5 Feb.
-  * After the pdtb2 folks have fixed their version of kxo.xsd, kenny to change xsds to their canonical uris, and close issue 128 and Issue 144.   
-  * All review the bookmark xsd and confirm whether the empty complex type problem has been resolved. If yes, close Issue 188.
-  * All to review the Systems Testing document and determine if the test cases are sufficient for their organisation. We will visit the sufficiency of the test cases and what organisations will participate in these tests on the next telecon.   
+  * After the pdtb2 folks have fixed their version of kxo.xsd, kenny to change XSDs to their canonical URIs, and close issue 128 and Issue 144.   
+  * All review the bookmark XSD and confirm whether the empty complex type problem has been resolved. If yes, close Issue 188.
+  * All to review the Systems Testing document and determine if the test cases are sufficient for their organization. We will visit the sufficiency of the test cases and what organizations will participate in these tests on the next telecon.   
   * Geoff and Kenny start work on the Test suite. (In progress)  
   * Geoff and Kenny start work on the Systems Testing document (in progress) 
   * Markus fix the &apos; entity problem. (outstanding; bug in IE.) (Markus will fix this when ready to publish.)
@@ -58,15 +58,15 @@ scribe: Kenny
 
 Nick: What keys are included with the package?
 
-Kenny: My understanding is that Neale has included a public/private key pair with the package to unlock the authorisation object. The authorisation object contains the symetric keys to unlock the audio and text media types in the daisy fileset. The kxo has been skipped in this package as a kxo is used to transfer the public/private key pair used to lock the authorisation object, a pair that Neale has provided us with the package. For the test implementations, we will need a kxo for the getKeyExchangeObject operation which would contain the public/private key pair that Neale provided, encrypted/locked with the public key of the Reading System. Should we generate a public/private key pair to be used to lock the kxo across all the implementations?    
+Kenny: My understanding is that Neale has included a public/private key pair with the package to unlock the authorization object. The AO contains the symmetric keys to unlock the audio and text media types in the daisy fileset. The KXO has been skipped in this package as a KXO is used to transfer the public/private key pair used to lock the AO, a pair that Neale has provided us with the package. For the test implementations, we will need a KXO for the getKeyExchangeObject operation which would contain the public/private key pair that Neale provided, encrypted/locked with the public key of the Reading System. Should we generate a public/private key pair to be used to lock the KXO across all the implementations?    
 
 Geoff: I would be more comfortable if we used public keys supplied by manufacturers.   
 
 Kenny: I am concerned that this may create more work for service implementers.
 
-Geoff: If we do it this way, we can share the kxos for each RS implementer.
+Geoff: If we do it this way, we can share the KXOs for each RS implementer.
 
-(The group agreed to create a kxo for each RS implementer. Jelle, Simon and Hiro will supply the service implementers with their public keys that will then be used to secure the kxo. This kxo will be shared among service implementers to reduce redundancy of effort) 
+(The group agreed to create a KXO for each RS implementer. Jelle, Simon and Hiro will supply the service implementers with their public keys that will then be used to secure the KXO. This KXO will be shared among service implementers to reduce redundancy of effort) 
 
 Johan: For the Test Implementation phase, are RS implementers required to be able to render pdtb2 content to prove pdtb2 support in their implementation?  
 
@@ -88,14 +88,14 @@ and Section 4.3.1 (Out-of-band selection method) reads:
 
 Although cosmetic, I propose we make the verbiage consistent across both sections.
 
-(The group accepted kenny's suggestion. Geoff to fix this in the spec.)
+(The group accepted Kenny's suggestion. Geoff to fix this in the spec.)
  
 === Proposed changes to the Dynamic Menus Primer ===
 
 Simon:
    * At the end of "2. Retrieving the Main Menu", change XSD ID to NMTOKEN in "These IDs are defined in WSDL as the XSD ID type (see XSD Datatypes), and ..." 
 
-   * In section "3. Performing a Search of the Service&apos;s Content Collection", input type should be TEXT_ALPHANUMERIC
+   * In section "3. Performing a Search of the Service's Content Collection", input type should be `TEXT_ALPHANUMERIC`:
 {{{
   <questions xmlns="http://www.daisy.org/ns/daisy-online/">
 
@@ -137,7 +137,7 @@ Simon:
 }}}
    * Fix `&apos;`
 
-(The group decided that all the pertinent changes recorded in the change log needed to be reflected in the Dynamic Menus Primer. Kenny to reflect all these changes in the Primer. The &apos; entity problem will be fixed as a part of Markus's action item to fix this problem across the spec.)    
+(The group decided that all the pertinent changes recorded in the change log needed to be reflected in the Dynamic Menus Primer. Kenny to reflect all these changes in the Primer. The `&apos;` entity problem will be fixed as a part of Markus's action item to fix this problem across the spec.)    
 
 === Timelines going forward ===
 
@@ -171,11 +171,11 @@ Kenny: All the assertions in the Conformance Testing document should be ready by
 
 ==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolSystemTestingTestCases Systems Testing] ====
 
-geoff: two things I wannt to find out:
-  # Are the test cases in the systems testing document sufficient for the organisations?
-  # What organisations will participate in these tests?
+Geoff: two things I want to find out:
+  # Are the test cases in the systems testing document sufficient for the organizations?
+  # What organizations will participate in these tests?
 
-johan: We don't mention anything about announcements in the Systems Testing document.
+Johan: We don't mention anything about announcements in the Systems Testing document.
 
 Geoff: Good point.
 
