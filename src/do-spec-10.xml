@@ -1600,6 +1600,9 @@
                             Indicates that the <xref
                                 linkend="term_readingSystem"/> is requesting the search menu.
                         </para>
+						<para>A Service must explicitly declare whether or not it supports this value
+						with the <type><xref linkend="tp_supportsSearch" /></type> element
+						of its <type><xref linkend="tp_serviceAttributes" /></type>.</para>
                     </listitem>
 					</varlistentry>
 					<varlistentry>
@@ -1609,6 +1612,9 @@
                             Indicates that the <xref
                                 linkend="term_readingSystem"/> has requested to step back one menu
                             in the sequence. </para>
+						<para>A Service must explicitly declare whether or not it supports this value
+						with the <type><xref linkend="tp_supportsServerSideBack" /></type> element
+						of its <type><xref linkend="tp_serviceAttributes" /></type>.</para>
                     </listitem>
 					</varlistentry>
                 </variablelist>
@@ -1617,7 +1623,8 @@
                     <xref linkend="term_readingSystem"/>s that support dynamic menus must support
                     the <literal>default</literal> value. <xref linkend="term_readingSystem"/>s
                     that support dynamic menus may support the <literal>search</literal> and
-                        <literal>back</literal> values. </para>
+                        <literal>back</literal> values.
+				</para>
             </section>
 
         </section>
