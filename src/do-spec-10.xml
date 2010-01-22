@@ -951,7 +951,7 @@
                         <para>declares support for the <xref
                                 linkend="fundamentals_content_selection_browse"/> in the <type>
                                 <xref linkend="tp_supportedContentSelectionMethods"/>
-                            </type> service attribute.</para>
+                            </type> element of its <type><xref linkend="tp_serviceAttributes"/></type>.</para>
                     </listitem>
                 </itemizedlist>
             </section>
