@@ -84,6 +84,15 @@ At a minimum, a conformant Reading System or Service must pass all tests in cate
   # All required operations are implemented as specified in the normative WSDL.
   # The Service complies with WS-I Basic Profile 1.1
   # The session initialization sequence is followed to commence a session.   
+    # Before initialization, calling any operation except `logOn` should return `NoActiveSession` fault.
+    # During initialization, after a successful `logOn`, calling any operation except `logOn` or `getServiceAttributes` should return an `InvalidOperation` fault.
+    # During initialization, after a successful `getServiceAttributes`, calling any operation except `logOn` or `setReadingSystemAttributes` should return an `InvalidOperation` fault.
+    # After a session has been initialized, calling `getServiceAttributes` or `setReadingSystemAttribtues` again should not return a fault.
+    # After a session has been established, calling `logOn` again (with the correct credentials) should return `true`.
+    # If a successful `logOn` is performed in the middle of a session, calling any other operation except `logOn` or `getServiceAttributes` should return an `InvalidOperation` fault.
+    # After a session has been initialized, calling `logOff` should return `true`.
+    # If a `logOff` was successful, calling any other operation except `logOn` should return `NoActiveSessionFault`.
+
   # Range headers are always honored in HTTP requests.
 
 == 2. Lending service model ==
