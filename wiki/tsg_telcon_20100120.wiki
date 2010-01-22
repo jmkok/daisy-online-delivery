@@ -17,7 +17,7 @@ scribe: Kenny
   * kenny and Simon to verify that the issue that svcutil had with empty soap action values is now resolved with the implemented solution. If yes, close Issue 190. 
   * Johan to ad Announcements specific test cases to the Conformance Testing document.  
   * Geoff to add test cases for announcements and i18n to the Systems Testing document.
-  * Geoff to add a note to section 4.7.6 as per Issue 200.
+  * Geoff to add a note to section 4.7.6 as per Issue 200. *Done*
   * Geoff to make the verbiage consistent across Section 4.3.1 and 4.3.2 as per Kenny's suggestion. *Done*
   * Kenny to reflect all the changes recorded in the change log in the Dynamic Menus Primer. 
   * Geoff to make the Systems Testing document ready for sign off by the next telecon.
