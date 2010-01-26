@@ -107,7 +107,7 @@ Why don't we use a getBlob for this purpose...
 
 I'll start a seperate mail thread to discuss this.
  
-=== Suggestion to replace getKeyExchangeObject, GetBookmarks and setBookmarks operations with a generic getBlob operation ===
+=== Suggestion to replace getKeyExchangeObject, getBookmarks and setBookmarks operations with a generic getBlob operation ===
 
 jelle: I would like to discuss the removal of these three functions, and replace them by the getBlob and setBlob.
 
