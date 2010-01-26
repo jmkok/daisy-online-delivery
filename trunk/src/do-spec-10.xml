@@ -1171,12 +1171,22 @@
                         <xref linkend="op_getKeyExchangeObject"/>
                     </function> operation, to allow <xref linkend="term_readingSystem"/>s to request
                     keys from <xref linkend="term_service"/>s to access encrypted content. </para>
-
+				
                 <para>
                     <xref linkend="term_readingSystem"/>s and <xref linkend="term_service"/>s are
                     not required to support <abbrev>PDTB2</abbrev>. </para>
 
-                <section xml:id="fundamentals_content_issuing_pdtb_declaring">
+				<note>
+					<para>This protocol does not provide any trust mechanism; there is no method for
+						<xref linkend="term_readingSystem"/>s to provide their public keys to a
+						<xref linkend="term_service"/> using this protocol.  <xref linkend="term_service"/>s
+						supporting <abbrev>PDTB2</abbrev> must use some out-of-band method to
+						register keys from <xref linkend="term_readingSystem"/> manufacturers.
+					</para>
+					<para>There is no mechanism for expiring keys in this protocol.
+					</para>
+                </note>
+				<section xml:id="fundamentals_content_issuing_pdtb_declaring">	
                     <title>Declaring PDTB2 Support</title>
 
                     <para> If a <xref linkend="term_readingSystem"/> supports
@@ -1238,8 +1248,8 @@
                         resources. </para>
 
                     <para>
-                        <abbrev>PDTB2</abbrev>-protected content will have an Authorization Object
-                            (<abbrev>AO</abbrev>). The <xref linkend="term_readingSystem"/> can
+                        <abbrev>PDTB2</abbrev>-protected Content must have an Authorization Object
+                            (<abbrev>AO</abbrev>) in its resources. The <xref linkend="term_readingSystem"/> can
                         inspect the <abbrev>AO</abbrev> for the name of the key that secures the key
                         required to decrypt the <xref linkend="term_content"/>. If the <xref
                             linkend="term_readingSystem"/> does not have the key to access an
@@ -1251,8 +1261,7 @@
                             <xref linkend="op_getKeyExchangeObject"/>
                         </function> operation with a list of key names in its local keyring together
                         with the name of the requested key. The key names provided can be some or
-                        all of the symmetric keys or public/private keypairs the <xref
-                            linkend="term_readingSystem"/> supports. </para>
+                        all of the public keys the <xref linkend="term_readingSystem"/> supports. </para>
 
                     <para> The <xref linkend="term_service"/> may choose any of the keys supplied by
                         the <xref linkend="term_readingSystem"/> to encrypt the
