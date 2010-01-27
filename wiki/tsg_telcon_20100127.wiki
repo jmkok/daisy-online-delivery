@@ -23,7 +23,7 @@ scribe: Kenny
   * Geoff to make the verbiage consistent across Section 4.3.1 and 4.3.2 as per Kenny's suggestion. *Done*
   * Kenny to reflect all the changes recorded in the change log in the Dynamic Menus Primer. 
   * Geoff to make the Systems Testing document ready for sign off by the next telecon.
-  * Kenny to make sure that the Conformance Testing document has all the assertions defined by the next telecon.  
+  * Kenny to make sure that the Conformance Testing document has all the assertions defined by the next telecon. (all RS conformance assertions have been defined; Service conformance assertions to be ready by next telecon; awaiting group review.)  
   * Geoff, Johan, Simon, Hiro and Kenny to build PDTB2 support in their test implementations by Feb 15 using the sample content provided by Neale.
   * James and Neale fix the kxo.xsd issue in the PDTB2 spec by 5 Feb.
   * After the pdtb2 folks have fixed their version of kxo.xsd, kenny to change XSDs to their canonical URIs, and close issue 128 and Issue 144.   
