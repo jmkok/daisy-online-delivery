@@ -61,18 +61,56 @@ At a minimum, a conformant Reading System or Service must pass all tests in cate
  
 == 6. Updates and instalments ==
 
-== 7. Rights management ==
+  # Support the lastModifiedDate attribute on contentList.contentItem.
+  # Support the lastModifiedDate attribute on resources.resource. (kj: need to determine whether this is a must for conformance.)  
+  # Invoke the getContentResources operation when it determines that content has been updated on the Service through the lastModifiedDate attribute of contentList.contentItem.
+
+== 7. Rights management and Key provision ==
+
+  # Declare support for pdtb2 by setting the value of the supportedContentProtectionFormats element to PDTB2 when invoking the setReadingSystemAttributes operation.
+  # Support the operation element set to a value of PDTB2_KEY_PROVISION in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine if the Service supports PDTB2.   
+  # Support the getKeyExchangeObject operation.
+  # Support the meta attribute pdtb2:specVersion with the value set to 2005-1 in contentMetadata to determine if the content being downloaded is PDTB2 protected.          # Support the PDTB2 spec.
 
 == 8. Set bookmarks ==
 
+  # Support the portable bookmarks and highlights grammar described by the bookmark-2005-1.xsd file. 
+  # Support the operation element set to a value of set_bookmarks in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports the setBookMarks operation.
+  # Support the setBookmarks operation.
+  # IF a Service supports both the getBookmarks and setBookmarks operations, the lastMark attribute of the bookmarkSet type should be used to store the user's last reading position. (kj: need to decide whether this is a must)
+  # IF a Service supports both the getBookmarks and setBookmarks operations, the last reading position should be checked before playback is resumed. (kj: need to decide whether this is a must)
+  # must not submit audio recordings as a part of the setBookmarks operation.
+           
 == 9. Get bookmarks ==
 
+  # Support the portable bookmarks and highlights grammar described by the bookmark-2005-1.xsd file. 
+  # Support the operation element set to a value of get_bookmarks in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports the getBookMarks operation.
+  # Support the getBookmarks operation.
+  # IF a Service supports both the getBookmarks and setBookmarks operations, the lastMark attribute of the bookmarkSet type should be used to store the user's last reading position. (kj: need to decide whether this is a must)
+  # IF a Service supports both the getBookmarks and setBookmarks operations, the last reading position should be checked before playback is resumed. (kj: need to decide whether this is a must)
+           
 == 10. Dynamic menus ==
 
+  # Support the operation element set to a value of dynamic_menus in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports dynamic menus.
+  # Support the getQuestions operation.
+   # The userResponses type parameter passed when invoking the getQuestions operation must contain either a response to a previous question or one of the following special IDs:
+   # default
+   # search
+   # back
+  # If a Service sends more than one question in a questions type, the user's response to each of the questions should be collected, and posted in the next call to the getQuestions operation through a separate userResponse property.
+  # Declare what input types it supports in the readingSystemAttributes type posted to the Service through a call to the setReadingSystemAttributes operation.   
+    # Invoke the getContentList operation when a call to the getQuestions operation yields a questions type that contains a contentListRef child element.    
+ 
 == 11. Service announcements ==
 
-== 12. Key provision ==
-
+  # Support the getServiceAnnouncements operation.
+  # Support the operation element set to a value of service_announcements in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports Service Announcements. 
+  # Treat the IDs of individual announcements as valid only for the duration of a session.
+  # After an announcement has been rendered, immediately invoke the markAnnouncementsAsRead operation to inform the Service not to send the announcement again on the next invokation of the getServiceAnnouncements operation.
+  # Only invoke the markAnnouncementsAsRead operation with the IDs of announcements retrieved from the last invokation of the getServiceAnnouncements operation in the active session.
+  # Support the rendering of audio and text announcements for maximum interoperability. (kj: need to decide if this should be a must)         
+  # Check for new announcements by invoking the getServiceAnnouncements operation at least once per session.
+  
 = Service conformance =
 
 == 1. Core functionality ==
