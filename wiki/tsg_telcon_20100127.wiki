@@ -106,7 +106,47 @@ So here's an idea:
 Why don't we use a getBlob for this purpose...
 
 I'll start a seperate mail thread to discuss this.
- 
+
+kenny: If we remove the getKeyExchangeObject operation, move the KXO into the resources for the protected content, and move the keyring into the readingSystemAttributes type, we save an operation, but we place additional onus on service implementers to dynamically make KXO(s) available through their file servers via some form of a script. Furthermore, the keyring will need to be sent to the Service in each session through the setReadingSystemAttributes operation (as Geoff points out), whereas the retrieval of a KXO is envisaged to be a far more infrequent function of the spec. 
+
+My understanding thus far on the nature and purpose of a KXO is:
+
+A. It contains asymmetric key pair(s) used to lock an authorisation object. 
+
+B. It is itself locked by the public key portion of an asymmetric key pair that belongs to a Reading System. (manufacturer, model, instance ...) 
+
+c. The Reading System unlocks the KXO with its private key, extracts the public/private key pair used to lock the authorisation object, and unlocks the authorisation object. Section 5.2 of the PDTB2 spec states the following:
+
+"  
+
+If the reading system has a key identified in the key exchange object, it must be able to use that key to decode and use an authorization object associated with specific content. The reading system should store the key obtained from the key exchange object for subsequent use. Non-networked reading systems need not store the public key portion of the key pair, since they have no further use for it.
+
+"
+
+In terms of a dynamic authorisation object, instead of being encrypted with the public key portion of an asymmetric key pair stored in a KXO, it could very well be encrypted with the public key portion of an asymmetric key pair belonging to a Reading System (bypassing a KXO altogether). The only purpose of a KXO then is to allow  a Service vendor the flexibility to use independent asymmetric key pair(s) to secure the authorisation object. 
+
+Neale, Mark and Alex, is the theoretical proposition above correct, or did the PDTB2 wg envisage a purpose for a KXO that I have missed entirely in my rudimentary analysis above? 
+
+On the basis of what I have read thus far about symmetric and asymmetric encryption, symmetric encryption is significantly less expensive than asymmetric encryption, and thus is used to secure the actual content, whereas asymmetric encryption is used to secure the symmetric key itself. An example of this principle in action is https (through ssl/tls). 
+
+I am not sure how much of my rather theoretical understanding is correct; I will let the expirts decide! My thought process for now is more inclined towards keeping the pdtb2 support as is in the spec i.e.: 
+
+a. A getKeyExchangeObject operation to retrieve a KXO on the basis of the key names supplied in the key ring parameter to this operation.
+
+b. An authorisation object bundled with the rest of the resources for a piece of content.
+
+c. As geoff pointed out, if a Reading System downloaded an authorisation object that it could not unlock, it would request a key exchange object containing the asymmetric key pair used to secure the AO through a call to the getKeyExchangeObject operation.
+
+We could always move the retrieval of KXOs to an out-of-band mechanism as we have the exchange of trusted public keys.   
+
+==== Suggestion 1: Get rid of the getKeyExchangeObject operation, move keyring to readingSystemAttributes, and bundle kxo with content resources ====
+
+==== Suggestion 2: Move keyring to readingSystemAttributes, retain the simplified getKeyExchangeObject operation ====
+
+==== Suggestion 3: Make the retrieval of KXOs out-of-band, drop the getKeyExchangeObject operation  ====
+
+==== Suggestion 4: Leave the pdtb2 support in the spec as is ====
+   
 === Suggestion to replace getKeyExchangeObject, getBookmarks and setBookmarks operations with a generic getBlob operation ===
 
 jelle: I would like to discuss the removal of these three functions, and replace them by the getBlob and setBlob.
