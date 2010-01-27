@@ -94,13 +94,13 @@ At a minimum, a conformant Reading System or Service must pass all tests in cate
 
   # Support the operation element set to a value of dynamic_menus in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports dynamic menus.
   # Support the getQuestions operation.
-   # The userResponses type parameter passed when invoking the getQuestions operation must contain either a response to a previous question or one of the following special IDs:
+  # The userResponses type parameter passed when invoking the getQuestions operation must contain either a response to a previous question or one of the following special IDs:
    # default
    # search
    # back
   # If a Service sends more than one question in a questions type, the user's response to each of the questions should be collected, and posted in the next call to the getQuestions operation through a separate userResponse property.
   # Declare what input types it supports in the readingSystemAttributes type posted to the Service through a call to the setReadingSystemAttributes operation.   
-    # Invoke the getContentList operation when a call to the getQuestions operation yields a questions type that contains a contentListRef child element.    
+  # Invoke the getContentList operation when a call to the getQuestions operation yields a questions type that contains a contentListRef child element.    
  
 == 11. Service announcements ==
 
