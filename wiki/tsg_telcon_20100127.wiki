@@ -1,4 +1,4 @@
-Present: 
+resent: 
 
 Regrets:
 
@@ -147,9 +147,13 @@ We could always move the retrieval of KXOs to an out-of-band mechanism as we hav
 
 ==== Suggestion 3: Make the retrieval of KXOs out-of-band, drop the getKeyExchangeObject operation  ====
 
-==== Suggestion 4: Leave the pdtb2 support in the spec as is ====
+==== Suggestion 4: Replace the getKeyExchangeObject operation with a getBlob operation ====
+
+==== Suggestion 5: Leave the pdtb2 support in the spec as is ====
    
 === Suggestion to replace getKeyExchangeObject, getBookmarks and setBookmarks operations with a generic getBlob operation ===
+
+==== Discussion on the list ====
 
 jelle: I would like to discuss the removal of these three functions, and replace them by the getBlob and setBlob.
 
@@ -181,6 +185,8 @@ Frankly, we've spent enough time as it is.  I say we keep to the schedule.  If t
 Johan: I agree with Geoff.
 
 === Error in KXO.xsd: EncryptedKey not a valid child of <Keys> ===
+
+==== Discussion on the list ====
 
   Johan: I believe I found an error in the Key exchange object example
 (http://www.daisy.org/projects/pdtb/daisy-pdtb-spec.html#s9.4) when I was trying to implement the function in my demo service. In the example, a symmetric key is inserted as a <xe:EncryptedKey> child element in the <Keys> element. I run the schema and the example through a schema validator (http://www.xmlme.com/Validator.aspx) which claims that 'EncryptedKey' is an invalid child of 'Keys'.
