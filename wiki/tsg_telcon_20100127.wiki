@@ -55,6 +55,8 @@ scribe: Kenny
 
 === PDTB2 support in Daisy Online ===
 
+==== Discussion on the list ====
+
 jelle: In short: I would propose to remove the getKeyExchangeObject. But still have the full PDTB2 functionality available. As far as I can see it has no drawbacks, and simplifies the process of PDTB2 content download.
 
 For this to work, I made the following assumption:
