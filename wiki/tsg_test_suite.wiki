@@ -30,8 +30,8 @@ At a minimum, a conformant Reading System or Service must pass all tests in cate
   # Implement the `returnContent` operation.
   # Support the "issued" and "expired" `contentList`s.
   # Support the `requiresReturn` attribute of the `contentMetadata` type.   
-  # Support the `returnBy` attribute of the `contentMetadata` type.
-  # must not call `returnContent` for a particular piece of content until all local copies of the content have been removed off its storage.
+  # Support the `returnBy` attribute of the `resources` type.
+  # Must not call `returnContent` for a particular piece of content until all local copies of the content have been removed off its storage.
   # Should retrieve the "expired" `contentList` at least once in a session if any borrowed Content exists.      
   # Should return any borrowed Content listed in the expired list after notifying the user.
 
@@ -76,7 +76,7 @@ At a minimum, a conformant Reading System or Service must pass all tests in cate
 == 8. Set bookmarks ==
 
   # Support the portable bookmarks and highlights grammar described by the bookmark-2005-1.xsd file. 
-  # Support the operation element set to a value of set_bookmarks in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports the setBookMarks operation.
+  # Support the operation element set to a value of SET_BOOKMARKS in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports the setBookMarks operation.
   # Support the setBookmarks operation.
   # IF a Service supports both the getBookmarks and setBookmarks operations, the lastMark attribute of the bookmarkSet type should be used to store the user's last reading position. (kj: need to decide whether this is a must)
   # IF a Service supports both the getBookmarks and setBookmarks operations, the last reading position should be checked before playback is resumed. (kj: need to decide whether this is a must)
@@ -85,14 +85,14 @@ At a minimum, a conformant Reading System or Service must pass all tests in cate
 == 9. Get bookmarks ==
 
   # Support the portable bookmarks and highlights grammar described by the bookmark-2005-1.xsd file. 
-  # Support the operation element set to a value of get_bookmarks in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports the getBookMarks operation.
+  # Support the operation element set to a value of GET_BOOKMARKS in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports the getBookMarks operation.
   # Support the getBookmarks operation.
   # IF a Service supports both the getBookmarks and setBookmarks operations, the lastMark attribute of the bookmarkSet type should be used to store the user's last reading position. (kj: need to decide whether this is a must)
   # IF a Service supports both the getBookmarks and setBookmarks operations, the last reading position should be checked before playback is resumed. (kj: need to decide whether this is a must)
            
 == 10. Dynamic menus ==
 
-  # Support the operation element set to a value of dynamic_menus in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports dynamic menus.
+  # Support the operation element set to a value of DYNAMIC_MENUS in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports dynamic menus.
   # Support the getQuestions operation.
   # The userResponses type parameter passed when invoking the getQuestions operation must contain either a response to a previous question or one of the following special IDs:
    # default
@@ -105,7 +105,7 @@ At a minimum, a conformant Reading System or Service must pass all tests in cate
 == 11. Service announcements ==
 
   # Support the getServiceAnnouncements operation.
-  # Support the operation element set to a value of service_announcements in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports Service Announcements. 
+  # Support the operation element set to a value of SERVICE_ANNOUNCEMENTS in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports Service Announcements. 
   # Treat the IDs of individual announcements as valid only for the duration of a session.
   # After an announcement has been rendered, immediately invoke the markAnnouncementsAsRead operation to inform the Service not to send the announcement again on the next invokation of the getServiceAnnouncements operation.
   # Only invoke the markAnnouncementsAsRead operation with the IDs of announcements retrieved from the last invokation of the getServiceAnnouncements operation in the active session.
@@ -135,29 +135,71 @@ At a minimum, a conformant Reading System or Service must pass all tests in cate
 
 == 2. Lending service model ==
 
+  # Implement the `returnContent` operation.
+  # Offer the "issued" and "expired" `contentList`S.
+  # The `requiresReturn` attibute of the content's `contentMetadata` type must be set to `true`.
+  # The `returnBy` attribute of the `resources` type must be set and must not change after the user have downloaded the content. 
+  # An issued content must be listed in either the user's "issued" or "expired" `contentList` until it is returned.
+  # The Reading System must be allowed to call `returnContent` at any time.
+
 == 3. Acquisition service model ==
+
+  # The `requiresReturn` attibute of the content's `contentMetadata` type must be set to `false`.
+  # The `returnBy` attribute of the `resources` type must NOT be set.
 
 == 4. Out-of-band selection model ==
 
-  # provide one or more out-of-band mechanisms for the selection/assignment of Content.
-  # declare support for the Out-of-band content selection method in the supportedContentSelectionMethods element of its serviceAttributes.     
-  # expose the selected Content to the Reading System through the getContentList operation when the operation is invoked with the id parameter set to the value new. 
+  # Provide one or more out-of-band mechanisms for the selection/assignment of Content.
+  # Declare support for the Out-of-band content selection method in the by setting the `method` element set to a value of OUT_OF_BAND in the `supportedContentSelectionMethods` element of its `serviceAttributes` type.     
+  # Expose the selected Content to the Reading System through the `getContentList` operation when the operation is invoked with the id parameter set to the value `new`. 
  
 == 5. Browse selection model ==
 
-  # provide support for the Dynamic Menus protocol feature. 
-  # declare support for the Browse Content Selection Method in the supportedContentSelectionMethods element of its serviceAttributes.     
+  # Provide support for the Dynamic Menus protocol feature. 
+  # Declare support for the Browse Content Selection Method by setting the `method` element set to a value of BROWSE in the `supportedContentSelectionMethods` element of its `serviceAttributes` type.     
  
 == 6. Updates and instalments ==
+
+  # The `lastModifiedDate` attribute of the `contentItem` type must match the content's most recently updated resource's date.
+  # The `lastModifiedDate` attribute of the `resources` type must match the content's most recently updated resource's date.
+  # The `lastModifiedDate` attribute of the `resource` type must match the most recently updated resource's date.
 
 == 7. Rights management ==
 
 == 8. Set bookmarks ==
 
+  # Support the portable bookmarks and highlights grammar described by the bookmark-2005-1.xsd file.
+  # Declare support for uploading of bookmarks by setting the `operation` element set to a value of SET_BOOKMARKS in the `supportedOptionalOperations` element of its `serviceAttributes` type.
+  # Implement the `setBookmarks` operation.
+
 == 9. Get bookmarks ==
+
+  # Support the portable bookmarks and highlights grammar described by the bookmark-2005-1.xsd file.
+  # Declare support for retrieval of bookmarks by setting the `operation` element set to a value of GET_BOOKMARKS in the `supportedOptionalOperations` element of its `serviceAttributes` type.
+  # Implement the `getBookmarks` operation.
 
 == 10. Dynamic menus ==
 
+  # Declare support for dynamic menus by setting the `operation` element set to a value of DYNAMIC_MENUS in the `supportedOptionalOperations` element of its `serviceAttributes` type.
+  # Implement the `getQuestions` operation.
+  # Expose the Main menu to the Reading System through the `getQuestions` operation when the operation is invoked with a `userResponse` parameter where the `questionID` element value is set to `default`.
+  # IF the service supports search
+    # Declare support for search by setting the value of `supportsSearch` element of its `servieAttributes` to `true`.
+    # Expose the Search menu to the Reading System through the `getQuestions` operation when the operation is invoked with a `userResponse` parameter where the `questionID` element value is set to `search`.
+  # IF the service supports back
+    # Declare support for back by setting the value of `supportsServerSideBack` element of its `servieAttributes` to `true`.
+    # Expose the previous menu to the Reading System through the `getQuestions` operation when the operation is invoked with a `userResponse` parameter where the `questionID` element value is set to `back`.
+  # Don't expose multiple selection questions to the Reading System if it doesn't support multiple selections.
+  # Don't expose input questions of types that the Reading System doesn't support.
+
 == 11. Service announcements ==
 
+  # Declare support for service announcements by setting the `operation` element set to a value of SERVICE_ANNOUCNEMENTS in the `supportedOptionalOperations` element of its `serviceAttributes` type.
+  # Implement `getServiceAnnouncements` and `markAnnouncementsAsRead` operations.
+  # Don't send announcements to a user that have been declared as read.
+
 == 12. Key provision ==
+
+  # Declare support for key provision by setting the `operation` element set to a value of PDTB2_KEY_PROVISION in the `supportedOptionalOperations` element of its `serviceAttributes` type.
+  # Implement `getKeyExchangeObject` operation.
+  # Keep a list of authorized key names.
