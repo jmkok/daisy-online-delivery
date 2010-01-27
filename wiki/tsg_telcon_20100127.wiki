@@ -1,4 +1,4 @@
-resent: 
+present: 
 
 Regrets:
 
@@ -11,12 +11,12 @@ scribe: Kenny
 === Previous Unfinished Action Items ===
 
   * Kenny to remove the Sample PDTB2 content from the SVN, and pass an alternative url to the group members. *done*
-  * Kenny to verify sample pdtb2 package content with Neale. 
-  * Kenny inform Hiro about the public key requirement.
-  * Simon, Jelle and Hiro to supply the service implementers their public key.    
-  * Geoff, Kenny and Johan to create the RS specific KXOs and share them with all service implementers.
+  * Kenny to verify sample pdtb2 package content with Neale. *done* 
+  * Kenny inform Hiro about the public key requirement. *pending - awaiting decision on pdtb2 support*
+  * Simon, Jelle and Hiro to supply the service implementers their public key. *pending - awaiting decision on pdtb2 support*    
+  * Geoff, Kenny and Johan to create the RS specific KXOs and share them with all service implementers. *pending - awaiting decision on pdtb2 support*
   * Simon, Geoff and Johan to post their observations on running the latest version of the bookmark XSD against their tools.      
-  * kenny and Simon to verify that the issue that svcutil had with empty soap action values is now resolved with the implemented solution. If yes, close Issue 190. 
+  * kenny and Simon to verify that the issue that svcutil had with empty soap action values is now resolved with the implemented solution. If yes, close Issue 190. *kenny: issue resolved. Simon?* 
   * Johan to add Announcements specific test cases to the [tsg_test_suite Conformance Testing] document.  
   * Geoff to add test cases for announcements and i18n to the ProtocolSystemTesting document. *Done*
   * Geoff to add a note to section 4.7.6 as per Issue 200. *Done*
