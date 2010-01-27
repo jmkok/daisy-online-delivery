@@ -269,6 +269,16 @@ But in the schema ( http://www.daisy.org/projects/pdtb/daisy-pdtb-spec.html#s9.2
 
 It seems that "xe:EncryptedKey" is missing in the schema...
 
+=== Suggestion for a Cosmetic change to Section 4.4.3 ===
+
+kenny: Section 4.4.3 states:
+"
+... 
+Each contentItem in a contentList has an optional lastModifiedDate attribute that indicates that last time the Content was modified. A Reading Systems can use this information to determine if the Content on the Service has been updated since the last time it was accessed. 
+"
+
+Proposal: modify verbiage to eliminate typos.
+
      === Spec update progress ===
 
   # documentation including the wsdl and xsd files.
