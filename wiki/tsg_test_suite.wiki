@@ -63,14 +63,15 @@ At a minimum, a conformant Reading System or Service must pass all tests in cate
 
   # Support the lastModifiedDate attribute on contentList.contentItem.
   # Support the lastModifiedDate attribute on resources.resource. (kj: need to determine whether this is a must for conformance.)  
-  # Invoke the getContentResources operation when it determines that content has been updated on the Service through the lastModifiedDate attribute of contentList.contentItem.
+  # Invoke the getContentResources operation when determined that content has been updated on the Service through the lastModifiedDate attribute of contentList.contentItem.
 
 == 7. Rights management and Key provision ==
 
   # Declare support for pdtb2 by setting the value of the supportedContentProtectionFormats element to PDTB2 when invoking the setReadingSystemAttributes operation.
   # Support the operation element set to a value of PDTB2_KEY_PROVISION in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine if the Service supports PDTB2.   
   # Support the getKeyExchangeObject operation.
-  # Support the meta attribute pdtb2:specVersion with the value set to 2005-1 in contentMetadata to determine if the content being downloaded is PDTB2 protected.          # Support the PDTB2 spec.
+  # Support the meta attribute pdtb2:specVersion with the value set to 2005-1 in contentMetadata to determine if the content being downloaded is PDTB2 protected.  
+  # Support the PDTB2 spec.
 
 == 8. Set bookmarks ==
 
