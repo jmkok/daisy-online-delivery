@@ -221,6 +221,7 @@ Johan: manufacturers may have their own internal representations of bookmarks fo
 geoff: It will take us a lot of time to specify the getBlob/setblob operations adequately.
 
 Markus: I understand and appreciate the rationale behind the getblob/setblob  operations. I have seen this problem several times with w3c specs. the moment a spec that is a dependency changes, the dependent spec needs to change as well to support the new version of the spec that is a dependency. I suggest this be flagged in the issue tracker as an issue that is an enhancement, and needs to be looked at in the next version.
+
   
 (The group unanimously agreed that Jelle's suggestion was a good idea, and should be looked at in the next version of the spec. Geoff to log an issue in the issue tracker and mark it  as an enhancement for the next version.)
 
