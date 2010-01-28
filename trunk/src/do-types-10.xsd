@@ -214,39 +214,7 @@
 								</xs:annotation>
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element name="input" minOccurs="0" maxOccurs="unbounded">
-											<xs:complexType>
-												<xs:attribute name="type" use="required">
-												<xs:simpleType>
-												<xs:restriction base="xs:string">
-												<xs:enumeration value="TEXT_NUMERIC">
-												<xs:annotation>
-												<xs:documentation>
-												<db:para>The Reading System supports numeric input.</db:para>
-												</xs:documentation>
-												</xs:annotation>
-												</xs:enumeration>
-												<xs:enumeration value="TEXT_ALPHANUMERIC">
-												<xs:annotation>
-												<xs:documentation>
-												<db:para>The Reading System supports
-												text and numeric input.</db:para>
-												</xs:documentation>
-												</xs:annotation>
-												</xs:enumeration>
-												<xs:enumeration value="AUDIO">
-												<xs:annotation>
-												<xs:documentation>
-												<db:para>The Reading System supports audio input.</db:para>
-												</xs:documentation>
-												</xs:annotation>
-												</xs:enumeration>
-												</xs:restriction>
-												</xs:simpleType>
-												</xs:attribute>
-												<xs:attribute ref="xml:lang" use="optional"/>
-											</xs:complexType>
-										</xs:element>
+										<xs:element ref="input" minOccurs="0" maxOccurs="unbounded"/>
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
@@ -295,6 +263,41 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+
+    <xs:element name="input">
+        <xs:complexType>
+            <xs:attribute name="type" use="required">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="TEXT_NUMERIC">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    <db:para>The Reading System supports numeric input.</db:para>
+                                    <db:para>The Service allows numeric-only responses to the question.</db:para>
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="TEXT_ALPHANUMERIC">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    <db:para>The Reading System supports text and numeric input.</db:para>
+                                    <db:para>The Service allows text and numeric responses to the question.</db:para>
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="AUDIO">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    <db:para>The Reading System supports audio input.</db:para>
+                                    <db:para>The Service allows audio responses to the question.</db:para>
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
 
 	<xs:element name="announcements">
 		<xs:annotation>
@@ -930,40 +933,7 @@
 					</xs:annotation>
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="input" minOccurs="1" maxOccurs="unbounded">
-								<xs:complexType>
-									<xs:attribute name="type" use="required">
-										<xs:simpleType>
-											<xs:restriction base="xs:string">
-												<xs:enumeration value="TEXT_NUMERIC">
-												<xs:annotation>
-												<xs:documentation>
-												<db:para>The Service allows numeric-only responses
-												to the question.</db:para>
-												</xs:documentation>
-												</xs:annotation>
-												</xs:enumeration>
-												<xs:enumeration value="TEXT_ALPHANUMERIC">
-												<xs:annotation>
-												<xs:documentation>
-												<db:para>The Service allows text and numeric responses
-												to the question.</db:para>
-												</xs:documentation>
-												</xs:annotation>
-												</xs:enumeration>
-												<xs:enumeration value="AUDIO">
-												<xs:annotation>
-												<xs:documentation>
-												<db:para>The Service allows audio responses
-												to the question.</db:para>
-												</xs:documentation>
-												</xs:annotation>
-												</xs:enumeration>
-											</xs:restriction>
-										</xs:simpleType>
-									</xs:attribute>
-								</xs:complexType>
-							</xs:element>
+							<xs:element ref="input" minOccurs="1" maxOccurs="unbounded"/>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
