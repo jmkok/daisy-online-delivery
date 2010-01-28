@@ -1,6 +1,6 @@
 present: Johan, Hiro, markus, geoff, jelle and kenny.   
 
-Regrets:
+Regrets: George
 
 scribe: Kenny
 
@@ -17,7 +17,7 @@ scribe: Kenny
   * kenny check with Simon whether the implemented solution for the correct handling of soap action by svcutil has resolved the particular problem with svcutil. If yes, close Issue 190.              
   * all to review the Systems testing document by next telecon.
   * kenny to complete the service conformance section of the conformance testing document by next telecon.
-   * All review the RS conformance section of the conformance testing document by the next telecon.
+  * All review the RS conformance section of the conformance testing document by the next telecon.
   * Kenny to close Issue 188. 
   
 === Previous Unfinished Action Items ===
