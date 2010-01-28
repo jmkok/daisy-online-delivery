@@ -78,8 +78,10 @@
                         </xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
+					<xs:sequence>
                         <xs:group ref="bookmarkContent"/>
-                        <xs:attribute name="label" type="xs:string" use="optional"/>
+					</xs:sequence>
+					<xs:attribute name="label" type="xs:string" use="optional"/>
                 </xs:complexType>
         </xs:element>
         
@@ -121,7 +123,9 @@
                                                 </xs:documentation>
                                         </xs:annotation>
                                         <xs:complexType>
+											<xs:sequence>
                                                 <xs:group ref="hiliteContent"/>
+											</xs:sequence>
                                         </xs:complexType>
                                 </xs:element>
                                 <xs:element name="hiliteEnd">
@@ -131,7 +135,9 @@
                                                 </xs:documentation>
                                         </xs:annotation>
                                         <xs:complexType>
+											<xs:sequence>
                                                 <xs:group ref="hiliteContent"/>
+											</xs:sequence>
                                         </xs:complexType>
                                 </xs:element>
                                 <xs:element ref="note" minOccurs="0"/>
