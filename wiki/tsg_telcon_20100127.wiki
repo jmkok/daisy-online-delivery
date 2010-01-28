@@ -1,4 +1,4 @@
-present: 
+present: Johan, Hiro, markus, geoff, jelle and kenny.   
 
 Regrets:
 
@@ -8,6 +8,18 @@ scribe: Kenny
  
 === New Action Items ===
 
+  * kenny to post suggestion 2 for pdtb2 support to the list as the group's decision going forward, and ask for any objections. 
+  * Geoff to record an issue in the issue tracker for the setBlob/getBlob operations as suggested by Jelle, and mark this issue as an enhancement for the next version of the spec.      
+  * Kenny to inform the pdtb2 folks that the documentation of the pdtb2 spec is inconsistent with the KXO xsd, specifically in terms of the definition of the encryptedKey element.
+  * kenny to make the required cosmetic change to section 4.4.3, and present it to the group for review.
+  * Johan to implement his suggestion for Issue 203 without the xml:lang attribute to the do-types-10.xsd file, and present it to the group for review. Once the group has reviewed the change, Johan to close issue 203.        
+  * Geoff to add Johan's suggested tweak to the bookmark xsd, and present it to the group for review. If no problems are reported, close Issue 202.
+  * kenny check with Simon whether the implemented solution for the correct handling of soap action by svcutil has resolved the particular problem with svcutil. If yes, close Issue 190.              
+  * all to review the Systems testing document by next telecon.
+  * kenny to complete the service conformance section of the conformance testing document by next telecon.
+   * All review the RS conformance section of the conformance testing document by the next telecon.
+  * Kenny to close Issue 188. 
+  
 === Previous Unfinished Action Items ===
 
   * Kenny to remove the Sample PDTB2 content from the SVN, and pass an alternative url to the group members. *done*
@@ -15,19 +27,14 @@ scribe: Kenny
   * Kenny inform Hiro about the public key requirement. *pending - awaiting decision on pdtb2 support*
   * Simon, Jelle and Hiro to supply the service implementers their public key. *pending - awaiting decision on pdtb2 support*    
   * Geoff, Kenny and Johan to create the RS specific KXOs and share them with all service implementers. *pending - awaiting decision on pdtb2 support*
-  * Simon, Geoff and Johan to post their observations on running the latest version of the bookmark XSD against their tools.      
-  * kenny and Simon to verify that the issue that svcutil had with empty soap action values is now resolved with the implemented solution. If yes, close Issue 190. *kenny: issue resolved. Simon?* 
   * Johan to add Announcements specific test cases to the [tsg_test_suite Conformance Testing] document.  *Done*
   * Geoff to add test cases for announcements and i18n to the ProtocolSystemTesting document. *Done*
   * Geoff to add a note to section 4.7.6 as per Issue 200. *Done*
   * Geoff to make the verbiage consistent across Section 4.3.1 and 4.3.2 as per Kenny's suggestion. *Done*
-  * Kenny to reflect all the changes recorded in the change log in the Dynamic Menus Primer. 
-  * Geoff to make the Systems Testing document ready for sign off by the next telecon.
-  * Kenny to make sure that the Conformance Testing document has all the assertions defined by the next telecon. (all RS conformance assertions have been defined; Service conformance assertions to be ready by next telecon; awaiting group review.)  
+  * Kenny to reflect all the changes recorded in the change log in the Dynamic Menus Primer. *tentative: should be done by  next telecon* 
   * Geoff, Johan, Simon, Hiro and Kenny to build PDTB2 support in their test implementations by Feb 15 using the sample content provided by Neale.
   * James and Neale fix the kxo.xsd issue in the PDTB2 spec by 5 Feb.
   * After the pdtb2 folks have fixed their version of kxo.xsd, kenny to change XSDs to their canonical URIs, and close issue 128 and Issue 144.   
-  * All review the bookmark XSD and confirm whether the empty complex type problem has been resolved. If yes, close Issue 188.
   * All to review the Systems Testing document and determine if the test cases are sufficient for their organization. We will visit the sufficiency of the test cases and what organizations will participate in these tests on the next telecon.   
   * Geoff and Kenny start work on the Test suite. (In progress)  
   * Geoff and Kenny start work on the Systems Testing document (in progress) 
@@ -141,16 +148,26 @@ c. As geoff pointed out, if a Reading System downloaded an authorisation object 
 
 We could always move the retrieval of KXOs to an out-of-band mechanism as we have the exchange of trusted public keys.   
 
-==== Suggestion 1: Get rid of the getKeyExchangeObject operation, move keyring to readingSystemAttributes, and bundle kxo with content resources ====
+==== Suggestions ====
 
-==== Suggestion 2: Move keyring to readingSystemAttributes, retain the simplified getKeyExchangeObject operation ====
+  * Suggestion 1: Get rid of the getKeyExchangeObject operation, move keyring to readingSystemAttributes, and bundle kxo with content resources 
+  * Suggestion 2: Move keyring to readingSystemAttributes, retain the simplified getKeyExchangeObject operation 
+  * Suggestion 3: Make the retrieval of KXOs out-of-band, drop the getKeyExchangeObject operation
+  * Suggestion 4: Replace the getKeyExchangeObject operation with a getBlob operation 
+  * Suggestion 5: Leave the pdtb2 support in the spec as is 
 
-==== Suggestion 3: Make the retrieval of KXOs out-of-band, drop the getKeyExchangeObject operation  ====
+==== Discussion on the telecon ====
 
-==== Suggestion 4: Replace the getKeyExchangeObject operation with a getBlob operation ====
+Geoff: According to mark, suggestion 2 is the only way of supporting both key exchange and dynamic authorisation objects. 
 
-==== Suggestion 5: Leave the pdtb2 support in the spec as is ====
-   
+markus: This is a bug fix then, right?
+
+Geoff: Its more of a feature as it would allow both methods of securing an authorisation object i.e. with keys in a KXO, or keys in an RS's keyring.
+
+Markus: If everyone is happy with this, I suggest we post our decision to move forward with suggestion 2 to the list, and ask for any objections.
+
+(The group decided to move forward with suggestion 2. kenny to post this decision to the list and ask for any objections.)  
+ 
 === Suggestion to replace getKeyExchangeObject, getBookmarks and setBookmarks operations with a generic getBlob operation ===
 
 ==== Discussion on the list ====
@@ -183,6 +200,28 @@ Forget the following immediatly: It could even make the removed "getResource" fu
 Frankly, we've spent enough time as it is.  I say we keep to the schedule.  If there's something we can't implement, then we cut it entirely rather than look for a new way.  Let's focus on getting this done, which means focusing on what we *can* get done (and tested).
 
 Johan: I agree with Geoff.
+
+==== discussion on the telecon ====
+
+Jelle: I see benefits in us adopting the getBlob/setBlob approach because of two reasons:
+   * A download-only Daisy Online client does not need to know the specifics of either the bookmark xsd or the KXO xsd.     
+  * support for future versions of the pdtb2 or bookmark specs will be seemless.
+
+I acknowledge that we are a long way into the getKeyExchangeObject approach. To my mind, the getBlob/setBlob approach makes things easier.
+
+Geoff: KXO is already in an xml format. Its well defined. We just need to simply import it. There's only one bug in it currently, and thats going to be fixed in time. I don't think we need to go the way of opaque binary objects at this stage. 
+  
+jelle: We are importing a lot of xsds, and my concern is that we will need to make each of them work individually. I don't know how we will accomodate future versions of pdtb2.
+
+Geoff: For version 1 of the Daisy Online spec, we only need to support particular versions of specs that are our dependencies i.e. bookmark, pdtb2. this satisfies our requirements e.g. exchanging keys ... Support for a single version of these specs should be sufficient for now.     
+
+Johan: manufacturers may have their own internal representations of bookmarks for example. the getBlob/setblob approach may cause a lot of interoperability issues.
+
+geoff: It will take us a lot of time to specify the getBlob/setblob operations adequately.
+
+Markus: I understand and appreciate the rationale behind the getblob/setblob  operations. I have seen this problem several times with w3c specs. the moment a spec that is a dependency changes, the dependent spec needs to change as well to support the new version of the spec that is a dependency. I suggest this be flagged in the issue tracker as an issue that is an enhancement, and needs to be looked at in the next version.
+  
+(The group unanimously agreed that Jelle's suggestion was a good idea, and should be looked at in the next version of the spec. Geoff to log an issue in the issue tracker and mark it  as an enhancement for the next version.)
 
 === Error in KXO.xsd: EncryptedKey not a valid child of <Keys> ===
 
@@ -269,6 +308,18 @@ But in the schema ( http://www.daisy.org/projects/pdtb/daisy-pdtb-spec.html#s9.2
 
 It seems that "xe:EncryptedKey" is missing in the schema...
 
+==== Discussion on the telecon ====
+
+Geoff: It is not an error in the xsd but one of Mark's examples.
+
+Johan: encryptedKey was a child of the keys element in the examples. This is not correct as per the xsd. We should highlight this for other implementers.
+
+Geoff: lets report this to the pdtb2 folks and leave it to them. Lets create our own example of the key exchange object.  
+
+Kenny: Are we sure that the problem is with the examples and not the xsd?
+
+Geoff: From our point of view, it does not matter. If the kxo xsd changes, it does not impact us. James has already suggested that the regular expression problem should be resolved by feb 15. This particular problem should not be a showstopper. 
+
 === Suggestion for a Cosmetic change to Section 4.4.3 ===
 
 kenny: Section 4.4.3 states:
@@ -278,6 +329,8 @@ Each contentItem in a contentList has an optional lastModifiedDate attribute tha
 "
 
 Proposal: modify verbiage to eliminate typos.
+
+(the group agreed. kenny to make the change.) 
 
      === Spec update progress ===
 
