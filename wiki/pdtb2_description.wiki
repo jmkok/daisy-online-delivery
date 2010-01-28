@@ -1,11 +1,35 @@
 = Intro =
 
-This page serves the following two purposes:
+This page serves the following three purposes:
   # Lists key concepts of the PDTB2 spec to aid the understanding of Daisy Online implementers wishing to provide support for pdtb2 in their implementations.
   # Describes the Daisy Online support for PDTB2.
+  # describes the contents of the sample PDTB2 package available to Daisy Online implementers.  
 
 == Key Concepts of the PDTB2 spec ==
 
 == Daisy Online support for PDTB2 ==
 
+== Sample PDTB2 package for implementers (provided by NLS) ==
+ 
+Neale: 
+
+The two .der files comprise the RSA public and private key pair.  There are three common ways of encoding such keys (DER, PEM, and .net) and PDTB-2 adds a fourth, KXO.  I used OpenSSL to generate these keys.  OpenSSL can generate DER and PEM keys but not .net or KXO.  Our encryptor can accept DER or KXO as an input format (though when using a DER format key it expects an extension of .key for some reason, thus the error message that appears in the encryption log).
+
+I did my best to name the keys according to the DAISY naming standard, but since these keys are not associated with any particular organization besides DAISY, I used intl-daisy (rather than something like us-nls) in the name.
+
+There are two other keys in this directory, each in three formats.  These are the two content keys (audio and text) as defined in the AO.
+
+Remember that in the AO, each content key is encrypted with the RSA public key and must be decrypted with the RSA private key.  Further, since they are binary objects, they must be base-64 encoded in order to be carried in an XML file like the AO.
+
+In order to prove that the book was correctly prepared, I did a "manual" decryption of each content key and then used OpenSSL with those keys to decrypt the content.  I could do this because I had the private key on hand.
+
+The steps were:
+
+1) Extract a content key from the AO.  This is simply a cut-and-paste operation.  This became the *.encrypted.base64 file found in the Keys folder.
+2) base64 decode the key.  This became the *.encrypted.bin file found in the Keys folder.
+3) Decrypt the key.  This became the *.decrypted.bin file found in the Keys folder.  You'll notice it's exactly 16 bytes in size, consistent with our 128-bit AES key length.
+4) Use the key to decrypt the content using OpenSSL
+5) Compare the decrypted content to the original
+
+I left the keys in the keys folder to save you some effort should you decide to go through these steps yourselves.  I'd also be happy to send you the OpenSSL commands I used to do the decryption (though there is some more work that goes with it, such as deriving hex versions of the keys and initialization vector) if you want them.
      
