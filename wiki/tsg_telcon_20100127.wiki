@@ -204,12 +204,13 @@ Johan: I agree with Geoff.
 ==== discussion on the telecon ====
 
 Jelle: I see benefits in us adopting the getBlob/setBlob approach because of two reasons:
-   * A download-only Daisy Online client does not need to know the specifics of either the bookmark xsd or the KXO xsd.     
+  * A download-only Daisy Online client does not need to know the specifics of either the bookmark xsd or the KXO xsd.     
   * support for future versions of the pdtb2 or bookmark specs will be seemless.
 
 I acknowledge that we are a long way into the getKeyExchangeObject approach. To my mind, the getBlob/setBlob approach makes things easier.
 
 Geoff: KXO is already in an xml format. Its well defined. We just need to simply import it. There's only one bug in it currently, and thats going to be fixed in time. I don't think we need to go the way of opaque binary objects at this stage. 
+
   
 jelle: We are importing a lot of xsds, and my concern is that we will need to make each of them work individually. I don't know how we will accomodate future versions of pdtb2.
 
