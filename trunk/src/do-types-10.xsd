@@ -162,6 +162,16 @@
 								</xs:complexType>
 							</xs:element>
 
+							<xs:element minOccurs="1" maxOccurs="1" ref="keyRing">
+								<xs:annotation>
+									<xs:documentation>
+										<db:para role="desc">The identifiers of some or all of the keys on the Reading
+											System's keyring.</db:para>
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							
+
 							<xs:element name="supportedMimeTypes" minOccurs="1" maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>
