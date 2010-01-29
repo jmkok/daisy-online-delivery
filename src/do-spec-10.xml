@@ -1190,13 +1190,15 @@
                     <title>Declaring PDTB2 Support</title>
 
                     <para> If a <xref linkend="term_readingSystem"/> supports
-                        <abbrev>PDTB2</abbrev>, it should inform a <xref linkend="term_service"/> by
+                        <abbrev>PDTB2</abbrev>, it should inform the <xref linkend="term_service"/> by
                         including a <type>
                             <xref linkend="tp_supportedContentProtectionFormats"/>
-                        </type> element with the value <literal>PDTB2</literal> when it invokes
-                        the <function>
-                            <xref linkend="op_setReadingSystemAttributes"/>
-                        </function> operation. </para>
+                        </type> element with the value <literal>PDTB2</literal>, and a
+						<type><xref linkend="tp_keyRing"/></type> element listing the names
+						of the keys in its keyring, in its
+                        <type><xref linkend="tp_readingSystemAttributes"/></type>.
+						The key names provided can be some or
+                        all of the public keys the <xref linkend="term_readingSystem"/> supports.</para>
 
                     <para> To indicate that a <xref linkend="term_service"/> supports
                             <abbrev>PDTB2</abbrev> key exchange, the <xref linkend="term_service"/>
@@ -1206,7 +1208,6 @@
                         responding to a <xref linkend="term_readingSystem"/>'s invocation of the <function>
                             <xref linkend="op_getServiceAttributes"/>
                         </function> operation. </para>
-
                     <note>
                         <para>
                             <xref linkend="term_service"/>s may provide
@@ -1259,23 +1260,16 @@
                     <para> To obtain a <abbrev>KXO</abbrev>, a <xref linkend="term_readingSystem"/>
                         must call the <function>
                             <xref linkend="op_getKeyExchangeObject"/>
-                        </function> operation with a list of key names in its local keyring together
-                        with the name of the requested key. The key names provided can be some or
-                        all of the public keys the <xref linkend="term_readingSystem"/> supports. </para>
+                        </function> operation with the name of the requested key. </para>
 
-                    <para> The <xref linkend="term_service"/> may choose any of the keys supplied by
-                        the <xref linkend="term_readingSystem"/> to encrypt the
+                    <para> The <xref linkend="term_service"/> may choose any of the keys supplied in
+                        the <type><xref linkend="tp_readingSystemAttributes"/></type> to encrypt the
                         <abbrev>KXO</abbrev>. If the <xref linkend="term_service"/> does not have
                         any of the keys or if the <xref linkend="term_user"/> is not authorized to
                         access the <xref linkend="term_content"/>, then the <xref
                             linkend="term_service"/> must reply with an <errorname>
                             <xref linkend="ft_invalidParameterFault"/>
                         </errorname> fault. </para>
-
-                    <note>
-                        <para> The <xref linkend="term_service"/> is responsible for keeping a list
-                            of authorized key names. </para>
-                    </note>
 
                     <para> If the <xref linkend="term_readingSystem"/> receives a valid
                             <abbrev>KXO</abbrev> from the <xref linkend="term_service"/>, the <xref
