@@ -162,7 +162,7 @@
 								</xs:complexType>
 							</xs:element>
 
-							<xs:element minOccurs="1" maxOccurs="1" ref="keyRing">
+							<xs:element minOccurs="0" maxOccurs="1" ref="keyRing">
 								<xs:annotation>
 									<xs:documentation>
 										<db:para role="desc">The identifiers of some or all of the keys on the Reading
