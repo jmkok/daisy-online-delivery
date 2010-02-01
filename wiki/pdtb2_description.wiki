@@ -7,7 +7,10 @@ This page serves the following three purposes:
 
 == Key Concepts of the PDTB2 spec ==
 
+  * 
 == Daisy Online support for PDTB2 ==
+
+  * There is no option available to a Reading System to determine what keys are relevant to a Service when sending its keyring to a Service through the setReadingSystemAttributes operation. Thus, a reading System should always send all its keys in the keyring. The PDTB2 working group considered the scenario where a keyring would get rather large due to the number of keys present, but dismissed this issue as there are not many services using KXOs out in the field.      
 
 == Sample PDTB2 package for implementers (provided by NLS) ==
  
