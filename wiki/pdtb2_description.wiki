@@ -7,7 +7,13 @@ This page serves the following three purposes:
 
 == Key Concepts of the PDTB2 spec ==
 
-  * 
+  * The PDTB2 spec requires Reading Systems to have three RSA key pairs out of the factory:
+   * An RSA key pair that identifies the manufacturer.
+   * An RSA key pair that identifies the model of the device.
+   * An RSA key pair that identifies the instance (optional for hardware Reading Systems).
+ * Reading Systems sometimes come pre-installed with RSA key pairs required by a Service.  
+
+
 == Daisy Online support for PDTB2 ==
 
   * There is no option available to a Reading System to determine what keys are relevant to a Service when sending its keyring to a Service through the setReadingSystemAttributes operation. Thus, a reading System should always send all its keys in the keyring. The PDTB2 working group considered the scenario where a keyring would get rather large due to the number of keys present, but dismissed this issue as there are not many services using KXOs out in the field.      
