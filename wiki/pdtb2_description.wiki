@@ -21,7 +21,7 @@ This page serves the following three purposes:
 
 == Sample PDTB2 package for implementers (provided by NLS) ==
  
-Neale: 
+Neil: 
 
 The two .der files comprise the RSA public and private key pair.  There are three common ways of encoding such keys (DER, PEM, and .net) and PDTB-2 adds a fourth, KXO.  I used OpenSSL to generate these keys.  OpenSSL can generate DER and PEM keys but not .net or KXO.  Our encryptor can accept DER or KXO as an input format (though when using a DER format key it expects an extension of .key for some reason, thus the error message that appears in the encryption log).
 
