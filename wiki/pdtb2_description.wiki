@@ -7,6 +7,7 @@ This page serves the following three purposes:
 
 == Key Concepts of the PDTB2 spec ==
 
+  * for the purposes of encrypting the Daisy fileset, the pdtb2 spec groups media types into Audio, Text and Image. The audio key is used for any audio media type, and the image key for any image type.  The text key is used for any text including the text of the book and the XML markup files that are encrypted (PPF, PNCX files).  So, even an audio-only book needs and uses a text key.  
   * The PDTB2 spec requires Reading Systems to have three RSA key pairs out of the factory:
    * An RSA key pair that identifies the manufacturer.
    * An RSA key pair that identifies the model of the device.
