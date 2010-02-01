@@ -1,0 +1,5 @@
+== Intro ==
+
+This page records all tweaks that have been implemented in various implementations to successfully consume the normative WSDL and XSD files for the auto generation of native programming constructs in different toolkits. 
+
+== Microsoft toolkit (svcutil, xsd.exe, wsdl.exe) ==
