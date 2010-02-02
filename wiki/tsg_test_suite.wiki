@@ -17,32 +17,34 @@ At a minimum, a conformant Reading System or Service must satisfy all Required A
 
 === Required Assertions ===
 
-  # Support the Wrapped Document-Literal WSDL Binding Style.
-  # All programming constructs (i.e. operations, types, faults, namespaces, classes, interfaces) generated conform to the normative WSDL.      
+  # Support the Wrapped Document-Literal WSDL Binding Style. _GGT: This is redundant. The following assertion already covers this._
+  # All programming constructs (i.e. operations, types, faults, namespaces, classes, interfaces) generated conform to the normative WSDL.
   # Comply with WS-I Basic Profile 1.1.
-  # Support http and https.
-  # Support http Basic Authentication. 
-  # Support http range headers 
-  # Support http cookies.  
-  # Implement all the following required operations:
-   # logOn
-   # logOff
-   # setReadingSystemAttributes
-   # getServiceAttributes
-   # issueContent
-   # getContentList
-   # getContentMetadata
-   # getContentResources
-  # Adhere to the following session initialization sequence to commence a session with a Service:
+  # Support HTTP and HTTPS.
+  # Support HTTP Basic Authentication. 
+  # Support HTTP range headers 
+  # Support HTTP cookies.  
+  # Implement all the following required operations: _GGT: These need to be separate assertions.  The formatting makes it look like they are test cases._
+   # `logOn`
+   # `logOff`
+   # `setReadingSystemAttributes`
+   # `getServiceAttributes`
+   # `issueContent`
+   # `getContentList`
+   # `getContentMetadata`
+   # `getContentResources`
+  # Adhere to the following session initialization sequence to commence a session with a Service: _GGT: The formatting here makes it look like these are test cases._
    # Invoke the logOn operation as the first operation call in a session.   
    # After a successful log on, invoke the getServiceAttributes operation. 
    # If the invokation of the `getServiceAttributes` operation is successful, invoke the setReadingSystemAttributes operation. 
-  # Support one or both of the service models:
-   # Satisfy all Required assertions in category 2 and or category 3.
+  # Support one or both of the service models.
+    # Satisfy all required assertions in category 2 and/or category 3.
   # Support one or both of the content selection models:
-   # Satisfy all required assertions in category 4 and or category 5.
+    # Satisfy all required assertions in category 4 and/or category 5.
 
 === Optional Assertions ===
+
+_GGT: Optional assertions have no place in conformance testing.  An optional assertion tells you nothing about conformance.  If an assertion isn't required in a category, it should be left out._
 
 None
 
@@ -51,12 +53,14 @@ None
 === Required Assertions ===
 
   # Implement the `returnContent` operation.
-  # Support the "issued" and "expired" `contentList`s.
-  # Support the `requiresReturn` attribute of the `contentMetadata` type.   
+  # Support the "issued" and "expired" `contentList`s. _GGT: "expired" is not required._
+  # Support the `requiresReturn` attribute of the `contentMetadata` type. _GGT: This assertion is in both service model categories. That means it's actually a core requirement!_
   # Support the `returnBy` attribute of the `resources` type.
   # Must not call `returnContent` for a particular piece of content until all local copies of the content have been removed off its storage.
 
 === optional Assertions ===
+
+_GGT: See note on optional assertions above._
 
   # Should retrieve the "expired" `contentList` at least once in a session if any borrowed Content exists.      
   # Should return any borrowed Content in the expired list after notifying the user.
@@ -65,10 +69,12 @@ None
 
 === Required Assertions ===
 
-  # Support the `requiresReturn` attribute of the `contentMetadata` type.
-  # Must not call the `requiresReturn` operation (if it is implemented) for any content that has @requiresReturn set to false in its `contentMetadata` type.   
+  # Support the `requiresReturn` attribute of the `contentMetadata` type. _GGT: This assertion is in both service model categories. That means it's actually a core requirement!_
+  # Must not call the `requiresReturn` operation for any content that has `@requiresReturn` set to `false` in its `contentMetadata` type.   
 
 === Optional Assertions ===
+
+_GGT: See note on optional assertions above._
 
   # Support the "issued" contentList.
 
@@ -83,6 +89,8 @@ None
    # getContentResources
 
 === Optional Assertions ===
+
+_GGT: See note on optional assertions above._
 
   # Support the invoking of the getContentList operation with the "issued" id parameter.
 
