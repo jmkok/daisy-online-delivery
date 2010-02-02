@@ -1,0 +1,264 @@
+present: 
+
+Regrets: 
+
+scribe: Kenny
+
+== Action Item Summary ==
+ 
+=== New Action Items ===
+
+=== Previous Unfinished Action Items ===
+
+  * kenny to post suggestion 2 for pdtb2 support to the list as the group's decision going forward, and ask for any objections. *done* 
+  * Geoff to record an issue in the issue tracker for the setBlob/getBlob operations as suggested by Jelle, and mark this issue as an enhancement for the next version of the spec.      
+  * Kenny to inform the pdtb2 folks that the documentation of the pdtb2 spec is inconsistent with the KXO xsd, specifically in terms of the definition of the encryptedKey element. *done*
+  * kenny to make the required cosmetic change to section 4.4.3, and present it to the group for review.
+  * Johan to implement his suggestion for Issue 203 without the xml:lang attribute to the do-types-10.xsd file, and present it to the group for review. Once the group has reviewed the change, Johan to close issue 203.        
+  * Geoff to add Johan's suggested tweak to the bookmark xsd, and present it to the group for review. If no problems are reported, close Issue 202.
+  * kenny check with Simon whether the implemented solution for the correct handling of soap action by svcutil has resolved the particular problem with svcutil. If yes, close Issue 190.              
+  * all to review the Systems testing document by next telecon.
+  * kenny to complete the service conformance section of the conformance testing document by next telecon. *done*
+  * All review the RS conformance section of the conformance testing document by the next telecon.
+  * Kenny to close Issue 188. 
+  * Kenny inform Hiro about the public key requirement. *pending - awaiting decision on pdtb2 support*
+  * Simon, Jelle and Hiro to supply the service implementers their public key. *pending - awaiting decision on pdtb2 support*    
+  * Geoff, Kenny and Johan to create the RS specific KXOs and share them with all service implementers. *pending - awaiting decision on pdtb2 support*
+  * Kenny to reflect all the changes recorded in the change log in the Dynamic Menus Primer. *tentative: should be done by the telecon on 10 february* 
+  * Geoff, Johan, Simon, Hiro and Kenny to build PDTB2 support in their test implementations by Feb 15 using the sample content provided by Neale.
+  * James and Neale fix the kxo.xsd issue in the PDTB2 spec by 5 Feb.
+  * After the pdtb2 folks have fixed their version of kxo.xsd, kenny to change XSDs to their canonical URIs, and close issue 128 and Issue 144.   
+  * All to review the Systems Testing document and determine if the test cases are sufficient for their organization. We will visit the sufficiency of the test cases and what organizations will participate in these tests on the next telecon.   
+  * Geoff and Kenny start work on the Test suite. (In progress)  
+  * Geoff and Kenny start work on the Systems Testing document (in progress) 
+  * Markus fix the &apos; entity problem. (outstanding; bug in IE.) (Markus will fix this when ready to publish.)
+
+=== Group Action Items ===
+
+==== Action items for the public review period commencing February 15, 2010 ==== 
+
+  * All issues should be resolved or formally deferred.
+  * Any updates to the spec need to be completed and proof read. 
+  * The primer should be proof read.
+  * The Test suite, The Systems testing document and the Test Implementations Conformance report should be made available. 
+  * Create an area where implementers can post information about the additional features that they have implemented on top of the spec, and that the community at large may be interested in.  
+
+==== Action items for formal recommendation to the Board on April 5, 2010 ====  
+
+   * Deliver Final version of the spec.  
+   * Provide Information on comments Received, and how they were addressed.  
+   * Make available the Test Implementations Conformance Report.
+   * make available the systems testing  document. 
+   * Make a formal Recommendation to the board for approval.  
+
+== Agenda/Minutes ==
+
+=== PDTB2 support in Daisy Online ===
+
+Do we have consensus?
+
+=== Issue 188, 190, 201 and 203 ===
+
+Can we close all these four issues now?
+
+=== Suggestion to move minOccurs and maxOccurs attributes to the parent sequence element in the xsd to deal with an svcutil issue ===
+
+==== Discussion on the list ====
+
+Simon: There is an issue with svcutil when trying to generate code for “array” element.  
+
+There are 3 places (announcements, userResponses and read) in do-types-10.xsd where an element is defined with a single item element that as the maxOccurs=”unbounded” set. This translate into a type that is an array of items.
+
+Moving the minOccurs and maxOccurs to the parent <xs:sequence ...> tag seems to solve the issue. And it’s still translated into the same type since there is only one element in the sequence. 
+
+Here’s what I propose:
+
+Before:
+
+<xs:element name="announcements">
+
+    <xs:complexType>
+
+        <xs:sequence>
+
+            <xs:element name="announcement" minOccurs="0" maxOccurs="unbounded">
+
+                ...
+
+            </xs:element>
+
+        </xs:sequence>
+
+    </xs:complexType>
+
+</xs:element>
+
+ 
+
+<xs:element name="userResponses">
+
+    <xs:complexType>
+
+        <xs:sequence>
+
+            <xs:element name="userResponse" minOccurs="1" maxOccurs="unbounded">
+
+                ...
+
+            </xs:element>
+
+        </xs:sequence>
+
+    </xs:complexType>
+
+</xs:element>
+
+<xs:element name="read">
+
+    <xs:complexType>
+
+        <xs:sequence>
+
+            <xs:element ref="item" minOccurs="0" maxOccurs="unbounded"/>
+
+        </xs:sequence>
+
+    </xs:complexType>
+
+</xs:element>
+
+After:
+
+<xs:element name="announcements">
+
+    <xs:complexType>
+
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+
+            <xs:element name="announcement">
+
+                ...
+
+            </xs:element>
+
+        </xs:sequence>
+
+    </xs:complexType>
+
+</xs:element>
+
+ 
+
+<xs:element name="userResponses">
+
+    <xs:complexType>
+
+        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+
+            <xs:element name="userResponse">
+
+                ...
+
+            </xs:element>
+
+        </xs:sequence>
+
+    </xs:complexType>
+
+</xs:element>
+
+ 
+
+<xs:element name="read">
+
+    <xs:complexType>
+
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+
+            <xs:element ref="item"/>
+
+        </xs:sequence>
+
+    </xs:complexType>
+
+</xs:element>
+ 
+From what I understand, this is a bug with Microsoft tool and not with the xsd. But since both form are valid, I suggest we make the change.
+
+Johan: Doesn't work with my tools. 
+
+I think we should keep the syntax consistent. Mixing things up in schemas gives an impression of a sloppy work. Since Microsoft's tool seems to understand array elements for other types I think it would be better to report this issue to Microsoft and let them to fix the bug.
+
+Kenny, do you also have the same problem?
+
+Kenny:Yes we do. Moving minOccurs and maxOccurs to the sequence element solves the problem for us too. In fact, we have followed Simon's lead to resolve this issue in our implementation. 
+ 
+I propose we record the fix for the Microsoft toolkit as a tweak, and add it to [1], but not modify the xsd for semantic correctness and maximum interoperability.       
+[1] http://code.google.com/p/daisy-online-delivery/wiki/WSDLAndXSDTweaks
+  
+=== Is a Service required to provide an "expired" `contentList` in the Lending Model ===
+
+Kenny: Section 4.1.1.1 states:
+"
+...
+• offer the issued 
+contentList 
+"          
+
+Is a Service required to also offer an "expired" `contentList` in this model?
+
+This section then states:
+"
+...
+• if issued,the Content item must be listed in either the User's issued or expired contentList until it is returned
+...
+"
+
+Do we need to be more specific on when the content appears in the "issued" and "expired" `contentList`(s)?  
+
+=== marking multiple Announcements as Read ===
+
+kenny: Section 4.5.2 states:
+"
+...
+After rendering each announcement to a User, a Reading System should immediately invoke the 
+markAnnouncementsAsRead operation to inform the Service not to send the announcement again the next time the User connects to the Service. 
+...
+"
+
+The read parameter to the markAnnouncementsAsRead operation is capable of holding more than one announcement IDs. Should we modify the verbiage to make it clear that an RS can mark multiple announcements as read through the markAnnouncementsAsRead operation, and that it does not need to invoke this operation after rendering every individual announcement to the user?    
+    
+     === Spec update review ===
+
+  # documentation including the wsdl and xsd files. (?)
+  # Primer. (available with the change log reflected by 10 Feb) 
+  # systems testing and test suite documents. (?)
+  # Conformance Report (Deferred to end March)
+
+Resources for proof reading?
+
+=== Test suite Progress review ===
+
+==== [http://code.google.com/p/daisy-online-delivery/wiki/tsg_test_suite Test Suite] ====
+
+Call for volunteers:
+  * Review.
+  * Add test cases.
+  * Compare against change log for any inconsistencies.
+
+==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolSystemTestingTestCases Systems Testing] ====
+
+Geoff: I'd like to start filling in who does what in the system testing.  Since the protocol is client-driven, it will mostly be client developers running the tests.  I'll try to spread the tests out evenly among the client developers who participate.
+
+I need both client and server developers to send me a list of which tests you are going to be capable of performing (something like, "All except X, Y and Z," is fine, too).  I'll do some kind of mix-and-match and send out the assigned tests for confirmation.
+
+Realistically, we have until near the end of March to do the testing.  However, I'd like to get started as early as possible: when the protocol is finalized and implementors have integrated the changes into their systems.  It would be nice if test reports trickled in as they get done, rather than as a huge lump at the end, so we can watch the progress and reassign tests if needed.
+
+== Related Wiki Pages ==
+
+=== [http://code.google.com/p/daisy-online-delivery/wiki/ChangeLog Change Log] ===
+
+=== [http://code.google.com/p/daisy-online-delivery/wiki/pdtb2_description PDTB2 Description for Daisy Online Implementers] ===
+
+=== [http://code.google.com/p/daisy-online-delivery/wiki/WSDLAndXSDTweaks WSDL and XSD Tweaks for Daisy Online Implementers] ===
+ 
