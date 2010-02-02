@@ -13,9 +13,12 @@ At a minimum, a conformant Reading System or Service must pass all tests in cate
 
 == 1. Core functionality ==
 
-  # All programming constructs generated conform to the published WSDL.      
-  # All required operations are implemented as specified in the normative WSDL.
-  # The Reading System complies with WS-I Basic Profile 1.1.
+  # All programming constructs (i.e. operations, types, faults, namespaces, classes, interfaces) generated conform to the normative WSDL.      
+ # The Reading System complies with WS-I Basic Profile 1.1.
+  # Support http and https.
+  # Support http Basic Authentication. 
+  # Support http range headers (kj: is this a may or must?)
+  # Support http cookies.  
   # The session initialization sequence is followed to commence a session with a Service.
    # Verify that the first operation called in a session is `logOn`.
    # After a successful log on, verify the the second operation called in a session is `getServiceAttributes`.
