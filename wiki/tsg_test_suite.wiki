@@ -1,6 +1,8 @@
 #summary Conformance test cases for both Reading Systems and Services.
 #labels Phase-QA
 
+_GGT: I've marked up the Reading System conformance section with some observations, in italics, preceded by "GGT:"._
+
 = Introduction =
 
 The test suite consists of two lists of test cases to verify that a Reading System or Service conforms to the DAISY Online specification.  These test cases are not comprehensive, but represent both normal cases and edge cases.
@@ -98,15 +100,12 @@ _GGT: See note on optional assertions above._
 
 === Required Assertions ===
 
-  # Support the Dynamic Menus protocol feature. _GGT: This needs expanding, I think._
+  # Satisfy the assertions in category 11. _GGT: This originally said, "Supports the dynamic menus protocol feature." This is more specific._
   # Support the getContentList operation. _GGT: This is already covered in the core functionality._
   # Support the invoking of the following operations in the sequence listed below for each content item in the retrieved Content List: _GGT: This is already covered in the core functionality._
    # getContentMetadata     
    # issueContent
    # getContentResources
-
-_GGT: I suggest adding:_
-  * Support the `getQuestions` operation.
 
 === Optional Assertions ===
 
@@ -166,7 +165,7 @@ None
 
 === Required Assertions ===
 
-  # Support the portable bookmarks and highlights grammar described by the bookmark-2005-1.xsd file. _GGT: Should add: and section 9 of the ANSI-NISO Z39.86 specification._
+  # Support the portable bookmarks and highlights grammar described by the bookmark-2005-1.xsd file. _GGT: Should add: and section 9 of the ANSI/NISO Z39.86 specification._
   # Support the operation element set to a value of SET_BOOKMARKS in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports the setBookMarks operation. _GGT: This is a service requirement, not a reading system requirement._
   # Support the `setBookmarks` operation.
   # must not submit audio recordings as a part of the setBookmarks operation. _GGT: This is not a requirement, it is a limitation of the spec._
@@ -182,11 +181,13 @@ _GGT: See note on optional assertions above._
 
 === Required Assertions ===
 
-  # Support the portable bookmarks and highlights grammar described by the bookmark-2005-1.xsd file. 
-  # Support the operation element set to a value of GET_BOOKMARKS in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports the getBookMarks operation.
-  # Support the getBookmarks operation.
+  # Support the portable bookmarks and highlights grammar described by the bookmark-2005-1.xsd file.  _GGT: Should add: and section 9 of the ANSI/NISO Z39.86 specification._
+  # Support the operation element set to a value of GET_BOOKMARKS in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports the getBookMarks operation. _GGT: This is a service requirement, not a reading system requirement._
+  # Support the `getBookmarks` operation.
 
 === Optional Assertions ===
+
+_GGT: See note on optional assertions above._
 
   # IF a Service supports both the getBookmarks and setBookmarks operations, the lastMark attribute of the bookmarkSet type should be used to store the user's last reading position. 
   # IF a Service supports both the getBookmarks and setBookmarks operations, the last reading position should be checked before playback is resumed. 
@@ -195,17 +196,16 @@ _GGT: See note on optional assertions above._
 
 === Required Assertions ===
 
-  # Support the operation element set to a value of DYNAMIC_MENUS in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports dynamic menus.
-  # Support the getQuestions operation.
-  # The userResponses type parameter passed when invoking the getQuestions operation must contain either a response to a previous question or one of the following special IDs:
-   # default
-   # search
-   # back
-  # If a Service sends more than one question in a questions type, the user's response to each of the questions should be collected, and posted in the next call to the getQuestions operation through a separate userResponse property.
+  # Support the operation element set to a value of DYNAMIC_MENUS in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports dynamic menus. _GGT: This is a service requirement, not a reading system requirement._
+  # Support the `getQuestions` operation.
+  # The `userResponses` parameter passed to the `getQuestions` operation must contain either a response to a previous question or one of the reserved IDs: "default", "search" or "back". _GGT: Could contain multiple questions. See below._
+  # If a Service sends more than one question in a questions type, the user's response to each of the questions should be collected, and posted in the next call to the getQuestions operation through a separate userResponse property. _GGT: The next call? Every question? This should be merged with the previous assertion._
   # Declare what input types it supports in the readingSystemAttributes type posted to the Service through a call to the setReadingSystemAttributes operation.   
-  # Invoke the getContentList operation when a call to the getQuestions operation yields a questions type that contains a contentListRef child element.    
+  # Invoke the getContentList operation when a call to the getQuestions operation yields a questions type that contains a contentListRef child element. _GGT: This is not a requirement. Reading Systems are free not to do this._
 
 === Optional Assertions ===
+
+_GGT: See note on optional assertions above._
 
 None
  
@@ -213,13 +213,15 @@ None
 
 === Required Assertions ===
 
-  # Support the getServiceAnnouncements operation.
-  # Support the operation element set to a value of SERVICE_ANNOUNCEMENTS in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports Service Announcements. 
-  # Treat the IDs of individual announcements as valid only for the duration of a session.
+  # Support the `getServiceAnnouncements` operation.
+  # Support the operation element set to a value of SERVICE_ANNOUNCEMENTS in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports Service Announcements.  _GGT: This is a service requirement, not a reading system requirement._
+  # Treat the IDs of individual announcements as valid only for the duration of a session. _GGT: This is a statement about the protocol, not a requirement._
   # After an announcement has been rendered, immediately invoke the markAnnouncementsAsRead operation to inform the Service not to send the announcement again on the next invokation of the getServiceAnnouncements operation. (kj: question about multiple announcement ids being posted through the read type.)
-  # Only invoke the markAnnouncementsAsRead operation with the IDs of announcements retrieved from the last invokation of the getServiceAnnouncements operation in the active session.
+  # Only invoke the markAnnouncementsAsRead operation with the IDs of announcements retrieved from the last invocation of the getServiceAnnouncements operation in the active session. _GGT: This is not a requirement._
 
 === Optional Assertions ===
+
+_GGT: See note on optional assertions above._
 
   # Support the rendering of audio and text announcements for maximum interoperability. 
   # Check for new announcements by invoking the getServiceAnnouncements operation at least once per session.
