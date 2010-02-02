@@ -14,7 +14,7 @@ scribe: Kenny
   * Geoff to record an issue in the issue tracker for the setBlob/getBlob operations as suggested by Jelle, and mark this issue as an enhancement for the next version of the spec.      
   * Kenny to inform the pdtb2 folks that the documentation of the pdtb2 spec is inconsistent with the KXO xsd, specifically in terms of the definition of the encryptedKey element. *done*
   * kenny to make the required cosmetic change to section 4.4.3, and present it to the group for review.
-  * Johan to implement his suggestion for Issue 203 without the xml:lang attribute to the do-types-10.xsd file, and present it to the group for review. Once the group has reviewed the change, Johan to close issue 203.        
+  * Johan to implement his suggestion for Issue 203 without the xml:lang attribute to the do-types-10.xsd file (*done*), and present it to the group for review. Once the group has reviewed the change, Johan to close issue 203.        
   * Geoff to add Johan's suggested tweak to the bookmark xsd, and present it to the group for review. If no problems are reported, close Issue 202.
   * kenny check with Simon whether the implemented solution for the correct handling of soap action by svcutil has resolved the particular problem with svcutil. If yes, close Issue 190.              
   * all to review the Systems testing document by next telecon.
