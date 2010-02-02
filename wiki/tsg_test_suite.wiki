@@ -111,7 +111,7 @@ At a minimum, a conformant Reading System or Service must pass all tests in cate
   # Support the getServiceAnnouncements operation.
   # Support the operation element set to a value of SERVICE_ANNOUNCEMENTS in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports Service Announcements. 
   # Treat the IDs of individual announcements as valid only for the duration of a session.
-  # After an announcement has been rendered, immediately invoke the markAnnouncementsAsRead operation to inform the Service not to send the announcement again on the next invokation of the getServiceAnnouncements operation.
+  # After an announcement has been rendered, immediately invoke the markAnnouncementsAsRead operation to inform the Service not to send the announcement again on the next invokation of the getServiceAnnouncements operation. (kj: question about multiple announcement ids being posted through the read type.)
   # Only invoke the markAnnouncementsAsRead operation with the IDs of announcements retrieved from the last invokation of the getServiceAnnouncements operation in the active session.
   # Support the rendering of audio and text announcements for maximum interoperability. (kj: need to decide if this should be a must)         
   # Check for new announcements by invoking the getServiceAnnouncements operation at least once per session.
