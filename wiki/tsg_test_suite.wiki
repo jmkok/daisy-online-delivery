@@ -7,53 +7,88 @@ The test suite consists of two lists of test cases to verify that a Reading Syst
 
 The test cases in each list are grouped by category, and what assertion they test.
 
-At a minimum, a conformant Reading System or Service must pass all tests in category 1, "Core functionality".
+There are two types of assertions: Required and optional. A Reading System or Service must satisfy all test cases for all required assertions in a category to claim conformance to the particular category.  
+
+At a minimum, a conformant Reading System or Service must satisfy all Required Assertions in category 1, "Core functionality".
 
 = Reading System conformance =
 
 == 1. Core functionality ==
 
+=== Required Assertions ===
+
+  # Support the Wrapped Document-Literal WSDL Binding Style.
   # All programming constructs (i.e. operations, types, faults, namespaces, classes, interfaces) generated conform to the normative WSDL.      
- # The Reading System complies with WS-I Basic Profile 1.1.
+  # Comply with WS-I Basic Profile 1.1.
   # Support http and https.
   # Support http Basic Authentication. 
-  # Support http range headers (kj: is this a may or must?)
+  # Support http range headers 
   # Support http cookies.  
-  # The session initialization sequence is followed to commence a session with a Service.
-   # Verify that the first operation called in a session is `logOn`.
-   # After a successful log on, verify the the second operation called in a session is `getServiceAttributes`.
-   # After a successful `getServiceAttributes`, verify that the third operation called in a session is `setReadingSystemAttributes`.
-  # The Reading System supports one of the service models.
-   # The Reading System passes all tests in either category 2 or category 3.
-  # The Reading System supports one of the content selection models.
-   # The Reading System passes all tests in either category 4 or category 5.
+  # Implement all the following required operations:
+   # logOn
+   # logOff
+   # setReadingSystemAttributes
+   # getServiceAttributes
+   # issueContent
+   # getContentList
+   # getContentMetadata
+   # getContentResources
+  # Adhere to the following session initialization sequence to commence a session with a Service:
+   # Invoke the logOn operation as the first operation call in a session.   
+   # After a successful log on, invoke the getServiceAttributes operation. 
+   # If the invokation of the `getServiceAttributes` operation is successful, invoke the setReadingSystemAttributes operation. 
+  # Support one or both of the service models:
+   # Satisfy all Required assertions in category 2 and or category 3.
+  # Support one or both of the content selection models:
+   # Satisfy all required assertions in category 4 and or category 5.
+
+=== Optional Assertions ===
+
+None
 
 == 2. Lending service model ==
+
+=== Required Assertions ===
 
   # Implement the `returnContent` operation.
   # Support the "issued" and "expired" `contentList`s.
   # Support the `requiresReturn` attribute of the `contentMetadata` type.   
   # Support the `returnBy` attribute of the `resources` type.
   # Must not call `returnContent` for a particular piece of content until all local copies of the content have been removed off its storage.
+
+=== optional Assertions ===
+
   # Should retrieve the "expired" `contentList` at least once in a session if any borrowed Content exists.      
-  # Should return any borrowed Content listed in the expired list after notifying the user.
+  # Should return any borrowed Content in the expired list after notifying the user.
 
 == 3. Acquisition service model ==
 
+=== Required Assertions ===
+
   # Support the `requiresReturn` attribute of the `contentMetadata` type.
-  # *GGT: This is not necessary to support the acquisition model.* Support the "issued" contentList.
-  # If `returnContent` is implemented, it must not be called for any content that has `@requiresReturn=false` in its `contentMetadata`. 
+  # Must not call the `requiresReturn` operation (if it is implemented) for any content that has @requiresReturn set to false in its `contentMetadata` type.   
+
+=== Optional Assertions ===
+
+  # Support the "issued" contentList.
 
 == 4. Out-of-band selection model ==
 
+=== Required Assertions ===
+
   # Support the invoking of the getContentList operation with the "new" id parameter.
-  # Support the invoking of the getContentList operation with the "issued" id parameter.(kj: this is listed as a may in the spec. Need to decide if this assertion should be met for compliance.)   
   # Support the invoking of the following operations in the sequence listed below for each content item in the retrieved Content List:
    # getContentMetadata     
    # issueContent
    # getContentResources
- 
+
+=== Optional Assertions ===
+
+  # Support the invoking of the getContentList operation with the "issued" id parameter.
+
 == 5. Browse selection model ==
+
+=== Required Assertions ===
 
   # Support the Dynamic Menus protocol feature.
   # Support the getContentList operation.
@@ -61,43 +96,76 @@ At a minimum, a conformant Reading System or Service must pass all tests in cate
    # getContentMetadata     
    # issueContent
    # getContentResources
+
+=== Optional Assertions ===
+
+None
  
 == 6. Updates and instalments ==
 
+=== Required Assertions ===
+
   # Support the lastModifiedDate attribute on contentList.contentItem.
-  # Support the lastModifiedDate attribute on resources.resource. (kj: need to determine whether this is a must for conformance.)  
   # Invoke the getContentResources operation when determined that content has been updated on the Service through the lastModifiedDate attribute of contentList.contentItem.
 
+=== Optional Assertions ===
+
+  # Support the lastModifiedDate attribute on resources.resource. 
+
 == 7. Rights management ==  
+
+=== Required Assertions ===
 
   # Support the PDTB2 spec.
   # Declare support for pdtb2 by setting the value of the supportedContentProtectionFormats element to PDTB2 when invoking the setReadingSystemAttributes operation.
   # Support the meta attribute pdtb2:specVersion with the value set to 2005-1 in contentMetadata to determine if the content being downloaded is PDTB2 protected.  
 
+=== Optional Assertions ===
+
+None
+ 
 == 8. Key Exchange ==
+
+=== Required Assertions ===
 
   # Support the operation element set to a value of PDTB2_KEY_PROVISION in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine if the Service supports key provision.   
   # Post keyRing to the Service through the setReadingSystemAttributes operation.   
   # Support the getKeyExchangeObject operation.
+
+=== Optional Assertions ===
+
+None
  
 == 9. Set bookmarks ==
+
+=== Required Assertions ===
 
   # Support the portable bookmarks and highlights grammar described by the bookmark-2005-1.xsd file. 
   # Support the operation element set to a value of SET_BOOKMARKS in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports the setBookMarks operation.
   # Support the setBookmarks operation.
-  # IF a Service supports both the getBookmarks and setBookmarks operations, the lastMark attribute of the bookmarkSet type should be used to store the user's last reading position. (kj: need to decide whether this is a must)
-  # IF a Service supports both the getBookmarks and setBookmarks operations, the last reading position should be checked before playback is resumed. (kj: need to decide whether this is a must)
   # must not submit audio recordings as a part of the setBookmarks operation.
+
+=== Optional Assertions ===
+
+  # IF a Service supports both the getBookmarks and setBookmarks operations, the lastMark attribute of the bookmarkSet type should be used to store the user's last reading position. 
+  # IF a Service supports both the getBookmarks and setBookmarks operations, the last reading position should be checked before playback is resumed. 
            
 == 10. Get bookmarks ==
+
+=== Required Assertions ===
 
   # Support the portable bookmarks and highlights grammar described by the bookmark-2005-1.xsd file. 
   # Support the operation element set to a value of GET_BOOKMARKS in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports the getBookMarks operation.
   # Support the getBookmarks operation.
-  # IF a Service supports both the getBookmarks and setBookmarks operations, the lastMark attribute of the bookmarkSet type should be used to store the user's last reading position. (kj: need to decide whether this is a must)
-  # IF a Service supports both the getBookmarks and setBookmarks operations, the last reading position should be checked before playback is resumed. (kj: need to decide whether this is a must)
+
+=== Optional Assertions ===
+
+  # IF a Service supports both the getBookmarks and setBookmarks operations, the lastMark attribute of the bookmarkSet type should be used to store the user's last reading position. 
+  # IF a Service supports both the getBookmarks and setBookmarks operations, the last reading position should be checked before playback is resumed. 
            
 == 11. Dynamic menus ==
+
+=== Required Assertions ===
 
   # Support the operation element set to a value of DYNAMIC_MENUS in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports dynamic menus.
   # Support the getQuestions operation.
@@ -108,113 +176,202 @@ At a minimum, a conformant Reading System or Service must pass all tests in cate
   # If a Service sends more than one question in a questions type, the user's response to each of the questions should be collected, and posted in the next call to the getQuestions operation through a separate userResponse property.
   # Declare what input types it supports in the readingSystemAttributes type posted to the Service through a call to the setReadingSystemAttributes operation.   
   # Invoke the getContentList operation when a call to the getQuestions operation yields a questions type that contains a contentListRef child element.    
+
+=== Optional Assertions ===
+
+None
  
 == 12. Service announcements ==
+
+=== Required Assertions ===
 
   # Support the getServiceAnnouncements operation.
   # Support the operation element set to a value of SERVICE_ANNOUNCEMENTS in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports Service Announcements. 
   # Treat the IDs of individual announcements as valid only for the duration of a session.
   # After an announcement has been rendered, immediately invoke the markAnnouncementsAsRead operation to inform the Service not to send the announcement again on the next invokation of the getServiceAnnouncements operation. (kj: question about multiple announcement ids being posted through the read type.)
   # Only invoke the markAnnouncementsAsRead operation with the IDs of announcements retrieved from the last invokation of the getServiceAnnouncements operation in the active session.
-  # Support the rendering of audio and text announcements for maximum interoperability. (kj: need to decide if this should be a must)         
+
+=== Optional Assertions ===
+
+  # Support the rendering of audio and text announcements for maximum interoperability. 
   # Check for new announcements by invoking the getServiceAnnouncements operation at least once per session.
   
 = Service conformance =
+***
 
 == 1. Core functionality ==
 
+=== Required Assertions ===
+
   # The WSDL published by the Service is canonically equivalent to the normative WSDL provided in the specification.
-  # All programming constructs generated conform to the published WSDL.      
-  # The Service is available over HTTP or HTTPS.
-  # All fault stipulations in the normative WSDL are adhered to by the Service.
-  # All required operations are implemented as specified in the normative WSDL.
-  # The Service complies with WS-I Basic Profile 1.1
-  # The session initialization sequence is followed to commence a session.   
-    # Before initialization, calling any operation except `logOn` should return `NoActiveSession` fault.
-    # During initialization, after a successful `logOn`, calling any operation except `logOn` or `getServiceAttributes` should return an `InvalidOperation` fault.
-    # During initialization, after a successful `getServiceAttributes`, calling any operation except `logOn` or `setReadingSystemAttributes` should return an `InvalidOperation` fault.
-    # After a session has been initialized, calling `getServiceAttributes` or `setReadingSystemAttributes` again should not return a fault.
-    # After a session has been established, calling `logOn` again (with the correct credentials) should return `true`.
-    # If a successful `logOn` is performed in the middle of a session, calling any other operation except `logOn` or `getServiceAttributes` should return an `InvalidOperation` fault.
-    # After a session has been initialized, calling `logOff` should return `true`.
-    # If a `logOff` was successful, calling any other operation except `logOn` should return `NoActiveSessionFault`.
-  # Range headers are always honored in HTTP requests.
+  # All programming constructs (i.e. operations, types, faults, namespaces, classes, interfaces) generated conform to the normative WSDL.      
+  # Comply with WS-I Basic Profile 1.1.
+  # Must be available over http/https. 
+  # Support http cookies.  
+  # Support http range headers.
+  # Range headers must always be honored in HTTP requests.
+  # Implement all the following required operations:
+   # logOn
+   # logOff
+   # setReadingSystemAttributes
+   # getServiceAttributes
+   # issueContent
+   # getContentList
+   # getContentMetadata
+   # getContentResources
+  # Enforce the Session Innitialisation sequence as follows: 
+   # Before initialization, calling any operation except logOn must return NoActiveSession fault. 
+   # During initialization, after a successful `logOn`, calling any operation except `logOn` or `getServiceAttributes` must return an `InvalidOperation` fault.
+    # During initialization, after a successful `getServiceAttributes`, calling any operation except `logOn` or `setReadingSystemAttributes` must return an `InvalidOperation` fault.
+    # After a session has been initialized, calling `getServiceAttributes` or `setReadingSystemAttributes` again must not return a fault.
+    # After a session has been established, calling `logOn` again (with the correct credentials) must return `true`.
+    # If a successful `logOn` is performed in the middle of a session, calling any other operation except `logOn` or `getServiceAttributes` must return an `InvalidOperation` fault.
+    # After a session has been initialized, calling `logOff` must return `true`.
+    # If a `logOff` was successful, calling any other operation except `logOn` must return `NoActiveSessionFault`.
+
+=== Optional Assertions ===
+
+None
 
 == 2. Lending service model ==
 
+=== Required Assertions ===
+
   # Implement the `returnContent` operation.
   # Offer the "issued" and "expired" `contentList`S.
-  # The `requiresReturn` attribute of the content's `contentMetadata` type must be set to `true`.
-  # The `returnBy` attribute of the `resources` type must be set and must not change after the user has downloaded the content. 
+  # Must set the `requiresReturn` attribute of the borrowable content's `contentMetadata` type to `true`.
+  # Must set the `returnBy` attribute of the `resources` type, and not change the value of this attribute after the user has downloaded the content. 
   # Issued content must be listed in the user's "issued" `contentList` at all times after issuance and before return, and once overdue, in the user's "expired" `contentList`.     
   # The Reading System must be allowed to call `returnContent` at any time.
   # If the same content is made available through both the Lending and Acquisition content models, it must have a different identifier in both the models.     
 
+=== Optional Assertions ===
+
+None
+
 == 3. Acquisition service model ==
+
+=== Required Assertions ===
 
   # The `requiresReturn` attribute of the content's `contentMetadata` type must be set to `false`.
   # The `returnBy` attribute of the `resources` type must NOT be set.
-  # Offer the "issued" `contentList`. (kj: need to decide whether this is a must or a may.) 
   # If the same content is made available through both the Lending and Acquisition content models, it must have a different identifier in both the models.     
 
+=== Optional Assertions ===
+
+  # Support the "issued" `contentList`. 
+
 == 4. Out-of-band selection model ==
+
+=== Required Assertions ===
 
   # Provide one or more out-of-band mechanisms for the selection/assignment of Content.
   # Declare support for the Out-of-band content selection method by setting the `method` element set to a value of OUT_OF_BAND in the `supportedContentSelectionMethods` element of its `serviceAttributes` type.     
   # Expose the selected Content to the Reading System through the `getContentList` operation when the operation is invoked with the id parameter set to the value `new`. 
+
+=== Optional Asertions ===
+
+None
  
 == 5. Browse selection model ==
 
+=== Required Assertions ===
+
   # Provide support for the Dynamic Menus protocol feature. 
   # Declare support for the Browse Content Selection Method by setting the `method` element set to a value of BROWSE in the `supportedContentSelectionMethods` element of its `serviceAttributes` type.     
- 
+
+=== Optional Assertions ===
+
+None
+  
 == 6. Updates and instalments ==
+
+=== Required Assertions ===
 
   # The `lastModifiedDate` attribute of the `contentItem` type must match the content's most recently updated resource's date. (kj: does this need to be updated as per the change log?)
   # The `lastModifiedDate` attribute of the `resources` type must match the content's most recently updated resource's date. (kj: ?)
   # The `lastModifiedDate` attribute of the `resource` type must match the most recently updated resource's date. (kj: ?)
 
+=== Optional Assertions ===
+
+None
+
 == 7. Rights management ==
+
+=== Required Assertions ===
 
   # Provide pdtb2 content.
   # Include a meta attribute in the `contentMetadata` for the pdtb2 protected content named pdtb2:specVersion with the value 2005-1. 
   # Set @mimeType for each of the protected resource(s) in `resources` as defined in section 4.1.1, "Package file", of the PDTB2 specification.
 
+=== Optional Assertions ===
+
+None
+
 == 8. Key provision ==
+
+=== Required Assertions ===
 
   # Declare support for key provision by setting the `operation` element set to a value of PDTB2_KEY_PROVISION in the `supportedOptionalOperations` element of its `serviceAttributes` type.
   # Implement `getKeyExchangeObject` operation.
   # Keep a list of authorized key names.    
   # Support the keyRing element in `readingSystemAttributes`.
 
+=== Optional Assertions ===
+
+None
+
 == 9. Set bookmarks ==
+
+=== Required Assertions ===
 
   # Support the portable bookmarks and highlights grammar described by the bookmark-2005-1.xsd file.
   # Declare support for uploading of bookmarks by setting the `operation` element set to a value of SET_BOOKMARKS in the `supportedOptionalOperations` element of its `serviceAttributes` type.
   # Implement the `setBookmarks` operation.
 
+=== Optional Assertions ===
+
+None
+
 == 10. Get bookmarks ==
+
+=== Required Operations ===
 
   # Support the portable bookmarks and highlights grammar described by the bookmark-2005-1.xsd file.
   # Declare support for retrieval of bookmarks by setting the `operation` element set to a value of GET_BOOKMARKS in the `supportedOptionalOperations` element of its `serviceAttributes` type.
   # Implement the `getBookmarks` operation.
 
+=== Optional Assertions ===
+
+None
+
 == 11. Dynamic menus ==
+
+=== Required Assertions ===
 
   # Declare support for dynamic menus by setting the `operation` element set to a value of DYNAMIC_MENUS in the `supportedOptionalOperations` element of its `serviceAttributes` type.
   # Implement the `getQuestions` operation.
   # Expose the Main menu to the Reading System through the `getQuestions` operation when the operation is invoked with a `userResponse` parameter where the `questionID` element value is set to `default`.
+# Don't expose multiple selection questions to the Reading System if it doesn't support multiple selections. (kj: is this true?)   
+  # Don't expose input questions of types that the Reading System doesn't support.
+
+=== optional Assertions ===
+
   # IF the service supports search
     # Declare support for search by setting the value of `supportsSearch` element of its `serviceAttributes` to `true`.
     # Expose the Search menu to the Reading System through the `getQuestions` operation when the operation is invoked with a `userResponse` parameter where the `questionID` element value is set to `search`.
   # IF the service supports back
     # Declare support for back by setting the value of `supportsServerSideBack` element of its `serviceAttributes` to `true`.
     # Expose the previous menu to the Reading System through the `getQuestions` operation when the operation is invoked with a `userResponse` parameter where the `questionID` element value is set to `back`.
-  # Don't expose multiple selection questions to the Reading System if it doesn't support multiple selections. (kj: is this true?)   
-  # Don't expose input questions of types that the Reading System doesn't support.
-
+  
 == 12. Service announcements ==
+
+=== Required Assertions ===
 
   # Declare support for service announcements by setting the `operation` element set to a value of SERVICE_ANNOUNCEMENTS in the `supportedOptionalOperations` element of its `serviceAttributes` type.
   # Implement `getServiceAnnouncements` and `markAnnouncementsAsRead` operations.
   # Don't send announcements to a user that have been declared as read through the invokation of the `markAnnouncementsAsRead` operation.
+
+=== optional Assertions ===
+
+None
