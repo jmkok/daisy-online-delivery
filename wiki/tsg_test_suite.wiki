@@ -23,26 +23,15 @@ At a minimum, a conformant Reading System or Service must satisfy all Required A
 
 === Required Assertions ===
 
-  # Support the Wrapped Document-Literal WSDL Binding Style. _GGT: This is redundant. The following assertion already covers this._
+  # Support the Wrapped Document-Literal WSDL Binding Style. _GGT: This is redundant. The following assertion covers this._
   # All programming constructs (i.e. operations, types, faults, namespaces, classes, interfaces) generated conform to the normative WSDL.
   # Comply with WS-I Basic Profile 1.1.
   # Support HTTP and HTTPS.
   # Support HTTP Basic Authentication. 
   # Support HTTP range headers 
   # Support HTTP cookies.  
-  # Implement all the following required operations: _GGT: These need to be separate assertions.  The formatting makes it look like they are test cases._
-   # `logOn`
-   # `logOff`
-   # `setReadingSystemAttributes`
-   # `getServiceAttributes`
-   # `issueContent`
-   # `getContentList`
-   # `getContentMetadata`
-   # `getContentResources`
-  # Adhere to the following session initialization sequence to commence a session with a Service: _GGT: The formatting here makes it look like these are test cases._
-   # Invoke the logOn operation as the first operation call in a session.   
-   # After a successful log on, invoke the getServiceAttributes operation. 
-   # If the invokation of the `getServiceAttributes` operation is successful, invoke the setReadingSystemAttributes operation. 
+  # Implement all the required operations: `logOn`, `logOff`, `setReadingSystemAttributes`, `getServiceAttributes`, `issueContent`, `getContentList`, `getContentMetadata` and `getContentResources`. _GGT: This might be better split into separate assertions._
+  # Adhere to the session initialization sequence to commence a session with a Service.  _GGT: I removed the steps._
   # Support one or both of the service models.
     # Satisfy all required assertions in category 2 and/or category 3.
   # Support one or both of the content selection models:
@@ -60,9 +49,9 @@ None
 
   # Implement the `returnContent` operation.
   # Support the "issued" and "expired" `contentList`s. _GGT: "expired" is not required._
-  # Support the `requiresReturn` attribute of the `contentMetadata` type. _GGT: This assertion is in both service model categories. That means it's actually a core requirement!_
-  # Support the `returnBy` attribute of the `resources` type.
-  # Must not call `returnContent` for a particular piece of content until all local copies of the content have been removed off its storage.
+  # Support the `contentMetadata@requiresReturn` attribute. _GGT: This assertion is in both service model categories. That means it's actually a core assertion!_
+  # Support the `resources@returnBy` attribute.
+  # Must not call `returnContent` for a particular Content item until all local copies of the Content have been removed off its storage.
 
 === optional Assertions ===
 
@@ -75,8 +64,8 @@ _GGT: See note on optional assertions above._
 
 === Required Assertions ===
 
-  # Support the `requiresReturn` attribute of the `contentMetadata` type. _GGT: This assertion is in both service model categories. That means it's actually a core requirement!_
-  # Must not call the `requiresReturn` operation for any content that has `@requiresReturn` set to `false` in its `contentMetadata` type.   
+  # Support the `contentMetadata@requiresReturn` attribute. _GGT: This assertion is in both service model categories. That means it's actually a core assertion!_
+  # Must not call the `requiresReturn` operation for any content that has `contentMetadata@requiresReturn` set to `false`.
 
 === Optional Assertions ===
 
@@ -88,11 +77,13 @@ _GGT: See note on optional assertions above._
 
 === Required Assertions ===
 
-  # Support the invoking of the getContentList operation with the "new" id parameter.
-  # Support the invoking of the following operations in the sequence listed below for each content item in the retrieved Content List: _GGT: This is already covered in the core functionality._
+  # Support the invoking of the `getContentList` operation with the "new" id parameter. _GGT: This is already covered in the core functionality. *All* Reading Systems that support `getContentList` support calling it with "new"._
+  # Support the invoking of the following operations in the sequence listed below for each content item in the retrieved Content List: _GGT: This should already be covered in the core assertions._
    # getContentMetadata     
    # issueContent
    # getContentResources
+
+_GGT: Neither of these assertions capture what it means to support out-of-band selection. Unfortunately I don't have any suggestions at present._
 
 === Optional Assertions ===
 
@@ -105,7 +96,7 @@ _GGT: See note on optional assertions above._
 === Required Assertions ===
 
   # Satisfy the assertions in category 11. _GGT: This originally said, "Supports the dynamic menus protocol feature." This is more specific._
-  # Support the getContentList operation. _GGT: This is already covered in the core functionality._
+  # Support the `getContentList` operation. _GGT: This is already covered in the core functionality._
   # Support the invoking of the following operations in the sequence listed below for each content item in the retrieved Content List: _GGT: This is already covered in the core functionality._
    # getContentMetadata     
    # issueContent
@@ -122,7 +113,7 @@ None
 === Required Assertions ===
 
   # Support `contentList/contentItem@lastModifiedDate`. _GGT: Should add: and/or `resources@lastModifiedDate`._
-  # Invoke the getContentResources operation when determined that content has been updated on the Service through the lastModifiedDate attribute of contentList.contentItem. _GGT: This is not an assertion, it is a method._
+  # Invoke the getContentResources operation when determined that content has been updated on the Service through the lastModifiedDate attribute of contentList.contentItem. _GGT: This is not an assertion._
 
 _GGT: Should add:_
   * Support `resources/resource@lastModifiedDate`.
@@ -202,9 +193,9 @@ _GGT: See note on optional assertions above._
 
   # Support the operation element set to a value of DYNAMIC_MENUS in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports dynamic menus. _GGT: This is a service requirement, not a reading system requirement._
   # Support the `getQuestions` operation.
-  # The `userResponses` parameter passed to the `getQuestions` operation must contain either a response to a previous question or one of the reserved IDs: "default", "search" or "back". _GGT: Could contain multiple questions. See below._
-  # If a Service sends more than one question in a questions type, the user's response to each of the questions should be collected, and posted in the next call to the getQuestions operation through a separate userResponse property. _GGT: The next call? Every question? This should be merged with the previous assertion._
-  # Declare what input types it supports in the readingSystemAttributes type posted to the Service through a call to the setReadingSystemAttributes operation.   
+  # The `userResponses` parameter passed to the `getQuestions` operation must contain either a response to a previous question or one of the reserved IDs: "default", "search" or "back". _GGT: Could contain multiple questions._
+  # If a Service sends more than one question in a questions type, the user's response to each of the questions should be collected, and posted in the next call to the getQuestions operation through a separate userResponse property. _GGT: The next call? Every question? Those are not requirements._
+  # Declare what input types it supports in the readingSystemAttributes type posted to the Service through a call to the setReadingSystemAttributes operation.  _GGT: This is covered under core assertions._
   # Invoke the getContentList operation when a call to the getQuestions operation yields a questions type that contains a contentListRef child element. _GGT: This is not a requirement. Reading Systems are free not to do this._
 
 === Optional Assertions ===
@@ -219,8 +210,8 @@ None
 
   # Support the `getServiceAnnouncements` operation.
   # Support the operation element set to a value of SERVICE_ANNOUNCEMENTS in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports Service Announcements.  _GGT: This is a service requirement, not a reading system requirement._
-  # Treat the IDs of individual announcements as valid only for the duration of a session. _GGT: This is a statement about the protocol, not a requirement._
-  # After an announcement has been rendered, immediately invoke the markAnnouncementsAsRead operation to inform the Service not to send the announcement again on the next invokation of the getServiceAnnouncements operation. (kj: question about multiple announcement ids being posted through the read type.)
+  # Treat the IDs of individual announcements as valid only for the duration of a session. _GGT: This is not a requirement._
+  # After an announcement has been rendered, immediately invoke the markAnnouncementsAsRead operation to inform the Service not to send the announcement again on the next invocation of the getServiceAnnouncements operation. (kj: question about multiple announcement ids being posted through the read type.)
   # Only invoke the markAnnouncementsAsRead operation with the IDs of announcements retrieved from the last invocation of the getServiceAnnouncements operation in the active session. _GGT: This is not a requirement._
 
 === Optional Assertions ===
