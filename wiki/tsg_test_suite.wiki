@@ -83,7 +83,7 @@ _GGT: See note on optional assertions above._
 === Required Assertions ===
 
   # Support the invoking of the getContentList operation with the "new" id parameter.
-  # Support the invoking of the following operations in the sequence listed below for each content item in the retrieved Content List:
+  # Support the invoking of the following operations in the sequence listed below for each content item in the retrieved Content List: _GGT: This is already covered in the core functionality._
    # getContentMetadata     
    # issueContent
    # getContentResources
@@ -98,37 +98,50 @@ _GGT: See note on optional assertions above._
 
 === Required Assertions ===
 
-  # Support the Dynamic Menus protocol feature.
-  # Support the getContentList operation.
-  # Support the invoking of the following operations in the sequence listed below for each content item in the retrieved Content List:
+  # Support the Dynamic Menus protocol feature. _GGT: This needs expanding, I think._
+  # Support the getContentList operation. _GGT: This is already covered in the core functionality._
+  # Support the invoking of the following operations in the sequence listed below for each content item in the retrieved Content List: _GGT: This is already covered in the core functionality._
    # getContentMetadata     
    # issueContent
    # getContentResources
 
+_GGT: I suggest adding:_
+  * Support the `getQuestions` operation.
+
 === Optional Assertions ===
+
+_GGT: See note on optional assertions above._
 
 None
  
-== 6. Updates and instalments ==
+== 6. Updates and installments ==
 
 === Required Assertions ===
 
-  # Support the lastModifiedDate attribute on contentList.contentItem.
-  # Invoke the getContentResources operation when determined that content has been updated on the Service through the lastModifiedDate attribute of contentList.contentItem.
+  # Support `contentList/contentItem@lastModifiedDate`. _GGT: Should add: and/or `resources@lastModifiedDate`._
+  # Invoke the getContentResources operation when determined that content has been updated on the Service through the lastModifiedDate attribute of contentList.contentItem. _GGT: This is not an assertion, it is a method._
+
+_GGT: Should add:_
+  * Support `resources/resource@lastModifiedDate`.
+  * Download resources when they have been updated. _The wording needs to be worked out._
 
 === Optional Assertions ===
 
-  # Support the lastModifiedDate attribute on resources.resource. 
+_GGT: See note on optional assertions above._
+
+  # Support `resources/resource@lastModifiedDate`. _GGT: This should be required, anyway._
 
 == 7. Rights management ==  
 
 === Required Assertions ===
 
-  # Support the PDTB2 spec.
-  # Declare support for pdtb2 by setting the value of the supportedContentProtectionFormats element to PDTB2 when invoking the setReadingSystemAttributes operation.
-  # Support the meta attribute pdtb2:specVersion with the value set to 2005-1 in contentMetadata to determine if the content being downloaded is PDTB2 protected.  
+  # Support PDTB2.
+  # Set a `readingSystemAttributes/config/supportedContentProtectionFormats/protectionFormat` element to "PDTB2" in all calls to the `setReadingSystemAttributes` operation.
+  # Support the meta attribute pdtb2:specVersion with the value set to 2005-1 in contentMetadata to determine if the content being downloaded is PDTB2 protected.  _GGT: This is a service requirement, not a reading system requirement._
 
 === Optional Assertions ===
+
+_GGT: See note on optional assertions above._
 
 None
  
@@ -136,11 +149,16 @@ None
 
 === Required Assertions ===
 
-  # Support the operation element set to a value of PDTB2_KEY_PROVISION in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine if the Service supports key provision.   
-  # Post keyRing to the Service through the setReadingSystemAttributes operation.   
-  # Support the getKeyExchangeObject operation.
+  # Support the operation element set to a value of PDTB2_KEY_PROVISION in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine if the Service supports key provision.  _GGT: This is a service requirement, not a reading system requirement._
+  # Set value(s) for `readingSystemAttributes/config/keyRing/item` element(s) in all calls to the `setReadingSystemAttributes` operation.
+  # Support the `getKeyExchangeObject` operation.
+
+_GGT: Should add:_
+  * Satisfy all requirements in category 7.
 
 === Optional Assertions ===
+
+_GGT: See note on optional assertions above._
 
 None
  
@@ -148,12 +166,14 @@ None
 
 === Required Assertions ===
 
-  # Support the portable bookmarks and highlights grammar described by the bookmark-2005-1.xsd file. 
-  # Support the operation element set to a value of SET_BOOKMARKS in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports the setBookMarks operation.
-  # Support the setBookmarks operation.
-  # must not submit audio recordings as a part of the setBookmarks operation.
+  # Support the portable bookmarks and highlights grammar described by the bookmark-2005-1.xsd file. _GGT: Should add: and section 9 of the ANSI-NISO Z39.86 specification._
+  # Support the operation element set to a value of SET_BOOKMARKS in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports the setBookMarks operation. _GGT: This is a service requirement, not a reading system requirement._
+  # Support the `setBookmarks` operation.
+  # must not submit audio recordings as a part of the setBookmarks operation. _GGT: This is not a requirement, it is a limitation of the spec._
 
 === Optional Assertions ===
+
+_GGT: See note on optional assertions above._
 
   # IF a Service supports both the getBookmarks and setBookmarks operations, the lastMark attribute of the bookmarkSet type should be used to store the user's last reading position. 
   # IF a Service supports both the getBookmarks and setBookmarks operations, the last reading position should be checked before playback is resumed. 
