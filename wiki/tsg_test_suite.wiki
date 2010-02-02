@@ -23,7 +23,6 @@ At a minimum, a conformant Reading System or Service must satisfy all Required A
 
 === Required Assertions ===
 
-  # Support the Wrapped Document-Literal WSDL Binding Style. _GGT: This is redundant. The following assertion covers this._
   # All programming constructs (i.e. operations, types, faults, namespaces, classes, interfaces) generated conform to the normative WSDL.
   # Comply with WS-I Basic Profile 1.1.
   # Support HTTP and HTTPS.
@@ -36,6 +35,7 @@ At a minimum, a conformant Reading System or Service must satisfy all Required A
     # Satisfy all required assertions in category 2 and/or category 3.
   # Support one or both of the content selection models:
     # Satisfy all required assertions in category 4 and/or category 5.
+  # Support the `contentMetadata@requiresReturn` attribute.   
 
 === Optional Assertions ===
 
@@ -49,7 +49,6 @@ None
 
   # Implement the `returnContent` operation.
   # Support the "issued" and "expired" `contentList`s. _GGT: "expired" is not required._
-  # Support the `contentMetadata@requiresReturn` attribute. _GGT: This assertion is in both service model categories. That means it's actually a core assertion!_
   # Support the `resources@returnBy` attribute.
   # Must not call `returnContent` for a particular Content item until all local copies of the Content have been removed off its storage.
 
@@ -64,8 +63,7 @@ _GGT: See note on optional assertions above._
 
 === Required Assertions ===
 
-  # Support the `contentMetadata@requiresReturn` attribute. _GGT: This assertion is in both service model categories. That means it's actually a core assertion!_
-  # Must not call the `requiresReturn` operation for any content that has `contentMetadata@requiresReturn` set to `false`.
+ # Must not call the `requiresReturn` operation for any content that has `contentMetadata@requiresReturn` set to `false`.
 
 === Optional Assertions ===
 
