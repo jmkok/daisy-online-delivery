@@ -1,7 +1,11 @@
 #summary Conformance test cases for both Reading Systems and Services.
 #labels Phase-QA
 
-_GGT: I've marked up the Reading System conformance section with some observations, in italics, preceded by "GGT:"._
+_GGT: I've marked up the Reading System conformance section with some observations. I have two main concerns with it: the "optional" assertions and assertions that aren't about Reading Systems but about Services._
+
+_GGT: Optional assertions have no place in conformance testing.  An optional assertion tells you nothing about whether a system conforms to the spec.  If an assertion isn't required in a category, it should be left out._
+
+_GGT: Regarding the assertions that are really for Services, an example would be section 8, assertion 1.  Supporting the value of a `serviceAttributes/supportedOptionalOperations/operation` element to be "PDTB2_KEY_PROVISION" is already covered in the core functionality (under conforming to the schema). It's not well-defined what "supporting" that value means, other than accepting it as a valid value. The requirement is for the Service to provide that value to the Reading System, not for the Reading System to do anything with it._
 
 = Introduction =
 
@@ -46,7 +50,7 @@ At a minimum, a conformant Reading System or Service must satisfy all Required A
 
 === Optional Assertions ===
 
-_GGT: Optional assertions have no place in conformance testing.  An optional assertion tells you nothing about conformance.  If an assertion isn't required in a category, it should be left out._
+_GGT: See note on optional assertions above._
 
 None
 
