@@ -222,12 +222,12 @@ None
   # Enforce the Session Innitialisation sequence as follows: 
    # Before initialization, calling any operation except logOn must return NoActiveSession fault. 
    # During initialization, after a successful `logOn`, calling any operation except `logOn` or `getServiceAttributes` must return an `InvalidOperation` fault.
-    # During initialization, after a successful `getServiceAttributes`, calling any operation except `logOn` or `setReadingSystemAttributes` must return an `InvalidOperation` fault.
-    # After a session has been initialized, calling `getServiceAttributes` or `setReadingSystemAttributes` again must not return a fault.
-    # After a session has been established, calling `logOn` again (with the correct credentials) must return `true`.
-    # If a successful `logOn` is performed in the middle of a session, calling any other operation except `logOn` or `getServiceAttributes` must return an `InvalidOperation` fault.
-    # After a session has been initialized, calling `logOff` must return `true`.
-    # If a `logOff` was successful, calling any other operation except `logOn` must return `NoActiveSessionFault`.
+   # During initialization, after a successful `getServiceAttributes`, calling any operation except `logOn` or `setReadingSystemAttributes` must return an `InvalidOperation` fault.
+   # After a session has been initialized, calling `getServiceAttributes` or `setReadingSystemAttributes` again must not return a fault.
+   # After a session has been established, calling `logOn` again (with the correct credentials) must return `true`.
+   # If a successful `logOn` is performed in the middle of a session, calling any other operation except `logOn` or `getServiceAttributes` must return an `InvalidOperation` fault.
+   # After a session has been initialized, calling `logOff` must return `true`.
+   # If a `logOff` was successful, calling any other operation except `logOn` must return `NoActiveSessionFault`.
 
 === Optional Assertions ===
 
