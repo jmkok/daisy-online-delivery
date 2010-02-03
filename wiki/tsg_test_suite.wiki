@@ -46,8 +46,6 @@ At a minimum, a conformant Reading System or Service must satisfy all Assertions
 
 == 2. Lending service model ==
 
-=== Required Assertions ===
-
   # Implement the `returnContent` operation.
   # Support the "issued" and "expired" `contentList`s. _GGT: "expired" is not required._
   # Support the `resources@returnBy` attribute.
@@ -59,9 +57,8 @@ At a minimum, a conformant Reading System or Service must satisfy all Assertions
 
 == 4. Out-of-band selection model ==
 
-  # Provide an out-of-band content selection mechanism. 
-
 _GGT: Neither of these assertions capture what it means to support out-of-band selection. Unfortunately I don't have any suggestions at present._
+kj: need to find appropriate verbiage.
 
 == 5. Browse selection model ==
 
