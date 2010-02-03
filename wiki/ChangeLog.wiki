@@ -1,8 +1,12 @@
 #summary List of changes to the specification.
 
-= From the Trial Use Draft to Current =
+= From the Trial Use Draft to Final Draft =
 
-This is an aggregation of all the changes to the protocol made since the Draft for Trial Use (r566) was released 27 September 2009.  The current revision as of this writing is r778.
+This is an aggregation of all the changes to the protocol made since the Draft for Trial Use (r566) was released 27 September 2009.
+
+*The protocol was frozen on 3 February 2010.*
+
+_GGT: All protocol changes between r778 and r858 must be added to this document. I'll take care of it._
 
 == API ==
 
@@ -60,7 +64,3 @@ Changes to `bookmark-2005-1.xsd`:
   * Changed WSDL publishing requirements in Appendix A to have the published WSDL import the provided WSDL, rather than be a modified copy.
   * Added recommendation that menu state be retained for the duration of the session.
   * Added note that says that audio notes are not supported at all.  (Previously it had only mentioned it in setting bookmarks.)
-
-== Pending ==
-
-These changes are due to be made before the release of the final version:
