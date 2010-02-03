@@ -246,6 +246,8 @@ Resources for proof reading?
 
 ==== [http://code.google.com/p/daisy-online-delivery/wiki/tsg_test_suite Test Suite] ====
 
+  * Should assertions be defined for elements/attributes in the types that are necessary for a Reading System to understand, to determine whether a Service supports a particular feature of the spec e.g. getBookmarks, setBookmarks ...?  
+
 Call for volunteers:
   * Review.
   * Add test cases.
