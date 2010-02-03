@@ -1126,33 +1126,18 @@
                 <para> This section explains how <xref linkend="term_serviceProvider"/>s can publish
                     updates to their <xref linkend="term_content"/> using this protocol. </para>
 
-                <para> Each <type>
-                        <xref linkend="tp_contentItem"/>
-                    </type> in a <type>contentList</type> has an optional
-                        <code>lastModifiedDate</code> attribute that indicates that last time the
-                        <xref linkend="term_content"/> was modified. A <xref
-                        linkend="term_readingSystem"/>s can use this information to determine if the
-                        <xref linkend="term_content"/> on the <xref linkend="term_service"/> has
-                    been updated since the last time it was accessed. </para>
-
-                <para> When a <xref linkend="term_readingSystem"/> determines that a <xref
-                        linkend="term_content"/> item has been updated, it should invoke the <function>
-                        <xref linkend="op_getContentResources"/>
-                    </function> operation to get an updated resource list. Each
-                        <type>resource</type> also has an optional <code>lastModifiedDate</code>
-                    attribute that the <xref linkend="term_readingSystem"/> can use to determine the
-                    specific resources that have been updated and need to be downloaded again. </para>
-
-                <para> When using the <code>lastModifiedDate</code> attribute to publish updates,
-                    the <xref linkend="term_service"/>s must ensure that the last modified date for
-                    the <xref linkend="term_content"/> item matches the last modified date of the
-                    most recently updated resource. </para>
-
-                <para>
-                    <xref linkend="term_readingSystem"/>s are not required to inspect modification
-                    dates or update <xref linkend="term_content"/> items. <xref
-                        linkend="term_service"/>s are not required to provide modification dates on
-                        <xref linkend="term_content"/> or resource items. </para>
+                <para>The <type><xref linkend="tp_resources"/></type> type and each
+					<type><xref linkend="tp_contentItem"/></type>
+					in a <type>contentList</type> has an optional
+					<code>lastModifiedDate</code> attribute that indicates the last time the
+					<xref linkend="term_content"/> was modified. A <xref
+					linkend="term_readingSystem"/> can use this information to determine if the
+					<xref linkend="term_content"/> on the <xref linkend="term_service"/> has
+                    been updated since the last time it was accessed. Each
+                        <type><xref linkend="tp_resource"/></type> in the
+						<type>resources</type> list also has an optional <code>lastModifiedDate</code>
+                    attribute that the <xref linkend="term_readingSystem"/> may use to determine
+					which specific resources have been updated. </para>
 
                 <note>
                     <para> The functionality detailed in this section can also be used to publish
