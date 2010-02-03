@@ -1,6 +1,6 @@
 present: 
 
-Regrets: 
+Regrets: George. 
 
 scribe: Kenny
 
@@ -195,7 +195,7 @@ Kenny:Yes we do. Moving minOccurs and maxOccurs to the sequence element solves t
  
 I propose we record the fix for the Microsoft toolkit as a tweak, and add it to [1], but not modify the xsd for semantic correctness and maximum interoperability.       
 [1] http://code.google.com/p/daisy-online-delivery/wiki/WSDLAndXSDTweaks
-  
+
 === Is a Service required to provide an "expired" `contentList` in the Lending Model ===
 
 Kenny: Section 4.1.1.1 states:
@@ -216,6 +216,9 @@ This section then states:
 
 Do we need to be more specific on when the content appears in the "issued" and "expired" `contentList`(s)?  
 
+Geoff: The answer is no, the "expired" contentList is not required.  We do not need to be more specific; I believe when content is on which list is covered in 
+the rest of the documentation.
+
 === marking multiple Announcements as Read ===
 
 kenny: Section 4.5.2 states:
@@ -227,7 +230,9 @@ markAnnouncementsAsRead operation to inform the Service not to send the announce
 "
 
 The read parameter to the markAnnouncementsAsRead operation is capable of holding more than one announcement IDs. Should we modify the verbiage to make it clear that an RS can mark multiple announcements as read through the markAnnouncementsAsRead operation, and that it does not need to invoke this operation after rendering every individual announcement to the user?    
-    
+
+Geoff: No, it should be immediate.  It's just a recommendation, however, so Reading Systems can have their own behaviour here.
+
      === Spec update review ===
 
   # documentation including the wsdl and xsd files. (?)
