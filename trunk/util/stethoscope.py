@@ -135,6 +135,16 @@ getCM = """\
   </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>"""
 
+getKXO = """\
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <SOAP-ENV:Header />
+  <SOAP-ENV:Body xmlns:do="http://www.daisy.org/ns/daisy-online/">
+    <do:getKeyExchangeObject>
+      <do:requestedKeyName>%s</do:requestedKeyName>
+    </do:getKeyExchangeObject>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>"""
+
 getCR = """\
 <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
   <SOAP-ENV:Header />
@@ -215,92 +225,67 @@ def printResponse():
 
 def logOn(username, password):
     """Send the logOn message."""
-    if service == 'rnib':
-        soapheader['SOAPAction'] = 'http://www.daisy.org/ns/daisy-online/daisy-online/logOn'
-    elif service == 'vails':
-        soapheader['SOAPAction'] = 'http://www.daisy.org/ns/daisy-online/IService1/LogOn'
+    soapheader['SOAPAction'] = '/logOn'
     sendMessage(logOnMess % (username, password))
     resptext = printResponse()
 
 def getServiceAttributes():
     """Send the getServiceAttributes message."""
-    if service == 'rnib':
-        soapheader['SOAPAction'] = 'http://www.daisy.org/ns/daisy-online/daisy-online/getServiceAttributes'
-    elif service == 'vails':
-        soapheader['SOAPAction'] = 'http://www.daisy.org/ns/daisy-online/IService1/getServiceAttributes'
+    soapheader['SOAPAction'] = '/getServiceAttributes'
     sendMessage(getSA)
     printResponse()
 
 def setReadingSystemAttributes():
     """Send the setReadingSystemAttributes message."""
-    if service == 'rnib':
-        soapheader['SOAPAction'] = 'http://www.daisy.org/ns/daisy-online/daisy-online/setReadingSystemAttributes'
-    elif service == 'vails':
-        soapheader['SOAPAction'] = 'http://www.daisy.org/ns/daisy-online/IService1/setReadingSystemAttributes'
+    soapheader['SOAPAction'] = '/setReadingSystemAttributes'
     sendMessage(setRSA)
     printResponse()
 
 def getContentList(id, firstItem=0, lastItem=-1):
     """Send the getContentList message."""
-    if service == 'rnib':
-        soapheader['SOAPAction'] = 'http://www.daisy.org/ns/daisy-online/daisy-online/getContentList'
-    elif service == 'vails':
-        soapheader['SOAPAction'] = 'http://www.daisy.org/ns/daisy-online/IService1/getContentList'
+    soapheader['SOAPAction'] = '/getContentList'
     sendMessage(getList % (id, firstItem, lastItem))
     printResponse()
 
 def getContentMetadata(id):
     """Send the getContentMetadata message."""
-    if service == 'rnib':
-        soapheader['SOAPAction'] = 'http://www.daisy.org/ns/daisy-online/daisy-online/getContentMetadata'
-    elif service == 'vails':
-        soapheader['SOAPAction'] = 'http://www.daisy.org/ns/daisy-online/IService1/getContentMetadata'
+    soapheader['SOAPAction'] = '/getContentMetadata'
     sendMessage(getCM % id)
     printResponse()
 
 def getContentResources(id):
     """Send the getContentResources message."""
-    if service == 'rnib':
-        soapheader['SOAPAction'] = 'http://www.daisy.org/ns/daisy-online/daisy-online/getContentResources'
-    elif service == 'vails':
-        soapheader['SOAPAction'] = 'http://www.daisy.org/ns/daisy-online/IService1/getContentResources'
+    soapheader['SOAPAction'] = '/getContentResources'
     sendMessage(getCR % id)
     printResponse()
 
 def issueContent(id):
     """Send the issueContent message."""
-    if service == 'rnib':
-        soapheader['SOAPAction'] = 'http://www.daisy.org/ns/daisy-online/daisy-online/issueContent'
-    elif service == 'vails':
-        soapheader['SOAPAction'] = 'http://www.daisy.org/ns/daisy-online/IService1/issueContent'
+    soapheader['SOAPAction'] = '/issueContent'
     sendMessage(issueCon % id)
     printResponse()
 
 def returnContent(id):
     """Send the returnContent message."""
-    if service == 'rnib':
-        soapheader['SOAPAction'] = 'http://www.daisy.org/ns/daisy-online/daisy-online/returnContent'
-    elif service == 'vails':
-        soapheader['SOAPAction'] = 'http://www.daisy.org/ns/daisy-online/IService1/returnContent'
+    soapheader['SOAPAction'] = '/returnContent'
     sendMessage(returnCon % id)
     printResponse()
 
 def getBookmarks(id):
-    if service == 'rnib':
-        soapheader['SOAPAction'] = 'http://www.daisy.org/ns/daisy-online/daisy-online/getBookmarks'
-    elif service == 'vails':
-        soapheader['SOAPAction'] = 'http://www.daisy.org/ns/daisy-online/IService1/getBookmarks'
+    soapheader['SOAPAction'] = '/getBookmarks'
     sendMessage(getMarks % id)
     printResponse()
 
 def logOff():
     """Send the logOff message."""
-    if service == 'rnib':
-        soapheader['SOAPAction'] = 'http://www.daisy.org/ns/daisy-online/daisy-online/logOff'
-    elif service == 'vails':
-        soapheader['SOAPAction'] = 'http://www.daisy.org/ns/daisy-online/IService1/LogOff'
+    soapheader['SOAPAction'] = '/logOff'
     sendMessage(logOffMess)
     printResponse()
+
+def getKeyExchangeObject(name):
+    soapheader['SOAPAction'] = '/getKeyExchangeObject'
+    sendMessage(getKXO % name)
+    printResponse()    
 
 def init():
     """Initialize a session."""
@@ -313,7 +298,9 @@ if __name__ == '__main__':
     # if it is imported as a module.
     
     # Display the new, issued, and expired content lists.
+    
     init()
+    getKeyExchangeObject('foo')
     for id in ['new', 'issued', 'expired']:
         getContentList(id)  # firstItem and lastItem default to 0 and -1.
     logOff()
