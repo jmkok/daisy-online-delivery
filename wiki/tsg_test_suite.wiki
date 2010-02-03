@@ -200,7 +200,7 @@ _GGT: Should add:_ (kj: what would we say for streaming then? Would an RS need t
   # Declare support for dynamic menus by setting the `operation` element set to a value of DYNAMIC_MENUS in the `supportedOptionalOperations` element of its `serviceAttributes` type.
   # Implement the `getQuestions` operation.
   # Expose the Main menu to the Reading System through the `getQuestions` operation when the operation is invoked with a `userResponse` parameter where the `questionID` element value is set to `default`.
-# Don't expose multiple selection questions to the Reading System if it doesn't support multiple selections. (kj: is this a requirement or is this from the last draft?)   
+  # Don't expose multiple selection questions to the Reading System if it doesn't support multiple selections. (kj: is this a requirement or is this from the last draft?)   
   # Don't expose input questions of types that the Reading System doesn't support.
 
 == 12. Service announcements ==
