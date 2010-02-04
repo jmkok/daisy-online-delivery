@@ -15,6 +15,7 @@ Changes to `do-wsdl-10.wsdl`:
   * All `soap:operation`s now have the `soapAction` attribute set to `"/operationName"`.
   * Added note that `returnContent` must never return `false`, only `true` or a fault.
   * Added the `invalidOperation` fault to the signatures of `logOff` and `getContentMetadata`.
+  * `keyRing` parameter removed from `getKeyExchangeObject` (moved to ``readingSystemAttributes/config/keyRing`).
   * Calling `getKeyExchangeObject` with unauthorized keys in the `keyRing` results in an `invalidParameter` fault, not `invalidOperation`.
   * Datatype changes:
     * `getContentList/firstItem` changed from `xs:integer` to `xs:int`.
@@ -30,7 +31,9 @@ Changes to `do-types-10.xsd`:
   * Added optional `resources@lastModifiedDate`.  Changed the definition of `contentItem@lastModifiedDate` to remove reference to most recent resource.
   * Allowed unlimited `contentMetadata/metadata/narrator`s, not just one.
   * Allowed empty `readingSystemAttributes/config/supportedContentFormats`.
+  * `readingSystemAttributes/config/keyRing` added (moved from `getKeyExchangeObject`).
   * `serviceAttributes/supportedUplinkAudioCodecs/codec` now refers to MIME types, not "canonical identifier strings".
+  * New `input` type created. `readingSystemAttributes/config/supportedInputTypes/input` and `inputQuestion/inputTypes/input` now both refer to it.  The new `input` type does not have an `xml:lang` attribute.
   * Datatype changes:
     * `announcements/announcements/id` changed from `xs:ID` to `xs:NMTOKEN`.
     * `contentList@firstItem` changed from `xs:integer` to `xs:int`.
@@ -52,15 +55,20 @@ Changes to `do-types-10.xsd`:
 
 Changes to `bookmark-2005-1.xsd`:  
 
-  * Modified the bookmark xsd to eliminate empty complex types in the following element definitions:
+  * Changed the following types from empty complex types to `xs:string`s:
     * `uid`
     * `timeOffset`
     * `charOffset`
     * `ncxRef`
     * `text`
+  * Put the following groups (marked with curly braces `{}`) inside `<xs:sequence>` (does not change the syntax, but allows some XSD parsers to work):
+    * `lastmark/{bookmarkContent}`
+    * `hilite/hiliteStart/{hiliteContent}`
+    * `hilite/hiliteEnd/{hiliteContent}`
 
 == Documentation ==
 
   * Changed WSDL publishing requirements in Appendix A to have the published WSDL import the provided WSDL, rather than be a modified copy.
   * Added recommendation that menu state be retained for the duration of the session.
   * Added note that says that audio notes are not supported at all.  (Previously it had only mentioned it in setting bookmarks.)
+  * Noted that the `keyRing` should only contain names of key pairs, not symmetric keys.
