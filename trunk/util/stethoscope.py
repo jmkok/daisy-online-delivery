@@ -1,8 +1,8 @@
 """stethoscope.py -- Debug a DAISY Online service.
 
-DAISY Online Stethoscope v0.5 alpha
+DAISY Online Stethoscope v0.9 alpha
 by Geoff Gilmour-Taylor
-2009
+2009-2010
 
 This tool sends SOAP messages to a DAISY Online service and prints the
 responses raw, that is without any parsing.  The only requirement is
@@ -11,7 +11,10 @@ uncomment one of the service names below, then edit the session function calls
 given at the end of the file, then run
 % python stethoscope.py
 
-So far it only implements the core operations, returnContent and getBookmarks.
+All operations but getQuestions are implemented.
+
+setBookmarks requires you to generate the bookmarkSet XML to pass as a
+parameter.
 
 It is not thread-safe.
 """
@@ -20,7 +23,6 @@ import httplib
 
 # Uncomment one of the following.
 service = 'cnib'
-## service = 'rnib'
 ## service = 'vails'
 ## service = 'solrad'
 ## service = 'pratsam'
@@ -28,7 +30,7 @@ service = 'cnib'
 # Set the credentials for logging on.
 if service == 'cnib':
     creds = ('test', 'bogos')
-elif service == 'rnib' or service == 'solrad':
+elif service == 'solrad':
     creds = ('daisy', 'ysiad')
 elif service == 'vails':
     creds = ('test', 'test')
@@ -44,8 +46,8 @@ logOnMess = """\
    <SOAP-ENV:Header />
    <SOAP-ENV:Body xmlns:do="http://www.daisy.org/ns/daisy-online/">
       <do:logOn>
-            <do:username>%s</do:username>
-            <do:password>%s</do:password>
+        <do:username>%s</do:username>
+        <do:password>%s</do:password>
       </do:logOn>
    </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>"""
@@ -55,6 +57,17 @@ logOffMess = """\
   <SOAP-ENV:Header />
   <SOAP-ENV:Body xmlns:do="http://www.daisy.org/ns/daisy-online/">
     <do:logOff />
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>"""
+
+setMarks = """\
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <SOAP-ENV:Header />
+  <SOAP-ENV:Body xmlns:do="http://www.daisy.org/ns/daisy-online/">
+    <do:setBookmarks>
+      <do:contentID>%s</do:contentID>
+      <do:bookmarkSet>%s</do:bookmarkSet>
+    </do:setBookmarks>
   </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>"""
 
@@ -84,28 +97,16 @@ setRSA = u"""\
       <do:readingSystemAttributes>
         <do:manufacturer>Geoff Gilmour-Taylor</do:manufacturer>
         <do:model>DAISY Online Stethoscope</do:model>
-        <do:version>0.5\u03b1</do:version>
+        <do:version>0.9\u03b1</do:version>
         <do:config>
           <do:supportsMultipleSelections>false</do:supportsMultipleSelections>
-          <do:preferredUILanguage>en-ca</do:preferredUILanguage>
-          <do:supportedContentFormats>
-            <do:contentFormat>DAISY 2.02</do:contentFormat>
-            <do:contentFormat>North American ASCII Braille</do:contentFormat>
-            <do:contentFormat>audio/mpeg</do:contentFormat>
-            <do:contentFormat>audio/x-wav</do:contentFormat>
-            <do:contentFormat>text/html</do:contentFormat>
-          </do:supportedContentFormats>
-          <do:supportedContentProtectionFormats></do:supportedContentProtectionFormats>
-          <do:supportedMimeTypes>
-            <do:mimeType>audio/mpeg</do:mimeType>
-            <do:mimeType>audio/x-wav</do:mimeType>
-            <do:mimeType>text/html</do:mimeType>
-            <do:mimeType>text/xml</do:mimeType>
-            <do:mimeType>application/smil</do:mimeType>
-            <do:mimeType>text/css</do:mimeType>
-            <do:mimeType>text/plain</do:mimeType>
-          </do:supportedMimeTypes>
-          <do:supportedInputTypes></do:supportedInputTypes>
+          <do:preferredUILanguage>en</do:preferredUILanguage>
+          <do:supportedContentFormats />
+          <do:supportedContentProtectionFormats>
+            <do:protectionFormat>PDTB2</do:protectionFormat>
+          </do:supportedContentProtectionFormats>
+          <do:supportedMimeTypes />
+          <do:supportedInputTypes />
           <do:requiresAudioLabels>false</do:requiresAudioLabels>
         </do:config>
       </do:readingSystemAttributes>
@@ -145,6 +146,26 @@ getKXO = """\
   </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>"""
 
+getAnn = """\
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <SOAP-ENV:Header />
+  <SOAP-ENV:Body xmlns:do="http://www.daisy.org/ns/daisy-online/">
+    <do:getServiceAnnouncements />
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>"""
+
+markRead = """\
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <SOAP-ENV:Header />
+  <SOAP-ENV:Body xmlns:do="http://www.daisy.org/ns/daisy-online/">
+    <do:markAnnouncementsAsRead>
+      <do:read>
+%s
+      </do:read>
+    </do:markAnnouncementsAsRead>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>"""
+
 getCR = """\
 <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
   <SOAP-ENV:Header />
@@ -180,8 +201,6 @@ returnCon = """\
 # Set up an HTTP or HTTPS connection.
 if service == 'cnib':
     c = httplib.HTTPSConnection('76.10.166.135')
-elif service == 'rnib':
-    c = httplib.HTTPSConnection('innovation.rnib.org.uk')
 elif service == 'vails':
     c = httplib.HTTPConnection('test.i-access.visionaustralia.org')
 elif service == 'solrad':
@@ -196,8 +215,6 @@ def sendMessage(body):
     """Send a SOAP message to the service."""
     if service == 'cnib':
         c.request('POST', '/do/', body, soapheader)
-    elif service == 'rnib':
-        c.request('POST', '/daisyonlinetest/daisyonlineservice.svc', body, soapheader)
     elif service == 'vails':
         c.request('POST', '/daisyonline/service.svc', body, soapheader)
     elif service == 'solrad':
@@ -223,16 +240,18 @@ def printResponse():
     print resptext
     return resptext
 
+#---------------------------- Required operations ----------------------------
+
 def logOn(username, password):
     """Send the logOn message."""
     soapheader['SOAPAction'] = '/logOn'
     sendMessage(logOnMess % (username, password))
     resptext = printResponse()
 
-def getServiceAttributes():
-    """Send the getServiceAttributes message."""
-    soapheader['SOAPAction'] = '/getServiceAttributes'
-    sendMessage(getSA)
+def logOff():
+    """Send the logOff message."""
+    soapheader['SOAPAction'] = '/logOff'
+    sendMessage(logOffMess)
     printResponse()
 
 def setReadingSystemAttributes():
@@ -241,10 +260,10 @@ def setReadingSystemAttributes():
     sendMessage(setRSA)
     printResponse()
 
-def getContentList(id, firstItem=0, lastItem=-1):
-    """Send the getContentList message."""
-    soapheader['SOAPAction'] = '/getContentList'
-    sendMessage(getList % (id, firstItem, lastItem))
+def issueContent(id):
+    """Send the issueContent message."""
+    soapheader['SOAPAction'] = '/issueContent'
+    sendMessage(issueCon % id)
     printResponse()
 
 def getContentMetadata(id):
@@ -259,11 +278,32 @@ def getContentResources(id):
     sendMessage(getCR % id)
     printResponse()
 
-def issueContent(id):
-    """Send the issueContent message."""
-    soapheader['SOAPAction'] = '/issueContent'
-    sendMessage(issueCon % id)
+def getServiceAttributes():
+    """Send the getServiceAttributes message."""
+    soapheader['SOAPAction'] = '/getServiceAttributes'
+    sendMessage(getSA)
     printResponse()
+
+def getContentList(id, firstItem=0, lastItem=-1):
+    """Send the getContentList message."""
+    soapheader['SOAPAction'] = '/getContentList'
+    sendMessage(getList % (id, firstItem, lastItem))
+    printResponse()
+
+#---------------------------- Optional operations ----------------------------
+
+def getServiceAnnouncements():
+    """Send the getServiceAnnouncements message."""
+    soapheader['SOAPAction'] = '/getServiceAnnouncements'
+    sendMessage(getAnn)
+    printResponse()    
+
+def markAnnouncementsAsRead(*ids):
+    """Send the markAnnouncementsAsRead message."""
+    soapheader['SOAPAction'] = '/getServiceAnnouncements'
+    read = '\n'.join('        <do:item>%s</do:item>' % id for id in ids)
+    sendMessage(markRead % read)
+    printResponse()    
 
 def returnContent(id):
     """Send the returnContent message."""
@@ -272,17 +312,22 @@ def returnContent(id):
     printResponse()
 
 def getBookmarks(id):
+    """Send the getBookmarks message."""
     soapheader['SOAPAction'] = '/getBookmarks'
     sendMessage(getMarks % id)
     printResponse()
 
-def logOff():
-    """Send the logOff message."""
-    soapheader['SOAPAction'] = '/logOff'
-    sendMessage(logOffMess)
+def setBookmarks(id, bmset):
+    """Send the setBookmarks message.
+    
+    Note that bmset must be an XML bookmarkSet
+    """
+    soapheader['SOAPAction'] = '/setBookmarks'
+    sendMessage(setMarks % (id, bmset))
     printResponse()
 
 def getKeyExchangeObject(name):
+    """Send the getKeyExchangeObject message."""
     soapheader['SOAPAction'] = '/getKeyExchangeObject'
     sendMessage(getKXO % name)
     printResponse()    
