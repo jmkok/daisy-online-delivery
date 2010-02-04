@@ -298,9 +298,7 @@ if __name__ == '__main__':
     # if it is imported as a module.
     
     # Display the new, issued, and expired content lists.
-    
     init()
-    getKeyExchangeObject('foo')
     for id in ['new', 'issued', 'expired']:
         getContentList(id)  # firstItem and lastItem default to 0 and -1.
     logOff()
