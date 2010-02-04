@@ -68,3 +68,8 @@ Changes to `bookmark-2005-1.xsd`:
   * Added recommendation that menu state be retained for the duration of the session.
   * Added note that says that audio notes are not supported at all.  (Previously it had only mentioned it in setting bookmarks.)
   * Noted that the `keyRing` should only contain names of key pairs, not symmetric keys.
+
+== Pending ==
+
+  * "expired" `contentList` to be made mandatory.
+  * Remove recommendation that `markAnnouncementsAsRead` be called immediately after each announcement is read.
