@@ -47,7 +47,8 @@ scribe: Kenny
    * make available the systems testing  Conformance report. 
    * Create an area where implementers can post information about the additional features that they have implemented on top of the spec, and that the community at large may be interested in.  
    * Make a page available that provides PDTB2 specific knowledge to Daisy Online Implementers. 
-   * Make a page available that provides all the tweaks to the WSDL and XSD files, that group members had to make to these files for their respective implementations.        * Make a formal Recommendation to the board for approval.  
+   * Make a page available that provides all the tweaks to the WSDL and XSD files, that group members had to make to these files for their respective implementations.
+   * Make a formal Recommendation to the board for approval.  
 
 == Agenda/Minutes ==
 
