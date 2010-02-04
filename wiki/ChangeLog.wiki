@@ -4,10 +4,6 @@
 
 This is an aggregation of all the changes to the protocol made since the Draft for Trial Use (r566) was released 27 September 2009.
 
-*The protocol was frozen on 3 February 2010.*
-
-_GGT: All protocol changes between r778 and r858 must be added to this document. I'll take care of it._
-
 == API ==
 
 Changes to `do-wsdl-10.wsdl`:
