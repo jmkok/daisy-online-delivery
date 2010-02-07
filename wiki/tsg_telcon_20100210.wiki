@@ -1,0 +1,126 @@
+
+present: 
+
+Regrets: 
+
+scribe: Kenny
+
+== Action Item Summary ==
+ 
+=== New Action Items ===
+
+  * Kenny to follow up with James and Neale the status of the two required fixes in the pdtb2 spec: Reg Exp and Example/xsd inconsistency.
+  * kenny to send Nick an email containing all the svcutil specific tweaks. 
+  * Nick, Hiro, Johan and Kenny to review the Systems Testing document and post their comments/participation intentions  on the page or on the list before the next telecon.
+  * Nick, Johan, Simon, Hiro and Jelle to review the Conformance Testing document, post their comments on the page or the list, and add test cases.
+  * Hiro and Jelle to send their public keys to the service implementers.
+  * Simon and Hiro to send their email addresses to kenny to be added as Project comittors.
+  * Kenny to ask Mark/Neale: What format is the private key encrypted in in the KxO? Record this information in the pdtb2_description page.  
+  * Johan to provide the RS specific KXOs to the service implementers. 
+  * Simon to add the minOccurs and maxOccurs tweak to the tweaks page.
+  * Geoff clarify in the spec that the Expired `contentList` should only be used in exceptional circumstances and is not required to contain overdue items (i.e. returnBy date < currentDate). 
+  * Geoff to remove the recommendation that states the markAnnouncementsAsRead operation should be called every time an announcement is rendered to a user. 
+  * Nick, Johan, Kenny and Geoff to proof read the spec documentation before Feb 15.
+
+  === Previous Unfinished Action Items ===
+
+  * Geoff to record an issue in the issue tracker for the setBlob/getBlob operations as suggested by Jelle, and mark this issue as an enhancement for the next version of the spec.      
+  * kenny to make the required cosmetic change to section 4.4.3, and present it to the group for review.
+  * Kenny to reflect all the changes recorded in the change log in the Dynamic Menus Primer. *tentative: should be done by the telecon on 10 february* 
+  * Geoff, Johan, Simon, Hiro and Kenny to build PDTB2 support in their test implementations by end March using the sample content provided by Neale.
+  * After the pdtb2 folks have fixed their version of kxo.xsd, kenny to change XSDs to their canonical URIs, and close issue 128 and Issue 144.   
+  * Markus fix the &apos; entity problem. (outstanding; bug in IE.) (Markus will fix this when ready to publish.)
+
+=== Group Action Items ===
+
+==== Action items for the public review period commencing February 15, 2010 ==== 
+
+  * All issues should be resolved or formally deferred.
+  * Any updates to the spec documentation, wsdl and xsd files need to be completed and proof read. 
+  * The primer should be proof read.
+  * The Conformance Testing and The Systems Testing documents should be made available. 
+
+==== Action items for formal recommendation to the Board on April 5, 2010 ====  
+
+   * Deliver Final version of the spec.  
+   * Provide Information on comments Received, and how they were addressed.  
+   * Make available the Conformance Testing Conformance Report.
+   * make available the systems testing  Conformance report. 
+   * Create an area where implementers can post information about the additional features that they have implemented on top of the spec, and that the community at large may be interested in.  
+   * Make a page available that provides PDTB2 specific knowledge to Daisy Online Implementers. 
+   * Make a page available that provides all the tweaks to the WSDL and XSD files, that group members had to make to these files for their respective implementations.
+   * Make a formal Recommendation to the board for approval.  
+
+== Agenda/Minutes ==
+
+=== What should a Service return where getQuestions"Back") is invoked when no previous call to the getQuestions operation has been made in the active session ===
+ 
+==== Discussion on the List ====
+
+Kenny: If a Reading System sends a "back" id in a userResponses type passed into the getQuestions operation, when there has been no previous call to the getQuestions operation in the active session, what must a Service return? 
+ 
+The following two options come to mind:
+1. Throw an invalidParameter fault.
+ 
+2. Return the main menu i.e. equivalent to getQuestions("default")
+ 
+Since this is a question that all implementers that support the dynamic menu feature with the back accessory will need to think about, what are your thoughts on adding a recommendation to the primer when we do a pass on it suggesting one of these two approaches, or perhaps a better approach?     
+
+Geoff: InvalidParameter.
+
+kenny: Any dissenters? Anyone leaning towards the getQuestions("default") option? My vote is for invalidParameter too to make it consistent with other parts of the spec.          
+
+Johan: I vote for getQuestions("default")
+
+In a scenario where the user have been exploring the menu and taken a certain path, the user decides to start all over again. Unfortunately, the device does not support this functionality so the user must press the back button repeatedly until the main menu is presented again. Once the main menu is rendered to the user, what should happen if the user press the back button again? invalidParameter or getQuestions("default"). This scenario is identical to browsing the internet in your web browser. Lets assume that you start from www.google.com and end up at www.daisy.org. If you start pressing the back button you will eventually reach your start page. Once back at the start, you will not be able to press the back button anymore, but if you were one could ask himself what would happen. I would not like to see error message.
+
+However, the spec should be consistent so if the majority vote for invalidParameter then I'm happy to implement it.
+  
+kenny: Thanks Johan.
+ 
+We have two votes for invalidParameter and one vote for getQuestions("default") thus far.
+ 
+Nick, Jelle, Simon, hiro, and all, which of the two options would you like to vote for?    
+ 
+I intend to update the Primer before the next call, so please post your votes to the list over the next couple of days.     
+
+=== What should happen when a Reading System does not support any input types that an inputQuestion lists in its inputTypes element? ===
+
+Simon: How will dynamic menus work if no supportedInputTypes are present? Will there be a menu with only multiple choices question? 
+
+For example, a player with 4 arrows would not fit in any categories but could still work with multiple choices question.
+
+If this is the case, it might be a code idea to specify it in the spec.
+
+geoff:      The supported input types are strictly for the inputQuestion.  It's assumed that multipleChoiceQuestions would be supported by any reading system that calls getQuestions.  (And a reading system that doesn't support input of any type would have to be an out-of-band system and not need menus.)
+ 
+kenny: I think we should make such assumptions explicit in the spec. I am concerned We may have the contextual understanding that people who have not been involved in the spec development may not have. What does everyone else think? 
+
+kenny: My vote is for adding a normative assertion to the spec stating (to the effect of): A Service must not send an input question to a Reading System when A Reading System has not declared support for any input types in its readingSystemAttributes that are listed in the inputTypes element of the inputQuestion.   
+ 
+This would also cover the case where a Reading System posts an empty supportedInputTypes element in its readingSystemAttributes.
+
+     === Spec update review ===
+
+==== Timelines going forward ====
+
+  # documentation including the wsdl and xsd files. (to be made available by Feb 15)
+  # Primer. (available with the change log reflected by 10 Feb) 
+  # systems testing and Conformance Testing documents. (to be made available by Feb 15) 
+  # Conformance Testing Conformance Report (Deferred to end March)
+  # Systems Testing Conformance report (deferred to end March) 
+
+=== Test suite Progress review ===
+
+==== [http://code.google.com/p/daisy-online-delivery/wiki/tsg_test_suite Test Suite] ====
+
+==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolSystemTestingTestCases Systems Testing] ====
+
+== Related Wiki Pages ==
+
+=== [http://code.google.com/p/daisy-online-delivery/wiki/ChangeLog Change Log] ===
+
+=== [http://code.google.com/p/daisy-online-delivery/wiki/pdtb2_description PDTB2 Description for Daisy Online Implementers] ===
+
+=== [http://code.google.com/p/daisy-online-delivery/wiki/WSDLAndXSDTweaks WSDL and XSD Tweaks for Daisy Online Implementers] ===
+ 
