@@ -1,4 +1,3 @@
-
 present: 
 
 Regrets: 
@@ -85,6 +84,8 @@ Nick, Jelle, Simon, hiro, and all, which of the two options would you like to vo
 I intend to update the Primer before the next call, so please post your votes to the list over the next couple of days.     
 
 === What should happen when a Reading System does not support any input types that an inputQuestion lists in its inputTypes element? ===
+
+==== Discussion on the list ====
 
 Simon: How will dynamic menus work if no supportedInputTypes are present? Will there be a menu with only multiple choices question? 
 
