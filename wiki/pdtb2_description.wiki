@@ -36,11 +36,11 @@ In order to prove that the book was correctly prepared, I did a "manual" decrypt
 
 The steps were:
 
-1) Extract a content key from the AO.  This is simply a cut-and-paste operation.  This became the *.encrypted.base64 file found in the Keys folder.
-2) base64 decode the key.  This became the *.encrypted.bin file found in the Keys folder.
-3) Decrypt the key.  This became the *.decrypted.bin file found in the Keys folder.  You'll notice it's exactly 16 bytes in size, consistent with our 128-bit AES key length.
-4) Use the key to decrypt the content using OpenSSL
-5) Compare the decrypted content to the original
+ # Extract a content key from the AO.  This is simply a cut-and-paste operation.  This became the *.encrypted.b64* file found in the Keys folder.
+ # base64 decode the key.  This became the *.encrypted.bin* file found in the Keys folder.
+ # Decrypt the key.  This became the *.decrypted.bin* file found in the Keys folder. You'll notice it's exactly 16 bytes in size, consistent with our 128-bit AES key length.
+ # Use the key to decrypt the content using OpenSSL
+ # Compare the decrypted content to the original
 
 I left the keys in the keys folder to save you some effort should you decide to go through these steps yourselves.  I'd also be happy to send you the OpenSSL commands I used to do the decryption (though there is some more work that goes with it, such as deriving hex versions of the keys and initialization vector) if you want them.
      
