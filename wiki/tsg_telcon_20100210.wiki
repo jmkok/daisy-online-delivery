@@ -83,6 +83,10 @@ Nick, Jelle, Simon, hiro, and all, which of the two options would you like to vo
  
 I intend to update the Primer before the next call, so please post your votes to the list over the next couple of days.     
 
+Nick: My vote is for invalidParameter.
+ 
+The reading system knows that the service does not support serverside back from the supportsServerSideBack in the serviceAttrributes. If a reading system wants to translate the fault into getQuestions("default") it is free to do so.
+
 === What should happen when a Reading System does not support any input types that an inputQuestion lists in its inputTypes element? ===
 
 ==== Discussion on the list ====
@@ -100,6 +104,12 @@ kenny: I think we should make such assumptions explicit in the spec. I am concer
 kenny: My vote is for adding a normative assertion to the spec stating (to the effect of): A Service must not send an input question to a Reading System when A Reading System has not declared support for any input types in its readingSystemAttributes that are listed in the inputTypes element of the inputQuestion.   
  
 This would also cover the case where a Reading System posts an empty supportedInputTypes element in its readingSystemAttributes.
+
+Geoff:  We already have a recommendation to that effect.
+ 
+Dominik: Do we have a category for devices limited to 4 arrows with no numerical keypad?
+
+ 
 
      === Spec update review ===
 
