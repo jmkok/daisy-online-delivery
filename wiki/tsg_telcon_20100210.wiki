@@ -109,6 +109,14 @@ Geoff:  We already have a recommendation to that effect.
  
 Dominik: Do we have a category for devices limited to 4 arrows with no numerical keypad?
 
+geoff: We don't.  I was under the impression that such a device would only be able to handle multipleChoiceQuestions, so you'd indicate such by not putting anything at all under supportedInputTypes.  Section 4.7.1. Support says, "A Service should not send any question which requires an input type not supported by the Reading System."
+
+Kenny: Thanks Geoff. I did not spot that recommendation initially. The recommendation is at:
+http://www.daisy.org/projects/daisy-online-delivery/drafts/20090927/do-spec-20090927.html#fundamentals_dynamic_menus_qtypes  
+
+I think this recommendation is enough to clarify the ambiguity. 
+
+Thoughts all?
  
 
      === Spec update review ===
