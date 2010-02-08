@@ -666,13 +666,13 @@
                             This protocol does not require the enforcement of these methods on the <xref linkend="term_readingSystem"/>.
                             <xref linkend="term_serviceProvider"/>s should investigate other methods for protecting 
                             <xref linkend="term_content"/> that must expire at a specific time (for example <abbrev>DRM</abbrev> 
-                            schemes like <xref linkend="bib_pdtb2"/>). </para>
+                            schemes like <xref linkend="bib_pdtb2"/>).</para>
                     </note>
                     
                     <para>
                         The <code>returnBy</code> attribute indicates the time before which the <xref linkend="term_user"/> 
                         should <link linkend="term_return">return</link> the <xref linkend="term_content"/>.
-                        <xref linkend="term_readingSystem"/>s should
+                        If it has a real-time clock, a <xref linkend="term_readingSystem"/> should
                         delete the <xref linkend="term_content"/> at the specified time and <link linkend="term_return">return</link>
                         the <xref linkend="term_content"/> to the <xref linkend="term_service"/> at the next <xref linkend="term_session"/>.</para>
                     
@@ -697,7 +697,7 @@
                     
                     <note>
                         <para><xref linkend="term_serviceProvider"/>s should use the <literal>expired</literal>
-                            <type><xref linkend="tp_contentList"/></type> with caution.  <xref linkend="term_user"/>s
+                            <type><xref linkend="tp_contentList"/></type> only in exceptional cases.  <xref linkend="term_user"/>s
                             should be notified that <xref linkend="term_content"/> has expired and will be deleted.</para>
                     </note>
                 </section>
