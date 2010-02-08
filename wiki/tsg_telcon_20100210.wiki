@@ -13,12 +13,12 @@ scribe: Kenny
   * Nick, Hiro, Johan and Kenny to review the Systems Testing document and post their comments/participation intentions  on the page or on the list before the next telecon.
   * Nick, Johan, Simon, Hiro and Jelle to review the Conformance Testing document, post their comments on the page or the list, and add test cases.
   * Hiro and Jelle to send their public keys to the service implementers.
-  * Simon and Hiro to send their email addresses to kenny to be added as Project comittors.
+  * Simon and Hiro to send their email addresses to kenny to be added as Project committors.
   * Kenny to ask Mark/Neale: What format is the private key encrypted in in the KxO? Record this information in the pdtb2_description page.  
   * Johan to provide the RS specific KXOs to the service implementers. 
   * Simon to add the minOccurs and maxOccurs tweak to the tweaks page.
-  * Geoff clarify in the spec that the Expired `contentList` should only be used in exceptional circumstances and is not required to contain overdue items (i.e. returnBy date < currentDate). 
-  * Geoff to remove the recommendation that states the markAnnouncementsAsRead operation should be called every time an announcement is rendered to a user. *done*
+  * Geoff clarify in the spec that the Expired `contentList` should only be used in exceptional circumstances and is not required to contain overdue items (i.e. returnBy date < currentDate). *Done* 
+  * Geoff to remove the recommendation that states the markAnnouncementsAsRead operation should be called every time an announcement is rendered to a user. *Done*
   * Nick, Johan, Kenny and Geoff to proof read the spec documentation before Feb 15.
 
   === Previous Unfinished Action Items ===
