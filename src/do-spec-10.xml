@@ -1335,8 +1335,8 @@
             <section xml:id="fundamentals_service_annoucements_read">
                 <title>Read Announcements</title>
 
-                <para> After rendering each announcement to a <xref linkend="term_user"/>, a <xref
-                        linkend="term_readingSystem"/> should immediately invoke the <function>
+                <para> After rendering announcements to a <xref linkend="term_user"/>, a <xref
+                        linkend="term_readingSystem"/> may invoke the <function>
                         <xref linkend="op_markAnnouncementsAsRead"/>
                     </function> operation to inform the <xref linkend="term_service"/> not to send
                     the announcement again the next time the <xref linkend="term_user"/> connects to
