@@ -48,7 +48,7 @@ Authorization occurs by User, not by Reading System; credentials are user names 
   # *Connect with authorization*: Initialize a session with a Service using correct user credentials.
   # *Deny incorrect authorization*: Attempt to initialize a session with a Service using a valid user name, but an incorrect password.  The Service must respond `false` to the `logOn` operation, and return a `NoActiveSession` fault to subsequent operation calls.
   # *Allow content download with correct credentials*: Download a resource with basic authentication credentials provided by the Service.
-  # *Deny content download with incorrect credentials*: Attempt to download a resource with incorrect basic authentication credentials.  The file server must respond with an HTTP status of "403 Forbidden".
+  # *Deny content download with incorrect credentials*: Attempt to download a resource with incorrect basic authentication credentials.  The file server must respond with an HTTP status of "401 Unauthorized".
 
 || Test case || Client || Server || Result || Details ||
 || 2.1 ||  ||  ||  ||  ||
@@ -165,7 +165,7 @@ The ability for Reading Systems to query the Service for the current time was no
 
   # *Identify protected Content*: Find a Protected DTB on the Service.  Get the DTB's metadata.  There must be a meta element with a name attribute of "`pdtb2:specVersion`" and a content attribute of "`2005-1`".
   # *Get a key*: Issue and download a Protected DTB.  Request a Key Exchange Object (KXO) for the decryption key from the Service using `getKeyExchangeObject`.  Render the DTB.
-  # *Deny a key*: Issue and download a Protected DTB.  Request a KXO for the decryption key from the Service using `getKeyExchangeObject`, but do not provide an authorized key in the `keyRing` argument.  The Service must reply with an `invalidOperation` fault.
+  # *Deny a key*: Issue and download a Protected DTB.  Request a KXO for the decryption key from the Service using `getKeyExchangeObject`, but do not provide an authorized key in the `keyRing` element of the `readingSystemAttributes`.  The Service must reply with an `invalidParameter` fault.
 
 || Test case || Client || Server || Result || Details ||
 || 11.1 ||  ||  ||  ||  ||
@@ -205,7 +205,7 @@ The protocol does not support bookmarks with audio notes.
 [RequirementsDocument#Issue_content Requirement]
 
   # *Issue a book*: Request a Content item from a Service using `issueContent`.  The Service must return `true`.  Get the list of resources using `getContentResources`.
-  # *Deny a book*: Request a Content item from a Service using `issueContent`.  The Service must return `false`.  Try to get the list of resources using `getContentResources`.  The Service must return an `invalidOperation` fault.
+  # *Deny a book*: Request a Content item from a Service using `issueContent`.  The Service must return `false`.  Try to get the list of resources using `getContentResources`.  The Service must return an `invalidParameter` fault.
   # *Pre-requisite book*: Search for the second or third book of a series, where the previous book was never issued.  The Service should, in the dynamic menus, inform the user of the previous book.
 
 || Test case || Client || Server || Result || Details ||
