@@ -1,7 +1,7 @@
 #summary A report on the testing of the DAISY Online protocol against the requirements and expectations.
 #labels Phase-Requirements,Phase-QA,Report
 
-<wiki:toc max_depth="1" />
+<wiki:toc max_depth="2" />
 
 = Introduction =
 
@@ -91,11 +91,15 @@ Note: Storing user-created bookmarks is covered under requirement #13, Bookmark 
 [RequirementsDocument#Transmit_capabilities Requirement]
 
   # *Set Reading System attributes*: Initialize a session with a Service.  Verify that the Reading System's attributes were sent to the Service.
-  # *Adapt Service to the Reading System's capabilities*: Initialize a session with a Service that provides different Content based on the capabilities of the Reading System.  Ensure that the Content and resources offered by the Service are only in the formats given in the `readingSystemAttributes` provided to the Service.
+  # *Adapt Content to the Reading System's capabilities*: Initialize a session with a Service that provides different Content based on the capabilities of the Reading System.  Ensure that the Content and resources offered by the Service are only in the formats given in the `readingSystemAttributes` provided to the Service.
+  # *Negotiate audio labels*: Initialize a session with a Service that supports text-only and text+audio labels.  Set `readingSystemAttributes/config/requiresAudioLabels` to `true` when calling `setReadingSystemAttributes`.  Ensure that all `label`s have `audio` components.
+  # *Negotiate numeric input*: Initialize a session with a Service that has implemented both numeric and alphanumeric `inputQuestion`s.  Set `readingSystemAttributes/config/supportedInputTypes` to to have one `input` element with a `type` attribute of `TEXT_NUMERIC` when calling `setReadingSystemAttributes`.  Ensure that all `inputQuestion`s allow `TEXT_NUMERIC` input.
 
 || Test case || Client || Server || Result || Details ||
 || 5.1 ||  ||  ||  ||  ||
 || 5.2 ||  ||  ||  ||  ||
+|| 5.3 ||  ||  ||  ||  ||
+|| 5.4 ||  ||  ||  ||  ||
 
 == 6. Universal protocol ==
 
