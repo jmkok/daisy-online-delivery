@@ -5,7 +5,11 @@ _GGT: I've marked up the Reading System conformance section with some observatio
 
 _GGT: Regarding the assertions that are really for Services, an example would be section 8, assertion 1.  Supporting the value of a `serviceAttributes/supportedOptionalOperations/operation` element to be "PDTB2_KEY_PROVISION" is already covered in the core functionality (under conforming to the schema). It's not well-defined what "supporting" that value means, other than accepting it as a valid value. The requirement is for the Service to provide that value to the Reading System, not for the Reading System to do anything with it._
 
-kj: I have removed all the optional assertions. As for the Service conformance assertions in the Reading System conformance item, i think the Reading Systems must understand the elements/attributes set forth by these assertions, so I recorded them in the RS conformance area.            
+kj: I have removed all the optional assertions. As for the Service conformance assertions in the Reading System conformance item, i think the Reading Systems must understand the elements/attributes set forth by these assertions, so I recorded them in the RS conformance area.
+
+_JA: I inserted my comments and updates in both Reading System and Service conformance sections. _
+
+_JA: I have one concern with this document: regarding the assertions, we should decide what is required for an assertions to be listed in this document. must it explicitly be mentioned in the specification? can we list things that are obvious but not mentioned in the spec? in the former case we should re-visit the documentation and add more requirements._ 
 
 = Introduction =
 
@@ -33,7 +37,7 @@ At a minimum, a conformant Reading System or Service must satisfy all Assertions
   # Implement the  `getServiceAttributes` operation.
   # Implement the  `issueContent` operation.
   # Implement the `getContentList` operation.
-   # Support the invokation of the `getContentList` operation with the "new" id.  
+   # Support the invokation of the `getContentList` operation with the "new" id. _JA: move this to section 4. Not a requirement in an acquisition model_  
   # Implement the `getContentMetadata` operation.
   # Implement the `getContentResources` operation. 
   # Adhere to the session initialization sequence to commence a session with a Service.
@@ -42,7 +46,7 @@ At a minimum, a conformant Reading System or Service must satisfy all Assertions
     # Satisfy all assertions in category 2 and/or category 3.
   # Support one or both of the content selection models:
     # Satisfy all assertions in category 4 and/or category 5.
-  # Support the `contentMetadata@requiresReturn` attribute to determine whether the content needs to be returned.   
+  # Support the `contentMetadata@requiresReturn` attribute to determine whether the content needs to be returned. _JA: move this to section 2 and 3 and make it more explicit_
 
 == 2. Lending service model ==
 
@@ -53,10 +57,11 @@ At a minimum, a conformant Reading System or Service must satisfy all Assertions
 
 == 3. Acquisition service model ==
 
- # Must not call the `requiresReturn` operation for any content that has `contentMetadata@requiresReturn` set to `false`.
+ # Must not call the `returnContent` operation for any content that has `contentMetadata@requiresReturn` set to `false`.
 
 == 4. Out-of-band selection model ==
 
+ # Support the invokation of the `getContentList` operation with the "new" and "issued" id. _JA: and "expired" if we choose to make it required_
 _GGT: Neither of these assertions capture what it means to support out-of-band selection. Unfortunately I don't have any suggestions at present._
 kj: need to find appropriate verbiage.
 
@@ -66,45 +71,47 @@ kj: need to find appropriate verbiage.
  
 == 6. Updates and installments ==
 
-  # Support `contentList/contentItem@lastModifiedDate`. 
-  # Support `resources/resource@lastModifiedDate`. 
+  # Support `contentList/contentItem@lastModifiedDate`.
+  # Support `resources@lastModifiedDate`. _JA: added this_
+  # Support `resources/resource@lastModifiedDate`.
 
-_GGT: Should add:_ (kj: what would we say for streaming then? Would an RS need to stream if content is updated?)
+_GGT: Should add:_ (kj: what would we say for streaming then? Would an RS need to stream if content is updated?) _JA: in streaming mode you always get the most recently updated version, while in download mode the RS should download updates automatically. we don't need an assertion(s) for streaming devices._
   * Download resources when they have been updated. _The wording needs to be worked out._
 
 == 7. Rights management ==  
 
   # Support PDTB2.
   # Set a `readingSystemAttributes/config/supportedContentProtectionFormats/protectionFormat` element to "PDTB2" in all calls to the `setReadingSystemAttributes` operation.
-  # Support the meta attribute pdtb2:specVersion with the value set to 2005-1 in contentMetadata to determine if the content being downloaded is PDTB2 protected.  _GGT: This is a service requirement, not a reading system requirement._ kj: is this not a must understand for RS? 
+  # Support the meta attribute pdtb2:specVersion with the value set to 2005-1 in contentMetadata to determine if the content being downloaded is PDTB2 protected.  _GGT: This is a service requirement, not a reading system requirement._ kj: is this not a must understand for RS?
+
 == 8. Key Exchange ==
 
   # Support the operation element set to a value of PDTB2_KEY_PROVISION in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine if the Service supports key provision.  _GGT: This is a service requirement, not a reading system requirement._ kj: Is this not a must understand?   # Set value(s) for `readingSystemAttributes/config/keyRing/item` element(s) in all calls to the `setReadingSystemAttributes` operation.
-  # Support the `getKeyExchangeObject` operation.
+  # Implement the `getKeyExchangeObject` operation.
   # Satisfy all assertions in category 7.
  
 == 9. Set bookmarks ==
 
-  # Support the portable bookmarks and highlights grammar described by the bookmark-2005-1.xsd file and section 9 of the ANSI/NISO Z39.86 specification.
+  # Support the portable bookmarks and highlights grammar described by the bookmark-2005-1.xsd file and section 9 of the ANSI/NISO Z39.86 specification. _JA: part of implementing the function_
   # Support the operation element set to a value of SET_BOOKMARKS in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports the setBookMarks operation. _GGT: This is a service requirement, not a reading system requirement._kj: Is this not a must understand?
-  # Support the `setBookmarks` operation.
+  # Implement the `setBookmarks` operation.
   # must not submit audio recordings as a part of the setBookmarks operation. _GGT: This is not a requirement, it is a limitation of the spec._kj: Reading Systems still need to make sure that they don't allow audio recordings. I think it should be a testable assertion.      
            
 == 10. Get bookmarks ==
 
-  # Support the portable bookmarks and highlights grammar described by the bookmark-2005-1.xsd file and section 9 of the ANSI/NISO Z39.86 specification.
+  # Support the portable bookmarks and highlights grammar described by the bookmark-2005-1.xsd file and section 9 of the ANSI/NISO Z39.86 specification. _JA: part of implementing the function_
   # Support the operation element set to a value of GET_BOOKMARKS in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports the getBookMarks operation. _GGT: This is a service requirement, not a reading system requirement._ kj: is this not a must understand?
-  # Support the `getBookmarks` operation.
+  # Implement the `getBookmarks` operation.
            
 == 11. Dynamic menus ==
 
   # Support the operation element set to a value of DYNAMIC_MENUS in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports dynamic menus. _GGT: This is a service requirement, not a reading system requirement._ kj: Is this not a must understand?
-  # Support the `getQuestions` operation.
+  # Implement the `getQuestions` operation.
   # The `userResponses` parameter passed to the `getQuestions` operation must contain either a response to a previous question(s) or one of the reserved IDs: "default", "search" or "back". 
 
 == 12. Service announcements ==
 
-  # Support the `getServiceAnnouncements` operation.
+  # Implement `getServiceAnnouncements` and `markAnnouncementsAsRead` operations.
   # Support the operation element set to a value of SERVICE_ANNOUNCEMENTS in the serviceAttributes type retrieved through a call to the getServiceAttributes operation to determine whether the Service supports Service Announcements.  _GGT: This is a service requirement, not a reading system requirement._kj: is this not a must understand?
   # After an announcement has been rendered, immediately invoke the markAnnouncementsAsRead operation to inform the Service not to send the announcement again on the next invocation of the getServiceAnnouncements operation. (kj: question about multiple announcement ids being posted through the read type.)
   
@@ -118,7 +125,7 @@ _GGT: Should add:_ (kj: what would we say for streaming then? Would an RS need t
   # Must be available over http/https. 
   # Support http cookies.  
   # Support http range headers.
-  # Range headers must always be honored in HTTP requests.
+    # Range headers must always be honored in HTTP requests.
   # Implement the `logOn` operation.
   # Implement the `logOff` operation.
   # Implement the `setReadingSystemAttributes` operation.
@@ -136,6 +143,10 @@ _GGT: Should add:_ (kj: what would we say for streaming then? Would an RS need t
    # If a successful `logOn` is performed in the middle of a session, calling any other operation except `logOn` or `getServiceAttributes` must return an `InvalidOperation` fault.
    # After a session has been initialized, calling `logOff` must return `true`.
    # If a `logOff` was successful, calling any other operation except `logOn` must return `NoActiveSessionFault`.
+  # Support one or both of the service models.
+    # Satisfy all assertions in category 2 and/or category 3.
+  # Support one or both of the content selection models:
+    # Satisfy all assertions in category 4 and/or category 5. 
 
 == 2. Lending service model ==
 
@@ -169,6 +180,7 @@ _GGT: Should add:_ (kj: what would we say for streaming then? Would an RS need t
   # The `lastModifiedDate` attribute of the `contentItem` type must match the content's most recently updated resource's date. (kj: does this need to be updated as per the change log?)
   # The `lastModifiedDate` attribute of the `resources` type must match the content's most recently updated resource's date. (kj: is this a requirement)
   # The `lastModifiedDate` attribute of the `resource` type must match the most recently updated resource's date. (kj: is this a requirement)
+_JA: change the verbiage and make this a requirement for services that choose to support updates and instalments, otherwise these attributes are useless._
 
 == 7. Rights management ==
 
@@ -185,13 +197,13 @@ _GGT: Should add:_ (kj: what would we say for streaming then? Would an RS need t
 
 == 9. Set bookmarks ==
 
-  # Support the portable bookmarks and highlights grammar described by the bookmark-2005-1.xsd file and section 9 of the ANSI/NISO Z39.86 specification.
+  # Support the portable bookmarks and highlights grammar described by the bookmark-2005-1.xsd file and section 9 of the ANSI/NISO Z39.86 specification. _JA: part of implementing the function_
   # Declare support for uploading of bookmarks by setting the `operation` element set to a value of SET_BOOKMARKS in the `supportedOptionalOperations` element of its `serviceAttributes` type.
   # Implement the `setBookmarks` operation.
 
 == 10. Get bookmarks ==
 
-  # Support the portable bookmarks and highlights grammar described by the bookmark-2005-1.xsd file and section 9 of the ANSI/NISO Z39.86 specification.
+  # Support the portable bookmarks and highlights grammar described by the bookmark-2005-1.xsd file and section 9 of the ANSI/NISO Z39.86 specification. _JA: part of implementing the function_
   # Declare support for retrieval of bookmarks by setting the `operation` element set to a value of GET_BOOKMARKS in the `supportedOptionalOperations` element of its `serviceAttributes` type.
   # Implement the `getBookmarks` operation.
 
@@ -200,7 +212,7 @@ _GGT: Should add:_ (kj: what would we say for streaming then? Would an RS need t
   # Declare support for dynamic menus by setting the `operation` element set to a value of DYNAMIC_MENUS in the `supportedOptionalOperations` element of its `serviceAttributes` type.
   # Implement the `getQuestions` operation.
   # Expose the Main menu to the Reading System through the `getQuestions` operation when the operation is invoked with a `userResponse` parameter where the `questionID` element value is set to `default`.
-  # Don't expose multiple selection questions to the Reading System if it doesn't support multiple selections. (kj: is this a requirement or is this from the last draft?)   
+  # Don't expose multiple selection questions to the Reading System if it doesn't support multiple selections. (kj: is this a requirement or is this from the last draft?) (_JA: neither, but should be otherwise `readingSystemAttributs/config/supportsMultipleSelection` is completely useless)_   
   # Don't expose input questions of types that the Reading System doesn't support.
 
 == 12. Service announcements ==
