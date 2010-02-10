@@ -24,7 +24,7 @@ scribe: Kenny
   === Previous Unfinished Action Items ===
 
   * Geoff to record an issue in the issue tracker for the setBlob/getBlob operations as suggested by Jelle, and mark this issue as an enhancement for the next version of the spec.      
-  * kenny to make the required cosmetic change to section 4.4.3, and present it to the group for review.
+  * kenny to make the required cosmetic change to section 4.4.3, and present it to the group for review. *done: Thanks Geoff*
   * Kenny to reflect all the changes recorded in the change log in the Dynamic Menus Primer. *done: awaiting group review*
   * Geoff, Johan, Simon, Hiro and Kenny to build PDTB2 support in their test implementations by end March using the sample content provided by Neale.
   * After the pdtb2 folks have fixed their version of kxo.xsd, kenny to change XSDs to their canonical URIs, and close issue 128 and Issue 144.   
