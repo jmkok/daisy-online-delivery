@@ -87,6 +87,12 @@ Nick: My vote is for invalidParameter.
  
 The reading system knows that the service does not support serverside back from the supportsServerSideBack in the serviceAttrributes. If a reading system wants to translate the fault into getQuestions("default") it is free to do so.
 
+jell: I think invalidParameter would be best.
+
+Doing 'getQuestions("default")' would actually mask the fault. This might generate (yet unforeseen) problems or difficulties.
+And a reading system could always internally map* this if it would like to... (but the other way around won't be possible)
+*) "back" + "invalidParameter" => getQuestions("default")
+
 === What should happen when a Reading System does not support any input types that an inputQuestion lists in its inputTypes element? ===
 
 ==== Discussion on the list ====
