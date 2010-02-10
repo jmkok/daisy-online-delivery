@@ -10,11 +10,11 @@ scribe: Kenny
 
   * Kenny to follow up with James and Neale the status of the two required fixes in the pdtb2 spec: Reg Exp and Example/xsd inconsistency. *done (should be done by the end of the week)* 
   * kenny to send Nick an email containing all the svcutil specific tweaks. *done* 
-  * Nick, Hiro, Johan and Kenny to review the Systems Testing document and post their comments/participation intentions  on the page or on the list before the next telecon.
+  * Nick, Hiro, Johan and Kenny to review the Systems Testing document and post their comments/participation intentions  on the page or on the list before the next telecon. *kenny: done*
   * Nick, Johan, Simon, Hiro and Jelle to review the Conformance Testing document, post their comments on the page or the list, and add test cases.
   * Hiro and Jelle to send their public keys to the service implementers.
   * Simon and Hiro to send their email addresses to kenny to be added as Project committors. *done*
-  * Kenny to ask Mark/Neale: What format is the private key encrypted in in the KxO? Record this information in the pdtb2_description page.   
+  * Kenny to ask Mark/Neale: What format is the private key encrypted in in the KxO? Record this information in the pdtb2_description page. *done*   
   * Johan to provide the RS specific KXOs to the service implementers. 
   * Simon to add the minOccurs and maxOccurs tweak to the tweaks page.
   * Geoff clarify in the spec that the Expired `contentList` should only be used in exceptional circumstances and is not required to contain overdue items (i.e. returnBy date < currentDate). *Done* 
@@ -25,7 +25,7 @@ scribe: Kenny
 
   * Geoff to record an issue in the issue tracker for the setBlob/getBlob operations as suggested by Jelle, and mark this issue as an enhancement for the next version of the spec.      
   * kenny to make the required cosmetic change to section 4.4.3, and present it to the group for review.
-  * Kenny to reflect all the changes recorded in the change log in the Dynamic Menus Primer. *tentative: should be done by the telecon on 10 february* 
+  * Kenny to reflect all the changes recorded in the change log in the Dynamic Menus Primer. *done: awaiting group review*
   * Geoff, Johan, Simon, Hiro and Kenny to build PDTB2 support in their test implementations by end March using the sample content provided by Neale.
   * After the pdtb2 folks have fixed their version of kxo.xsd, kenny to change XSDs to their canonical URIs, and close issue 128 and Issue 144.   
   * Markus fix the &apos; entity problem. (outstanding; bug in IE.) (Markus will fix this when ready to publish.)
@@ -126,7 +126,16 @@ Thoughts all?
  
 === What is the role of readingSystemAttributes/config/supportsMultipleSelections in this iteration of the spec? === 
 
-   
+=== Test suite Progress review ===
+
+==== [http://code.google.com/p/daisy-online-delivery/wiki/tsg_test_suite Test Suite] ====
+
+  * Should we include spec recommendations in the conformance testing document and introduce the concept of optional assertions? (ref: johan's comments on the conformance testing page)
+  * are the assertions sufficient in the RS and Service conformance areas?
+  * definition of test cases.
+  * Can we meet the feb 15 timeline? (time commitment from group members)
+
+==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolSystemTestingTestCases Systems Testing] ====
 
      === Spec update review ===
 
@@ -137,14 +146,6 @@ Thoughts all?
   # systems testing and Conformance Testing documents. (to be made available by Feb 15) 
   # Conformance Testing Conformance Report (Deferred to end March)
   # Systems Testing Conformance report (deferred to end March) 
-
-=== Test suite Progress review ===
-
-==== [http://code.google.com/p/daisy-online-delivery/wiki/tsg_test_suite Test Suite] ====
-
-Should we include optional assertions in the conformance testing document?
-
-==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolSystemTestingTestCases Systems Testing] ====
 
 == Related Wiki Pages ==
 
