@@ -69,6 +69,33 @@ Changes to `bookmark-2005-1.xsd`:
   * Added note that says that audio notes are not supported at all.  (Previously it had only mentioned it in setting bookmarks.)
   * Noted that the `keyRing` should only contain names of key pairs, not symmetric keys.
 
+== Primer ==
+
+  * Changed verbiage to indicate that the following attributes are of type xs:NMTOKEN and not xs:ID:
+   * inputQuestion/@id  
+   * multipleChoiceQuestion/@id
+   * multipleChoiceQuestion/choices/choice/@id
+  * Modified "dynamicMenusExamples-mainMenu-1.xml":
+   * Added @xml:lang to all label elements.
+  * Modified "dynamicMenusExamples-purchase-2.xml":
+   * Added @xml:lang to all label elements.
+  * Modified "dynamicMenusExamples-purchase-4.xml":
+   * Added @xml:lang to all label elements.
+  * Modified "dynamicMenusExamples-retrieve-4.xml":
+   * Added @xml:lang to all label elements.
+  * Modified "dynamicMenusExamples-search-3.xml": 
+   * Added @xml:lang to all label elements.
+  * Modified "dynamicMenusExamples-search-9.xml":
+   * Added @xml:lang to all label elements.
+  * Modified "dynamicMenusExamples-survey-2.xml":
+   * Added @xml:lang to all label elements.
+  * Modified "dynamicMenusExamples-survey-4.xml":
+   * Added @xml:lang to all label elements.
+  * Modified "dynamicMenusExamples-userprofile-2.xml":
+   * Added @xml:lang to all label elements.
+  * Modified "dynamicMenusExamples-userprofile-5.xml":
+   * Added @xml:lang to all label elements.
+
 == Pending ==
 
   * "expired" `contentList` to be made mandatory.
