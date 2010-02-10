@@ -7,13 +7,13 @@
 
 <choices>
 <choice id="c1">
-<label>
+<label xml:lang="en">
 <text>Reenter your profile information</text>
 </label>
 </choice>
 
 <choice id="c2">
-<label>
+<label xml:lang="en">
 <text>Go back to the previous menu</text>
 </label>
 </choice>

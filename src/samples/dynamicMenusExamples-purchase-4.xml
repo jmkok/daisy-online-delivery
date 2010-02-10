@@ -7,17 +7,17 @@
         </label>
         <choices>
             <choice id="c1">
-                <label>
+                <label xml:lang="en">
                     <text>Buy more Books</text>
                 </label>
             </choice>
             <choice id="c2">
-                <label>
+                <label xml:lang="en">
                     <text>Add these books to my download/streaming list</text>
                 </label>
             </choice>
             <choice id="c3">
-                <label>
+                <label xml:lang="en">
                     <text>Download/Stream these books now</text>
                 </label>
             </choice>

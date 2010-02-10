@@ -5,17 +5,17 @@
         <text>Your Search for "J.K. Rowling" returned the following results.</text>
     </label>
     <contentItem id="hp_cos" lastModifiedDate="2009-08-20T11:00:00Z">
-        <label>
+        <label xml:lang="en">
             <text>Harry Potter and the Chamber of Secrets</text>
         </label>
     </contentItem>
     <contentItem id="hp_dh" lastModifiedDate="2009-08-22T08:00:00Z">
-        <label>
+        <label xml:lang="en">
             <text>Harry Potter and the Deathly Hallows</text>
         </label>
     </contentItem>
     <contentItem id="hp_gof" lastModifiedDate="2009-08-04T14:30:00Z">
-        <label>
+        <label xml:lang="en">
             <text>Harry Potter and the Goblet of Fire</text>
         </label>
     </contentItem>

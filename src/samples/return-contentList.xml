@@ -1,12 +1,12 @@
 <contentList xmlns="http://www.daisy.org/ns/daisy-online/"
     id="expired" totalItems="2">   
     <contentItem id="com-example-001">
-        <label>
+        <label xml:lang="en">
             <text>Harry Potter and the Goblets of Fire</text>
         </label>
     </contentItem>
     <contentItem id="com-example-002">
-        <label>
+        <label xml:lang="en">
             <text>Harry Potter and the Deathly Hallows</text>
         </label>        
     </contentItem>

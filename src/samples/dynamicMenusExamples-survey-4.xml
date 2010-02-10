@@ -5,17 +5,17 @@
         </label>
         <choices>
             <choice id="c1">
-                <label>
+                <label xml:lang="en">
                     <text>Take another survey</text>
                 </label>
             </choice>
             <choice id="c2">
-                <label>
+                <label xml:lang="en">
                     <text>Go back to the previous menu</text>
                 </label>
             </choice>
             <choice id="default">
-                <label>
+                <label xml:lang="en">
                     <text>Go back to the Main Menu</text>
                 </label>
             </choice>
