@@ -8,13 +8,13 @@ scribe: Kenny
  
 === New Action Items ===
 
-  * Kenny to follow up with James and Neale the status of the two required fixes in the pdtb2 spec: Reg Exp and Example/xsd inconsistency.
-  * kenny to send Nick an email containing all the svcutil specific tweaks. 
+  * Kenny to follow up with James and Neale the status of the two required fixes in the pdtb2 spec: Reg Exp and Example/xsd inconsistency. *done (should be done by the end of the week)* 
+  * kenny to send Nick an email containing all the svcutil specific tweaks. *done* 
   * Nick, Hiro, Johan and Kenny to review the Systems Testing document and post their comments/participation intentions  on the page or on the list before the next telecon.
   * Nick, Johan, Simon, Hiro and Jelle to review the Conformance Testing document, post their comments on the page or the list, and add test cases.
   * Hiro and Jelle to send their public keys to the service implementers.
-  * Simon and Hiro to send their email addresses to kenny to be added as Project committors.
-  * Kenny to ask Mark/Neale: What format is the private key encrypted in in the KxO? Record this information in the pdtb2_description page.  
+  * Simon and Hiro to send their email addresses to kenny to be added as Project committors. *done*
+  * Kenny to ask Mark/Neale: What format is the private key encrypted in in the KxO? Record this information in the pdtb2_description page.   
   * Johan to provide the RS specific KXOs to the service implementers. 
   * Simon to add the minOccurs and maxOccurs tweak to the tweaks page.
   * Geoff clarify in the spec that the Expired `contentList` should only be used in exceptional circumstances and is not required to contain overdue items (i.e. returnBy date < currentDate). *Done* 
@@ -118,6 +118,9 @@ I think this recommendation is enough to clarify the ambiguity.
 
 Thoughts all?
  
+=== What is the role of readingSystemAttributes/config/supportsMultipleSelections in this iteration of the spec? === 
+
+   
 
      === Spec update review ===
 
@@ -132,6 +135,8 @@ Thoughts all?
 === Test suite Progress review ===
 
 ==== [http://code.google.com/p/daisy-online-delivery/wiki/tsg_test_suite Test Suite] ====
+
+Should we include optional assertions in the conformance testing document?
 
 ==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolSystemTestingTestCases Systems Testing] ====
 
