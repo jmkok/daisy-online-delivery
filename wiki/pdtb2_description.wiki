@@ -14,7 +14,7 @@ This page serves the following three purposes:
    * An RSA key pair that identifies the model of the device.
    * An RSA key pair that identifies the instance (optional for hardware Reading Systems).
  * Reading Systems sometimes come pre-installed with RSA key pairs required by a Service.  
-
+  * The DER format must always be used to encrypt the encrypted data portion of the key exchange object as specified by section 6.3.1 in the [http://www.daisy.org/projects/pdtb/daisy-pdtb-spec.html pdtb2 spec]. the PEM format must never be used for this purpose.  
 
 == Daisy Online support for PDTB2 ==
 
