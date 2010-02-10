@@ -1,11 +1,11 @@
 <serviceAttributes xmlns="http://www.daisy.org/ns/daisy-online/">
     <serviceProvider id="gy-zenith">
-        <label>
+        <label xml:lang="en">
             <text>Zenith Library of Guyana</text>
         </label>  
     </serviceProvider>
     <service id="gy-zenith-onlineLibrary">
-        <label>
+        <label xml:lang="en">
             <text>The Zenith Online Library</text>
         </label>     
     </service>

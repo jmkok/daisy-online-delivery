@@ -14,22 +14,22 @@
         </label>
         <choices>
             <choice id="c1">
-                <label>
+                <label xml:lang="en">
                     <text>1</text>
                 </label>
             </choice>
             <choice id="c2">
-                <label>
+                <label xml:lang="en">
                     <text>2</text>
                 </label>
             </choice>
             <choice id="c3">
-                <label>
+                <label xml:lang="en">
                     <text>3</text>
                 </label>
             </choice>
             <choice id="c4">
-                <label>
+                <label xml:lang="en">
                     <text>4</text>
                 </label>
             </choice>

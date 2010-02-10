@@ -4,17 +4,17 @@
         <text>You have the following content waiting to be Downloaded/Streamed</text>
     </label>
     <contentItem id="hp_dh">
-        <label>
+        <label xml:lang="en">
             <text>Harry Potter and the Deathly Hallows</text>
         </label>
     </contentItem>
     <contentItem id="hp_gof">
-        <label>
+        <label xml:lang="en">
             <text>Harry Potter and the Goblet of fire</text>
         </label>
     </contentItem>
     <contentItem id="hp_oop">
-        <label>
+        <label xml:lang="en">
             <text>Harry Potter and the Order of the Phoenix</text>
         </label>
     </contentItem>

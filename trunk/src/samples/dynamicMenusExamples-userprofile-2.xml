@@ -24,12 +24,12 @@
         </label>
         <choices>
             <choice id="c1">
-                <label>
+                <label xml:lang="en">
                     <text>Male</text>
                 </label>
             </choice>
             <choice id="c2">
-                <label>
+                <label xml:lang="en">
                     <text>Female</text>
                 </label>
             </choice>

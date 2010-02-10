@@ -99,9 +99,8 @@
                     <type>inputQuestion</type>, <type>multipleChoiceQuestion</type> and
                     <type>choice</type> elements in all the examples listed in this section are
                 arbitrary. These IDs are defined in <link xlink:href="do-spec-10.html#appendixWSDL"
-                    >WSDL</link> as the XSD ID type (see <link
-                    xlink:href="do-spec-10.html#bib_xsdDatatypes">XSD Datatypes</link>), and thus
-                can take any unique value.</para>
+                    >WSDL</link> as the XSD NMTOKEN type (see <link
+                    xlink:href="do-spec-10.html#bib_xsdDatatypes">XSD Datatypes</link>).</para>
 
             <para>The Reading system renders this type to the user in the following way:
                 <literallayout>
