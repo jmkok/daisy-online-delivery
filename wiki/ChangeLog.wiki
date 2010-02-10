@@ -68,6 +68,14 @@ Changes to `bookmark-2005-1.xsd`:
   * Added recommendation that menu state be retained for the duration of the session.
   * Added note that says that audio notes are not supported at all.  (Previously it had only mentioned it in setting bookmarks.)
   * Noted that the `keyRing` should only contain names of key pairs, not symmetric keys.
+  * Modified "announcements-retrieval.xml":
+   * Added @xml:lang to all label elements.
+  * Modified "contentSelection-subscr.xml":
+   * Added @xml:lang to all label elements.
+  * Modified "initialization-serviceAttributes.xml":
+   * Added @xml:lang to all label elements.
+  * Modified "return-contentList.xml":
+   * Added @xml:lang to all label elements.
 
 == Primer ==
 
