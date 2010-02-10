@@ -15,6 +15,8 @@ kj: thats the reason why I innitially divided assertions into required and optio
 
 kj: I have removed all assertions that belong to the service conformance area as decided on the  last telecon i.e. support the @returnBy for resources ...    
 
+SR: Should we add something about the login and content lending/acquisition sequences?
+
 = Introduction =
 
 The test suite consists of two lists of test cases to verify that a Reading System or Service conforms to the DAISY Online specification.  These test cases are not comprehensive, but represent both normal cases and edge cases.
@@ -112,6 +114,8 @@ kj: agreed. need to find suitable verbiage. it is not mandatory for Reading syst
 
   # Implement `getServiceAnnouncements` and `markAnnouncementsAsRead` operations.
   # After an announcement has been rendered, immediately invoke the markAnnouncementsAsRead operation to inform the Service not to send the announcement again on the next invocation of the getServiceAnnouncements operation. (kj: question about multiple announcement ids being posted through the read type.) kj: now that the recommendation has been removed from the spec, any suggestions for verbiage?
+
+SR: No need to call markAnnouncementsAsRead immediately anymore.
   
 = Service conformance =
 
