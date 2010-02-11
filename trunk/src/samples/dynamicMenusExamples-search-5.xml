@@ -1,10 +1,10 @@
 <questions xmlns="http://www.daisy.org/ns/daisy-online/">
-    <inputQuestion id="q2-1">
-        <inputTypes>
-            <input type="TEXT_ALPHANUMERIC"/>
-        </inputTypes>
-        <label xml:lang="en">
-            <text>Please enter the name of the author.</text>
-        </label>
-    </inputQuestion>
+  <inputQuestion id="q2-1">
+    <inputTypes>
+      <input type="TEXT_ALPHANUMERIC" />
+    </inputTypes>
+    <label xml:lang="en">
+      <text>Please enter the name of the author.</text>
+    </label>
+  </inputQuestion>
 </questions>

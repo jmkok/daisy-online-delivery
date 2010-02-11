@@ -1,6 +1,7 @@
-<userResponses xmlns="http://www.daisy.org/ns/daisy-online/">
-    <userResponse questionID="q5" value="c2"/>
-    <userResponse questionID="q5" value="c3"/>
-    <userResponse questionID="q5" value="c5"/>
-</userResponses>
-    
+<getQuestions xmlns="http://www.daisy.org/ns/daisy-online/">
+  <userResponses>
+    <userResponse questionID="q5" value="c2" />
+    <userResponse questionID="q5" value="c3" />
+    <userResponse questionID="q5" value="c5" />
+  </userResponses>
+</getQuestions>

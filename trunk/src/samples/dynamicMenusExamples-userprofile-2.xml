@@ -1,38 +1,35 @@
 <questions xmlns="http://www.daisy.org/ns/daisy-online/">
-    <inputQuestion id="q3-1">
-        <inputTypes>
-            <input type="TEXT_ALPHANUMERIC"/>
-        </inputTypes>
-
+  <inputQuestion id="q3-1">
+    <inputTypes>
+      <input type="TEXT_ALPHANUMERIC" />
+    </inputTypes>
+    <label xml:lang="en">
+      <text>Your name:</text>
+    </label>
+  </inputQuestion>
+  <inputQuestion id="q3-2">
+    <inputTypes>
+      <input type="TEXT_ALPHANUMERIC" />
+    </inputTypes>
+    <label xml:lang="en">
+      <text>Your address:</text>
+    </label>
+  </inputQuestion>
+  <multipleChoiceQuestion id="q3-3">
+    <label xml:lang="en">
+      <text>Your gender:</text>
+    </label>
+    <choices>
+      <choice id="c1">
         <label xml:lang="en">
-            <text>Your name:</text>
+          <text>Male</text>
         </label>
-    </inputQuestion>
-
-    <inputQuestion id="q3-2">
-        <inputTypes>
-            <input type="TEXT_ALPHANUMERIC"/>
-        </inputTypes>
+      </choice>
+      <choice id="c2">
         <label xml:lang="en">
-            <text>Your address:</text>
+          <text>Female</text>
         </label>
-    </inputQuestion>
-
-    <multipleChoiceQuestion id="q3-3">
-        <label xml:lang="en">
-            <text>Your gender:</text>
-        </label>
-        <choices>
-            <choice id="c1">
-                <label xml:lang="en">
-                    <text>Male</text>
-                </label>
-            </choice>
-            <choice id="c2">
-                <label xml:lang="en">
-                    <text>Female</text>
-                </label>
-            </choice>
-        </choices>
-    </multipleChoiceQuestion>
+      </choice>
+    </choices>
+  </multipleChoiceQuestion>
 </questions>

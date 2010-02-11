@@ -33,7 +33,7 @@
             <title>The Main Menu</title>
             <para>The Reading System retrieves the main menu of the Service by calling the 
 				<function><link xlink:href="do-spec-10.html#op_getQuestions">getQuestions</link></function>
-				operation with the following parameter:
+				operation as follows:
                 <programlisting><xi:include href="./samples/dynamicMenusExamples-mainMenu-0.xml" parse="text"/></programlisting>
             </para>
             <para>The operation returns the Service's main menu:
@@ -118,7 +118,7 @@
 		<programlisting><xi:include href="./samples/dynamicMenusExamples-search-1.xml" parse="text"/></programlisting>
 
         <para>In the example Service, the search menu can also be selected from the
-                <xref linkend="mainMenu"/>:</para>
+                <xref linkend="mainMenuCode"/>:</para>
             <programlisting><xi:include href="./samples/dynamicMenusExamples-search-2.xml" parse="text"/></programlisting>
 
         <para>Both methods can be used.  Reading Systems can have a "Search" button that
@@ -138,7 +138,7 @@
 		</blockquote>
 
         <para>If the User selects "Author," the Reading System would retrieve the next menu by
-            calling <function>getQuestions</function> with the following parameter:</para>
+            calling <function>getQuestions</function> as follows:</para>
 		<programlisting><xi:include href="./samples/dynamicMenusExamples-search-4.xml" parse="text"/></programlisting>
 
         <para>This operation returns the following:
@@ -147,7 +147,7 @@
 		<blockquote><para>Please enter the name of the author.</para></blockquote>
 
         <para>If the User enters the name "J.K. Rowling," the Reading System calls
-            <function>getQuestions</function> with the following parameter:</para>
+            <function>getQuestions</function> as follows:</para>
 		<programlisting><xi:include href="./samples/dynamicMenusExamples-search-6.xml" parse="text"/></programlisting>
         <para>This operation returns the following:</para>
 		<programlisting><xi:include href="./samples/dynamicMenusExamples-search-7.xml" parse="text"/></programlisting>
@@ -193,8 +193,8 @@
         <title>Updating the User Profile</title>
 
         <para>The User selects the "Update your profile" option from the
-			<xref linkend="mainMenuCode"/>.  The Reading System calls <function>getQuestions</function> with the
-            following parameter:</para>
+			<xref linkend="mainMenuCode"/>.  The Reading System calls <function>getQuestions</function> as
+            follows:</para>
 		<programlisting><xi:include href="./samples/dynamicMenusExamples-userprofile-1.xml" parse="text"/></programlisting>
         <para>This operation returns the following:</para>
 		<programlisting><xi:include href="./samples/dynamicMenusExamples-userprofile-2.xml" parse="text"/></programlisting>
@@ -212,7 +212,7 @@
 			</itemizedlist>
 		</blockquote>
         <para>After the User responds to the questions, the Reading System calls <function>getQuestions</function>
-            with the following parameter:</para>
+            as follows:</para>
 		<programlisting><xi:include href="./samples/dynamicMenusExamples-userprofile-3.xml" parse="text"/></programlisting>
 		<para>This operation returns the following:</para>
 		<programlisting><xi:include href="./samples/dynamicMenusExamples-userprofile-4.xml" parse="text"/></programlisting>
@@ -236,8 +236,8 @@
         <title>Taking a Survey (with audio responses)</title>
 		
 		<para>The User selects the "Take a survey" option from the
-			<xref linkend="mainMenuCode"/>.  The Reading System calls <function>getQuestions</function> with the
-            following parameter:</para>
+			<xref linkend="mainMenuCode"/>.  The Reading System calls <function>getQuestions</function> as
+            follows:</para>
 		<programlisting><xi:include href="./samples/dynamicMenusExamples-survey-1.xml" parse="text"/></programlisting>
 		<para>This operation returns the following:</para>
 		<programlisting><xi:include href="./samples/dynamicMenusExamples-survey-2.xml" parse="text"/></programlisting>
@@ -260,7 +260,7 @@
 		</blockquote>
 
         <para>After the User responds to the questions, the Reading System calls
-			<function>getQuestions</function> with the following parameter:</para>
+			<function>getQuestions</function> as follows:</para>
 		<programlisting><xi:include href="./samples/dynamicMenusExamples-survey-3.xml" parse="text"/></programlisting>
 		<para>This operation returns the following:</para>
 		<programlisting><xi:include href="./samples/dynamicMenusExamples-survey-4.xml" parse="text"/></programlisting>
@@ -277,8 +277,8 @@
         <title>Content Purchase</title>
 
 		<para>The User selects the "Buy a book" option from the
-			<xref linkend="mainMenuCode"/>.  The Reading System calls <function>getQuestions</function> with the
-            following parameter:</para>
+			<xref linkend="mainMenuCode"/>.  The Reading System calls <function>getQuestions</function> as
+            follows:</para>
 		<programlisting><xi:include href="./samples/dynamicMenusExamples-purchase-1.xml" parse="text"/></programlisting>
 		<para>This operation returns the following:</para>
 		<programlisting><xi:include href="./samples/dynamicMenusExamples-purchase-2.xml" parse="text"/></programlisting>
@@ -302,8 +302,8 @@
 			<type>userResponse</type> child elements in a <type>userResponses</type>
 			parameter, as illustrated below. Here, the User selects choices 2, 3 and 5.</para>
 
-        <para>The Reading System calls <function>getQuestions</function> with the
-            following parameter:</para>
+        <para>The Reading System calls <function>getQuestions</function> as
+            follows:</para>
 		<programlisting><xi:include href="./samples/dynamicMenusExamples-purchase-3.xml" parse="text"/></programlisting>
 		<para>This operation returns the following:</para>
 		<programlisting><xi:include href="./samples/dynamicMenusExamples-purchase-4.xml" parse="text"/></programlisting>
@@ -328,7 +328,7 @@
 			call to <function>getContentList</function>.</para>
 
         <para>If the User selects "Add these books to my bookshelf",
-			the Reading System calls <function>getQuestions</function> with the following parameter:</para>
+			the Reading System calls <function>getQuestions</function> as follows:</para>
 		<programlisting><xi:include href="./samples/dynamicMenusExamples-purchase-5.xml" parse="text"/></programlisting>
         <para>This operation returns the following:</para>
 		<programlisting><xi:include href="./samples/dynamicMenusExamples-purchase-6.xml" parse="text"/></programlisting>
@@ -341,8 +341,8 @@
         <title>Retrieving a Content list</title>
 
         <para>The User selects the "Go to your bookshelf" option from the
-			<xref linkend="mainMenuCode"/>.  The Reading System calls <function>getQuestions</function> with the
-            following parameter:</para>
+			<xref linkend="mainMenuCode"/>.  The Reading System calls <function>getQuestions</function> as
+            follows:</para>
 		<programlisting><xi:include href="./samples/dynamicMenusExamples-retrieve-1.xml" parse="text"/></programlisting>
 		<para>This operation returns the following:</para>
 		<programlisting><xi:include href="./samples/dynamicMenusExamples-retrieve-2.xml" parse="text"/></programlisting>

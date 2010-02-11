@@ -1,3 +1,5 @@
-<userResponses xmlns="http://www.daisy.org/ns/daisy-online/">
-   <userResponse questionID="default"/>
-</userResponses>
+<getQuestions xmlns="http://www.daisy.org/ns/daisy-online/">
+  <userResponses>
+    <userResponse questionID="default" />
+  </userResponses>
+</getQuestions>

@@ -1,47 +1,48 @@
 <questions xmlns="http://www.daisy.org/ns/daisy-online/">
-    <inputQuestion id="q4-1">
-        <inputTypes>
-            <input type="TEXT_ALPHANUMERIC"/>
-        </inputTypes>
+  <inputQuestion id="q4-1">
+    <inputTypes>
+      <input type="TEXT_ALPHANUMERIC" />
+    </inputTypes>
+    <label xml:lang="en">
+      <text>What is your favourite feature in the Service?</text>
+    </label>
+  </inputQuestion>
+  <multipleChoiceQuestion id="q4-2">
+    <label xml:lang="en">
+      <text>On a scale of one to four, where four is very satisfied
+      and 1 is not satisfied, how would you rate the
+      Service?</text>
+    </label>
+    <choices>
+      <choice id="c1">
         <label xml:lang="en">
-            <text>What is your favourite feature in the Service?</text>
+          <text>1</text>
         </label>
-    </inputQuestion>
-    <multipleChoiceQuestion id="q4-2">
+      </choice>
+      <choice id="c2">
         <label xml:lang="en">
-            <text>On a scale of one to four, where four is very satisfied and 1 is not satisfied,
-                how would you rate the Service?</text>
+          <text>2</text>
         </label>
-        <choices>
-            <choice id="c1">
-                <label xml:lang="en">
-                    <text>1</text>
-                </label>
-            </choice>
-            <choice id="c2">
-                <label xml:lang="en">
-                    <text>2</text>
-                </label>
-            </choice>
-            <choice id="c3">
-                <label xml:lang="en">
-                    <text>3</text>
-                </label>
-            </choice>
-            <choice id="c4">
-                <label xml:lang="en">
-                    <text>4</text>
-                </label>
-            </choice>
-        </choices>
-    </multipleChoiceQuestion>
-    <inputQuestion id="q4-3">
-        <inputTypes>
-            <input type="AUDIO"/>
-            <input type="TEXT_ALPHANUMERIC"/>
-        </inputTypes>
+      </choice>
+      <choice id="c3">
         <label xml:lang="en">
-            <text>Please provide feedback on the Service.</text>
+          <text>3</text>
         </label>
-    </inputQuestion>
+      </choice>
+      <choice id="c4">
+        <label xml:lang="en">
+          <text>4</text>
+        </label>
+      </choice>
+    </choices>
+  </multipleChoiceQuestion>
+  <inputQuestion id="q4-3">
+    <inputTypes>
+      <input type="AUDIO" />
+      <input type="TEXT_ALPHANUMERIC" />
+    </inputTypes>
+    <label xml:lang="en">
+      <text>Please provide feedback on the Service.</text>
+    </label>
+  </inputQuestion>
 </questions>
