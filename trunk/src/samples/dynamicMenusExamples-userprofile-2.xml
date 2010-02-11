@@ -5,7 +5,7 @@
         </inputTypes>
 
         <label xml:lang="en">
-            <text>Your Name</text>
+            <text>Your name:</text>
         </label>
     </inputQuestion>
 
@@ -14,13 +14,13 @@
             <input type="TEXT_ALPHANUMERIC"/>
         </inputTypes>
         <label xml:lang="en">
-            <text>Your Address</text>
+            <text>Your address:</text>
         </label>
     </inputQuestion>
 
     <multipleChoiceQuestion id="q3-3">
         <label xml:lang="en">
-            <text>Your Gender</text>
+            <text>Your gender:</text>
         </label>
         <choices>
             <choice id="c1">

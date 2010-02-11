@@ -8,25 +8,25 @@
 <choices>
 <choice id="c1">
 <label xml:lang="en">
-<text>Harry Potter and the chamber of secrets</text>
+<text>Harry Potter and the Chamber of Secrets</text>
 </label>
 </choice>
 
 <choice id="c2">
 <label xml:lang="en">
-<text>Harry Potter and the deathly hallows</text>
+<text>Harry Potter and the Deathly Hallows</text>
 </label>
 </choice>
 
 <choice id="c3">
 <label xml:lang="en">
-<text>Harry Potter and the goblet of fire</text>
+<text>Harry Potter and the Goblet of Fire</text>
 </label>
 </choice>
 
 <choice id="c4">
 <label xml:lang="en">
-<text>Harry Potter and the half-blood Prince</text>
+<text>Harry Potter and the Half-Blood Prince</text>
 </label>
 </choice>
 
