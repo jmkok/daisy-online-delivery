@@ -1,7 +1,7 @@
 <questions xmlns="http://www.daisy.org/ns/daisy-online/">
-	<label xml:lang="en">
-		<text>Your books have been added to your bookshelf.
-		Please select the "Go to your bookshelf" option in the main menu to
-		read these books.</text> 
-	</label>
+  <label xml:lang="en">
+    <text>Your books have been added to your bookshelf. Please
+    select the "Go to your bookshelf" option in the main menu to
+    read these books.</text>
+  </label>
 </questions>
