@@ -32,7 +32,7 @@
     <chapter xml:id="mainMenu">
             <title>The Main Menu</title>
             <para>The Reading System retrieves the main menu of the Service by calling the 
-				<function><link xlink:href="do-spec-10.html#op_getQuestions">getQuestions</link></function>
+				<function><link xlink:href="do-spec-20100215.html#op_getQuestions">getQuestions</link></function>
 				operation as follows:
                 <programlisting><xi:include href="./samples/dynamicMenusExamples-mainMenu-0.xml" parse="text"/></programlisting>
             </para>
@@ -51,7 +51,7 @@
 			</itemizedlist>
 			</blockquote>
 
-            <para role="tip"> Each <type><link xlink:href="do-spec-10.html#tp_userResponse">userResponse</link></type>
+            <para role="tip"> Each <type><link xlink:href="do-spec-20100215.html#tp_userResponse">userResponse</link></type>
 				element contains the user's response to a particular
                 question. There are three reserved question IDs:
 				<variablelist>
@@ -76,7 +76,7 @@
                 </variablelist>
             </para>
             <para> A question can be a multiple choice question (see <type>
-                    <link xlink:href="do-spec-10.html#tp_multipleChoiceQuestion">multipleChoiceQuestion</link></type>),
+                    <link xlink:href="do-spec-20100215.html#tp_multipleChoiceQuestion">multipleChoiceQuestion</link></type>),
 					or a question that can receive a numeric text, alphanumeric text or audio
                 response from the user (see <type><link xlink:href="tp_inputQuestion">inputQuestion</link></type>).</para>
 
@@ -102,7 +102,7 @@
 					the <literal>value</literal> attribute must be either blank or absent,
 					and a <type>data</type> child element must be included that holds the base-64
 					encoded audio data (see <type>
-                    <link xlink:href="do-spec-10.html#tp_data">data</link>
+                    <link xlink:href="do-spec-20100215.html#tp_data">data</link>
                 </type> for file format requirements).</para>
 				</listitem>
 			</itemizedlist>
@@ -152,7 +152,7 @@
         <para>This operation returns the following:</para>
 		<programlisting><xi:include href="./samples/dynamicMenusExamples-search-7.xml" parse="text"/></programlisting>
         <para>The Reading System reads the ID of the <type>contentList</type> from the <type>contentListRef</type> element,
-            and calls the <function><link xlink:href="do-spec-10.html#op_getContentList">getContentList</link></function> operation:</para>
+            and calls the <function><link xlink:href="do-spec-20100215.html#op_getContentList">getContentList</link></function> operation:</para>
 		<programlisting><xi:include href="./samples/dynamicMenusExamples-search-8.xml" parse="text"/></programlisting>
         <para>This requests the <type>contentList</type> with ID "L100", and specifys that the first
             <type>contentItem</type> returned should be at index 0 and the last <type>contentItem</type> should be at
@@ -177,15 +177,15 @@
             and calls <function>getContentList</function> to retrieve it. </para>
         <para>The Reading System may retrieve information about the specific <type>contentItems</type> in
             the <type>contentList</type> by calling the
-			<function><link xlink:href="do-spec-10.html#op_getContentMetadata">getContentMetadata</link></function>
+			<function><link xlink:href="do-spec-20100215.html#op_getContentMetadata">getContentMetadata</link></function>
 			operation, passing the ID of
             the particular Content item. At this stage, the Reading System may ask the User whether
             he or she wishes to download or stream the Content. If the User wishes to do so,
             the Reading System calls the
-			<function><link xlink:href="do-spec-10.html#op_issueContent">issueContent</link></function>
+			<function><link xlink:href="do-spec-20100215.html#op_issueContent">issueContent</link></function>
 			operation passing the ID of the
             Content item, then calls the
-			<function><link xlink:href="do-spec-10.html#op_getContentResources">getContentResources</link></function>
+			<function><link xlink:href="do-spec-20100215.html#op_getContentResources">getContentResources</link></function>
 			operation, to
             request issuance and retrieve the URIs of the Content's resources, respectively. </para>
     </chapter>
