@@ -6,23 +6,28 @@
     <title>Specification for the DAISY Online Delivery Protocol</title>
 
     <info>
-        <releaseinfo>Draft Specification for Trial Use</releaseinfo>
-        <pubdate>27 September 2009</pubdate>
+        <releaseinfo>Final Draft</releaseinfo>
+        <pubdate>15 February 2010</pubdate>
 
         <annotation role="specLinks">
             <para role="specLabel">This version:</para>
             <para role="specLink">
                 <link
-                    xlink:href="http://www.daisy.org/projects/daisy-online-delivery/drafts/20090927/do-spec-20090927.html"
-                    >http://www.daisy.org/projects/daisy-online-delivery/drafts/20090927/do-spec-20090927.html</link>
+                    xlink:href="http://www.daisy.org/projects/daisy-online-delivery/drafts/20100215/do-spec-20100215.html"
+                    >http://www.daisy.org/projects/daisy-online-delivery/drafts/20100215/do-spec-20100215.html</link>
             </para>
             <para role="specLabel">This version as a zip archive:</para>
             <para role="specLink">
                 <link
-                    xlink:href="http://www.daisy.org/projects/daisy-online-delivery/drafts/20090927/do-spec-20090927.zip"
-                    >http://www.daisy.org/projects/daisy-online-delivery/drafts/20090927/do-spec-20090927.zip</link>
+                    xlink:href="http://www.daisy.org/projects/daisy-online-delivery/drafts/20100215/do-spec-20100215.zip"
+                    >http://www.daisy.org/projects/daisy-online-delivery/drafts/20100215/do-spec-20100215.zip</link>
             </para>
-            <para role="specLabel">Previous version:</para>
+            <para role="specLabel">Previous versions:</para>
+            <para role="specLink">
+                <link
+                    xlink:href="http://www.daisy.org/projects/daisy-online-delivery/drafts/20090927/do-spec-20090927.html"
+                    >http://www.daisy.org/projects/daisy-online-delivery/drafts/20090927/do-spec-20090927.html</link>
+            </para>
             <para role="specLink">
                 <link
                     xlink:href="http://www.daisy.org/projects/daisy-online-delivery/drafts/20090910/do-spec-20090910.html"
@@ -89,9 +94,10 @@
                 activities. For a complete list of members at the time of publication, please refer
                 to <xref linkend="acknowledgements"/>. </para>
             <para> This document is a Working Group Draft. It completely supersedes the first draft
-                of the specification that was released on April 15, 2009. </para>
+                of the specification that was released on 15 April 2009, and the draft for test use
+				that was released on 27 September 2009. </para>
             <para> This document is considered by the Working Group members to be complete and
-                stable for use in creating implementations of the protocol. It is anticipated that
+                stable for use in creating implementations of the protocol. It is possible that
                 some aspects of the protocol may change before Recommendation status is given to the
                 document, but substantive revisions to the core functionality outlined in this
                 document are not anticipated. </para>
@@ -1981,15 +1987,15 @@
             <listitem>
                 <para>
                     <personname>
-                        <surname>Fujimori</surname>
-                        <firstname>Hiro</firstname></personname>, <orgname>Plextor</orgname>
+                        <firstname>Johan</firstname>
+                        <surname>Abbors</surname></personname>, <orgname>PratSam</orgname>
                 </para>
             </listitem>
             <listitem>
                 <para>
                     <personname>
-                        <firstname>Matt</firstname>
-                        <surname>Garrish</surname></personname>, <orgname>CNIB</orgname> (chief editor)
+                        <surname>Fujimori</surname>
+                        <firstname>Hiro</firstname></personname>, <orgname>Plextor</orgname>
                 </para>
             </listitem>
             <listitem>
@@ -2027,7 +2033,7 @@
                     <personname>
                         <firstname>Simon</firstname>
                         <surname>Roy</surname></personname>, 
-                    <orgname>Humanware</orgname>
+                    <orgname>HumanWare</orgname>
                 </para>
             </listitem>
             <listitem>
@@ -2078,6 +2084,14 @@
                 <para><personname>
                         <firstname>Andrew</firstname>
                         <surname>Furlong</surname></personname>, <orgname>Vision Australia</orgname></para>
+            </listitem>
+
+            <listitem>
+                <para>
+                    <personname>
+                        <firstname>Matt</firstname>
+                        <surname>Garrish</surname></personname>, <orgname>CNIB</orgname>
+                </para>
             </listitem>
 
             <listitem>
