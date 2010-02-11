@@ -1,24 +1,24 @@
 <questions xmlns="http://www.daisy.org/ns/daisy-online/">
     <multipleChoiceQuestion id="q5-1">
         <label xml:lang="en">
-            <text>Thank you for purchasing "Harry Potter and the deathly hallows," "Harry Potter and
-                the goblet of fire" and "Harry Potter and the Order of the Phoenix." These books
-                have been billed to your credit card. What would you like to do next?</text>
+            <text>Thank you for purchasing "Harry Potter and the Deathly Hallows", "Harry Potter and
+			    the Goblet of Fire" and "Harry Potter and the Order of the Phoenix". These books
+			    have been billed to your credit card. What would you like to do next? </text>
         </label>
         <choices>
             <choice id="c1">
                 <label xml:lang="en">
-                    <text>Buy more Books</text>
+                    <text>Buy more books</text>
                 </label>
             </choice>
             <choice id="c2">
                 <label xml:lang="en">
-                    <text>Add these books to my download/streaming list</text>
+                    <text>Add these books to my bookshelf</text>
                 </label>
             </choice>
             <choice id="c3">
                 <label xml:lang="en">
-                    <text>Download/Stream these books now</text>
+                    <text>Read these books now</text>
                 </label>
             </choice>
         </choices>

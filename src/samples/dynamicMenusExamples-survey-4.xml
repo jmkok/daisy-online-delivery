@@ -16,7 +16,7 @@
             </choice>
             <choice id="default">
                 <label xml:lang="en">
-                    <text>Go back to the Main Menu</text>
+                    <text>Go back to the main menu</text>
                 </label>
             </choice>
         </choices>

@@ -1,7 +1,7 @@
 <questions xmlns="http://www.daisy.org/ns/daisy-online/">
     <inputQuestion id="q4-1">
         <inputTypes>
-            <input type="TEXT_NUMERIC"/>
+            <input type="TEXT_ALPHANUMERIC"/>
         </inputTypes>
         <label xml:lang="en">
             <text>What is your favourite feature in the Service?</text>
@@ -38,6 +38,7 @@
     <inputQuestion id="q4-3">
         <inputTypes>
             <input type="AUDIO"/>
+            <input type="TEXT_ALPHANUMERIC"/>
         </inputTypes>
         <label xml:lang="en">
             <text>Please provide feedback on the Service.</text>
