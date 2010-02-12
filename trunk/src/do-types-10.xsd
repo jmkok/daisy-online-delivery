@@ -518,7 +518,7 @@
 								the <db:xref linkend="term_contentIdentifier"/> of the Content item.</db:para>
 							<db:para>Additional, non-Dublin Core metadata may be provided using the generic
 									<db:type>meta</db:type> element.</db:para>
-							<db:para>The prefix <db:literal>pdtb2</db:literal> in the <db:code>name</db:code> attribute
+							<db:para>The prefix <db:literal>pdtb2:</db:literal> in the <db:code>name</db:code> attribute
 								of a <db:type>meta</db:type> element is reserved to refer to properties of <db:xref
 									linkend="bib_pdtb2"/>.</db:para>
 							<db:para>The value <db:literal>pdtb2:specVersion</db:literal> in the

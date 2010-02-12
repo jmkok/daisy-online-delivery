@@ -1318,9 +1318,7 @@
                     <para> A <xref linkend="term_service"/> may remove unread announcements from the
                             <xref linkend="term_service"/> at any time and for any reason. To avoid
                         potential retrieval conflicts, a <xref linkend="term_readingSystem"/> must
-                        treat the identifier values of individual <type>
-                            <xref linkend="tp_announcement"/>
-                        </type> attributes as valid for no longer than the duration of the active
+                        treat the <type><xref linkend="tp_announcement"/></type> IDs as valid for no longer than the duration of the active
                             <xref linkend="term_session"/>. </para>
                 </note>
 
