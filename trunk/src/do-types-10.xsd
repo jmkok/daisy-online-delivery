@@ -169,7 +169,7 @@
 								<xs:annotation>
 									<xs:documentation>
 										<db:para role="desc">The identifiers of some or all of the keys on the Reading
-											System's keyring.</db:para>
+											System's key ring.</db:para>
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
@@ -919,7 +919,7 @@
 								linkend="fundamentals_dynamic_menus_endpoints">end point</db:link> in a
 								<db:link linkend="fundamentals_dynamic_menus">dynamic menu
 								</db:link> operation sequence.</db:para>
-						<db:para>Services should persist <db:type>contentList</db:type> identitifiers for the
+						<db:para>Services should persist <db:type>contentList</db:type> identifiers for the
 							duration of a Session. Services must not expose multiple
 							<db:type>contentList</db:type>s with the same arbitrary identifier during the same
 							session.</db:para>

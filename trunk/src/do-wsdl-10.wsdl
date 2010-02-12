@@ -532,19 +532,8 @@
 			<xs:element name="getKeyExchangeObject">
 				<xs:complexType>
 					<xs:sequence>
-					<!-- 
-						<xs:element minOccurs="1" maxOccurs="1" ref="do:keyRing">
-							<xs:annotation>
-								<xs:documentation>
-									<db:para role="desc">The identifiers of the keys on the Reading
-										System's keyring.</db:para>
-								</xs:documentation>
-							</xs:annotation>
-						</xs:element>
-					-->
-
 						<xs:element minOccurs="1" maxOccurs="1" name="requestedKeyName"
-							type="xs:string"> <!-- Key names are strings, from Schema for XML Signatures -->
+							type="xs:string">
 							<xs:annotation>
 								<xs:documentation>The identifier of the requested
 									key.</xs:documentation>
@@ -562,7 +551,7 @@
 								<xs:documentation>
 									<db:para role="desc">A <db:xref linkend="bib_pdtb2"/> Key
 										Exchange Object, containing the requested key encrypted
-										using one of the keys identified in the Reading System's keyring.</db:para>
+										using one of the keys identified in the Reading System's key ring.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>

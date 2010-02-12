@@ -172,7 +172,7 @@
         <para>The Reading System reads the ID of the <type>contentList</type> from the <type>contentListRef</type> element,
             and calls the <function><link xlink:href="do-spec-20100215.html#op_getContentList">getContentList</link></function> operation:</para>
 		<programlisting><xi:include href="./samples/dynamicMenusExamples-search-8.xml" parse="text"/></programlisting>
-        <para>This requests the <type>contentList</type> with ID "L100", and specifys that the first
+        <para>This requests the <type>contentList</type> with ID "L100", and specifies that the first
             <type>contentItem</type> returned should be at index 0 and the last <type>contentItem</type> should be at
             index 20 (i.e. the first 21 <type>contentItem</type>s). The <literal>firstItem</literal>
             and <literal>lastItem</literal> parameters enable the Reading System to request a <type>contentList</type>

@@ -49,7 +49,7 @@
       portable audio-centric Reading System">
       <annotation>
         <db:para>This example shows <db:type>readingSystemAttributes</db:type> for a
-          small portabe audio-centric <db:xref linkend="term_readingSystem"/>
+          small portable audio-centric <db:xref linkend="term_readingSystem"/>
           (single format support, numeric input, no text-to-speech capabilities, <db:abbrev>PDTB2</db:abbrev> support).
         </db:para>
       </annotation>

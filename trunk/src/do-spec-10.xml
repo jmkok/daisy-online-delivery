@@ -1185,7 +1185,7 @@
                             <xref linkend="tp_supportedContentProtectionFormats"/>
                         </type> element with the value <literal>PDTB2</literal>, and a
 						<type><xref linkend="tp_keyRing"/></type> element listing the names
-						of the keys in its keyring, in its
+						of the keys in its key ring, in its
                         <type><xref linkend="tp_readingSystemAttributes"/></type>.
 						The key names provided can be some or
                         all of the public keys the <xref linkend="term_readingSystem"/> supports.</para>
