@@ -4,7 +4,7 @@
       <input type="TEXT_ALPHANUMERIC" />
     </inputTypes>
     <label xml:lang="en">
-      <text>What is your favourite feature in the Service?</text>
+      <text>What is your favorite feature in the Service?</text>
     </label>
   </inputQuestion>
   <multipleChoiceQuestion id="q4-2">
