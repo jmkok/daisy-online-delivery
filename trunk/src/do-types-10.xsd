@@ -178,7 +178,7 @@
 							<xs:element name="supportedMimeTypes" minOccurs="1" maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>
-										<db:para>Specifies which content types the Reading System
+										<db:para>Specifies which <db:xref linkend="bib_mime"/> types the Reading System
 											supports.</db:para>
 										<db:para>This applies to
 											both Content and Service messages

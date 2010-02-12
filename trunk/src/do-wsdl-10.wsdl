@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <definitions name="DAISYOnlineService" xmlns="http://schemas.xmlsoap.org/wsdl/"
 	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
 	xmlns:tns="http://www.daisy.org/ns/daisy-online/" xmlns:db="http://docbook.org/ns/docbook"
@@ -288,8 +288,8 @@
 												The list may include Purchasable Content items
 												that have been issued.
 												The list excludes
-												Content that has <db:xref
-												linkend="fundamentals_serviceModels_lender_expiry"/>.
+												Content that has <db:link
+												linkend="fundamentals_serviceModels_lender_expiry">expired</db:link>.
 												</db:para>
 												<db:para>Services that provide Borrowable Content
 												must recognize this identifier.</db:para>
@@ -338,7 +338,7 @@
 										contentList, contains the last item in the subset to
 										retrieve. The value <db:literal>-1</db:literal> indicates a
 										request to retrieve all items from
-											<db:parameter>startIndex</db:parameter> to the end of
+											<db:parameter>firstItem</db:parameter> to the end of
 										the list.</db:para>
 								</xs:documentation>
 							</xs:annotation>
@@ -470,9 +470,9 @@
 									<db:para role="desc">Contains the <db:xref
 									linkend="term_contentIdentifier"/> of the Content
 										item for which the metadata is being requested (defined by the
-											<db:varname>id</db:varname> attribute of the relevant
-											<db:varname>contentItem</db:varname> in the <db:type><db:xref
-											linkend="tp_contentList"/></db:type> type).</db:para>
+											<db:code>id</db:code> attribute of the
+											<db:type>contentItem</db:type> in the <db:type><db:xref
+											linkend="tp_contentList"/></db:type>).</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -504,8 +504,8 @@
 									<db:para role="desc">Contains the <db:xref
 										linkend="term_contentIdentifier"/> of the
 										Content item for which the resources list is being requested (as defined
-										in the <db:xref linkend="bib_dublinCore"/> identifier field
-										of the <db:type><db:xref linkend="tp_contentMetadata"/></db:type> type).
+										in the <db:xref linkend="bib_dublinCore"/> <db:literal>identifier</db:literal> field
+										of the <db:type><db:xref linkend="tp_contentMetadata"/></db:type>).
 									</db:para>
 								</xs:documentation>
 							</xs:annotation>
@@ -1171,16 +1171,16 @@
 		<operation name="getContentList">
 			<documentation>
 				<db:para role="desc">Retrieves a list of Content items.</db:para>
-				<db:para>The list returned by the Service can be a pre-composed type, in which case it
+				<db:para>The list returned by the Service can be pre-composed, in which case it
 					is retrieved by passing one of the three reserved values defined in the
 						<db:parameter>id</db:parameter> parameter below. (Refer to <db:xref
 						linkend="fundamentals"/>, for information on the contexts in which these reserved
 					values can be used.)</db:para>
-				<db:para>The list can also be a dynamic type (e.g., the result of a 
+				<db:para>The list can also be dynamic (e.g., the result of a 
 					<db:link linkend="fundamentals_content_selection_browse">dynamic menu search</db:link> 
 					operation sequence). In this case, the
 						<db:parameter>id</db:parameter> value used to refer to the list is provided
-					in the return type of a previous operation. (Refer to the <db:type><db:xref
+					in the return value of a previous operation. (Refer to the <db:type><db:xref
 						linkend="tp_questions"/></db:type> type for more information.) </db:para>
 			</documentation>
 			<input message="tns:getContentList_inputMessage"/>

@@ -13,11 +13,18 @@
     <supportedContentProtectionFormats>
       <protectionFormat>PDTB2</protectionFormat>
     </supportedContentProtectionFormats>
+	<keyRing>
+	  <item>DAISY.lv-acme.ACME</item>
+	  <item>DAISY.lv-acme.Phantom-1</item>
+	  <item>DAISY.lv-acme.SN123456</item>
+      <item>DAISY.ca-qqhb.006442</item>
+      <item>DAISY.au-atbi.userKey-4C452DB4</item>
+	</keyRing>
     <supportedMimeTypes>
       <mimeType type="audio/mpeg"/>
     </supportedMimeTypes>
     <supportedInputTypes>
-      <input type="TEXT_NUMERIC" xml:lang="en"/>
+      <input type="TEXT_NUMERIC" />
     </supportedInputTypes>
     <requiresAudioLabels>true</requiresAudioLabels>
   </config>
