@@ -18,11 +18,6 @@ java com.emc.documentum.xml.xproc.tool.Cmd -p section.autolabel=1 -p section.lab
 
 copy .\util\docbook\html-css\docbook.css .\build\do.css
 copy .\src\bookmark-2005-1.xsd .\build\bookmark-2005-1.xsd
-copy .\src\dc.xsd .\build\dc.xsd
-copy .\src\xml.xsd .\build\xml.xsd
-copy .\src\xmldsig.xsd .\build\xmldsig.xsd
-copy .\src\xmlenc.xsd .\build\xmlenc.xsd
-copy .\src\kxo.xsd .\build\kxo.xsd
 
 REM java com.xmlcalabash.drivers.Main wsdl-xsd-extract.xpl
 java com.emc.documentum.xml.xproc.tool.Cmd wsdl-xsd-extract.xpl
