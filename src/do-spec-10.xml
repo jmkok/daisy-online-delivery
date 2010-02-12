@@ -182,9 +182,9 @@
             <varlistentry xml:id="term_content">
                 <term>Content</term>
                 <listitem>
-                    <para>A resource made available by a <xref linkend="term_serviceProvider"/>
-                        through a <xref linkend="term_service"/>, such as a DAISY Digital Talking
-                        Book.</para>
+                    <para>A resource or resources made available by a <xref linkend="term_serviceProvider"/>
+                        through a <xref linkend="term_service"/>, such as DAISY Digital Talking
+                        Books.  (Singular: Content item.)</para>
                 </listitem>
             </varlistentry>
 
@@ -240,7 +240,7 @@
             </varlistentry>
 
             <varlistentry xml:id="term_issue">
-                <term>Issue content</term>
+                <term>Issue Content</term>
                 <listitem>
                     <para>Grant access to <xref linkend="term_content"/>. A <xref linkend="term_readingSystem"/> uses the <function>
                             <xref linkend="op_issueContent"/>
@@ -263,9 +263,9 @@
                     <para><xref linkend="term_content"/> that may be sold to a <xref linkend="term_user"/>, and should not be
 						<link linkend="term_return">returned</link>.
 						The ownership of the <xref linkend="term_content"/> may or may not pass to the <xref linkend="term_user"/>.
-						Purchasable Content includes <xref linkend="term_content"/> that is offered for free.  It includes any
-						<xref linkend="term_content"/> that does not require <link linkend="term_return">return</link>; for example,
-						<xref linkend="term_content"/> protected by DRM which expires without the need for <link linkend="term_return">return</link>.
+						Purchasable Content includes <xref linkend="term_content"/> that is offered without charge.  It includes any
+						<xref linkend="term_content"/> that does not require return, such as
+						<xref linkend="term_content"/> protected by DRM which expires without the need for return.
 					</para>
                 </listitem>
             </varlistentry>
@@ -320,7 +320,7 @@
                     <para> The person(s) or organization(s) who own a <xref linkend="term_service"
                         />. </para>
                     <note>
-                        <para>The Service Provider may not be the same entity who owns the servers
+                        <para>The Service Provider may or may not be the same entity who owns the servers
                             the <xref linkend="term_service"/> runs on.</para>
                     </note>
                 </listitem>
@@ -443,7 +443,7 @@
                     of the <xref linkend="term_service"/> through the use of certificates. </para>
 
                 <note>
-                    <title>Security Consideration</title>
+                    <title>Security Considerations</title>
                     <para> It is recommended when implementing HTTPS that all certificates be
                         registered with a certificate authority and not be self-signed. </para>
                 </note>
@@ -557,8 +557,8 @@
                 <title>WSDL Binding Style</title>
 
                 <para> The WSDL binding style used in the abstract WSDL document in <xref
-                        linkend="appendixWSDL"/> is <literal>wrapped document-literal</literal>. The
-                        <literal>wrapped document-literal</literal> style is a subset of the
+                        linkend="appendixWSDL"/> is wrapped document-literal. The
+                        wrapped document-literal style is a subset of the
                     document-literal style and satisfies normative requirement R2712 of <xref
                         linkend="bib_wsibasicprofile11"/>. </para>
 
@@ -603,11 +603,11 @@
             </para>
 
             <para> A <xref linkend="term_service"/> must use the <code>requiresReturn</code>
-                attribute of the <type>
+                attribute of the Content's <type>
                     <xref linkend="tp_contentMetadata"/>
-                </type> type to indicate the model it will issue the <xref linkend="term_content"/>
+                </type> to indicate the model it will issue the <xref linkend="term_content"/>
                 item under. If <code>requiresReturn</code> is <literal>true</literal>, the <xref
-                    linkend="term_content"/> is <link linkend="term_borrow">borrowable</link>
+                    linkend="term_content"/> is <link linkend="term_borrow">borrowable</link>.
 					If <code>requiresReturn</code> is
                     <literal>false</literal>, the <xref linkend="term_content"/> is
                 <link linkend="term_purchase">purchasable</link>. </para>
@@ -636,7 +636,7 @@
                     <itemizedlist>
                         <listitem>
                             <para> the <code>requiresReturn</code> attribute of the <xref linkend="term_content"/>'s
-                                <type><xref linkend="tp_contentMetadata"/></type> type must be set to
+                                <type><xref linkend="tp_contentMetadata"/></type> must be set to
                                     <literal>true</literal>; </para>
                         </listitem>
                         <listitem>
@@ -646,7 +646,7 @@
                         </listitem>
                         <listitem>
                             <para> the <xref linkend="term_service"/> must allow the <xref linkend="term_readingSystem"/> to call 
-                                the <function><xref linkend="op_returnContent"/></function> operation at any time to 
+                                the <function><xref linkend="op_returnContent"/></function> operation at any time during any Session to 
                                 <link linkend="term_return">return</link> the issued <xref linkend="term_content"/> item. 
                              </para>
                         </listitem>
@@ -717,7 +717,7 @@
                     <itemizedlist>
                         <listitem>
                             <para>The <code>requiresReturn</code> attribute of the <xref linkend="term_content"/>'s
-                                <type><xref linkend="tp_contentMetadata"/></type> type must be set to
+                                <type><xref linkend="tp_contentMetadata"/></type> must be set to
                                 <literal>false</literal>.</para>
                         </listitem>
                         <listitem>
@@ -734,9 +734,7 @@
                     <para> The <xref linkend="term_readingSystem"/> must not call <function>
                             <xref linkend="op_returnContent"/>
                         </function> with a <xref linkend="term_contentIdentifier"/> of a <xref
-                            linkend="term_content"/> item whose <type>
-                            <xref linkend="tp_contentMetadata"/>
-                        </type> type's <code>requiresReturn</code> attribute is <literal>false</literal>.
+                            linkend="term_content"/> item whose <type><xref linkend="tp_contentMetadata"/></type>'s <code>requiresReturn</code> attribute is <literal>false</literal>.
                     </para>
                 </section>
             </section>
@@ -827,7 +825,7 @@
                     <para> This protocol does not define what <xref linkend="term_readingSystem"/>
                         behaviors must occur after a logon attempt fails. A <xref
                             linkend="term_readingSystem"/> can alert the user, attempt to reconnect
-                        automatically or take whatever action is particular to that device. </para>
+                        automatically or take any action, particular to that device. </para>
                 </note>
 
                 <para> A <xref linkend="term_service"/> must return an <errorname>
@@ -885,7 +883,7 @@
                 </listitem>
                 <listitem xml:id="fundamentals_content_selection_browse"
                     xreflabel="Browse Content Selection Method">
-                    <para> a <emphasis>browsing</emphasis> method, where a <xref linkend="term_user"
+                    <para> a <emphasis>browse</emphasis> method, where a <xref linkend="term_user"
                         /> can browse a <xref linkend="term_service"/>'s collection using <xref
                             linkend="term_operation"/>s defined by this protocol. </para>
                 </listitem>
@@ -897,7 +895,7 @@
             <note>
                 <para> The two methods for selecting <xref linkend="term_content"/> outlined in this
                     section are not exclusive. <xref linkend="term_serviceProvider"/>s may choose to
-                    implement aspects of both (for example, to provide an automated newspaper
+                    implement both (for example, to provide an automated newspaper
                     delivery service while allowing <xref linkend="term_user"/>s to browse their
                     catalog). </para>
             </note>
@@ -967,7 +965,7 @@
         <section xml:id="fundamentals_content_issuing">
             <title>Issuing and Transfer of Content</title>
 
-            <para> The steps for a <xref linkend="term_readingSystem"/> to request a <xref
+            <para> The steps for a <xref linkend="term_readingSystem"/> to request that a <xref
                     linkend="term_service"/> issue content and to <xref linkend="term_download"/> or
                 begin <xref linkend="term_streaming"/> the <xref linkend="term_content"/> are
                 outlined in the following sections. </para>
@@ -1042,7 +1040,8 @@
                             <para> The calling of the <function>issueContent</function> operation
                                 does not require a <xref linkend="term_service"/> to track any
                                 information about the request. <xref linkend="term_service"/>s may
-                                respond with a <literal>true</literal> value to all requests.
+                                respond with a <literal>true</literal> value to all requests,
+								if the Service Provider wishes.
                             </para>
                         </note>
                     </listitem>
@@ -1063,10 +1062,10 @@
                                     <xref linkend="ft_invalidParameterFault"/>
                                 </errorcode> fault when a <xref linkend="term_readingSystem"/>
                                 invokes <function>getContentResources</function> for <xref
-                                    linkend="term_content"/> that it has not been issued. </para>
+                                    linkend="term_content"/> that has not been issued. </para>
                         </note>
 
-                        <para> A <xref linkend="term_service"/> may allow calls to
+                        <para> A <xref linkend="term_service"/> should allow calls to
                                 <function>getContentResources</function> for the same <xref
                                 linkend="term_content"/> over more than one <xref
                                 linkend="term_session"/>. </para>
@@ -1204,7 +1203,7 @@
                             <xref linkend="term_service"/>s may provide
                             <abbrev>PDTB2</abbrev>-protected <xref linkend="term_content"/> without
                             supporting the <function>getKeyExchangeObject</function> operation when
-                            alternate means of key provision have been implemented. For example,
+                            alternate means of key provision have been implemented, for example,
                             when keys are provided with the <xref linkend="term_readingSystem"/>.
                         </para>
                     </note>
@@ -1217,12 +1216,12 @@
 
                     <para> If <xref linkend="term_content"/> is protected using
                             <abbrev>PDTB2</abbrev>, a <xref linkend="term_service"/> must include a
-                        meta attribute in the <type>
+                        <type>meta</type> element in the <type>
                             <xref linkend="tp_contentMetadata"/>
                         </type> named <literal>pdtb2:specVersion</literal> with the value
                             <literal>2005-1</literal>. </para>
 
-                    <para> In addition, the <type>mimeTypes</type> for protected resource(s)
+                    <para> In addition, the <type>mimeTypes</type> for protected resources
                         returned from the <function>
                             <xref linkend="op_getContentResources"/>
                         </function> operation must be as defined in section 4.1.1, "Package file",
@@ -1277,11 +1276,11 @@
             <title>Service Announcements</title>
 
             <para> The DAISY Online Delivery protocol allows <xref linkend="term_serviceProvider"/>s
-                to deliver service announcements directly to a <xref linkend="term_user"/>'s <xref
+                to deliver service announcements to a <xref linkend="term_user"/>'s <xref
                     linkend="term_readingSystem"/>. A service announcement is a short message in text
-                and/or audio format that conveys information such as expected <xref
-                    linkend="term_service"/> down time and warnings about overdue <xref
-                    linkend="term_content"/> to the <xref linkend="term_user"/>. </para>
+                and/or audio format that conveys information, such as an alert about expected <xref
+                    linkend="term_service"/> down time or a warning about overdue <xref
+                    linkend="term_content"/>, to the <xref linkend="term_user"/>. </para>
 
             <para> To indicate that a <xref linkend="term_service"/> supports service announcements,
                 the <xref linkend="term_service"/> must include an <type>
@@ -1306,11 +1305,6 @@
                     </function> operation. It is recommended that <xref linkend="term_readingSystem"
                     />s check for announcements immediately after completing the initialization of a
                     new <xref linkend="term_session"/>. </para>
-
-                <note>
-                    <para> A <xref linkend="term_readingSystem"/> should check for new announcements
-                        at least once per <xref linkend="term_session"/>. </para>
-                </note>
 
                 <para> The <xref linkend="term_service"/> can set the importance level for each
                     announcement from a level of 1 (most important) to 3 (least important) and
@@ -1401,14 +1395,10 @@
 
             <para> If a <xref linkend="term_service"/> supports both the setting and retrieval of
                 bookmarks, a <xref linkend="term_readingSystem"/> may use the <code>lastMark</code>
-                attribute of the <type>bookmarkSet</type> type to store the <xref
-                    linkend="term_user"/>'s last reading position. </para>
-
-            <note>
-                <para> If a <xref linkend="term_service"/> supports both operations, a <xref
+                element of the <type>bookmarkSet</type> to store the <xref
+                    linkend="term_user"/>'s last reading position.  The <xref
                         linkend="term_readingSystem"/> should check for a last reading position
                     before resuming playback. </para>
-            </note>
 
             <para> A <xref linkend="term_service"/> may support the retrieval of bookmarks or both
                 the setting and retrieval of bookmarks. A <xref linkend="term_readingSystem"/>
@@ -1434,8 +1424,7 @@
                 <title>Support</title>
 				
 				<para>To support dynamic menus, a <xref linkend="term_readingSystem"/> or <xref linkend="term_service"/> must
-				implement, in addition to the <link linkend="apiReferenceRequired">required
-				operations</link>, the <function><xref linkend="op_getQuestions"/></function> operation.</para>
+				implement the <function><xref linkend="op_getQuestions"/></function> operation.</para>
             <para> To indicate that a <xref linkend="term_service"/> supports dynamic menus, the
                     <xref linkend="term_service"/> must include an <type>
                     <xref linkend="tp_operation"/>
@@ -1446,7 +1435,8 @@
                     declare which <link linkend="tp_inputTypes">input types</link> it supports in its
 					<type><xref linkend="tp_readingSystemAttributes"/></type>. A <xref linkend="term_service"/> should not send any question which
                     requires an input type not supported by the <xref linkend="term_readingSystem"
-                    />.</para>
+                    />.  If the Reading System declares no input types, then the Service should only
+					send <type><xref linkend="tp_multipleChoiceQuestion"/></type>s.</para>
 
             <para>
                 <xref linkend="term_service"/>s that support the <xref
@@ -1463,7 +1453,7 @@
                 <title>Root Question</title>
 
                 <para>Every dynamic menu system must have a root question. The root question
-                    is the base starting menu. It has an <code>id</code> of <literal>default</literal>.</para>
+                    is the base starting menu, or main menu. It has an <code>id</code> of <literal>default</literal>.</para>
 
                 <para>The first call to <function><xref linkend="op_getQuestions"/></function> in a
 				<xref linkend="term_session"/> must be with a single
@@ -1480,9 +1470,8 @@
                     each set of menu options can be conceptually viewed as querying a <xref
                         linkend="term_user"/> about the next step to take. </para>
 
-                <para> The <function>getQuestions</function> operation takes one parameter: the <type>
-                        <xref linkend="tp_userResponses"/>
-                    </type> type. The <type>userResponses</type> type either contains a response to
+                <para> The <function>getQuestions</function> operation takes one parameter: <type>
+                        <xref linkend="tp_userResponses"/></type>. The <type>userResponses</type> type either contains a response to
                     a previous question(s) or has a <code>questionID</code> set to one of the three
                     reserved keywords defined in <xref
                         linkend="fundamentals_dynamic_menus_reservedID"/>. </para>
@@ -1536,7 +1525,8 @@
 						<para> A <xref linkend="term_service"/> must specify if an input
 							question requires a numeric, alphanumeric or audio-based response in
 							the <type><xref linkend="tp_inputTypes"/></type> child element of the <type><xref
-								linkend="tp_inputQuestion"/></type> type. </para>
+								linkend="tp_inputQuestion"/></type> type. Multiple input types
+							means that any one of the types specified may be used.</para>
                     </listitem>
 					</varlistentry>
                 </variablelist>
@@ -1615,9 +1605,8 @@
 
                 <para>
                     <xref linkend="term_readingSystem"/>s that support dynamic menus must support
-                    the <literal>default</literal> value. <xref linkend="term_readingSystem"/>s
-                    that support dynamic menus may support the <literal>search</literal> and
-                        <literal>back</literal> values.
+                    the <literal>default</literal> value; <literal>search</literal> and
+                        <literal>back</literal> are optional.
 				</para>
             </section>
 
@@ -1941,7 +1930,7 @@
                         Menus Primer</link>
                 </title>
                 <author>
-                    <personname>Kenny Johar</personname>
+                    <personname>Kenny Johar, et al.</personname>
                 </author>
             </biblioentry>
             <biblioentry xml:id="bib_z3986-2002">
