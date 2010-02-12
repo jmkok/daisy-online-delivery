@@ -17,6 +17,7 @@ Changes to `do-wsdl-10.wsdl`:
     * `getContentList/firstItem` changed from `xs:integer` to `xs:int`.
     * `getContentList/id` changed from `xs:ID` to `xs:NMTOKEN`.
     * `getContentList/lastItem` changed from `xs:integer` to `xs:int`.
+  * Changed the location of the KXO schema to its canonical URL.
 
 == Types ==
 
@@ -48,6 +49,7 @@ Changes to `do-types-10.xsd`:
     * `resource@size` changed from `xs:integer` to `xs:long`.
     * `serviceAttributes/service@id` changed from `xs:string` to `xs:NMTOKEN`.
     * `serviceAttributes/serviceProvider@id` changed from `xs:string` to `xs:NMTOKEN`.
+  * Changed the location of the XML, DC and KXO schemata to their canonical URLs.
 
 Changes to `bookmark-2005-1.xsd`:  
 
@@ -68,43 +70,5 @@ Changes to `bookmark-2005-1.xsd`:
   * Added recommendation that menu state be retained for the duration of the session.
   * Added note that says that audio notes are not supported at all.  (Previously it had only mentioned it in setting bookmarks.)
   * Noted that the `keyRing` should only contain names of key pairs, not symmetric keys.
-  * Modified "announcements-retrieval.xml":
-   * Added @xml:lang to all label elements.
-  * Modified "contentSelection-subscr.xml":
-   * Added @xml:lang to all label elements.
-  * Modified "initialization-serviceAttributes.xml":
-   * Added @xml:lang to all label elements.
-  * Modified "return-contentList.xml":
-   * Added @xml:lang to all label elements.
-
-== Primer ==
-
-  * Changed verbiage to indicate that the following attributes are of type xs:NMTOKEN and not xs:ID:
-   * inputQuestion/@id  
-   * multipleChoiceQuestion/@id
-   * multipleChoiceQuestion/choices/choice/@id
-  * Modified "dynamicMenusExamples-mainMenu-1.xml":
-   * Added @xml:lang to all label elements.
-  * Modified "dynamicMenusExamples-purchase-2.xml":
-   * Added @xml:lang to all label elements.
-  * Modified "dynamicMenusExamples-purchase-4.xml":
-   * Added @xml:lang to all label elements.
-  * Modified "dynamicMenusExamples-retrieve-4.xml":
-   * Added @xml:lang to all label elements.
-  * Modified "dynamicMenusExamples-search-3.xml": 
-   * Added @xml:lang to all label elements.
-  * Modified "dynamicMenusExamples-search-9.xml":
-   * Added @xml:lang to all label elements.
-  * Modified "dynamicMenusExamples-survey-2.xml":
-   * Added @xml:lang to all label elements.
-  * Modified "dynamicMenusExamples-survey-4.xml":
-   * Added @xml:lang to all label elements.
-  * Modified "dynamicMenusExamples-userprofile-2.xml":
-   * Added @xml:lang to all label elements.
-  * Modified "dynamicMenusExamples-userprofile-5.xml":
-   * Added @xml:lang to all label elements.
-
-== Pending ==
-
-  * "expired" `contentList` to be made mandatory.
-  * Remove recommendation that `markAnnouncementsAsRead` be called immediately after each announcement is read.
+  * Removed recommendation that `markAnnouncementsAsRead` be called immediately after each announcement is read.
+  * Updated examples and Primer to the latest changes.
