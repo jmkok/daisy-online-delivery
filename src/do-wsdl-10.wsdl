@@ -1243,7 +1243,7 @@
 					after a successful invocation of this operation. </db:para>
 
 				<db:para> A Reading System should not call this function for Content that has
-					a <db:varname>requiresReturn</db:varname> attribute with a 
+					a <db:code>requiresReturn</db:code> attribute with a 
 					<db:literal>false</db:literal> value.</db:para>
 				
 				<db:para>A Reading System must delete the Content before calling
