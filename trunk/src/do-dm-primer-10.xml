@@ -16,6 +16,24 @@
                 <orgname>Vision Australia</orgname>
             </affiliation>
         </author>  
+    	<author>
+    		<personname>
+    			<firstname>Geoff</firstname>
+    			<surname>Gilmour-Taylor</surname>
+    		</personname>
+    		<affiliation>
+    			<orgname>CNIB</orgname>
+    		</affiliation>
+    	</author>
+    	<author>
+    		<personname>
+    			<firstname>Nick</firstname>
+    			<surname>Williamson</surname>
+    		</personname>
+    		<affiliation>
+    			<orgname>RNIB</orgname>
+    		</affiliation>
+    	</author>
     </info>
 
     <chapter xml:id="introduction">
