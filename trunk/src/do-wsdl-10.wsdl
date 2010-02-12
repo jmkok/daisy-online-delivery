@@ -28,7 +28,7 @@
 				schemaLocation="bookmark-2005-1.xsd"/>
 
 			<xs:import namespace="http://www.daisy.org/DRM/2005/KeyExchange"
-				schemaLocation="kxo.xsd"/>
+				schemaLocation="http://www.daisy.org/DRM/KeyExchange-2005-1.xsd"/>
 
 			<!-- message types -->
 

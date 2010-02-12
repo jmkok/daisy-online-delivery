@@ -6,20 +6,23 @@
 	xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 	<xs:annotation>
-		<xs:documentation> This WXS document and the entities referenced from within it are a
+		<xs:documentation> This W3C XML Schema document and the entities referenced from within it are a
 			normative part of the DAISY Online Protocol Specification
 			(http://www.daisy.org/projects/daisy-online-delivery/). Version: 20100215 (Final Draft) 
 		</xs:documentation>
 	</xs:annotation>
 
-	<xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace"
+		schemaLocation="http://www.w3.org/2009/01/xml.xsd"/>
 
-	<xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="dc.xsd"/>
+	<xs:import namespace="http://purl.org/dc/elements/1.1/"
+		schemaLocation="http://dublincore.org/schemas/xmls/qdc/2008/02/11/dc.xsd"/>
 
 	<xs:import namespace="http://www.daisy.org/z3986/2005/bookmark/"
 		schemaLocation="bookmark-2005-1.xsd"/>
 
-	<xs:import namespace="http://www.daisy.org/DRM/2005/KeyExchange" schemaLocation="kxo.xsd"/>
+	<xs:import namespace="http://www.daisy.org/DRM/2005/KeyExchange"
+		schemaLocation="http://www.daisy.org/DRM/KeyExchange-2005-1.xsd"/>
 
 	<xs:element name="readingSystemAttributes">
 		<xs:annotation>

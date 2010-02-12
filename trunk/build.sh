@@ -21,11 +21,6 @@ java -cp $cp com.emc.documentum.xml.xproc.tool.Cmd -p section.autolabel=1 -p sec
 
 cp ./util/docbook/html-css/docbook.css ./build/do.css
 cp ./src/bookmark-2005-1.xsd ./build/bookmark-2005-1.xsd
-cp ./src/dc.xsd ./build/dc.xsd
-cp ./src/xml.xsd ./build/xml.xsd
-cp ./src/xmldsig.xsd ./build/xmldsig.xsd
-cp ./src/xmlenc.xsd ./build/xmlenc.xsd
-cp ./src/kxo.xsd ./build/kxo.xsd
 
 #java -cp $cp com.xmlcalabash.drivers.Main wsdl-xsd-extract.xpl
 java -cp $cp com.emc.documentum.xml.xproc.tool.Cmd wsdl-xsd-extract.xpl
