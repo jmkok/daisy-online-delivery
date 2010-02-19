@@ -16,7 +16,7 @@ This only applies to Services that support dynamic menus, searching and have the
 _Example of how this should be filled out_
 
 || Test case || Client || Server || Result || Details ||
-|| 1.1 || CNIB || !PratSam || *Success* || Transfer of data was at expected rates for binary transfer over the Internet.  A 119 MB book was downloaded in 26 minutes. ||
+|| 1.1 || XXX || YYY || *Success* || Transfer of data was at expected rates for binary transfer over the Internet.  A 119 MB book was downloaded in 26 minutes. ||
 || 1.1 || XXX || YYY || *Success* || Transfer of data was at expected rates for binary transfer over the Internet.  An X MB book was downloaded in Y minutes. ||
 || 1.3 || XXX || YYY || *Failure* || Transfer of data was at X% efficiency compared to binary transfer.  Audio of Y MB was uploaded in Z minutes. ||
 
