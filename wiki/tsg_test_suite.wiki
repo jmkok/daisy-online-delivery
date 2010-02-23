@@ -43,7 +43,7 @@ At a minimum, a conformant Reading System or Service must satisfy all Assertions
   # Implement the  `getServiceAttributes` operation.
   # Implement the  `issueContent` operation.
   # Implement the `getContentList` operation.
-   # Support the invokation of the `getContentList` operation with the "new" id. _JA: move this to section 4. Not a requirement in an acquisition model_kj: this already exists in category 4. should we remove it from here?   
+   # Support the invokation of the `getContentList` operation with the "new" id. _JA: move this to section 4. Not a requirement in an acquisition model kj: this already exists in category 4. should we remove it from here?_
   # Implement the `getContentMetadata` operation.
   # Implement the `getContentResources` operation. 
   # Adhere to the session initialization sequence to commence a session with a Service.
