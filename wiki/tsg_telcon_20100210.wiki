@@ -21,7 +21,8 @@ scribe: Kenny
 
   === Previous Unfinished Action Items ===
 
-  * Kenny to follow up with James and Neale the status of the two required fixes in the pdtb2 spec: Reg Exp and Example/xsd inconsistency. *done*  * kenny to send Nick an email containing all the svcutil specific tweaks. *done* 
+  * Kenny to follow up with James and Neale the status of the two required fixes in the pdtb2 spec: Reg Exp and Example/xsd inconsistency. *done*  
+  * kenny to send Nick an email containing all the svcutil specific tweaks. *done* 
   * Nick, Hiro, Johan and Kenny to review the Systems Testing document and post their comments/participation intentions  on the page or on the list before the next telecon. *kenny: done; Jelle: will be done before the next telecon*
   * Nick, Johan, Simon, Hiro and Jelle to review the Conformance Testing document, post their comments on the page or the list, and add test cases.
   * Hiro and Jelle to send their public keys to the service implementers. *done: Waiting for KxOs*
