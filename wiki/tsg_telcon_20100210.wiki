@@ -266,7 +266,9 @@ Kenny: If we receive substantive comments, lets record them in the issue tracker
 
 (Group to aim for the definition of most of the test cases for the conformance testing document by 28 Feb)
 
-  * Can we meet the feb 15 timeline? (document deferred to 28 Feb)
+  * Can we meet the feb 15 timeline? 
+
+(document deferred to 28 Feb)
 
 ==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolSystemTestingTestCases Systems Testing] ====
 
