@@ -17,7 +17,7 @@ scribe: Kenny
   * Kenny create a new page called "Summary of Recommendations," to record the optional assertions in the spec. 
   * Kenny add substantive comments to issue tracker.
   * Kenny inform the owner of a substantive comment once the comment has been addressed.
-   * All define test cases for the conformance testing document by 28 Feb.
+  * All define test cases for the conformance testing document by 28 Feb.
 
   === Previous Unfinished Action Items ===
 
