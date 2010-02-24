@@ -1,0 +1,162 @@
+present: 
+
+Regrets:
+
+scribe: Kenny
+
+== Action Item Summary ==
+ 
+=== New Action Items ===
+
+  === Previous Unfinished Action Items ===
+
+  * Jelle post the key name he intends to use to the list for KXO creation. 
+  * Johan make three KXOs available per Reading system.
+  * Geoff make one KXO available per manufacturer.
+  * Kenny add a normative assertion, that sets forth the invalidParameter fault as the consequence of a Reading System calling the getQuestions operation with the "back" id when no prior call to the getQuestions operation has been made in the active session, to the spec and the conformance testing documents.
+  * Kenny add a normative assertion, that sets forth the invalidParameter fault as the consequence of a Reading System calling the getQuestions operation with the "back" and "search" IDs, when these IDs are not supported by a Service. 
+  * Geoff add verbiage to the spec stating that no input questions should be sent to a Reading System that require an input type not supported by the Reading System.
+  * Kenny create a new page called "Summary of Recommendations," to record the optional assertions in the spec. *done* 
+  * Kenny add substantive comments to issue tracker.
+  * Kenny inform the owner of a substantive comment once the comment has been addressed.
+  * All define test cases for the conformance testing document by 28 Feb.
+  * Nick, Hiro, Johan and Kenny to review the Systems Testing document and post their comments/participation intentions  on the page or on the list before the next telecon. *kenny: done; Jelle: will be done before the next telecon*
+  * Nick, Johan, Simon, Hiro and Jelle to review the Conformance Testing document, post their comments on the page or the list, and add test cases.
+  * Hiro and Jelle to send their public keys to the service implementers. *done: Waiting for KxOs*
+  * Johan to provide the RS specific KXOs to the service implementers. *in progress*
+  * Simon to add the minOccurs and maxOccurs tweak to the tweaks page.
+  * Geoff to record an issue in the issue tracker for the setBlob/getBlob operations as suggested by Jelle, and mark this issue as an enhancement for the next version of the spec.      
+  * Geoff, Johan, Simon, Hiro and Kenny to build PDTB2 support in their test implementations by end March using the sample content provided by Neale. *in Progress*
+  * After the pdtb2 folks have fixed their version of kxo.xsd, kenny to change XSDs to their canonical URIs, and close issue 128 and Issue 144.   
+  * Markus fix the &apos; entity problem. (outstanding; bug in IE.) (Markus will fix this when ready to publish.)
+
+=== Group Action Items ===
+
+==== Action items for the public review period commencing February 15, 2010 ==== 
+
+  * All issues should be resolved or formally deferred.
+  * Any updates to the spec documentation, wsdl and xsd files need to be completed and proof read. 
+  * The primer should be proof read.
+
+==== Action items for formal recommendation to the Board on April 5, 2010 ====  
+
+   * Deliver Final version of the spec.  
+   * Provide Information on comments Received, and how they were addressed.  
+   * Make available the Conformance Testing document.
+   * Make Available the Systems Testing document.  
+   * Make available the Conformance Testing Conformance Report.
+   * make available the systems testing  Conformance report. 
+   * Create an area where implementers can post information about the additional features that they have implemented on top of the spec, and that the community at large may be interested in.  
+   * Make a page available that provides PDTB2 specific knowledge to Daisy Online Implementers. 
+   * Make a page available that provides all the tweaks to the WSDL and XSD files, that group members had to make to these files for their respective implementations.
+   * Make a formal Recommendation to the board for approval.  
+
+== Agenda/Minutes ==
+
+=== Issue 206 ===
+
+Geoff: Section 2: The Main Menu contains a lot of general information after the
+example of showing the main menu.  This kind of breaks the flow of the
+examples, and should be reordered.
+
+=== Issue 207 ===
+
+Geoff: The search example in the Primer is a little rudimentary, even for an
+example.  I think it might be better to show the User searching on multiple
+fields at once, like:
+ 
+Advanced Search
+Title: _____
+Author: _____
+Subject: _____
+Narrator: _____
+Call number: _____
+Full text: _____
+ 
+And the user searches on, say, Author="asimov" and Subject="myster*", with
+the results being some of Isaac Asimov's "Black Widowers" books.
+
+=== Issue 208 ===
+
+Geoff: In Section 4.4.1 Content Retrieval Sequence, the first note is:
+ 
+"Note:
+ 
+"A Reading System must retrieve a contentList from a Service using one of
+the methods described in Content Selection Methods prior to requesting that
+the Service issue any items."
+ 
+I don't think this is a requirement, merely normal operation.  The word
+"must" should be changed.
+ 
+=== Issue 209 ===
+
+Geoff: The second note in point 2 of section 4.4.1 says:
+ 
+"Note:
+ 
+"This protocol does not specify the Reading System behaviors that occur
+when a Service does not return a true value."
+ 
+This is untrue, as we have just specified some behaviour in the preceding
+paragraph.  Should be removed.
+
+=== Issue 210 ===
+
+Geoff: The note in 4.4.3 should be expanded upon and made not a note.
+
+=== Issue 211 ===
+
+Geoff: Content gets used in various ways in the text.  We should settle on whether
+Content is singular, plural or a collective noun and stick to it throughout
+the documentation.  (I think collective noun is best, with Content item as
+singular and Content items as plural.)
+
+=== Issue 212 ===
+
+Geoff: Sometimes we say "call an operation" sometimes, it's "invoke an operation".
+ We should decide on one and stick to it.  I say, "call".
+
+Also, "invoke the X operation" is kind of wordy.  Apart from introducing
+operations, that should be shortened to "call X" or "invoke X", whichever
+we decide.
+
+=== Issue 213 ===
+
+Geoff: There are too many notes in the spec.  This breaks up the flow and makes
+important highlights harder to notice.  We should only use notes for
+unexpected things (like audio notes not being supported in bookmarks) and
+not for everything after the first paragraph in a section.
+
+=== Issue 214 ===
+
+Geoff: Section 5.2.3. The returnContent Operation, just before the note:
+
+A Reading System must not call returnContent on Content it has never been
+issued.
+
+This is a bit awkwardly put.  Something like, "on Content that has never
+been issued to it," would be better.
+ 
+=== Test suite Progress review ===
+
+==== [http://code.google.com/p/daisy-online-delivery/wiki/tsg_test_suite Conformance Testing] ====
+
+  * What remains to be done? (define and assign outstanding tasks)
+   
+==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolSystemTestingTestCases Systems Testing] ====
+
+==== [http://code.google.com/p/daisy-online-delivery/wiki/SummaryOfRecommendations Summary of Recommendations] ====
+
+  * Should this document be a part of the test suite? This will mean that the test suite is composed of three documents: Conformance Testing, Systems Testing and Summary of Recommendations. 
+
+kenny: At first glance, due to the informative nature of this document, it does not appear to belong to the Test Suite. Thoughts all? 
+
+== Related Wiki Pages ==
+
+=== [http://code.google.com/p/daisy-online-delivery/wiki/ChangeLog Change Log] ===
+
+=== [http://code.google.com/p/daisy-online-delivery/wiki/pdtb2_description PDTB2 Description for Daisy Online Implementers] ===
+
+=== [http://code.google.com/p/daisy-online-delivery/wiki/WSDLAndXSDTweaks WSDL and XSD Tweaks for Daisy Online Implementers] ===
+ 
