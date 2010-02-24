@@ -2,4 +2,4 @@
 
 This document records all assertions of the Daisy Online Delivery specification that are not normative for conformance. To ensure conformance to the specification, please refer to the [http://code.google.com/p/daisy-online-delivery/wiki/tsg_test_suite Conformance Testing document].
 
-The purpose of this document is to provide all non-normative assertions (aka recommendations) of the specification in the same format as the [http://code.google.com/p/daisy-online-delivery/wiki/tsg_test_suite Conformance Testing Document] to assist rapid implementation.              
+The purpose of this document is to provide all non-normative assertions (aka recommendations) of the specification in the same format as the [http://code.google.com/p/daisy-online-delivery/wiki/tsg_test_suite Conformance Testing Document] to aid implementation.              
