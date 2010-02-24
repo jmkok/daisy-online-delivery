@@ -27,7 +27,7 @@ scribe: Kenny
   * Simon to add the minOccurs and maxOccurs tweak to the tweaks page.
   * Geoff to record an issue in the issue tracker for the setBlob/getBlob operations as suggested by Jelle, and mark this issue as an enhancement for the next version of the spec.      
   * Geoff, Johan, Simon, Hiro and Kenny to build PDTB2 support in their test implementations by end March using the sample content provided by Neale. *in Progress*
-  * After the pdtb2 folks have fixed their version of kxo.xsd, kenny to change XSDs to their canonical URIs, and close issue 128 and Issue 144.   
+  * After the pdtb2 folks have fixed their version of kxo.xsd, kenny to change XSDs to their canonical URIs. 
   * Markus fix the &apos; entity problem. (outstanding; bug in IE.) (Markus will fix this when ready to publish.)
 
 === Group Action Items ===
