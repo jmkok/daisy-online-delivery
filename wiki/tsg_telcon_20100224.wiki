@@ -15,17 +15,17 @@ scribe: Kenny
   * Geoff make one KXO available per manufacturer.
   * Kenny add a normative assertion, that sets forth the invalidParameter fault as the consequence of a Reading System calling the getQuestions operation with the "back" id when no prior call to the getQuestions operation has been made in the active session, to the spec and the conformance testing documents.
   * Kenny add a normative assertion, that sets forth the invalidParameter fault as the consequence of a Reading System calling the getQuestions operation with the "back" and "search" IDs, when these IDs are not supported by a Service. 
-  * Geoff add verbiage to the spec stating that no input questions should be sent to a Reading System that require an input type not supported by the Reading System.
+  * Geoff add verbiage to the spec stating that no input questions should be sent to a Reading System that require an input type not supported by the Reading System. *done*
   * Kenny create a new page called "Summary of Recommendations," to record the optional assertions in the spec. *done* 
   * Kenny add substantive comments to issue tracker.
   * Kenny inform the owner of a substantive comment once the comment has been addressed.
   * All define test cases for the conformance testing document by 28 Feb.
-  * Nick, Hiro, Johan and Kenny to review the Systems Testing document and post their comments/participation intentions  on the page or on the list before the next telecon. *kenny: done; Jelle: will be done before the next telecon*
+  * Nick, Hiro, Johan and Kenny to review the Systems Testing document and post their comments/participation intentions  on the page or on the list before the next telecon. *done*
   * Nick, Johan, Simon, Hiro and Jelle to review the Conformance Testing document, post their comments on the page or the list, and add test cases.
-  * Hiro and Jelle to send their public keys to the service implementers. *done: Waiting for KxOs*
+  * Hiro and Jelle to send their public keys to the service implementers. *done: Waiting for KXOs*
   * Johan to provide the RS specific KXOs to the service implementers. *in progress*
   * Simon to add the minOccurs and maxOccurs tweak to the tweaks page.
-  * Geoff to record an issue in the issue tracker for the setBlob/getBlob operations as suggested by Jelle, and mark this issue as an enhancement for the next version of the spec.      
+  * Geoff to record an issue in the issue tracker for the setBlob/getBlob operations as suggested by Jelle, and mark this issue as an enhancement for the next version of the spec.   *done*   
   * Geoff, Johan, Simon, Hiro and Kenny to build PDTB2 support in their test implementations by end March using the sample content provided by Neale. *in Progress*
   * After the pdtb2 folks have fixed their version of kxo.xsd, kenny to change XSDs to their canonical URIs. 
   * Markus fix the &apos; entity problem. (outstanding; bug in IE.) (Markus will fix this when ready to publish.)
