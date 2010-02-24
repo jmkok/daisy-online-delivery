@@ -53,13 +53,15 @@ scribe: Kenny
 
 == Agenda/Minutes ==
 
-=== Issue 206 ===
+=== Issues ===
+
+==== Issue 206 ====
 
 Geoff: Section 2: The Main Menu contains a lot of general information after the
 example of showing the main menu.  This kind of breaks the flow of the
 examples, and should be reordered.
 
-=== Issue 207 ===
+==== Issue 207 ====
 
 Geoff: The search example in the Primer is a little rudimentary, even for an
 example.  I think it might be better to show the User searching on multiple
@@ -76,7 +78,7 @@ Full text: _____
 And the user searches on, say, Author="asimov" and Subject="myster*", with
 the results being some of Isaac Asimov's "Black Widowers" books.
 
-=== Issue 208 ===
+==== Issue 208 ====
 
 Geoff: In Section 4.4.1 Content Retrieval Sequence, the first note is:
  
@@ -89,7 +91,7 @@ the Service issue any items."
 I don't think this is a requirement, merely normal operation.  The word
 "must" should be changed.
  
-=== Issue 209 ===
+==== Issue 209 ====
 
 Geoff: The second note in point 2 of section 4.4.1 says:
  
@@ -101,18 +103,18 @@ when a Service does not return a true value."
 This is untrue, as we have just specified some behaviour in the preceding
 paragraph.  Should be removed.
 
-=== Issue 210 ===
+==== Issue 210 ====
 
 Geoff: The note in 4.4.3 should be expanded upon and made not a note.
 
-=== Issue 211 ===
+==== Issue 211 ====
 
 Geoff: Content gets used in various ways in the text.  We should settle on whether
 Content is singular, plural or a collective noun and stick to it throughout
 the documentation.  (I think collective noun is best, with Content item as
 singular and Content items as plural.)
 
-=== Issue 212 ===
+==== Issue 212 ====
 
 Geoff: Sometimes we say "call an operation" sometimes, it's "invoke an operation".
  We should decide on one and stick to it.  I say, "call".
@@ -121,14 +123,14 @@ Also, "invoke the X operation" is kind of wordy.  Apart from introducing
 operations, that should be shortened to "call X" or "invoke X", whichever
 we decide.
 
-=== Issue 213 ===
+==== Issue 213 ====
 
 Geoff: There are too many notes in the spec.  This breaks up the flow and makes
 important highlights harder to notice.  We should only use notes for
 unexpected things (like audio notes not being supported in bookmarks) and
 not for everything after the first paragraph in a section.
 
-=== Issue 214 ===
+==== Issue 214 ====
 
 Geoff: Section 5.2.3. The returnContent Operation, just before the note:
 
@@ -138,6 +140,12 @@ issued.
 This is a bit awkwardly put.  Something like, "on Content that has never
 been issued to it," would be better.
  
+=== PDTB2 support progress review ===
+
+  * Sample KXOs.
+   * RS and Service Implementers?   
+  * Implementation Timelines.
+  
 === Test suite Progress review ===
 
 ==== [http://code.google.com/p/daisy-online-delivery/wiki/tsg_test_suite Conformance Testing] ====
