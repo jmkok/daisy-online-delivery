@@ -1,6 +1,6 @@
 present: 
 
-Regrets:
+Regrets: Hiro
 
 scribe: Kenny
 
