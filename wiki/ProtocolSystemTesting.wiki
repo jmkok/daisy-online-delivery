@@ -409,7 +409,9 @@ Note that actually interacting with the Content without downloading all of its r
   # *Sample content*: Download the sample of a Content item without issuing the Content.
 
 || Test case || Client || Server || Result || Details ||
+|| 20.1 || CNIB || !PratSam ||  ||  ||
 || 20.1 || CNIB || Solutions Radio ||  ||  ||
+|| 20.1 || Solutions Radio || !PratSam ||  ||  ||
 || 20.1 || Solutions Radio || Solutions Radio ||  ||  ||
 
 == 21. Report firmware version ==
@@ -501,7 +503,8 @@ Sending audio from the Reading System to the Service was originally in scope, th
   # *Audio feedback*: Transmit audio as a response to a dynamic menu item that accepts it.  Verify that the audio was received by the Service.
 
 || Test case || Client || Server || Result || Details ||
-|| 27.1 ||  ||  ||  ||  ||
+|| 27.1 || !HumanWare || !PratSam ||  ||  ||
+|| 27.1 || !HumanWare || Vision Australia ||  ||  ||
 
 == 28. Download tracking ==
 
