@@ -6,3 +6,49 @@
 This report summarizes the interoperability testing of the protocol, that is, the demonstration of independent compatible implementations of each feature in the specification.  These test cases are not comprehensive; in particular, the underlying technologies are not tested.
 
 = Test cases go here =
+
+= 5. API Reference =
+
+== 5.1. Required Operations ==
+
+=== 5.1.1. The `logOn` Operation ===
+
+Variables used in this section
+  * _user_: A valid username on the Service.
+  * _goodpass_: _user_'s password.
+  * _badpass_: A string which is not _user_'s password.
+
+  # *Valid log on*: The RS connects to the Service.  The RS calls `logOn(`_user_`, `_goodpass_`)`.  The Service returns `true` and sets a session cookie.
+  # *Invalid log on*: The RS connects to the Service.  The RS calls `logOn(`_user_`, `_badpass_`)`.  The Service returns `false`.
+
+=== 5.1.2. The `logOff` Operation ===
+
+  # *Log off*: (PRE: A session is active.) The RS calls `logOff()`.  The Service returns `true`.
+
+=== 5.1.3. The `setReadingSystemAttributes` Operation ===
+
+=== 5.1.4. The `issueContent` Operation ===
+
+=== 5.1.5. The `getContentMetadata` Operation ===
+
+=== 5.1.6. The `getContentResources` Operation ===
+
+=== 5.1.7. The `getServiceAttributes` Operation ===
+
+=== 5.1.8. The `getContentList` Operation ===
+
+== 5.2. Optional Operations ==
+
+=== 5.2.1. The `getServiceAnnouncements` Operation ===
+
+=== 5.2.2. The `markAnnouncementsAsRead` Operation ===
+
+=== 5.2.3. The `returnContent` Operation ===
+
+=== 5.2.4. The `setBookmarks` Operation ===
+
+=== 5.2.5. The `getBookmarks` Operation ===
+
+=== 5.2.6. The `getQuestions` Operation ===
+
+=== 5.2.7. The `getKeyExchangeObject` Operation ===
