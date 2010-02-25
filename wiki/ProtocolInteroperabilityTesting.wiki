@@ -1,0 +1,8 @@
+#summary Interoperability test cases for both Reading Systems and Services.
+#labels Phase-QA,Phase-Implementation,Report
+
+= Introduction =
+
+This report summarizes the interoperability testing of the protocol, that is, the demonstration of independent compatible implementations of each feature in the specification.  These test cases are not comprehensive; in particular, the underlying technologies are not tested.
+
+= Test cases go here =
