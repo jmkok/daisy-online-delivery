@@ -15,8 +15,6 @@ An active session established between the Reading System and the Service is a pr
 
 Preconditions for individual tests are marked (PRE:).
 
-= Test cases go here =
-
 = 5. API Reference =
 
 == 5.1. Required Operations ==
@@ -49,7 +47,7 @@ Variables
 
 Variables
   * _listId_: The identifier of a `contentList` on the Service that is not "new", "issued" or "expired".
-  * _first_: The index of a `contentItem` in the _listId_ `contentList`.
+  * _first_: The index of a `contentItem` in the _listId_ `contentList`, greater than 0.
   * _last_: The index of a `contentItem` in the _listId_ `contentList`, greater than _first_.
 
   # *New items*: (PRE: The Service supports Out-of-band Content selection.) The RS calls `getContentList("new", 0, -1)`.  The Service returns a `contentList` with the identifier `new`.  No `contentItem`'s `id` is the identifier of an issued Content item.
