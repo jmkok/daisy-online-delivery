@@ -175,8 +175,6 @@ Geoff: The format of this document could then be similar to the Systems Testing 
 
 ==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolSystemTestingTestCases Systems Testing] ====
 
-==== [http://code.google.com/p/daisy-online-delivery/wiki/SummaryOfRecommendations Summary of Recommendations] ====
-
 Geoff: We have two test cases that there are no implementations for. One of them is minor. Audio feedback is the major one. There are no client implementations of this feature.  
 
 Simon: I will do the audio feedback test.
@@ -190,6 +188,8 @@ Johan: Will it be possible for me to provide a chapter out of a daisy book as sa
 Geoff: Yes.
 
 Johan: I will provide sample content then.
+
+==== [http://code.google.com/p/daisy-online-delivery/wiki/SummaryOfRecommendations Summary of Recommendations] ====
 
   * Should this document be a part of the test suite? This will mean that the test suite is composed of three documents: Conformance Testing, Systems Testing and Summary of Recommendations. 
 
