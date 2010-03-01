@@ -5,11 +5,15 @@
 
 This report summarizes the interoperability testing of the protocol, that is, the demonstration of independent compatible implementations of each feature in the specification.  These test cases are not comprehensive; in particular, the underlying technologies are not tested.
 
-= Variables =
+= Conventions =
+
+Operation calls are represented in a C-like form, e.g. `getContentList(`_listId_`, 0, -1)` represents a call to `getContentList` with parameters _listId_ (a variable—see below), `0` and `-1`.
+
+== Variables ==
 
 To allow for testing with existing Reading Systems and Services, variables are given in _italics_ that may be assigned appropriate values when carrying out the tests.
 
-= Preconditions =
+== Preconditions ==
 
 An active session established between the Reading System and the Service is a precondition of every test below except those in sections 4.2.1 and 5.1.1.
 
@@ -34,6 +38,11 @@ Variables
   # *Log off*: The RS calls `logOff()`.  The Service returns `true`.
 
 === 5.1.3. The `setReadingSystemAttributes` Operation ===
+
+Variables
+  * _rSA_: The Reading System's readingSystemAttributes structure.
+
+  # *Set Reading System attributes*: The RS calls `setReadingSystemAttributes(`_rSA_`)`.  The Service returns `true`.
 
 === 5.1.4. The `issueContent` Operation ===
 
