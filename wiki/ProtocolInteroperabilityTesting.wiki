@@ -73,11 +73,13 @@ Variables
   * _badId_: A string which is not the identifier of a valid Content item on the Service.
   * _forbId_: The identifier of a valid Content item on the Service, which is not issued to the Reading System's User.
 
-  # *Get Content resources*: The Reading System calls `getContentResources(`_conId_`)`.  The Service returns a valid contentMetadata object, whose `dc:identifier` metadata value equals _conId_.
+  # *Get Content resources*: The Reading System calls `getContentResources(`_conId_`)`.  The Service returns a valid `contentMetadata` object, whose `dc:identifier` metadata value equals _conId_.
   # *Get invalid Content resources*: The Reading System calls `getContentResources(`_badId_`)`.  The Service throws an `invalidParameter` fault.
   # *Get forbidden Content resources*: The Reading System calls `getContentResources(`_forbId_`)`.  The Service throws an `invalidParameter` fault.
 
 === 5.1.7. The `getServiceAttributes` Operation ===
+
+  # *Get Service attributes*: The Reading System calls `getServiceAttributes()`.  The Service returns a valid `serviceAttributes` object.
 
 === 5.1.8. The `getContentList` Operation ===
 
