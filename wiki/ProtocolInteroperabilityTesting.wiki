@@ -238,7 +238,7 @@ Tests
   # *Return Content not in hand*: The Reading System calls `returnContent(`_forbId_`)`.  The Service throws an `invalidParameter` fault.
 
 || Test case || Client || Server || Result || Details ||
-|| 5.2.3.1 || || ||  ||  ||
+|| 5.2.3.1 || — || — || — || Covered in System tests 4.1 and 4.2. ||
 || 5.2.3.2 || || ||  ||  ||
 || 5.2.3.3 || || ||  ||  ||
 
@@ -252,7 +252,7 @@ Tests
   # *Set bookmarks*: The Reading System calls `setBookmarks(`_conId_`, `_bmS_`)`.  The Service returns `true`.
 
 || Test case || Client || Server || Result || Details ||
-|| 5.2.4.1 || || ||  ||  ||
+|| 5.2.4.1 || — || — || — || Covered in System test 13.1. ||
 
 === 5.2.5. The `getBookmarks` Operation ===
 
@@ -263,7 +263,7 @@ Tests
   # *Get bookmarks*: The Reading System calls `getBookmarks(`_conId_`)`.  The Service returns a valid `bookmarkSet` object whose `uid` element's value is _conId_.
 
 || Test case || Client || Server || Result || Details ||
-|| 5.2.5.1 || || ||  ||  ||
+|| 5.2.5.1 || — || — || — || Covered in System tests 3.1 and 13.1. ||
 
 === 5.2.6. The `getQuestions` Operation ===
 
@@ -318,6 +318,6 @@ Tests
   # *Get a forbidden key*: The Reading System calls `getKeyExchangeObject(`_forbkey_`)`.  The Service throws an `invalidParameter` fault.
 
 || Test case || Client || Server || Result || Details ||
-|| 5.2.7.1 || || ||  ||  ||
+|| 5.2.7.1 || — || — || — || Covered in System test 11.2. ||
 || 5.2.7.2 || || ||  ||  ||
-|| 5.2.7.3 || || ||  ||  ||
+|| 5.2.7.3 || — || — || — || Covered in System test 11.3. ||
