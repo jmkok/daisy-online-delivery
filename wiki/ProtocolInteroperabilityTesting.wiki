@@ -31,12 +31,14 @@ Variables
   * _pass_: _user_'s password.
   * _badpass_: A string which is not _user_'s password.
 
+Tests
   # *Valid log on*: The RS connects to the Service.  The RS calls `logOn(`_user_`, `_pass_`)`.  The Service returns `true` and sets a session cookie.
   # *Invalid user*: The RS connects to the Service.  The RS calls `logOn(`_baduser_`, `_pass_`)`.  The Service returns `false`.
   # *Invalid password*: The RS connects to the Service.  The RS calls `logOn(`_user_`, `_badpass_`)`.  The Service returns `false`.
 
 === 5.1.2. The `logOff` Operation ===
 
+Tests
   # *Log off*: The RS calls `logOff()`.  The Service returns `true`.
 
 === 5.1.3. The `setReadingSystemAttributes` Operation ===
@@ -44,6 +46,7 @@ Variables
 Variables
   * _rSA_: A `readingSystemAttributes` object representing the Reading System's attributes.
 
+Tests
   # *Set Reading System attributes*: The RS calls `setReadingSystemAttributes(`_rSA_`)`.  The Service returns `true`.
 
 === 5.1.4. The `issueContent` Operation ===
@@ -53,6 +56,7 @@ Variables
   * _badId_: A string which is not the identifier of a valid Content item on the Service.
   * _forbId_: The identifier of a valid Content item on the Service, which the Service will not allow access to.
 
+Tests
   # *Issue Content*: The Reading System calls `issueContent(`_conId_`)`.  The Service returns `true`.
   # *Issue invalid Content*: The Reading System calls `issueContent(`_badId_`)`.  The Service returns `false` or throws a fault.
   # *Issue forbidden Content*: The Reading System calls `issueContent(`_forbId_`)`.  The Service returns `false` or throws a fault.
@@ -63,6 +67,7 @@ Variables
   * _conId_: The identifier of a valid Content item on the Service.
   * _badId_: A string which is not the identifier of a valid Content item on the Service.
 
+Tests
   # *Get Content metadata*: The Reading System calls `getContentMetadata(`_conId_`)`.  The Service returns a valid contentMetadata object, whose `dc:identifier` metadata value equals _conId_.
   # *Get invalid Content metadata*: The Reading System calls `getContentMetadata(`_badId_`)`.  The Service throws an `invalidParameter` fault.
 
@@ -73,12 +78,14 @@ Variables
   * _badId_: A string which is not the identifier of a valid Content item on the Service.
   * _forbId_: The identifier of a valid Content item on the Service, which is not issued to the Reading System's User.
 
+Tests
   # *Get Content resources*: The Reading System calls `getContentResources(`_conId_`)`.  The Service returns a valid `contentMetadata` object, whose `dc:identifier` metadata value equals _conId_.
   # *Get invalid Content resources*: The Reading System calls `getContentResources(`_badId_`)`.  The Service throws an `invalidParameter` fault.
   # *Get forbidden Content resources*: The Reading System calls `getContentResources(`_forbId_`)`.  The Service throws an `invalidParameter` fault.
 
 === 5.1.7. The `getServiceAttributes` Operation ===
 
+Tests
   # *Get Service attributes*: The Reading System calls `getServiceAttributes()`.  The Service returns a valid `serviceAttributes` object.
 
 === 5.1.8. The `getContentList` Operation ===
@@ -88,6 +95,7 @@ Variables
   * _first_: The index of a `contentItem` in the _listId_ `contentList`, greater than 0.
   * _last_: The index of a `contentItem` in the _listId_ `contentList`, greater than _first_.
 
+Tests
   # *New items*: (PRE: The Service supports Out-of-band Content selection.) The RS calls `getContentList("new", 0, -1)`.  The Service returns a `contentList` with the identifier `new`.  No `contentItem`'s `id` is the identifier of an issued Content item.
   # *Issued items*: (PRE: The Service offers some Content under a lending model.) The RS calls `getContentList("issued", 0, -1)`.  The Service returns a `contentList` with the identifier `issued`.  Each `contentItem`'s `id` is the identifier of an issued Content item.
   # *Expired items*: (PRE: The Service provides the "expired" `contentList`.) The RS calls `getContentList("expired", 0, -1)`.  The Service returns a `contentList` with the identifier `expired`.  Each `contentItem`'s `id` is the identifier of an issued Content item.
@@ -100,6 +108,7 @@ A further precondition for each test in each section in 5.2 is that the given op
 
 === 5.2.1. The `getServiceAnnouncements` Operation ===
 
+Tests
   # *Get Service announcements*: The Reading System calls `getServiceAnnouncements()`.  The Service returns a valid `announcements` object.
 
 === 5.2.2. The `markAnnouncementsAsRead` Operation ===
@@ -107,6 +116,7 @@ A further precondition for each test in each section in 5.2 is that the given op
 Variables
   * _readItems_: A valid `read` object, whose `item`s have the values of announcemetns on the Service.
 
+Tests
   # *Mark as read*: The Reading System calls `markAnnouncementsAsRead(`_readItems_`)`.  The Service returns `true`.
 
 === 5.2.3. The `returnContent` Operation ===
@@ -116,6 +126,7 @@ Variables
   * _badId_: A string which is not the identifier of a valid Content item on the Service.
   * _forbId_: The identifier of a valid Content item on the Service, which is not issued to the Reading System's User.
 
+Tests
   # *Return Content*: The Reading System calls `returnContent(`_conId_`)`.  The Service returns `true`.
   # *Return invalid Content*: The Reading System calls `returnContent(`_badId_`)`.  The Service throws an `invalidParameter` fault.
   # *Return Content not in hand*: The Reading System calls `returnContent(`_forbId_`)`.  The Service throws an `invalidParameter` fault.
@@ -126,6 +137,7 @@ Variables
   * _conId_: The identifier of a valid Content item on the Service issued to the Reading System's User.
   * _bmS_: A `bookmarkSet` object whose `uid` element's value is _conId_.
 
+Tests
   # *Set bookmarks*: The Reading System calls `setBookmarks(`_conId_`, `_bmS_`)`.  The Service returns `true`.
 
 === 5.2.5. The `getBookmarks` Operation ===
@@ -133,6 +145,7 @@ Variables
 Variables
   * _conId_: The identifier of a valid Content item on the Service issued to the Reading System's User, which has bookmarks available.
 
+Tests
   # *Get bookmarks*: The Reading System calls `getBookmarks(`_conId_`)`.  The Service returns a valid `bookmarkSet` object whose `uid` element's value is _conId_.
 
 === 5.2.6. The `getQuestions` Operation ===
@@ -153,6 +166,7 @@ Variables:
   * _multiMultiUR_: A `userResponses` object, with multiple `userResponse` children whose `questionID` attributes are _multiId_, whose `value` attributes are different valid responses to the `multiId` question and have no children.
   * _comboUR_: A `userResponses` object, with four `userResponse` children, namely the `userResponse` children of _numericUR_, _alphaUR_, _audioUR_ and _multiUR_.
 
+Tests
   # *Get the root menu*: The Reading Systems calls `getQuestions(`_defaultUR_`)`.  The Service returns a valid `questions` object.
   # *Get the search menu*: (PRE: The Reading System has called `getQuestions(`_defaultUR_`)` once already in this session.) The Reading Systems calls `getQuestions(`_searchUR_`)`.  The Service returns a valid `questions` object.
   # *Go back*: _TODO: Write this._
@@ -164,3 +178,9 @@ Variables:
   # *Combination response*:  (PRE: _numericId_, _alphaId_, _audioId_ and _multiId_ are the identifiers of questions returned in some call to `getQuestions` in this session.) The Reading Systems calls `getQuestions(`_comboUR_`)`.  The Service returns a valid `questions` object.
 
 === 5.2.7. The `getKeyExchangeObject` Operation ===
+
+Variables
+  *
+
+Tests
+  #
