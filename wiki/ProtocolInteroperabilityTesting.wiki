@@ -31,6 +31,14 @@ Preconditions for individual tests are marked (PRE:).
 
 === 4.2.1. Session Initialization ===
 
+Variables
+  * _user_: A valid username on the Service.
+  * _pass_: _user_'s password.
+  * _rSA_: A `readingSystemAttributes` object representing the Reading System's attributes.
+
+Tests
+  # *Initialize session*: The Reading System connects to the Service.  The Reading System connects to the Service.  The Reading System calls `logOn(`_user_`, `_pass_`)`.  The Service returns `true` and sets a session cookie.  The Reading System calls `getServiceAttributes()`.  The Service returns a valid `serviceAttributes` object.  The Reading System calls `setReadingSystemAttributes(`_rSA_`)`.  The Service returns `true`.
+
 === 4.2.2. Session Duration ===
 
 == 4.3. Content Selection Methods ==
@@ -84,14 +92,14 @@ Variables
   * _badpass_: A string which is not _user_'s password.
 
 Tests
-  # *Valid log on*: The RS connects to the Service.  The RS calls `logOn(`_user_`, `_pass_`)`.  The Service returns `true` and sets a session cookie.
-  # *Invalid user*: The RS connects to the Service.  The RS calls `logOn(`_baduser_`, `_pass_`)`.  The Service returns `false`.
-  # *Invalid password*: The RS connects to the Service.  The RS calls `logOn(`_user_`, `_badpass_`)`.  The Service returns `false`.
+  # *Valid log on*: The Reading System connects to the Service.  The Reading System calls `logOn(`_user_`, `_pass_`)`.  The Service returns `true` and sets a session cookie.
+  # *Invalid user*: The Reading System connects to the Service.  The Reading System calls `logOn(`_baduser_`, `_pass_`)`.  The Service returns `false`.
+  # *Invalid password*: The Reading System connects to the Service.  The Reading System calls `logOn(`_user_`, `_badpass_`)`.  The Service returns `false`.
 
 === 5.1.2. The `logOff` Operation ===
 
 Tests
-  # *Log off*: The RS calls `logOff()`.  The Service returns `true`.
+  # *Log off*: The Reading System calls `logOff()`.  The Service returns `true`.
 
 === 5.1.3. The `setReadingSystemAttributes` Operation ===
 
@@ -99,7 +107,7 @@ Variables
   * _rSA_: A `readingSystemAttributes` object representing the Reading System's attributes.
 
 Tests
-  # *Set Reading System attributes*: The RS calls `setReadingSystemAttributes(`_rSA_`)`.  The Service returns `true`.
+  # *Set Reading System attributes*: The Reading System calls `setReadingSystemAttributes(`_rSA_`)`.  The Service returns `true`.
 
 === 5.1.4. The `issueContent` Operation ===
 
@@ -148,11 +156,11 @@ Variables
   * _last_: The index of a `contentItem` in the _listId_ `contentList`, greater than _first_.
 
 Tests
-  # *New items*: (PRE: The Service supports Out-of-band Content selection.) The RS calls `getContentList("new", 0, -1)`.  The Service returns a `contentList` with the identifier `new`.  No `contentItem`'s `id` is the identifier of an issued Content item.
-  # *Issued items*: (PRE: The Service offers some Content under a lending model.) The RS calls `getContentList("issued", 0, -1)`.  The Service returns a `contentList` with the identifier `issued`.  Each `contentItem`'s `id` is the identifier of an issued Content item.
-  # *Expired items*: (PRE: The Service provides the "expired" `contentList`.) The RS calls `getContentList("expired", 0, -1)`.  The Service returns a `contentList` with the identifier `expired`.  Each `contentItem`'s `id` is the identifier of an issued Content item.
-  # *Browse items*: (PRE: The Service supports Browse Content selection.) The RS calls `getContentList(`_listId_`, 0, -1)`.  The Service returns a `contentList` with the identifier _listId_.
-  # *Segmented list*: (PRE: The Service supports Browse Content selection.) The RS calls `getContentList(`_listId_`, `_first_`, `_last_`)`.  The Service returns a `contentList` with the identifier _listId_.
+  # *New items*: (PRE: The Service supports Out-of-band Content selection.) The Reading System calls `getContentList("new", 0, -1)`.  The Service returns a `contentList` with the identifier `new`.  No `contentItem`'s `id` is the identifier of an issued Content item.
+  # *Issued items*: (PRE: The Service offers some Content under a lending model.) The Reading System calls `getContentList("issued", 0, -1)`.  The Service returns a `contentList` with the identifier `issued`.  Each `contentItem`'s `id` is the identifier of an issued Content item.
+  # *Expired items*: (PRE: The Service provides the "expired" `contentList`.) The Reading System calls `getContentList("expired", 0, -1)`.  The Service returns a `contentList` with the identifier `expired`.  Each `contentItem`'s `id` is the identifier of an issued Content item.
+  # *Browse items*: (PRE: The Service supports Browse Content selection.) The Reading System calls `getContentList(`_listId_`, 0, -1)`.  The Service returns a `contentList` with the identifier _listId_.
+  # *Segmented list*: (PRE: The Service supports Browse Content selection.) The Reading System calls `getContentList(`_listId_`, `_first_`, `_last_`)`.  The Service returns a `contentList` with the identifier _listId_.
 
 == 5.2. Optional Operations ==
 
