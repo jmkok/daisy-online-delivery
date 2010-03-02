@@ -19,6 +19,58 @@ An active session established between the Reading System and the Service is a pr
 
 Preconditions for individual tests are marked (PRE:).
 
+= 4. Protocol Fundamentals =
+
+== 4.1. Service Models ==
+
+=== 4.1.1. Lending Model ===
+
+=== 4.1.2. Acquisition Model ===
+
+== 4.2. User Authentication and Session Management ==
+
+=== 4.2.1. Session Initialization ===
+
+=== 4.2.2. Session Duration ===
+
+== 4.3. Content Selection Methods ==
+
+=== 4.3.1. Out-of-band Content Selection Method ===
+
+=== 4.3.2. Browse Content Selection Method ===
+
+== 4.4. Issuing and Transfer of Content ==
+
+=== 4.4.1. Content Retrieval Sequence ===
+
+=== 4.4.2. Downloading and Streaming of Content ===
+
+=== 4.4.3. Publishing Updates and Installments ===
+
+=== 4.4.4. Rights management ===
+
+== 4.5. Service Announcements ==
+
+=== 4.5.1. New Announcements ===
+
+=== 4.5.2. Read Announcements ===
+
+== 4.6. Bookmarks ==
+
+== 4.7. Dynamic Menus ==
+
+=== 4.7.1. Support ===
+
+=== 4.7.2. Root Question ===
+
+=== 4.7.3. Navigation ===
+
+=== 4.7.4. Question Types ===
+
+=== 4.7.5. End Points ===
+
+=== 4.7.6. Reserved IDs ===
+
 = 5. API Reference =
 
 == 5.1. Required Operations ==
@@ -122,7 +174,7 @@ Tests
 === 5.2.3. The `returnContent` Operation ===
 
 Variables
-  * _conId_: The identifier of a valid Content item on the Service issued to the Reading System's User.
+  * _conId_: The identifier of a valid borrowable Content item on the Service issued to the Reading System's User.
   * _badId_: A string which is not the identifier of a valid Content item on the Service.
   * _forbId_: The identifier of a valid Content item on the Service, which is not issued to the Reading System's User.
 
