@@ -150,7 +150,7 @@ Tests
 
 === 5.2.6. The `getQuestions` Operation ===
 
-Variables:
+Variables
   * _defaultUR_: A `userResponses` object, with one `userResponse` child whose `questionID` attribute is `default` and has no children.
   * _searchUR_: A `userResponses` object, with one `userResponse` child whose `questionID` attribute is `search` and has no children.
   * _backUR_: A `userResponses` object, with one `userResponse` child whose `questionID` attribute is `back` and has no children.
@@ -180,7 +180,11 @@ Tests
 === 5.2.7. The `getKeyExchangeObject` Operation ===
 
 Variables
-  *
+  * _goodkey_: The name of a key available on the Service.
+  * _badkey_: A string which is not the name of a key available on the Service.
+  * _forbkey_: The name of a key available on the Service, which is not permitted to be sent to the Reading System.
 
 Tests
-  #
+  # *Get a key*: (PRE: In the most recent call to `setReadingSystemAttributes`, the `readingSystemAttributes` object passed included a `keyRing` element with an `item` child whose value is the name of a key (_userkey_) which _goodkey_ is permitted to be encrypted with.) The Reading System calls `getKeyExchangeObject(`_goodkey_`)`.  The Service returns a valid `KeyExchange` object containing _goodkey_ encrypted with _userkey_.
+  # *Get an invalid key*: The Reading System calls `getKeyExchangeObject(`_badkey_`)`.  The Service throws an `invalidParameter` fault.
+  # *Get a forbidden key*: The Reading System calls `getKeyExchangeObject(`_forbkey_`)`.  The Service throws an `invalidParameter` fault.
