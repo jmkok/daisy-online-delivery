@@ -119,11 +119,16 @@ Variables
 
 Variables
   * _conId_: The identifier of a valid Content item on the Service issued to the Reading System's User.
+  * _bmS_: A `bookmarkSet` object whose `uid` element's value is _conId_.
+
+  # *Set bookmarks*: The Reading System calls `setBookmarks(`_conId_`, `_bmS_`)`.  The Service returns `true`.
 
 === 5.2.5. The `getBookmarks` Operation ===
 
 Variables
   * _conId_: The identifier of a valid Content item on the Service issued to the Reading System's User, which has bookmarks available.
+
+  # *Get bookmarks*: The Reading System calls `getBookmarks(`_conId_`)`.  The Service returns a valid `bookmarkSet` object whose `uid` element's value is _conId_.
 
 === 5.2.6. The `getQuestions` Operation ===
 
