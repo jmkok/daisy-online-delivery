@@ -137,4 +137,18 @@ Variables
 
 === 5.2.6. The `getQuestions` Operation ===
 
+Variables:
+  * _defaultUR_: A `userResponses` object, with one `userResponse` child whose `questionID` attribute is `default` and has no children.
+  * _searchUR_: A `userResponses` object, with one `userResponse` child whose `questionID` attribute is `search` and has no children.
+  * _backUR_: A `userResponses` object, with one `userResponse` child whose `questionID` attribute is `back` and has no children.
+  * _numericId_: The identifier of an `inputQuestion` on the Service that accepts numeric input.
+  * _alphaId_: The identifier of an `inputQuestion` on the Service that accepts alphanumeric input.
+  * _audioId_: The identifier of an `inputQuestion` on the Service that accepts audio input.
+  * _multiId_: The identifier of a `multipleChoiceQuestion` on the Service.
+  * _numericUR_: A `userResponses` object, with one `userResponse` child whose `questionID` attribute is _numericId_, whose `value` attribute is a numeric string and has no children.
+  * _alphaUR_: A `userResponses` object, with one `userResponse` child whose `questionID` attribute is _alphaId_, whose `value` attribute is an alphanumeric string and has no children.
+  * _audioUR_: A `userResponses` object, with one `userResponse` child whose `questionID` attribute is _audioId_ and has one `data` child whose value is a RIFF WAVE binary.
+  * _multiUR_: A `userResponses` object, with one `userResponse` child whose `questionID` attribute is _multiId_, whose `value` attribute is a valid response to the `multiId` question and has no children.
+  * _comboUR_: A `userResponses` object, with several `userResponse` children, at least one whose `questionID` attribute is the identifier of an `inputQuestion` and one whose `questionID` attribute is the identifier of a `multipleChoiceQuestion`.
+
 === 5.2.7. The `getKeyExchangeObject` Operation ===
