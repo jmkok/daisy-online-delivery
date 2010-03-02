@@ -19,7 +19,7 @@ scribe: Kenny
   === Previous Unfinished Action Items ===
 
   * Jelle post the key name he intends to use to the list for KXO creation. *done* 
-  * Johan make three KXOs available per Reading system.
+  * Johan make three KXOs available per Reading system. *done*
   * Kenny add a normative assertion, that sets forth the invalidParameter fault as the consequence of a Reading System calling the getQuestions operation with the "back" id when no prior call to the getQuestions operation has been made in the active session, to the spec and the conformance testing documents.
   * Kenny add a normative assertion, that sets forth the invalidParameter fault as the consequence of a Reading System calling the getQuestions operation with the "back" and "search" IDs, when these IDs are not supported by a Service. 
   * Geoff add verbiage to the spec stating that no input questions should be sent to a Reading System that require an input type not supported by the Reading System. *done*
@@ -30,7 +30,7 @@ scribe: Kenny
   * Nick, Hiro, Johan and Kenny to review the Systems Testing document and post their comments/participation intentions  on the page or on the list before the next telecon. *done*
   * Nick, Johan, Simon, Hiro and Jelle to review the Conformance Testing document, post their comments on the page or the list, and add test cases.
   * Hiro and Jelle to send their public keys to the service implementers. *done: Waiting for KXOs*
-  * Johan to provide the RS specific KXOs to the service implementers. *waiting for manufacturer and model key names from hiro*
+  * Johan to provide the RS specific KXOs to the service implementers. *done*
   * Simon to add the minOccurs and maxOccurs tweak to the tweaks page.
   * Geoff to record an issue in the issue tracker for the setBlob/getBlob operations as suggested by Jelle, and mark this issue as an enhancement for the next version of the spec.   *done*   
   * After the pdtb2 folks have fixed their version of kxo.xsd, kenny to change XSDs to their canonical URIs. *done*
