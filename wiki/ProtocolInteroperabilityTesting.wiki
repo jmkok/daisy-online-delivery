@@ -104,6 +104,11 @@ A further precondition for each test in each section in 5.2 is that the given op
 
 === 5.2.2. The `markAnnouncementsAsRead` Operation ===
 
+Variables
+  * _readItems_: A valid `read` object, whose `item`s have the values of announcemetns on the Service.
+
+  # *Mark as read*: The Reading System calls `markAnnouncementsAsRead(`_readItems_`)`.  The Service returns `true`.
+
 === 5.2.3. The `returnContent` Operation ===
 
 Variables
