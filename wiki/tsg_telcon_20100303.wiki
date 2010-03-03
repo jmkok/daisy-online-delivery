@@ -1,0 +1,159 @@
+present: 
+
+Regrets: 
+
+scribe: Kenny
+
+== Action Item Summary ==
+ 
+=== New Action Items ===
+
+  === Previous Unfinished Action Items ===
+
+  * Geoff eliminate the ambiguity around the use of the word "Content" in the spec, and close Issue 211.     
+  * Geoff replace "invoke" with "call" for all its occurrences in the context of an operation, and close Issue 212.   
+  * Geoff remove unnecessary use of Notes from the spec, and close Issue 213.
+  * Hiro provide Johan manufacturer and model key names for KXO generation. *done* 
+  * Simon, Jelle, Johan, Geoff and Hiro implement pdtb2 support in their test implementations by 8 March. 
+  * Simon and Geoff reformat the Conformance Testing document, and rename it to Interoperability Testing.
+  * Johan provide sample content in contentMetadata. 
+  * Kenny add a normative assertion, that sets forth the invalidParameter fault as the consequence of a Reading System calling the getQuestions operation with the "back" id when no prior call to the getQuestions operation has been made in the active session, to the spec and the Interoperability testing documents.
+  * Kenny add a normative assertion, that sets forth the invalidParameter fault as the consequence of a Reading System calling the getQuestions operation with the "back" and "search" IDs, when these IDs are not supported by a Service. 
+  * Kenny add substantive comments to issue tracker.
+  * Kenny inform the owner of a substantive comment once the comment has been addressed.
+  * Simon to add the minOccurs and maxOccurs tweak to the tweaks page.
+  * After the pdtb2 folks have fixed their version of kxo.xsd, kenny to change XSDs to their canonical URIs. 
+  * Markus fix the &apos; entity problem. (outstanding; bug in IE.) (Markus will fix this when ready to publish.)
+
+=== Group Action Items ===
+
+==== Action items for formal recommendation to the Board on April 5, 2010 ====  
+
+   * Deliver Final version of the spec.  
+   * Provide Information on comments Received, and how they were addressed.  
+   * Make available the Interoperability Testing document.
+   * Make Available the Systems Testing document.  
+   * Make available the Interoperability Testing Conformance Report.
+   * make available the systems testing  Conformance report. 
+   * Make a page available that provides PDTB2 specific knowledge to Daisy Online Implementers. 
+   * Make a page available that provides all the tweaks to the WSDL and XSD files, that group members had to make to these files for their respective implementations.
+   * Make a formal Recommendation to the board for approval.  
+
+== Agenda/Minutes ==
+
+=== soap faults ===
+
+Kenny: Consensus check: Is everyone happy with leaving the spec as is in terms of soap faults, or would people prefer that the spec explicitly state that a Service must use the client and server soap fault classes in accordance with ws-i basic profile 1.1?   
+
+=== Issues ===
+
+==== Issue 216 ====
+
+Geoff: We should spell out the steps that should be taken to synchronize content
+in an out-of-band selection model.  This would be informative.
+
+==== Issue 217 =====
+
+Johan: in bookmark-2005-1.xsd we should refer to the canonical URI of xml.xsd
+instead of a local copy
+
+Kenny: there is already an action item on me to change the local xsds to their cononical identifiers. given that the pdtb2 folks have now published the changes on the DC website, perhaps now is a good time to make this change? 
+
+
+==== Issue 218 ====
+
+Johan: according to 
+http://www.daisy.org/z3986/2005/Z3986-2005.html#li_440
+
+lastmark element doesn't contain any attributes while in the bookmark
+schema we have defined a label attribute
+ 
+
+
+==== Issue 219 ====
+
+Johan: according to the [ChangeLog]
+ncxRef and charOffset has been changed from
+empty complex types to xs:stringS while they are defined as xs:anyURI and
+xs:long in the schema
+
+Geoff: This is a problem with the [ChangeLog],
+not the schema.
+
+==== Issue 220 ====
+
+Johan: the "bookmark" and "KeyExchange" schemas are imported in do-types-10.xsd
+although we don't refer to any elements in these schemas from it
+ 
+==== Issue 221 ====
+
+Johan: no types have been defined for 
+  * contentMetadata/metadata/meta@name
+  * contentMetadata/metadata/meta@content
+   * contentMetadata@category
+ 
+I suggest we assign a type for these. depending on the use we can choose
+between xs:string, xs:anySimpleType, or xs:anyType
+
+==== Issue 222 ====
+
+Johan: as of now the keyRing element is top-level element although it's no longer
+a top-level element
+
+Geoff: Let's not.  It's a wart, but it works fine as-is.
+
+==== Issue 223 ====
+
+Johan: should we make a note that the service must include the firstItem and
+lastItem attributes in a response when the RS request a partial content list
+ 
+==== Issue 224 ====
+
+Johan: This proposal is to add an indicator so that service providers can
+distinguish between downloading and streaming devices.
+
+Johan: There are currently no means for a service provider to distinguish between
+downloading and streaming devices. As a service provider, if I have many users
+simultaneously trying to retrieve a content, I would like to redirect streaming
+devices to a server where where bandwidth is available while downloading devices are
+directed to a server where they all have to share the available bandwidth.
+ 
+This might not be a requirement for the protocol but would make a nice feature for
+service providers.
+ 
+A solution to address this feature would be to add an parameter to the
+getContentResources operation indicating what the RS is intending to do.
+ 
+E.g. getContentResources("some id", "stream")
+ 
+geoff: This is a duplicate of 
+ issue 94 .
+
+==== Issue 225 ====
+
+Johan: In Section 4.4.1 Content Retrieval Sequence, the first operation is:
+ 
+"1. The  getContentMetadata   operation must be called to obtain
+information about the Content. The returned metadata includes publication
+information, file format and size and may include the return status and date."
+ 
+- return status is required
+- contentMetadata does not contain a date attribute anymore and should be
+removed
+    
+=== Test suite Progress review ===
+
+==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolInteroperabilityTesting Interoprability Testing] ====
+
+==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolSystemTestingTestCases Systems Testing] ====
+
+==== [http://code.google.com/p/daisy-online-delivery/wiki/SummaryOfRecommendations Summary of Recommendations] ====
+
+== Related Wiki Pages ==
+
+=== [http://code.google.com/p/daisy-online-delivery/wiki/ChangeLog Change Log] ===
+
+=== [http://code.google.com/p/daisy-online-delivery/wiki/pdtb2_description PDTB2 Description for Daisy Online Implementers] ===
+
+=== [http://code.google.com/p/daisy-online-delivery/wiki/WSDLAndXSDTweaks WSDL and XSD Tweaks for Daisy Online Implementers] ===
+ 
