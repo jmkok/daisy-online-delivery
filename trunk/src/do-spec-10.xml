@@ -997,8 +997,8 @@
                                 <xref linkend="op_getContentMetadata"/>
                             </function> operation must be called to obtain information about the
                                 <xref linkend="term_content"/>. The returned metadata includes
-                            publication information, file format and size and may include the return
-                            status and date. </para>
+                            publication information, file format, the return
+                            status and size. </para>
                     </listitem>
 
                     <listitem>
