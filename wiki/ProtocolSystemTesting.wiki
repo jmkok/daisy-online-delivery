@@ -110,7 +110,7 @@ Note: Storing user-created bookmarks is covered under requirement #13, Bookmark 
 
 || Test case || Client || Server || Result || Details ||
 || 4.1 || CNIB || CNIB ||  ||  ||
-|| 4.1 || CNIB || Vision Australia ||  ||  ||
+|| 4.1 || CNIB || Vision Australia || *Success* || A book was downloaded and returned successfully. ||
 || 4.1 || !PlexTalk || CNIB ||  ||  ||
 || 4.1 || !PlexTalk || Vision Australia ||  ||  ||
 || 4.2 || !PlexTalk || CNIB ||  ||  ||
