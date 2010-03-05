@@ -56,13 +56,14 @@ Changes to `bookmark-2005-1.xsd`:
   * Changed the following types from empty complex types to `xs:string`s:
     * `uid`
     * `timeOffset`
-    * `charOffset`
-    * `ncxRef`
     * `text`
+  * Changed `ncxRef` from empty complex type to `xs:anyURI`
+  * Changed `charOffset` from empty complex type to `xs:long`
   * Put the following groups (marked with curly braces `{}`) inside `<xs:sequence>` (does not change the syntax, but allows some XSD parsers to work):
     * `lastmark/{bookmarkContent}`
     * `hilite/hiliteStart/{hiliteContent}`
     * `hilite/hiliteEnd/{hiliteContent}`
+  * Removed attribute `lastmark@label`
 
 == Documentation ==
 
