@@ -18,12 +18,6 @@
 	<xs:import namespace="http://purl.org/dc/elements/1.1/"
 		schemaLocation="http://dublincore.org/schemas/xmls/qdc/2008/02/11/dc.xsd"/>
 
-	<xs:import namespace="http://www.daisy.org/z3986/2005/bookmark/"
-		schemaLocation="bookmark-2005-1.xsd"/>
-
-	<xs:import namespace="http://www.daisy.org/DRM/2005/KeyExchange"
-		schemaLocation="http://www.daisy.org/DRM/KeyExchange-2005-1.xsd"/>
-
 	<xs:element name="readingSystemAttributes">
 		<xs:annotation>
 			<xs:documentation>
@@ -690,8 +684,8 @@
 									</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
-									<xs:attribute name="name" use="required"/>
-									<xs:attribute name="content" use="required"/>
+									<xs:attribute name="name" type="xs:string" use="required"/>
+									<xs:attribute name="content" type="xs:string" use="required"/>
 								</xs:complexType>
 							</xs:element>
 							<xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -702,7 +696,7 @@
 				</xs:element>
 			</xs:sequence>
 
-			<xs:attribute name="category" use="optional">
+			<xs:attribute name="category" type="xs:string" use="optional">
 				<xs:annotation>
 					<xs:documentation>
 						<db:para role="desc">The publication category for the
