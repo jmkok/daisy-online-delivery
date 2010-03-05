@@ -39,6 +39,9 @@ Changes to `do-types-10.xsd`:
     * `contentList@totalItems` changed from `xs:integer` to `xs:int`.
     * `contentList/contentItem/id` changed from `xs:ID` to `xs:string`.
     * `contentMetadata/metadata/size` changed from `xs:integer` to `xs:long`.
+    * `contentMetadata/metadata/meta@name` changed from `unspecified` to `xs:string`.
+    * `contentMetadata/metadata/meta@content` changed from `unspecified` to `xs:string`.
+    * `contentMetadata@category` changed from `unspecified` to `xs:string`.
     * `inputQuestion@id` changed from `xs:ID` to `xs:NMTOKEN`.
     * `label/audio@rangeBegin` changed from `xs:integer` to `xs:long`.
     * `label/audio@rangeEnd` changed from `xs:integer` to `xs:long`.
