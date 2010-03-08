@@ -492,7 +492,7 @@
 									<db:para role="desc">The Content Identifier of the sample.</db:para>
 									<db:para>Reading Systems may retrieve the sample's resource list by calling
 											<db:function><db:xref linkend="op_getContentResources"/></db:function> with this
-										identifier as the parameter. Reading Systems must not invoke
+										identifier as the parameter. Reading Systems must not call
 											<db:function><db:xref linkend="op_issueContent"/></db:function> using the identifier of a
 										sample.</db:para>
 								</xs:documentation>
@@ -954,7 +954,7 @@
 		<xs:annotation>
 			<xs:documentation>
 				<db:para role="desc">A sequence of questions.</db:para>
-				<db:para role="req">The questions element must contain either:</db:para>
+				<db:para role="req">The <db:type>questions</db:type> element must contain either:</db:para>
 					<db:itemizedlist>
 						<db:listitem>
 							<db:para>exactly one <db:type>contentListRef</db:type>; or</db:para>
@@ -967,10 +967,9 @@
 							<db:type>inputQuestion</db:type>s, in any order.</db:para>
 						</db:listitem>
 					</db:itemizedlist>
-				<db:para role="desc">If the questions element contains a
+				<db:para role="desc">If the <db:type>questions</db:type> element contains a
 						<db:type>contentListRef</db:type> or a <db:type>label</db:type> child
-					element, the Reading system is not required to call the <db:function><db:xref linkend="op_getQuestions"/></db:function> operation
-					as these child elements indicate that this is an endpoint to the sequence of questions that
+					element, it is an endpoint to the sequence of questions that
 					comprise a dynamic menu.</db:para>
 				<db:para>For informative examples on the usage of the <db:type>questions</db:type> type, refer to the
 						<db:xref linkend="bib_dynamicMenusPrimer"/>.</db:para>
