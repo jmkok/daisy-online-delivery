@@ -1012,20 +1012,13 @@
                                 another <xref linkend="term_session"/>. </para>
                         </note>
 
-                        <para> If a <xref linkend="term_service"/> returns a
-                                <literal>false</literal> (<xref linkend="bib_xsdDatatypes"/>)
-                            value or a <link linkend="apiReferenceFaults">fault</link>, then the
+                        <para> If a <xref linkend="term_service"/> returns
+                                <literal>false</literal>
+                            or a <link linkend="apiReferenceFaults">fault</link>, then the
                                 <xref linkend="term_content"/> has not been issued. A <xref
                                 linkend="term_readingSystem"/> must not proceed to the next step
-                            until the <xref linkend="term_service"/> returns a
-                                <literal>true</literal> value. </para>
-
-                        <note>
-                            <para> This protocol does not specify the <xref
-                                    linkend="term_readingSystem"/> behaviors that occur when a <xref
-                                    linkend="term_service"/> does not return
-                                    <literal>true</literal>.</para>
-                        </note>
+                            unless the <xref linkend="term_service"/> returns a
+                                <literal>true</literal> value.</para>
 
                         <note>
                             <para>The requirement for the Reading System to call <function>issueContent</function>
