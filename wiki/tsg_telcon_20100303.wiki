@@ -14,9 +14,9 @@ scribe: Kenny
   * Geoff replace "invoke" with "call" for all its occurrences in the context of an operation, and close Issue 212.   
   * Geoff remove unnecessary use of Notes from the spec, and close Issue 213.
   * Hiro provide Johan manufacturer and model key names for KXO generation. *done* 
-  * Simon, Jelle, Johan, Geoff and Hiro implement pdtb2 support in their test implementations by 8 March. 
+  * Simon, Jelle, Johan, Geoff and Hiro implement pdtb2 support in their test implementations by 8 March. *Johan: done* 
   * Simon and Geoff reformat the Conformance Testing document, and rename it to Interoperability Testing.
-  * Johan provide sample content in contentMetadata. 
+  * Johan provide sample content in contentMetadata. *done* 
   * Kenny add a normative assertion, that sets forth the invalidParameter fault as the consequence of a Reading System calling the getQuestions operation with the "back" id when no prior call to the getQuestions operation has been made in the active session, to the spec and the Interoperability testing documents.
   * Kenny add a normative assertion, that sets forth the invalidParameter fault as the consequence of a Reading System calling the getQuestions operation with the "back" and "search" IDs, when these IDs are not supported by a Service. 
   * Kenny add substantive comments to issue tracker.
