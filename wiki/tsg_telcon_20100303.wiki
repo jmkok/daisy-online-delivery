@@ -9,14 +9,14 @@ scribe: Kenny
 === New Action Items ===
 
   * geoff add informative verbiage to the spec that outlines the steps that need to be taken to synchronise content in an  out-of-band selection model. 
-  * Geoff change xsds to their canonical identifiers, and close Issue 217.   
-  * kenny eliminate the label attribute definition from the lastmark element in the bookmark xsd, and close Issue 218.  
-  * Johan make the required change to the [changelog], and close  Issue 219. 
-  * Geoff eliminate the import of the kxo and bookmark xsds in the do-types-10.xsd file, and close Issue 220.
-  * Kenny add required definitions to the types xsd, and close Issue 221. 
-  * johan close issue 222 and Issue 223.
+  * Geoff change xsds to their canonical identifiers, and close Issue 217. *done*
+  * kenny eliminate the label attribute definition from the lastmark element in the bookmark xsd, and close Issue 218. *done*
+  * Johan make the required change to the ChangeLog, and close  Issue 219. *done*
+  * Geoff eliminate the import of the kxo and bookmark xsds in the do-types-10.xsd file, and close Issue 220. *done*
+  * Kenny add required definitions to the types xsd, and close Issue 221.  *done*
+  * johan close issue 222 and Issue 223. *done*
   * kenny add a feature request to the Daisy Issue Tracker for the next version of the spec that will enable a service to determine whether a Reading system intends to download or stream content, and close Issue 224.
-  * Geoff make required changes to Section 4.4.1 of the spec, and close Issue 225. 
+  * Geoff make required changes to Section 4.4.1 of the spec, and close Issue 225. *done*
   * Johan and Kenny advice Nick on what sections he should work on in the Interoperability Testing document. 
   * Johan, Nick and kenny work on the Interoperability testing document before the next telecon to produce the first draft.
   * Johan send an email to the group when his service is refreshed to the february version of the spec. *done*
@@ -26,8 +26,8 @@ scribe: Kenny
   === Previous Unfinished Action Items ===
 
   * Geoff eliminate the ambiguity around the use of the word "Content" in the spec, and close Issue 211.     
-  * Geoff replace "invoke" with "call" for all its occurrences in the context of an operation, and close Issue 212.   
-  * Geoff remove unnecessary use of Notes from the spec, and close Issue 213.
+  * Geoff replace "invoke" with "call" for all its occurrences in the context of an operation, and close Issue 212. *done* 
+  * Geoff remove unnecessary use of Notes from the spec, and close Issue 213. *done*
   * Hiro provide Johan manufacturer and model key names for KXO generation. *done* 
   * Simon, Jelle, Johan, Geoff and Hiro implement pdtb2 support in their test implementations by 8 March. *Johan: done* 
   * Simon and Geoff reformat the Conformance Testing document, and rename it to Interoperability Testing.
