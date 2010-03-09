@@ -200,8 +200,8 @@
                         change over time.</para>
                     <note>
                         <para>The Content Identifier is not required to match any identifiers used
-                            in the <xref linkend="term_content"/> (for example, the unique
-                            identifier for a DAISY Digital Talking Book).</para>
+                            in the <xref linkend="term_content"/> (for example, the
+                            identifier in a DAISY Digital Talking Book's metadata).</para>
                     </note>
                 </listitem>
             </varlistentry>
@@ -318,11 +318,8 @@
                 <term>Service Provider</term>
                 <listitem>
                     <para> The person(s) or organization(s) who own a <xref linkend="term_service"
-                        />. </para>
-                    <note>
-                        <para>The Service Provider may or may not be the same entity who owns the servers
+                        />.  The Service Provider may or may not be the same entity who owns the servers
                             the <xref linkend="term_service"/> runs on.</para>
-                    </note>
                 </listitem>
             </varlistentry>
 
@@ -666,29 +663,22 @@
                         <link linkend="term_return">return</link> of <xref linkend="term_content" />
                         by a <xref linkend="term_readingSystem"/>: 
                         the <code>returnBy</code> attribute of the <type><xref linkend="tp_resources"/></type> type,
-                        and the <literal>expired</literal> <type><xref linkend="tp_contentList"/></type>.</para>
-                    <note>
-                        <para>
+                        and the <literal>expired</literal> <type><xref linkend="tp_contentList"/></type>.
                             This protocol does not require the enforcement of these methods on the <xref linkend="term_readingSystem"/>.
                             <xref linkend="term_serviceProvider"/>s should investigate other methods for protecting 
                             <xref linkend="term_content"/> that must expire at a specific time (for example <abbrev>DRM</abbrev> 
                             schemes like <xref linkend="bib_pdtb2"/>).</para>
-                    </note>
                     
                     <para>
                         The <code>returnBy</code> attribute indicates the time before which the <xref linkend="term_user"/> 
                         should <link linkend="term_return">return</link> the <xref linkend="term_content"/>.
                         If it has a real-time clock, a <xref linkend="term_readingSystem"/> should
                         delete the <xref linkend="term_content"/> at the specified time and <link linkend="term_return">return</link>
-                        the <xref linkend="term_content"/> to the <xref linkend="term_service"/> at the next <xref linkend="term_session"/>.</para>
-                    
-                    <note>
-                        <para>
+                        the <xref linkend="term_content"/> to the <xref linkend="term_service"/> at the next <xref linkend="term_session"/>.
                             <xref linkend="term_readingSystem"/>s should
-                            be able to communicate the due date provided in the <code>returnBy</code> attribute 
+                            communicate the due date provided in the <code>returnBy</code> attribute 
                             to the <xref linkend="term_user"/>.
                         </para>
-                    </note>
                     
                     <para>The <literal>expired</literal> <type><xref linkend="tp_contentList"/></type> may be populated by a
                         <xref linkend="term_service"/> with <xref linkend="term_borrow" /> that has been
@@ -757,6 +747,13 @@
                     xreflabel="Session Initialization Sequence"> The following steps must be
                     followed when starting a <xref linkend="term_session"/> to authenticate a <xref
                         linkend="term_readingSystem"/> to a <xref linkend="term_service"/>: </para>
+				<para> The <xref linkend="term_serviceProvider"/> is responsible for
+					stipulating and supplying the <xref linkend="term_user"/> with the
+					credentials required to authenticate a <xref
+						linkend="term_readingSystem"/>. A Service may
+					provide credentials per <xref linkend="term_user"/>, per
+					group or class of <xref linkend="term_user"/>, per <xref
+						linkend="term_readingSystem"/> or by any other method. </para>
 
                 <orderedlist>
                     <listitem>
@@ -765,15 +762,6 @@
                                 linkend="term_service"/> by calling the <function>
                                 <xref linkend="op_logOn"/>
                             </function> operation.</para>
-                        <note>
-                            <para> The <xref linkend="term_serviceProvider"/> is responsible for
-                                stipulating and supplying the <xref linkend="term_user"/> with the
-                                credentials required to authenticate a <xref
-                                    linkend="term_readingSystem"/>. A non-exhaustive list of ways to
-                                provide credentials includes: per <xref linkend="term_user"/>, per
-                                group or class of <xref linkend="term_user"/>, or per <xref
-                                    linkend="term_readingSystem"/>. </para>
-                        </note>
                     </listitem>
                     
                     <listitem>
@@ -814,15 +802,10 @@
                 <para> If a <xref linkend="term_service"/> returns a <link
                         linkend="apiReferenceFaults">Fault</link> during any of the initialization
                     steps, or if a required return value is not provided, a <xref
-                        linkend="term_readingSystem"/> must attempt to re-initialize the <xref
-                        linkend="term_session"/> or abort the logon process. </para>
-
-                <note>
-                    <para> This protocol does not define what <xref linkend="term_readingSystem"/>
-                        behaviors must occur after a logon attempt fails. A <xref
-                            linkend="term_readingSystem"/> can alert the user, attempt to reconnect
+                        linkend="term_readingSystem"/> may attempt to re-initialize the <xref
+                        linkend="term_session"/> or abort the logon process. A <xref
+                            linkend="term_readingSystem"/> may alert the user, attempt to reconnect
                         automatically or take any action, particular to that device. </para>
-                </note>
 
                 <para> A <xref linkend="term_service"/> must return an <errorname>
                         <xref linkend="ft_invalidOperationFault"/>
@@ -831,7 +814,7 @@
                     section before successfully completing the full initialization sequence. </para>
 
                 <para> After completing a successful logon and initialization sequence, a <xref
-                        linkend="term_readingSystem"/> can call any <xref linkend="term_operation"
+                        linkend="term_readingSystem"/> may call any <xref linkend="term_operation"
                     />s defined by this specification, but must complete the initialization sequence
                     outlined in this section again if calling <function>logOn</function>.</para>
 
@@ -845,13 +828,10 @@
                     </function> operation. The <xref linkend="term_session"/> must remain active
                     until the <xref linkend="term_readingSystem"/> successfully calls <function>
                         <xref linkend="op_logOff"/>
-                    </function> or the <xref linkend="term_service"/> terminates it. </para>
-
-                <note>
-                    <para> This protocol does not define behaviors relating to the termination of
+                    </function> or the <xref linkend="term_service"/> terminates it. 
+                 This protocol does not define behaviors relating to the termination of
                             <xref linkend="term_session"/>s. Time out intervals, reasons for forced
                         termination and related aspects are defined by the implementation. </para>
-                </note>
 
                 <para> A <xref linkend="term_service"/> should persist a <xref
                         linkend="term_session"/> across multiple HTTP connections by a <xref
@@ -886,14 +866,6 @@
 
             <para> A <xref linkend="term_serviceProvider"/> must offer <xref linkend="term_user"/>s
                 at least one content selection method. </para>
-
-            <note>
-                <para> The two methods for selecting <xref linkend="term_content"/> outlined in this
-                    section are not exclusive. <xref linkend="term_serviceProvider"/>s may choose to
-                    implement both (for example, to provide an automated newspaper
-                    delivery service while allowing <xref linkend="term_user"/>s to browse their
-                    catalog). </para>
-            </note>
 
             <para> A <xref linkend="term_readingSystem"/> should support both content selection
                 methods for maximum interoperability, but is only required to support one method for
@@ -965,22 +937,15 @@
                 <title>Content Retrieval Sequence</title>
 
                 <para xml:id="def_contentRetrievalSequence" xreflabel="Content Retrieval Sequence">
-                    In order to download <xref linkend="term_content"/> from a <xref
+                    In order to download a <xref linkend="term_content"/> item from a <xref
                         linkend="term_service"/>, a <xref linkend="term_readingSystem"/> must first
-                    call the following <xref linkend="term_operation"/>s in the given sequence. </para>
+                    call the following <xref linkend="term_operation"/>s in the given order.
+					The Operations do not need to be called immediately one after the other
+					(other Operations may be called for other Content items),
+					but the order must be maintained.</para>
 
-                <note>
-                    <para> A <xref linkend="term_readingSystem"/> must retrieve a
-                            <type>contentList</type> from a <xref linkend="term_service"/> using one
-                        of the methods described in <xref linkend="fundamentals_content_selection"/>
-                        prior to requesting that the <xref linkend="term_service"/> issue any items.
-                    </para>
-                </note>
-
-                <note>
-                    <para> All of the <xref linkend="term_operation"/>s identified in this section
-                        take a <xref linkend="term_contentIdentifier"/> as a parameter. </para>
-                </note>
+				<para> All of the <xref linkend="term_operation"/>s identified in this section
+					take a <xref linkend="term_contentIdentifier"/> as a parameter. </para>
 
                 <orderedlist>
                     <listitem>
@@ -1003,15 +968,6 @@
                                 <literal>true</literal> (<xref linkend="bib_xsdDatatypes"/>) value
                             in order to proceed to the next step. </para>
 
-                        <note>
-                            <para> A <xref linkend="term_readingSystem"/> is not required to
-                                immediately proceed to the next step after successfully being issued
-                                    <xref linkend="term_content"/>. Other <xref
-                                    linkend="term_operation"/>s can be called and/or the <xref
-                                    linkend="term_readingSystem"/> can call the next step in
-                                another <xref linkend="term_session"/>. </para>
-                        </note>
-
                         <para> If a <xref linkend="term_service"/> returns
                                 <literal>false</literal>
                             or a <link linkend="apiReferenceFaults">fault</link>, then the
@@ -1020,34 +976,23 @@
                             unless the <xref linkend="term_service"/> returns a
                                 <literal>true</literal> value.</para>
 
-                        <note>
-                            <para>The requirement for the Reading System to call <function>issueContent</function>
-                                does not require a <xref linkend="term_service"/> to track any
-                                information about the request. For example, a <xref linkend="term_service"/> may
-                                return <literal>true</literal> to all requests,
-								if the Service Provider wishes.
-                            </para>
-                        </note>
                     </listitem>
 
                     <listitem>
                         <para><function>
                                 <xref linkend="op_getContentResources"/>
-                            </function> must be called to obtain the location of all the
+                            </function> must be called to obtain the <abbrev>URI</abbrev>s of all the
                             resources that constitute the <xref linkend="term_content"/>. A <xref
                                 linkend="term_service"/> may allow more than one call to
                                 <function>getContentResources</function> for each issued
                                 <xref linkend="term_content"/> item. </para>
 
-                        <note>
                             <para>
-                                <xref linkend="term_service"/>s that track the issuing of <xref
-                                    linkend="term_content"/> should return an <errorcode>
+                                <xref linkend="term_service"/>s must return an <errorcode>
                                     <xref linkend="ft_invalidParameterFault"/>
                                 </errorcode> fault when a <xref linkend="term_readingSystem"/>
                                 calls <function>getContentResources</function> for <xref
                                     linkend="term_content"/> that has not been issued. </para>
-                        </note>
 
                         <para> A <xref linkend="term_service"/> should allow calls to
                                 <function>getContentResources</function> for the same <xref
@@ -1056,7 +1001,21 @@
                     </listitem>
                 </orderedlist>
 
-            </section>
+				<para> A <xref linkend="term_readingSystem"/> will generally retrieve a
+						<type>contentList</type> from a <xref linkend="term_service"/> using one
+					of the methods described in <xref linkend="fundamentals_content_selection"/>
+					prior to requesting that the <xref linkend="term_service"/> issue any items.
+				</para>
+
+				<note>
+					<para>The requirement for the Reading System to call <function>issueContent</function>
+						does not require a <xref linkend="term_service"/> to track any
+						information about the request. For example, a <xref linkend="term_service"/> may
+						return <literal>true</literal> to all requests,
+						if the Service Provider wishes.
+					</para>
+				</note>
+				</section>
 
 
             <section xml:id="fundamentals_content_download">
@@ -1128,11 +1087,9 @@
                     attribute that the <xref linkend="term_readingSystem"/> may use to determine
 					which specific resources have been updated. </para>
 
-                <note>
-                    <para> The functionality detailed in this section can also be used to publish
-                        installments by progressively updating the same <xref linkend="term_content"
-                        /> item. </para>
-                </note>
+				<para> The functionality detailed in this section can also be used to publish
+					installments by progressively updating the same <xref linkend="term_content"
+					/> item. </para>
 
             </section>
 
@@ -1148,7 +1105,13 @@
 				
                 <para>
                     <xref linkend="term_readingSystem"/>s and <xref linkend="term_service"/>s are
-                    not required to support <abbrev>PDTB2</abbrev>. </para>
+                    not required to support <abbrev>PDTB2</abbrev>.
+					<xref linkend="term_service"/>s may provide
+					<abbrev>PDTB2</abbrev>-protected <xref linkend="term_content"/> without
+					supporting <function>getKeyExchangeObject</function> when
+					alternate means of key provision have been implemented, for example
+					when keys are provided with the <xref linkend="term_readingSystem"/>.
+				</para>
 
 				<note>
 					<para>This protocol does not provide any trust mechanism; there is no method for
@@ -1180,15 +1143,6 @@
                             <xref linkend="tp_operation"/>
                         </type> element with the value <literal>PDTB2_KEY_PROVISION</literal> in its
                         <type><xref linkend="tp_serviceAttributes"/></type>. </para>
-                    <note>
-                        <para>
-                            <xref linkend="term_service"/>s may provide
-                            <abbrev>PDTB2</abbrev>-protected <xref linkend="term_content"/> without
-                            supporting <function>getKeyExchangeObject</function> when
-                            alternate means of key provision have been implemented, for example
-                            when keys are provided with the <xref linkend="term_readingSystem"/>.
-                        </para>
-                    </note>
 
                 </section>
 
@@ -1293,13 +1247,11 @@
                         linkend="term_readingSystem"/>s in ordering the announcements for rendering
                     to the <xref linkend="term_user"/>. </para>
 
-                <note>
-                    <para> A <xref linkend="term_service"/> may remove unread announcements from the
-                            <xref linkend="term_service"/> at any time and for any reason. To avoid
-                        potential retrieval conflicts, a <xref linkend="term_readingSystem"/> must
-                        treat the <type><xref linkend="tp_announcement"/></type> IDs as valid for no longer than the duration of the active
-                            <xref linkend="term_session"/>. </para>
-                </note>
+				<para> A <xref linkend="term_service"/> may remove unread announcements from the
+						<xref linkend="term_service"/> at any time and for any reason. To avoid
+					potential retrieval conflicts, a <xref linkend="term_readingSystem"/> must
+					treat the <type><xref linkend="tp_announcement"/></type> IDs as valid for no longer than the duration of the active
+						<xref linkend="term_session"/>. </para>
 
                 <para> If a <xref linkend="term_service"/> does not support service announcements,
                     the <xref linkend="term_service"/> must return an <errorcode>
@@ -1529,9 +1481,6 @@
                     </listitem>
                 </itemizedlist>
 
-                <note>
-                    <para> A response containing an input or multiple choice question is not an end point. </para>
-                </note>
             </section>
 
 

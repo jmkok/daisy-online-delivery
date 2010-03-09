@@ -1265,8 +1265,8 @@
 			<documentation>
 				<db:para role="desc">Requests that a Service store the supplied bookmarks for a 
 					Content item.</db:para>
-				<db:note><db:para>This operation only supports the storage of bookmarks
-					for one Content item at a time.</db:para></db:note>
+				<db:para>This operation only supports the storage of bookmarks
+					for one Content item at a time.</db:para>
 			</documentation>
 			<input message="tns:setBookmarks_inputMessage"/>
 			<output message="tns:setBookmarks_outputMessage"/>
