@@ -78,7 +78,7 @@ time.
 ==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolInteroperabilityTesting Interoprability Testing] ====
 
   * Where are we at?
-   * What needs to be done further?  
+  * What needs to be done further?  
   * Commencement of the Interoperability Testing phase?
   * Who does which tests?
 
