@@ -30,8 +30,8 @@ Preconditions for individual tests are marked (PRE:).
 Variables
   * _conId_: the id of a Borrowable Content
 Tests
-  # *Indicate lending model*: The Reading System calls `getContentMetadata(`_conId_`)`. The Service returns a `contentMetadata` object with the `requiresReturn` attribute is set to `true`. The Reading System calls `issueContent(`_conId_`)`. The Service returns `true`.
-  # *Offer issued list*: (PRE: content with identifier _conId_ has been issued) The Reading System calls `getContentList("new", 0, 1)`. The Serivce returns a `contentList` with the identifier `issued` containing a `contentItem` with the identifier _conId_.
+  # *Indicate lending model*: The Reading System calls `getContentMetadata(`_conId_`)`. The Service returns a `contentMetadata` object with the `requiresReturn` attribute set to `true`. The Reading System calls `issueContent(`_conId_`)`. The Service returns `true`.
+  # *Offer issued list*: (PRE: content with identifier _conId_ has been issued) The Reading System calls `getContentList("new", 0, 1)`. The Service returns a `contentList` with the identifier `issued` containing a `contentItem` with the identifier _conId_.
   # *Download and return content*: (PRE: content with identifier _conId_ has been issued) The Reading System calls `getContentResources(`_conId_`)`. The Service returns a valid `resources` object. The Reading System downloads the resources. The Reading System deletes all recently downloaded resources and calls `returnContent(`_conId_`)`. The Service returns `true`.
 
 || Test case || Client || Server || Result || Details ||
@@ -44,7 +44,7 @@ Tests
 Variables
   * _conId_: the id of a Purchasable Content 
 Tests
-  # *Indicate acquisition model*: The Reading System calls `getContentMetadata(`_conId_`)`. The Service returns a `contentMetadata` object with the `requiresReturn` attribute is set to `false`. The Reading System calls `issueContent(`_conId_`)`. The Service returns `true`.
+  # *Indicate acquisition model*: The Reading System calls `getContentMetadata(`_conId_`)`. The Service returns a `contentMetadata` object with the `requiresReturn` attribute set to `false`. The Reading System calls `issueContent(`_conId_`)`. The Service returns `true`.
 
 || Test case || Client || Server || Result || Details ||
 || 4.1.2.1 || || || || ||
