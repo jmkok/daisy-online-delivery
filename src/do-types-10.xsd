@@ -107,8 +107,8 @@
 									<xs:documentation>
 										<db:para role="desc">Specifies which Content formats the
 											Reading System supports.  A Service may use this information to
-											choose which formats to offer to the Reading System as
-											Content.  This specification does not specify the behavior of
+											choose which formats to offer to the Reading System.
+											 specification does not specify the behavior of
 											the Service if this list is empty.</db:para>
 									</xs:documentation>
 								</xs:annotation>
@@ -481,8 +481,8 @@
 				<xs:element name="sample" minOccurs="0" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>
-							<db:para>A sample of the Content that the User may retrieve
-								without the Content being issued.</db:para>
+							<db:para>A sample of the Content item that the User may retrieve
+								without the Content item being issued.</db:para>
 						</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
@@ -505,7 +505,7 @@
 					<xs:annotation>
 						<xs:documentation>
 							<db:para role="desc">Bibliographic and other metadata of
-								the Content.</db:para>
+								the Content item.</db:para>
 							<db:para>Elements in the Dublin Core namespace are normatively defined
 								by <db:xref linkend="bib_dublinCore"/>. The value of the
 								Dublin Core <db:literal>identifier</db:literal> element must match
@@ -661,8 +661,7 @@
 							<xs:element name="narrator" type="xs:string" minOccurs="0" maxOccurs="unbounded">
 								<xs:annotation>
 									<xs:documentation>
-										<db:para role="desc">In the case of audio Content
-											narrated by a human, the name of the
+										<db:para role="desc">In the case of audio Content, the name of the
 											narrator.</db:para>
 									</xs:documentation>
 								</xs:annotation>
@@ -670,7 +669,7 @@
 							<xs:element name="size" type="xs:long" minOccurs="1" maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>
-										<db:para role="desc">The total size of the resources making up the Content,
+										<db:para role="desc">The total size of the resources making up the Content item,
 											in bytes.</db:para>
 									</xs:documentation>
 								</xs:annotation>
@@ -699,8 +698,8 @@
 			<xs:attribute name="category" type="xs:string" use="optional">
 				<xs:annotation>
 					<xs:documentation>
-						<db:para role="desc">The publication category for the
-							Content.</db:para>
+						<db:para role="desc">The publication category of the
+							Content item.</db:para>
 						<db:para>Reading Systems may use the value provided here to categorize or
 							sort Content items.</db:para>
 						<db:para>Any value is allowed. The values <db:literal>BOOK</db:literal>,
@@ -716,15 +715,15 @@
 				<xs:annotation>
 					<xs:documentation>
 						<db:para>Specifies whether the <db:xref linkend="term_service"/> requires
-							this <db:xref linkend="term_content"/> to be returned.</db:para>
-						<db:para>If this attribute is <db:literal>true</db:literal> and the Content is issued, it is a contract from the <db:xref
+							this Content item to be returned.</db:para>
+						<db:para>If this attribute is <db:literal>true</db:literal>, it is a contract from the <db:xref
 								linkend="term_service"/> to the <db:xref
-								linkend="term_readingSystem"/> that, if the Content is issued, the <db:xref
+								linkend="term_readingSystem"/> that, if the Content item is issued, the <db:xref
 								linkend="term_readingSystem"/> will at some point <db:link
-								linkend="term_return">return the Content</db:link>.</db:para>
+								linkend="term_return">return</db:link> the Content item.</db:para>
 						<db:para>Reading Systems should present Users with appropriate prompts if
-							they try to return <db:xref linkend="term_purchase"
-							/>.</db:para>
+							they try to return a <db:xref linkend="term_purchase"
+							/> item.</db:para>
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -736,7 +735,7 @@
 		<xs:annotation>
 			<xs:documentation>
 				<db:para>A list of all the resources that constitute the <db:xref linkend="term_content"
-					/>.</db:para>
+					/> item.</db:para>
 			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -771,7 +770,7 @@
 									<db:para role="desc">The local relative path of the
 										resource.</db:para>
 									<db:para>The value of this attribute is a URI relative to
-										the Content's root directory.</db:para>
+										the Content item's root directory.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
@@ -790,14 +789,13 @@
 				<xs:annotation>
 					<xs:documentation>
 						<db:para>Specifies the time when the <db:xref
-								linkend="term_service"/> requires this <db:xref
-								linkend="term_content"/> to be returned, i.e. the end of an
-							issuance period.</db:para>
+								linkend="term_serviceProvider"/> requires this <db:xref
+								linkend="term_content"/> item to be returned.</db:para>
 						<db:para>This attribute may be present when the
-								<db:code>requiresReturn</db:code> attribute of this Content's <db:type><db:xref linkend="tp_contentMetadata"/></db:type> is
+								<db:code>requiresReturn</db:code> attribute of this Content item's <db:type><db:xref linkend="tp_contentMetadata"/></db:type> is
 								<db:literal>true</db:literal>, and must not be present when that attribute is
 								<db:literal>false</db:literal>.</db:para>
-						<db:para>This attribute may not change value while the Content is issued.</db:para>
+						<db:para>This attribute may not change value while the Content item is issued.</db:para>
 						<db:para>Unlike <db:code>requiresReturn</db:code>, this attribute does not
 						constitute a contract.</db:para>
 					</xs:documentation>
@@ -861,7 +859,7 @@
 						<xs:attribute name="lastModifiedDate" type="xs:dateTime" use="optional">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para>The last modified time of the Content.</db:para>
+									<db:para>The last modified time of the Content item.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
