@@ -1,0 +1,95 @@
+present:
+
+Regrets:
+
+scribe: Kenny
+
+== Action Item Summary ==
+ 
+=== New Action Items ===
+
+  === Previous Unfinished Action Items ===
+
+  * geoff add informative verbiage to the spec that outlines the steps that need to be taken to synchronise content in an  out-of-band selection model. 
+  * kenny add a feature request to the Daisy Issue Tracker for the next version of the spec that will enable a service to determine whether a Reading system intends to download or stream content, and close Issue 224.
+  * Johan and Kenny advice Nick on what sections he should work on in the Interoperability Testing document. 
+  * Johan, Nick and kenny work on the Interoperability testing document before the next telecon to produce the first draft.
+  * Kenny add a feature request to the Daisy Issue Tracker to provide the summary of Recommendations document, accompanied with a summary of Requirements, in the maintenance phase of the spec. 
+  * Geoff eliminate the ambiguity around the use of the word "Content" in the spec, and close Issue 211.     
+  * Simon, Jelle, Johan, Geoff and Hiro implement pdtb2 support in their test implementations by 8 March. *Johan: done* 
+  * Kenny add a normative assertion, that sets forth the invalidParameter fault as the consequence of a Reading System calling the getQuestions operation with the "back" id when no prior call to the getQuestions operation has been made in the active session, to the spec and the Interoperability testing documents.
+  * Kenny add a normative assertion, that sets forth the invalidParameter fault as the consequence of a Reading System calling the getQuestions operation with the "back" and "search" IDs, when these IDs are not supported by a Service. 
+  * Kenny add substantive comments to issue tracker.
+  * Kenny inform the owner of a substantive comment once the comment has been addressed.
+  * Simon to add the minOccurs and maxOccurs tweak to the tweaks page.
+  * Markus fix the &apos; entity problem. (outstanding; bug in IE.) (Markus will fix this when ready to publish.)
+
+=== Group Action Items ===
+
+==== Action items for formal recommendation to the Board on April 5, 2010 ====  
+
+   * Deliver Final version of the spec.  
+   * Provide Information on comments Received, and how they were addressed.  
+   * Make available the Interoperability Testing document.
+   * Make Available the Systems Testing document.  
+   * Make available the Interoperability Testing Conformance Report.
+   * make available the systems testing  Conformance report. 
+   * Make a page available that provides PDTB2 specific knowledge to Daisy Online Implementers. 
+   * Make a page available that provides all the tweaks to the WSDL and XSD files, that group members had to make to these files for their respective implementations.
+   * Make a formal Recommendation to the board for approval that includes:
+    * A one page document that contains the recommendation by the Wg including a link to the Spec, and a link to the Primer.
+    * an appendix containing the systems testing report, and another containing the interoperability testing report.    
+
+== Agenda/Minutes ==
+
+=== Issues ===
+
+==== Issue 227 ====
+
+Jelle: The spec mentions: "A return value of false or an issued fault both indicate that the operation was not 
+successful."
+So any other response could actually mean that the reading system is still logged in.
+I do not think this is acceptable/useful for a logOff command, and could confuse the reading system.
+ 
+logOff should return true after a successful logOn (regardless of any other commands)
+logOff should throw noActiveSessionFault if the RS was already logged off
+ 
+==== Issue 228 ====
+
+Geoff: The first note in section 3.1 says, "An established HTTP session is not in
+itself a valid indicator that a Reading System has successfully logged on
+to the Service ...."
+ 
+But a session isn't established until a successful logOn.  I'm pretty sure
+this note is incorrect or out-of-date.
+
+==== Issue 229 ====
+
+If markAnnouncementsAsRead is called with multiple ids, and one of those ids 
+is invalid, it is not exactly clear/defined what should happen.
+I guess, the function should at return "invalidParameterFault" as one of the 
+parameters is invalid, but then the service should not mark any of the other 
+messages as read.
+Might it not be simpler to just limit the operation to one message at a 
+time.
+ 
+=== Test suite Progress review ===
+
+==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolInteroperabilityTesting Interoprability Testing] ====
+
+  * Where are we at?
+   * What needs to be done further?  
+  * Commencement of the Interoperability Testing phase?
+  * Who does which tests?
+
+==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolSystemTesting Systems Testing] ====
+
+==== [http://code.google.com/p/daisy-online-delivery/wiki/SummaryOfRecommendations Summary of Recommendations] ====
+
+== Related Wiki Pages ==
+
+=== [http://code.google.com/p/daisy-online-delivery/wiki/ChangeLog Change Log] ===
+
+=== [http://code.google.com/p/daisy-online-delivery/wiki/pdtb2_description PDTB2 Description for Daisy Online Implementers] ===
+
+=== [http://code.google.com/p/daisy-online-delivery/wiki/WSDLAndXSDTweaks WSDL and XSD Tweaks for Daisy Online Implementers] ===
