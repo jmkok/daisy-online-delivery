@@ -8,7 +8,7 @@ scribe: Kenny
  
 === New Action Items ===
 
-  === Previous Unfinished Action Items ===
+ === Previous Unfinished Action Items ===
 
   * geoff add informative verbiage to the spec that outlines the steps that need to be taken to synchronise content in an  out-of-band selection model. 
   * kenny add a feature request to the Daisy Issue Tracker for the next version of the spec that will enable a service to determine whether a Reading system intends to download or stream content, and close Issue 224.
