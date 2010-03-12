@@ -904,9 +904,9 @@
 				<xs:annotation>
 					<xs:documentation>
 						<db:para role="desc">The identifier of the <db:type>contentList</db:type>.</db:para>
-						<db:para>The identifier can be one of three reserved values,
+						<db:para>The identifier may be one of three reserved values,
 							<db:literal>new</db:literal>, <db:literal>issued</db:literal> or
-							<db:literal>expired</db:literal>, or can be an arbitrary value,
+							<db:literal>expired</db:literal>, or may be an arbitrary value,
 							typically exposed in a <db:type><db:xref linkend="tp_contentListRef"/></db:type> at an <db:link
 								linkend="fundamentals_dynamic_menus_endpoints">end point</db:link> in a
 								<db:link linkend="fundamentals_dynamic_menus">dynamic menu

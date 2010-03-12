@@ -224,9 +224,9 @@
             <varlistentry xml:id="term_fault">
                 <term>Fault</term>
                 <listitem>
-                    <para> A <xref linkend="bib_soap1.1"/> Fault. A fault carries error and/or
+                    <para> A <xref linkend="bib_soap1.1"/> Fault. A Fault carries error and/or
                         status information in a SOAP message. <xref linkend="apiReferenceFaults"/>
-                        defines the faults used in this protocol. </para>
+                        defines the Faults used in this protocol. </para>
                 </listitem>
             </varlistentry>
 
@@ -806,7 +806,7 @@
 
                 <para> A <xref linkend="term_service"/> must return an <errorname>
                         <xref linkend="ft_invalidOperationFault"/>
-                    </errorname> fault if a <xref linkend="term_readingSystem"/> attempts to call
+                    </errorname> Fault if a <xref linkend="term_readingSystem"/> attempts to call
                     any <xref linkend="term_operation"/> other than the ones outlined in this
                     section before successfully completing the full initialization sequence. </para>
 
@@ -886,14 +886,14 @@
                             </type> element of its <type><xref linkend="tp_serviceAttributes"/></type>; and</para>
                     </listitem>
                     <listitem>
-                        <para>exposes selected <xref linkend="term_content"/> ITEMS to the <xref linkend="term_readingSystem"/>
+                        <para>exposes selected <xref linkend="term_content"/> items to the <xref linkend="term_readingSystem"/>
                             through the <literal>new</literal> <type><xref linkend="tp_contentList"/></type>.</para>
                     </listitem>
                 </itemizedlist>
 
 				<para>A <xref linkend="term_readingSystem"/> may also make use of the <literal>issued</literal>
-					<type>contentList</type>, if available, to access <xref linkend="term_content"/> ITEMS
-					that haVE already been issued.</para>
+					<type>contentList</type>, if available, to access <xref linkend="term_content"/> items
+					that have already been issued.</para>
                 <para> For automated downloading scenarios using the out-of-band selection method,
                     the <xref linkend="term_readingSystem"/> must also execute the steps outlined in
                         <xref linkend="fundamentals_content_issuing"/>, to obtain the <xref
@@ -961,17 +961,17 @@
                                 linkend="term_service"/> that the <xref linkend="term_readingSystem"
                             /> intends to access the <xref linkend="term_content"/> item. This operation
                             constitutes the formal request for access. The <xref
-                                linkend="term_service"/> must respond to this request with a
-                                <literal>true</literal> (<xref linkend="bib_xsdDatatypes"/>) value
+                                linkend="term_service"/> must return
+                                <literal>true</literal>
                             in order to proceed to the next step. </para>
 
                         <para> If a <xref linkend="term_service"/> returns
                                 <literal>false</literal>
-                            or a <link linkend="apiReferenceFaults">fault</link>, then the
+                            or a <link linkend="apiReferenceFaults">Fault</link>, then the
                                 <xref linkend="term_content"/> item has not been issued. A <xref
                                 linkend="term_readingSystem"/> must not proceed to the next step
-                            unless the <xref linkend="term_service"/> returns a
-                                <literal>true</literal> value.</para>
+                            unless the <xref linkend="term_service"/> returns
+                                <literal>true</literal>.</para>
 
                     </listitem>
 
@@ -987,7 +987,7 @@
                             <para>
                                 <xref linkend="term_service"/>s must return an <errorcode>
                                     <xref linkend="ft_invalidParameterFault"/>
-                                </errorcode> fault when a <xref linkend="term_readingSystem"/>
+                                </errorcode> Fault when a <xref linkend="term_readingSystem"/>
                                 calls <function>getContentResources</function> for a <xref
                                     linkend="term_content"/> item that has not been issued. </para>
 
@@ -1130,7 +1130,7 @@
 						<type><xref linkend="tp_keyRing"/></type> element listing the names
 						of the keys in its key ring, in its
                         <type><xref linkend="tp_readingSystemAttributes"/></type>.
-						The key names provided can be some or
+						The key names provided may be some or
                         all of the public keys the <xref linkend="term_readingSystem"/> supports.</para>
 
                     <para> To indicate that a <xref linkend="term_service"/> supports
@@ -1190,7 +1190,7 @@
                         access the <xref linkend="term_content"/> item, then the <xref
                             linkend="term_service"/> must reply with an <errorname>
                             <xref linkend="ft_invalidParameterFault"/>
-                        </errorname> fault. </para>
+                        </errorname> Fault. </para>
 
                     <para> If the <xref linkend="term_readingSystem"/> receives a valid
                             <abbrev>KXO</abbrev> from the <xref linkend="term_service"/>, the <xref
@@ -1216,7 +1216,7 @@
             <para> To indicate that a <xref linkend="term_service"/> supports service announcements,
                 the <xref linkend="term_service"/> must include an <type>
                     <xref linkend="tp_operation"/>
-                </type> element with the value <literal>SERVICE_ANNOUNCEMENTS</literal>in its
+                </type> element with the value <literal>SERVICE_ANNOUNCEMENTS</literal> in its
 				<type><xref linkend="tp_serviceAttributes"/></type>. </para>
 
 
@@ -1228,7 +1228,7 @@
             <section xml:id="fundamentals_service_annoucements_new">
                 <title>New Announcements</title>
 
-                <para> A <xref linkend="term_readingSystem"/> can check for new messages at any time
+                <para> A <xref linkend="term_readingSystem"/> may check for new messages at any time
                     when connected to a <xref linkend="term_service"/> by calling the <function>
                         <xref linkend="op_getServiceAnnouncements"/>
                     </function> operation. It is recommended that <xref linkend="term_readingSystem"
@@ -1252,7 +1252,7 @@
                 <para> If a <xref linkend="term_service"/> does not support service announcements,
                     the <xref linkend="term_service"/> must return an <errorcode>
                         <xref linkend="ft_operationNotSupportedFault"/>
-                    </errorcode> fault if a <xref linkend="term_readingSystem"/> attempts to call
+                    </errorcode> Fault if a <xref linkend="term_readingSystem"/> attempts to call
                     <function>getServiceAnnouncements</function>. </para>
 
             </section>
@@ -1466,14 +1466,14 @@
 
                 <itemizedlist>
                     <listitem>
-                        <para> a <type><xref linkend="tp_label"/></type>, which can provide an informative or concluding statement for the <xref
+                        <para> a <type><xref linkend="tp_label"/></type>, which may provide an informative or concluding statement for the <xref
                         linkend="term_user"/>, such as confirmation of a purchase or thanks for
                     completing a survey; or </para>
                     </listitem>
                     <listitem>
                         <para> a <type><xref linkend="tp_contentListRef"/></type> containing the ID of a <type><xref linkend="tp_contentList"/></type>, when
                     the menu sequence has resulted in the generation of a list of Content items that
-                        <xref linkend="term_user"/> can then access. </para>
+                        <xref linkend="term_user"/> may then access. </para>
                     </listitem>
                 </itemizedlist>
 
