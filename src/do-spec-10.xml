@@ -1084,8 +1084,8 @@
 					which specific resources have been updated. </para>
 
 				<para> The functionality detailed in this section can also be used to publish
-					installments by progressively updating the same <xref linkend="term_content"
-					/> item. </para>
+					Content in installments by progressively updating the same <xref linkend="term_content"
+					/> item as new sections of the Content item are authored.</para>
 
             </section>
 
