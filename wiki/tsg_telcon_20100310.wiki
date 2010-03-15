@@ -1,12 +1,16 @@
-present:
+present: Jelle, Geoff, Hiro, Simon and Kenny.   
 
-Regrets:
+Regrets: George.
 
 scribe: Kenny
 
 == Action Item Summary ==
  
 === New Action Items ===
+
+  * Kenny clarify in the spec that the logOff operation can be called within the session innitialisation sequence, and close Issue 227.
+  * Geoff clarify in the spec that a cookie can be issued even when the logOn operation is unsuccessful, and close Issue 228.    
+  * Kenny talk to Johan about the markAnnouncementsAsRead operation.
 
  === Previous Unfinished Action Items ===
 
@@ -50,18 +54,42 @@ Jelle: The spec mentions: "A return value of false or an issued fault both indic
 successful."
 So any other response could actually mean that the reading system is still logged in.
 I do not think this is acceptable/useful for a logOff command, and could confuse the reading system.
- 
+ 
 logOff should return true after a successful logOn (regardless of any other commands)
 logOff should throw noActiveSessionFault if the RS was already logged off
- 
+
+Geoff: I am happy with it. We just need to clarify what happens if logOff is called between a session innitialisation sequence. Lets add a note in the sequence saying that you can call logOff within the sequence.   
+
+(Consensus: group agreed to move forward with Jelle's suggestion.) 
+
 ==== Issue 228 ====
 
 Geoff: The first note in section 3.1 says, "An established HTTP session is not in
 itself a valid indicator that a Reading System has successfully logged on
 to the Service ...."
- 
+ 
 But a session isn't established until a successful logOn.  I'm pretty sure
 this note is incorrect or out-of-date.
+
+Geoff: We say in section 4.2.2 that session begins after logOn and ends after logOff.
+
+Jelle: In terms of a reading system, it does not matter, but for a service its extra work to issue a cookie after the logOn operation was successful. Most of the frameworks issue a cookie when a client connects before any operation is called.
+
+Geoff: We should probably change the spec to say that a service determines when a session starts and ends. Sessions are identified to a reading system with a cookie. The common uses should be covered by this.    
+
+Kenny: Given that the Daisy Online Service is a soap-based web service, wouldn't it be true that the first time an RS communicates with a Service in a session would be when it calls the logOn operation?
+
+Geoff: Yes.
+
+Kenny: Then the problem we are dealing with would be that most frameworks would issue a cookie even if the logOn operation was unsuccessful, Right?
+
+Jelle: Yes. We should draw a distinction between an http session and a soap session.
+
+Geoff: There is no difference between the two types of sessions. In my service I create a session id when the logOn operation is successful, and delete it when the logOff operation is called.
+
+Jelle: I do the same.
+
+(Consensus: Group agreed to move forward with allowing a cookie to be issued even when the logOn operation is unsuccessful.)    
 
 ==== Issue 229 ====
 
@@ -72,7 +100,23 @@ parameters is invalid, but then the service should not mark any of the other
 messages as read.
 Might it not be simpler to just limit the operation to one message at a 
 time.
- 
+
+Kenny: My only concern is the round trip time for each call to the markAnnouncementsAsRead operation.
+
+Jelle: There should not be more than a few announcements per day.
+
+Kenny: We need to make a change. This is most definitely a significant issue. The markAnnouncementsAsRead operation currently allows multiple announcement IDS to be passed in as a parameter. If one of these IDs are invalid, the Service will need to throw an invalidParameter fault, but there is no way for the Reading System to know what announcements were marked as read successfully.           
+
+Jelle: We could either say in the spec that only one id should be passed into the operation, or change the operation definition to allow only one string or nmtoken parameter.   
+
+Geoff: I am not opposed to a change to the wsdl. 
+
+Simon: I am not in favour of changing the wsdl file at this stage as we will need to wait for all services to implement this for testing.
+
+Geoff: Pratsam, Vision Australia, Humanware and solutions radio are assigned to do the test pertaining to this operation.    
+
+(Group decided to defer the issue till the next telecon.)
+
 === Test suite Progress review ===
 
 ==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolInteroperabilityTesting Interoprability Testing] ====
@@ -81,6 +125,18 @@ time.
   * What needs to be done further?  
   * Commencement of the Interoperability Testing phase?
   * Who does which tests?
+
+Kenny: Johan suggested that we merge Section 4 and 5.
+
+Geoff: The current format is how it was in the spec. I am ok with the change.
+
+Kenny: By next telecon, we will aim to merge the two sections, and come up with the first draft. This should give us two weeks for testing.
+
+Kenny: If the Interoperability Testing was not to be completed, and tested, would it be a showstopper?
+
+Simon: I don't think so. We would have the Systems testing document anyway. The first one should cover the second one anyway.
+
+Kenny: Lets do the test assignments on the next telecon. 
 
 ==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolSystemTesting Systems Testing] ====
 
