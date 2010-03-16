@@ -17,7 +17,7 @@ To allow for testing with existing Reading Systems and Services, variables are g
 
 == Preconditions ==
 
-An initialized session established between the Reading System and the Service is a precondition of every test below except those in sections 4.2.1 and 5.1.1.
+An initialized session established between the Reading System and the Service is a precondition of every test below except those in sections 4.2.1.
 
 Preconditions for individual tests are marked (PRE:).
 
@@ -55,10 +55,14 @@ Tests
 
 Variables
   * _user_: A valid username on the Service.
-  * _pass_: _user_'s password.
-  * _rSA_: A `readingSystemAttributes` object representing the Reading System's attributes.
+  * _pass_: A valid password for _user_.
+  * _badUser_: A invalid username on the Service.
+  * _badPass_: A invalid password for _user_.
+  * _rSA_: A valid `readingSystemAttributes` object representing the Reading System's attributes.
+  * _badRSA: A invalid `readingSystemAttribute` object representing the Reading System's attributes.
 
 Tests
+  # *Before initialization*: The Reading Systems calls `getServiceAttributes()`. The Service returns a `noActiveSession` fault.
   # *Initialize session*: The Reading System connects to the Service.  The Reading System calls `logOn(`_user_`, `_pass_`)`.  The Service returns `true` and sets a session cookie.  The Reading System calls `getServiceAttributes()`.  The Service returns a valid `serviceAttributes` object.  The Reading System calls `setReadingSystemAttributes(`_rSA_`)`.  The Service returns `true`.
 
 || Test case || Client || Server || Result || Details ||
