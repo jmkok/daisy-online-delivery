@@ -1,0 +1,118 @@
+present:
+
+Regrets:
+
+scribe: Kenny
+
+== Action Item Summary ==
+ 
+=== New Action Items ===
+
+ === Previous Unfinished Action Items ===
+
+  * Kenny clarify in the spec that the logOff operation can be called within the session innitialisation sequence, and close Issue 227.
+  * Geoff clarify in the spec that a cookie can be issued even when the logOn operation is unsuccessful, and close Issue 228.    
+  * geoff add informative verbiage to the spec that outlines the steps that need to be taken to synchronise content in an  out-of-band selection model. 
+  * Johan and Kenny advice Nick on what sections he should work on in the Interoperability Testing document. 
+  * Johan, Nick and kenny work on the Interoperability testing document before the next telecon to produce the first draft.
+  * Geoff eliminate the ambiguity around the use of the word "Content" in the spec, and close Issue 211.     
+  * Simon, Jelle, Johan, Geoff and Hiro implement pdtb2 support in their test implementations by 8 March. *Johan: done* 
+  * Kenny add a normative assertion, that sets forth the invalidParameter fault as the consequence of a Reading System calling the getQuestions operation with the "back" id when no prior call to the getQuestions operation has been made in the active session, to the spec and the Interoperability testing documents.
+  * Kenny add a normative assertion, that sets forth the invalidParameter fault as the consequence of a Reading System calling the getQuestions operation with the "back" and "search" IDs, when these IDs are not supported by a Service. 
+  * Kenny add substantive comments to issue tracker.
+  * Kenny inform the owner of a substantive comment once the comment has been addressed.
+  * Simon to add the minOccurs and maxOccurs tweak to the tweaks page.
+  * Markus fix the &apos; entity problem. (outstanding; bug in IE.) (Markus will fix this when ready to publish.)
+
+=== Group Action Items ===
+
+==== Action items for formal recommendation to the Board on April 5, 2010 ====  
+
+   * Deliver Final version of the spec.  
+   * Provide Information on comments Received, and how they were addressed.  
+   * Make available the Interoperability Testing document.
+   * Make Available the Systems Testing document.  
+   * Make available the Interoperability Testing Conformance Report.
+   * make available the systems testing  Conformance report. 
+   * Make a page available that provides PDTB2 specific knowledge to Daisy Online Implementers. 
+   * Make a page available that provides all the tweaks to the WSDL and XSD files, that group members had to make to these files for their respective implementations.
+   * Make a formal Recommendation to the board for approval that includes:
+    * A one page document that contains the recommendation by the Wg including a link to the Spec, and a link to the Primer.
+    * an appendix containing the systems testing report, and another containing the interoperability testing report.    
+
+== Agenda/Minutes ==
+
+=== Issues ===
+
+
+==== Issue 229 ====
+
+Nick: We leave the wsdl as is but describe the following behaviour in the spec and the implementations: 
+
+if a service returns the invalidParameter fault in response to markAnnouncementsAsRead the reading system should then call markAnnouncementsAsRead sequentially
+with each ID to discover which one caused the fault. 
+
+The service can either actually mark the announcements as read during the call which caused the original fault or during the calls for each single announcement.
+The spec does not currently say what happens if you call the function with an Id which has already been marked as read so this could return true - or false
+to indicate that the announcement has already been marked  - but should not cause an invalidParameter fault. 
+
+Kenny: So we have two questions then:
+  * What does the tru/false return value mean for the markAnnouncementsAsRead operation?
+  * Which of the following options do we need to go forward with to resolve this issue:
+   # Specify in the spec that this operation must not be called with multiple Announcement IDs.
+   # Change this operation to receive one string or nmtoken parameter that would contain an announcement id. (requires modification to the wsdl file)
+   # Nick's suggestion above.  
+
+Johan: I am ok with a change and I can implement the changes during this week. 
+
+==== Issue 230 ====
+
+Jelle: In some occasions multiple faults can happen.
+eg. If you are not logged in and you want to call a non-implemented call.
+You might get any fault from noActiveSession, operationNotSupported or even invalidOperation.
+I think we should defined the priority and the order of the checks to make this clear.
+ 
+The order I would suggest (which might be obvious in most cases anyway)
+- noActiveSession - always first as we don't want to disclose anything about this service until properly logged in
+- operationNotSupported - if it is not supported, it cannot be out of context (so before invalidOperation)
+- invalidOperation - If out of context, do not look at the parameters (so before invalidParameter)
+- invalidParameter
+- internalServerError - actually this is a last resort
+
+kenny: Where a connection to a back-end database was lost, would internalServerError not precede the invalidParameter fault if the Service was relying on the database to determine whether a parameter was valid?      
+
+==== Issue 231 ==== 
+
+Geoff: The references section looks like part of it is in alphabetical order by
+reference abbreviation.  We should put it in a definite order.  Also,
+attributions are missing from some; they should be added in.
+
+=== Timelines for the next two weeks ===
+
+  * Complete all action items. (?)
+  * Close all issues. For the deferred issues, move them to the Daisy Online issue tracker on the Daisy website. (?) 
+  * Proof read the spec. (?)
+  * proof read the Primer. (?)
+  * Complete the systems Testing report. (?)
+
+What about the wsdl tweaks and PDTB2 description documents? 
+  * Provided or not with the spec release?
+     * Where would they live?
+
+=== Test suite Progress review ===
+
+==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolInteroperabilityTesting Interoprability Testing] ====
+
+Kenny: Given the time constraints, I propose we not provide this document with this version of the spec. We could provide this document in the maintenance phase of the spec if the need be. This would also give us an opportunity to gage whether there is a need for this document once the spec goes live. 
+
+==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolSystemTesting Systems Testing] ====
+
+==== [http://code.google.com/p/daisy-online-delivery/wiki/SummaryOfRecommendations Summary of Recommendations] ====
+
+== Related Wiki Pages ==
+
+=== [http://code.google.com/p/daisy-online-delivery/wiki/ChangeLog Change Log] ===
+
+=== [http://code.google.com/p/daisy-online-delivery/wiki/pdtb2_description PDTB2 Description for Daisy Online Implementers] ===
+
+=== [http://code.google.com/p/daisy-online-delivery/wiki/WSDLAndXSDTweaks WSDL and XSD Tweaks for Daisy Online Implementers] ===
