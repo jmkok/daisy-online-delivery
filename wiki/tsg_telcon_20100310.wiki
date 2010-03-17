@@ -10,15 +10,15 @@ scribe: Kenny
 
   * Kenny clarify in the spec that the logOff operation can be called within the session innitialisation sequence, and close Issue 227.
   * Geoff clarify in the spec that a cookie can be issued even when the logOn operation is unsuccessful, and close Issue 228.    
-  * Kenny talk to Johan about the markAnnouncementsAsRead operation.
+  * Kenny talk to Johan about the markAnnouncementsAsRead operation. *done*
 
  === Previous Unfinished Action Items ===
 
   * geoff add informative verbiage to the spec that outlines the steps that need to be taken to synchronise content in an  out-of-band selection model. 
-  * kenny add a feature request to the Daisy Issue Tracker for the next version of the spec that will enable a service to determine whether a Reading system intends to download or stream content, and close Issue 224.
+  * kenny add a feature request to the Daisy Issue Tracker for the next version of the spec that will enable a service to determine whether a Reading system intends to download or stream content, and close Issue 224. *done*
   * Johan and Kenny advice Nick on what sections he should work on in the Interoperability Testing document. 
   * Johan, Nick and kenny work on the Interoperability testing document before the next telecon to produce the first draft.
-  * Kenny add a feature request to the Daisy Issue Tracker to provide the summary of Recommendations document, accompanied with a summary of Requirements, in the maintenance phase of the spec. 
+  * Kenny add a feature request to the Daisy Issue Tracker to provide the summary of Recommendations document, accompanied with a summary of Requirements, in the maintenance phase of the spec. *done* 
   * Geoff eliminate the ambiguity around the use of the word "Content" in the spec, and close Issue 211.     
   * Simon, Jelle, Johan, Geoff and Hiro implement pdtb2 support in their test implementations by 8 March. *Johan: done* 
   * Kenny add a normative assertion, that sets forth the invalidParameter fault as the consequence of a Reading System calling the getQuestions operation with the "back" id when no prior call to the getQuestions operation has been made in the active session, to the spec and the Interoperability testing documents.
