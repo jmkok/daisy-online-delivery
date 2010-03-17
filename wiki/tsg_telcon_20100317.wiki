@@ -81,7 +81,7 @@ The order I would suggest (which might be obvious in most cases anyway)
 
 kenny: Where a connection to a back-end database was lost, would internalServerError not precede the invalidParameter fault if the Service was relying on the database to determine whether a parameter was valid?      
 
-==== Issue 231 ==== 
+==== Issue 231 ====
 
 Geoff: The references section looks like part of it is in alphabetical order by
 reference abbreviation.  We should put it in a definite order.  Also,
@@ -97,7 +97,7 @@ attributions are missing from some; they should be added in.
 
 What about the wsdl tweaks and PDTB2 description documents? 
   * Provided or not with the spec release?
-     * Where would they live?
+  * Where would they live?
 
 === Test suite Progress review ===
 
