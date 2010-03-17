@@ -815,6 +815,10 @@
                     />s defined by this specification, but must complete the initialization sequence
                     outlined in this section again if calling <function>logOn</function>.</para>
 
+				<note>
+					<para>A Service may issue a cookie even if <function>logOn</function>
+					fails.</para>
+				</note>
             </section>
 
             <section xml:id="fundamentals_session_duration">
