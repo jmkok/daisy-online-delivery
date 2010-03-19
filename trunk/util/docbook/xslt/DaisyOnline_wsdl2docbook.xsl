@@ -47,6 +47,18 @@
 				<db:para>Each of these fault types has a <db:type>reason</db:type> child element, a
 				<db:type>string</db:type> which can be used to send debugging information to the Reading System.
 				This information should not be rendered to the User in most circumstances.</db:para>
+				<db:para>
+				The priority of the client faults and thus the order in which SOAP operation are to be checked is as follows.
+				<db:itemizedlist>
+					<db:listitem><db:para>noActiveSession - a service should always verify a valid sessiosn first as we don't want to and might not 
+					be able to disclose anything about this service until properly logged in</db:para></db:listitem>
+					<db:listitem><db:para>operationNotSupported - if the opertion is not supported, it cannot be out of context and parameters will 
+					not be checked (so before invalidOperation and invalidParameter)</db:para></db:listitem>
+					<db:listitem><db:para>invalidOperation - If out of context, do not use and/or verify at the parameters (so before invalidParameter)</db:para></db:listitem>
+					<db:listitem><db:para>invalidParameter</db:para></db:listitem>
+				</db:itemizedlist>
+				Note that the internalServerError is a server fault, and not a client fault.
+				</db:para>
 				<xsl:for-each select="$wsdl/definitions/message[contains(@name, 'Fault')]">
 					<db:section> <xsl:attribute name="xml:id" select="replace(concat('ft_',@name),'_message','')"/>
 						<xsl:attribute name="xreflabel" select="replace(@name,'Fault_message','')"/>
