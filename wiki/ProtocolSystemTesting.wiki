@@ -248,9 +248,9 @@ The ability for Reading Systems to query the Service for the current time was no
 || 11.1 || CNIB || Solutions Radio ||  ||  ||
 || 11.1 || !HumanWare || !PratSam ||  ||  ||
 || 11.1 || !HumanWare || Solutions Radio ||  ||  ||
-|| 11.2 || !HumanWare || CNIB ||  ||  ||
+|| 11.2 || !HumanWare || !PratSam ||  ||  ||
 || 11.2 || !HumanWare || Solutions Radio ||  ||  ||
-|| 11.2 || !PlexTalk || CNIB ||  ||  ||
+|| 11.2 || !PlexTalk || !PratSam ||  ||  ||
 || 11.2 || !PlexTalk || Solutions Radio ||  ||  ||
 || 11.3 || !HumanWare || !PratSam ||  ||  ||
 || 11.3 || !HumanWare || Solutions Radio ||  ||  ||
