@@ -1278,6 +1278,20 @@
 					during the active <xref linkend="term_session"/> to
 					<function>markAnnouncementsAsRead</function>.
                 </para>
+
+                <para> If a <xref linkend="term_service"/> returns <literal>false</literal>, then
+                    the announcement is already marked as read. If a <xref linkend="term_service"/>
+                    returns an <xref linkend="ft_invalidParameterFault"/> Fault, then the identifier
+                    does not exist on the <xref linkend="term_service"/>.
+                </para>
+
+                <para> A <xref linkend="term_readingSystem"/> may mark more than one announcement as read
+                    in the same call to <function><xref linkend="op_markAnnouncementsAsRead"/></function>. 
+                    If an <xref linkend="ft_invalidParameterFault"/> Fault is returned, the
+                    <xref linkend="term_readingSystem"/> must call
+                    <function><xref linkend="op_markAnnouncementsAsRead"/></function> sequentially for each
+                    announcement to determine which identifier caused the Fault.
+                </para>
             </section>
 
         </section>
