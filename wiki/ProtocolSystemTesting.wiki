@@ -30,7 +30,7 @@ Transfer of audio from the Reading System to the Service takes place over SOAP w
   # *Audio response*: Send an audio response to a dynamic menu item that supports it.  Ensure that the audio is uploaded in a reasonable amount of time.
 
 || Test case || Client || Server || Result || Details ||
-|| 1.1 || CNIB || CNIB ||  ||  ||
+|| 1.1 || CNIB || CNIB || *Success* || Transfer of data was at an acceptable rate.  A 45.7 MB book was downloaded in 10 minutes. ||
 || 1.1 || CNIB || Vision Australia || *Success* || Transfer of data was at an acceptable rate.  A 21.4 MB book was downloaded in 4 minutes. ||
 || 1.1 || !HumanWare || CNIB ||  ||  ||
 || 1.1 || !HumanWare || Vision Australia ||  ||  ||
