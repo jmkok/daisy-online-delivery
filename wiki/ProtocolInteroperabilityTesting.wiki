@@ -1,5 +1,5 @@
 #summary Interoperability test cases for both Reading Systems and Services.
-#labels Phase-QA,Phase-Implementation,Report
+#labels Phase-QA,Phase-Implementation,Deprecated,Report
 
 <wiki:toc max_depth="3" />
 
