@@ -976,6 +976,30 @@
 		</part>
 	</message>
 
+	<message name="noActiveSessionFault_message">
+		<part name="fault" element="tns:noActiveSessionFault">
+			<documentation>
+				<db:para role="desc">Condition: the operation is not allowed when there is no active
+					session.</db:para>
+				<db:para>This Fault is issued on all operation calls except those in the
+					operation sequence defined by the <db:xref
+						linkend="def_sessionInitializationSequence"/> when a Session has either
+					expired or not been successfully initialized.</db:para>
+			</documentation>
+		</part>
+	</message>
+
+	<message name="operationNotSupportedFault_message">
+		<part name="fault" element="tns:operationNotSupportedFault">
+			<documentation>
+				<db:para role="desc">Condition: the operation is not supported by the Service.</db:para>
+				<db:para>This Fault is issued when a Reading System calls an <db:link
+						linkend="apiReferenceOptional">optional operation</db:link> that the Service
+					does not support.</db:para>
+			</documentation>
+		</part>
+	</message>
+
 	<message name="invalidOperationFault_message">
 		<part name="fault" element="tns:invalidOperationFault">
 			<documentation>
@@ -995,30 +1019,6 @@
 				<db:para>This Fault is issued when a Reading System calls an operation with a parameter
 					that the Service does not recognize, allow, or support.
 				</db:para>
-			</documentation>
-		</part>
-	</message>
-
-	<message name="operationNotSupportedFault_message">
-		<part name="fault" element="tns:operationNotSupportedFault">
-			<documentation>
-				<db:para role="desc">Condition: the operation is not supported by the Service.</db:para>
-				<db:para>This Fault is issued when a Reading System calls an <db:link
-						linkend="apiReferenceOptional">optional operation</db:link> that the Service
-					does not support.</db:para>
-			</documentation>
-		</part>
-	</message>
-
-	<message name="noActiveSessionFault_message">
-		<part name="fault" element="tns:noActiveSessionFault">
-			<documentation>
-				<db:para role="desc">Condition: the operation is not allowed when there is no active
-					session.</db:para>
-				<db:para>This Fault is issued on all operation calls except those in the
-					operation sequence defined by the <db:xref
-						linkend="def_sessionInitializationSequence"/> when a Session has either
-					expired or not been successfully initialized.</db:para>
 			</documentation>
 		</part>
 	</message>

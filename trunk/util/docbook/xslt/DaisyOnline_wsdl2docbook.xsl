@@ -42,23 +42,22 @@
 			
 			<db:section xml:id="apiReferenceFaults">
 				<db:title>Faults</db:title>
-				<db:para>When a Service responds to an operation with a SOAP fault, an instance of one of the following
+				<db:para>When a Service responds to an operation with a SOAP Fault, an instance of one of the following
 				types must be the child of the <db:type>detail</db:type> element.</db:para>
-				<db:para>Each of these fault types has a <db:type>reason</db:type> child element, a
+				<db:para>Each of these Fault types has a <db:type>reason</db:type> child element, a
 				<db:type>string</db:type> which can be used to send debugging information to the Reading System.
 				This information should not be rendered to the User in most circumstances.</db:para>
-				<db:para>
-				The priority of the client faults and thus the order in which SOAP operation are to be checked is as follows.
-				<db:itemizedlist>
-					<db:listitem><db:para>noActiveSession - a service should always verify a valid sessiosn first as we don't want to and might not 
-					be able to disclose anything about this service until properly logged in</db:para></db:listitem>
-					<db:listitem><db:para>operationNotSupported - if the opertion is not supported, it cannot be out of context and parameters will 
-					not be checked (so before invalidOperation and invalidParameter)</db:para></db:listitem>
-					<db:listitem><db:para>invalidOperation - If out of context, do not use and/or verify at the parameters (so before invalidParameter)</db:para></db:listitem>
-					<db:listitem><db:para>invalidParameter</db:para></db:listitem>
-				</db:itemizedlist>
-				Note that the internalServerError is a server fault, and not a client fault.
-				</db:para>
+				<db:para>It is possible that more than one Fault condition can be triggered.  For example,
+				an unsupported operation could be called outside of an active Session.  In the case of two or more Fault
+				conditions being applicable, the Fault with the earlier priority must be issued.  The order of priority is as
+				follows:</db:para>
+				<db:orderedlist>
+					<db:listitem><db:para><db:errorcode>internalServerError</db:errorcode></db:para></db:listitem>
+					<db:listitem><db:para><db:errorcode>noActiveSession</db:errorcode></db:para></db:listitem>
+					<db:listitem><db:para><db:errorcode>operationNotSupported</db:errorcode></db:para></db:listitem>
+					<db:listitem><db:para><db:errorcode>invalidOperation</db:errorcode></db:para></db:listitem>
+					<db:listitem><db:para><db:errorcode>invalidParameter</db:errorcode></db:para></db:listitem>
+				</db:orderedlist>
 				<xsl:for-each select="$wsdl/definitions/message[contains(@name, 'Fault')]">
 					<db:section> <xsl:attribute name="xml:id" select="replace(concat('ft_',@name),'_message','')"/>
 						<xsl:attribute name="xreflabel" select="replace(@name,'Fault_message','')"/>
