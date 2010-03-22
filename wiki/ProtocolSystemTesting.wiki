@@ -13,6 +13,8 @@ Note that this is not conformance testing.  Some of these test will not be met e
 
 This only applies to Services that support dynamic menus, searching and have the optional function of tracking a User's previous selections and making suggestions.  Not all Services are expected to do this.
 
+TODO: Some of the entries for !PlexTalk have notes in Japanese.  This should be corrected before the final report.
+
 = Requirements =
 
 == 1. Efficient use of bandwidth ==
