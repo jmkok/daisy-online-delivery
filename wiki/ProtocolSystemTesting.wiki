@@ -337,7 +337,7 @@ The protocol does not support bookmarks with audio notes.
 
 [RequirementsDocument#Dynamic_menus Requirement]
 
-  # *Search for content*: Use the dynamic menus to search for a Content item by title.
+  # *Search for content*: Use the dynamic menus to search for a Content item.
   # *Browse for content*: Use the dynamic menus to browse the Service's collection by categories provided by the Service.
   # *Survey*: Use the dynamic menus to answer a survey form provided by the Service.
 
