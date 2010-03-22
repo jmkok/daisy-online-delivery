@@ -13,13 +13,6 @@ Note that this is not conformance testing.  Some of these test will not be met e
 
 This only applies to Services that support dynamic menus, searching and have the optional function of tracking a User's previous selections and making suggestions.  Not all Services are expected to do this.
 
-_Example of how this should be filled out_
-
-|| Test case || Client || Server || Result || Details ||
-|| 1.1 || XXX || YYY || *Success* || Transfer of data was at expected rates for binary transfer over the Internet.  A 119 MB book was downloaded in 26 minutes. ||
-|| 1.1 || XXX || YYY || *Success* || Transfer of data was at expected rates for binary transfer over the Internet.  An X MB book was downloaded in Y minutes. ||
-|| 1.3 || XXX || YYY || *Failure* || Transfer of data was at X% efficiency compared to binary transfer.  Audio of Y MB was uploaded in Z minutes. ||
-
 = Requirements =
 
 == 1. Efficient use of bandwidth ==
@@ -350,13 +343,13 @@ The protocol does not support bookmarks with audio notes.
 
 || Test case || Client || Server || Result || Details ||
 || 17.1 || !HumanWare || Vision Australia ||  ||  ||
-|| 17.1 || !PlexTalk || Vision Australia ||  ||  ||
+|| 17.1 || !PlexTalk || Vision Australia || *Success* || `<`確認内容`>` getQuestion時に決め打ちで「J.K.Rowling」を入力して実行し、以下のデバッグ文が表示される事。 `[`getQuestions`]` ID = q2-1, Value = J.K.Rowling->success (id= 1100) ||
 || 17.2 || !HumanWare || Solutions Radio ||  ||  ||
-|| 17.2 || !PlexTalk || Solutions Radio ||  ||  ||
+|| 17.2 || !PlexTalk || Solutions Radio || *Failure* || getQuestions(default)で得られた `[`6`]`Magazines and Newspapers(id = rnib.918) を選択して決定すると、 `[`getQuestions`]` ID = , Value = rnib.918->error(12)`<`gSOAP`>` となって実行に失敗する。 ||
 || 17.3 || !HumanWare || !PratSam ||  ||  ||
 || 17.3 || !HumanWare || Vision Australia ||  ||  ||
-|| 17.3 || !PlexTalk || !PratSam ||  ||  ||
-|| 17.3 || !PlexTalk || Vision Australia ||  ||  ||
+|| 17.3 || !PlexTalk || !PratSam || *Success* ||  ||
+|| 17.3 || !PlexTalk || Vision Australia || *Failure* || internalServerErrorになる。テキストや数字で答えるsurveyが無いので他は確認していません。 ||
 
 == 18. Noninteractive session ==
 
@@ -375,8 +368,8 @@ The protocol does not support bookmarks with audio notes.
     * Issue all the items in the "new" Content list.
 
 || Test case || Client || Server || Result || Details ||
-|| 18.1 || !PlexTalk || !PratSam ||  ||  ||
-|| 18.1 || !PlexTalk || Vision Australia ||  ||  ||
+|| 18.1 || !PlexTalk || !PratSam || *Failure* || 要DL機能 ||
+|| 18.1 || !PlexTalk || Vision Australia || *Failure* || 要DL機能 ||
 || 18.1 || Solutions Radio || !PratSam ||  ||  ||
 || 18.1 || Solutions Radio || Vision Australia ||  ||  ||
 || 18.2 || !HumanWare || CNIB ||  ||  ||
@@ -423,8 +416,8 @@ Note that actually interacting with the Content without downloading all of its r
 || Test case || Client || Server || Result || Details ||
 || 21.1 || CNIB || CNIB ||  ||  ||
 || 21.1 || CNIB || Vision Australia ||  ||  ||
-|| 21.1 || !PlexTalk || CNIB ||  ||  ||
-|| 21.1 || !PlexTalk || Vision Australia ||  ||  ||
+|| 21.1 || !PlexTalk || CNIB || *Success* || `<`確認内容`>` デバッグ文に以下の表示がされる事 setReadingSystemAttributes]->success(0) ||
+|| 21.1 || !PlexTalk || Vision Australia || *Success* || `<`確認内容`>` デバッグ文に以下の表示がされる事 setReadingSystemAttributes]->success(0) ||
 
 == 22. Report download activity ==
 
@@ -463,16 +456,16 @@ The capability to report which server is in control was not included in the prot
 || Test case || Client || Server || Result || Details ||
 || 25.1 || CNIB || CNIB ||  ||  ||
 || 25.1 || CNIB || !PratSam ||  ||  ||
-|| 25.1 || !PlexTalk || CNIB ||  ||  ||
-|| 25.1 || !PlexTalk || !PratSam ||  ||  ||
+|| 25.1 || !PlexTalk || CNIB || *Success* ||  ||
+|| 25.1 || !PlexTalk || !PratSam || *Success* ||  ||
 || 25.2 || CNIB || CNIB ||  ||  ||
 || 25.2 || CNIB || !PratSam ||  ||  ||
 || 25.2 || !HumanWare || CNIB ||  ||  ||
 || 25.2 || !HumanWare || !PratSam ||  ||  ||
 || 25.3 || CNIB || CNIB ||  ||  ||
 || 25.3 || CNIB || !PratSam ||  ||  ||
-|| 25.3 || !PlexTalk || CNIB ||  ||  ||
-|| 25.3 || !PlexTalk || !PratSam ||  ||  ||
+|| 25.3 || !PlexTalk || CNIB || *Success* ||  ||
+|| 25.3 || !PlexTalk || !PratSam || *Failure* || HTTPS not supported. ||
 
 == 26. Localized, plain language error messages ==
 
@@ -543,13 +536,13 @@ The ability to retrieve short announcements for such things as service interrupt
 
 This expands on requirement 26, "Localized, plain language error messages".
 
-  # *Localized announcements*: Connect to a multilingual Service.  Specify in `readingSystemAttributes/config/preferredUILanguage` one of the languages supported by the Service.  Retrieve announcemetns with `getServiceAnnouncements`.  Check that all `label`s have the same language in their `xml:lang` attributes and that the text and audio are in that language.
+  # *Localized announcements*: Connect to a multilingual Service.  Specify in `readingSystemAttributes/config/preferredUILanguage` one of the languages supported by the Service.  Retrieve announcemenns with `getServiceAnnouncements`.  Check that all `label`s have the same language in their `xml:lang` attributes and that the text and audio are in that language.
   # *Localized menus*: Connect to a multilingual Service.  Specify in `readingSystemAttributes/config/preferredUILanguage` one of the languages supported by the Service.  Browse the menu structure using `getQuestions`.  Check that all `label`s have the same language in their `xml:lang` attributes and that the text and audio are in that language.
 
 || Test case || Client || Server || Result || Details ||
 || 30.1 || CNIB || !PratSam ||  ||  ||
-|| 30.1 || !PlexTalk || !PratSam ||  ||  ||
-|| 30.2 || !PlexTalk || !PratSam ||  ||  ||
+|| 30.1 || !PlexTalk || !PratSam || *Success* || Finnish language requested.  Announcement came back in Finnish. ||
+|| 30.2 || !PlexTalk || !PratSam || *Success* || Finnish language requested.  Menu came back in Finnish. ||
 || 30.2 || Solutions Radio || !PratSam ||  ||  ||
 
 = Conclusion =
