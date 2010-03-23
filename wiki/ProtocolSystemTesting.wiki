@@ -34,8 +34,8 @@ Transfer of audio from the Reading System to the Service takes place over SOAP w
 || Test case || Client || Server || Result || Details ||
 || 1.1 || CNIB || CNIB || *Success* || Transfer of data was at an acceptable rate.  A 45.7 MB book was downloaded in 10 minutes. ||
 || 1.1 || CNIB || Vision Australia || *Success* || Transfer of data was at an acceptable rate.  A 21.4 MB book was downloaded in 4 minutes. ||
-|| 1.1 || !HumanWare || CNIB ||  ||  ||
-|| 1.1 || !HumanWare || Vision Australia ||  ||  ||
+|| 1.1 || !HumanWare || CNIB || *Success* || Transfer of data was at an acceptable rate.  A 10 MB book was downloaded in 2:35 minutes. ||
+|| 1.1 || !HumanWare || Vision Australia || *Success* || Transfer of data was at an acceptable rate.  A 74 MB book was downloaded in 9:34 minutes. ||
 || 1.2 || CNIB || !PratSam ||  ||  ||
 || 1.2 || CNIB || Solutions Radio ||  ||  ||
 || 1.2 || !PlexTalk || !PratSam ||  ||  ||
@@ -61,20 +61,20 @@ Authorization occurs by User, not by Reading System; credentials are user names 
 || Test case || Client || Server || Result || Details ||
 || 2.1 || CNIB || !PratSam ||  ||  ||
 || 2.1 || CNIB || Vision Australia ||  ||  ||
-|| 2.1 || !HumanWare || !PratSam ||  ||  ||
-|| 2.1 || !HumanWare || Vision Australia ||  ||  ||
+|| 2.1 || !HumanWare || !PratSam || *Success* || Session was successfully initialized. ||
+|| 2.1 || !HumanWare || Vision Australia || *Success* || Session was successfully initialized. ||
 || 2.2 || CNIB || CNIB || *Success* || Attempted to connect with username "invalid".  `logOn` returned `false`; a call to `getServiceAttributes` returned a `NoActiveSession` fault. ||
 || 2.2 || CNIB || Vision Australia || *Failure* || Attempted to connect with username "invalid".  `logOn` returned `false` but a call to `getServiceAttributes` returned a nonstandard fault. ||
 || 2.2 || Solutions Radio || CNIB ||  ||  ||
 || 2.2 || Solutions Radio || Vision Australia ||  ||  ||
 || 2.3 || CNIB || CNIB ||  ||  ||
 || 2.3 || CNIB || !PratSam ||  ||  ||
-|| 2.3 || !HumanWare || CNIB ||  ||  ||
-|| 2.3 || !HumanWare || !PratSam ||  ||  ||
+|| 2.3 || !HumanWare || CNIB || *Success* || Resources were downloaded with basic authentication credentials. ||
+|| 2.3 || !HumanWare || !PratSam || *Success* || Resources were downloaded with basic authentication credentials. ||
 || 2.4 || CNIB || !PratSam ||  ||  ||
 || 2.4 || CNIB || Solutions Radio ||  ||  ||
 || 2.4 || !HumanWare || !PratSam ||  ||  ||
-|| 2.4 || !HumanWare || Solutions Radio ||  ||  ||
+|| 2.4 || !HumanWare || Solutions Radio || *Success* || Service responded 401 when using invalid user name or password ||
 
 == 3. Transmit bookmarks ==
 
@@ -186,7 +186,7 @@ The requirement states that the Reading System must store the Service's contact 
 || 8.2 || CNIB || CNIB ||  ||  ||
 || 8.2 || CNIB || Solutions Radio ||  ||  ||
 || 8.2 || !HumanWare || CNIB ||  ||  ||
-|| 8.2 || !HumanWare || Solutions Radio ||  ||  ||
+|| 8.2 || !HumanWare || Solutions Radio || *Success* || Content issued and downloaded. ||
 
 == 9. Time interrogation ==
 
@@ -294,8 +294,8 @@ The protocol does not support bookmarks with audio notes.
   # *Pre-requisite book*: Search for the second or third book of a series, where the previous book was never issued.  The Service should, in the dynamic menus, inform the user of the previous book.
 
 || Test case || Client || Server || Result || Details ||
-|| 14.1 || !HumanWare || Solutions Radio ||  ||  ||
-|| 14.1 || !HumanWare || Vision Australia ||  ||  ||
+|| 14.1 || !HumanWare || Solutions Radio || *Success* || issueContent returned true and the list of resources was retrieved. ||
+|| 14.1 || !HumanWare || Vision Australia || *Success* || issueContent returned true and the list of resources was retrieved. ||
 || 14.1 || !PlexTalk || Solutions Radio || *Success* ||  ||
 || 14.1 || !PlexTalk || Vision Australia || *Success* ||  ||
 || 14.2 || CNIB || CNIB ||  ||  ||
@@ -314,8 +314,8 @@ The protocol does not support bookmarks with audio notes.
   # *Annotated Content list*: Retrieve a Content list with several items from a Service using `getContentList`.  Each item must have a label with both text and audio.
 
 || Test case || Client || Server || Result || Details ||
-|| 15.1 || !HumanWare || !PratSam ||  ||  ||
-|| 15.1 || !HumanWare || Solutions Radio ||  ||  ||
+|| 15.1 || !HumanWare || !PratSam || *Success* || All items have audio and text in there label. ||
+|| 15.1 || !HumanWare || Solutions Radio || *Success* || All items have audio and text in there label ||
 || 15.1 || Solutions Radio || !PratSam ||  ||  ||
 || 15.1 || Solutions Radio || Solutions Radio ||  ||  ||
 
@@ -344,12 +344,12 @@ The protocol does not support bookmarks with audio notes.
   # *Survey*: Use the dynamic menus to answer a survey form provided by the Service.
 
 || Test case || Client || Server || Result || Details ||
-|| 17.1 || !HumanWare || Vision Australia ||  ||  ||
+|| 17.1 || !HumanWare || Vision Australia || *Failure* || FaultException: Error in deserializing body of request message for operation 'getContentList' (id=1100). ||
 || 17.1 || !PlexTalk || Vision Australia || *Success* || `<`確認内容`>` getQuestion時に決め打ちで「J.K.Rowling」を入力して実行し、以下のデバッグ文が表示される事。 `[`getQuestions`]` ID = q2-1, Value = J.K.Rowling->success (id= 1100) ||
 || 17.2 || !HumanWare || Solutions Radio ||  ||  ||
 || 17.2 || !PlexTalk || Solutions Radio || *Failure* || getQuestions(default)で得られた `[`6`]`Magazines and Newspapers(id = rnib.918) を選択して決定すると、 `[`getQuestions`]` ID = , Value = rnib.918->error(12)`<`gSOAP`>` となって実行に失敗する。 ||
-|| 17.3 || !HumanWare || !PratSam ||  ||  ||
-|| 17.3 || !HumanWare || Vision Australia ||  ||  ||
+|| 17.3 || !HumanWare || !PratSam || *Success* || Successfully answered a survey. ||
+|| 17.3 || !HumanWare || Vision Australia || *Failure* || ProtocolException: The remote server returned an unexpected response: (400) Bad Request. ||
 || 17.3 || !PlexTalk || !PratSam || *Success* ||  ||
 || 17.3 || !PlexTalk || Vision Australia || *Failure* || internalServerErrorになる。テキストや数字で答えるsurveyが無いので他は確認していません。 ||
 
@@ -374,8 +374,8 @@ The protocol does not support bookmarks with audio notes.
 || 18.1 || !PlexTalk || Vision Australia || *Failure* || 要DL機能 ||
 || 18.1 || Solutions Radio || !PratSam ||  ||  ||
 || 18.1 || Solutions Radio || Vision Australia ||  ||  ||
-|| 18.2 || !HumanWare || CNIB ||  ||  ||
-|| 18.2 || !HumanWare || Solutions Radio ||  ||  ||
+|| 18.2 || !HumanWare || CNIB || *Success* || Returned user selected content. Returned expired content. Issued all new content. ||
+|| 18.2 || !HumanWare || Solutions Radio || *Success* || Returned user selected content. Returned expired content. Issued all new content. ||
 || 18.2 || Solutions Radio || CNIB ||  ||  ||
 || 18.2 || Solutions Radio || Solutions Radio ||  ||  ||
 
@@ -462,7 +462,7 @@ The capability to report which server is in control was not included in the prot
 || 25.1 || !PlexTalk || !PratSam || *Success* ||  ||
 || 25.2 || CNIB || CNIB ||  ||  ||
 || 25.2 || CNIB || !PratSam ||  ||  ||
-|| 25.2 || !HumanWare || CNIB ||  ||  ||
+|| 25.2 || !HumanWare || CNIB || *Success*  || Resources were downloaded with basic authentication credentials. ||
 || 25.2 || !HumanWare || !PratSam ||  ||  ||
 || 25.3 || CNIB || CNIB ||  ||  ||
 || 25.3 || CNIB || !PratSam ||  ||  ||
@@ -497,7 +497,7 @@ Sending audio from the Reading System to the Service was originally in scope, th
 
 || Test case || Client || Server || Result || Details ||
 || 27.1 || !HumanWare || !PratSam ||  ||  ||
-|| 27.1 || !HumanWare || Vision Australia ||  ||  ||
+|| 27.1 || !HumanWare || Vision Australia || *Failure* || ProtocolException: The remote server returned an unexpected response: (400) Bad Request. ||
 
 == 28. Download tracking ==
 
@@ -508,7 +508,7 @@ Although reporting download activity is not part of the protocol, certain organi
   # *Track downloads*: Connect to a Service, then issue and download a Content item.  Verify that file downloads were logged by the Service Provider.
 
 || Test case || Client || Server || Result || Details ||
-|| 28.1 || !HumanWare || Solutions Radio ||  ||  ||
+|| 28.1 || !HumanWare || Solutions Radio || *Success* || Content was downloaded and logged by the service. ||
 || 28.1 || !HumanWare || Vision Australia ||  ||  ||
 || 28.1 || Solutions Radio || Solutions Radio ||  ||  ||
 || 28.1 || Solutions Radio || Vision Australia ||  ||  ||
@@ -523,12 +523,12 @@ The ability to retrieve short announcements for such things as service interrupt
   # *Mark as read*: Call the `markAnnouncementsAsRead` operation with the IDs of active announcements.  Call the `getServiceAnnouncements` operation and ensure that the Service has removed them from the list.
 
 || Test case || Client || Server || Result || Details ||
-|| 29.1 || !HumanWare || !PratSam ||  ||  ||
-|| 29.1 || !HumanWare || Vision Australia ||  ||  ||
+|| 29.1 || !HumanWare || !PratSam || *Success* || Announcements were successfully retrieved and rendered. ||
+|| 29.1 || !HumanWare || Vision Australia || *Success* || Announcements were successfully retrieved and rendered. ||
 || 29.1 || Solutions Radio || !PratSam ||  ||  ||
 || 29.1 || Solutions Radio || Vision Australia ||  ||  ||
-|| 29.2 || !HumanWare || !PratSam ||  ||  ||
-|| 29.2 || !HumanWare || Vision Australia ||  ||  ||
+|| 29.2 || !HumanWare || !PratSam || *Success* || First announcement was marked as read and removed from the announcements list. ||
+|| 29.2 || !HumanWare || Vision Australia || *Success* || First announcement was marked as read and removed from the announcements list. ||
 || 29.2 || Solutions Radio || !PratSam ||  ||  ||
 || 29.2 || Solutions Radio || Vision Australia ||  ||  ||
 
