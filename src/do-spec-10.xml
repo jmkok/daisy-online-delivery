@@ -1279,9 +1279,9 @@
 					<function>markAnnouncementsAsRead</function>.
                 </para>
 
-                <para> If a <xref linkend="term_service"/> returns <literal>false</literal>, then
-                    the announcement is already marked as read. If a <xref linkend="term_service"/>
-                    returns an <xref linkend="ft_invalidParameterFault"/> Fault, then the identifier
+                <para> If a <xref linkend="term_readingSystem"/> calls <function>markAnnouncementsAsRead</function>, and a <xref linkend="term_service"/> returns <literal>false</literal>, then
+                    the announcement has already been marked as read. If a <xref linkend="term_service"/>
+                    returns an <xref linkend="ft_invalidParameterFault"/> Fault, then the announcement identifier
                     does not exist on the <xref linkend="term_service"/>.
                 </para>
 
