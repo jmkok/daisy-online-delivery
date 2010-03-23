@@ -1607,6 +1607,7 @@
 
     <bibliography>
         <title>References</title>
+		<!-- Using "et al." where there are more than two authors. -->
         <bibliodiv>
             <title>Normative References</title>
 
@@ -1617,9 +1618,22 @@
                         >DAISY 2.02 Specification</link>
                 </title>
                 <author>
-                    <personname>M. Gylling, et al.</personname>
+                    <personname>Markus Gylling, et al</personname>
                 </author>
-                <date>February 2001</date>
+                <date>28 February 2001</date>
+            </biblioentry>
+
+            <biblioentry xml:id="bib_doc-lit-conformance">
+                <abbrev>Document-Literal Conformance</abbrev>
+                <title>
+                    <link
+                        xlink:href="http://www.ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html#Child_Element_for_Document-Literal_Bindings"
+                        >Child Element for Document-Literal Bindings</link> (part of <xref linkend="bib_wsibasicprofile11"/>)
+                </title>
+        		<author>
+        			<personname>Keith Ballinger, et al</personname>
+        		</author>
+				<date>24 August 2004</date>
             </biblioentry>
 
             <biblioentry xml:id="bib_dublinCore">
@@ -1628,93 +1642,21 @@
                     <link xlink:href="http://dublincore.org/documents/2008/01/14/dces/">Dublin Core
                         Metadata Element Set, Version 1.1</link>
                 </title>
-                <date>January 2008</date>
-            </biblioentry>
-			<!--<biblioentry xml:id="bib_infoset">
-                <abbrev>INFOSET</abbrev>
-                <title>
-                    <link xlink:href="http://www.w3.org/TR/xml-infoset/">XML Information Set (Second
-                        Edition)</link>
-                </title>
-                <author>
-                    <personname>J. Cowan, R. Tobin</personname>
-                </author>
-                <date>February 2004</date>
-            </biblioentry>-->
-            <biblioentry xml:id="bib_iso3166">
-                <abbrev>ISO 3166</abbrev>
-                <title>
-                    <link
-                        xlink:href="http://www.iso.org/iso/en/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html"
-                        >ISO 3166-1 - Codes for the representation of names of countries and their
-                        subdivisions - Part 1: Country codes</link>
-                </title>
-            </biblioentry>
-            <biblioentry xml:id="bib_RFC2119">
-                <abbrev>RFC 2119</abbrev>
-                <title>
-                    <link xlink:href="http://tools.ietf.org/html/rfc2119">Key words for use in RFCs
-                        to Indicate Requirement Levels, RFC 2119</link>
-                </title>
-                <date>March 1997</date>
-            </biblioentry>
-            <biblioentry xml:id="bib_RFC2396">
-                <abbrev>RFC 2396</abbrev>
-                <title>
-                    <link xlink:href="http://tools.ietf.org/html/rfc2396">Uniform Resource
-                        Identifiers (URI): Generic Syntax, RFC 2396</link>
-                </title>
-                <date>August 1998</date>
-            </biblioentry>
-            <biblioentry xml:id="bib_RFC2617">
-                <abbrev>RFC 2617</abbrev>
-                <title>
-                    <link xlink:href="http://tools.ietf.org/html/rfc2617">HTTP Authentication: Basic
-                        and Digest Access Authentication, RFC 2617</link>
-                </title>
-                <date>June 1999</date>
-            </biblioentry>
-            <biblioentry xml:id="bib_mime">
-                <abbrev>MIME</abbrev>
-                <title>
-                    <link xlink:href="http://tools.ietf.org/html/rfc2046">Multipurpose Internet Mail
-                        Extensions (MIME) Part Two: Media Types, RFC 2046</link>
-                </title>
-                <author>
-                    <personname>N. Freed, et al.</personname>
-                </author>
-                <date>November 1996</date>
-            </biblioentry>
-        	
-        	<biblioentry xml:id="bib_xsd">
-        		<abbrev>XML Schema 1</abbrev>
-        		<title>
-        			<link xlink:href="http://www.w3.org/TR/xmlschema-2/">XML Schema Part 1: 
-        				Structures Second Edition</link>
-        		</title>
         		<author>
-        			<personname>Henry S. Thompson, et al.</personname>
+        			<personname>Dublin Core Metadata Initiative</personname>
         		</author>
-        		<date>28 October 2004</date>
-        	</biblioentry>
-        	
-        	<biblioentry xml:id="bib_xsdDatatypes">
-                <abbrev>XML Schema 2</abbrev>
-                <title>
-                    <link xlink:href="http://www.w3.org/TR/xmlschema-2/">XML Schema Part 2:
-                        Datatypes Second Edition</link>
-                </title>
-                <author>
-                    <personname>P. V. Biron, et al.</personname>
-                </author>
-                <date>28 October 2004</date>
+                <date>14 January 2008</date>
             </biblioentry>
+
             <biblioentry xml:id="bib_http11">
                 <abbrev>HTTP 1.1</abbrev>
                 <title>
                     <link xlink:href="http://tools.ietf.org/html/rfc2616">HyperText Transfer
-                        Protocol 1.1, RFC 2616</link>
+                        Protocol 1.1</link>, RFC 2616
                 </title>
+        		<author>
+        			<personname>R. Fielding, et al</personname>
+        		</author>
                 <date>June 1999</date>
             </biblioentry>
 
@@ -1723,19 +1665,39 @@
                 <title>
                     <link
                         xlink:href="http://www.ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html#HTTP_Cookies"
-                        >HTTP cookies in WS-I Basic Profile 1.1</link>
+                        >HTTP cookies in WS-I Basic Profile 1.1</link> (part of <xref linkend="bib_wsibasicprofile11"/>)
                 </title>
+        		<author>
+        			<personname>Keith Ballinger, et al</personname>
+        		</author>
+				<date>24 August 2004</date>
             </biblioentry>
 
-            <biblioentry xml:id="bib_doc-lit-conformance">
-                <abbrev>Document-Literal Conformance</abbrev>
+            <biblioentry xml:id="bib_iso3166">
+                <abbrev>ISO 3166</abbrev>
                 <title>
                     <link
-                        xlink:href="http://www.ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html#Child_Element_for_Document-Literal_Bindings"
-                        >Child Element for Document-Literal Bindings</link>
+                        xlink:href="http://www.iso.org/iso/en/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html"
+                        >ISO 3166-1 - Codes for the representation of names of countries and their
+                        subdivisions - Part 1: Country codes</link>
                 </title>
+        		<author>
+        			<personname>ISO - International Organization for Standardization</personname>
+        		</author>
             </biblioentry>
 
+            <biblioentry xml:id="bib_mime">
+                <abbrev>MIME</abbrev>
+                <title>
+                    <link xlink:href="http://tools.ietf.org/html/rfc2046">Multipurpose Internet Mail
+                        Extensions (MIME) Part Two: Media Types</link>, RFC 2046
+                </title>
+                <author>
+                    <personname>N. Freed, et al</personname>
+                </author>
+                <date>November 1996</date>
+            </biblioentry>
+        	
             <biblioentry xml:id="bib_mtom">
                 <abbrev>MTOM</abbrev>
                 <title>
@@ -1743,17 +1705,9 @@
                         Optimization Mechanism</link>
                 </title>
                 <author>
-                    <personname>M. Gudgin, et al.</personname>
+                    <personname>M. Gudgin, et al</personname>
                 </author>
                 <date>January 2005</date>
-            </biblioentry>
-
-            <biblioentry xml:id="bib_soap1.1">
-                <abbrev>SOAP 1.1</abbrev>
-                <title>
-                    <link xlink:href="http://www.w3.org/TR/2000/NOTE-SOAP-20000508/">Simple Object
-                        Access Protocol 1.1</link>
-                </title>
             </biblioentry>
 
             <biblioentry xml:id="bib_pdtb2">
@@ -1762,6 +1716,13 @@
                     <link xlink:href="http://www.daisy.org/projects/pdtb/daisy-pdtb-spec.html">DAISY
                         Protected Digital Talking Book 2</link>
                 </title>
+                <author>
+                    <personname>Neil Bernstein</personname>
+                </author>
+                <author>
+                    <personname>George Kerscher</personname>
+                </author>
+                <date>January 2005</date>
             </biblioentry>
 
             <biblioentry xml:id="bib_rfc2109">
@@ -1773,8 +1734,77 @@
                 <author>
                     <personname>D. Kristol</personname>
                 </author>
+                <author>
+                    <personname>L. Montulli</personname>
+                </author>
                 <date>February 1997</date>
+            </biblioentry>
 
+            <biblioentry xml:id="bib_RFC2119">
+                <abbrev>RFC 2119</abbrev>
+                <title>
+                    <link xlink:href="http://tools.ietf.org/html/rfc2119">Key words for use in RFCs
+                        to Indicate Requirement Levels</link>
+                </title>
+                <author>
+                    <personname>S. Bradner</personname>
+                </author>
+                <date>March 1997</date>
+            </biblioentry>
+
+            <biblioentry xml:id="bib_RFC2396">
+                <abbrev>RFC 2396</abbrev>
+                <title>
+                    <link xlink:href="http://tools.ietf.org/html/rfc2396">Uniform Resource
+                        Identifiers (URI): Generic Syntax</link>
+                </title>
+                <author>
+                    <personname>T. Berners-Lee, et al</personname>
+                </author>
+                <date>August 1998</date>
+            </biblioentry>
+
+            <biblioentry xml:id="bib_RFC2617">
+                <abbrev>RFC 2617</abbrev>
+                <title>
+                    <link xlink:href="http://tools.ietf.org/html/rfc2617">HTTP Authentication: Basic
+                        and Digest Access Authentication</link>
+                </title>
+                <author>
+                    <personname>J. Franks, et al</personname>
+                </author>
+                <date>June 1999</date>
+            </biblioentry>
+
+            <biblioentry xml:id="bib_wav">
+                <abbrev>RIFF WAVE</abbrev>
+                <title>
+                    Multimedia Programming Interface and Data Specifications 1.0    
+                    (<link
+                        xlink:href="ftp://ftp.cwi.nl/pub/audio/RIFF-format"
+                        >Unofficial transcript</link>)
+                </title>
+                <author>
+                    <personname>IBM Corporation</personname>
+                    <!-- <orgname>IBM and Microsoft</orgname> xsl breakage -->
+                </author>
+                <author>
+                    <personname>Microsoft Corporation</personname>
+                    <!-- <orgname>IBM and Microsoft</orgname> xsl breakage -->
+                </author>
+                <date>August 1991</date>
+            </biblioentry>
+
+            <biblioentry xml:id="bib_soap1.1">
+                <abbrev>SOAP 1.1</abbrev>
+                <title>
+                    <link xlink:href="http://www.w3.org/TR/2000/NOTE-SOAP-20000508/">Simple Object
+                        Access Protocol 1.1</link>
+                </title>
+                <author>
+                    <personname>Don Box, et al</personname>
+                </author>
+                <date>8 May 2000</date>
             </biblioentry>
 
             <biblioentry xml:id="bib_ssl3.0">
@@ -1783,14 +1813,25 @@
                     <link xlink:href="http://tools.ietf.org/html/draft-ietf-tls-ssl-version3">Secure
                         Sockets Layer 3.0</link>
                 </title>
+                <author>
+                    <personname>Alan O. Freier, et al</personname>
+                </author>
+                <date>18 November 1996</date>
             </biblioentry>
 
             <biblioentry xml:id="bib_tls1.0">
                 <abbrev>TLS 1.0</abbrev>
                 <title>
                     <link xlink:href="http://www.ietf.org/rfc/rfc2246">Transport Layer Security
-                        1.0</link>
+                        1.0</link>, RFC 2246
                 </title>
+                <author>
+                    <personname>T. Dierks</personname>
+                </author>
+                <author>
+                    <personname>C. Allen</personname>
+                </author>
+                <date>January 1999</date>
             </biblioentry>
 
             <biblioentry xml:id="bib_wsibasicprofile11">
@@ -1799,6 +1840,10 @@
                     <link xlink:href="http://www.ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html"
                         >WS-I Basic Profile 1.1</link>
                 </title>
+        		<author>
+        			<personname>Keith Ballinger, et al</personname>
+        		</author>
+				<date>24 August 2004</date>
             </biblioentry>
 
             <biblioentry xml:id="bib_wsibasicprofile11_conf">
@@ -1806,8 +1851,12 @@
                 <title>
                     <link
                         xlink:href="http://www.ws-i.org/Profiles/BasicProfile-1.1.html#conformance_targets"
-                        >WS-I Basic Profile 1.1 Conformance Targets</link>
+                        >WS-I Basic Profile 1.1 Conformance Targets</link> (part of <xref linkend="bib_wsibasicprofile11"/>)
                 </title>
+        		<author>
+        			<personname>Keith Ballinger, et al</personname>
+        		</author>
+				<date>24 August 2004</date>
             </biblioentry>
 
             <biblioentry xml:id="bib_wsdl1.1">
@@ -1816,6 +1865,37 @@
                     <link xlink:href="http://www.w3.org/TR/2001/NOTE-wsdl-20010315">Web Services
                         Definition Language 1.1</link>
                 </title>
+        		<author>
+        			<personname>Erik Christensen, et al</personname>
+        		</author>
+				<date>15 March 2001</date>
+            </biblioentry>
+
+        	<biblioentry xml:id="bib_xsd">
+        		<abbrev>XML Schema 1</abbrev>
+        		<title>
+        			<link xlink:href="http://www.w3.org/TR/xmlschema-1/">XML Schema Part 1: 
+        				Structures Second Edition</link>
+        		</title>
+        		<author>
+        			<personname>Henry S. Thompson, et al</personname>
+        		</author>
+        		<date>28 October 2004</date>
+        	</biblioentry>
+        	
+        	<biblioentry xml:id="bib_xsdDatatypes">
+                <abbrev>XML Schema 2</abbrev>
+                <title>
+                    <link xlink:href="http://www.w3.org/TR/xmlschema-2/">XML Schema Part 2:
+                        Datatypes Second Edition</link>
+                </title>
+                <author>
+                    <personname>P. V. Biron</personname>
+                </author>
+                <author>
+                    <personname>Ashok Malhotra</personname>
+                </author>
+                <date>28 October 2004</date>
             </biblioentry>
 
             <biblioentry xml:id="bib_z3986-2005">
@@ -1825,9 +1905,9 @@
                         Z39-86.2005 - Specifications for the Digital Talking Book </link>
                 </title>
                 <author>
-                    <personname>M. Moodie, et al.</personname>
+                    <personname>Michael Moodie, et al</personname>
                 </author>
-                <date>2005</date>
+                <date>21 April 2005</date>
             </biblioentry>
 
             <biblioentry xml:id="bib_z3986-2005-bkmk">
@@ -1836,29 +1916,14 @@
                     <link xlink:href="http://www.daisy.org/z3986/2005/Z3986-2005.html#Bkmk">Portable
                         Bookmarks and Highlights</link> (part of <xref linkend="bib_z3986-2005"/>) </title>
                 <author>
-                    <personname>M. Moodie, et al.</personname>
+                    <personname>Michael Moodie, et al</personname>
                 </author>
-                <date>2005</date>
-            </biblioentry>
-
-            <biblioentry xml:id="bib_wav">
-                <abbrev>RIFF WAVE</abbrev>
-                <title>
-                    Multimedia Programming Interface and Data Specifications 1.0    
-                    (<link
-                        xlink:href="ftp://ftp.cwi.nl/pub/audio/RIFF-format"
-                        >Unofficial transcript
-                    </link>)
-                </title>
-                <author>
-                    <personname>IBM, Microsoft</personname>
-                    <!-- <orgname>IBM and Microsoft</orgname> xsl breakage -->
-                </author>
-                <date>August 1991</date>
+                <date>21 April 2005</date>
             </biblioentry>
         </bibliodiv>
         <bibliodiv>
             <title>Informative References</title>
+
             <biblioentry xml:id="bib_dynamicMenusPrimer">
                 <abbrev>Dynamic Menus Primer</abbrev>
                 <title>
@@ -1866,9 +1931,11 @@
                         Menus Primer</link>
                 </title>
                 <author>
-                    <personname>Kenny Johar, et al.</personname>
+                    <personname>Kenny Johar, et al</personname>
                 </author>
+				<date>2 April 2010</date>
             </biblioentry>
+
             <biblioentry xml:id="bib_z3986-2002">
                 <abbrev>Z39-86.2002</abbrev>
                 <title>
@@ -1876,9 +1943,9 @@
                         >ANSI/NISO Z39-86.2002 - Specifications for the Digital Talking Book </link>
                 </title>
                 <author>
-                    <personname>M. Moodie, et al.</personname>
+                    <personname>Michael Moodie, et al</personname>
                 </author>
-                <date>2002</date>
+                <date>6 March 2002</date>
             </biblioentry>
         </bibliodiv>
 
