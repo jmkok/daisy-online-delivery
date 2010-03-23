@@ -8,8 +8,8 @@ scribe: Kenny
  
 === New Action Items ===
 
-  * Johan clarify in the spec that for the markAnnouncementsAsRead operation, true = announcement marked as read successfully, false = announcement already marked as read, and invalidParameter fault = announcement id not valid.
-  * Johan and Kenny clarify in the spec that if an invalidParameter Fault is returned through a call to the markAnnouncementsAsRead operation, a reading system must call the markAnnouncementsAsRead operation sequentially with individual announcement ids to determine which of the announcement ids caused the fault, and close Issue 229.        
+  * Johan clarify in the spec that for the markAnnouncementsAsRead operation, true = announcement marked as read successfully, false = announcement already marked as read, and invalidParameter fault = announcement id not valid. *done*
+  * Johan and Kenny clarify in the spec that if an invalidParameter Fault is returned through a call to the markAnnouncementsAsRead operation, a reading system must call the markAnnouncementsAsRead operation sequentially with individual announcement ids to determine which of the announcement ids caused the fault, and close Issue 229. *done*        
   * Jelle add verbiage to the spec that defines the following fault precedence: internalServerError, noActiveSession, operationNotSupported, invalidOperation, invalidParameter, and close Issue 230.    
   * Geoff implement his proposal for Issue 231, and close Issue 231. 
   * Kenny move the getBlob/setBlob issue to the Daisy Online issue tracker on the DC website, and close this issue on the tracker in Google Code. *done* 
