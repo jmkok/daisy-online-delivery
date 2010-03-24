@@ -1,0 +1,155 @@
+present:
+
+Regrets:
+
+scribe: Kenny
+
+== Action Item Summary ==
+ 
+=== New Action Items ===
+
+ === Previous Unfinished Action Items ===
+
+  * Jelle talk to Geoff offline about the Systems Testing report.
+  * geoff add informative verbiage to the spec that outlines the steps that need to be taken to synchronise content in an  out-of-band selection model. 
+  * Simon to add the minOccurs and maxOccurs tweak to the tweaks page.
+  * Kenny add substantive comments to issue tracker. *no comments received*
+  * Kenny inform the owner of a substantive comment once the comment has been addressed. *no comments received*
+  * Markus fix the &apos; entity problem. (outstanding; bug in IE.) (Markus will fix this when ready to publish.)
+
+=== Group Action Items ===
+
+==== Action items for formal recommendation to the Board on April 5, 2010 ====  
+
+   * Deliver Final version of the spec.  
+   * Provide Information on comments Received, and how they were addressed.  
+   * Make Available the Systems Testing document.  
+   * make available the systems testing  Conformance report. 
+   * Make a formal Recommendation to the board for approval that includes:
+    * A one page document that contains the recommendation by the Wg including a link to the Spec, and a link to the Primer.
+    * an appendix containing the systems testing report.
+
+== Agenda/Minutes ==
+
+=== Calculating range header values from the SMIL clipBegin/clipEnd attributes ===
+
+Nick: If a reading system wishes to request parts of an audio resource how does it calculate the values for the range header from the smil clipBegin / clipEnd attributes?
+ 
+Currently the only way I can think of is to request the first few bytes, parse / calculate the bitrate / byterate and then request the range required.
+ 
+Should we add an attribute to the resource element containing the bit / byte rate?
+ 
+Should this information be part of the content / including in the <audio> tag of the smil in future Daisy standards?
+ 
+What happens with variable bit rate encoding which I beleive is allowed in later Daisy versions and could be in other content types?
+ 
+Am I missing something?
+ 
+This is less of a problem with offline reading systems as they will have the entire resouce locally.
+
+=== Issues with Audio Labels ===
+
+Johan: What is supposed to happen in a scenario where the service does not support audio labels and the reading system requires audio labels?
+
+Should the readingSystem be able to establish a session? Suppose that the service supports Dynamic Menus and Announcements, should the service throw a fault when operation getQuestions or getServiceAnnouncements is called? Should the service disregard this information and send responses not containing audio
+
+What is your thoughts?
+
+Geoff: I thought we had agreed to the behaviour at the July face-to-face meeting, but it looks like we just waffled.
+
+http://code.google.com/p/daisy-online-delivery/wiki/TorontoF2F2009Minutes#TTS
+
+Note that the question was only about announcements and menus.  I don't know if we'd added the label elements to content lists by then.
+
+I think the session should not start, since we use labels for everything.  It should be the reading system's responsibility to check the serviceAttributes to see if the service supports audio labels before continuing initialization.  If a service does not support audio labels and a reading system declares in its readingSystemAttributes that it requires them, then the service should throw an invalidParameter fault.
+  
+=== Issues ===
+
+==== Issue 191 ====
+
+Kenny: This issue refers to the definition of a test suite. Can this now be closed?    
+
+==== Issue 232 ====
+
+Jelle: I needed to add elementFormDefault="qualified" (in bookmark-2005-1.xsd) to 
+the "<xs:schema>" to make my soap client and server use correct namespaces in 
+setBookmarks and getBookmarks calls.
+
+==== Issue 233 ====
+
+Johan: The note in section 4.4.2 says "A Reading System does not require an active
+Session to access Content."
+
+This is a security risk for services offering the service only via HTTP. If
+the user credentials get sniffed the resources might be downloaded and
+distributed to the public on other networks. 
+
+Suggestion: we remove the note.
+
+Geoff: It's not a bug, it's a feature.  Service providers offering content or service via
+HTTP have to accept the risks of using an insecure transfer protocol.
+ 
+Johan: If I as service provider believe that HTTPS will dramatically decrease the
+performance of the service, but still keep the content as secure as possible, can I
+change the credentials when the user initialize a new session?
+
+==== Issue 234 ==== 
+
+Johan: In section 5.1.6 the contentID parameter is defiened as
+
+"Contains the Content Identifier of the Content item for which the
+resources list is being requested (as defined in the [Dublin Core]
+identifier  field of the contentMetadata)."
+
+I thought that the service could use arbitrary IDs for contents.
+ 
+Geoff: The wording is perhaps unclear here: the contentMetadata has to contain the content
+ID in it's dc:identifier field.  getContentResources also uses the content ID.  I
+think we can remove the parenthetical, since content ID is defined in the glossary.
+ 
+Johan: Just to clarify this. If the 'dc:identifier' value is xxx-yyyy-zzzz, can I as a
+service provider use an arbitrary id e.g. aaa_b for this content? The RS must then
+use this id in calls to getContentMetadata, issueContent, getContentResources and
+returnContent.
+
+=== Test suite Progress review ===
+
+==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolInteroperabilityTesting Interoprability Testing] ====
+
+Kenny: If the Interoperability Testing document was not to be ready before the Daisy Online Wg submission on the 1st of April, would Humanware, Plextor support this submission? There is now a feature request in the Daisy Online Issue Tracker on the Daisy Website for a full-fledged Conformance Testing document, to be created in the maintenance phase of the spec:
+http://www.daisy.org/online-delivery/issues/provide-conformance-testing-document-maintenance-phase-spec  
+    
+Hiro: Yes, we will support the submission.
+
+Simon: If everything goes well with the System Testing, we will support the submission without the Interoperability Testing document. 
+This feature request should be addressed as soon as possible. 
+
+Kenny: Do we have complete consensus then to drop the Interoperability Testing document for this version of the spec, and work on a Conformance Testing Document in the maintenance phase? Is everyone happy to support the submission without the Interoperability Testing document?     
+
+==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolSystemTesting Systems Testing] ====
+ 
+=== Health check, and Timelines for the next week ===
+
+  * Complete all action items. 
+
+What remains?
+
+  * Close all issues. For the deferred issues, move them to the Daisy Online issue tracker on the Daisy website.
+
+What remains? 
+
+  * Proof read the spec. 
+
+who will be participating in the proof reading? 
+
+  * proof read the Primer. 
+
+Who will be participating in proof reading the Primer?
+
+  * Complete the systems Testing report. 
+
+What Remains?
+
+  * Final submission
+
+Kenny: Will prepare it immediately after the last telecon on the 31st of March and post it to the list for endorsement. Are 24 hours enough for everyone to post their endorsement or objection to the list? If there were no objections, we could get the submission to Bernhard on the 2nd of April. 
