@@ -161,7 +161,7 @@
         <para>If the User the author keyword "asimoff" and the subject keyword "myst*", the Reading System would retrieve the next menu by
             calling <function>getQuestions</function> as follows:</para>
 
-			<programlisting><xi:include href="./samples/dynamicMenusExamples-search-6.xml" parse="text"/></programlisting>
+			<programlisting><xi:include href="./samples/dynamicMenusExamples-search-4.xml" parse="text"/></programlisting>
         <para>This operation returns the following:</para>
 		<programlisting><xi:include href="./samples/dynamicMenusExamples-search-7.xml" parse="text"/></programlisting>
         <para>The Reading System reads the ID of the <type>contentList</type> from the <type>contentListRef</type> element,
