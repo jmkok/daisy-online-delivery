@@ -47,9 +47,9 @@
 				<db:para>Each of these Fault types has a <db:type>reason</db:type> child element, a
 				<db:type>string</db:type> which can be used to send debugging information to the Reading System.
 				This information should not be rendered to the User in most circumstances.</db:para>
-				<db:para>It is possible that more than one Fault condition can be triggered.  For example,
-				an unsupported operation could be called outside of an active Session.  In the case of two or more Fault
-				conditions being applicable, the Fault with the earlier priority must be issued.  The order of priority is as
+				<db:para>More than one Fault condition may be triggered when an operation is called.  For example,
+				an unsupported operation may be called outside of an active Session.  In the case of two or more Fault
+				conditions being applicable, the Fault that appears first in the fault precedence listed below must be issued.  The fault precedence is as
 				follows:</db:para>
 				<db:orderedlist>
 					<db:listitem><db:para><db:errorcode>internalServerError</db:errorcode></db:para></db:listitem>
