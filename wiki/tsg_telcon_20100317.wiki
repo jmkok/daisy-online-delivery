@@ -15,7 +15,7 @@ present: Nick, Geoff, Markus, Jelle, Johan and Kenny.
    * Kenny move the getBlob/setBlob issue to the Daisy Online issue tracker on the DC website, and close this issue on the tracker in Google Code. *done*  
    * Kenny add feature request to the Daisy Online issue tracker on the DC website for a Conformance Testing document to be delivered in the maintenance phase of the spec. *done*  
    * Kenny check with Humanware and Plextor on what their position is on not delivering the Interoperability Testing document in this version of the spec. *done*   
-   * Geoff talk to Kenny offline about an issue in the issue tracker. 
+   * Geoff talk to Kenny offline about an issue in the issue tracker. *done* 
    * Jelle talk to Geoff offline about the Systems Testing report. 
   
   === Previous Unfinished Action Items === 
@@ -29,8 +29,8 @@ present: Nick, Geoff, Markus, Jelle, Johan and Kenny.
    * Simon, Jelle, Johan, Geoff and Hiro implement pdtb2 support in their test implementations by 8 March. *Johan: done, Geoff: gave up*  
    * Kenny add a normative assertion, that sets forth the invalidParameter fault as the consequence of a Reading System calling the getQuestions operation with the "back" id when no prior call to the getQuestions operation has been made in the active session, to the spec and the Interoperability testing documents. *done* 
    * Kenny add a normative assertion, that sets forth the invalidParameter fault as the consequence of a Reading System calling the getQuestions operation with the "back" and "search" IDs, when these IDs are not supported by a Service. *done*  
-   * Kenny add substantive comments to issue tracker. 
-   * Kenny inform the owner of a substantive comment once the comment has been addressed. 
+   * Kenny add substantive comments to issue tracker. *no comments received* 
+   * Kenny inform the owner of a substantive comment once the comment has been addressed. *no comments received* 
    * Simon to add the minOccurs and maxOccurs tweak to the tweaks page. 
    * Markus fix the &apos; entity problem. (outstanding; bug in IE.) (Markus will fix this when ready to publish.) 
   
