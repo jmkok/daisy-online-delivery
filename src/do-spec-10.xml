@@ -1093,6 +1093,48 @@
 
             </section>
 
+            <section xml:id="fundamentals_content_synchronization" conformance="informative">
+                <title>Content Synchronization sequence</title>
+				
+				<para>In the <xref linkend="fundamentals_contentSelectionMethod_reqs_outofband" />, a Reading System
+					can automatically synchronize the Content it stores locally with the Content available to the User
+					on the Service.  The following sequence of steps can be taken to synchronize the Content.
+					The Session must be initialized, but other operations may be called before synchronization.</para>
+				
+				<orderedlist>
+					<listitem><para>If the User has chosen to return any Content items while the Reading System
+						was offline, the Reading System calls <code>returnContent(itemid)</code> for each
+						item.</para></listitem>
+					<listitem><para>The Reading System calls <code>getContentList("expired", 0,
+						-1)</code>.</para></listitem>
+					<listitem><para>The Reading System returns each item in the <literal>expired</literal>
+						list.</para></listitem>
+					<listitem><para>The Reading System calls <code>getContentList("new", 0,
+						-1)</code>.</para></listitem>
+					<listitem><para>For each item in the <literal>new</literal> list, the Reading System calls
+						<code>getContentMetadata(itemid)</code>, then <code>issueContent(itemid)</code>, then
+						<code>getContentResources(itemid)</code>, as in the
+						<xref linkend="fundamentals_content_issuing_retrieval_sequence"/>.</para></listitem>
+					<listitem><para>The Reading System calls <code>getContentList("issued", 0,
+						-1)</code>.</para></listitem>
+					<listitem><para>For each item in the <literal>issued</literal> list, the Reading System calls
+						<code>getContentResources(itemid)</code>.</para></listitem>
+				</orderedlist>
+
+				<para>At this point, the Reading System will have the <type>contentMetadata</type> and
+					<type>resources</type> for all of the Content items available to the User.  It can begin
+					downloading new and updated Content, or it can offer the titles to the User for streaming, or
+					it can continue calling operations.</para>
+
+				<para>Since a Service is free to return a partial <type>contentList</type>,
+					<function>getContentList</function> may need to be called several times with the appropriate
+					index parameters to retrieve the full lists.</para>
+
+				<para>Faults may occur in this sequence.  For instance, a Service may offer many Content items in
+					its <literal>new</literal> <type>contentList</type>, but only allow a few to be issued at a
+					time.</para>
+            </section>
+
             <section xml:id="fundamentals_content_issuing_pdtb">
                 <title>Rights management</title>
 
