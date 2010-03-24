@@ -4,7 +4,7 @@
       <input type="TEXT_ALPHANUMERIC" />
     </inputTypes>
     <label xml:lang="en">
-      <text>Full text search</text>
+      <text>Full text search:</text>
     </label>
   </inputQuestion>
   <inputQuestion id="q2-2">
@@ -12,7 +12,7 @@
       <input type="TEXT_ALPHANUMERIC" />
     </inputTypes>
     <label xml:lang="en">
-      <text>Title keyword(s)</text>
+      <text>Title keyword(s):</text>
     </label>
   </inputQuestion>
   <inputQuestion id="q2-3">
@@ -20,7 +20,7 @@
       <input type="TEXT_ALPHANUMERIC" />
     </inputTypes>
     <label xml:lang="en">
-      <text>Author keyword(s)</text>
+      <text>Author keyword(s):</text>
     </label>
   </inputQuestion>
   <inputQuestion id="q2-4">
@@ -28,7 +28,7 @@
       <input type="TEXT_ALPHANUMERIC" />
     </inputTypes>
     <label xml:lang="en">
-      <text>Subject keyword(s)</text>
+      <text>Subject keyword(s):</text>
     </label>
   </inputQuestion>
   <inputQuestion id="q2-5">
@@ -36,7 +36,7 @@
       <input type="TEXT_ALPHANUMERIC" />
     </inputTypes>
     <label xml:lang="en">
-      <text>Narrator keyword(s)</text>
+      <text>Narrator keyword(s):</text>
     </label>
   </inputQuestion>
   <inputQuestion id="q2-6">
@@ -44,7 +44,7 @@
       <input type="TEXT_ALPHANUMERIC" />
     </inputTypes>
     <label xml:lang="en">
-      <text>Call number</text>
+      <text>Call number:</text>
     </label>
   </inputQuestion>
 </questions>
