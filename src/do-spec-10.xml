@@ -808,7 +808,7 @@
                         <xref linkend="ft_invalidOperationFault"/>
                     </errorname> Fault if a <xref linkend="term_readingSystem"/> attempts to call
                     any <xref linkend="term_operation"/> other than the ones outlined in this
-                    section before successfully completing the full initialization sequence. The only exception to this rule is <function><xref linkend="op_logOff"/></function> that may be called anywhere within the initialization sequence.</para>
+                    section before successfully completing the full initialization sequence. The only exception to this rule is the <function><xref linkend="op_logOff"/></function> operation that may be called anywhere within the initialization sequence.</para>
 
                 <para> After completing a successful logon and initialization sequence, a <xref
                         linkend="term_readingSystem"/> may call any <xref linkend="term_operation"
