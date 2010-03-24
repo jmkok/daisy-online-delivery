@@ -1,6 +1,6 @@
 present:
 
-Regrets:
+Regrets: jelle, Johan
 
 scribe: Kenny
 
@@ -46,6 +46,10 @@ What happens with variable bit rate encoding which I beleive is allowed in later
 Am I missing something?
  
 This is less of a problem with offline reading systems as they will have the entire resouce locally.
+
+Mark: I don’t believe having the bit rate will be enough. Even assuming a constant bit rate, you still need to know the offset where the actual encoded frames start. About the only files that don’t require this would be mp3 with no id3 tags at all. Other audio formats (remember there are ongoing activities to add codecs to Daisy) might actually store the header information at the end (anything using the iso file format might store the metadata anywhere but typically at the start or end).
+
+Also worth mentioning, in the case of a PDTB2 book with encrypted audio, the system can’t start decrypting from anywhere in the file. It must do so from a AES block aligned data (16 bytes if I recall) so that complicates things even further. 
 
 === Issues with Audio Labels ===
 
