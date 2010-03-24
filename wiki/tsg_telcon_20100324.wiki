@@ -39,7 +39,7 @@ Currently the only way I can think of is to request the first few bytes, parse /
  
 Should we add an attribute to the resource element containing the bit / byte rate?
  
-Should this information be part of the content / including in the <audio> tag of the smil in future Daisy standards?
+Should this information be part of the content / including in the `<audio>` tag of the smil in future Daisy standards?
  
 What happens with variable bit rate encoding which I beleive is allowed in later Daisy versions and could be in other content types?
  
@@ -72,7 +72,7 @@ Kenny: This issue refers to the definition of a test suite. Can this now be clos
 ==== Issue 232 ====
 
 Jelle: I needed to add elementFormDefault="qualified" (in bookmark-2005-1.xsd) to 
-the "<xs:schema>" to make my soap client and server use correct namespaces in 
+the `<xs:schema>` to make my soap client and server use correct namespaces in 
 setBookmarks and getBookmarks calls.
 
 ==== Issue 233 ====
