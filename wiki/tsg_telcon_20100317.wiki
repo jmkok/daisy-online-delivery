@@ -20,15 +20,15 @@ scribe: Kenny
 
  === Previous Unfinished Action Items ===
 
-  * Kenny clarify in the spec that the logOff operation can be called within the session innitialisation sequence, and close Issue 227.
+  * Kenny clarify in the spec that the logOff operation can be called within the session innitialisation sequence, and close Issue 227. *done*
   * Geoff clarify in the spec that a cookie can be issued even when the logOn operation is unsuccessful, and close Issue 228. *done*
   * geoff add informative verbiage to the spec that outlines the steps that need to be taken to synchronise content in an  out-of-band selection model. 
   * Johan and Kenny advice Nick on what sections he should work on in the Interoperability Testing document. 
   * Johan, Nick and kenny work on the Interoperability testing document before the next telecon to produce the first draft.
   * Geoff eliminate the ambiguity around the use of the word "Content" in the spec, and close Issue 211. *done*
   * Simon, Jelle, Johan, Geoff and Hiro implement pdtb2 support in their test implementations by 8 March. *Johan: done, Geoff: gave up* 
-  * Kenny add a normative assertion, that sets forth the invalidParameter fault as the consequence of a Reading System calling the getQuestions operation with the "back" id when no prior call to the getQuestions operation has been made in the active session, to the spec and the Interoperability testing documents.
-  * Kenny add a normative assertion, that sets forth the invalidParameter fault as the consequence of a Reading System calling the getQuestions operation with the "back" and "search" IDs, when these IDs are not supported by a Service. 
+  * Kenny add a normative assertion, that sets forth the invalidParameter fault as the consequence of a Reading System calling the getQuestions operation with the "back" id when no prior call to the getQuestions operation has been made in the active session, to the spec and the Interoperability testing documents. *done*
+  * Kenny add a normative assertion, that sets forth the invalidParameter fault as the consequence of a Reading System calling the getQuestions operation with the "back" and "search" IDs, when these IDs are not supported by a Service. *done* 
   * Kenny add substantive comments to issue tracker.
   * Kenny inform the owner of a substantive comment once the comment has been addressed.
   * Simon to add the minOccurs and maxOccurs tweak to the tweaks page.
