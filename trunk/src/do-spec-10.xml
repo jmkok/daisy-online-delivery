@@ -1535,6 +1535,7 @@
 						<para>A Service must explicitly declare whether or not it supports this value
 						with the <type><xref linkend="tp_supportsServerSideBack" /></type> element
 						of its <type><xref linkend="tp_serviceAttributes" /></type>.</para>
+<para>A <xref linkend="term_service"/> must return an <xref linkend="ft_invalidParameterFault"/> fault if a <xref linkend="term_readingSystem"/> calls the <function><xref linkend="op_getQuestions"/></function> operation with the Back value when no prior call has been made to this operation in the active session.</para>  
                     </listitem>
 					</varlistentry>
                 </variablelist>
@@ -1544,6 +1545,10 @@
                     the <literal>default</literal> value; <literal>search</literal> and
                         <literal>back</literal> are optional.
 				</para>
+
+<para>
+A <xref linkend="term_service"/> must return an <xref linkend="ft_invalidParameterFault"/> fault if a <xref linkend="term_readingSystem"/> calls the <function><xref linkend="op_getQuestions"/></function> operation with the search or back values when these values are not supported by the Service.     
+</para>
             </section>
 
         </section>
