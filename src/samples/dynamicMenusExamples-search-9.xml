@@ -1,22 +1,22 @@
 <contentList xmlns="http://www.daisy.org/ns/daisy-online/"
              id="L100" firstItem="0" lastItem="2" totalItems="3">
   <label xml:lang="en">
-    <text>Your Search for "J.K. Rowling" returned the following
-    results.</text>
+    <text>Search for Author: asimoff AND Subject: myst* returned no results.
+      Did you mean "Asimov"? Showing results 1 to 3 of 3.</text>
   </label>
-  <contentItem id="hp_cos" lastModifiedDate="2009-08-20T11:00:00Z">
+  <contentItem id="dtb49589" lastModifiedDate="2009-08-20T11:00:00Z">
     <label xml:lang="en">
-      <text>Harry Potter and the Chamber of Secrets</text>
+      <text>Tales of the Black Widowers by Isaac Asimov</text>
     </label>
   </contentItem>
-  <contentItem id="hp_dh" lastModifiedDate="2009-08-22T08:00:00Z">
+  <contentItem id="dtb51992" lastModifiedDate="2009-08-22T08:00:00Z">
     <label xml:lang="en">
-      <text>Harry Potter and the Deathly Hallows</text>
+      <text>More Tales of the Black Widowers by Isaac Asimov</text>
     </label>
   </contentItem>
-  <contentItem id="hp_gof" lastModifiedDate="2009-08-04T14:30:00Z">
+  <contentItem id="dtb66185" lastModifiedDate="2009-08-04T14:30:00Z">
     <label xml:lang="en">
-      <text>Harry Potter and the Goblet of Fire</text>
+      <text>The Caves of Steel by Isaac Asimov</text>
     </label>
   </contentItem>
 </contentList>
