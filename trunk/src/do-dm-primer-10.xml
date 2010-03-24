@@ -147,26 +147,21 @@
         <para>The operation returns the following:
             <programlisting><xi:include href="./samples/dynamicMenusExamples-search-3.xml" parse="text"/></programlisting>
             The Reading System renders this to the User as follows:</para>
-		<blockquote><para>What would you like to search by?</para>
+		<blockquote>
 			<itemizedlist>
-				<listitem><para>Title</para></listitem>
-				<listitem><para>Author</para></listitem>
-				<listitem><para>Genre</para></listitem>
+				<listitem><para>Full text search:</para></listitem>
+				<listitem><para>Title keyword(s):</para></listitem>
+				<listitem><para>Author keyword(s):</para></listitem>
+				<listitem><para>Subject keyword(s):</para></listitem>
+				<listitem><para>Narrator keyword(s):</para></listitem>
+				<listitem><para>Call number:</para></listitem>
 			</itemizedlist>
 		</blockquote>
 
-        <para>If the User selects "Author," the Reading System would retrieve the next menu by
+        <para>If the User the author keyword "asimoff" and the subject keyword "myst*", the Reading System would retrieve the next menu by
             calling <function>getQuestions</function> as follows:</para>
-		<programlisting><xi:include href="./samples/dynamicMenusExamples-search-4.xml" parse="text"/></programlisting>
 
-        <para>This operation returns the following:
-            <programlisting><xi:include href="./samples/dynamicMenusExamples-search-5.xml" parse="text"/></programlisting>
-            The Reading System renders this to the User as follows:</para>
-		<blockquote><para>Please enter the name of the author.</para></blockquote>
-
-        <para>If the User enters the name "J.K. Rowling," the Reading System calls
-            <function>getQuestions</function> as follows:</para>
-		<programlisting><xi:include href="./samples/dynamicMenusExamples-search-6.xml" parse="text"/></programlisting>
+			<programlisting><xi:include href="./samples/dynamicMenusExamples-search-6.xml" parse="text"/></programlisting>
         <para>This operation returns the following:</para>
 		<programlisting><xi:include href="./samples/dynamicMenusExamples-search-7.xml" parse="text"/></programlisting>
         <para>The Reading System reads the ID of the <type>contentList</type> from the <type>contentListRef</type> element,
@@ -174,7 +169,7 @@
 		<programlisting><xi:include href="./samples/dynamicMenusExamples-search-8.xml" parse="text"/></programlisting>
         <para>This requests the <type>contentList</type> with ID "L100", and specifies that the first
             <type>contentItem</type> returned should be at index 0 and the last <type>contentItem</type> should be at
-            index 20 (i.e. the first 21 <type>contentItem</type>s). The <literal>firstItem</literal>
+            index 19 (i.e. the first 20 <type>contentItem</type>s). The <literal>firstItem</literal>
             and <literal>lastItem</literal> parameters enable the Reading System to request a <type>contentList</type>
             with a specified number of <type>contentItem</type>s, in situations where memory or
             bandwidth constraints may not permit the retrieval of an entire <type>contentList</type>. </para>
@@ -182,11 +177,12 @@
         <para>The operation returns the following <type>contentList</type>:</para>
 		<programlisting><xi:include href="./samples/dynamicMenusExamples-search-9.xml" parse="text"/></programlisting>
         <para>The Reading System renders it as follows:</para>
-		<blockquote><para>Your search for "J.K. Rowling" returned the following results:</para>
+		<blockquote><para>Search for Author: asimoff AND Subject: myst* returned no results.
+			Did you mean "Asimov"? Showing results 1 to 3 of 3.</para>
 			<itemizedlist>
-				<listitem><para>Harry Potter and the Chamber of Secrets</para></listitem>
-				<listitem><para>Harry Potter and the Deathly Hallows</para></listitem>
-				<listitem><para>Harry Potter and the Goblet of Fire</para></listitem>
+				<listitem><para>Tales of the Black Widowers by Isaac Asimov</para></listitem>
+				<listitem><para>More Tales of the Black Widowers by Isaac Asimov</para></listitem>
+				<listitem><para>The Caves of Steel by Isaac Asimov</para></listitem>
 			</itemizedlist>
 		</blockquote>
         <para>When a Service returns a <type>questions</type> element with a <type>contentListRef</type> child, the
