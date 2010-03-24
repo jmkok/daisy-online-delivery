@@ -1,6 +1,6 @@
 present:
 
-Regrets: jelle, Johan
+Regrets: jelle
 
 scribe: Kenny
 
