@@ -11,7 +11,7 @@ scribe: Kenny
  === Previous Unfinished Action Items ===
 
   * Jelle talk to Geoff offline about the Systems Testing report.
-  * geoff add informative verbiage to the spec that outlines the steps that need to be taken to synchronise content in an  out-of-band selection model. 
+  * geoff add informative verbiage to the spec that outlines the steps that need to be taken to synchronise content in an  out-of-band selection model. *done, should be proofread*
   * Simon to add the minOccurs and maxOccurs tweak to the tweaks page.
   * Kenny add substantive comments to issue tracker. *no comments received*
   * Kenny inform the owner of a substantive comment once the comment has been addressed. *no comments received*
