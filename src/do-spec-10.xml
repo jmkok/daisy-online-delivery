@@ -1060,8 +1060,8 @@
                         linkend="technologies_basic_authentication"/>. </para>
 
 						<note>
-                    <para> A <xref linkend="term_readingSystem"/> does not require an active <xref
-                            linkend="term_session"/> to access resources.
+                    <para>A Service should allow a Reading System to access resources outside of
+						an active Session.
                     </para>
                 </note>
 
