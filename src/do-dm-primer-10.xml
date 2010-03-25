@@ -34,24 +34,95 @@
     			<orgname>RNIB</orgname>
     		</affiliation>
     	</author>
-    </info>
-
-    <chapter xml:id="introduction">
-        <title>Introduction</title>
+		<abstract>
         <para> This document contains examples of how to use the Dynamic Menus feature of the
             DAISY Online Delivery Protocol. This document is not a normative part of the DAISY
             Online Delivery Protocol, and may change at any time outside the scope of the revision
             cycle of the DAISY Online Delivery Protocol specification. </para>
 		<para>There are examples of menu design and User interaction, along with the specific messages
 			passed between the Reading System and the Service.</para>
+		</abstract>
+    </info>
+
+    <chapter xml:id="overview">
+        <title>Overview</title>
+		<para>Reading Systems can access a Service's dynamic menus using the
+			<function><link xlink:href="do-spec-20100215.html#op_getQuestions">getQuestions</link></function>
+			operation.  <function>getQuestions</function> takes one parameter,
+			<type><link xlink:href="do-spec-20100215.html#tp_userResponses">userResponses</link></type>,
+			which itself contains one or more <type><link xlink:href="do-spec-20100215.html#tp_userResponse">userResponse</link></type>
+			elements.  Each <type>userResponse</type>
+			element contains the user's response to a particular
+			question or a reserved question ID.</para>
+		<para>There are three reserved question IDs:
+			<variablelist>
+				<varlistentry>
+					<term><literal>default</literal></term>
+					<listitem>
+						<para>the main menu;</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term><literal>search</literal></term>
+					<listitem>
+						<para>the search menu;</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term><literal>back</literal></term>
+					<listitem>
+						<para>the previous question.</para>
+					</listitem>
+				</varlistentry>
+			</variablelist>
+		</para>
+		<para> A question can be a multiple choice question (see <type>
+				<link xlink:href="do-spec-20100215.html#tp_multipleChoiceQuestion">multipleChoiceQuestion</link></type>),
+				or a question that can receive a numeric text, alphanumeric text or audio
+			response from the user (see <type><link xlink:href="tp_inputQuestion">inputQuestion</link></type>).</para>
+
+		<para>To respond to a <type>multipleChoiceQuestion</type> in a <type>userResponse</type>:</para>
+		<itemizedlist>
+			<listitem><para>the <literal>questionID</literal> attribute is set to the value of the
+				<type>multipleChoiceQuestion</type>'s <literal>id</literal> attribute;</para>
+			</listitem>
+			<listitem><para>the <literal>value</literal> attribute is set to the value of the
+				<literal>id</literal> of the <type>choice</type> the User has selected.</para>
+			</listitem>
+		</itemizedlist>
+
+		<para>To respond to an <type>inputQuestion</type> in a <type>userResponse</type>:</para>
+		<itemizedlist>
+			<listitem><para>the <literal>questionID</literal> attribute is set to the value of the
+				<type>inputQuestion</type>'s <literal>id</literal> attribute;</para>
+			</listitem>
+			<listitem><para>if the response is numeric or alphanumeric,
+				the <literal>value</literal> attribute is set to the text the User has entered;</para>
+			</listitem>
+			<listitem><para>if the response is in an audio format,
+				the <literal>value</literal> attribute must be either blank or absent,
+				and a <type>data</type> child element must be included that holds the base-64
+				encoded audio data (see <type>
+				<link xlink:href="do-spec-20100215.html#tp_data">data</link>
+			</type> for file format requirements).</para>
+			</listitem>
+		</itemizedlist>
+
+		<para role="tip">Question and choice IDs are arbitrary.</para>
+
+		<para>The following examples of User-Service interaction are meant to show some of the purposes
+			the Dynamic Menus feature of the protocol may be used for.  The menus themselves, the User's
+			responses and the rendering of the menus are illustrative, not compulsory.
+		</para>
+		
     </chapter>
 
 
     <chapter xml:id="mainMenu">
             <title>The Main Menu</title>
-            <para>The Reading System retrieves the main menu of the Service by calling the 
-				<function><link xlink:href="do-spec-20100215.html#op_getQuestions">getQuestions</link></function>
-				operation as follows:
+            <para>The first menu requested in a Session must be the main menu.
+				The Reading System retrieves the main menu of the Service by calling 
+				<function>getQuestions</function> as follows:
                 <programlisting><xi:include href="./samples/dynamicMenusExamples-mainMenu-0.xml" parse="text"/></programlisting>
             </para>
             <para>The operation returns the Service's main menu:
@@ -68,64 +139,6 @@
 				<listitem><para>Go to your bookshelf</para></listitem>
 			</itemizedlist>
 			</blockquote>
-
-            <para role="tip"> Each <type><link xlink:href="do-spec-20100215.html#tp_userResponse">userResponse</link></type>
-				element contains the user's response to a particular
-                question. There are three reserved question IDs:
-				<variablelist>
-                    <varlistentry>
-						<term><literal>default</literal></term>
-						<listitem>
-							<para>the main menu;</para>
-						</listitem>
-					</varlistentry>
-                    <varlistentry>
-						<term><literal>search</literal></term>
-						<listitem>
-							<para>the search menu;</para>
-						</listitem>
-					</varlistentry>
-                    <varlistentry>
-						<term><literal>back</literal></term>
-						<listitem>
-							<para>the previous question.</para>
-						</listitem>
-					</varlistentry>
-                </variablelist>
-            </para>
-            <para> A question can be a multiple choice question (see <type>
-                    <link xlink:href="do-spec-20100215.html#tp_multipleChoiceQuestion">multipleChoiceQuestion</link></type>),
-					or a question that can receive a numeric text, alphanumeric text or audio
-                response from the user (see <type><link xlink:href="tp_inputQuestion">inputQuestion</link></type>).</para>
-
-			<para>To respond to a <type>multipleChoiceQuestion</type> in a <type>userResponse</type>:</para>
-			<itemizedlist>
-				<listitem><para>the <literal>questionID</literal> attribute is set to the value of the
-					<type>multipleChoiceQuestion</type>'s <literal>id</literal> attribute;</para>
-				</listitem>
-				<listitem><para>the <literal>value</literal> attribute is set to the value of the
-					<literal>id</literal> of the <type>choice</type> the User has selected.</para>
-				</listitem>
-			</itemizedlist>
-
-			<para>To respond to an <type>inputQuestion</type> in a <type>userResponse</type>:</para>
-			<itemizedlist>
-				<listitem><para>the <literal>questionID</literal> attribute is set to the value of the
-					<type>inputQuestion</type>'s <literal>id</literal> attribute;</para>
-				</listitem>
-				<listitem><para>if the response is numeric or alphanumeric,
-					the <literal>value</literal> attribute is set to the text the User has entered;</para>
-				</listitem>
-				<listitem><para>if the response is in an audio format,
-					the <literal>value</literal> attribute must be either blank or absent,
-					and a <type>data</type> child element must be included that holds the base-64
-					encoded audio data (see <type>
-                    <link xlink:href="do-spec-20100215.html#tp_data">data</link>
-                </type> for file format requirements).</para>
-				</listitem>
-			</itemizedlist>
-
-            <para role="tip">Question and choice IDs are arbitrary.</para>
 
     </chapter>
     <chapter xml:id="search">
