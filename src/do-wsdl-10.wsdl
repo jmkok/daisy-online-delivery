@@ -221,6 +221,8 @@
 								<xs:documentation>
 									<db:para role="desc">Specifies whether the Content item was issued
 										successfully.</db:para>
+									<db:para>A Service must return <db:literal>true</db:literal> if the Content item
+										is already issued when the call is made.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -255,6 +257,8 @@
 										successfully.</db:para>
 									<db:para><db:function>returnContent</db:function> must either return <db:literal>true</db:literal>
 									or a Fault; it must not return <db:literal>false</db:literal>.</db:para>
+									<db:para>A Service must return <db:literal>true</db:literal> if the Content item
+										has already been returned prior to this call.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -1231,14 +1235,14 @@
 				<db:para>The specified Content item is no longer issued to the User 
 					after a successful call of this operation. </db:para>
 
-				<db:para> A Reading System should not call this function for a Content item that has
+				<db:para> A Reading System must not call this function for a Content item that has
 					a <db:code>requiresReturn</db:code> attribute with a value of
 					<db:literal>false</db:literal>.</db:para>
 				
 				<db:para>A Reading System must delete the Content item before calling
 						<db:function>returnContent</db:function>. A Reading System must not call
-						<db:function>returnContent</db:function> on a Content item it has never 
-					been issued.</db:para>
+						<db:function>returnContent</db:function> for a Content item that was not
+						issued to the User on that Reading System.</db:para>
 				<db:note>
 					<db:para>This protocol cannot guarantee that a Reading System has actually
 						deleted the Content item before calling <db:function>returnContent</db:function>.
