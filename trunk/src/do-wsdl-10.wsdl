@@ -473,10 +473,7 @@
 								<xs:documentation>
 									<db:para role="desc">Contains the <db:xref
 									linkend="term_contentIdentifier"/> of the Content
-										item for which the metadata is being requested (defined by the
-											<db:code>id</db:code> attribute of the
-											<db:type>contentItem</db:type> in the <db:type><db:xref
-											linkend="tp_contentList"/></db:type>).</db:para>
+										item for which the metadata is being requested.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -507,9 +504,7 @@
 								<xs:documentation>
 									<db:para role="desc">Contains the <db:xref
 										linkend="term_contentIdentifier"/> of the
-										Content item for which the resources list is being requested (as defined
-										in the <db:xref linkend="bib_dublinCore"/> <db:literal>identifier</db:literal> field
-										of the <db:type><db:xref linkend="tp_contentMetadata"/></db:type>).
+										Content item for which the resources list is being requested.
 									</db:para>
 								</xs:documentation>
 							</xs:annotation>
