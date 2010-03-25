@@ -1051,7 +1051,8 @@
 						<xs:documentation>
 							<db:para>A response to a question. Either the <db:code>value</db:code> attribute
 								(for <db:type>inputQuestion</db:type> or <db:type>multipleChoiceQuestion</db:type> responses) or the <db:code>data</db:code>
-								element (for audio-based responses) must be present.</db:para>
+								element (for audio-based responses) must be present, unless a the <db:code>questionID</db:code>
+								attribute's value is one of the reserved identifiers given below.</db:para>
 							<db:para>If a <db:type>userResponses</db:type> element is a response to a
 									<db:type><db:xref linkend="tp_multipleChoiceQuestion"/></db:type> where multiple
 								selections are allowed, then multiple <db:type>userResponse</db:type> elements must be
