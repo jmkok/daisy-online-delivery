@@ -9,10 +9,10 @@ scribe: Kenny
 === New Action Items ===
 
   * Johan clarify in the spec that if service supports audio labels and reading system requires them, service must provide them. If service does not support audio labels and reading system requires them, it is up to reading system to decide whether it wants to continue with the session.   
-  * Kenny close Issue 191.
-  * Kenny add elementFormDefault="qualified" to the bookmark xsd, and close Issue 232.  
-  * Geoff clarify in the spec that it is up to a Service to decide whether it wants to link a soap session with the downloading/streaming of content, and close Issue 233. 
-  * geoff clarify in the spec that the content id passed into the getContentMetadata operation must be the same as the dc:identifier in the returned contentMetadata type, however, the dc:identifier does not need to be the same as the actual publication identifier, and close Issue 234.   
+  * Kenny close Issue 191. *done*
+  * Kenny add elementFormDefault="qualified" to the bookmark xsd, and close Issue 232.  *done*
+  * Geoff clarify in the spec that it is up to a Service to decide whether it wants to link a soap session with the downloading/streaming of content, and close Issue 233. *done*
+  * geoff clarify in the spec that the content id passed into the getContentMetadata operation must be the same as the dc:identifier in the returned contentMetadata type, however, the dc:identifier does not need to be the same as the actual publication identifier, and close Issue 234. *done*
   * Geoff inform the group on his availability for the conformance testing document. 
   * Kenny post to the list asking for volunteers for the Conformance testing document.
   * Johan, Geoff, Simon and Kenny complete all their action items before the end of the week (26 march 2010).  
@@ -21,8 +21,8 @@ scribe: Kenny
   * Kenny ask markus and Nick if they can proof read the spec and primer before the next telecon.
   * Simon ask colleagues in Humanware if they could proof read the spec and primer before the next telecon.
   * johan, Geoff and Kenny to inform the group once their action items are complete to commence the proof reading.
-  * geff clarify in the spec that issueContent/returnContent should return true even if the content has been issued/returned before, and close Issue 235.
-  * Kenny add a feature request to the Daisy Online issue tracker on the Daisy Website for an optional content-type attribute, and close Issue 236.
+  * geoff clarify in the spec that issueContent/returnContent should return true even if the content has been issued/returned before, and close Issue 235. *done*
+  * Kenny add a feature request to the Daisy Online issue tracker on the Daisy Website for an optional content-type attribute, and close Issue 236. *done*
 
  === Previous Unfinished Action Items ===
 
