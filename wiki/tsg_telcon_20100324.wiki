@@ -8,14 +8,14 @@ scribe: Kenny
  
 === New Action Items ===
 
-  * Johan clarify in the spec that if service supports audio labels and reading system requires them, service must provide them. If service does not support audio labels and reading system requires them, it is up to reading system to decide whether it wants to continue with the session.   
+  * Johan clarify in the spec that if service supports audio labels and reading system requires them, service must provide them. If service does not support audio labels and reading system requires them, it is up to reading system to decide whether it wants to continue with the session. *done*
   * Kenny close Issue 191. *done*
   * Kenny add elementFormDefault="qualified" to the bookmark xsd, and close Issue 232.  *done*
   * Geoff clarify in the spec that it is up to a Service to decide whether it wants to link a soap session with the downloading/streaming of content, and close Issue 233. *done*
   * geoff clarify in the spec that the content id passed into the getContentMetadata operation must be the same as the dc:identifier in the returned contentMetadata type, however, the dc:identifier does not need to be the same as the actual publication identifier, and close Issue 234. *done*
   * Geoff inform the group on his availability for the conformance testing document. *Geoff: I have two days (16 hours) I can spare for this.*
   * Kenny post to the list asking for volunteers for the Conformance testing document. *done*
-  * Johan, Geoff, Simon and Kenny complete all their action items before the end of the week (26 march 2010). *geoff:done, kenny:done*  
+  * Johan, Geoff, Simon and Kenny complete all their action items before the end of the week (26 march 2010). *geoff:done, kenny:done, johan:done*
   * Johan, Geoff (types reference and API) and kenny to proof read the spec before the next telecon.
   * Johan and kenny to proof read the primer before the next telecon. 
   * Kenny ask markus and Nick if they can proof read the spec and primer before the next telecon. *done*
