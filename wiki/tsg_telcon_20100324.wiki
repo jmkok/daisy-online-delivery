@@ -13,13 +13,13 @@ scribe: Kenny
   * Kenny add elementFormDefault="qualified" to the bookmark xsd, and close Issue 232.  *done*
   * Geoff clarify in the spec that it is up to a Service to decide whether it wants to link a soap session with the downloading/streaming of content, and close Issue 233. *done*
   * geoff clarify in the spec that the content id passed into the getContentMetadata operation must be the same as the dc:identifier in the returned contentMetadata type, however, the dc:identifier does not need to be the same as the actual publication identifier, and close Issue 234. *done*
-  * Geoff inform the group on his availability for the conformance testing document. 
+  * Geoff inform the group on his availability for the conformance testing document. *Geoff: I have two days (16 hours) I can spare for this.*
   * Kenny post to the list asking for volunteers for the Conformance testing document. *done*
   * Johan, Geoff, Simon and Kenny complete all their action items before the end of the week (26 march 2010). *geoff:done, kenny:done*  
   * Johan, Geoff (types reference and API) and kenny to proof read the spec before the next telecon.
   * Johan and kenny to proof read the primer before the next telecon. 
   * Kenny ask markus and Nick if they can proof read the spec and primer before the next telecon. *done*
-  * Simon ask colleagues in Humanware if they could proof read the spec and primer before the next telecon.
+  * Simon ask colleagues in HumanWare if they could proof read the spec and primer before the next telecon.
   * johan, Geoff and Kenny to inform the group once their action items are complete to commence the proof reading. *geoff:done, kenny:done*
   * geoff clarify in the spec that issueContent/returnContent should return true even if the content has been issued/returned before, and close Issue 235. *done*
   * Kenny add a feature request to the Daisy Online issue tracker on the Daisy Website for an optional content-type attribute, and close Issue 236. *done*
