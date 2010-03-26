@@ -235,9 +235,11 @@
 										<db:para> Refer to the <db:type><db:xref linkend="tp_supportsAudioLabels"/></db:type>
 											element in <db:type><db:xref linkend="tp_serviceAttributes"/></db:type> for the
 											Service's declaration of support for audio in labels. </db:para>
-										<db:para>This specification does not specify behaviors in the
-											case where the Reading System requires audio labels, and a Service does not
-											support audio labels.</db:para>
+										<db:para>In the case where the Reading System requires audio labels and the Service does
+											not support audio labels, the Reading System must decide whether to continue initializing
+											the session. If a session is established, then the Service is not required to include the
+											<db:type><db:xref linkend="tp_audio"/></db:type> element in each <db:type>
+											<db:xref linkend="tp_label"/></db:type> it provides.</db:para>
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>							
