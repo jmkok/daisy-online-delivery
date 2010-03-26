@@ -73,7 +73,7 @@ Authorization occurs by User, not by Reading System; credentials are user names 
 || 2.3 || !HumanWare || !PratSam || *Success* || Resources were downloaded with basic authentication credentials. ||
 || 2.4 || CNIB || !PratSam ||  ||  ||
 || 2.4 || CNIB || Solutions Radio ||  ||  ||
-|| 2.4 || !HumanWare || !PratSam ||  ||  ||
+|| 2.4 || !HumanWare || !PratSam || *Success* || Service responded 401 when using invalid user name or password ||
 || 2.4 || !HumanWare || Solutions Radio || *Success* || Service responded 401 when using invalid user name or password ||
 
 == 3. Transmit bookmarks ==
@@ -126,7 +126,7 @@ Note: Storing user-created bookmarks is covered under requirement #13, Bookmark 
 
 || Test case || Client || Server || Result || Details ||
 || 5.1 || !HumanWare || CNIB ||  ||  ||
-|| 5.1 || !HumanWare || Vision Australia ||  ||  ||
+|| 5.1 || !HumanWare || Vision Australia || *Success* || Session was successfully initialized and Reading System attributes were received by the service. ||
 || 5.1 || !PlexTalk || CNIB || *Success* ||  ||
 || 5.1 || !PlexTalk || Vision Australia || *Success* ||  ||
 || 5.2 || !HumanWare || !PratSam ||  ||  ||
@@ -239,7 +239,7 @@ The ability for Reading Systems to query the Service for the current time was no
   # *Deny a key*: Issue and download a Protected DTB.  Request a KXO for the decryption key from the Service using `getKeyExchangeObject`, but do not provide an authorized key in the `keyRing` element of the `readingSystemAttributes`.  The Service must reply with an `invalidParameter` fault.
 
 || Test case || Client || Server || Result || Details ||
-|| 11.1 || CNIB || !PratSam ||  ||  ||
+|| 11.1 || CNIB || !PratSam || *Success* || Protected content found. ||
 || 11.1 || CNIB || Solutions Radio ||  ||  ||
 || 11.1 || !HumanWare || !PratSam ||  ||  ||
 || 11.1 || !HumanWare || Solutions Radio ||  ||  ||
@@ -496,7 +496,7 @@ Sending audio from the Reading System to the Service was originally in scope, th
   # *Audio feedback*: Transmit audio as a response to a dynamic menu item that accepts it.  Verify that the audio was received by the Service.
 
 || Test case || Client || Server || Result || Details ||
-|| 27.1 || !HumanWare || !PratSam ||  ||  ||
+|| 27.1 || !HumanWare || !PratSam || *Success* || Audio data was succesffily uploaded (76 KB in 2 secondes). ||
 || 27.1 || !HumanWare || Vision Australia || *Failure* || ProtocolException: The remote server returned an unexpected response: (400) Bad Request. ||
 
 == 28. Download tracking ==
