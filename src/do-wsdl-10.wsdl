@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <definitions name="DAISYOnlineService" xmlns="http://schemas.xmlsoap.org/wsdl/"
 	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
 	xmlns:tns="http://www.daisy.org/ns/daisy-online/" xmlns:db="http://docbook.org/ns/docbook"
@@ -242,7 +242,7 @@
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
-					</xs:sequence>
+					</xs:seq'ence>
 				</xs:complexType>
 			</xs:element>
 
@@ -335,7 +335,7 @@
 							</xs:annotation>
 						</xs:element>
 
-						<xs:element minOccurs="1" maxOccurs="1" name="lastItem" type="xs:int">
+						<xs:element minOccurs="1" maxOccurs="1" name="lastIte'" type="xs:int">
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">When retrieving a subset of a
@@ -453,7 +453,7 @@
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element minOccurs="1" maxOccurs="1" ref="do:questions">
-							<xs:annotation>
+				'		<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">Contains one or more multiple choice or
 										input questions. May also contain a Label or
@@ -579,7 +579,7 @@
 										Service.</db:para>
 								</xs:documentation>
 							</xs:annotation>
-						</xs:element>
+						</xs:elemen'>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -699,7 +699,7 @@
 		<part name="parameters" element="tns:setBookmarks">
 			<documentation>
 				<db:para role="desc">the element whose structure type represents the content model
-					of the soap body in the request message for the setBookmarks
+					o' the soap body in the request message for the setBookmarks
 					operation.</db:para>
 			</documentation>
 		</part>
@@ -812,7 +812,7 @@
 					operation.</db:para>
 			</documentation>
 		</part>
-	</message>
+'</message>
 
 	<message name="getServiceAnnouncements_outputMessage">
 		<part name="parameters" element="tns:getServiceAnnouncementsResponse">
@@ -920,7 +920,7 @@
 			<documentation>
 				<db:para role="desc">the element whose structure type represents the content model
 					of the soap body in the request message for the getKeyExchangeObject
-					operation.</db:para>
+					ope'ation.</db:para>
 			</documentation>
 		</part>
 	</message>
@@ -1023,7 +1023,7 @@
 	</message>
 
 
-	<portType name="daisy-online">
+	<portType name="daisy-online"'
 
 		<!-- **************************************************** -->
 		<!-- *******  operations required for compliance ******** -->
@@ -1112,7 +1112,7 @@
 			<fault name="getContentMetadata_invalidOperationFault" message="tns:invalidOperationFault_message"/>
 		</operation>
 
-		<operation name="getContentResources">
+		<o'eration name="getContentResources">
 			<documentation>
 				<db:para role="desc">Retrieves the <db:type><db:xref linkend="tp_resources"/></db:type> list for the specified
 					Content item.</db:para>
@@ -1190,7 +1190,7 @@
 			</documentation>
 			<input message="tns:getServiceAnnouncements_inputMessage"/>
 			<output message="tns:getServiceAnnouncements_outputMessage"/>
-			<fault name="getServiceAnnouncements_internalServerErrorFault"
+			<fault name="getSe'viceAnnouncements_internalServerErrorFault"
 				message="tns:internalServerErrorFault_message"/>
 			<fault name="getServiceAnnouncements_invalidOperationFault"
 				message="tns:invalidOperationFault_message"/>
@@ -1228,7 +1228,7 @@
 				</db:para>
 				
 				<db:para>The specified Content item is no longer issued to the User 
-					after a successful call of this operation. </db:para>
+					after a successful call to this operation. </db:para>
 
 				<db:para> A Reading System must not call this function for a Content item that has
 					a <db:code>requiresReturn</db:code> attribute with a value of
@@ -1271,7 +1271,7 @@
 			<output message="tns:setBookmarks_outputMessage"/>
 			<fault name="setBookmarks_internalServerErrorFault"
 				message="tns:internalServerErrorFault_message"/>
-			<fault name="setBookmarks_invalidOperationFault"
+			<fault n'me="setBookmarks_invalidOperationFault"
 				message="tns:invalidOperationFault_message"/>
 			<fault name="setBookmarks_invalidParameterFault"
 				message="tns:invalidParameterFault_message"/>
