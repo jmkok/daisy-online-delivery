@@ -71,6 +71,12 @@
                     <surname>Williamson</surname></personname>, 
                 <orgname>RNIB</orgname>
             </para>
+            <para>
+                <personname>
+                    <firstname>Simon</firstname>
+                    <surname>Roy</surname></personname>, 
+                <orgname>Humanware</orgname>
+            </para>
         </annotation>
         <abstract>
             <title>Abstract</title>
@@ -789,7 +795,7 @@
                                 <xref linkend="op_setReadingSystemAttributes"/>
                             </function> must be called to provide information about the
                                 <xref linkend="term_readingSystem"/>'s capabilities to the <xref
-                                linkend="term_service"/>. If this call is successful, the <xref linkend="term_service"/> shall
+                                linkend="term_service"/>. If this call is successful, the <xref linkend="term_service"/> must
                             return
                                 <literal>true</literal> (<xref linkend="bib_xsdDatatypes"/>).
                         </para>
@@ -997,7 +1003,7 @@
 
                         <para> A <xref linkend="term_service"/> should allow calls to
                                 <function>getContentResources</function> for the same <xref
-                                linkend="term_content"/>item  over more than one <xref
+                                linkend="term_content"/> item  over more than one <xref
                                 linkend="term_session"/>. </para>
                     </listitem>
                 </orderedlist>
