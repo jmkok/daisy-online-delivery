@@ -239,9 +239,9 @@ The ability for Reading Systems to query the Service for the current time was no
   # *Deny a key*: Issue and download a Protected DTB.  Request a KXO for the decryption key from the Service using `getKeyExchangeObject`, but do not provide an authorized key in the `keyRing` element of the `readingSystemAttributes`.  The Service must reply with an `invalidParameter` fault.
 
 || Test case || Client || Server || Result || Details ||
-|| 11.1 || CNIB || !PratSam || *Success* || Protected content found. ||
+|| 11.1 || CNIB || !PratSam ||  ||  ||
 || 11.1 || CNIB || Solutions Radio ||  ||  ||
-|| 11.1 || !HumanWare || !PratSam ||  ||  ||
+|| 11.1 || !HumanWare || !PratSam || *Success* || Protected content found. ||
 || 11.1 || !HumanWare || Solutions Radio ||  ||  ||
 || 11.2 || !HumanWare || !PratSam ||  ||  ||
 || 11.2 || !HumanWare || Solutions Radio ||  ||  ||
