@@ -461,13 +461,13 @@ The capability to report which server is in control was not included in the prot
 || 25.1 || !PlexTalk || CNIB || *Success* ||  ||
 || 25.1 || !PlexTalk || !PratSam || *Success* ||  ||
 || 25.2 || CNIB || CNIB ||  ||  ||
-|| 25.2 || CNIB || Solutions Radio ||  ||  ||
+|| 25.2 || CNIB || !PratSam ||  ||  ||
 || 25.2 || !HumanWare || CNIB || *Success*  || Resources were downloaded with basic authentication credentials. ||
-|| 25.2 || !HumanWare || Solutions Radio ||  ||  ||
+|| 25.2 || !HumanWare || !PratSam ||  ||  ||
 || 25.3 || CNIB || CNIB ||  ||  ||
-|| 25.3 || CNIB || Solutions Radio ||  ||  ||
+|| 25.3 || CNIB || !PratSam ||  ||  ||
 || 25.3 || !PlexTalk || CNIB || *Success* ||  ||
-|| 25.3 || !PlexTalk || Solutions Radio ||  ||  ||
+|| 25.3 || !PlexTalk || !PratSam ||  ||  ||
 
 == 26. Localized, plain language error messages ==
 
