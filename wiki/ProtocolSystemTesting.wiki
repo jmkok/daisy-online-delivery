@@ -346,7 +346,7 @@ The protocol does not support bookmarks with audio notes.
 || Test case || Client || Server || Result || Details ||
 || 17.1 || !HumanWare || Vision Australia || *Failure* || FaultException: Error in deserializing body of request message for operation 'getContentList' (id=1100). ||
 || 17.1 || !PlexTalk || Vision Australia || *Success* || `<`確認内容`>` getQuestion時に決め打ちで「J.K.Rowling」を入力して実行し、以下のデバッグ文が表示される事。 `[`getQuestions`]` ID = q2-1, Value = J.K.Rowling->success (id= 1100) ||
-|| 17.2 || !HumanWare || Solutions Radio ||  ||  ||
+|| 17.2 || !HumanWare || Solutions Radio || *Success* || Content selected and downloaded from dynamic menus. ||
 || 17.2 || !PlexTalk || Solutions Radio || *Failure* || getQuestions(default)で得られた `[`6`]`Magazines and Newspapers(id = rnib.918) を選択して決定すると、 `[`getQuestions`]` ID = , Value = rnib.918->error(12)`<`gSOAP`>` となって実行に失敗する。 ||
 || 17.3 || !HumanWare || !PratSam || *Success* || Successfully answered a survey. ||
 || 17.3 || !HumanWare || Vision Australia || *Failure* || ProtocolException: The remote server returned an unexpected response: (400) Bad Request. ||
