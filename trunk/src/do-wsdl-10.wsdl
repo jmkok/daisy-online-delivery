@@ -38,7 +38,7 @@
 						<xs:element minOccurs="1" maxOccurs="1" name="username" type="xs:string">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">The ID used to access the Service.</db:para>
+									<db:para role="desc">The account name used to access the Service.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -46,7 +46,7 @@
 						<xs:element minOccurs="1" maxOccurs="1" name="password" type="xs:string">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">The password associated with the supplied ID.</db:para>
+									<db:para role="desc">The account's password.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -287,8 +287,7 @@
 												User (refer to <db:function><db:xref linkend="op_issueContent"/></db:function>).</db:para>
 												<db:para>The list must include all
 												Borrowable Content items that have been issued
-												regardless of whether they have been downloaded
-												(in part or in full) or not.
+												regardless of whether they have been downloaded or not.
 												The list may include Purchasable Content items
 												that have been issued.
 												The list excludes
@@ -328,7 +327,7 @@
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">When retrieving a subset of a
-										contentList, contains the first item in the subset to
+										contentList, contains the index of the first item in the subset to
 										retrieve. The first item in the list has the index
 											<db:literal>0</db:literal>.</db:para>
 								</xs:documentation>
@@ -339,7 +338,7 @@
 							<xs:annotation>
 								<xs:documentation>
 									<db:para role="desc">When retrieving a subset of a
-										contentList, contains the last item in the subset to
+										contentList, contains the index of the last item in the subset to
 										retrieve. The value <db:literal>-1</db:literal> indicates a
 										request to retrieve all items from
 											<db:parameter>firstItem</db:parameter> to the end of
@@ -402,10 +401,7 @@
 						<xs:element minOccurs="1" maxOccurs="1" ref="do:read">
 							<xs:annotation>
 								<xs:documentation>
-									<db:para role="desc">Contains the announcements to mark as read
-										(expressed as references to the ID values
-										specified in the <db:type><db:xref linkend="tp_announcements"/></db:type>
-										type).</db:para>
+									<db:para role="desc">Contains the IDs of the announcements to mark as read.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
@@ -1043,7 +1039,7 @@
 		<operation name="logOff">
 			<documentation>
 				<db:para role="desc">Logs a Reading System off a Service.</db:para>		
-				<db:para>A return value of <db:literal>false</db:literal> or an issued Fault both
+				<db:para>A return value of <db:literal>false</db:literal> or a Fault both
 				indicate that the operation was not successful.</db:para>
 			</documentation>
 			<input message="tns:logOff_inputMessage"/>
@@ -1096,7 +1092,7 @@
 
 		<operation name="getContentMetadata">
 			<documentation>
-				<db:para role="desc">Retrieves <db:type><db:xref linkend="tp_contentMetadata"/></db:type> for the
+				<db:para role="desc">Retrieves the <db:type><db:xref linkend="tp_contentMetadata"/></db:type> of the
 					specified Content item.</db:para>
 				<db:para>This operation must be called as part of the 
 					<db:xref linkend="def_contentRetrievalSequence"/>.</db:para>
@@ -1162,13 +1158,13 @@
 				<db:para>The list returned by the Service can be pre-composed, in which case it
 					is retrieved by passing one of the three reserved values defined in the
 						<db:parameter>id</db:parameter> parameter below. (Refer to <db:xref
-						linkend="fundamentals"/>, for information on the contexts in which these reserved
-					values can be used.)</db:para>
+						linkend="fundamentals"/> for information on the contexts in which these reserved
+					values are used.)</db:para>
 				<db:para>The list can also be dynamic (e.g., the result of a 
 					<db:link linkend="fundamentals_content_selection_browse">dynamic menu search</db:link> 
 					operation sequence). In this case, the
 						<db:parameter>id</db:parameter> value used to refer to the list is provided
-					in the return value of a previous operation. (Refer to the <db:type><db:xref
+					in the return value of a previous call to <db:function><db:xref linkend="op_getQuestions"/></db:function>. (Refer to the <db:type><db:xref
 						linkend="tp_questions"/></db:type> type for more information.) </db:para>
 			</documentation>
 			<input message="tns:getContentList_inputMessage"/>
