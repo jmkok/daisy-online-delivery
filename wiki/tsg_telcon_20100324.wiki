@@ -20,7 +20,7 @@ scribe: Kenny
   * Johan and kenny to proof read the primer before the next telecon. 
   * Kenny ask markus and Nick if they can proof read the spec and primer before the next telecon. *done*
   * Simon ask colleagues in HumanWare if they could proof read the spec and primer before the next telecon.
-  * johan, Geoff and Kenny to inform the group once their action items are complete to commence the proof reading. *geoff:done, kenny:done*
+  * johan, Geoff and Kenny to inform the group once their action items are complete to commence the proof reading. *geoff:done, kenny:done, Johan: done*
   * geoff clarify in the spec that issueContent/returnContent should return true even if the content has been issued/returned before, and close Issue 235. *done*
   * Kenny add a feature request to the Daisy Online issue tracker on the Daisy Website for an optional content-type attribute, and close Issue 236. *done*
 
