@@ -125,7 +125,7 @@ Note: Storing user-created bookmarks is covered under requirement #13, Bookmark 
   # *Negotiate numeric input*: Initialize a session with a Service that has implemented both numeric and alphanumeric `inputQuestion`s.  Set `readingSystemAttributes/config/supportedInputTypes` to to have one `input` element with a `type` attribute of `TEXT_NUMERIC` when calling `setReadingSystemAttributes`.  Ensure that all `inputQuestion`s allow `TEXT_NUMERIC` input.
 
 || Test case || Client || Server || Result || Details ||
-|| 5.1 || !HumanWare || CNIB ||  ||  ||
+|| 5.1 || !HumanWare || CNIB || *Success* || Session was successfully initialized and Reading System attributes were received by the service. ||
 || 5.1 || !HumanWare || Vision Australia || *Success* || Session was successfully initialized and Reading System attributes were received by the service. ||
 || 5.1 || !PlexTalk || CNIB || *Success* ||  ||
 || 5.1 || !PlexTalk || Vision Australia || *Success* ||  ||
