@@ -6,23 +6,28 @@
     <title>Specification for the DAISY Online Delivery Protocol</title>
 
     <info>
-        <releaseinfo>Final Draft</releaseinfo>
-        <pubdate>15 February 2010</pubdate>
+        <releaseinfo>Proposed Recommendation</releaseinfo>
+        <pubdate>2 April 2010</pubdate>
 
         <annotation role="specLinks">
             <para role="specLabel">This version:</para>
             <para role="specLink">
                 <link
-                    xlink:href="http://www.daisy.org/projects/daisy-online-delivery/drafts/20100215/do-spec-20100215.html"
-                    >http://www.daisy.org/projects/daisy-online-delivery/drafts/20100215/do-spec-20100215.html</link>
+                    xlink:href="http://www.daisy.org/projects/daisy-online-delivery/drafts/20100402/do-spec-20100402.html"
+                    >http://www.daisy.org/projects/daisy-online-delivery/drafts/20100402/do-spec-20100402.html</link>
             </para>
             <para role="specLabel">This version as a zip archive:</para>
             <para role="specLink">
                 <link
-                    xlink:href="http://www.daisy.org/projects/daisy-online-delivery/drafts/20100215/do-spec-20100215.zip"
-                    >http://www.daisy.org/projects/daisy-online-delivery/drafts/20100215/do-spec-20100215.zip</link>
+                    xlink:href="http://www.daisy.org/projects/daisy-online-delivery/drafts/20100402/do-spec-20100402.zip"
+                    >http://www.daisy.org/projects/daisy-online-delivery/drafts/20100402/do-spec-20100402.zip</link>
             </para>
             <para role="specLabel">Previous versions:</para>
+            <para role="specLink">
+                <link
+                    xlink:href="http://www.daisy.org/projects/daisy-online-delivery/drafts/20100215/do-spec-20100215.html"
+                    >http://www.daisy.org/projects/daisy-online-delivery/drafts/20100215/do-spec-20100215.html</link>
+            </para>
             <para role="specLink">
                 <link
                     xlink:href="http://www.daisy.org/projects/daisy-online-delivery/drafts/20090927/do-spec-20090927.html"
@@ -99,16 +104,10 @@
             <para> This document was developed by the DAISY Online Working Group as a part of its
                 activities. For a complete list of members at the time of publication, please refer
                 to <xref linkend="acknowledgements"/>. </para>
-            <para> This document is a Working Group Draft. It completely supersedes the first draft
-                of the specification that was released on 15 April 2009, and the draft for test use
-				that was released on 27 September 2009. </para>
-            <para> This document is considered by the Working Group members to be complete and
-                stable for use in creating implementations of the protocol. It is possible that
-                some aspects of the protocol may change before Recommendation status is given to the
-                document, but substantive revisions to the core functionality outlined in this
-                document are not anticipated. </para>
-            <para> Please report errors in this document and suggestions for the protocol to the
-                Working Group through the public feedback form available on the DAISY site at <link
+            <para> This document is a Proposed Recommendation, put forward to the DAISY board by the DAISY Online
+                Working Group for endorsement at the April 2010 DAISY Board meeting.</para>            
+            <para> Please report errors in this document and suggestions for future versions of the 
+                protocol to the Working Group through the public feedback form available on the DAISY site at <link
                     xlink:href="http://www.daisy.org/support/contactus.php"
                     >http://www.daisy.org/support/contactus.php</link>. </para>
             <para> The English version of this specification is the only normative version. </para>
