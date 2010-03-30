@@ -40,7 +40,7 @@ Transfer of audio from the Reading System to the Service takes place over SOAP w
 || 1.2 || CNIB || Solutions Radio ||  ||  ||
 || 1.2 || !PlexTalk || !PratSam ||  ||  ||
 || 1.2 || !PlexTalk || Solutions Radio ||  ||  ||
-|| 1.3 || !HumanWare || Solutions Radio ||  ||  ||
+|| 1.3 || !HumanWare || Solutions Radio || *Success* || Uploaded 152 KB in 2.4 seconds. ||
 || 1.3 || !HumanWare || Vision Australia ||  ||  ||
 || 1.3 || !PlexTalk || Solutions Radio || *Untested* || オーディオアップデートを試すメニューがありません。 ||
 || 1.3 || !PlexTalk || Vision Australia || *Untested* || Received a nonstandard fault. ||
@@ -129,7 +129,7 @@ Note: Storing user-created bookmarks is covered under requirement #13, Bookmark 
 || 5.1 || !HumanWare || Vision Australia || *Success* || Session was successfully initialized and Reading System attributes were received by the service. ||
 || 5.1 || !PlexTalk || CNIB || *Success* ||  ||
 || 5.1 || !PlexTalk || Vision Australia || *Success* ||  ||
-|| 5.2 || !HumanWare || !PratSam ||  ||  ||
+|| 5.2 || !HumanWare || !PratSam || *Success* || Session was successfully initialized and Service provided only supported format content. (Note: the test was completed without PDTB2 support because the Service is treating PDTB2 content as a format. This is not the case and should be address.) ||
 || 5.2 || !PlexTalk || !PratSam ||  ||  ||
 || 5.3 || !PlexTalk || Solutions Radio || *Success* || Received audio labels for the "new" content list, the service announcements and the "default" menu. ||
 || 5.3 || Solutions Radio || Solutions Radio ||  ||  ||
@@ -148,7 +148,7 @@ Note: Storing user-created bookmarks is covered under requirement #13, Bookmark 
 || 6.1 || CNIB || !PratSam ||  ||  ||
 || 6.1 || CNIB || Solutions Radio ||  ||  ||
 || 6.1 || CNIB || Vision Australia ||  ||  ||
-|| 6.1 || !HumanWare || CNIB ||  ||  ||
+|| 6.1 || !HumanWare || CNIB || *Success* || Session initialized. Content issued, downloaded and returned. ||
 || 6.1 || !HumanWare || !PratSam ||  ||  ||
 || 6.1 || !HumanWare || Solutions Radio ||  ||  ||
 || 6.1 || !HumanWare || Vision Australia ||  ||  ||
@@ -185,7 +185,7 @@ The requirement states that the Reading System must store the Service's contact 
 || 8.1 || Solutions Radio || Solutions Radio ||  ||  ||
 || 8.2 || CNIB || CNIB ||  ||  ||
 || 8.2 || CNIB || Solutions Radio ||  ||  ||
-|| 8.2 || !HumanWare || CNIB ||  ||  ||
+|| 8.2 || !HumanWare || CNIB || *Success* || Content issued and downloaded. ||
 || 8.2 || !HumanWare || Solutions Radio || *Success* || Content issued and downloaded. ||
 
 == 9. Time interrogation ==
