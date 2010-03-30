@@ -108,7 +108,7 @@
 										<db:para role="desc">Specifies which Content formats the
 											Reading System supports.  A Service may use this information to
 											choose which formats to offer to the Reading System.
-											 specification does not specify the behavior of
+											This document does not specify the behavior of
 											the Service if this list is empty.</db:para>
 									</xs:documentation>
 								</xs:annotation>
@@ -237,7 +237,7 @@
 											Service's declaration of support for audio in labels. </db:para>
 										<db:para>In the case where the Reading System requires audio labels and the Service does
 											not support audio labels, the Reading System must decide whether to continue initializing
-											the session. If a session is established, then the Service is not required to include the
+											the session. If a session is established in this scenario, then the Service is not required to include the
 											<db:type><db:xref linkend="tp_audio"/></db:type> element in each <db:type>
 											<db:xref linkend="tp_label"/></db:type> it provides.</db:para>
 									</xs:documentation>
@@ -708,7 +708,7 @@
 								<db:literal>MAGAZINE</db:literal>,
 								<db:literal>NEWSPAPER</db:literal> and
 								<db:literal>OTHER</db:literal> are recommended for those
-							Content items which match any of these terms.</db:para>
+							Content items which match one of these terms.</db:para>
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -798,8 +798,8 @@
 								<db:literal>true</db:literal>, and must not be present when that attribute is
 								<db:literal>false</db:literal>.</db:para>
 						<db:para>This attribute may not change value while the Content item is issued.</db:para>
-						<db:para>Unlike <db:code>requiresReturn</db:code>, this attribute does not
-						constitute a contract.</db:para>
+						<db:para>Unlike the <db:code>requiresReturn</db:code> attribute of
+						<db:type><db:xref linkend="tp_contentMetadata"/></db:type>, this attribute does not constitute a contract.</db:para>
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -850,10 +850,6 @@
 								<xs:documentation>
 									<db:para role="desc">The <db:xref
 											linkend="term_contentIdentifier"/> of this Content item.</db:para>
-									<db:para>This value must be identical to the value of
-										the <db:literal>dc:identifier</db:literal> element in the <db:type><db:xref
-											linkend="tp_contentMetadata"/></db:type> of this Content
-										item.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:attribute>
@@ -963,7 +959,7 @@
 							<db:para>exactly one <db:type>label</db:type>; or</db:para>
 						</db:listitem>
 						<db:listitem>
-							<db:para>any number of <db:type>multipleChoiceQuestion</db:type>s and/or
+							<db:para>one or more <db:type>multipleChoiceQuestion</db:type>s and/or
 							<db:type>inputQuestion</db:type>s, in any order.</db:para>
 						</db:listitem>
 					</db:itemizedlist>
@@ -1029,8 +1025,7 @@
 				<xs:annotation>
 					<xs:documentation>
 						<db:para role="desc">Specifies whether multiple selections are allowed in
-							the User response to this question. The default value is
-								<db:literal>false</db:literal>.</db:para>
+							the User response to this question.</db:para>
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
