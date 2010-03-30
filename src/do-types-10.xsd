@@ -8,7 +8,7 @@
 	<xs:annotation>
 		<xs:documentation> This W3C XML Schema document and the entities referenced from within it are a
 			normative part of the DAISY Online Protocol Specification
-			(http://www.daisy.org/projects/daisy-online-delivery/). Version: 20100215 (Final Draft) 
+			(http://www.daisy.org/projects/daisy-online-delivery/). Version: 20100402 (Proposed Recommendation) 
 		</xs:documentation>
 	</xs:annotation>
 

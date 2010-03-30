@@ -81,7 +81,7 @@
     	
     </p:delete>
        	
-    <p:store href="./build/do-spec-20100215.html" name="store" 
+    <p:store href="./build/do-spec-20100402.html" name="store" 
         doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN" 
         doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" 
         omit-xml-declaration="false"/>
