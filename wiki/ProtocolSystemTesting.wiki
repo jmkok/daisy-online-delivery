@@ -37,7 +37,7 @@ Transfer of audio from the Reading System to the Service takes place over SOAP w
 || 1.1 || !HumanWare || CNIB || *Success* || Transfer of data was at an acceptable rate.  A 10 MB book was downloaded in 2:35 minutes. ||
 || 1.1 || !HumanWare || Vision Australia || *Success* || Transfer of data was at an acceptable rate.  A 74 MB book was downloaded in 9:34 minutes. ||
 || 1.2 || CNIB || !PratSam ||  ||  ||
-|| 1.2 || CNIB || Solutions Radio ||  ||  ||
+|| 1.2 || CNIB || Solutions Radio || *Success* || Issued and downloaded a Content item of approx. 139 MB.  SOAP messages were approx. 51 KB, or a 0.04% overhead ratio. ||
 || 1.2 || !PlexTalk || !PratSam ||  ||  ||
 || 1.2 || !PlexTalk || Solutions Radio ||  ||  ||
 || 1.3 || !HumanWare || Solutions Radio || *Success* || Uploaded 152 KB in 2.4 seconds. ||
@@ -68,10 +68,10 @@ Authorization occurs by User, not by Reading System; credentials are user names 
 || 2.2 || Solutions Radio || CNIB ||  ||  ||
 || 2.2 || Solutions Radio || Vision Australia ||  ||  ||
 || 2.3 || CNIB || CNIB || *Success* || Downloaded "DC00003". ||
-|| 2.3 || CNIB || !PratSam || *Failure* || Received a socket error from HTTP library: "error:140770FC:SSL routines:SSL23_GET_SERVER_HELLO:unknown protocol" ||
+|| 2.3 || CNIB || !PratSam || *Success* || Downloaded parts of "pub_2". ||
 || 2.3 || !HumanWare || CNIB || *Success* || Resources were downloaded with basic authentication credentials. ||
 || 2.3 || !HumanWare || !PratSam || *Success* || Resources were downloaded with basic authentication credentials. ||
-|| 2.4 || CNIB || !PratSam || *Failure* || Received a socket error from HTTP library: "error:140770FC:SSL routines:SSL23_GET_SERVER_HELLO:unknown protocol" ||
+|| 2.4 || CNIB || !PratSam || *Success* ||  ||
 || 2.4 || CNIB || Solutions Radio ||  ||  ||
 || 2.4 || !HumanWare || !PratSam || *Success* || Service responded 401 when using invalid user name or password ||
 || 2.4 || !HumanWare || Solutions Radio || *Success* || Service responded 401 when using invalid user name or password ||
@@ -183,7 +183,7 @@ The requirement states that the Reading System must store the Service's contact 
 || 8.1 || CNIB || Solutions Radio ||  ||  ||
 || 8.1 || Solutions Radio || !PratSam ||  ||  ||
 || 8.1 || Solutions Radio || Solutions Radio ||  ||  ||
-|| 8.2 || CNIB || CNIB ||  ||  ||
+|| 8.2 || CNIB || CNIB || *Success* || Retrieved "ext1", a web page hosted at Cornell University with basic authenticaion. ||
 || 8.2 || CNIB || Solutions Radio ||  ||  ||
 || 8.2 || !HumanWare || CNIB || *Success* || Content issued and downloaded. ||
 || 8.2 || !HumanWare || Solutions Radio || *Success* || Content issued and downloaded. ||
@@ -204,7 +204,7 @@ The ability for Reading Systems to query the Service for the current time was no
 || 9.1 || CNIB || Vision Australia || *Success* || Issued "Book1".  Due date is Sun Jan 17 22:20:17 2010. ||
 || 9.1 || Solutions Radio || Solutions Radio ||  ||  ||
 || 9.1 || Solutions Radio || Vision Australia ||  ||  ||
-|| 9.2 || CNIB || !PratSam ||  ||  ||
+|| 9.2 || CNIB || !PratSam || *Success* || "expired" list had two items: "pub_1" and "pub_4".  Returned "pub_1" and it was removed from the list. ||
 || 9.2 || CNIB || Solutions Radio ||  ||  ||
 || 9.2 || !PlexTalk || !PratSam || *Untested* || 期限切れ図書を準備してください ||
 || 9.2 || !PlexTalk || Solutions Radio || *Untested* || 期限切れ図書が存在しないので確認できません ||
@@ -219,8 +219,8 @@ The ability for Reading Systems to query the Service for the current time was no
   # *Stream content*: Issue a Content item and stream some part of it.
 
 || Test case || Client || Server || Result || Details ||
-|| 10.1 || CNIB || CNIB || *Success* || Issued and downloaded "DC00003". ||
-|| 10.1 || CNIB || Solutions Radio ||  ||  ||
+|| 10.1 || CNIB || CNIB || *Success* || Issued and downloaded "DC00003", a DAISY book. ||
+|| 10.1 || CNIB || Solutions Radio || *Success* || Issued and downloaded "e3ccc1534fdff5b6b5a9001353cb40da7bbe0c2c", a DAISY book. ||
 || 10.1 || !PlexTalk || CNIB ||  ||  ||
 || 10.1 || !PlexTalk || Solutions Radio || *Failure* || 要DL機能 ||
 || 10.2 || !PlexTalk || CNIB || *Failure* || 再生できるコンテンツが準備されていない ||
@@ -262,7 +262,7 @@ The ability for Reading Systems to query the Service for the current time was no
   # *Pick up where you left off*: Issue and download a Content item.  Render the Content up to some point, create a bookmark there and transmit it to the Service.  Return the Content item.  Download the same Content item onto another Reading System.  Get the bookmarks for the Content item.  Start rendering the Content at the point where the bookmark was set earlier.
 
 || Test case || Client || Server || Result || Details ||
-|| 12.1 || CNIB || !PratSam ||  ||  ||
+|| 12.1 || CNIB || !PratSam || *Success* || Downloaded parts of "pub_2" to home and work computers. ||
 || 12.1 || CNIB || Vision Australia || *Success* || Downloaded "Book1" to work and home computers. ||
 || 12.1 || Solutions Radio || !PratSam ||  ||  ||
 || 12.1 || Solutions Radio || Vision Australia ||  ||  ||
