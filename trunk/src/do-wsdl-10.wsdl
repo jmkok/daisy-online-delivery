@@ -363,6 +363,12 @@
 										of the <db:parameter>id</db:parameter> parameter passed to
 										the <db:function><db:xref linkend="op_getContentList"/></db:function>
 										operation.</db:para>
+									<db:para>If the value of the <db:code>firstItem</db:code> and/or 
+										<db:code>lastItem</db:code> parameters is invalid, a service 
+										must return an empty <db:code>contentList</db:code> with the 
+										value of its <db:code>totalItems</db:code> attribute set to 
+										the total number of items in the entire 
+										<db:code>contentList</db:code>.</db:para>
 								</xs:documentation>
 							</xs:annotation>
 						</xs:element>
