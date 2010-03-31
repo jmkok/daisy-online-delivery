@@ -16,8 +16,8 @@ scribe: Kenny
   * Geoff inform the group on his availability for the conformance testing document. *Geoff: I have two days (16 hours) I can spare for this.*
   * Kenny post to the list asking for volunteers for the Conformance testing document. *done*
   * Johan, Geoff, Simon and Kenny complete all their action items before the end of the week (26 march 2010). *geoff:done, kenny:done, johan:done*
-  * Johan, Geoff (types reference and API) and kenny to proof read the spec before the next telecon.
-  * Johan and kenny to proof read the primer before the next telecon. 
+  * Johan, Geoff (types reference and API) and kenny to proof read the spec before the next telecon. *geoff: done, kenny: done*
+  * Johan and kenny to proof read the primer before the next telecon. *kenny: done* 
   * Kenny ask markus and Nick if they can proof read the spec and primer before the next telecon. *done*
   * Simon ask colleagues in HumanWare if they could proof read the spec and primer before the next telecon.
   * johan, Geoff and Kenny to inform the group once their action items are complete to commence the proof reading. *geoff:done, kenny:done, Johan: done*
