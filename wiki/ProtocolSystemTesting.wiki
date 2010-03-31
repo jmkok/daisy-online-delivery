@@ -132,7 +132,7 @@ Note: Storing user-created bookmarks is covered under requirement #13, Bookmark 
 || 5.2 || !HumanWare || !PratSam || *Success* || Session was successfully initialized and Service provided only supported format content. (Note: the test was completed without PDTB2 support because the Service is treating PDTB2 content as a format. This is not the case and should be address.) ||
 || 5.2 || !PlexTalk || !PratSam ||  ||  ||
 || 5.3 || !PlexTalk || Solutions Radio || *Success* || Received audio labels for the "new" content list, the service announcements and the "default" menu. ||
-|| 5.3 || Solutions Radio || Solutions Radio ||  ||  ||
+|| 5.3 || Solutions Radio || Solutions Radio || *Success* ||  ||
 || 5.4 || !PlexTalk || Vision Australia || *Success* || Input question allowed both numeric and alphanumeric input. ||
 
 == 6. Universal protocol ==
