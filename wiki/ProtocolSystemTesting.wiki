@@ -179,11 +179,11 @@ The requirement states that the Reading System must store the Service's contact 
   # *Private remote content*: Issue a Content item which is hosted on a public server that is not  at the same host as the Service and requires basic authentication.  Download the Content.
 
 || Test case || Client || Server || Result || Details ||
-|| 8.1 || CNIB || !PratSam || *Not implemented* || Find someone to do this. ||
+|| 8.1 || CNIB || CNIB || Success || Retrieved "ext2", an MP3 file hosted at Song Fight. ||
 || 8.1 || CNIB || Solutions Radio ||  ||  ||
 || 8.1 || Solutions Radio || !PratSam || *Untested* || All content requires authorization ||
 || 8.1 || Solutions Radio || Solutions Radio || *Success* || resource id a7bbdb68f5cdfe2be46cf09bdd6f200c641dcb27 ||
-|| 8.2 || CNIB || CNIB || *Success* || Retrieved "ext1", a web page hosted at Cornell University with basic authenticaion. ||
+|| 8.2 || CNIB || CNIB || *Success* || Retrieved "ext1", a web page hosted at Cornell University with basic authentication. ||
 || 8.2 || CNIB || Solutions Radio ||  ||  ||
 || 8.2 || !HumanWare || CNIB || *Success* || Content issued and downloaded. ||
 || 8.2 || !HumanWare || Solutions Radio || *Success* || Content issued and downloaded. ||
