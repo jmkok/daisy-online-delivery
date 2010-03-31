@@ -240,7 +240,7 @@ The ability for Reading Systems to query the Service for the current time was no
 
 || Test case || Client || Server || Result || Details ||
 || 11.1 || CNIB || !PratSam || *Success* || Got the metadata for "pub_6", which was listed as PDTB2-protected. ||
-|| 11.1 || CNIB || Solutions Radio ||  ||  ||
+|| 11.1 || CNIB || CNIB || *Success* || Got the metadata for "us-nls-db62465", which was listed as PDTB2-protected. ||
 || 11.1 || !HumanWare || !PratSam || *Success* || Protected content found. ||
 || 11.1 || !HumanWare || Solutions Radio ||  ||  ||
 || 11.2 || !HumanWare || !PratSam ||  ||  ||
