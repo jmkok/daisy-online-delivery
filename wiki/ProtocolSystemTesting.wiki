@@ -478,8 +478,8 @@ The capability to report which server is in control was not included in the prot
   # *Localized error messages*: Deliberately cause a fault (such as trying to get resources for a Content item that is not issued).  Ensure that the error rendered by the Reading System is localized to the User's language and is plainly explained.  (Note: This test should be repeated by causing the same fault, but with different localizations.)
 
 || Test case || Client || Server || Result || Details ||
-|| 26.1 || !PlexTalk || CNIB ||  ||  ||
-|| 26.1 || !PlexTalk || !PratSam ||  ||  ||
+|| 26.1 || CNIB || CNIB || *Success* || Attempted to get metadata for a non-existent content ID.  Fault was rendered in French. ||
+|| 26.1 || CNIB || !PratSam || *Success* ||  Attempted to get metadata for a non-existent content ID.  Fault was rendered in French. ||
 || 26.1 || Solutions Radio || CNIB || *Success* || Fault is rendered to the user in its language (RS uses its own text and audio) ||
 || 26.1 || Solutions Radio || !PratSam || *Success* || Fault is rendered to the user in its language (RS uses its own text and audio) ||
 
