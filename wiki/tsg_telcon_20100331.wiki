@@ -1,0 +1,64 @@
+present:
+
+Regrets:
+
+scribe: Kenny
+
+== Action Item Summary ==
+ 
+=== New Action Items ===
+
+ === Previous Unfinished Action Items ===
+
+  * Johan, Geoff (types reference and API) and kenny to proof read the spec before the next telecon. *geoff: done, kenny: done*
+  * Johan and kenny to proof read the primer before the next telecon. *kenny: done* 
+  * Simon ask colleagues in HumanWare if they could proof read the spec and primer before the next telecon.
+  * Jelle talk to Geoff offline about the Systems Testing report.
+  * Simon to add the minOccurs and maxOccurs tweak to the tweaks page.
+  * Markus fix the &apos; entity problem. (outstanding; bug in IE.) (Markus will fix this when ready to publish.)
+
+=== Group Action Items ===
+
+==== Action items for formal recommendation to the Board on April 5, 2010 ====  
+
+   * Deliver Final version of the spec.  
+   * Provide Information on comments Received, and how they were addressed.  
+   * Make Available the Systems Testing document.  
+   * make available the systems testing  Conformance report. 
+   * Make a formal Recommendation to the board for approval that includes:
+    * A one page document that contains the recommendation by the Wg including a link to the Spec, and a link to the Primer.
+    * an appendix containing the systems testing report.
+
+== Agenda/Minutes ==
+
+=== Issues ===
+
+==== Issue 237 ====
+
+Jelle: Currently you can only return a content list ref.
+I think it would be essential that the getQuestion can return a list of 
+resource ids.
+This will ease up enormously on search and other functionality where 
+currently the content list is just a huge burden which always needs to be 
+placed in between...
+ 
+==== Issue 238 ====
+
+Geoff: Currently the model for an inputQuestion allows zero or one inputTypes
+children.  Shouldn't there always be one inputTypes child?
+
+=== Test suite Progress review ===
+
+==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolSystemTesting Systems Testing] ====
+
+  * Status of the Systems Testing report  
+
+=== Consensus Check ===
+
+  * Do we have consensus to submit the Daisy Online spec to the Daisy Board for endorsement as a Technical recommendation of the Daisy consortium with: 
+   * The spec documentation in the svn as it stands right now.
+   * the Systems Testing report as it stands right now. 
+
+=== Submission logisstics ===
+
+Kenny: I will post the formal submission document with geoff's systems testing report to the Daisy Online mailing list a few hours after this call seeking the approval of wg members. If there are no objections posted to the list within 24 hours, the submission will be sent to Bernhard for the Daisy board. Is everyone happy with this course of action? 
