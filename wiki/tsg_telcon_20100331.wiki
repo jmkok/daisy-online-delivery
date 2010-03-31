@@ -1,6 +1,6 @@
 present:
 
-Regrets:
+Regrets: George
 
 scribe: Kenny
 
@@ -37,6 +37,7 @@ scribe: Kenny
 Jelle: Currently you can only return a content list ref.
 I think it would be essential that the getQuestion can return a list of 
 resource ids.
+
 This will ease up enormously on search and other functionality where 
 currently the content list is just a huge burden which always needs to be 
 placed in between...
@@ -63,8 +64,6 @@ Throwing an invalidParameter would generate issues with the following examples:
   invalidParemeeter or return the amount of items ?!?!
 - getContentList("new",100,6000) on a list of exactly 100 items !!!
   invalidParemeeter or return an empty list ?!?!
-
-
 
 ==== Issue 240 ====
 
