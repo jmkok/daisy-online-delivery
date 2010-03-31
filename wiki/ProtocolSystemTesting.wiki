@@ -302,7 +302,7 @@ The protocol does not support bookmarks with audio notes.
 || 14.2 || CNIB || !PratSam || *Success* || Tried to issue "pub_1" after returning, and was denied. `getContentResources` threw a fault. ||
 || 14.2 || Solutions Radio || CNIB || *Success* ||  ||
 || 14.2 || Solutions Radio || !PratSam || *Partial success* || issueContent threw an invalidParameterFault instead of a false (as specified above) ||
-|| 14.3 || !HumanWare || Solutions Radio ||  ||  ||
+|| 14.3 || !HumanWare || Solutions Radio || *Success* || Searched for 'Harry Potter and the Goblet of Fire'. A list of all Harry Potter titles was returned. ||
 || 14.3 || Solutions Radio || Solutions Radio || *Success* || getQuestions with questionID "daisy-test.1920" and value "goblet" returns a list of Harry Potter books ||
 
 == 15. Audio and text annotation ==
