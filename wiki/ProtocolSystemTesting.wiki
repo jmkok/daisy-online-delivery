@@ -316,8 +316,8 @@ The protocol does not support bookmarks with audio notes.
 || Test case || Client || Server || Result || Details ||
 || 15.1 || !HumanWare || !PratSam || *Success* || All items have audio and text in there label. ||
 || 15.1 || !HumanWare || Solutions Radio || *Success* || All items have audio and text in there label ||
-|| 15.1 || Solutions Radio || !PratSam ||  ||  ||
-|| 15.1 || Solutions Radio || Solutions Radio ||  ||  ||
+|| 15.1 || Solutions Radio || !PratSam || *Success* || All items have audio and text in there label ||
+|| 15.1 || Solutions Radio || Solutions Radio || *Success* || All items have audio and text in there label ||
 
 == 16. Stop and resume download ==
 
