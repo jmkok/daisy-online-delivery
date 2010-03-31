@@ -1127,7 +1127,7 @@
 				</orderedlist>
 
 				<para>At this point, the Reading System will have the <type>contentMetadata</type> and
-					<type>resources</type> for every Content available to the User.  It can begin
+					<type>resources</type> for every Content item available to the User.  It can begin
 					downloading new and updated Content, or it can offer the titles to the User for streaming, or
 					it can continue calling Operations.</para>
 
