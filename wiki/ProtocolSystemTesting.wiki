@@ -417,7 +417,7 @@ Note that actually interacting with the Content without downloading all of its r
 
 || Test case || Client || Server || Result || Details ||
 || 21.1 || CNIB || CNIB || *Success* ||  ||
-|| 21.1 || CNIB || Vision Australia ||  ||  ||
+|| 21.1 || HumanWare || CNIB|| *Success* ||  ||
 || 21.1 || !PlexTalk || CNIB || *Success* || `<`確認内容`>` デバッグ文に以下の表示がされる事 setReadingSystemAttributes]->success(0) ||
 || 21.1 || !PlexTalk || Vision Australia || *Success* || `<`確認内容`>` デバッグ文に以下の表示がされる事 setReadingSystemAttributes]->success(0) ||
 
