@@ -72,7 +72,7 @@ Authorization occurs by User, not by Reading System; credentials are user names 
 || 2.3 || !HumanWare || CNIB || *Success* || Resources were downloaded with basic authentication credentials. ||
 || 2.3 || !HumanWare || !PratSam || *Success* || Resources were downloaded with basic authentication credentials. ||
 || 2.4 || CNIB || !PratSam || *Success* ||  ||
-|| 2.4 || CNIB || Solutions Radio ||  ||  ||
+|| 2.4 || CNIB || Solutions Radio || *Success* ||  ||
 || 2.4 || !HumanWare || !PratSam || *Success* || Service responded 401 when using invalid user name or password ||
 || 2.4 || !HumanWare || Solutions Radio || *Success* || Service responded 401 when using invalid user name or password ||
 
@@ -328,8 +328,8 @@ The protocol does not support bookmarks with audio notes.
   # *Stop and resume*: Issue a Content item from a Service and get its resource list.  Download part of one file, then stop.  Drop the HTTP connection, then reconnect.  Resume the download, using the HTTP Range header to download only the remaining part of the file.  Download the same file in its entirety and verify that they match.
 
 || Test case || Client || Server || Result || Details ||
-|| 16.1 || CNIB || CNIB || *Success* || Downloaded 200 bytes of "bagw0014.mp3" from "DC00003". Resumed download and completed. ||
-|| 16.1 || CNIB || Vision Australia || *Failure* || Incorrect range sent from server. ||
+|| 16.1 || CNIB || CNIB || *Success* || Downloaded 200 bytes of "bagw0014.mp3". Resumed download and completed. ||
+|| 16.1 || CNIB || Solutions Radio || *Success* || Downloaded 1097728 bytes of "0055-Artikel6.mp3". Resumed download and completed. ||
 || 16.1 || !PlexTalk || CNIB || *Failure* || 要DL機能 ||
 || 16.1 || !PlexTalk || Vision Australia || *Failure* || 要DL機能 ||
 
@@ -402,8 +402,8 @@ Note that actually interacting with the Content without downloading all of its r
   # *Sample content*: Download the sample of a Content item without issuing the Content.
 
 || Test case || Client || Server || Result || Details ||
-|| 20.1 || CNIB || !PratSam || *Success* || Sample for "pub_3", "sam_3" was downloaded. ||
-|| 20.1 || CNIB || Solutions Radio ||  ||  ||
+|| 20.1 || CNIB || !PratSam || *Success* || Sample for "pub_3", a single file from the book was downloaded. ||
+|| 20.1 || CNIB || Solutions Radio || *Success* || Retrieved synthetic speech sample for "9bc373bc75575632f42ca09d306b9ebc". ||
 || 20.1 || Solutions Radio || !PratSam || *Success* || Sample was offered and tested (sam_5 / pub_5)  ||
 || 20.1 || Solutions Radio || Solutions Radio || *Success* || Sample was offered and tested ||
 
