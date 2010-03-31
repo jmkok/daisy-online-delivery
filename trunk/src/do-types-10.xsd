@@ -902,7 +902,7 @@
 				<xs:annotation>
 					<xs:documentation>
 						<db:para role="desc">The identifier of the <db:type>contentList</db:type>.</db:para>
-						<db:para>The identifier may be one of three reserved values,
+						<db:para>The identifier may be one of the three reserved values,
 							<db:literal>new</db:literal>, <db:literal>issued</db:literal> or
 							<db:literal>expired</db:literal>, or may be an arbitrary value,
 							typically exposed in a <db:type><db:xref linkend="tp_contentListRef"/></db:type> at an <db:link
@@ -1238,7 +1238,7 @@
 										<xs:enumeration value="OUT_OF_BAND">
 											<xs:annotation>
 												<xs:documentation>
-												<db:para role="desc">This service supports the
+												<db:para role="desc">This Service supports the
 												<db:xref
 												linkend="fundamentals_content_selection_outofband"
 												/>.</db:para>
@@ -1248,7 +1248,7 @@
 										<xs:enumeration value="BROWSE">
 											<xs:annotation>
 												<xs:documentation>
-												<db:para role="desc">This service supports the
+												<db:para role="desc">This Service supports the
 												<db:xref
 												linkend="fundamentals_content_selection_browse"
 												/>.</db:para>

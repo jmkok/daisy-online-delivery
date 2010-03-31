@@ -1046,8 +1046,6 @@
 			<output message="tns:logOff_outputMessage"/>
 			<fault name="logOff_internalServerErrorFault"
 				message="tns:internalServerErrorFault_message"/>
-			<fault name="logOff_noActiveSessionFault"
-				message="tns:noActiveSessionFault_message"/>		
 			<fault name="logOff_invalidOperationFault" message="tns:invalidOperationFault_message"/>
 		</operation>
 

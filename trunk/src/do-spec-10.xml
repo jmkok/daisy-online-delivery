@@ -465,8 +465,8 @@
 
                 <para> When using Basic Authentication, a <xref linkend="term_service"/> must supply
                     the credentials in the server component field of the <abbrev>URI</abbrev>. The scheme for the
-                        <literal>userinfo</literal> field as given in <xref linkend="bib_RFC2396"/>,
-                    section 3.2.2 is:
+                        <literal>userinfo</literal> field (as given in <xref linkend="bib_RFC2396"/>,
+                    Section 3.2.2) is:
                         <replaceable>userinfo</replaceable>@<replaceable>host</replaceable>:<replaceable>port</replaceable>
                 </para>
 
@@ -917,8 +917,8 @@
                         linkend="fundamentals_content_selection_browse"/> is compliant if it:</para>
                 <itemizedlist>
                     <listitem>
-                        <para>provides support for the <link linkend="fundamentals_dynamic_menus"
-                                >Dynamic Menus</link> protocol feature; and</para>
+                        <para>provides one or more browse mechanisms using the
+                        <link linkend="fundamentals_dynamic_menus">Dynamic Menus</link> protocol feature; and</para>
                     </listitem>
                     <listitem>
                         <para>declares support for the <xref
@@ -1002,7 +1002,7 @@
 
                         <para> A <xref linkend="term_service"/> should allow calls to
                                 <function>getContentResources</function> for the same <xref
-                                linkend="term_content"/> item  over more than one <xref
+                                linkend="term_content"/> item over more than one <xref
                                 linkend="term_session"/>. </para>
                     </listitem>
                 </orderedlist>
@@ -1104,35 +1104,35 @@
 				<para>In the <xref linkend="fundamentals_contentSelectionMethod_reqs_outofband" />, a Reading System
 					can automatically synchronize the Content it stores locally with the Content available to the User
 					on the Service.  The following sequence of steps can be taken to synchronize the Content.
-					The Session must be initialized, but other operations may be called before synchronization.</para>
+					A Session must be initialized, but other Operations may be called before synchronization.</para>
 				
 				<orderedlist>
-					<listitem><para>If the User has chosen to return any Content items while the Reading System
+					<listitem><para>If the User has chosen to return any Content while the Reading System
 						was offline, the Reading System calls <code>returnContent(itemid)</code> for each
-						item.</para></listitem>
+						Content item.</para></listitem>
 					<listitem><para>The Reading System calls <code>getContentList("expired", 0,
 						-1)</code>.</para></listitem>
-					<listitem><para>The Reading System returns each item in the <literal>expired</literal>
+					<listitem><para>The Reading System returns each Content item in the <literal>expired</literal>
 						list.</para></listitem>
 					<listitem><para>The Reading System calls <code>getContentList("new", 0,
 						-1)</code>.</para></listitem>
-					<listitem><para>For each item in the <literal>new</literal> list, the Reading System calls
+					<listitem><para>For each Content item in the <literal>new</literal> list, the Reading System calls
 						<code>getContentMetadata(itemid)</code>, then <code>issueContent(itemid)</code>, then
-						<code>getContentResources(itemid)</code>, as in the
+						<code>getContentResources(itemid)</code>, as described in
 						<xref linkend="fundamentals_content_issuing_retrieval_sequence"/>.</para></listitem>
 					<listitem><para>The Reading System calls <code>getContentList("issued", 0,
 						-1)</code>.</para></listitem>
-					<listitem><para>For each item in the <literal>issued</literal> list, the Reading System calls
+					<listitem><para>For each Content item in the <literal>issued</literal> list, the Reading System calls
 						<code>getContentResources(itemid)</code>.</para></listitem>
 				</orderedlist>
 
 				<para>At this point, the Reading System will have the <type>contentMetadata</type> and
-					<type>resources</type> for all of the Content items available to the User.  It can begin
+					<type>resources</type> for every Content available to the User.  It can begin
 					downloading new and updated Content, or it can offer the titles to the User for streaming, or
-					it can continue calling operations.</para>
+					it can continue calling Operations.</para>
 
-				<para>Since a Service is free to return a partial <type>contentList</type>,
-					<function>getContentList</function> may need to be called several times with the appropriate
+				<para>Since a Service is free to return a partial <type>contentList</type>, the
+					<function>getContentList</function> operation may need to be called several times with the appropriate
 					index parameters to retrieve the full lists.</para>
 
 				<para>Faults may occur in this sequence.  For instance, a Service may offer many Content items in
@@ -1303,7 +1303,7 @@
                 <para> If a <xref linkend="term_service"/> does not support service announcements,
                     the <xref linkend="term_service"/> must return an <errorcode>
                         <xref linkend="ft_operationNotSupportedFault"/>
-                    </errorcode> Fault if a <xref linkend="term_readingSystem"/> attempts to call
+                    </errorcode> Fault when a <xref linkend="term_readingSystem"/> calls
                     <function>getServiceAnnouncements</function>. </para>
 
             </section>
@@ -1489,7 +1489,7 @@
                         <para>
                             Multiple
                             choice questions are a set of options to pick from. A
-                            multiple choice question is represented by a <type>
+                            multiple choice question is represented by the <type>
                                 <xref linkend="tp_multipleChoiceQuestion"/>
                             </type> child element of the <type>
                                 <xref linkend="tp_questions"/>
@@ -1504,7 +1504,7 @@
                             the User to respond with text and/or audio input. An
                             input question is represented by the <type>
                                 <xref linkend="tp_inputQuestion"/>
-                            </type> element of the <type>
+                            </type> child element of the <type>
                                 <xref linkend="tp_questions"/>
                             </type> type. </para>
 
@@ -1525,8 +1525,8 @@
             <section xml:id="fundamentals_dynamic_menus_endpoints" conformance="normative">
                 <title>End Points</title>
 
-                <para>A response to a call of <function><xref linkend="op_getQuestions"/></function>
-				of a <type><xref linkend="tp_questions"/></type> element containing one of the following
+                <para>A <type><xref linkend="tp_questions"/></type> element, received through a call of 
+                <function><xref linkend="op_getQuestions"/></function>, containing one of the following
 				as its child indicates an end point of the menu sequence:</para>
 
                 <itemizedlist>
@@ -1537,7 +1537,7 @@
                     </listitem>
                     <listitem>
                         <para> a <type><xref linkend="tp_contentListRef"/></type> containing the ID of a <type><xref linkend="tp_contentList"/></type>, when
-                    the menu sequence has resulted in the generation of a list of Content items that
+                    the menu sequence has resulted in the generation of a list of Content items that the
                         <xref linkend="term_user"/> may then access. </para>
                     </listitem>
                 </itemizedlist>
@@ -1582,7 +1582,7 @@
 						<para>A Service must explicitly declare whether or not it supports this value
 						with the <type><xref linkend="tp_supportsServerSideBack" /></type> element
 						of its <type><xref linkend="tp_serviceAttributes" /></type>.</para>
-<para>A <xref linkend="term_service"/> must return an <xref linkend="ft_invalidParameterFault"/> fault if a <xref linkend="term_readingSystem"/> calls the <function><xref linkend="op_getQuestions"/></function> operation with the Back value when no prior call has been made to this operation in the active session.</para>  
+<para>A <xref linkend="term_service"/> must return an <xref linkend="ft_invalidParameterFault"/> Fault if a <xref linkend="term_readingSystem"/> calls the <function><xref linkend="op_getQuestions"/></function> operation with the <literal>back</literal> value when no prior call has been made to this operation in the active session.</para>  
                     </listitem>
 					</varlistentry>
                 </variablelist>
@@ -1594,7 +1594,7 @@
 				</para>
 
 <para>
-A <xref linkend="term_service"/> must return an <xref linkend="ft_invalidParameterFault"/> fault if a <xref linkend="term_readingSystem"/> calls the <function><xref linkend="op_getQuestions"/></function> operation with the search or back values when these values are not supported by the Service.     
+A <xref linkend="term_service"/> must return an <xref linkend="ft_invalidParameterFault"/> Fault if a <xref linkend="term_readingSystem"/> calls the <function><xref linkend="op_getQuestions"/></function> operation with the <literal>search</literal> or <literal>back</literal> values when these values are not supported by the Service.     
 </para>
             </section>
 
