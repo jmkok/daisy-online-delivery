@@ -46,6 +46,30 @@ placed in between...
 Geoff: Currently the model for an inputQuestion allows zero or one inputTypes
 children.  Shouldn't there always be one inputTypes child?
 
+==== Issue 239 ====
+
+Jelle: getContentList with unsatisfiable ranges should return an empty list and not throw an invalidParameter. 
+The invalidParameter should only be thrown if the ID is invalid.
+
+examples:
+- getContentList("new",5000,6000)
+  return an list with totalItems set to 0
+- getContentList("-non-existing-",5000,6000)
+  throws an invalidParameter
+
+You might argue with the first example, however take the following example into account..
+Throwing an invalidParameter would generate issues with the following examples:
+- getContentList("new",0,6000)
+  invalidParemeeter or return the amount of items ?!?!
+- getContentList("new",100,6000) on a list of exactly 100 items !!!
+  invalidParemeeter or return an empty list ?!?!
+
+
+
+==== Issue 240 ====
+
+Johan (paraphrased): Remove the noActiveSession fault from logOff.
+
 === Test suite Progress review ===
 
 ==== [http://code.google.com/p/daisy-online-delivery/wiki/ProtocolSystemTesting Systems Testing] ====
