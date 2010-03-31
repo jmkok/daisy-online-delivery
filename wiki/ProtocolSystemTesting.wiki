@@ -92,7 +92,7 @@ Note: Storing user-created bookmarks is covered under requirement #13, Bookmark 
 || 3.1 || !PlexTalk || Solutions Radio || *Failure* || しおりが付いている図書があり取得できるが。しおり系のタグにNamespaceが設定されていない ||
 || 3.1 || !PlexTalk || Vision Australia || *Untested* || あらかじめしおりがつけてあるコンテンツの準備をお願いします。 ||
 || 3.1 || Solutions Radio || Solutions Radio || *Success* ||  ||
-|| 3.1 || Solutions Radio || Vision Australia || *Failure* || The requested bookmark is not returned, but another ||
+|| 3.1 || Solutions Radio || Vision Australia || *Failure* || A valid bookmark is returned, but not the requested one ||
 
 == 4. Return book ==
 
