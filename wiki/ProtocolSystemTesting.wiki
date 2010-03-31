@@ -372,11 +372,11 @@ The protocol does not support bookmarks with audio notes.
 || Test case || Client || Server || Result || Details ||
 || 18.1 || !PlexTalk || !PratSam || *Failure* || 要DL機能 ||
 || 18.1 || !PlexTalk || Vision Australia || *Failure* || 要DL機能 ||
-|| 18.1 || Solutions Radio || !PratSam || *Partial Success* || missing lastModifiedDate field which is needed for synchronization ||
+|| 18.1 || Solutions Radio || !PratSam || *Success* || missing lastModifiedDate field which might be needed for synchronization ||
 || 18.1 || Solutions Radio || Vision Australia || *Success* ||  ||
 || 18.2 || !HumanWare || CNIB || *Success* || Returned user selected content. Returned expired content. Issued all new content. ||
 || 18.2 || !HumanWare || Solutions Radio || *Success* || Returned user selected content. Returned expired content. Issued all new content. ||
-|| 18.2 || Solutions Radio || CNIB || *Success* || note: missing lastModifiedDate (so test 18.1 would fail)  ||
+|| 18.2 || Solutions Radio || CNIB || *Success* ||  ||
 || 18.2 || Solutions Radio || Solutions Radio || *Success* ||  ||
 
 == 19. Prioritize order of files ==
