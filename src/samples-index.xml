@@ -22,7 +22,7 @@
       <annotation>
         <db:para>This example shows a complete <db:type>contentList</db:type> (the 
           <db:code>firstItem</db:code> and <db:code>lastItem</db:code> attributes
-          are not present on the root element).</db:para>
+          are not present in the root element).</db:para>
       </annotation>
     </sample>
     <sample src="./samples/types-contentList-2.xml" title="A partial contentList">
