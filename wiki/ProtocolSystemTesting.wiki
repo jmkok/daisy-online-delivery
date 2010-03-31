@@ -110,8 +110,8 @@ Note: Storing user-created bookmarks is covered under requirement #13, Bookmark 
 || 4.1 || !PlexTalk || Vision Australia || *Failure* || Unable to download the Content. ||
 || 4.2 || !PlexTalk || CNIB || *Partial success* || Unable to stream the Content. Return was successful. ||
 || 4.2 || !PlexTalk || Solutions Radio || *Partial success* || Unable to stream the Content. Return was successful. ||
-|| 4.2 || Solutions Radio || CNIB ||  ||  ||
-|| 4.2 || Solutions Radio || Solutions Radio ||  ||  ||
+|| 4.2 || Solutions Radio || CNIB || *Success* || issueContent + Stream + returnContent works ||
+|| 4.2 || Solutions Radio || Solutions Radio || *Success* || issueContent + Stream + returnContent works ||
 
 == 5. Transmit capabilities ==
 
