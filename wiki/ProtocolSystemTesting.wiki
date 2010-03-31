@@ -404,8 +404,8 @@ Note that actually interacting with the Content without downloading all of its r
 || Test case || Client || Server || Result || Details ||
 || 20.1 || CNIB || !PratSam || *Success* || Sample for "pub_3", "sam_3" was downloaded. ||
 || 20.1 || CNIB || Solutions Radio ||  ||  ||
-|| 20.1 || Solutions Radio || !PratSam || *Success* || Sample was offered and downloaded. (sam_5 / pub_5)  ||
-|| 20.1 || Solutions Radio || Solutions Radio ||  ||  ||
+|| 20.1 || Solutions Radio || !PratSam || *Success* || Sample was offered and tested (sam_5 / pub_5)  ||
+|| 20.1 || Solutions Radio || Solutions Radio || *Success* || Sample was offered and tested ||
 
 == 21. Report firmware version ==
 
