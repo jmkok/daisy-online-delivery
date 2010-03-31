@@ -388,7 +388,7 @@ The protocol does not support bookmarks with audio notes.
   # *Play a book while downloading*: Issue a DAISY 2.02 or Z39.86 book that includes audio from the Service.  Identify and download the XML files, then identify and download the audio in play order.  Begin playback of audio before it has fully downloaded.
 
 || Test case || Client || Server || Result || Details ||
-|| 19.1 || Solutions Radio || CNIB ||  ||  ||
+|| 19.1 || Solutions Radio || CNIB || *Success* || Content was correctly available for this purpose (pub_6) ||
 || 19.1 || Solutions Radio || !PratSam ||  ||  ||
 
 == 20. Interact with content ==
