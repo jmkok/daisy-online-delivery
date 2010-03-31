@@ -480,8 +480,8 @@ The capability to report which server is in control was not included in the prot
 || Test case || Client || Server || Result || Details ||
 || 26.1 || !PlexTalk || CNIB ||  ||  ||
 || 26.1 || !PlexTalk || !PratSam ||  ||  ||
-|| 26.1 || Solutions Radio || CNIB ||  ||  ||
-|| 26.1 || Solutions Radio || !PratSam ||  ||  ||
+|| 26.1 || Solutions Radio || CNIB || *Success* || Fault is rendered to the user in its language (RS uses its own text and audio) ||
+|| 26.1 || Solutions Radio || !PratSam || *Success* || Fault is rendered to the user in its language (RS uses its own text and audio) ||
 
 = Expectations =
 
