@@ -34,6 +34,15 @@
     			<orgname>RNIB</orgname>
     		</affiliation>
     	</author>
+    	<author>
+    		<personname>
+    			<firstname>Johan</firstname>
+    			<surname>Abbors</surname>
+    		</personname>
+    		<affiliation>
+    			<orgname>PratSam</orgname>
+    		</affiliation>
+    	</author>
 		<abstract>
         <para> This document contains examples of how to use the Dynamic Menus feature of the
             DAISY Online Delivery Protocol. This document is not a normative part of the DAISY
