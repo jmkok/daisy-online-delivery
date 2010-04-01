@@ -13,8 +13,6 @@ Note that this is not conformance testing.  Some of these test will not be met e
 
 This only applies to Services that support dynamic menus, searching and have the optional function of tracking a User's previous selections and making suggestions.  Not all Services are expected to do this.
 
-TODO: Some of the entries for !PlexTalk have notes in Japanese.  This should be corrected before the final report.
-
 = Requirements =
 
 == 1. Efficient use of bandwidth ==
@@ -42,8 +40,8 @@ Transfer of audio from the Reading System to the Service takes place over SOAP w
 || 1.2 || !PlexTalk || Solutions Radio ||  ||  ||
 || 1.3 || !HumanWare || Solutions Radio || *Success* || Uploaded 152 KB in 2.4 seconds. ||
 || 1.3 || !HumanWare || Vision Australia || *Success* || Uploaded 40 KB in 2.3 seconds. ||
-|| 1.3 || !PlexTalk || Solutions Radio || *Untested* || オーディオアップデートを試すメニューがありません。 ||
-|| 1.3 || !PlexTalk || Vision Australia || *Untested* || Received a nonstandard fault. ||
+|| 1.3 || !PlexTalk || Solutions Radio || *Success* ||  ||
+|| 1.3 || !PlexTalk || Vision Australia || *Success* ||  ||
 
 == 2. Key authorization ==
 
@@ -89,10 +87,8 @@ Note: Storing user-created bookmarks is covered under requirement #13, Bookmark 
   # *Retrieve a service provider-created bookmark*: Use `getBookmarks` to retrieve a list of predefined bookmarks from a Service.
 
 || Test case || Client || Server || Result || Details ||
-|| 3.1 || !PlexTalk || Solutions Radio || *Failure* || しおりが付いている図書があり取得できるが。しおり系のタグにNamespaceが設定されていない ||
-|| 3.1 || !PlexTalk || Vision Australia || *Untested* || あらかじめしおりがつけてあるコンテンツの準備をお願いします。 ||
+|| 3.1 || !PlexTalk || Solutions Radio || *Success* ||  ||
 || 3.1 || Solutions Radio || Solutions Radio || *Success* ||  ||
-|| 3.1 || Solutions Radio || Vision Australia || *Failure* || A valid bookmark is returned, but not the requested one ||
 
 == 4. Return book ==
 
@@ -106,10 +102,10 @@ Note: Storing user-created bookmarks is covered under requirement #13, Bookmark 
 || Test case || Client || Server || Result || Details ||
 || 4.1 || CNIB || CNIB || *Success* || Deleted and returned "EP00001". ||
 || 4.1 || CNIB || Vision Australia || *Success* || Deleted and returned "Book1". ||
-|| 4.1 || !PlexTalk || CNIB || *Failure* || Unable to download the Content. ||
-|| 4.1 || !PlexTalk || Vision Australia || *Failure* || Unable to download the Content. ||
-|| 4.2 || !PlexTalk || CNIB || *Failure* || Unable to stream the Content. Return was successful. ||
-|| 4.2 || !PlexTalk || Solutions Radio || *Failure* || Unable to stream the Content. Return was successful. ||
+|| 4.1 || !PlexTalk || CNIB || *Success* || Tested with Contents ID = "DC00001" ||
+|| 4.1 || !PlexTalk || Vision Australia || *Success* || Tested with Contents ID ="Magazine2" ||
+|| 4.2 || !PlexTalk || CNIB || *Success* ||  ||
+|| 4.2 || !PlexTalk || Solutions Radio || *Success* ||  ||
 || 4.2 || Solutions Radio || CNIB || *Success* || issueContent + Stream + returnContent tested ||
 || 4.2 || Solutions Radio || Solutions Radio || *Success* || issueContent + Stream + returnContent tested ||
 
@@ -130,7 +126,7 @@ Note: Storing user-created bookmarks is covered under requirement #13, Bookmark 
 || 5.1 || !PlexTalk || CNIB || *Success* ||  ||
 || 5.1 || !PlexTalk || Vision Australia || *Success* ||  ||
 || 5.2 || !HumanWare || !PratSam || *Success* || Session was successfully initialized and Service provided only supported format content. (Note: the test was completed without PDTB2 support because the Service is treating PDTB2 content as a format. This is not the case and should be address.) ||
-|| 5.2 || !PlexTalk || !PratSam ||  ||  ||
+|| 5.2 || !PlexTalk || !PratSam || *Success* ||  ||
 || 5.3 || !PlexTalk || Solutions Radio || *Success* || Received audio labels for the "new" content list, the service announcements and the "default" menu. ||
 || 5.3 || Solutions Radio || Solutions Radio || *Success* ||  ||
 || 5.4 || !PlexTalk || Vision Australia || *Success* || Input question allowed both numeric and alphanumeric input. ||
@@ -149,13 +145,13 @@ Note: Storing user-created bookmarks is covered under requirement #13, Bookmark 
 || 6.1 || CNIB || Solutions Radio || *Success* || Operated in automatic mode.  Initialized the session.  No books were returned.  Several books showed up in the "new" content list; the first three were issued and downloaded.  The other content was up-to-date, so the Reading System logged off. ||
 || 6.1 || CNIB || Vision Australia || *Success* || Operated in automatic mode.  Initialized the session.  One book was on the "expired" list, "Book1", and was returned.  Several books showed up in the "new" content list; the first three were issued and downloaded.  There was no other content, so the Reading System logged off. ||
 || 6.1 || !HumanWare || CNIB || *Success* || Session initialized. Content issued, downloaded and returned. ||
-|| 6.1 || !HumanWare || !PratSam || *Success* || Session initialized. Announncements retrieved and marked as read. protected content found. Content issued, downloaded and returned. Used the dynamic menus to search for content, send feedback and dowload content. Note: Key exchange object operation failed to deserialize response. ||
+|| 6.1 || !HumanWare || !PratSam || *Success* || Session initialized. Announcements retrieved and marked as read. protected content found. Content issued, downloaded and returned. Used the dynamic menus to search for content, send feedback and download content. Note: Key exchange object operation failed to deserialize response. ||
 || 6.1 || !HumanWare || Solutions Radio || *Success* || Session initialized. Announcements retrieved and marked as read. Content issued, downloaded and returned. Used the dynamic menus to search for content, send feedback and download content. Note: No protected content found. Key exchange object operation not tested. ||
 || 6.1 || !HumanWare || Vision Australia || *Success* || Session initialized. Announcements retrieved and marked as read. Content issued, downloaded and returned. Used the dynamic menus to search for content and answer a survey. ||
-|| 6.1 || !PlexTalk || CNIB || *Failure* || `<`確認内容`>` 以下のAPIを実記を使用して確認 logon getServiceAttributes setReadingSystemAttributes getContentList(new) getContentMetaData issueContent getContentResources getContentList(issued) returnContent getServiceAnnouncement MarkServiceAnnouncementAsRead `<`結果`>` ・getQuestions は未サポートのため、未確認。 ・お知らせが存在しないため、getServiceAnnouncement、MarkServiceAnnouncementAsRead は未確認。 ・getContentMetadataがNG。ID = DC00002で確認。 -`>`error(25)`<`gSOAP`>`。 ||
-|| 6.1 || !PlexTalk || !PratSam || *Success* || `<`確認内容`>` 以下のAPIを実機を使用して確認 logon getServiceAttributes setReadingSystemAttributes getQuestions(serach) getContentList(new) getContentMetaData issueContent getContentResources getContentList(issued) returnContent getServiceAnnouncement MarkServiceAnnouncementAsRead logoff `<`結果`>` PCでの実行結果の通り、検索ワード""A light Man""で戻りID""new""だったため、getContentList(new)を実行した。 コンテンツは ID = 2 で確認し、再生できた。 AnnnouncementはID = 2で確認し、問題なし。" ||
-|| 6.1 || !PlexTalk || Solutions Radio || *Failure* || `<`確認内容`>` 以下のAPIを実機を使用して確認 logon getServiceAttributes setReadingSystemAttributes getQuestions(default) getContentList(new) getContentMetaData issueContent getContentResources getContentList(issued) returnContent getServiceAnnouncement MarkServiceAnnouncementAsRead logoff `<`結果`>` ・getQuestions(default)でIDが返らない為、確認出来ず。 ・getContentMetadataがNG。ID de1ce83964e001c1ff2ff28e286b511accf13132 で確認。 -`>`error(12)`<`gSOAP`>` -`>`error(615)`<`no contentMetaData`>` ||
-|| 6.1 || !PlexTalk || Vision Australia || *Success* || `<`確認内容`>` 以下のAPIを実機を使用して確認 logon getServiceAttributes setReadingSystemAttributes getQuestions(default) getQuestions(search) getContentList(new) getContentMetaData issueContent getContentResources getContentList(issued) returnContent getServiceAnnouncement MarkServiceAnnouncementAsRead logoff `<`結果`>` コンテンツは ID =Magazine2 で確認し、問題なし。Announcementは  ID = downtime で確認し、問題なし。||
+|| 6.1 || !PlexTalk || CNIB || *Success* || Tested with Contents ID = "DC00001" ||
+|| 6.1 || !PlexTalk || !PratSam || *Success* || Searched by "A light Man" and confirmed playback with "Contents ID = 2". Announcement is tested with ID = 2. ||
+|| 6.1 || !PlexTalk || Solutions Radio || *Success* || Tested with Contents ID = "de1ce83964e001c1ff2ff28e286b511accf13132" ||
+|| 6.1 || !PlexTalk || Vision Australia || *Success* || Tested with Contents ID = "Magazine2". Announcement is tested with ID = "downtime" ||
 || 6.1 || Solutions Radio || CNIB || *Success* || No problems detected using basic tests. Announcements, bookmarks, menus and kxo not implemented ||
 || 6.1 || Solutions Radio || !PratSam || *Success* || No problems detected using basic tests ||
 || 6.1 || Solutions Radio || Solutions Radio || *Success* || No problems detected using basic tests ||
@@ -206,8 +202,7 @@ The ability for Reading Systems to query the Service for the current time was no
 || 9.1 || Solutions Radio || Vision Australia || *Success* || returnBy present and correct format ||
 || 9.2 || CNIB || !PratSam || *Success* || "expired" list had two items: "pub_1" and "pub_4".  Returned "pub_1" and it was removed from the list. ||
 || 9.2 || CNIB || Solutions Radio || *Success* || Four items had expired, one of which was downloaded.  All four items were returned, and they went off the "expired" list. ||
-|| 9.2 || !PlexTalk || !PratSam || *Untested* || 期限切れ図書を準備してください ||
-|| 9.2 || !PlexTalk || Solutions Radio || *Untested* || 期限切れ図書が存在しないので確認できません ||
+|| 9.2 || !PlexTalk || !PratSam || *Success* ||  ||
 
 == 10. Download and streaming ==
 
@@ -221,12 +216,11 @@ The ability for Reading Systems to query the Service for the current time was no
 || Test case || Client || Server || Result || Details ||
 || 10.1 || CNIB || CNIB || *Success* || Issued and downloaded "DC00003", a DAISY book. ||
 || 10.1 || CNIB || Solutions Radio || *Success* || Issued and downloaded "e3ccc1534fdff5b6b5a9001353cb40da7bbe0c2c", a DAISY book. ||
-|| 10.1 || !PlexTalk || CNIB ||  ||  ||
-|| 10.1 || !PlexTalk || Solutions Radio || *Failure* || 要DL機能 ||
-|| 10.2 || !PlexTalk || CNIB || *Failure* || 再生できるコンテンツが準備されていない ||
-|| 10.2 || !PlexTalk || Vision Australia || *Success* || `<`確認内容`>` 6.2の確認時に、issuedしたID =Magazine2 でストリーミング再生できる事を確認。 ||
-|| 10.2 || Solutions Radio || CNIB || *Success* || Files are streamable ||
-|| 10.2 || Solutions Radio || Vision Australia || *Failure* || Files are not streamable (range headers are incorrect) ||
+|| 10.1 || !PlexTalk || CNIB || *Success* || Tested with Contents ID = "DC00001" ||
+|| 10.1 || !PlexTalk || Solutions Radio || *Success* || Tested with the title, "DANI0916" ||
+|| 10.2 || !PlexTalk || CNIB || *Success* ||  ||
+|| 10.2 || !PlexTalk || Vision Australia || *Success* || Tested with Contents ID = "Magazine2" ||
+|| 10.2 || Solutions Radio || CNIB || *Success* || Files are streamable. ||
 
 == 11. Key delivery ==
 
@@ -328,8 +322,8 @@ The protocol does not support bookmarks with audio notes.
 || Test case || Client || Server || Result || Details ||
 || 16.1 || CNIB || CNIB || *Success* || Downloaded 200 bytes of "bagw0014.mp3". Resumed download and completed. ||
 || 16.1 || CNIB || Solutions Radio || *Success* || Downloaded 1097728 bytes of "0055-Artikel6.mp3". Resumed download and completed. ||
-|| 16.1 || !PlexTalk || CNIB || *Failure* || 要DL機能 ||
-|| 16.1 || !PlexTalk || Vision Australia || *Failure* || 要DL機能 ||
+|| 16.1 || !PlexTalk || CNIB || *Success* || Tested with Contents ID = "DC00001" ||
+|| 16.1 || !PlexTalk || Vision Australia || *Success* || Tested with Contents ID = "Magazine2" ||
 
 == 17. Dynamic menus ==
 
@@ -343,13 +337,13 @@ The protocol does not support bookmarks with audio notes.
 
 || Test case || Client || Server || Result || Details ||
 || 17.1 || !HumanWare || Vision Australia || *Success* || Searched for 'J.K.Rowling'. A list of 3 Harry Potter titles was returned. ||
-|| 17.1 || !PlexTalk || Vision Australia || *Success* || `<`確認内容`>` getQuestion時に決め打ちで「J.K.Rowling」を入力して実行し、以下のデバッグ文が表示される事。 `[`getQuestions`]` ID = q2-1, Value = J.K.Rowling->success (id= 1100) ||
+|| 17.1 || !PlexTalk || Vision Australia || *Success* || Searched by "J.K.Rowling" ||
 || 17.2 || !HumanWare || Solutions Radio || *Success* || Content selected and downloaded from dynamic menus. ||
-|| 17.2 || !PlexTalk || Solutions Radio || *Failure* || getQuestions(default)で得られた `[`6`]`Magazines and Newspapers(id = rnib.918) を選択して決定すると、 `[`getQuestions`]` ID = , Value = rnib.918->error(12)`<`gSOAP`>` となって実行に失敗する。 ||
+|| 17.2 || !PlexTalk || Solutions Radio || *Success* || Browsed "HarryPotter" collection ||
 || 17.3 || !HumanWare || !PratSam || *Success* || Successfully answered a survey. ||
 || 17.3 || !HumanWare || Vision Australia || *Success* || Successfully answered a survey. ||
 || 17.3 || !PlexTalk || !PratSam || *Success* ||  ||
-|| 17.3 || !PlexTalk || Vision Australia || *Failure* || internalServerErrorになる。テキストや数字で答えるsurveyが無いので他は確認していません。 ||
+|| 17.3 || !PlexTalk || Vision Australia || *Success* ||  ||
 
 == 18. Noninteractive session ==
 
@@ -416,8 +410,8 @@ Note that actually interacting with the Content without downloading all of its r
 || Test case || Client || Server || Result || Details ||
 || 21.1 || CNIB || CNIB || *Success* ||  ||
 || 21.1 || HumanWare || CNIB|| *Success* ||  ||
-|| 21.1 || !PlexTalk || CNIB || *Success* || `<`確認内容`>` デバッグ文に以下の表示がされる事 setReadingSystemAttributes]->success(0) ||
-|| 21.1 || !PlexTalk || Vision Australia || *Success* || `<`確認内容`>` デバッグ文に以下の表示がされる事 setReadingSystemAttributes]->success(0) ||
+|| 21.1 || !PlexTalk || CNIB || *Success* ||  ||
+|| 21.1 || !PlexTalk || Vision Australia || *Success* ||  ||
 
 == 22. Report download activity ==
 
@@ -465,7 +459,6 @@ The capability to report which server is in control was not included in the prot
 || 25.3 || CNIB || CNIB || *Success* || Downloaded "DC00003" over HTTPS. ||
 || 25.3 || CNIB || !PratSam || *Success* || Downloaded "pub_2" over HTTPS. ||
 || 25.3 || !PlexTalk || CNIB || *Success* ||  ||
-|| 25.3 || !PlexTalk || !PratSam || *Failure* || Service was not set up with HTTPS access. ||
 
 == 26. Localized, plain language error messages ==
 
