@@ -408,7 +408,7 @@ Note that actually interacting with the Content without downloading all of its r
 
 [RequirementsDocument#Report_download_activity Requirement]
 
-The capability for a Reading System to report its own download activity to the Service was not included in the protocol.  Service Providers may track this information for local Content by monitoring their own file servers, and may need to require Service Delegates to report download activity.
+The capability for a Reading System to report its own download activity to the Service was not included in the protocol.  Service Providers may track this information for local Content by monitoring their own file servers (see test 28.1), and may need to require Service Delegates to report download activity.
 
 == 23. Report player errors ==
 
