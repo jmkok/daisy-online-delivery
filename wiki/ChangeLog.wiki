@@ -1,5 +1,43 @@
 #summary List of changes to the specification.
 
+= From the Final Draft to Proposed Recommendation =
+
+This is an aggregation of all the changes to the protocol made since the Final (r907) was released 17 February 2010.
+
+== API ==
+
+Changes to `do-wsdl-10.wsdl`:
+
+  * Noted that the `issueContent` operation must return `true` if the Content item is already issued.
+  * Noted that the `returnContent` operation must return `true` if the Content item has already been returned.
+  *  Clarified the use of Content Identifiers for operations `getContentMetadata` and  `getContentResources`.
+  *  Removed `noActiveSession` fault for the signature of `logOff`.
+  * Noted that the `getContentList` operation must return an empty list with the value of `totalItems` set to the total number of items in the entire list if the `firstItem` or `lastItem` parameter is invalid.
+
+== Types ==
+
+Changes to `do-types-10.xsd`:
+
+  * Noted that a Service is not required to send labels containing audio if the Service does not support audio labels and the Reading System requires audio labels. The Reading system must decided whether to continue initializing a session if this scenario.
+  * Changed `minOccurs` value from 0 to 1 for element `inputQuestion/inputTypes`.
+
+Changes to `bookmark-2005-1.xsd`:
+
+  * Changed the location of the XML schema to its canonical URL.
+  * Added attribute `elementFormDefault="qualified"` to schema.
+
+== Documentation ==
+
+  * Noted that a Service may issue a cookie even if `logOn`operation fails.
+  * Noted that a return value of `false` to a call of `markAnnouncementsAsRead` indicates that the announcement has already been marked as read.
+  * Noted that the Reading System must call the `markAnnouncementsAsRead` operation sequentially for each announcement, if a prior call to this operation returns fault, when the Reading Systems attempt to mark serveral announcements as read within the same call.
+  * Noted that the `logOff` operation can be called within the initialization sequence and that the Service must not throw an `invalidOperation` fault.
+  * Noted that a Service must return an `invalidParameter` fault if a Reading Systems calls the `getQuestions` operation with the predefined value `back` when no prior calls to this operation have been made in the active session.
+  * Noted that Service must return an `invalidParamter` fault if  Reading Systems calls the `getQuestion` operation with the value set to wither `back` or `search` when these values are not supported by the Service.
+  * Added section describing content synchronization.
+  * Noted that a Service should allow a Reading System to access resources outside of an active session. However, this is not a requirement.
+  * Updated Primer and examples of the Dynamic Menu feature.
+
 = From the Trial Use Draft to Final Draft =
 
 This is an aggregation of all the changes to the protocol made since the Draft for Trial Use (r566) was released 27 September 2009.
