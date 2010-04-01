@@ -329,7 +329,7 @@ The protocol does not support bookmarks with audio notes.
 || 17.1 || !HumanWare || Vision Australia || *Success* || Searched for 'J.K.Rowling'. A list of 3 Harry Potter titles was returned. ||
 || 17.1 || !PlexTalk || Vision Australia || *Success* || Searched by "J.K.Rowling" ||
 || 17.2 || !HumanWare || Solutions Radio || *Success* || Content selected and downloaded from dynamic menus. ||
-|| 17.2 || !PlexTalk || Solutions Radio || *Success* || Browsed "HarryPotter" collection ||
+|| 17.2 || !PlexTalk || Solutions Radio || *Success* || Browsed "!HarryPotter" collection ||
 || 17.3 || !HumanWare || !PratSam || *Success* || Successfully answered a survey. ||
 || 17.3 || !HumanWare || Vision Australia || *Success* || Successfully answered a survey. ||
 || 17.3 || !PlexTalk || !PratSam || *Success* ||  ||
@@ -399,7 +399,7 @@ Note that actually interacting with the Content without downloading all of its r
 
 || Test case || Client || Server || Result || Details ||
 || 21.1 || CNIB || CNIB || *Success* ||  ||
-|| 21.1 || HumanWare || CNIB|| *Success* ||  ||
+|| 21.1 || !HumanWare || CNIB|| *Success* ||  ||
 || 21.1 || !PlexTalk || CNIB || *Success* ||  ||
 || 21.1 || !PlexTalk || Vision Australia || *Success* ||  ||
 
