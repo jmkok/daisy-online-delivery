@@ -92,7 +92,7 @@ Note: Storing user-created bookmarks is covered under requirement #13, Bookmark 
 
 == 4. Return book ==
 
-*Untested*
+*Fulfilled*
 
 [RequirementsDocument#Return_book Requirement]
 
@@ -111,7 +111,7 @@ Note: Storing user-created bookmarks is covered under requirement #13, Bookmark 
 
 == 5. Transmit capabilities ==
 
-*Untested*
+*Fulfilled*
 
 [RequirementsDocument#Transmit_capabilities Requirement]
 
@@ -133,7 +133,7 @@ Note: Storing user-created bookmarks is covered under requirement #13, Bookmark 
 
 == 6. Universal protocol ==
 
-*Untested*
+*Fulfilled*
 
 [RequirementsDocument#Universal_protocol Requirement]
 
@@ -167,7 +167,7 @@ The requirement states that the Reading System must store the Service's contact 
 
 == 8. Content at different location ==
 
-*Untested*
+*Fulfilled*
 
 [RequirementsDocument#Content_at_different_location Requirement]
 
@@ -175,12 +175,8 @@ The requirement states that the Reading System must store the Service's contact 
   # *Private remote content*: Issue a Content item which is hosted on a public server that is not  at the same host as the Service and requires basic authentication.  Download the Content.
 
 || Test case || Client || Server || Result || Details ||
-|| 8.1 || CNIB || CNIB || Success || Retrieved "ext2", an MP3 file hosted at Song Fight. ||
-|| 8.1 || CNIB || Solutions Radio ||  ||  ||
-|| 8.1 || Solutions Radio || !PratSam || *Untested* || All content requires authorization ||
-|| 8.1 || Solutions Radio || Solutions Radio || *Success* || resource id a7bbdb68f5cdfe2be46cf09bdd6f200c641dcb27 ||
+|| 8.1 || CNIB || CNIB || *Success* || Retrieved "ext2", an MP3 file hosted at Song Fight. ||
 || 8.2 || CNIB || CNIB || *Success* || Retrieved "ext1", a web page hosted at Cornell University with basic authentication. ||
-|| 8.2 || CNIB || Solutions Radio ||  ||  ||
 || 8.2 || !HumanWare || CNIB || *Success* || Content issued and downloaded. ||
 || 8.2 || !HumanWare || Solutions Radio || *Success* || Content issued and downloaded. ||
 
@@ -206,7 +202,7 @@ The ability for Reading Systems to query the Service for the current time was no
 
 == 10. Download and streaming ==
 
-*Untested*
+*Fulfilled*
 
 [RequirementsDocument#Download_and_streaming Requirement]
 
@@ -224,7 +220,7 @@ The ability for Reading Systems to query the Service for the current time was no
 
 == 11. Key delivery ==
 
-*Untested*
+*Fulfilled*
 
 [RequirementsDocument#Key_delivery Requirement]
 
@@ -236,17 +232,13 @@ The ability for Reading Systems to query the Service for the current time was no
 || 11.1 || CNIB || !PratSam || *Success* || Got the metadata for "pub_6", which was listed as PDTB2-protected. ||
 || 11.1 || CNIB || CNIB || *Success* || Got the metadata for "us-nls-db62465", which was listed as PDTB2-protected. ||
 || 11.1 || !HumanWare || !PratSam || *Success* || Protected content found. ||
-|| 11.1 || !HumanWare || Solutions Radio || *Untested* ||  ||
 || 11.2 || !HumanWare || !PratSam || *Partial success* || Able to retrieve a valid KXO through the Service.  Client framework was unable to extract the KXO.  Was able to parse KXO manually and decrypt the book. ||
 || 11.2 || !PlexTalk || !PratSam || *Partial success* || Able to retrieve a valid KXO through the Service. Unable to decrypt the book. ||
 || 11.3 || !HumanWare || !PratSam || *Success* || Protected content issued and downloaded. Service returned invalidParameter fault at operation getKeyExchangeObject (using empty key ring) ||
-|| 11.3 || !HumanWare || Solutions Radio || *Untested* ||  ||
-|| 11.3 || Solutions Radio || !PratSam ||  ||  ||
-|| 11.3 || Solutions Radio || Solutions Radio ||  ||  ||
 
 == 12. Same book, different player ==
 
-*Untested*
+*Fulfilled*
 
 [RequirementsDocument#Same_book,_different_player Requirement]
 
@@ -259,7 +251,6 @@ The ability for Reading Systems to query the Service for the current time was no
 || 12.1 || Solutions Radio || !PratSam || *Success* ||  ||
 || 12.1 || Solutions Radio || Vision Australia || *Success* ||  ||
 || 12.2 || Solutions Radio || !PratSam || *Success* || Able to continue after logOff (bookmarks verified) ||
-|| 12.2 || Solutions Radio || Vision Australia || *Failure* || see: 10.2 and 13.1 ||
 
 == 13. Bookmark stored on server ==
 
@@ -273,11 +264,10 @@ The protocol does not support bookmarks with audio notes.
 
 || Test case || Client || Server || Result || Details ||
 || 13.1 || Solutions Radio || Solutions Radio || *Success* ||  ||
-|| 13.1 || Solutions Radio || Vision Australia || *Failure* || The bookmark returned is not the one stored (different uid) ||
 
 == 14. Issue content ==
 
-*Untested*
+*Fulfilled*
 
 [RequirementsDocument#Issue_content Requirement]
 
@@ -299,7 +289,7 @@ The protocol does not support bookmarks with audio notes.
 
 == 15. Audio and text annotation ==
 
-*Untested*
+*Fulfilled*
 
 [RequirementsDocument#Audio_and_text_annotation Requirement]
 
@@ -313,7 +303,7 @@ The protocol does not support bookmarks with audio notes.
 
 == 16. Stop and resume download ==
 
-*Untested*
+*Fulfilled*
 
 [RequirementsDocument#Stop_and_resume_download Requirement]
 
@@ -327,7 +317,7 @@ The protocol does not support bookmarks with audio notes.
 
 == 17. Dynamic menus ==
 
-*Untested*
+*Fulfilled*
 
 [RequirementsDocument#Dynamic_menus Requirement]
 
@@ -347,7 +337,7 @@ The protocol does not support bookmarks with audio notes.
 
 == 18. Noninteractive session ==
 
-*Untested*
+*Fulfilled*
 
 [RequirementsDocument#Noninteractive_session Requirement]
 
@@ -373,7 +363,7 @@ The protocol does not support bookmarks with audio notes.
 
 == 19. Prioritize order of files ==
 
-*Untested*
+*Fulfilled*
 
 [RequirementsDocument#Prioritize_order_of_files Requirement]
 
@@ -385,7 +375,7 @@ The protocol does not support bookmarks with audio notes.
 
 == 20. Interact with content ==
 
-*Untested*
+*Fulfilled*
 
 [RequirementsDocument#Interact_with_content Requirement]
 
@@ -401,7 +391,7 @@ Note that actually interacting with the Content without downloading all of its r
 
 == 21. Report firmware version ==
 
-*Untested*
+*Fulfilled*
 
 [RequirementsDocument#Report_firmware_version Requirement]
 
@@ -415,7 +405,7 @@ Note that actually interacting with the Content without downloading all of its r
 
 == 22. Report download activity ==
 
-*Not fulfilled*
+*Unfulfilled*
 
 [RequirementsDocument#Report_download_activity Requirement]
 
@@ -423,7 +413,7 @@ The capability for a Reading System to report its own download activity to the S
 
 == 23. Report player errors ==
 
-*Not fulfilled*
+*Unfulfilled*
 
 [RequirementsDocument#Report_player_errors Requirement]
 
@@ -431,7 +421,7 @@ The capability for a Reading System to report errors to the Service was not incl
 
 == 24. Report which server is in control ==
 
-*Not fulfilled*
+*Unfulfilled*
 
 [RequirementsDocument#Report_which_server_is_in_control Requirement]
 
@@ -439,7 +429,7 @@ The capability to report which server is in control was not included in the prot
 
 == 25. Protect user privacy ==
 
-*Untested*
+*Fulfilled*
 
 [RequirementsDocument#Protect_user_privacy Requirement]
 
@@ -462,7 +452,7 @@ The capability to report which server is in control was not included in the prot
 
 == 26. Localized, plain language error messages ==
 
-*Untested*
+*Fulfilled*
 
 [RequirementsDocument#Localized,_plain_language_error_messages Requirement]
 
@@ -478,7 +468,7 @@ The capability to report which server is in control was not included in the prot
 
 == 27. Audio feedback ==
 
-*Untested*
+*Fulfilled*
 
 [RequirementsDocument#Requires_some_player_functionality Requirement] (never formally moved back in scope)
 
@@ -492,7 +482,7 @@ Sending audio from the Reading System to the Service was originally in scope, th
 
 == 28. Download tracking ==
 
-*Untested*
+*Fulfilled*
 
 Although reporting download activity is not part of the protocol, certain organizations still need to track it.  This can usually be done on the file server, using standard logging tools.
 
@@ -500,13 +490,11 @@ Although reporting download activity is not part of the protocol, certain organi
 
 || Test case || Client || Server || Result || Details ||
 || 28.1 || !HumanWare || Solutions Radio || *Success* || Content was downloaded and logged by the service. ||
-|| 28.1 || !HumanWare || Vision Australia || *Partial success* || Content was downloaded but no log are available on the service ||
 || 28.1 || Solutions Radio || Solutions Radio || *Success* || Downloads are logged by the webserver ||
-|| 28.1 || Solutions Radio || Vision Australia ||  || Kenny: do you have any logs for IP 213.193.238.109 ? ||
 
 == 29. Service announcements ==
 
-*Untested*
+*Fulfilled*
 
 The ability to retrieve short announcements for such things as service interruptions and overdue reminders was dropped from the formal requirements, but is still part of the specification.
 
@@ -525,7 +513,7 @@ The ability to retrieve short announcements for such things as service interrupt
 
 == 30. Internationalization ==
 
-*Untested*
+*Fulfilled*
 
 This expands on requirement 26, "Localized, plain language error messages".
 
