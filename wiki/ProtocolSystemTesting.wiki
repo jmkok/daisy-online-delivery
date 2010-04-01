@@ -1,5 +1,5 @@
-#summary A report on the testing of the DAISY Online protocol against the requirements and expectations.
-#labels Phase-Requirements,Phase-QA,Report
+#summary The results of testing the DAISY Online protocol against the requirements and expectations.
+#labels Phase-Requirements,Phase-QA,Featured
 
 <wiki:toc max_depth="2" />
 
@@ -528,4 +528,5 @@ This expands on requirement 26, "Localized, plain language error messages".
 
 = Conclusion =
 
-Of the 26 in-scope requirements, X were fulfilled and Y were partially fulfilled.  Z requirements were left unfulfilled, largely due to time constraints.
+Of the 30 in-scope requirements and expectations, 27 have been fulfilled, 5 have been partially fulfilled and 3 have not been fulfilled.
+	27 tests have full coverage, 5 have 75% coverage, 14 have 50% coverage and 3 have 25% coverage.  Even though some tests had only one or two pairs of implementations, more than one team was involved in each test, so the Technical Subgroup is confident that all required functionality is sufficiently specified to be interoperable.  One test was only partially successful.
