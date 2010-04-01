@@ -36,8 +36,6 @@ Transfer of audio from the Reading System to the Service takes place over SOAP w
 || 1.1 || !HumanWare || Vision Australia || *Success* || Transfer of data was at an acceptable rate.  A 74 MB book was downloaded in 9:34 minutes. ||
 || 1.2 || CNIB || Vision Australia || *Success* || Issued and downloaded a Content item of approx. 58 MB. SOAP messages were approx. 16 KB, or a 0.03% overhead ratio. ||
 || 1.2 || CNIB || Solutions Radio || *Success* || Issued and downloaded a Content item of approx. 139 MB.  SOAP messages were approx. 51 KB, or a 0.04% overhead ratio. ||
-|| 1.2 || !PlexTalk || !PratSam ||  ||  ||
-|| 1.2 || !PlexTalk || Solutions Radio ||  ||  ||
 || 1.3 || !HumanWare || Solutions Radio || *Success* || Uploaded 152 KB in 2.4 seconds. ||
 || 1.3 || !HumanWare || Vision Australia || *Success* || Uploaded 40 KB in 2.3 seconds. ||
 || 1.3 || !PlexTalk || Solutions Radio || *Success* ||  ||
