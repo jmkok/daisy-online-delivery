@@ -507,7 +507,7 @@ Although reporting download activity is not part of the protocol, certain organi
 
 || Test case || Client || Server || Result || Details ||
 || 28.1 || !HumanWare || Solutions Radio || *Success* || Content was downloaded and logged by the service. ||
-|| 28.1 || !HumanWare || Vision Australia || *Failure* || Content was downloaded but not logged by the service. Note: no log available on test service. ||
+|| 28.1 || !HumanWare || Vision Australia || *Partial success* || Content was downloaded but no log are available on the service ||
 || 28.1 || Solutions Radio || Solutions Radio || *Success* || Downloads are logged by the webserver ||
 || 28.1 || Solutions Radio || Vision Australia ||  || Kenny: do you have any logs for IP 213.193.238.109 ? ||
 
