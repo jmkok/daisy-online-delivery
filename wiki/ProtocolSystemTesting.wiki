@@ -263,6 +263,7 @@ The protocol does not support bookmarks with audio notes.
   # *Store and retrieve a user-created bookmark*: Create a bookmark for a Content item.  Use `setBookmarks` to transmit the bookmark to a Service.  Use `getBookmarks` to retrieve the bookmark from the Service.
 
 || Test case || Client || Server || Result || Details ||
+|| 13.1 || Solutions Radio || !PratSam || *Success* ||  ||
 || 13.1 || Solutions Radio || Solutions Radio || *Success* ||  ||
 
 == 14. Issue content ==
