@@ -271,7 +271,7 @@ The protocol does not support bookmarks with audio notes.
 [RequirementsDocument#Issue_content Requirement]
 
   # *Issue a book*: Request a Content item from a Service using `issueContent`.  The Service must return `true`.  Get the list of resources using `getContentResources`.
-  # *Deny a book*: Request a Content item from a Service using `issueContent`.  The Service must return `false`.  Try to get the list of resources using `getContentResources`.  The Service must return an `invalidParameter` fault.
+  # *Deny a book*: Request a Content item from a Service using `issueContent`.  The Service must return `false` or a fault.  Try to get the list of resources using `getContentResources`.  The Service must return an `invalidParameter` fault.
   # *Pre-requisite book*: Search for the second or third book of a series, where the previous book was never issued.  The Service should, in the dynamic menus, inform the user of the previous book.
 
 || Test case || Client || Server || Result || Details ||
@@ -281,8 +281,8 @@ The protocol does not support bookmarks with audio notes.
 || 14.1 || !PlexTalk || Vision Australia || *Success* ||  ||
 || 14.2 || CNIB || CNIB || *Success* || Tried to issue and download "DC00001" but was not allowed.  `getContentResources` threw a fault. ||
 || 14.2 || CNIB || !PratSam || *Success* || Tried to issue "pub_1" after returning, and was denied. `getContentResources` threw a fault. ||
-|| 14.2 || Solutions Radio || CNIB || *Success* ||  ||
-|| 14.2 || Solutions Radio || !PratSam || *Partial success* || issueContent threw an invalidParameterFault instead of a false (as specified above) ||
+|| 14.2 || Solutions Radio || CNIB || *Success* || ||
+|| 14.2 || Solutions Radio || !PratSam || *Success* || issueContent threw an invalidParameterFault. ||
 || 14.3 || !HumanWare || Solutions Radio || *Success* || Searched for 'Harry Potter and the Goblet of Fire'. A list of all Harry Potter titles was returned. ||
 || 14.3 || Solutions Radio || Solutions Radio || *Success* || getQuestions with questionID "daisy-test.1920" and value "goblet" returns a list of Harry Potter books ||
 
