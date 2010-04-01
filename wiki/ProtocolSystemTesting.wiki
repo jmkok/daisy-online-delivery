@@ -242,11 +242,11 @@ The ability for Reading Systems to query the Service for the current time was no
 || 11.1 || CNIB || !PratSam || *Success* || Got the metadata for "pub_6", which was listed as PDTB2-protected. ||
 || 11.1 || CNIB || CNIB || *Success* || Got the metadata for "us-nls-db62465", which was listed as PDTB2-protected. ||
 || 11.1 || !HumanWare || !PratSam || *Success* || Protected content found. ||
-|| 11.1 || !HumanWare || Solutions Radio ||  ||  ||
+|| 11.1 || !HumanWare || Solutions Radio || *Untested* ||  ||
 || 11.2 || !HumanWare || !PratSam || *Partial success* || Able to retrieve a valid KXO through the Service.  Client framework was unable to extract the KXO.  Was able to parse KXO manually and decrypt the book. ||
 || 11.2 || !PlexTalk || !PratSam || *Partial success* || Able to retrieve a valid KXO through the Service. Unable to decrypt the book. ||
 || 11.3 || !HumanWare || !PratSam || *Success* || Protected content issued and downloaded. Service returned invalidParameter fault at operation getKeyExchangeObject (using empty key ring) ||
-|| 11.3 || !HumanWare || Solutions Radio ||  ||  ||
+|| 11.3 || !HumanWare || Solutions Radio || *Untested* ||  ||
 || 11.3 || Solutions Radio || !PratSam ||  ||  ||
 || 11.3 || Solutions Radio || Solutions Radio ||  ||  ||
 
