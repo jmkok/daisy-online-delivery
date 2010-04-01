@@ -8,9 +8,9 @@ scribe: Kenny
  
 === New Action Items ===
 
-  * Kenny add a feature request to the Daisy Online issue tracker on the Daisy website to provide a direct mechanism in dynamic menus for a Service to return resource ids, and close Issue 237.   
-  * Kenny make modification to the types xsd to make the input element a required element, and close issue 238.
-  * Kenny clarify in the spec that the getContentList operation must return an empty contentList when the supplied start and end parameters are invalid, but return the actual size of the entire contentList in the totalItems attribute in the resultant contentList, and close Issue 239.    
+  * Kenny add a feature request to the Daisy Online issue tracker on the Daisy website to provide a direct mechanism in dynamic menus for a Service to return resource ids, and close Issue 237. *done*   
+  * Kenny make modification to the types xsd to make the input element a required element, and close issue 238. *done*
+  * Kenny clarify in the spec that the getContentList operation must return an empty contentList when the supplied start and end parameters are invalid, but return the actual size of the entire contentList in the totalItems attribute in the resultant contentList, and close Issue 239. *done*    
   * Geoff mention in the Systems Testing report that the getKeyExchangeObject operation test was partially successful.
 
  === Previous Unfinished Action Items ===
@@ -20,7 +20,7 @@ scribe: Kenny
   * Simon ask colleagues in HumanWare if they could proof read the spec and primer before the next telecon. *nobody had time*
   * Jelle talk to Geoff offline about the Systems Testing report. *done*
   * Simon to add the minOccurs and maxOccurs tweak to the tweaks page. *done*
-  * Markus fix the &apos; entity problem. (outstanding; bug in IE.) (Markus will fix this when ready to publish.)
+  * Markus fix the &apos; entity problem. (outstanding; bug in IE.) (Markus will fix this when ready to publish.) *done*
 
 === Group Action Items ===
 
