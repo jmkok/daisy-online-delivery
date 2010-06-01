@@ -210,3 +210,13 @@ You are absolutely right, we must allow it but then it's better to let the servi
 Geoff:
 
 Exactly.
+
+Kenny:
+
+Johan, what are your proposed changes after the discussion?  
+
+Johan:
+
+We add a note in section 4.2.2 mentioning that a service can choose whether to allow one user to establish several active sessions or kill the currently active session when a new is established. Not exactly these words though.
+
+I'm not sure yet if RS specific expired lists is a suitable solution. I'll get back to you when I've had time to find other solutions, but in my opinion we need to clarify the return of content better, especially when the content may have been downloaded on several reading systems.
