@@ -1,0 +1,9 @@
+== Summary == 
+
+This page captures the discussion on the list about renewing content using the Daisy Online protocol. A feature request has been added to the Daisy Online tracker on the DC website for this user story.  
+
+== Discussion ==
+
+Johan:
+
+As a user I want to extend (renew) the time of return for a borrowable content that has been issued, without having to return the content. The method for is out-of-band. In future version of the spec we could consider incorporating this feature into the protocol.
