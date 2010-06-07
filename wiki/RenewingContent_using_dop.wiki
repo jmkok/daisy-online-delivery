@@ -20,3 +20,8 @@ I'm just thinking out loud here but can't your re-issue requirement be handled b
  
 I don't think we say what happens if issueContent is called with an id of content already issued so the service could change the returnBy attribute of the resources.
  
+kenny:
+Following on from Nick's suggestion, if a Reading System was to call the issue content operation for content that was already issued, we could position this invokation to signify a renewal request. The retrieval of the Resources type then, through the invokation of the getResources operation, would return the list of resources with the updated @returnBy value.
+ 
+Johan:
+Calling issueContent again for a content that already has been issued could indicate a renewal request. There may also be cases where the renewal is handled via an out-of-band mechanism and/or the user is not able to manually issue content via the reading system. In this case the reading system can't know which content to re-issue and re-issuing all contents every time an active session has been established is not a suitable solution. Another approach would be to call getContentResources again and compare the response with what might have been stored by the reading system.
