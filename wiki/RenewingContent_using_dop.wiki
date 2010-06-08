@@ -61,5 +61,6 @@ We introduce a new contentList called renewed (or something to this affect) that
 The renewal information retrieval operation sequence for the out-of-band mechanism of renewal would then be:
 
 1. Invoke getContentList with the id "renewed" to retrieve the list of content that has been renewed through an out-of-band mechanism.
+
  
 2. Invoke getContentResources to retrieve the resources with updated @returnBy values.  
