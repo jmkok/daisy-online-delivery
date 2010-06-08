@@ -41,15 +41,19 @@ If I understood correctly, your user story requires that content should not only
 For the former where the renewal is affected using the protocol itself, we could position an invokation of the issueContent operation for content that has already been issued to constitute a renewal request, as I suggested previously. We could then define a Renewal operation sequence as:
 
 1. Invoke issueContent for content that has already been issued to request renewal of the content.     
+
  
 2. Invoke getContentResources to retrieve the resources with updated @returnBy values. 
+
  
 We could also make this explicit by adding a new renewContent operation, which would make the Renewal operation sequence:
 
-1. Invoke renewContent with the ID of the content that needs to be renewed. 
- 
+1. Invoke renewContent with the ID of the content that needs to be renewed.
+
 2. Invoke getContentResources to retrieve the resources with updated @returnBy values. 
- 
+
+
+
 As for the latter (i.e. an out-of-band mechanism to renew content), the RS needs a way to discover that some content has been renewed when it connects to the Service. I don't think the three contentLists we have in the protocol right now i.e. new, issued and expired can convey this information. One solution that comes to mind is:
  
 We introduce a new contentList called renewed (or something to this affect) that lists renewed content. An RS would then invoke getContentResources to retrieve the resources with the updated @returnBy values.                      
