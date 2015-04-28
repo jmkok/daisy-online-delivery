@@ -1,0 +1,1 @@
+<p>Work area for specifications, schemas, sample apps and documentation for the <a href='http://www.daisy.org/projects/daisy-online-delivery/'>DAISY Online Protocol</a>.</p>
